@@ -1,0 +1,15 @@
+\begin{definition}[The obstacle functional $J$]
+Let $F \in L^2(\gamma_n)$ and $a \in \mathbb{R}$.  For $v$ in the form domain
+$\mathcal{V}$ of \noderef{Energy} define
+\[
+  J(v) = \tfrac12 \mathcal{E}(v) + \int (a - F)\, v \, d\gamma_n .
+\]
+Both terms are finite real numbers for $v \in \mathcal{V}$: the energy because
+$\mathcal{E}(v) < \infty$ there, and the linear term because Cauchy--Schwarz gives
+$\bigl|\int(a-F)v\,d\gamma_n\bigr| \leq \|a\mathbf{1} - F\|_2\,\|v\|_2 < \infty$,
+using that $\gamma_n$ is a probability measure so that the constant $a$ lies in
+$L^2(\gamma_n)$.  Thus $J$ is real-valued on $\mathcal{V}$, and the same formula
+is used for $v \in L^2(\gamma_n)\setminus\mathcal{V}$ with the convention
+$\mathcal{E}(v)$ replaced by $0$ there; that convention is never invoked, since
+every statement about $J$ below restricts to $v \in \mathcal{V}$.
+\end{definition}

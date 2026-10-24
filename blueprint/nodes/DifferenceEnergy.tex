@@ -1,0 +1,69 @@
+\begin{lemma}[The energy as a difference integral against the coupling]
+Let $v \in L^2(\gamma_n)$, let $\mathcal{E}$ be the energy of \noderef{Energy} and
+let $\nu_s$ be the coupling of \noderef{OUCoupling}.  Then:
+\begin{enumerate}
+\item for every $s > 0$ the function
+$(x,y) \mapsto |v(x)-v(y)|^2$ is $\nu_s$-integrable;
+\item for every $s > 0$,
+\[
+  \iint |v(x)-v(y)|^2 \, d\nu_s(x,y) \;\leq\; 4\,\|v\|_2^2 ;
+\]
+\item and
+\[
+  \mathcal{E}(v)
+    = \frac{1}{4\sqrt\pi}\int_0^\infty
+      \Bigl(\iint |v(x) - v(y)|^2\, d\nu_s(x,y)\Bigr)\frac{ds}{s^{3/2}},
+\]
+an identity in $[0,+\infty]$.
+\end{enumerate}
+In particular the inner double integral in (3) is a finite real number for every
+$s > 0$, so the outer integral is an integral of a genuine nonnegative function of
+$s$.
+\end{lemma}
+\begin{proof}
+\emph{Steps (1) and (2): integrability and the bound.}
+Fix $s > 0$.  By \noderef{OUCouplingKernel}, $\nu_s$ is a probability measure whose
+two marginals both equal $\gamma_n$.  Applying the marginal property to the
+nonnegative measurable function $x \mapsto v(x)^2$ in each variable separately,
+\[
+  \iint v(x)^2 \, d\nu_s(x,y) = \int v^2\, d\gamma_n = \|v\|_2^2 ,
+  \qquad
+  \iint v(y)^2 \, d\nu_s(x,y) = \int v^2 \, d\gamma_n = \|v\|_2^2 ,
+\]
+both finite since $v \in L^2(\gamma_n)$.  Expanding
+$|v(x)-v(y)|^2 = v(x)^2 + v(y)^2 - 2v(x)v(y)$ and using
+$2|v(x)v(y)| \leq v(x)^2 + v(y)^2$ pointwise, we get the pointwise bound
+\[
+  \bigl|\,|v(x)-v(y)|^2\,\bigr| = |v(x)-v(y)|^2 \leq 2\bigl(v(x)^2 + v(y)^2\bigr) ,
+\]
+whose $\nu_s$-integral is at most $2(\|v\|_2^2 + \|v\|_2^2) = 4\|v\|_2^2 < \infty$.
+A measurable function dominated in absolute value by a $\nu_s$-integrable function
+is $\nu_s$-integrable, which proves (1); and monotonicity of the integral then gives
+\[
+  \iint |v(x)-v(y)|^2 \, d\nu_s(x,y) \leq 4\,\|v\|_2^2 ,
+\]
+which is (2).  In particular the mixed term $\iint v(x)v(y)\,d\nu_s$ is absolutely
+integrable as well.
+
+\emph{Step (3): the identity.}
+By part (4) of \noderef{OUCouplingKernel} applied with $w = v$,
+\[
+  \iint v(x)\,v(y)\, d\nu_s(x,y) = \langle P_s v, v\rangle .
+\]
+Expanding $|v(x)-v(y)|^2 = v(x)^2 + v(y)^2 - 2v(x)v(y)$ and using the three
+displayed identities,
+\[
+  \tfrac12 \iint |v(x)-v(y)|^2\, d\nu_s(x,y)
+    = \tfrac12\bigl(2\|v\|_2^2 - 2\langle P_s v, v\rangle\bigr)
+    = \bigl\langle (I-P_s)v,\, v\bigr\rangle .
+\]
+Substituting this into the identity of \noderef{SemigroupEnergy}, i.e. replacing
+$\langle (I-P_s)v, v\rangle$ by $\tfrac12\iint|v(x)-v(y)|^2 d\nu_s$ and absorbing
+the factor $\tfrac12$ into the prefactor $\tfrac{1}{2\sqrt\pi}$, gives
+\[
+  \mathcal{E}(v)
+    = \frac{1}{4\sqrt\pi}\int_0^\infty
+      \Bigl(\iint|v(x)-v(y)|^2 d\nu_s(x,y)\Bigr)\frac{ds}{s^{3/2}} ,
+\]
+as an identity in $[0,+\infty]$ since all integrands are nonnegative.
+\end{proof}

@@ -1,0 +1,202 @@
+\begin{lemma}[Weak bound for the square of the local maximal function of a coordinate endpoint function]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$, let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}, and let
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions such that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item[(T2)] $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+\leq 2\,\|f\|_{L^1(\gamma_n)}$ for every $f \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$.
+\end{enumerate}
+Let $R \in \mathbb{R}$, put $\overline B = \overline B(0,R+2)$, let $M_2$ be the
+local maximal function of \noderef{LocalMaximalFunction}, and for
+$f \in L^1(\gamma_n)$ --- written also for its canonical representative --- put
+\[
+  u_f = \bigl|(Tf)_j\bigr|^{1/2}\,\mathbf 1_{\overline B}
+  \,:\, \mathbb{R}^n \to \mathbb{R} .
+\]
+Then for every $f \in L^1(\gamma_n)$ and every $s \in (0,+\infty]$,
+\[
+  \gamma_n\Bigl(\bigl\{\,x \in \mathbb{R}^n :\ M_2(u_f)(x)^2 > s\,\bigr\}\Bigr)
+  \;\leq\;
+  \frac{32\cdot4^n\,e^{(R+2)^2}\,\|f\|_{L^1(\gamma_n)}}{s} ,
+\]
+both sides read in $[0,+\infty]$, with $M_2(u_f)(x)^2$ the square taken there.
+Here $\|f\|_{L^1(\gamma_n)} = \int_{\mathbb{R}^n}|f|\,d\gamma_n$, the norm of the
+class of $f$ written as the integral of the absolute value of its canonical
+representative; the two are the same number, and it is that integral the
+displayed bound uses.
+
+\emph{Why the square appears in the statement.}  The intended consumer reaches
+this term as $\{x : \Psi(x)^2 > s\}$ with $\Psi = M_2(u_f)$, because its own
+input bounds a quantity by $\Psi^2 + \Phi + N$ and it splits that sum at the
+level $s$; so the squared form is the shape in which the set arises, and
+passing to the unsquared level $\{M_2(u_f) > \sqrt s\}$ is part of the work
+done here rather than something the consumer must do.  The square is taken in
+$[0,+\infty]$: $M_2(u_f)(x)$ is a supremum of averages which is not known in
+advance to be finite, exactly as in \noderef{LocalMaximalFunction}.
+
+\emph{The threshold is extended-real, and the endpoint is a triviality.}  At
+$s = +\infty$ the level set is empty, nothing in $[0,+\infty]$ exceeding
+$+\infty$, while the right-hand side is a finite quantity divided by $+\infty$,
+hence $0$; the assertion there is $0 \leq 0$ and the content is at finite $s$.
+The threshold is excluded only at $s = 0$, where the right-hand side would be
+$+\infty$ unless $\|f\|_{L^1(\gamma_n)} = 0$ and the assertion would fail for
+$f$ of norm zero with $M_2(u_f)$ not identically $0$ --- it is $0/0$ that is
+being avoided, not a loss of content.
+
+\emph{No measurability of the level set is asserted or needed.}  $\gamma_n$ is
+applied to the level set as an outer measure, which is defined on every subset
+and is monotone there; and the two facts chained below --- the weak bound of
+\noderef{LocalMaximalWeakL2} and the comparison
+$\gamma_n \leq \pi^{-n/2}\lambda$ of \noderef{GaussLebesgueBallComparison} ---
+are themselves stated for arbitrary sets.  Bounding the outer measure is the
+stronger assertion, so a consumer that knows the set to be measurable loses
+nothing.
+
+\emph{The constant, and what it does not claim.}  $32\cdot4^n e^{(R+2)^2}$
+depends only on $n$ and $R$: the $4^n$ is the Vitali constant carried by
+\noderef{LocalMaximalWeakL2}, and $e^{(R+2)^2}$ enters through
+$a^{-1} = \pi^{n/2}e^{(R+2)^2}$, the reciprocal of the lower bound
+$a = \pi^{-n/2}e^{-(R+2)^2}$ for the Gaussian density on $\overline B$.  No
+uniformity in $n$ or $R$ is claimed.  The quantity bounded is coordinatewise in
+$j$; nothing here asserts anything about the full vector $Tf$.
+
+\emph{The hypothetical style.}  (T1) and (T2) are written out in full and not
+imported by reference; the lemma is a statement about every $T$ satisfying
+them, as \noderef{CoordinateEndpointBound} is, and it is not vacuous because
+\noderef{L1Extension} exhibits such a $T$.
+\end{lemma}
+\begin{proof}
+Write $p = \pi^{-n/2}$, $q = \pi^{n/2}$ and $a = \pi^{-n/2}e^{-(R+2)^2}$, all in
+$(0,\infty)$, so that
+\begin{equation*}
+  p\,q = 1 \qquad\text{and}\qquad a\cdot\bigl(q\,e^{(R+2)^2}\bigr) = 1 ,
+  \tag{1}
+\end{equation*}
+the first because $\pi^{-n/2} = (\pi^{n/2})^{-1}$ and $\pi^{n/2} \neq 0$, and
+the second by multiplying the first by
+$e^{-(R+2)^2}e^{(R+2)^2} = e^{-(R+2)^2+(R+2)^2} = e^0 = 1$.  Fix
+$f \in L^1(\gamma_n)$, abbreviate $u = u_f$ and $\overline B =
+\overline B(0,R+2)$, and put $N = \|f\|_{L^1(\gamma_n)} = \int|f|\,d\gamma_n
+\in [0,\infty)$.
+
+\emph{Step 1: $u$ is measurable, nonnegative, and supported in
+$\overline B$.}  The canonical representative of a $\gamma_n$-almost-everywhere
+equivalence class of measurable functions is measurable, so $(Tf)_j$ is
+measurable.  The map $r \mapsto |r|^{1/2}$ is continuous on $\mathbb{R}$, hence
+Borel, so $|(Tf)_j|^{1/2}$ is measurable; and $\overline B$ is closed, hence
+measurable, so $u = |(Tf)_j|^{1/2}\mathbf 1_{\overline B}$ is measurable.  Since
+$|(Tf)_j|^{1/2} \geq 0$ we have $u \geq 0$ everywhere, and $u(y) = 0$ for
+$y \notin \overline B$.
+
+\emph{Step 2: the uniform bound on the weak-$L^2$ quantity.}  Put
+\[
+  \mathcal{A} = \sup_{0<\sigma\leq+\infty}
+    \sigma^2\,\lambda\bigl(\{y : |u(y)| > \sigma\}\bigr)
+  \;\in\;[0,+\infty] .
+\]
+We claim
+\begin{equation*}
+  \mathcal{A} \;\leq\; 2\,q\,e^{(R+2)^2}\,N . \tag{2}
+\end{equation*}
+It suffices to bound each term of the supremum by the right-hand side, since
+that right-hand side does not depend on $\sigma$.  (The uniformity is the
+point: a bound still depending on $\sigma$ would not bound the supremum.)
+
+If $\sigma = +\infty$ then $\{y : |u(y)| > \sigma\}$ is empty, $u$ being real
+valued so that $|u(y)| \leq +\infty$ always, and the term is
+$(+\infty)\cdot 0 = 0$, which is $\leq$ the right-hand side.
+
+So let $\sigma$ be a real number with $\sigma > 0$ and put
+$E_\sigma = \{y : |u(y)| > \sigma\}$.  By Step 1, $|u| = u$, so $E_\sigma$ is
+measurable, being a strict superlevel set of a measurable function.  Also
+$E_\sigma \subseteq \overline B$: if $y \notin \overline B$ then $u(y) = 0$ by
+Step 1, so $|u(y)| = 0 \not> \sigma$.  Next,
+\begin{equation*}
+  E_\sigma \;\subseteq\; \bigl\{y : |(Tf)_j(y)| > \sigma^2\bigr\} . \tag{3}
+\end{equation*}
+Indeed let $y \in E_\sigma$.  Then $y \in \overline B$ by the previous
+sentence, so $u(y) = |(Tf)_j(y)|^{1/2}$, and $|u(y)| = u(y) > \sigma$ gives
+$|(Tf)_j(y)|^{1/2} > \sigma > 0$; squaring the two sides of this inequality
+between nonnegative reals and using
+$\bigl(|(Tf)_j(y)|^{1/2}\bigr)^2 = |(Tf)_j(y)|$, which holds because
+$|(Tf)_j(y)| \geq 0$, gives $|(Tf)_j(y)| > \sigma^2$.
+
+Now $E_\sigma$ is measurable and contained in $\overline B = \overline
+B(0,R+2)$, so clause (2) of \noderef{GaussLebesgueBallComparison},
+\emph{instantiated at $R+2$ in place of its $R$ and at $E := E_\sigma$}, gives
+\begin{equation*}
+  a\,\lambda(E_\sigma) \;\leq\; \gamma_n(E_\sigma) . \tag{4}
+\end{equation*}
+And \noderef{CoordinateEndpointBound} --- applied to this $T$ with its two
+properties, which are (T1) and (T2) and hold by assumption, to this $f$, to the
+coordinate $j$ and to the real level $t := \sigma^2 > 0$ --- gives
+\begin{equation*}
+  \sigma^2\,\gamma_n\bigl(\bigl\{y : |(Tf)_j(y)| > \sigma^2\bigr\}\bigr)
+    \;\leq\; 2\,\|f\|_{L^1(\gamma_n)} \;=\; 2N . \tag{5}
+\end{equation*}
+Multiplying $(4)$ by $\sigma^2 \in (0,\infty)$, then using monotonicity of
+$\gamma_n$ as an outer measure together with $(3)$, then $(5)$:
+\[
+  a\cdot\sigma^2\lambda(E_\sigma)
+    \;\leq\; \sigma^2\gamma_n(E_\sigma)
+    \;\leq\; \sigma^2\gamma_n\bigl(\bigl\{y : |(Tf)_j(y)| > \sigma^2\bigr\}\bigr)
+    \;\leq\; 2N
+    \;=\; a\cdot\bigl(2\,q\,e^{(R+2)^2}N\bigr) ,
+\]
+the last equality being $(1)$ multiplied by $2N$.  Cancelling the factor
+$a \in (0,\infty)$, which is legitimate in $[0,+\infty]$ because $a$ is neither
+$0$ nor $+\infty$, gives
+$\sigma^2\lambda(E_\sigma) \leq 2\,q\,e^{(R+2)^2}N$.  As this holds for every
+$\sigma$, $(2)$ follows.
+
+\emph{Step 3: the level $s$, its square root, and the conclusion.}  Let
+$s \in (0,+\infty]$ and put
+$S = \{x : M_2(u)(x)^2 > s\}$.
+
+If $s = +\infty$ then $S$ is empty, since $M_2(u)(x)^2 \leq +\infty$ for every
+$x$, so $\gamma_n(S) = 0$ and the assertion holds, the right-hand side being
+$\geq 0$.
+
+So let $s \in (0,\infty)$ and let $\sqrt s \in (0,\infty)$ be its positive
+square root, so $(\sqrt s)^2 = s$ and $\sqrt s \neq 0$.  Then
+\begin{equation*}
+  S \;\subseteq\; \bigl\{x : M_2(u)(x) > \sqrt s\bigr\} , \tag{6}
+\end{equation*}
+by contraposition: if $M_2(u)(x) \leq \sqrt s$ then, squaring is monotone on
+$[0,+\infty]$, $M_2(u)(x)^2 \leq (\sqrt s)^2 = s$, so $x \notin S$.
+
+Apply \noderef{LocalMaximalWeakL2} to $u$, which is measurable hence measurable
+up to a null set by Step 1, at the level $\sqrt s \neq 0$.  Together with
+$(\sqrt s)^2 = s$ it gives
+\[
+  \lambda\bigl(\bigl\{x : M_2(u)(x) > \sqrt s\bigr\}\bigr)
+    \;\leq\; \frac{16\cdot4^n\,\mathcal{A}}{s} .
+\]
+By monotonicity of $\lambda$ as an outer measure and $(6)$, the same bound
+holds for $\lambda(S)$.  By clause (1) of
+\noderef{GaussLebesgueBallComparison}, which holds for \emph{every} set,
+$\gamma_n(S) \leq p\,\lambda(S)$.  Combining these with $(2)$ and using
+monotonicity of $r \mapsto p\cdot 16\cdot 4^n r/s$ on $[0,+\infty]$,
+\[
+  \gamma_n(S)
+    \;\leq\; p\,\lambda(S)
+    \;\leq\; \frac{p\cdot16\cdot4^n\,\mathcal{A}}{s}
+    \;\leq\; \frac{p\cdot16\cdot4^n\cdot2\,q\,e^{(R+2)^2}N}{s}
+    \;=\; \frac{32\cdot4^n\,e^{(R+2)^2}N}{s} ,
+\]
+the last step because
+$p\cdot16\cdot4^n\cdot2\,q\,e^{(R+2)^2}N
+ = 32\cdot4^n\,e^{(R+2)^2}N\cdot(p\,q)$ and $p\,q = 1$ by $(1)$.  This is the
+assertion for $s$, and with the case $s = +\infty$ it holds for every
+$s \in (0,+\infty]$.
+\end{proof}

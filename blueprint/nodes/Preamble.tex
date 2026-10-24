@@ -1,0 +1,233 @@
+\begin{definition}[The probabilists' Hermite polynomials]
+For $k \in \mathbb{N}_0$ let $\mathrm{He}_k \in \mathbb{Z}[X]$ be the
+probabilists' Hermite polynomials, defined by the recurrence
+\[
+  \mathrm{He}_0 = 1,
+  \qquad
+  \mathrm{He}_{k+1} = X\,\mathrm{He}_k - \mathrm{He}_k' ,
+\]
+where $p \mapsto p'$ is formal differentiation of polynomials.  Thus
+$\mathrm{He}_1 = X$, $\mathrm{He}_2 = X^2 - 1$, and in general $\mathrm{He}_k$ is
+monic of degree $k$ with integer coefficients.  This recurrence is the
+definition of the family: it is the imported background object on which the
+tablet's Hermite constructions are built, and nothing beyond the recurrence and
+the two displayed initial values is assumed here.  These are the polynomials
+orthogonal with respect to the weight $e^{-x^2/2}$ on $\mathbb{R}$; the
+rescaling to the weight $e^{-x^2}$ used by the reference paper, and the
+normalization of the resulting family, are carried out in the tablet's own
+definition nodes and are not background.
+\end{definition}
+\begin{proposition}[Tonelli, Fubini, and Fubini for null sets]
+Let $(\alpha,\mu)$ and $(\beta,\nu)$ be $\sigma$-finite measure spaces and let
+$f : \alpha \times \beta \to \mathbb{R}$ be measurable for the product
+$\sigma$-algebra.
+\begin{enumerate}
+\item (Tonelli) If $f \geq 0$ then
+$\int f \, d(\mu\otimes\nu) = \int\!\!\int f(x,y)\, d\nu(y)\, d\mu(x)
+ = \int\!\!\int f(x,y)\, d\mu(x)\, d\nu(y)$ as elements of $[0,+\infty]$.
+\item (Fubini) If $f$ is $(\mu\otimes\nu)$-integrable then for $\mu$-a.e.\ $x$
+the slice $y \mapsto f(x,y)$ is $\nu$-integrable, the function
+$x \mapsto \int f(x,y)\,d\nu(y)$ is $\mu$-integrable, and the three integrals in
+(1) agree as real numbers.
+\item (Fubini for null sets) If $N \subseteq \alpha\times\beta$ is measurable
+with $(\mu\otimes\nu)(N) = 0$, then for $\mu$-a.e.\ $x$ the slice
+$N_x = \{y : (x,y) \in N\}$ satisfies $\nu(N_x) = 0$.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}[Dominated convergence]
+Let $(\alpha,\mu)$ be a measure space, let $f_k : \alpha \to \mathbb{R}$ be
+measurable with $f_k \to f$ $\mu$-a.e., and suppose there is a $\mu$-integrable
+$g \geq 0$ with $|f_k| \leq g$ $\mu$-a.e.\ for every $k$.  Then $f$ and every
+$f_k$ are $\mu$-integrable, $\int |f_k - f| \, d\mu \to 0$, and
+$\int f_k \, d\mu \to \int f \, d\mu$.
+\end{proposition}
+\begin{proposition}[The scalar Gaussian integral]
+$\int_{\mathbb{R}} e^{-x^2}\, dx = \sqrt{\pi}$, and more generally
+$\int_{\mathbb{R}} e^{-b x^2}\, dx = \sqrt{\pi/b}$ for every real $b > 0$.
+\end{proposition}
+\begin{proposition}[Gaussian exponential moments]
+For every $n \geq 1$ and every $t \in \mathbb{R}$,
+\[
+  \int_{\mathbb{R}^n} e^{t|x|}\, e^{-|x|^2}\, dx < \infty ,
+\]
+the integral being taken with respect to Lebesgue measure.  More generally
+$\int_{\mathbb{R}^n} |P(x)|\, e^{t|x|}\, e^{-|x|^2}\, dx < \infty$ for every
+polynomial $P$, since $|P(x)|e^{t|x|} \leq C_P e^{(t+1)|x|}$ for a constant
+$C_P$.
+\end{proposition}
+\begin{proposition}[Cauchy--Schwarz]
+Let $H$ be a real inner-product space.  Then
+$|\langle x, y\rangle| \leq \|x\|\,\|y\|$ for all $x,y \in H$.  In integral
+form: if $(\alpha,\mu)$ is a measure space and $f, g \in L^2(\mu)$ are real
+valued, then the product $fg$ is $\mu$-integrable and
+$\bigl|\int fg \, d\mu\bigr| \leq \|f\|_{L^2(\mu)}\,\|g\|_{L^2(\mu)}$.
+\end{proposition}
+\begin{proposition}[Jensen's inequality for a probability measure]
+Let $\mu$ be a probability measure on $\alpha$, let $\varphi : \mathbb{R} \to
+\mathbb{R}$ be convex, and let $f \in L^1(\mu)$ be real valued with
+$\varphi \circ f \in L^1(\mu)$.  Then
+$\varphi\bigl(\int f \, d\mu\bigr) \leq \int \varphi \circ f \, d\mu$.
+\end{proposition}
+\begin{proposition}[Riesz representation in a Hilbert space]
+Let $H$ be a real Hilbert space and let $\Lambda : H \to \mathbb{R}$ be a
+continuous linear functional.  Then there is a unique $y \in H$ with
+$\Lambda(x) = \langle y, x\rangle$ for every $x \in H$, and
+$\|\Lambda\|_{H^*} = \|y\|_H$.
+\end{proposition}
+\begin{proposition}[Uniqueness of characteristic functions]
+Let $\mu$ and $\nu$ be finite Borel measures on $\mathbb{R}^n$ with
+\[
+  \int_{\mathbb{R}^n} e^{i\langle \xi, x\rangle}\, d\mu(x)
+    = \int_{\mathbb{R}^n} e^{i\langle \xi, x\rangle}\, d\nu(x)
+  \qquad\text{for every } \xi \in \mathbb{R}^n .
+\]
+Then $\mu = \nu$.
+\end{proposition}
+\begin{proposition}[Smoothness of a mollification, and the du Bois-Reymond lemma]
+Let $f : \mathbb{R}^n \to \mathbb{R}$ be locally integrable for Lebesgue
+measure.
+\begin{enumerate}
+\item If $\rho \in C_c^\infty(\mathbb{R}^n)$, then the convolution
+\[
+  (\rho * f)(x) = \int_{\mathbb{R}^n} \rho(t)\, f(x-t)\, dt
+\]
+is defined for every $x \in \mathbb{R}^n$ and belongs to
+$C^\infty(\mathbb{R}^n)$.
+\item If $\int_{\mathbb{R}^n} \varphi(x)\, f(x)\, dx = 0$ for every
+$\varphi \in C_c^\infty(\mathbb{R}^n)$, then $f = 0$ Lebesgue-almost
+everywhere.
+\end{enumerate}
+Item (2) is the fundamental lemma of the calculus of variations (du
+Bois-Reymond).  No $L^p$ convergence of mollifications is asserted here; that is
+a separate statement with a proof of its own, and it has its own tablet node.
+\end{proposition}
+\begin{proposition}[Borel--Cantelli]
+Let $\mu$ be a measure on $\alpha$ and let $(A_k)_{k\in\mathbb{N}}$ be
+measurable sets with $\sum_k \mu(A_k) < \infty$.  Then
+$\mu\bigl(\limsup_k A_k\bigr) = 0$; equivalently, $\mu$-almost every point lies
+in only finitely many $A_k$.
+\end{proposition}
+\begin{proposition}[Fatou's lemma]
+Let $(\alpha,\mu)$ be a measure space and let $f_k : \alpha \to [0,+\infty]$ be
+measurable.  Then
+$\int \liminf_k f_k \, d\mu \leq \liminf_k \int f_k \, d\mu$.
+\end{proposition}
+\begin{proposition}[Entire functions and uniqueness of power-series coefficients]
+Let $f : \mathbb{C} \to \mathbb{C}$ be entire.  Then $f$ is represented on all
+of $\mathbb{C}$ by its Taylor series at $0$,
+$f(z) = \sum_{k\geq0} c_k z^k$ with $c_k = f^{(k)}(0)/k!$, the series
+converging absolutely and locally uniformly.  Moreover the coefficients are
+unique: if $\sum_k c_k z^k = \sum_k d_k z^k$ for all $z$ in some neighbourhood
+of $0$, with both series convergent there, then $c_k = d_k$ for every $k$.
+\end{proposition}
+\begin{proposition}[$\sigma$-finiteness of Lebesgue measure]
+Lebesgue measure on $\mathbb{R}^n$ is $\sigma$-finite: $\mathbb{R}^n$ is the
+union of the countably many balls $B(0,k)$, $k \in \mathbb{N}$, each of finite
+Lebesgue measure.  The same therefore holds for any measure obtained from
+Lebesgue measure by multiplying by a locally bounded density.
+\end{proposition}
+\begin{proposition}[Density of compactly supported continuous functions in $L^p$]
+Let $\mu$ be a regular Borel measure on $\mathbb{R}^n$ (Lebesgue measure is
+one), let $1 \leq p < \infty$ and let $f \in L^p(\mu)$ be real valued.  For
+every $\eta > 0$ there is $g : \mathbb{R}^n \to \mathbb{R}$ which is
+continuous, has compact support, lies in $L^p(\mu)$, and satisfies
+$\|f - g\|_{L^p(\mu)} \leq \eta$.  Any such $g$ is bounded and uniformly
+continuous on $\mathbb{R}^n$: it is continuous, and if $S$ is a compact set
+containing $\operatorname{supp} g$ in its interior then $g$ is uniformly
+continuous on the compact set $S$ by the Heine--Cantor theorem and vanishes
+identically outside $\operatorname{supp} g$, which gives a single modulus of
+continuity valid on all of $\mathbb{R}^n$.
+\end{proposition}
+\begin{proposition}[Translation invariance of Lebesgue measure]
+Let $\lambda$ denote Lebesgue measure on $\mathbb{R}^n$ and let
+$t \in \mathbb{R}^n$.  Then $\lambda(A + t) = \lambda(A)$ for every Lebesgue
+measurable $A \subseteq \mathbb{R}^n$, and consequently, for every measurable
+$h : \mathbb{R}^n \to [0,+\infty]$ and every measurable $A$,
+\[
+  \int_A h(x-t)\, dx = \int_{A-t} h(y)\, dy ,
+\]
+both sides being equal in $[0,+\infty]$; the same identity holds for
+$\lambda$-integrable real-valued $h$.  Lebesgue measure is also invariant under
+the reflection $x \mapsto -x$, so $\int h(-x)\,dx = \int h(x)\,dx$ for every
+such $h$; combining the two invariances, the map $t \mapsto x - t$ preserves
+$\lambda$ for every fixed $x$, and $\int h(x-t)\,d\lambda(t) = \int h\,d\lambda$.
+\end{proposition}
+\begin{proposition}[Summable families of reals, and the extended-real bridge]
+Let $I$ be a countable index set and let $(c_i)_{i\in I}$, $(d_i)_{i \in I}$ be
+families of real numbers.
+\begin{enumerate}
+\item (Comparison) If $0 \leq c_i \leq d_i$ for every $i$ and $(d_i)$ is
+summable, then $(c_i)$ is summable and $\sum_i c_i \leq \sum_i d_i$.
+\item (Linearity) If $(c_i)$ and $(d_i)$ are summable and $a, b \in \mathbb{R}$,
+then $(a c_i + b d_i)_{i}$ is summable with
+$\sum_i (a c_i + b d_i) = a\sum_i c_i + b \sum_i d_i$.
+\item (Extended-real bridge) Suppose $c_i \geq 0$ for every $i$, and read
+$\sum_i c_i$ as an element of $[0,+\infty]$ by taking the supremum of the finite
+partial sums.  Then $\sum_i c_i < \infty$ if and only if $(c_i)$ is summable as a
+family of real numbers, and in that case the two readings of $\sum_i c_i$ agree.
+\item (Vanishing) If $e_i \in [0,+\infty]$ for every $i$ and
+$\sum_i e_i = 0$, then $e_i = 0$ for every $i$; this is immediate from
+$e_{i_0} \leq \sum_i e_i$ for each fixed $i_0$, the terms being nonnegative.
+\end{enumerate}
+Clause (1) applied together with the pointwise inequality
+$(s+t)^2 \leq 2s^2 + 2t^2$ and clause (2) shows that, for any fixed weights
+$w_i \geq 0$, the families $(c_i)$ with $\sum_i w_i c_i^2 < \infty$ form a linear
+subspace of $\mathbb{R}^I$.
+\end{proposition}
+\begin{proposition}[Weak-$*$ sequential compactness of dual balls, separable case]
+Let $E$ be a normed space over $\mathbb{R}$ which is \emph{separable}, i.e.\ has
+a countable dense subset, and let $E^*$ denote its dual: the continuous linear
+functionals $E \to \mathbb{R}$, normed by
+$\|\Lambda\|_{E^*} = \sup_{\|w\| \leq 1} |\Lambda(w)|$.  Let $R \geq 0$ and let
+$(\Lambda_k)_{k \geq 1}$ be a sequence in $E^*$ with $\|\Lambda_k\|_{E^*} \leq R$
+for every $k$.  Then there are indices $k_1 < k_2 < \cdots$ and
+$\Lambda \in E^*$ with $\|\Lambda\|_{E^*} \leq R$ such that
+\[
+  \Lambda_{k_j}(w) \longrightarrow \Lambda(w)
+  \qquad\text{as } j \to \infty, \text{ for every } w \in E .
+\]
+The two hypotheses are exactly separability of $E$ and completeness of the
+scalar field; nothing is asserted about sequential compactness in $E$ itself, and
+no reflexivity is used.  Transporting this statement to a Hilbert space, and
+verifying separability of the Hilbert space in question, are not part of this
+item.
+\end{proposition}
+\begin{proposition}[Elementary facts about $\liminf$]
+Let $(x_k)$, $(y_k)$, $(z_k)$ be sequences.
+\begin{enumerate}
+\item (Monotonicity) If the terms take values in $[0,+\infty]$, or if they are
+real and both sequences are bounded, and $x_k \leq y_k$ for every $k$, then
+$\liminf_k x_k \leq \liminf_k y_k$.
+\item (Convergent sequences) If $x_k \to x$, with values in $\mathbb{R}$ or in
+$[0,+\infty]$, then $\liminf_k x_k = x$.
+\item (Adding a convergent sequence) If $(y_k)$ is a bounded real sequence and
+$z_k \to z$ in $\mathbb{R}$, then $(y_k + z_k)$ is bounded and
+$\liminf_k (y_k + z_k) = \bigl(\liminf_k y_k\bigr) + z$.
+\end{enumerate}
+\end{proposition}
+\begin{proposition}[Monotonicity and subadditivity of a measure]
+Let $\mu$ be a measure on a measurable space $(\alpha, \mathcal{A})$.
+\begin{enumerate}
+\item (Monotonicity) If $A \subseteq B$ then $\mu(A) \leq \mu(B)$.
+\item (Subadditivity) $\mu(A \cup B) \leq \mu(A) + \mu(B)$ for all $A, B$, and
+more generally $\mu\bigl(\bigcup_{k} A_k\bigr) \leq \sum_k \mu(A_k)$ for any
+countable family $(A_k)$.
+\item (Monotonicity up to null sets) If $A \subseteq B \cup N$ with
+$\mu(N) = 0$, then $\mu(A) \leq \mu(B)$; this follows from (1) and (2), since
+$\mu(A) \leq \mu(B \cup N) \leq \mu(B) + \mu(N) = \mu(B)$.
+\end{enumerate}
+All assertions are as elements of $[0,+\infty]$.
+\end{proposition}
+\begin{proposition}[Compact sets: extreme values and finite Lebesgue measure]
+\begin{enumerate}
+\item (Extreme value theorem) Let $K$ be a nonempty compact subset of
+$\mathbb{R}^n$ and let $\varrho : \mathbb{R}^n \to \mathbb{R}$ be continuous.
+Then $\varrho$ attains both a minimum and a maximum on $K$: there are
+$x_-, x_+ \in K$ with $\varrho(x_-) \leq \varrho(x) \leq \varrho(x_+)$ for every
+$x \in K$.
+\item (Finite Lebesgue measure) Every compact $K \subseteq \mathbb{R}^n$ is
+bounded, hence $K \subseteq B(0,r)$ for some $r \in \mathbb{N}$, and therefore
+$\lambda(K) \leq \lambda(B(0,r)) < \infty$ by monotonicity of $\lambda$ and the
+finiteness of the measure of a ball.
+\end{enumerate}
+\end{proposition}

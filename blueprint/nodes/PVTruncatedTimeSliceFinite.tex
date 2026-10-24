@@ -1,0 +1,257 @@
+\begin{lemma}[The Tonelli input for the truncated principal-value kernel integral]
+Fix $n \geq 1$, $j \in \{1,\ldots,n\}$, $x \in \mathbb{R}^n$ and $\varepsilon > 0$.
+For $s > 0$ write
+\[
+  r = e^{-s} \in (0,1), \qquad \sigma = 1 - e^{-2s} \in (0,1],
+  \qquad
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr),
+\]
+and let
+\[
+  D_j^xp_s(x,y) = \sqrt2\,r\,\frac{y_j-rx_j}{\sigma}\,p_s(x,y)
+\]
+be the energy-normalized $x$-derivative of the Lebesgue kernel, written in the
+closed form that the surrounding nodes of this layer all use: the displayed
+right-hand side is that explicit expression, and it is that expression, not a
+derivative, that occurs in the statement below.  Let
+$\Omega_\varepsilon = \{y \in \mathbb{R}^n : |x-y| > \varepsilon\}$ and let
+$\lambda$ be Lebesgue measure.  Then
+\[
+  \int^*_{(0,\infty)} \frac{1}{\sqrt s}
+    \Bigl(\int^*_{\Omega_\varepsilon} \bigl|D_j^xp_s(x,y)\bigr|\,dy\Bigr) ds
+  \;<\; \infty ,
+\]
+where $\int^*$ denotes the upper (lower Lebesgue) integral of a nonnegative
+extended-real integrand, taken in $[0,\infty]$.
+
+The quantification matters.  Both integrals are upper integrals of nonnegative
+quantities, so each is defined for every $s$ with no integrability hypothesis
+and neither can be $0$ by default: in particular the inner quantity is
+$+\infty$, not $0$, at any $s$ for which $|D_j^xp_s(x,\cdot)|$ fails to be
+integrable on $\Omega_\varepsilon$, and the finiteness asserted here therefore
+genuinely controls every $s > 0$ at once.  This is exactly the hypothesis that
+Tonelli's theorem consumes to license Fubini on
+$\Omega_\varepsilon \times (0,\infty)$ at fixed $x$ and $\varepsilon$, which is
+why the statement is phrased with $\int^*$ rather than with Bochner integrals.
+No uniformity in $\varepsilon$ is claimed, and none is needed: the constants
+below blow up as $\varepsilon \downarrow 0$.
+
+The reference paper asserts this step in two sentences --- at small $s$ one has
+$|d| < \varepsilon/2$, so the substitution $w = z+d$ leaves a Gaussian tail with
+$|w| > \varepsilon/2$ whose ``exponential decay in $\varepsilon^2/\sigma$
+dominates the powers of $\sigma^{-1}$'', while for $s$ bounded away from zero one
+uses $\int|D_j^xp_s(x,y)|\,dy \leq C_ne^{-s}/\sqrt{1-e^{-2s}}$ --- and concludes
+that ``these bounds prove absolute integrability of the double integral for
+fixed $x,\varepsilon$''.  This node is that assertion made quantitative: the
+threshold separating the two regimes is named, the ``dominates'' is replaced by
+the inequality $e^{-t} \leq 1/t$ applied at $t = \varepsilon^2/(8\sigma)$, and
+the constants are written out.  In the large-$s$ regime we prove the weaker bound
+$\int|D_j^xp_s(x,y)|\,dy \leq C_ne^{-s}/\sigma$, with $\sigma$ in place of
+$\sqrt\sigma$; since the paper uses its own large-$s$ bound only where $\sigma$
+is bounded below, the weaker form suffices there and nothing downstream sees the
+difference.  All constants are explicitly dimension-dependent and local to this
+node.
+\end{lemma}
+\begin{proof}
+Throughout, $n$, $j$, $x$ and $\varepsilon > 0$ are fixed, and $b, b' > 0$ denote
+arbitrary positive rates.  We write $|v|$ for the Euclidean norm on
+$\mathbb{R}^n$.
+
+\emph{Step 1: the Gaussian integral at an arbitrary rate.}
+For every $b > 0$ the function $v \mapsto e^{-b|v|^2}$ is Lebesgue integrable on
+$\mathbb{R}^n$ and
+\begin{equation*}
+  \int_{\mathbb{R}^n} e^{-b|v|^2}\,dv = \Bigl(\frac{\pi}{b}\Bigr)^{n/2} .
+  \tag{1}
+\end{equation*}
+Both are the shared-context Gaussian integral on a finite-dimensional inner
+product space, read at the rate $b$ and with $\dim\mathbb{R}^n = n$.
+
+\emph{Step 2: the half-rate majorants.}
+The inequality $1+u \leq e^u$, at $u = t$ and at $u = -t$, gives two facts we use
+repeatedly.  First, for $t > 0$,
+\begin{equation*}
+  e^{-t} \leq \frac1t ,
+  \tag{2}
+\end{equation*}
+because $t \leq e^t$ gives $te^{-t} \leq e^te^{-t} = 1$.  Second, for $b > 0$ and
+$v \in \mathbb{R}^n$, writing $E = e^{-(b/2)|v|^2} \in (0,1]$ we have
+$e^{-b|v|^2} = E^2$ and, by $(2)$ applied at $t = (b/2)|v|^2$ when $v \neq 0$ and
+trivially when $v = 0$, $|v|^2E \leq 2/b$; hence from
+$|v| \leq 1 + |v|^2$,
+\begin{equation*}
+  |v|\,e^{-b|v|^2} = |v|\,E\cdot E \leq (1+|v|^2)E\cdot E
+    = E^2 + (|v|^2E)E \leq \Bigl(1+\frac2b\Bigr)e^{-(b/2)|v|^2} .
+  \tag{3}
+\end{equation*}
+In particular $v \mapsto |v|e^{-b|v|^2}$ is dominated by an integrable function
+and is continuous, so it is integrable, and integrating $(3)$ and using $(1)$ at
+the rate $b/2$,
+\begin{equation*}
+  \int_{\mathbb{R}^n} |v|\,e^{-b|v|^2}\,dv
+    \leq \Bigl(1+\frac2b\Bigr)\Bigl(\frac{2\pi}{b}\Bigr)^{n/2} .
+  \tag{4}
+\end{equation*}
+
+\emph{Step 3: the normalization identity.}
+For $\sigma > 0$ and $b' > 0$,
+\begin{equation*}
+  \pi^{-n/2}\sigma^{-n/2}\Bigl(\frac{\pi}{b'}\Bigr)^{n/2}
+    = \Bigl(\frac{1}{\sigma b'}\Bigr)^{n/2} ,
+  \tag{5}
+\end{equation*}
+since $\pi^{-n/2}\pi^{n/2} = 1$ and
+$\sigma^{-n/2}(b')^{-n/2} = (\sigma b')^{-n/2}$.  Taking $b' = 1/(4\sigma)$ and
+$b' = 1/(2\sigma)$ turns the right-hand side into $4^{n/2}$ and $2^{n/2}$
+respectively; these are the only two instances used below.
+
+\emph{Step 4: the translation and the pointwise majorant.}
+Fix $s > 0$ and keep $r = e^{-s} \in (0,1)$ and $\sigma = 1-e^{-2s} \in (0,1]$,
+both positive because $-s < 0$ and $-2s < 0$.  Put
+\[
+  d = x - rx , \qquad b = \frac1\sigma > 0 ,
+  \qquad
+  c = \frac{\sqrt2\,r}{\sigma}\,\pi^{-n/2}\sigma^{-n/2} > 0 .
+\]
+The translation $T(w) = rx+w$ is measure preserving on $\mathbb{R}^n$ and is a
+measurable embedding, and
+\[
+  T^{-1}(\Omega_\varepsilon)
+    = \{w : \varepsilon < |x-(rx+w)|\} = \{w : \varepsilon < |d-w|\}
+    =: R ,
+\]
+because $x - (rx+w) = d-w$.  Hence for every nonnegative extended-real $G$,
+\begin{equation*}
+  \int^*_{R} G(rx+w)\,dw = \int^*_{\Omega_\varepsilon} G(y)\,dy .
+  \tag{6}
+\end{equation*}
+Moreover, at $y = rx+w$ we have $y_j - rx_j = w_j$ and $|rx-y| = |{-w}| = |w|$,
+so
+\[
+  D_j^xp_s(x,rx+w) = c\,w_j\,e^{-b|w|^2} ,
+\]
+and since $|w_j| \leq |w|$,
+\begin{equation*}
+  \bigl|D_j^xp_s(x,rx+w)\bigr| \leq c\,|w|\,e^{-b|w|^2}
+  \qquad (w \in \mathbb{R}^n) .
+  \tag{7}
+\end{equation*}
+
+\emph{Step 5: the small-time bound.}
+Suppose in addition that $|d| \leq \varepsilon/2$.  If $w \in R$ then
+$\varepsilon < |d-w| \leq |d| + |w|$, so $|w| > \varepsilon/2$.  For such $w$,
+splitting $e^{-b|w|^2} = e^{-(b/2)|w|^2}e^{-(b/2)|w|^2}$, bounding the first
+factor by $(3)$ at the rate $b/2$ and the second by
+$e^{-(b/2)(\varepsilon/2)^2} = e^{-b\varepsilon^2/8}$, we get
+\[
+  c\,|w|\,e^{-b|w|^2}
+    \leq C\,e^{-(b/4)|w|^2} ,
+  \qquad
+  C = c\,e^{-b\varepsilon^2/8}\Bigl(1+\frac4b\Bigr) \geq 0 .
+\]
+Hence by $(7)$, monotonicity of the upper integral in the integrand and in the
+region, $(6)$, and then $(1)$ at the rate $b/4$,
+\[
+  \int^*_{\Omega_\varepsilon}\bigl|D_j^xp_s(x,y)\bigr|\,dy
+    = \int^*_{R}\bigl|D_j^xp_s(x,rx+w)\bigr|\,dw
+    \leq \int_{\mathbb{R}^n} C\,e^{-(b/4)|w|^2}\,dw
+    = C\Bigl(\frac{\pi}{b/4}\Bigr)^{n/2} .
+\]
+By $(5)$ with $b' = b/4 = 1/(4\sigma)$ the product
+$\pi^{-n/2}\sigma^{-n/2}(\pi/(b/4))^{n/2}$ is $4^{n/2}$, so
+\[
+  C\Bigl(\frac{\pi}{b/4}\Bigr)^{n/2}
+    = \frac{\sqrt2\,r}{\sigma}\,4^{n/2}\,
+        e^{-\varepsilon^2/(8\sigma)}(1+4\sigma) ,
+\]
+using $4/b = 4\sigma$ and $b\varepsilon^2/8 = \varepsilon^2/(8\sigma)$.  Finally
+$(2)$ at $t = \varepsilon^2/(8\sigma) > 0$ gives
+$e^{-\varepsilon^2/(8\sigma)} \leq 8\sigma/\varepsilon^2$, which cancels the one
+power of $\sigma^{-1}$, and $r < 1$, $\sigma \leq 1$ give $1+4\sigma \leq 5$;
+therefore
+\begin{equation*}
+  |d| \leq \frac\varepsilon2
+  \quad\Longrightarrow\quad
+  \int^*_{\Omega_\varepsilon}\bigl|D_j^xp_s(x,y)\bigr|\,dy
+    \leq \frac{40\sqrt2\cdot4^{n/2}}{\varepsilon^2} =: K_1 .
+  \tag{8}
+\end{equation*}
+This is the paper's ``exponential decay in $\varepsilon^2/\sigma$ dominates the
+powers of $\sigma^{-1}$'', with the single power $\sigma^{-1}$ named and
+cancelled.
+
+\emph{Step 5$'$: the bound valid at every time.}
+Without any hypothesis on $|d|$, discard the region: by $(7)$, $(6)$, $(4)$ at
+the rate $b$, and $(5)$ with $b' = b/2 = 1/(2\sigma)$,
+\[
+  \int^*_{\Omega_\varepsilon}\bigl|D_j^xp_s(x,y)\bigr|\,dy
+    \leq c\int_{\mathbb{R}^n}|w|e^{-b|w|^2}\,dw
+    \leq c\Bigl(1+\frac2b\Bigr)\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2}
+    = \frac{\sqrt2\,r}{\sigma}\,2^{n/2}(1+2\sigma) ,
+\]
+and $1+2\sigma \leq 3$, so
+\begin{equation*}
+  \int^*_{\Omega_\varepsilon}\bigl|D_j^xp_s(x,y)\bigr|\,dy
+    \leq \frac{3\sqrt2\cdot2^{n/2}e^{-s}}{\sigma} .
+  \tag{9}
+\end{equation*}
+Steps 4, 5 and 5$'$ together are \noderef{PVTruncatedSliceEnormBound}, which states
+exactly the pair $(8)$ and $(9)$ for every $j$, $x$, $\varepsilon > 0$, $s > 0$ and every
+slice $D$ presented in the displayed form, and is what the formalization invokes here;
+the Gaussian inputs of Steps 1 to 3 reach it from \noderef{GaussEuclideanMomentBounds}.
+
+\emph{Step 6: the threshold.}
+Put
+\[
+  s_0 = \min\Bigl(1,\ \frac{\varepsilon}{2(1+|x|)}\Bigr) \in (0,1] ,
+  \qquad
+  \sigma_0 = 1-e^{-2s_0} > 0 .
+\]
+If $0 < s \leq s_0$ then, since $d = (1-e^{-s})x$ with
+$0 \leq 1-e^{-s} \leq s$ (the right inequality is $1-s \leq e^{-s}$, an instance
+of $1+u \leq e^u$ at $u = -s$),
+\[
+  |d| = (1-e^{-s})|x| \leq s|x|
+    \leq \frac{\varepsilon|x|}{2(1+|x|)} \leq \frac\varepsilon2 ,
+\]
+so $(8)$ applies.  If $s_0 \leq s$ then $e^{-2s} \leq e^{-2s_0}$ gives
+$\sigma \geq \sigma_0$, so $(9)$ gives
+\begin{equation*}
+  s_0 \leq s
+  \quad\Longrightarrow\quad
+  \int^*_{\Omega_\varepsilon}\bigl|D_j^xp_s(x,y)\bigr|\,dy
+    \leq K_2\,e^{-s} ,
+  \qquad
+  K_2 = \frac{3\sqrt2\cdot2^{n/2}}{\sigma_0} .
+  \tag{10}
+\end{equation*}
+
+\emph{Step 7: the time integral.}
+Two weights are integrable.  First, $s \mapsto s^{-1/2}$ is integrable on
+$(0,1]$, being the restriction of $s \mapsto s^{a}$ with $a = -1/2 > -1$, hence
+integrable on $(0,s_0]$ since $s_0 \leq 1$; let $W_1 < \infty$ be its upper
+integral there.  Second, $s \mapsto s^{-1/2}e^{-s}$ is integrable on
+$(0,\infty)$ by \noderef{SubordinationWeightIntegral}, hence on
+$(s_0,\infty)$; let $W_2 < \infty$ be its upper integral there.  Now
+$(0,\infty) = (0,s_0] \cup (s_0,\infty)$ is a disjoint union of measurable sets,
+so the upper integral over $(0,\infty)$ is the sum of the two, and by $(8)$ on
+the first piece and $(10)$ on the second,
+\[
+  \int^*_{(0,s_0]} \frac{1}{\sqrt s}
+    \Bigl(\int^*_{\Omega_\varepsilon}|D_j^xp_s|\,dy\Bigr) ds
+    \leq K_1 W_1 < \infty ,
+\]
+\[
+  \int^*_{(s_0,\infty)} \frac{1}{\sqrt s}
+    \Bigl(\int^*_{\Omega_\varepsilon}|D_j^xp_s|\,dy\Bigr) ds
+    \leq K_2 \int^*_{(s_0,\infty)} \frac{e^{-s}}{\sqrt s}\,ds
+    = K_2 W_2 < \infty ,
+\]
+the constants $K_1$, $K_2$, $W_1$, $W_2$ being finite and nonnegative.  Adding
+the two bounds gives the assertion.  Note that the two regimes are genuinely
+both needed: $(8)$ fails for large $s$, because there $|d|$ is comparable to
+$|x|$ and the region $\{|d-w| > \varepsilon\}$ no longer forces $|w|$ to be
+large, while $(9)$ is useless as $s \downarrow 0$, where $\sigma^{-1}$ blows up
+like $(2s)^{-1}$ and $s^{-1/2}\sigma^{-1}$ is not integrable at $0$.
+\end{proof}

@@ -1,0 +1,82 @@
+\begin{lemma}[The basis vectors of the Hermite basis: identification, coefficients, finite energy]
+Fix $n \in \mathbb{N}_0$ and let $\{h_\alpha\}_{\alpha \in \mathbb{N}_0^n}$ be
+the orthonormal Hermite basis of the real Hilbert space $L^2(\gamma_n)$ fixed in
+\noderef{HermiteBasis}, whose vectors are the elements of \noderef{HermiteL2}.
+Write $v_\alpha$ for the $\alpha$-th Hermite coefficient of
+$v \in L^2(\gamma_n)$ and $\mathcal{E}$ for the fractional energy of
+\noderef{Energy}.  Then the following three statements hold, each for every
+multi-index $\beta \in \mathbb{N}_0^n$.
+\begin{enumerate}
+  \item (Identification) The $\beta$-th vector of the basis is the $\beta$-th
+    Hermite element: the basis, indexed by $\mathbb{N}_0^n$, sends $\beta$ to
+    $h_\beta$.
+  \item (Coefficients) The Hermite coefficients of a basis vector form a
+    Kronecker delta: for every $\alpha \in \mathbb{N}_0^n$,
+    \[
+      (h_\beta)_\alpha
+        = \begin{cases} 1 & \text{if } \alpha = \beta, \\ 0 & \text{otherwise.}
+          \end{cases}
+    \]
+  \item (Finite energy) $\mathcal{E}(h_\beta) \neq +\infty$.
+\end{enumerate}
+The statement contains no integral, and the only measure entering it is the one
+implicit in the ambient space $L^2(\gamma_n)$; nothing further about measures is
+asserted here.  The energy of clause (3) is a sum of nonnegative terms valued in
+$[0,+\infty]$, so the assertion is exactly that this sum is finite.
+\end{lemma}
+\begin{proof}
+Fix $\beta \in \mathbb{N}_0^n$ throughout; the three clauses are proved in turn,
+and the proof of the third uses the second.
+
+Clause (1).  The basis of \noderef{HermiteBasis} is by construction the
+orthonormal basis assembled from the family of \noderef{HermiteL2} once that
+family is known to be orthonormal, by \noderef{HermiteL2Orthonormal}, and to
+have dense span, by \noderef{HermiteL2Complete}.  Unfolding that construction,
+the underlying indexed family of the basis is the Hermite family itself, so
+evaluating the basis at $\beta$ returns $h_\beta$.
+
+Clause (2).  Rewriting the basis vector by clause (1), the claim becomes a
+statement about the coefficients of a basis vector of an orthonormal basis.  For
+such a basis the coefficient map sends the $\beta$-th basis vector to the
+indicator sequence supported at $\beta$ with value $1$ there: this is the
+defining property of an orthonormal basis' coordinate isomorphism applied to a
+basis vector.  Reading off the $\alpha$-th entry of that sequence gives $1$ when
+$\alpha = \beta$ and $0$ otherwise, which is the asserted Kronecker delta.
+
+Clause (3).  By \noderef{Energy},
+\[
+  \mathcal{E}(h_\beta)
+    = \sum_{\alpha \neq 0} |\alpha|^{1/2}\,\bigl|(h_\beta)_\alpha\bigr|^2 ,
+\]
+a sum over the multi-indices $\alpha \neq 0$ of nonnegative terms in
+$[0,+\infty]$.  By clause (2) the coefficient $(h_\beta)_\alpha$ vanishes unless
+$\alpha = \beta$, so
+\[
+  |\alpha|^{1/2}\,\bigl|(h_\beta)_\alpha\bigr|^2 = 0
+  \qquad \text{for every } \alpha \neq 0 \text{ with } \alpha \neq \beta .
+  \tag{Z}
+\]
+Now distinguish two cases, which are true for genuinely different reasons.
+
+Case $\beta = 0$.  The summation index $\alpha$ ranges only over multi-indices
+with $\alpha \neq 0$, so every $\alpha$ occurring in the sum satisfies
+$\alpha \neq 0 = \beta$, and (Z) applies to all of them.  Hence every term
+vanishes and the sum is a sum of zeros:
+$\mathcal{E}(h_0) = 0$, which is certainly not $+\infty$.  Note that in this
+case the surviving term of the other case is simply absent from the index set,
+which is why the energy is literally $0$ rather than merely finite.
+
+Case $\beta \neq 0$.  Then $\beta$ itself occurs in the index set, and (Z) says
+every other term vanishes, so the sum reduces to its single term at
+$\alpha = \beta$:
+\[
+  \mathcal{E}(h_\beta) = |\beta|^{1/2}\,\bigl|(h_\beta)_\beta\bigr|^2 .
+\]
+That term is the image in $[0,+\infty]$ of a real number --- a real power of the
+natural number $|\beta|$ times the square of a real coefficient --- and the
+canonical map from the reals into $[0,+\infty]$ never takes the value
+$+\infty$.  Hence $\mathcal{E}(h_\beta) \neq +\infty$.
+
+The two cases are exhaustive, so clause (3) holds for every $\beta$, and with it
+the conjunction of the three clauses.
+\end{proof}

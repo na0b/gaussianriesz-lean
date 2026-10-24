@@ -1,0 +1,78 @@
+\begin{lemma}[The gradient vanishes off the positivity set]
+Let $u \in W^{1,2}(\gamma_n)$ in the sense of \noderef{SobolevW12} be nonnegative
+$\gamma_n$-almost everywhere.  Then
+\[
+  Du = \mathbf{1}_{\{u>0\}}\, Du
+  \qquad\text{in } L^2(\gamma_n;\mathbb{R}^n),
+\]
+that is, $Du = 0$ $\gamma_n$-almost everywhere on $\{u \leq 0\}$, with $D$ the
+energy-normalized weak gradient of \noderef{GaussD}.
+\end{lemma}
+\begin{proof}
+For $\delta > 0$ let $q_\delta(t) = \sqrt{t^2+\delta^2}-\delta$ and let
+$w_\delta \in L^2(\gamma_n)$ be the class of $q_\delta\circ u$.  This is a
+legitimate element of $L^2(\gamma_n)$: $q_\delta$ is $1$-Lipschitz with
+$q_\delta(0) = 0$, so $|q_\delta(t)| \leq |t|$ and hence
+$|w_\delta| \leq |u|$ $\gamma_n$-a.e.  By \noderef{SobolevChainRule},
+\begin{equation*}
+  w_\delta \in W^{1,2}(\gamma_n),
+  \qquad
+  D w_\delta = \Theta_\delta\, Du \ \ \gamma_n\text{-a.e.},
+  \qquad
+  \Theta_\delta = \frac{u}{\sqrt{u^2+\delta^2}} . \tag{1}
+\end{equation*}
+
+\emph{Step 1: $w_\delta \to u$ in $L^2(\gamma_n)$ as $\delta \downarrow 0$.}
+Fix a representative with $u \geq 0$ everywhere off a $\gamma_n$-null set.  At
+such a point, $\sqrt{u^2+\delta^2} \geq \max\{u, \delta\}$, hence
+\[
+  0 \leq u - q_\delta(u) = u + \delta - \sqrt{u^2+\delta^2} \leq \delta ,
+\]
+because $\sqrt{u^2+\delta^2} \geq u$ gives the upper bound $\delta$ and
+$\sqrt{u^2+\delta^2} \leq u + \delta$ (square both sides: $u^2+\delta^2 \leq u^2 + 2u\delta + \delta^2$,
+true since $u \geq 0$) gives the lower bound $0$.  Therefore
+$|u - w_\delta| \leq \delta$ $\gamma_n$-a.e., and since $\gamma_n$ is a
+probability measure (\noderef{GaussIsProb}),
+\[
+  \|u - w_\delta\|_{L^2(\gamma_n)}^2 \leq \delta^2 \longrightarrow 0
+  \qquad (\delta \downarrow 0).
+\]
+
+\emph{Step 2: $Dw_\delta \to \mathbf{1}_{\{u>0\}}Du$ in $L^2(\gamma_n;\mathbb{R}^n)$.}
+Pointwise $\gamma_n$-a.e., using $u \geq 0$: if $u(x) > 0$ then
+$\Theta_\delta(x) = u(x)/\sqrt{u(x)^2+\delta^2} \to 1$ as $\delta\downarrow0$; and
+if $u(x) = 0$ then $\Theta_\delta(x) = 0$ for every $\delta > 0$.  Hence
+$\Theta_\delta \to \mathbf{1}_{\{u>0\}}$ $\gamma_n$-a.e.  Moreover
+$|\Theta_\delta| \leq 1$, so
+\[
+  \bigl|\Theta_\delta\, Du - \mathbf{1}_{\{u>0\}}Du\bigr|^2 \leq 4\,|Du|^2
+  \qquad\gamma_n\text{-a.e.},
+\]
+and $|Du|^2 \in L^1(\gamma_n)$ because $Du \in L^2(\gamma_n;\mathbb{R}^n)$.  The
+dominated convergence theorem therefore gives
+$\Theta_\delta\,Du \to \mathbf{1}_{\{u>0\}}Du$ in $L^2(\gamma_n;\mathbb{R}^n)$ as
+$\delta\downarrow0$; by (1) this is $Dw_\delta \to \mathbf{1}_{\{u>0\}}Du$.
+
+\emph{Step 3: closedness of the weak gradient.}
+Choose any sequence $\delta_k \downarrow 0$.  By (1) and \noderef{SobolevW12},
+$\sqrt2\, Dw_{\delta_k}$ is a weak Euclidean gradient of $w_{\delta_k}$ in the
+sense of \noderef{HasGaussWeakGrad}, for each $k$.  By Steps 1 and 2,
+$w_{\delta_k} \to u$ in $L^2(\gamma_n)$ and
+$\sqrt2\,Dw_{\delta_k} \to \sqrt2\,\mathbf{1}_{\{u>0\}}Du$ in
+$L^2(\gamma_n;\mathbb{R}^n)$.  Hence \noderef{GaussWeakGradClosed} applies and
+shows that $\sqrt2\,\mathbf{1}_{\{u>0\}}Du$ is a weak Euclidean gradient of $u$.
+
+\emph{Step 4: conclusion.}
+By hypothesis $u \in W^{1,2}(\gamma_n)$, so by \noderef{SobolevW12} and
+\noderef{GaussD} the field $\sqrt2\,Du$ is also a weak Euclidean gradient of $u$.
+Both $\sqrt2\,Du$ and $\sqrt2\,\mathbf{1}_{\{u>0\}}Du$ lie in
+$L^2(\gamma_n;\mathbb{R}^n)$ (the latter since
+$|\mathbf{1}_{\{u>0\}}Du| \leq |Du|$), so \noderef{GaussWeakGradUnique} applied to
+the function $u$ and these two fields gives
+\[
+  Du = \mathbf{1}_{\{u>0\}}\, Du
+  \qquad\text{in } L^2(\gamma_n;\mathbb{R}^n).
+\]
+Equivalently, at $\gamma_n$-almost every point with $u \leq 0$ (hence $u = 0$,
+since $u \geq 0$ a.e.) the indicator vanishes and therefore $Du = 0$.
+\end{proof}

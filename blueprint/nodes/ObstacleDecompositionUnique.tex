@@ -1,0 +1,165 @@
+\begin{theorem}[Uniqueness of the pair in the Gaussian obstacle decomposition]
+Let $F \in L^2(\gamma_n)$ be nonnegative $\gamma_n$-a.e., put
+$m = \int F \, d\gamma_n$, and let $a > m$.  Write $B = L^{1/2}$ for the
+operator of \noderef{FracPow}, whose domain $\operatorname{Dom}(B)$ is the case
+$s = 1/2$ of \noderef{FracPowDomain}.  Suppose that for each $i \in \{1,2\}$ the
+pair $(u_i, g_i)$ with $u_i \in \operatorname{Dom}(B)$ and $g_i \in L^2(\gamma_n)$
+satisfies
+\[
+  u_i \geq 0 \ \text{a.e.},
+  \qquad
+  F = g_i + B u_i \ \text{ in } L^2(\gamma_n),
+  \qquad
+  g_i \leq a \ \text{a.e.},
+  \qquad
+  g_i = a \ \text{a.e. on } \{u_i > 0\} .
+\]
+Then $u_1 = u_2$ and $g_1 = g_2$ in $L^2(\gamma_n)$.
+
+The hypothesis list is exactly the reduced one from which the reference paper
+derives the uniqueness assertion of its obstacle-decomposition theorem: the
+mass identity $\int g_i \, d\gamma_n = m$, the lower bound
+$\min\{F,a\} \leq g_i$, the measure bound $a\,\gamma_n(\{u_i>0\}) \leq m$ and the
+gradient-support identity $Du_i = 0$ a.e.\ off $\{u_i > 0\}$ are deliberately
+\emph{not} assumed here, so the conclusion applies to every pair meeting the
+four displayed conditions, in particular to any two pairs satisfying the full
+conclusion list of that theorem.  The ambient hypotheses $F \geq 0$ a.e.,
+$m = \int F$ and $a > m$ are those of the theorem; the first is carried along as
+part of the ambient setting and the last two are what make the strict height
+inequality $a - m > 0$ available.
+
+Finally, a remark on the way the reference paper phrases the potential's
+regularity.  Its decomposition theorem produces $u$ in
+``$\operatorname{Dom}(B) = W^{1,2}(\gamma_n)$''.  That equality is the background
+identity recalled in the paper's section on the Ornstein--Uhlenbeck operator,
+obtained there from the square-root part of the representation theorem; it is
+not an assertion that the decomposition theorem proves, and the decomposition
+argument consumes only the forward inclusion
+$\operatorname{Dom}(L^{1/2}) \subseteq W^{1,2}(\gamma_n)$ together with the norm
+identity $\|L^{1/2}v\|_2 = \|Dv\|_2$.  Accordingly the present statement places
+the potentials in $\operatorname{Dom}(B) = \operatorname{Dom}(L^{1/2})$ only.
+\end{theorem}
+\begin{proof}
+Throughout, $\mathcal{E}(\cdot)$ is the energy of \noderef{Energy},
+$\mathcal{E}(\cdot,\cdot)$ the form of \noderef{EnergyBil}, $\mathcal{K}$ the
+cone of \noderef{ObstacleCone}, and $J$ the functional of
+\noderef{ObstacleFunctional} built from the given $F$ and $a$, so that
+$J(z) = \tfrac12\mathcal{E}(z) + \int (a - F)\,z \, d\gamma_n$.  By
+\noderef{GaussIsProb} the measure $\gamma_n$ is a probability measure, so the
+constant function $a\mathbf{1}$ lies in $L^2(\gamma_n)$ and
+$a\mathbf{1} - F \in L^2(\gamma_n)$.
+
+Fix $i \in \{1,2\}$ and abbreviate $u = u_i$, $g = g_i$.  Put
+\[
+  \eta = a\mathbf{1} - g \in L^2(\gamma_n) .
+\]
+Steps 1--6 show that $u$ minimizes $J$ over $\mathcal{K}$; since $i$ is
+arbitrary, this holds for both $u_1$ and $u_2$.
+
+\emph{Step 1: $u \in \mathcal{K}$.}
+By hypothesis $u \in \operatorname{Dom}(L^{1/2})$, so
+\noderef{EnergyFiniteOfSqrtDomain} gives $\mathcal{E}(u) < \infty$.  Together
+with $u \geq 0$ $\gamma_n$-a.e., the defining description of the cone in
+\noderef{ObstacleCone} gives $u \in \mathcal{K}$.
+
+\emph{Step 2: $\eta \geq 0$ a.e.\ and $\eta\,u = 0$ a.e.}
+Since $g \leq a$ a.e., we get $\eta = a - g \geq 0$ a.e.  For the product, let
+$N_1, N_2, N_3$ be $\gamma_n$-null sets off which, respectively, $u \geq 0$,
+$g \leq a$, and the implication $u(x) > 0 \Rightarrow g(x) = a$ holds.  Their
+union $N$ is null by subadditivity of a measure (shared context).  Let
+$x \notin N$.  If $u(x) = 0$ then $\eta(x)\,u(x) = 0$.  Otherwise $u(x) \neq 0$,
+and $u(x) \geq 0$ gives $u(x) > 0$; then $g(x) = a$, so $\eta(x) = 0$ and again
+$\eta(x)\,u(x) = 0$.  Hence $\eta\,u = 0$ $\gamma_n$-a.e.
+
+\emph{Step 3: $Bu = F - g$ and the multiplier identity.}
+The hypothesis $F = g + Bu$ is an identity in $L^2(\gamma_n)$, so
+$Bu = F - g$ there.  Adding $a\mathbf{1} - F$ to both sides,
+\begin{equation*}
+  Bu + a\mathbf{1} - F = a\mathbf{1} - g = \eta \quad\text{in } L^2(\gamma_n).
+  \tag{$\dagger$}
+\end{equation*}
+
+\emph{Step 4: the quadratic expansion of $J$ at $u$.}
+Let $v \in \mathcal{K}$ be arbitrary and put $w = v - u \in L^2(\gamma_n)$.  By
+Step 1 and \noderef{ObstacleCone} we have $\mathcal{E}(u) < \infty$ and
+$\mathcal{E}(v) < \infty$.  Clause (4) of \noderef{EnergyFormBilinear}, applied
+first with $v_1 = u$ and $c = -1$, gives $\mathcal{E}((-1)\,u) < \infty$; applied
+again to the two finite-energy elements $v$ and $(-1)u$ it gives
+$\mathcal{E}(w) = \mathcal{E}(v + (-1)u) < \infty$.
+
+All three of $\mathcal{E}(u), \mathcal{E}(w), \mathcal{E}(v)$ being finite, with
+$v = u + w$, clause (3) of \noderef{EnergyFormBilinear} applies to every pair
+drawn from $\{u, w, v\}$.  Additivity in the first argument, with second
+argument $v = u + w$, gives
+$\mathcal{E}(v, v) = \mathcal{E}(u, v) + \mathcal{E}(w, v)$.  Symmetry and
+additivity again give
+$\mathcal{E}(u, v) = \mathcal{E}(v, u) = \mathcal{E}(u,u) + \mathcal{E}(w,u)$ and
+$\mathcal{E}(w, v) = \mathcal{E}(v, w) = \mathcal{E}(u,w) + \mathcal{E}(w,w)$.
+Using symmetry once more, $\mathcal{E}(w,u) = \mathcal{E}(u,w)$, so
+\[
+  \mathcal{E}(v,v) = \mathcal{E}(u,u) + 2\,\mathcal{E}(u,w) + \mathcal{E}(w,w).
+\]
+By clause (2) of \noderef{EnergyFormBilinear}, $\mathcal{E}(z,z) = \mathcal{E}(z)$
+as real numbers for each of $z \in \{u, w, v\}$, all three having finite energy.
+Hence
+\begin{equation*}
+  \tfrac12\bigl(\mathcal{E}(v) - \mathcal{E}(u)\bigr)
+    = \mathcal{E}(u, w) + \tfrac12\,\mathcal{E}(w). \tag{3}
+\end{equation*}
+
+The linear part of $J$ is handled directly: $a\mathbf{1} - F$, $u$ and $v$ all
+lie in $L^2(\gamma_n)$, so the products $(a-F)u$ and $(a-F)v$ are
+$\gamma_n$-integrable by the integral form of Cauchy--Schwarz (shared context),
+and by linearity of the integral
+$\int (a-F)v - \int(a-F)u = \int (a-F)\,w$.  Combining this with $(3)$ and the
+formula for $J$ in \noderef{ObstacleFunctional},
+\begin{equation*}
+  J(v) - J(u)
+    = \tfrac12\,\mathcal{E}(w) + \mathcal{E}(u,w) + \int (a-F)\,w \, d\gamma_n .
+  \tag{4}
+\end{equation*}
+
+\emph{Step 5: the variational inequality.}
+Since $u \in \operatorname{Dom}(L^{1/2})$ and $w \in L^2(\gamma_n)$ is arbitrary,
+\noderef{EnergyBilIsOperator} applies and gives
+$\mathcal{E}(u, w) = \langle Bu, w\rangle$, and
+$\langle Bu, w \rangle = \int (Bu)\,w \, d\gamma_n$ by
+\noderef{L2InnerGaussIntegral}.  The products $(Bu)w$ and $(a-F)w$ are
+$\gamma_n$-integrable by Cauchy--Schwarz (shared context), all factors lying in
+$L^2(\gamma_n)$, so by linearity of the integral and $(\dagger)$,
+\[
+  \mathcal{E}(u,w) + \int (a-F)\,w \, d\gamma_n
+    = \int \bigl(Bu + a - F\bigr)\,w \, d\gamma_n
+    = \int \eta\, w \, d\gamma_n .
+\]
+Both $\eta v$ and $\eta u$ are $\gamma_n$-integrable by Cauchy--Schwarz, so
+$\int \eta\,w = \int \eta\,v - \int \eta\,u$, and $\int \eta\,u = 0$ because
+$\eta u = 0$ a.e.\ by Step 2.  Finally $\eta \geq 0$ a.e.\ by Step 2 and
+$v \geq 0$ a.e.\ because $v \in \mathcal{K}$ (\noderef{ObstacleCone}), so
+$\eta v \geq 0$ a.e.\ and therefore $\int \eta v \, d\gamma_n \geq 0$.  Altogether
+\begin{equation*}
+  \mathcal{E}(u,w) + \int (a-F)\,w \, d\gamma_n
+    = \int \eta\, v \, d\gamma_n \geq 0 . \tag{5}
+\end{equation*}
+
+\emph{Step 6: $u$ minimizes $J$ over $\mathcal{K}$.}
+By \noderef{Energy} the energy is a sum of nonnegative terms, so
+$\mathcal{E}(w) \geq 0$, and it is a real number by Step 4.  Substituting $(5)$
+into $(4)$,
+\[
+  J(v) - J(u) = \tfrac12\,\mathcal{E}(w) + \int \eta\,v \, d\gamma_n \geq 0
+\]
+for every $v \in \mathcal{K}$.  That is, $J(u) \leq J(v)$ for all
+$v \in \mathcal{K}$.
+
+\emph{Step 7: conclusion.}
+Steps 1 and 6 hold for $i = 1$ and $i = 2$, so $u_1, u_2 \in \mathcal{K}$ and
+each minimizes $J$ over $\mathcal{K}$.  The hypotheses of
+\noderef{ObstacleMinimizerUnique} are therefore met with this $F$, this
+$m = \int F \, d\gamma_n$ and this $a > m$, and that lemma gives $u_1 = u_2$.
+By Step 3 applied to each index, $g_i = F - B u_i$, whence
+\[
+  g_1 = F - Bu_1 = F - Bu_2 = g_2 .
+\]
+This is the asserted uniqueness of the pair.
+\end{proof}

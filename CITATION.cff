@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this formalization, please cite the paper and this repository."
+title: "Lean 4 formalization of: A direct obstacle proof of a dimension-free weak-type (1,1) bound for the Gaussian Riesz transforms"
+type: software
+license: Apache-2.0
+authors:
+  - family-names: Gutiérrez
+    given-names: Cristian E.
+    affiliation: Temple University
+  - family-names: Manfredi
+    given-names: Juan J.
+    affiliation: University of Pittsburgh
+preferred-citation:
+  type: article
+  title: "A direct obstacle proof of a dimension-free weak-type (1,1) bound for the Gaussian Riesz transforms"
+  authors:
+    - family-names: Gutiérrez
+      given-names: Cristian E.
+    - family-names: Manfredi
+      given-names: Juan J.
+  year: 2026
+  identifiers:
+    - type: other
+      value: "arXiv:2610.26478"
+  url: "https://arxiv.org/abs/2610.26478"

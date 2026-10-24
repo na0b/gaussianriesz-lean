@@ -1,0 +1,60 @@
+\begin{lemma}[Sublevel sets of $J$ are bounded in the form norm]
+Let $F \in L^2(\gamma_n)$, $m = \int F\, d\gamma_n$, $a > m$, and let
+$C \in \mathbb{R}$.  No sign condition on $F$ is assumed.  Put
+$M_C = C + \|F - m\mathbf{1}\|_2^2$.  Then every $v \in \mathcal{K}$ with
+$J(v) \leq C$ satisfies
+\[
+  \|v\|_2^2 + \mathcal{E}(v)
+    \;\leq\; \frac{M_C^2}{(a-m)^2} + 8 M_C ,
+\]
+with $\mathcal{K}$ as in \noderef{ObstacleCone}, $J$ as in
+\noderef{ObstacleFunctional} and $\mathcal{E}$ as in \noderef{Energy}.  The bound
+depends only on $C$, $a$, $m$ and $F$, not on $v$.
+\end{lemma}
+\begin{proof}
+Let $v \in \mathcal{K}$ with $J(v) \leq C$, and put
+$c = \int v\, d\gamma_n$, which is finite by \noderef{L2IntoL1} and satisfies
+$c \geq 0$ because $v \geq 0$ $\gamma_n$-a.e.\ by \noderef{ObstacleCone}.
+
+\emph{Step 1: the two separate bounds.}
+Part (1) of \noderef{ObstacleCoercivity} gives
+$\tfrac14\mathcal{E}(v) + (a-m)c - \|F-m\mathbf{1}\|_2^2 \leq J(v) \leq C$, i.e.
+\begin{equation*}
+  \tfrac14\,\mathcal{E}(v) + (a-m)\,c \;\leq\; C + \|F-m\mathbf{1}\|_2^2 = M_C .
+  \tag{1}
+\end{equation*}
+Both summands on the left are nonnegative: $\mathcal{E}(v) \geq 0$ by
+\noderef{Energy}, and $(a-m)c \geq 0$ since $a - m > 0$ and $c \geq 0$.  Hence
+$M_C \geq 0$, and dropping either summand gives
+\begin{equation*}
+  \mathcal{E}(v) \leq 4\,M_C ,
+  \qquad
+  0 \leq c \leq \frac{M_C}{a-m} . \tag{2}
+\end{equation*}
+
+\emph{Step 2: Pythagoras for the splitting $v = c\mathbf{1} + w$.}
+Put $w = v - c\mathbf{1}$, where $\mathbf{1} = h_0$ as in \noderef{HermiteL2} and
+\noderef{Hermite1Zero}.  Since $\gamma_n$ is a probability measure
+(\noderef{GaussIsProb}), $\int w\, d\gamma_n = 0$, i.e.
+$\langle w, \mathbf{1}\rangle = 0$; and $\|\mathbf{1}\|_2^2 = \gamma_n(\mathbb{R}^n) = 1$.
+Hence $c\mathbf{1}$ and $w$ are orthogonal in $L^2(\gamma_n)$ and
+\[
+  \|v\|_2^2 = \|c\mathbf{1}\|_2^2 + \|w\|_2^2 = c^2 + \|w\|_2^2 .
+\]
+By \noderef{ProjZeroCentering}, $w = \Pi_0 v$, so \noderef{FractionalGap} gives
+$\|w\|_2^2 \leq \mathcal{E}(v)$.  Therefore
+\begin{equation*}
+  \|v\|_2^2 \leq c^2 + \mathcal{E}(v) . \tag{3}
+\end{equation*}
+
+\emph{Step 3: conclusion.}
+Adding $\mathcal{E}(v)$ to both sides of (3) and then applying the two bounds
+of (2),
+\[
+  \|v\|_2^2 + \mathcal{E}(v)
+    \;\leq\; c^2 + 2\,\mathcal{E}(v)
+    \;\leq\; \frac{M_C^2}{(a-m)^2} + 2\cdot 4\,M_C
+    \;=\; \frac{M_C^2}{(a-m)^2} + 8\,M_C ,
+\]
+which is the assertion.
+\end{proof}

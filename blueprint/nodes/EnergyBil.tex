@@ -1,0 +1,23 @@
+\begin{definition}[The fractional energy form]
+For $v, w \in L^2(\gamma_n)$ with Hermite coefficients $v_\alpha, w_\alpha$
+relative to \noderef{HermiteBasis}, define the real number
+\[
+  \mathcal{E}(v,w) = \sum_{\alpha \neq 0} |\alpha|^{1/2}\, v_\alpha\, w_\alpha
+\]
+whenever the family on the right is summable, and $\mathcal{E}(v,w) = 0$
+otherwise (a convention never invoked in any statement below).  The family is
+absolutely summable as soon as both $v$ and $w$ have finite energy in the sense of
+\noderef{Energy}: by Cauchy--Schwarz,
+\[
+  \sum_{\alpha \neq 0} |\alpha|^{1/2}\,|v_\alpha w_\alpha|
+    \leq \Bigl(\sum_{\alpha\neq0}|\alpha|^{1/2}|v_\alpha|^2\Bigr)^{1/2}
+         \Bigl(\sum_{\alpha\neq0}|\alpha|^{1/2}|w_\alpha|^2\Bigr)^{1/2}
+    = \mathcal{E}(v)^{1/2}\,\mathcal{E}(w)^{1/2}.
+\]
+On $\mathcal{V}$ the map $(v,w) \mapsto \mathcal{E}(v,w)$ is therefore a
+well-defined symmetric bilinear form with $\mathcal{E}(v,v) = \mathcal{E}(v)$,
+and it satisfies the Cauchy--Schwarz bound just displayed.  It is the energy form
+of the reference paper, equal to $\langle L^{1/4}v, L^{1/4}w\rangle$ on
+$\mathcal{V} = \operatorname{Dom}(L^{1/4})$.  It vanishes whenever either argument
+is constant, since the index $\alpha = 0$ is omitted.
+\end{definition}

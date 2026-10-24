@@ -1,0 +1,158 @@
+\begin{lemma}[Mollifications of an $L^2_{\mathrm{loc}}$ function converge in $L^2$ on compact sets]
+Write $\lambda$ for Lebesgue measure on $\mathbb{R}^n$ and let
+$f : \mathbb{R}^n \to \mathbb{R}$ be such that $f \in L^2(K,\lambda)$ for every
+compact $K \subseteq \mathbb{R}^n$; that is, $f \in L^2_{\mathrm{loc}}(\mathbb{R}^n)$.
+Let $(\rho_\varepsilon)_{\varepsilon>0}$ be a mollifier family: for each
+$\varepsilon > 0$ the function $\rho_\varepsilon : \mathbb{R}^n \to \mathbb{R}$ is
+smooth, satisfies $\rho_\varepsilon \geq 0$, is supported in the closed ball
+$\{|t| \leq \varepsilon\}$, and has $\int_{\mathbb{R}^n}\rho_\varepsilon\,d\lambda = 1$.
+Write
+\[
+  (\rho_\varepsilon * f)(x) = \int_{\mathbb{R}^n} \rho_\varepsilon(t)\, f(x-t)\, d\lambda(t) .
+\]
+Then for every compact $K \subseteq \mathbb{R}^n$,
+\[
+  \bigl\|\rho_\varepsilon * f - f\bigr\|_{L^2(K,\lambda)} \longrightarrow 0
+  \qquad\text{as } \varepsilon \downarrow 0
+\]
+through positive values of $\varepsilon$, the norms being read in $[0,+\infty]$.
+No continuity, boundedness or global integrability of $f$ is assumed.
+\end{lemma}
+\begin{proof}
+Fix the compact set $K$.  For $r > 0$ put
+$K_r = \{x \in \mathbb{R}^n : \operatorname{dist}(x,K) \leq r\}$; each $K_r$ is
+closed and bounded, hence compact, and $\lambda(K) \leq \lambda(K_r) < \infty$.
+Throughout, $\varepsilon$ is restricted to $0 < \varepsilon \leq 1$.  If
+$K = \emptyset$ every norm below is $0$ and there is nothing to prove, so assume
+$K \neq \emptyset$.
+
+\emph{Step 0: the convolution is defined on $K$.}
+Let $0 < \varepsilon \leq 1$ and $x \in K$.  Since
+$\operatorname{supp}\rho_\varepsilon \subseteq \{|t|\leq\varepsilon\}$, the
+integrand $t \mapsto \rho_\varepsilon(t) f(x-t)$ vanishes unless
+$|t| \leq \varepsilon \leq 1$, and for such $t$ we have $x - t \in K_1$.  Now
+$f \in L^2(K_1,\lambda)$ by hypothesis and $\lambda(K_1) < \infty$, so
+Cauchy--Schwarz (shared context) on the measure space $(K_1,\lambda)$, applied to
+$|f|$ and the constant $1$, gives
+$\int_{K_1}|f|\,d\lambda \leq \|f\|_{L^2(K_1,\lambda)}\lambda(K_1)^{1/2} < \infty$.
+As $\rho_\varepsilon$ is continuous with compact support it is bounded, say by
+$M_\varepsilon$, so
+$\int |\rho_\varepsilon(t) f(x-t)|\,d\lambda(t) \leq M_\varepsilon \int_{K_1}|f|\,d\lambda < \infty$
+after the change of variable $y = x-t$, which preserves $\lambda$ by translation
+invariance and reflection invariance of Lebesgue measure (shared context).  Hence
+$(\rho_\varepsilon * f)(x)$ is a well-defined real number for every $x \in K$ and
+every $0 < \varepsilon \leq 1$.
+
+\emph{Step 1: a uniform local $L^2$ bound for the mollification.}
+\emph{Claim.}  For every measurable $h : \mathbb{R}^n \to \mathbb{R}$ with
+$h \in L^2(K_1,\lambda)$ and every $0 < \varepsilon \leq 1$,
+\begin{equation*}
+  \|\rho_\varepsilon * h\|_{L^2(K,\lambda)} \;\leq\; \|h\|_{L^2(K_1,\lambda)} .
+  \tag{1}
+\end{equation*}
+\emph{Proof of the claim.}  Fix $0 < \varepsilon \leq 1$.  Because
+$\rho_\varepsilon \geq 0$ and $\int \rho_\varepsilon \, d\lambda = 1$, the measure
+$\mu_\varepsilon = \rho_\varepsilon\,d\lambda$ is a probability measure on
+$\mathbb{R}^n$.  Fix $x \in K$.  The function
+$t \mapsto h(x-t)$ is $\mu_\varepsilon$-integrable by the computation of Step 0
+applied to $h$, and $s \mapsto s^2$ is convex on $\mathbb{R}$, so Jensen's
+inequality for a probability measure (shared context) gives
+\[
+  \bigl((\rho_\varepsilon * h)(x)\bigr)^2
+    = \Bigl(\int h(x-t)\, d\mu_\varepsilon(t)\Bigr)^{2}
+    \;\leq\; \int h(x-t)^2 \, d\mu_\varepsilon(t)
+    \;=\; \int \rho_\varepsilon(t)\, h(x-t)^2\, d\lambda(t) .
+\]
+The function $(x,t) \mapsto \rho_\varepsilon(t) h(x-t)^2$ is nonnegative and
+jointly measurable, being the product of a measurable function of $t$ with the
+composition of the measurable $h^2$ with the continuous map $(x,t)\mapsto x-t$.
+Integrating the displayed inequality over $x \in K$ and applying Tonelli's
+theorem (shared context) to interchange the order of integration,
+\[
+  \int_K \bigl((\rho_\varepsilon * h)(x)\bigr)^2 d\lambda(x)
+    \;\leq\; \int \rho_\varepsilon(t) \Bigl(\int_K h(x-t)^2\, d\lambda(x)\Bigr) d\lambda(t) .
+\]
+For $|t| \leq \varepsilon \leq 1$, translation invariance of Lebesgue measure
+(shared context) gives
+$\int_K h(x-t)^2 d\lambda(x) = \int_{K-t} h(y)^2 d\lambda(y)$, and
+$K - t \subseteq K_1$ because every $y \in K-t$ satisfies
+$\operatorname{dist}(y,K) \leq |t| \leq 1$; since $h^2 \geq 0$ this yields
+$\int_K h(x-t)^2 d\lambda(x) \leq \|h\|_{L^2(K_1,\lambda)}^2$.  For $|t| > \varepsilon$
+the factor $\rho_\varepsilon(t)$ vanishes.  Hence the right-hand side is at most
+$\|h\|_{L^2(K_1,\lambda)}^2 \int \rho_\varepsilon\, d\lambda = \|h\|_{L^2(K_1,\lambda)}^2$.
+Taking square roots gives $(1)$ and proves the claim.
+
+\emph{Step 2: the case of a continuous, compactly supported function.}
+Let $g : \mathbb{R}^n \to \mathbb{R}$ be continuous with compact support.  By the
+density item of shared context, such a $g$ is bounded and uniformly continuous;
+let $\omega(\varepsilon) = \sup\{|g(y)-g(z)| : |y-z| \leq \varepsilon\}$ be its
+modulus of continuity, so $\omega(\varepsilon) \to 0$ as $\varepsilon \downarrow 0$.
+For $0 < \varepsilon \leq 1$ and any $x$, using
+$\int\rho_\varepsilon \, d\lambda = 1$ to write
+$g(x) = \int \rho_\varepsilon(t) g(x)\, d\lambda(t)$ (legitimate because $g$ is
+bounded and $\rho_\varepsilon$ is integrable),
+\[
+  \bigl|(\rho_\varepsilon * g)(x) - g(x)\bigr|
+    = \Bigl|\int \rho_\varepsilon(t)\bigl(g(x-t)-g(x)\bigr) d\lambda(t)\Bigr|
+    \;\leq\; \int \rho_\varepsilon(t)\,\bigl|g(x-t)-g(x)\bigr|\, d\lambda(t)
+    \;\leq\; \omega(\varepsilon) ,
+\]
+the first inequality by Jensen's inequality (shared context) applied to the
+probability measure $\mu_\varepsilon = \rho_\varepsilon\,d\lambda$ of Step 1 and
+the convex function $s \mapsto |s|$, and the rest $\rho_\varepsilon(t) = 0$ unless $|t| \leq \varepsilon$, in which case
+$|g(x-t)-g(x)| \leq \omega(\varepsilon)$, and again
+$\int\rho_\varepsilon\,d\lambda = 1$.  Therefore
+\begin{equation*}
+  \|\rho_\varepsilon * g - g\|_{L^2(K,\lambda)}
+    \;\leq\; \omega(\varepsilon)\, \lambda(K)^{1/2}
+  \qquad (0 < \varepsilon \leq 1).
+  \tag{2}
+\end{equation*}
+
+\emph{Step 3: approximation and conclusion.}
+Let $\eta > 0$.  Put $f_1 = \mathbf{1}_{K_2} f$.  Then $f_1$ is measurable,
+vanishes off the compact set $K_2$, and
+$\int_{\mathbb{R}^n}|f_1|^2 d\lambda = \int_{K_2}|f|^2 d\lambda < \infty$ by
+hypothesis, so $f_1 \in L^2(\mathbb{R}^n,\lambda)$.  Lebesgue measure is a regular
+Borel measure, so by the density item of shared context there is
+$g : \mathbb{R}^n \to \mathbb{R}$ continuous with compact support and
+\begin{equation*}
+  \|f_1 - g\|_{L^2(\mathbb{R}^n,\lambda)} \;\leq\; \eta/3 .
+  \tag{3}
+\end{equation*}
+
+Next, for $0 < \varepsilon \leq 1$ and $x \in K$ we have
+$(\rho_\varepsilon * f)(x) = (\rho_\varepsilon * f_1)(x)$: the integrand vanishes
+unless $|t| \leq \varepsilon \leq 1$, and then $x - t \in K_1 \subseteq K_2$,
+where $f_1 = f$.  Also $f = f_1$ on $K \subseteq K_2$.  Hence, pointwise on $K$,
+\[
+  \rho_\varepsilon * f - f
+    = \rho_\varepsilon * (f_1 - g) \;+\; \bigl(\rho_\varepsilon * g - g\bigr)
+      \;+\; \bigl(g - f_1\bigr) ,
+\]
+where we used linearity of the convolution in its second argument, legitimate
+because $f_1 - g$ and $g$ are each in $L^2(K_1,\lambda)$ (the first by $(3)$, the
+second because $g$ is bounded and $\lambda(K_1)<\infty$), so all three
+convolutions are defined by Step 0.  Taking $L^2(K,\lambda)$ norms and using the
+triangle inequality for the norm of $L^2(K,\lambda)$,
+\[
+  \|\rho_\varepsilon * f - f\|_{L^2(K,\lambda)}
+    \;\leq\; \|\rho_\varepsilon * (f_1-g)\|_{L^2(K,\lambda)}
+      + \|\rho_\varepsilon * g - g\|_{L^2(K,\lambda)}
+      + \|g - f_1\|_{L^2(K,\lambda)} .
+\]
+By $(1)$ applied to $h = f_1 - g$, the first term is at most
+$\|f_1-g\|_{L^2(K_1,\lambda)} \leq \|f_1-g\|_{L^2(\mathbb{R}^n,\lambda)} \leq \eta/3$
+by $(3)$.  The third term is at most
+$\|g-f_1\|_{L^2(\mathbb{R}^n,\lambda)} \leq \eta/3$, again by $(3)$.  By $(2)$ the
+second term is at most $\omega(\varepsilon)\lambda(K)^{1/2}$, and since
+$\omega(\varepsilon) \to 0$ there is $\varepsilon_0 \in (0,1]$ with
+$\omega(\varepsilon)\lambda(K)^{1/2} \leq \eta/3$ for all
+$0 < \varepsilon \leq \varepsilon_0$.  Altogether
+\[
+  \|\rho_\varepsilon * f - f\|_{L^2(K,\lambda)} \;\leq\; \eta
+  \qquad\text{for all } 0 < \varepsilon \leq \varepsilon_0 .
+\]
+Since $\eta > 0$ was arbitrary, $\|\rho_\varepsilon * f - f\|_{L^2(K,\lambda)} \to 0$
+as $\varepsilon \downarrow 0$ through positive values, which is the assertion.
+\end{proof}

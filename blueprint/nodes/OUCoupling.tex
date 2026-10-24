@@ -1,0 +1,17 @@
+\begin{definition}[The Ornstein--Uhlenbeck coupling measure $\nu_s$]
+For $s > 0$ let $X$ and $Y$ be independent $\mathbb{R}^n$-valued random vectors,
+each with law $\gamma_n$ as in \noderef{GaussMeasure}; concretely, let
+$\gamma_n \otimes \gamma_n$ be the product measure on
+$\mathbb{R}^n \times \mathbb{R}^n$.  Define $\nu_s$ as the push-forward of
+$\gamma_n \otimes \gamma_n$ under the affine map
+\[
+  (x, y) \longmapsto \bigl(x,\; e^{-s}x + \sqrt{1-e^{-2s}}\; y\bigr),
+\]
+i.e. $\nu_s$ is the joint law of the pair
+$\bigl(X,\, e^{-s}X + \sqrt{1-e^{-2s}}\,Y\bigr)$.  Thus $\nu_s$ is a centred
+Gaussian measure on $\mathbb{R}^{2n}$.  It replaces the explicit Mehler kernel
+$M_s(x,y)$ of the reference paper: the paper uses only that $M_s$ is symmetric,
+positive, and of unit mass in each variable, and these three properties
+correspond exactly to $\nu_s$ being a symmetric probability measure whose two
+marginals are both $\gamma_n$.
+\end{definition}

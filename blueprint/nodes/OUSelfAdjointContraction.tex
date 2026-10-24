@@ -1,0 +1,29 @@
+\begin{lemma}[Self-adjointness and $L^2$ contractivity of $P_s$]
+For every $s \geq 0$ and all $v, w \in L^2(\gamma_n)$,
+\[
+  \langle P_s v, w\rangle = \langle v, P_s w\rangle
+  \qquad\text{and}\qquad
+  \|P_s v\|_{L^2(\gamma_n)} \leq \|v\|_{L^2(\gamma_n)} ,
+\]
+with $P_s$ as in \noderef{OUSemigroup}.
+\end{lemma}
+\begin{proof}
+By \noderef{OUSemigroupSpectral} the coefficients of $P_s v$ and $P_s w$ are
+$e^{-s|\alpha|}v_\alpha$ and $e^{-s|\alpha|}w_\alpha$.  Parseval's identity from
+\noderef{HermiteBasis} applies to both inner products, giving
+\[
+  \langle P_s v, w\rangle = \sum_\alpha e^{-s|\alpha|} v_\alpha w_\alpha
+    = \langle v, P_s w\rangle ,
+\]
+all three series being absolutely convergent by Cauchy--Schwarz in
+$\ell^2(\mathbb{N}_0^n)$ together with $0 < e^{-s|\alpha|} \leq 1$ (valid because
+$s \geq 0$ and $|\alpha| \geq 0$).  The two outer expressions coincide because the
+middle series is symmetric in the roles of $v$ and $w$.
+
+For the contraction, Parseval and the same bound $e^{-s|\alpha|} \leq 1$ give
+\[
+  \|P_s v\|_2^2 = \sum_\alpha e^{-2s|\alpha|}|v_\alpha|^2
+    \leq \sum_\alpha |v_\alpha|^2 = \|v\|_2^2 ,
+\]
+and taking square roots finishes the proof.
+\end{proof}

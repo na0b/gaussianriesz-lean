@@ -1,0 +1,135 @@
+\begin{lemma}[Completeness of the Hermite family in $L^2(\gamma_n)$]
+The closed linear span of the family $\{h_\alpha : \alpha \in \mathbb{N}_0^n\}$ of
+\noderef{HermiteL2} is all of $L^2(\gamma_n)$:
+\[
+  \overline{\operatorname{span}_{\mathbb{R}}\{h_\alpha : \alpha \in \mathbb{N}_0^n\}}
+    = L^2(\gamma_n).
+\]
+\end{lemma}
+\begin{proof}
+The closed span $S$ is a closed linear subspace of the Hilbert space
+$L^2(\gamma_n)$, so $S = L^2(\gamma_n)$ if and only if $S^\perp = \{0\}$.  Let
+therefore $f \in L^2(\gamma_n)$ satisfy
+$\langle f, h_\alpha\rangle = \int f h_\alpha\, d\gamma_n = 0$ for every
+$\alpha \in \mathbb{N}_0^n$; we must show $f = 0$ $\gamma_n$-a.e.
+
+\emph{Step 1: the Hermite functions of order $\leq N$ span the polynomials of
+degree $\leq N$.}
+By \noderef{Hermite1} and the recurrence recorded there, $\mathrm{He}_k$ is monic of
+degree $k$; hence $h_k(x) = \mathrm{He}_k(\sqrt2 x)/\sqrt{k!}$ is a one-variable
+polynomial of degree exactly $k$ with leading coefficient
+$2^{k/2}/\sqrt{k!} \neq 0$.  Consequently, by \noderef{HermiteFun},
+\[
+  h_\alpha(x) = \prod_{j=1}^n h_{\alpha_j}(x_j)
+    = c_\alpha\, x^\alpha + \sum_{\beta} d_{\alpha\beta}\, x^\beta ,
+    \qquad c_\alpha = \prod_j \frac{2^{\alpha_j/2}}{\sqrt{\alpha_j!}} \neq 0,
+\]
+where every $\beta$ occurring in the sum satisfies $\beta_j \leq \alpha_j$ for all
+$j$ and $\beta \neq \alpha$, hence $|\beta| < |\alpha|$.  Let $P_N$ denote the
+finite-dimensional space of real polynomials on $\mathbb{R}^n$ of total degree at
+most $N$, with basis $\{x^\alpha : |\alpha| \leq N\}$.  The display shows
+$h_\alpha \in P_{|\alpha|}$, so $\operatorname{span}\{h_\alpha : |\alpha|\leq N\}
+\subseteq P_N$.  Conversely, we show $x^\alpha \in \operatorname{span}\{h_\beta :
+|\beta| \leq |\alpha|\}$ by induction on $|\alpha|$: for $|\alpha| = 0$ this is
+$x^0 = 1 = h_0$ up to the nonzero constant $c_0$, and for $|\alpha| = N > 0$ the
+display gives
+$x^\alpha = c_\alpha^{-1}\bigl(h_\alpha - \sum_\beta d_{\alpha\beta} x^\beta\bigr)$
+with all $|\beta| < N$, each of which lies in the span by the inductive
+hypothesis.  Hence
+$\operatorname{span}\{h_\alpha : |\alpha| \leq N\} = P_N$ for every $N$.
+
+Since $f$ is orthogonal to every $h_\alpha$, it is orthogonal to their span,
+hence to every $P_N$, hence to every monomial:
+\begin{equation*}
+  \int f\, x^\beta \, d\gamma_n = 0 \qquad\text{for every }
+  \beta \in \mathbb{N}_0^n. \tag{1}
+\end{equation*}
+These integrals are finite.  Indeed, by the span identity just established,
+$x^\beta$ is a finite linear combination of the functions $h_\alpha$ with
+$|\alpha| \leq |\beta|$, and each of those lies in $L^2(\gamma_n)$ by
+\noderef{HermiteFunMemLp}; since $L^2(\gamma_n)$ is a vector space, it follows
+that $x^\beta \in L^2(\gamma_n)$, and therefore $f x^\beta \in L^1(\gamma_n)$
+by Cauchy--Schwarz.
+
+\emph{Step 2: two finite measures with the same moments.}
+Write $f = f^+ - f^-$ with $f^\pm = \max\{\pm f, 0\}$, so $0 \leq f^\pm \leq |f|$
+and $f^\pm \in L^2(\gamma_n)$.  Let $\mu^\pm$ be the measures with densities
+$f^\pm$ with respect to $\gamma_n$, i.e.\ $\mu^\pm(A) = \int_A f^\pm d\gamma_n$.
+They are finite, since $\mu^\pm(\mathbb{R}^n) = \int f^\pm d\gamma_n \leq
+\|f^\pm\|_{L^2(\gamma_n)} < \infty$ by \noderef{L2IntoL1}.  Since
+$f = f^+ - f^-$, identity (1) says
+\begin{equation*}
+  \int x^\beta\, d\mu^+ = \int x^\beta\, d\mu^-
+  \qquad\text{for every } \beta \in \mathbb{N}_0^n. \tag{2}
+\end{equation*}
+
+\emph{Step 3: exponential moments.}
+Fix $c > 0$.  The function $x \mapsto e^{c|x|}$ lies in $L^2(\gamma_n)$: by
+\noderef{GaussMeasure},
+$\int e^{2c|x|}\, d\gamma_n = \int \pi^{-n/2} e^{2c|x| - |x|^2}\, dx$, and the
+integrand is continuous and, for $|x| \geq 4c$, bounded by
+$\pi^{-n/2}e^{-|x|^2/2}$ (because then $2c|x| \leq |x|^2/2$).  That majorant is
+Lebesgue integrable: substituting $x = \sqrt2\,y$, whose Jacobian determinant is
+$2^{n/2}$,
+\[
+  \int_{\mathbb{R}^n} \pi^{-n/2} e^{-|x|^2/2}\, dx
+    = 2^{n/2}\int_{\mathbb{R}^n} \pi^{-n/2} e^{-|y|^2}\, dy
+    = 2^{n/2}\,\gamma_n(\mathbb{R}^n)
+    = 2^{n/2},
+\]
+where the middle equality is the density formula of \noderef{GaussMeasure} and the
+last is \noderef{GaussIsProb}.  On the complementary region $\{|x| \leq 4c\}$ the
+integrand is continuous, hence bounded, and that region has finite Lebesgue
+measure, so it contributes a finite amount as well.  Hence
+$\int e^{2c|x|}\, d\gamma_n < \infty$, i.e.\ $e^{c|\cdot|} \in L^2(\gamma_n)$.
+Therefore, by Cauchy--Schwarz,
+\begin{equation*}
+  \int e^{c|x|}\, d\mu^\pm
+    = \int e^{c|x|}\, f^\pm \, d\gamma_n
+    \leq \|e^{c|\cdot|}\|_{L^2(\gamma_n)}\, \|f^\pm\|_{L^2(\gamma_n)}
+    < \infty . \tag{3}
+\end{equation*}
+
+\emph{Step 4: equal characteristic functions.}
+Fix $\xi \in \mathbb{R}^n$ and expand the exponential as a power series:
+$e^{i\langle \xi, x\rangle} = \sum_{m\geq0} \frac{i^m}{m!}\langle\xi,x\rangle^m$.
+Since $|\langle\xi,x\rangle| \leq |\xi|\,|x|$,
+\[
+  \sum_{m\geq0}\frac{1}{m!}\int \bigl|\langle\xi,x\rangle\bigr|^m\, d\mu^\pm
+    \leq \sum_{m\geq0}\frac{|\xi|^m}{m!}\int |x|^m\, d\mu^\pm
+    = \int e^{|\xi|\,|x|}\, d\mu^\pm < \infty
+\]
+by (3) with $c = |\xi|$, the interchange of sum and integral for the nonnegative
+terms being Tonelli's theorem for counting measure times $\mu^\pm$.  This
+absolute convergence permits the same interchange for the signed/complex series,
+so
+\[
+  \int e^{i\langle\xi,x\rangle}\, d\mu^\pm(x)
+    = \sum_{m\geq0}\frac{i^m}{m!}\int \langle\xi,x\rangle^m \, d\mu^\pm(x) .
+\]
+By the multinomial theorem, $\langle\xi,x\rangle^m$ is a finite linear
+combination of monomials $x^\beta$ with $|\beta| = m$, with coefficients
+depending only on $\xi$ and $m$.  Hence by (2) each term
+$\int\langle\xi,x\rangle^m d\mu^+$ equals $\int\langle\xi,x\rangle^m d\mu^-$, and
+therefore
+\[
+  \int e^{i\langle\xi,x\rangle}\, d\mu^+(x)
+    = \int e^{i\langle\xi,x\rangle}\, d\mu^-(x)
+  \qquad\text{for every } \xi \in \mathbb{R}^n .
+\]
+That is, $\mu^+$ and $\mu^-$ are finite Borel measures on $\mathbb{R}^n$ with the
+same characteristic function.  By the uniqueness theorem for characteristic
+functions of finite Borel measures on $\mathbb{R}^n$, $\mu^+ = \mu^-$.
+
+\emph{Step 5: conclusion.}
+Let $A = \{f > 0\}$, a Borel set.  On $A$ we have $f^- = 0$, so
+$\mu^-(A) = 0$, and therefore $\mu^+(A) = 0$ as well, i.e.
+$\int_A f^+ \, d\gamma_n = 0$.  But $f^+ = f > 0$ everywhere on $A$, and the
+integral of a strictly positive function over $A$ vanishes only if
+$\gamma_n(A) = 0$.  Hence $\gamma_n(\{f>0\}) = 0$.  Symmetrically, taking
+$A' = \{f<0\}$ gives $\mu^+(A') = 0$, hence $\mu^-(A') = 0$, hence
+$\gamma_n(\{f<0\}) = 0$.  Therefore $f = 0$ $\gamma_n$-almost everywhere, i.e.
+$f = 0$ in $L^2(\gamma_n)$.
+
+Thus $S^\perp = \{0\}$ and $S = L^2(\gamma_n)$.
+\end{proof}

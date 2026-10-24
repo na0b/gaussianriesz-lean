@@ -1,0 +1,52 @@
+\begin{lemma}[Lattice property: $1$-Lipschitz maps do not increase the energy]
+Let $\Phi : \mathbb{R} \to \mathbb{R}$ be $1$-Lipschitz with $\Phi(0) = 0$, let
+$v \in \mathcal{V}$, i.e. $\mathcal{E}(v) < \infty$ in the sense of
+\noderef{Energy}, and let $w \in L^2(\gamma_n)$ satisfy $w = \Phi \circ v$
+$\gamma_n$-almost everywhere.  Then
+\[
+  \mathcal{E}(w) < \infty
+  \qquad\text{and}\qquad
+  \mathcal{E}(w) \leq \mathcal{E}(v) .
+\]
+In particular, taking $\Phi(t) = t^+ = \max\{t,0\}$, $\Phi(t) = t^- = \max\{-t,0\}$
+and $\Phi(t) = |t|$, all of which are $1$-Lipschitz and vanish at $0$, the
+functions $v^+$, $v^-$ and $|v|$ belong to $\mathcal{V}$ and have energy at most
+$\mathcal{E}(v)$.
+\end{lemma}
+\begin{proof}
+First, $w$ is indeed in $L^2(\gamma_n)$ by hypothesis; note that this is
+consistent, since $|\Phi(t)| = |\Phi(t)-\Phi(0)| \leq |t|$ by the Lipschitz bound
+and $\Phi(0)=0$, so $|w| \leq |v|$ a.e.
+
+Fix $s > 0$.  Since $w = \Phi\circ v$ $\gamma_n$-a.e.\ and both marginals of the
+coupling $\nu_s$ of \noderef{OUCoupling} equal $\gamma_n$ by
+\noderef{OUCouplingKernel}, the set where $w \neq \Phi\circ v$ is
+$\nu_s$-negligible in each variable separately, hence
+$w(x) = \Phi(v(x))$ and $w(y) = \Phi(v(y))$ for $\nu_s$-almost every $(x,y)$.
+The Lipschitz bound then gives
+\[
+  |w(x) - w(y)|^2 = |\Phi(v(x)) - \Phi(v(y))|^2 \leq |v(x) - v(y)|^2
+  \qquad \nu_s\text{-a.e.}
+\]
+Integrating this pointwise inequality against the nonnegative measure $\nu_s$,
+\[
+  \iint |w(x)-w(y)|^2 \, d\nu_s(x,y)
+    \leq \iint |v(x)-v(y)|^2 \, d\nu_s(x,y)
+  \qquad\text{for every } s > 0 .
+\]
+Both sides are finite for each $s$, being at most $4\|w\|_2^2$ and
+$4\|v\|_2^2$ respectively, as recorded in \noderef{DifferenceEnergy}.
+
+Now integrate in $s$ against the nonnegative measure $s^{-3/2}ds$ on
+$(0,\infty)$, which preserves the inequality, and multiply by the positive
+constant $(4\sqrt\pi)^{-1}$.  By \noderef{DifferenceEnergy}, applied once to $w$
+and once to $v$, the two resulting quantities are $\mathcal{E}(w)$ and
+$\mathcal{E}(v)$, as values in $[0,+\infty]$.  Hence
+$\mathcal{E}(w) \leq \mathcal{E}(v)$.  Since $\mathcal{E}(v) < \infty$ by
+hypothesis, also $\mathcal{E}(w) < \infty$, i.e. $w \in \mathcal{V}$.
+
+For the three special cases, $t \mapsto t^+$, $t\mapsto t^-$ and $t \mapsto |t|$
+are each $1$-Lipschitz (they are compositions and maxima of $1$-Lipschitz maps,
+and $|a^+-b^+| \leq |a-b|$, $|a^--b^-|\leq|a-b|$, $||a|-|b||\leq|a-b|$) and each
+sends $0$ to $0$.
+\end{proof}

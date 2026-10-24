@@ -1,0 +1,114 @@
+\begin{lemma}[The Lebesgue kernel of the Ornstein--Uhlenbeck semigroup]
+Fix $s > 0$ and write
+\[
+  r = e^{-s} \in (0,1), \qquad \sigma = 1 - e^{-2s} = 1 - r^2 \in (0,1),
+\]
+and define the \emph{Lebesgue kernel}
+\[
+  p_s(x,y) = \frac{1}{\pi^{n/2}\,\sigma^{n/2}}
+    \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr),
+  \qquad x, y \in \mathbb{R}^n .
+\]
+Then for every $v \in L^2(\gamma_n)$ and $\gamma_n$-almost every $x \in \mathbb{R}^n$:
+\begin{enumerate}
+\item the function $y \mapsto p_s(x,y)\,v(y)$ is integrable on $\mathbb{R}^n$ for
+\emph{Lebesgue} measure; and
+\item $\displaystyle (P_s v)(x) = \int_{\mathbb{R}^n} p_s(x,y)\,v(y)\,dy$,
+\end{enumerate}
+with $P_s$ the Ornstein--Uhlenbeck semigroup of \noderef{OUSemigroup} and
+$\gamma_n$ as in \noderef{GaussMeasure}.
+
+This is the reference paper's displayed Lebesgue-kernel formula.  The integration
+in (2) is against Lebesgue measure $dy$, not against $d\gamma_n(y)$: that is the
+whole point of the statement, and it is what distinguishes $p_s$ from the
+averaging form of \noderef{MehlerFormula}, which integrates a contracted and
+noise-shifted argument against $\gamma_n$.  The two clauses are asserted for
+$\gamma_n$-almost every $x$ and not for every $x$, matching the strength of
+\noderef{MehlerFormula}: for a general $v \in L^2(\gamma_n)$ the left-hand side is
+an almost-everywhere equivalence class and an every-$x$ assertion would be
+meaningless.  Pointwise statements are recovered later only for inputs for which
+both sides have continuous representatives.
+\end{lemma}
+\begin{proof}
+Fix $s > 0$ and put $r = e^{-s}$, $\sigma = 1 - r^2$ and $\tau = \sqrt{\sigma}$.
+Since $s > 0$ we have $0 < r < 1$, hence $0 < \sigma < 1$ and $0 < \tau < 1$; in
+particular $\tau > 0$, which is what the change of variables below needs.  Note
+also $\sigma = 1 - e^{-2s}$, because $r^2 = e^{-2s}$.
+
+\emph{Step 1: the averaging form.}
+By \noderef{MehlerFormula}, applied to this $s$ and this $v$, there is a
+$\gamma_n$-null set off which both of its first two clauses hold; fix $x$ outside
+it.  Clause (1) of that node says that
+\[
+  z \longmapsto v\bigl(rx + \tau z\bigr)
+\]
+is $\gamma_n$-integrable, and clause (2) says
+\begin{equation*}
+  (P_s v)(x) = \int_{\mathbb{R}^n} v\bigl(rx + \tau z\bigr) \, d\gamma_n(z) .
+  \tag{1}
+\end{equation*}
+(The node writes the contraction factor as $e^{-s}$ and the spreading factor as
+$\sqrt{1 - e^{-2s}}$, which are exactly $r$ and $\tau$.)
+
+\emph{Step 2: unfolding $\gamma_n$.}
+By \noderef{GaussMeasure}, $\gamma_n$ is Lebesgue measure weighted by the density
+$\pi^{-n/2}e^{-|z|^2}$.  Hence the integral in $(1)$ is the Lebesgue integral
+\begin{equation*}
+  (P_s v)(x)
+    = \int_{\mathbb{R}^n} v\bigl(rx+\tau z\bigr)\,
+        \pi^{-n/2}e^{-|z|^2} \, dz , \tag{2}
+\end{equation*}
+and the integrability statement of Step 1 is Lebesgue integrability of the
+integrand of $(2)$.
+
+\emph{Step 3: the affine change of variables.}
+Let $\Psi(z) = rx + \tau z$, a bijection of $\mathbb{R}^n$ with inverse
+$\Psi^{-1}(y) = \tau^{-1}(y - rx)$; both are continuous, hence Borel measurable.
+We claim that the pushforward of Lebesgue measure $\lambda$ along $\Psi$ is
+$\tau^{-n}\lambda$.  Indeed, for a Borel set $A$,
+\[
+  (\Psi_*\lambda)(A) = \lambda\bigl(\Psi^{-1}(A)\bigr)
+    = \lambda\bigl(\tau^{-1}(A - rx)\bigr)
+    = \tau^{-n}\lambda(A - rx)
+    = \tau^{-n}\lambda(A) ,
+\]
+using in the third equality that Lebesgue measure of a dilated set scales by the
+$n$th power of the dilation factor, $\lambda(cB) = c^n\lambda(B)$ for $c > 0$
+(here with $c = \tau^{-1}$), and in the fourth the translation invariance of
+Lebesgue measure (shared context).
+
+Consequently, for any Borel $g : \mathbb{R}^n \to \mathbb{R}$, the function
+$g \circ \Psi$ is $\lambda$-integrable if and only if $g$ is
+$(\Psi_*\lambda)$-integrable, i.e.\ if and only if $g$ is $\lambda$-integrable
+(the two measures differ by the positive finite factor $\tau^{-n}$), and in that
+case the change-of-variables formula for a pushforward gives
+\begin{equation*}
+  \int g(\Psi(z)) \, dz = \int g \, d(\Psi_*\lambda)
+    = \tau^{-n}\int g(y) \, dy . \tag{3}
+\end{equation*}
+
+\emph{Step 4: identifying the kernel.}
+Apply $(3)$ to
+\[
+  g(y) = v(y)\,\pi^{-n/2}\exp\bigl(-\tau^{-2}|y - rx|^2\bigr) .
+\]
+Then $g(\Psi(z)) = v(rx+\tau z)\,\pi^{-n/2}\exp(-\tau^{-2}|\tau z|^2)
+ = v(rx+\tau z)\,\pi^{-n/2}e^{-|z|^2}$, which is exactly the integrand of $(2)$.
+By Step 1 that function is $\lambda$-integrable, so by the equivalence in Step 3
+$g$ is $\lambda$-integrable, and $(3)$ together with $(2)$ gives
+\[
+  (P_s v)(x)
+    = \tau^{-n}\int_{\mathbb{R}^n}
+        v(y)\,\pi^{-n/2}\exp\Bigl(-\frac{|y-rx|^2}{\tau^2}\Bigr) dy .
+\]
+Finally $\tau^{-n} = \sigma^{-n/2}$ and $\tau^2 = \sigma$, and
+$|y - rx| = |rx - y|$, so the integrand equals
+\[
+  \pi^{-n/2}\sigma^{-n/2}\exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr) v(y)
+    = p_s(x,y)\,v(y) .
+\]
+Thus $y \mapsto p_s(x,y)v(y)$ is Lebesgue integrable, which is clause (1), and
+$(P_s v)(x) = \int p_s(x,y)v(y)\,dy$, which is clause (2).  Since $x$ was an
+arbitrary point outside a fixed $\gamma_n$-null set, both clauses hold for
+$\gamma_n$-almost every $x$.
+\end{proof}

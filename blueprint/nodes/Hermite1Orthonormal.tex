@@ -1,0 +1,260 @@
+\begin{lemma}[One-dimensional Hermite orthonormality]
+With $h_k$ as in \noderef{Hermite1}, the family $\{h_k\}_{k \geq 0}$ is
+orthonormal in $L^2(\pi^{-1/2}e^{-x^2}\,dx)$: for all $k, l \in \mathbb{N}_0$ the
+integral below converges absolutely and
+\[
+  \int_{\mathbb{R}} \pi^{-1/2} e^{-x^2}\, h_k(x)\, h_l(x)\, dx
+    = \begin{cases} 1, & k = l,\\ 0, & k \neq l.\end{cases}
+\]
+\end{lemma}
+\begin{proof}
+Throughout write $d\gamma_1(x) = \pi^{-1/2}e^{-x^2}\,dx$.  No change of
+variables is made anywhere in this proof: every integral below is taken against
+$\gamma_1$ in the variable $x$, so the Gaussian background items are used at the
+weight $e^{-x^2}$ at which they are stated.
+
+\emph{Step 0: $\gamma_1$ is a probability measure, and its moments.}
+By the scalar Gaussian integral of the shared context,
+$\int_{\mathbb{R}} e^{-x^2}\,dx = \sqrt\pi$, so $\gamma_1(\mathbb{R}) = 1$ and
+$\gamma_1$ is a probability measure.  By the Gaussian exponential moment item of
+the shared context, taken with $n = 1$,
+\begin{equation*}
+  \int_{\mathbb{R}} e^{c|x|}\, d\gamma_1(x) < \infty
+  \quad\text{and}\quad
+  \int_{\mathbb{R}} |P(x)|\, e^{c|x|}\, d\gamma_1(x) < \infty
+  \tag{0}
+\end{equation*}
+for every real $c$ and every real polynomial $P$.  In particular every
+polynomial is $\gamma_1$-integrable.
+
+By \noderef{Hermite1}, $h_k(x) = \mathrm{He}_k(\sqrt2\,x)/\sqrt{k!}$ for every
+$k$ and every real $x$, where $\mathrm{He}_k$ is the probabilists' Hermite
+polynomial of degree $k$.  Since $x \mapsto \mathrm{He}_k(\sqrt2 x)\,
+\mathrm{He}_l(\sqrt2 x)$ is a polynomial, the second part of $(0)$ (with
+$c = 0$) shows that the integral in the statement converges absolutely, and
+\begin{equation*}
+  \int_{\mathbb{R}} h_k\, h_l\, d\gamma_1
+    = \frac{a_{kl}}{\sqrt{k!\,l!}},
+  \qquad\text{where}\qquad
+  a_{kl} := \int_{\mathbb{R}} \mathrm{He}_k(\sqrt2 x)\,\mathrm{He}_l(\sqrt2 x)\,
+    d\gamma_1(x) .
+  \tag{1}
+\end{equation*}
+By $(1)$ it suffices to prove
+\begin{equation*}
+  a_{kl} = \begin{cases} k!, & k = l,\\ 0, & k \neq l,\end{cases}
+  \tag{$\ast$}
+\end{equation*}
+since then $a_{kl}/\sqrt{k!\,l!}$ equals $k!/\sqrt{k!\,k!} = 1$ when $k = l$ and
+$0$ otherwise.
+
+\emph{Step 1: the moment generating function of $\gamma_1$.}
+For every real $c$,
+\begin{equation*}
+  \int_{\mathbb{R}} e^{cx}\, d\gamma_1(x) = e^{c^2/4} .
+  \tag{2}
+\end{equation*}
+Indeed $cx - x^2 = -\bigl(x - c/2\bigr)^2 + c^2/4$, so
+$e^{cx}\pi^{-1/2}e^{-x^2} = e^{c^2/4}\,\pi^{-1/2}e^{-(x - c/2)^2}$ pointwise;
+by the translation invariance of Lebesgue measure (shared context, with
+$t = c/2$ and $h(y) = \pi^{-1/2}e^{-y^2} \geq 0$),
+$\int \pi^{-1/2}e^{-(x-c/2)^2}\,dx = \int \pi^{-1/2}e^{-y^2}\,dy = 1$ by Step 0.
+Integrating this pointwise identity between nonnegative measurable functions and
+pulling the constant $e^{c^2/4}$ out of the integral gives $(2)$; the left side
+is finite because $e^{cx} \leq e^{|c|\,|x|}$ and $\int e^{|c||x|}d\gamma_1 <
+\infty$ by $(0)$.
+
+\emph{Step 2: the two generating series and their absolute majorants.}
+Fix real $z$ and $w$ for the whole of Steps 2--5.  For $K \in \mathbb{N}$ put
+\[
+  S_K^z(x) = \sum_{k=0}^{K} \mathrm{He}_k(\sqrt2 x)\,\frac{z^k}{k!},
+  \qquad
+  S_K^w(x) = \sum_{l=0}^{K} \mathrm{He}_l(\sqrt2 x)\,\frac{w^l}{l!},
+  \qquad
+  T_K(x) = S_K^z(x)\,S_K^w(x).
+\]
+Each $S_K^z$, $S_K^w$ and $T_K$ is a polynomial in $x$, hence continuous and
+measurable.  By \noderef{HermiteGenerating} applied at the point $\sqrt2 x$ with
+parameter $z$, and again at the point $\sqrt2 x$ with parameter $w$,
+\begin{equation*}
+  S_K^z(x) \xrightarrow[K\to\infty]{} e^{\sqrt2 x z - z^2/2},
+  \qquad
+  S_K^w(x) \xrightarrow[K\to\infty]{} e^{\sqrt2 x w - w^2/2}
+  \tag{3}
+\end{equation*}
+for every real $x$, and therefore
+$T_K(x) \to e^{\sqrt2 x (z+w) - (z^2+w^2)/2}$ pointwise in $x$.
+
+For the majorant, apply \noderef{HermiteAbsMajorant} twice: once with its first
+argument $\sqrt2 x$ and its second argument $z$, and once with its first
+argument $\sqrt2 x$ and its second argument $w$.  Since
+$|\sqrt2 x| = \sqrt2\,|x|$, this gives, for every real $x$,
+\begin{equation*}
+  \sum_{k=0}^\infty \bigl|\mathrm{He}_k(\sqrt2 x)\bigr|\,\frac{|z|^k}{k!}
+    \leq e^{\sqrt2 |x|\,|z| + z^2/2},
+  \qquad
+  \sum_{l=0}^\infty \bigl|\mathrm{He}_l(\sqrt2 x)\bigr|\,\frac{|w|^l}{l!}
+    \leq e^{\sqrt2 |x|\,|w| + w^2/2},
+  \tag{4}
+\end{equation*}
+both series converging.  (These are genuine upper bounds on the
+absolute-value series; they are \emph{not} obtained by putting absolute values
+on the signed identity of \noderef{HermiteGenerating}, which would bound the
+absolute-value series from below instead.)  Truncating the sums in $(4)$ at $K$
+and using $|\sum| \le \sum |\cdot|$ for the \emph{finite} sums $S_K^z$, $S_K^w$,
+\begin{equation*}
+  \bigl|T_K(x)\bigr|
+    \;\leq\;
+    \Bigl(\sum_{k=0}^{\infty}\bigl|\mathrm{He}_k(\sqrt2 x)\bigr|\frac{|z|^k}{k!}\Bigr)
+    \Bigl(\sum_{l=0}^{\infty}\bigl|\mathrm{He}_l(\sqrt2 x)\bigr|\frac{|w|^l}{l!}\Bigr)
+    \;\leq\; \Phi(x) := e^{(z^2+w^2)/2}\, e^{\sqrt2(|z|+|w|)\,|x|}
+  \tag{5}
+\end{equation*}
+for every $K$ and every $x$.  By $(0)$ with $c = \sqrt2(|z|+|w|)$, the function
+$\Phi$ is $\gamma_1$-integrable.
+
+\emph{Step 3: passing to the limit, and the value $e^{zw}$.}
+By dominated convergence (shared context), applied to the sequence $(T_K)$ with
+dominating function $\Phi$ and pointwise limit
+$x \mapsto e^{\sqrt2 x(z+w) - (z^2+w^2)/2}$,
+\[
+  \int T_K \, d\gamma_1
+    \;\xrightarrow[K\to\infty]{}\;
+  e^{-(z^2+w^2)/2}\int e^{\sqrt2(z+w)x}\, d\gamma_1(x)
+    \;=\; e^{-(z^2+w^2)/2}\, e^{(z+w)^2/2}
+    \;=\; e^{zw},
+\]
+where the middle equality is $(2)$ with $c = \sqrt2(z+w)$, so that
+$c^2/4 = 2(z+w)^2/4 = (z+w)^2/2$, and the last uses
+$(z+w)^2 - z^2 - w^2 = 2zw$.
+
+On the other hand $T_K$ is the finite product of two finite sums, so expanding
+and using linearity of the integral over the finitely many terms --- each
+$x \mapsto \mathrm{He}_k(\sqrt2 x)\mathrm{He}_l(\sqrt2 x)$ being
+$\gamma_1$-integrable by $(0)$ --- gives
+\begin{equation*}
+  \int T_K\, d\gamma_1
+    = \sum_{k=0}^{K}\sum_{l=0}^{K} b_{kl},
+  \qquad\text{where}\qquad
+  b_{kl} := a_{kl}\,\frac{z^k w^l}{k!\,l!}.
+  \tag{6}
+\end{equation*}
+
+\emph{Step 4: absolute summability of the double family, and its sum.}
+We first record the master bound: for all $\rho, \sigma \geq 0$,
+\begin{equation*}
+  \sum_{k,l \geq 0} |a_{kl}|\,\frac{\rho^k \sigma^l}{k!\,l!} \;<\; \infty .
+  \tag{7}
+\end{equation*}
+Indeed $|a_{kl}| \leq \int |\mathrm{He}_k(\sqrt2 x)|\,|\mathrm{He}_l(\sqrt2 x)|
+\,d\gamma_1(x)$, so by Tonelli (shared context, with counting measure on
+$\mathbb{N}\times\mathbb{N}$ and $\gamma_1$, both $\sigma$-finite, applied to the
+nonnegative integrand
+$((k,l),x) \mapsto |\mathrm{He}_k(\sqrt2 x)||\mathrm{He}_l(\sqrt2 x)|
+\rho^k\sigma^l/(k!l!)$),
+\[
+  \sum_{k,l} |a_{kl}|\frac{\rho^k\sigma^l}{k!\,l!}
+    \leq \int
+      \Bigl(\sum_{k}\bigl|\mathrm{He}_k(\sqrt2 x)\bigr|\frac{\rho^k}{k!}\Bigr)
+      \Bigl(\sum_{l}\bigl|\mathrm{He}_l(\sqrt2 x)\bigr|\frac{\sigma^l}{l!}\Bigr)
+      d\gamma_1(x)
+    \leq \int e^{(\rho^2+\sigma^2)/2} e^{\sqrt2(\rho+\sigma)|x|}\, d\gamma_1(x),
+\]
+the factorization of the double sum into a product of two single sums being
+Tonelli for the two counting measures, and the last inequality being $(4)$ with
+$z, w$ replaced by $\rho, \sigma$.  The final integral is finite by $(0)$, which
+proves $(7)$.
+
+Taking $\rho = |z|$, $\sigma = |w|$ in $(7)$ shows that the family
+$(b_{kl})_{(k,l)\in\mathbb{N}^2}$ of $(6)$ is absolutely summable; let $S$ denote
+its sum.  The square partial sums in $(6)$ converge to $S$: given $\varepsilon >
+0$, fix an enumeration of $\mathbb{N}\times\mathbb{N}$ and let $F$ be the set of
+its first $N$ terms, with $N$ so large that the corresponding tail of
+$\sum|b_{kl}|$ is at most $\varepsilon$; choose $K_0$ with
+$F \subseteq \{0,\dots,K_0\}^2$ (possible since $F$ is finite); then for every
+$K \geq K_0$ the finite set $\{0,\dots,K\}^2$ contains $F$, so
+$\bigl|\sum_{k,l\leq K} b_{kl} - S\bigr| \leq \sum_{(k,l)\notin F} |b_{kl}|
+\leq \varepsilon$.  Comparing with Step 3,
+\begin{equation*}
+  S = \sum_{k,l\geq0} a_{kl}\,\frac{z^k w^l}{k!\,l!} = e^{zw} .
+  \tag{8}
+\end{equation*}
+
+Next, regroup $(8)$ by the second index.  For $l \in \mathbb{N}$ set
+\begin{equation*}
+  c_l(z) := \sum_{k\geq0} a_{kl}\,\frac{z^k}{k!\,l!},
+  \tag{9}
+\end{equation*}
+the series converging absolutely for each fixed $l$ by $(7)$ (take
+$\rho = |z|$, $\sigma = 1$, and drop all indices but $l$ in the second slot).
+By Fubini for the absolutely summable family $(b_{kl})$ --- that is, the Fubini
+item of the shared context applied with counting measure on $\mathbb{N}$ in each
+factor, legitimate because $\sum_{k,l}|b_{kl}| < \infty$ by $(7)$ --- we may sum
+first in $k$ and then in $l$:
+\begin{equation*}
+  \sum_{l\geq0} c_l(z)\, w^l = S = e^{zw},
+  \tag{10}
+\end{equation*}
+and moreover, for every $\sigma \geq 0$,
+$\sum_l |c_l(z)|\sigma^l \leq \sum_{k,l}|a_{kl}|\,|z|^k\sigma^l/(k!\,l!) < \infty$
+by $(9)$ and $(7)$.
+
+\emph{Step 5: a one-variable coefficient-comparison principle, applied twice.}
+We use the following elementary principle $(\mathrm{U})$.
+
+\smallskip
+\noindent\emph{$(\mathrm{U})$.  Let $(p_m)_{m\geq0}$ and $(q_m)_{m\geq0}$ be real
+sequences with $\sum_m |p_m|\rho^m < \infty$ and $\sum_m |q_m|\rho^m < \infty$
+for every $\rho \geq 0$, and suppose $\sum_m p_m t^m = \sum_m q_m t^m$ for every
+real $t$.  Then $p_m = q_m$ for every $m$.}
+
+\smallskip
+\noindent This is the real-variable instance of the uniqueness of power-series
+coefficients recorded in the shared context; since that item is stated for a
+neighbourhood of the origin in $\mathbb{C}$ and the hypotheses here give
+agreement only for real $t$, we derive $(\mathrm{U})$ directly.  Put
+$e_m = p_m - q_m$, so $\sum_m |e_m| \rho^m < \infty$ for every $\rho \geq 0$ and,
+the two series being absolutely convergent, $E(t) := \sum_m e_m t^m = 0$ for
+every real $t$.  Argue by induction on $m$: suppose $L \geq 0$ and
+$e_0 = \dots = e_{L-1} = 0$ (vacuous when $L = 0$).  For $0 < |t| \leq 1$,
+\[
+  0 = E(t) = \sum_{m \geq L} e_m t^m = t^L\Bigl(e_L + R(t)\Bigr),
+  \qquad
+  R(t) := \sum_{m\geq L+1} e_m t^{m-L},
+\]
+and $|R(t)| \leq |t| \sum_{m\geq L+1} |e_m|\,|t|^{m-L-1}
+\leq |t|\sum_{m\geq L+1}|e_m| = C|t|$, where $C < \infty$ by the hypothesis with
+$\rho = 1$ and $|t|^{m-L-1}\le1$.  Dividing by $t^L \neq 0$ gives
+$e_L = -R(t)$, hence $|e_L| \leq C|t|$ for all $0 < |t| \leq 1$; letting
+$t \to 0$ gives $e_L = 0$.  This completes the induction and proves
+$(\mathrm{U})$.
+
+\emph{First application, in the variable $w$.}  Fix real $z$.  The exponential
+function is entire, so by the power-series item of the shared context it equals
+its everywhere-absolutely-convergent Taylor series at $0$; evaluating that series
+at $zw$ gives
+$e^{zw} = \sum_{m\geq0} (zw)^m/m! = \sum_{l\geq0} (z^l/l!)\,w^l$, with
+$\sum_l |z^l/l!|\sigma^l < \infty$ for every $\sigma \geq 0$.  By $(10)$ the two
+series $\sum_l c_l(z) w^l$ and $\sum_l (z^l/l!) w^l$ agree for every real $w$,
+and both satisfy the summability hypothesis of $(\mathrm{U})$ (the first by the
+bound at the end of Step 4).  Hence $(\mathrm{U})$ gives
+\begin{equation*}
+  c_l(z) = \frac{z^l}{l!} \qquad\text{for every } l \in \mathbb{N}
+  \text{ and every real } z .
+  \tag{11}
+\end{equation*}
+
+\emph{Second application, in the variable $z$.}  Fix $l \in \mathbb{N}$ and
+multiply $(11)$ by $l!$; by $(9)$ this reads
+\[
+  \sum_{k\geq0} \frac{a_{kl}}{k!}\, z^k \;=\; z^l
+  \qquad\text{for every real } z .
+\]
+The left-hand coefficients satisfy $\sum_k |a_{kl}/k!|\rho^k < \infty$ for every
+$\rho \geq 0$, by $(7)$ with $\sigma = 1$ and the single index $l$ retained; the
+right-hand side is the power series with coefficients $\delta_{kl}$, trivially
+absolutely convergent.  By $(\mathrm{U})$, now in the variable $z$,
+$a_{kl}/k! = \delta_{kl}$ for every $k$, i.e.\ $a_{kl} = k!$ when $k = l$ and
+$a_{kl} = 0$ when $k \neq l$.  This is $(\ast)$, and by $(1)$ the statement
+follows.
+\end{proof}

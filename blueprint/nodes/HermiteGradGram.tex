@@ -1,0 +1,170 @@
+\begin{lemma}[Coordinates and Gram matrix of the Hermite gradients]
+Fix $n \in \mathbb{N}$ and let $D = 2^{-1/2}\nabla$ be the operator of
+\noderef{GaussD}.  Then both of the following hold.
+
+\emph{(i) (Membership and coordinate formula.)}  For every multi-index
+$\alpha \in \mathbb{N}_0^n$, the Hermite function $h_\alpha$ of
+\noderef{HermiteL2}, viewed as an element of $L^2(\gamma_n)$, lies in
+$W^{1,2}(\gamma_n)$ in the sense of \noderef{SobolevW12}, and its energy-normalized
+gradient satisfies
+\[
+  D h_\alpha(x)
+    = \bigl(\sqrt{\alpha_1}\,h_{\alpha-e_1}(x), \ldots,
+            \sqrt{\alpha_n}\,h_{\alpha-e_n}(x)\bigr)
+  \qquad \text{for $\gamma_n$-almost every } x \in \mathbb{R}^n,
+\]
+with $h_\beta$ the Hermite function of \noderef{HermiteFun} and $\alpha - e_j$ the
+multi-index obtained by decreasing the $j$th entry of $\alpha$ by one, under the
+convention of \noderef{MultiIndexSum} that this entry stays at $0$ when
+$\alpha_j = 0$.
+
+\emph{(ii) (Gram matrix.)}  For all multi-indices
+$\alpha, \beta \in \mathbb{N}_0^n$,
+\[
+  \langle D h_\alpha,\, D h_\beta\rangle_{L^2(\gamma_n;\mathbb{R}^n)}
+    = \begin{cases}
+        |\alpha|, & \alpha = \beta,\\
+        0, & \alpha \neq \beta,
+      \end{cases}
+\]
+where $|\alpha| = \alpha_1 + \cdots + \alpha_n$ is the order of
+\noderef{MultiIndexSum}.
+
+The equality in (i) is an identity $\gamma_n$-almost everywhere, as it must be:
+$D h_\alpha$ is an element of $L^2(\gamma_n;\mathbb{R}^n)$, that is, an
+equivalence class, while the right-hand side is a genuine function.  Both
+assertions are stated directly about $D h_\alpha$, and not about some auxiliary
+$L^2$ representative of the right-hand side; it is this that lets (ii) be used
+without carrying the membership proof of (i) around with it.
+\end{lemma}
+\begin{proof}
+Throughout, write
+\[
+  F_\alpha(x) = \bigl(\sqrt{\alpha_1}\,h_{\alpha-e_1}(x), \ldots,
+                      \sqrt{\alpha_n}\,h_{\alpha-e_n}(x)\bigr)
+  \in \mathbb{R}^n , \qquad x \in \mathbb{R}^n ,
+\]
+for the field appearing on the right of (i).  The proof establishes (i) by
+exhibiting $\sqrt2\,F_\alpha$ as a weak Euclidean gradient of $h_\alpha$ and
+appealing to \noderef{GaussDWitness}, and then reads (ii) off the coordinate
+formula.
+
+\emph{Step 1: $F_\alpha \in L^2(\gamma_n;\mathbb{R}^n)$.}
+Each coordinate of $F_\alpha$ is a constant multiple of a Hermite function, which
+is continuous by \noderef{HermiteFunContDiff}, so $F_\alpha$ is continuous and in
+particular measurable.  For the square-integrability, bound the Euclidean norm by
+the sum of the absolute values of the coordinates: for every $x$,
+\[
+  |F_\alpha(x)|
+    = \Bigl(\sum_{j=1}^n \bigl|\sqrt{\alpha_j}\,h_{\alpha-e_j}(x)\bigr|^2\Bigr)^{1/2}
+    \leq \sum_{j=1}^n \bigl|\sqrt{\alpha_j}\,h_{\alpha-e_j}(x)\bigr| ,
+\]
+the inequality because $\sum_j a_j^2 \leq (\sum_j a_j)^2$ for nonnegative reals
+$a_j$ and the square root is monotone.  By \noderef{HermiteFunMemLp} each
+$h_{\alpha-e_j}$ lies in $L^2(\gamma_n)$, hence so does each
+$|\sqrt{\alpha_j}\,h_{\alpha-e_j}|$, and hence so does the finite sum on the
+right.  A measurable function dominated pointwise in absolute value by an
+$L^2(\gamma_n)$ function is itself in $L^2(\gamma_n)$, so
+$F_\alpha \in L^2(\gamma_n;\mathbb{R}^n)$.
+
+\emph{Step 2: $\sqrt2\,F_\alpha$ is a weak Euclidean gradient of $h_\alpha$.}
+Fix $j$ and a test function $\varphi \in C_c^\infty(\mathbb{R}^n)$.  By
+\noderef{HermiteFunDeriv},
+\begin{equation*}
+  \partial_j h_\alpha(x) = \sqrt2\,\sqrt{\alpha_j}\,h_{\alpha-e_j}(x)
+    = \sqrt2\,\bigl(F_\alpha(x)\bigr)_j
+  \qquad (x \in \mathbb{R}^n), \tag{1}
+\end{equation*}
+and $h_\alpha$ is differentiable at every point.  By
+\noderef{HermiteFunContDiff}, $h_\alpha$ and $\partial_j h_\alpha$ are
+continuous, and $\varphi$ and $\partial_j \varphi$ are continuous with compact
+support; hence each of the three products
+$(\partial_j h_\alpha)\varphi$, $h_\alpha\,\partial_j\varphi$ and
+$h_\alpha\varphi$ is continuous with compact support, and therefore Lebesgue
+integrable on $\mathbb{R}^n$.  With $h_\alpha$ and $\varphi$ differentiable
+everywhere and these three integrability conditions in hand, the integration-by-parts
+formula on $\mathbb{R}^n$ in the direction $e_j$ applies and gives
+\[
+  \int_{\mathbb{R}^n} h_\alpha(x)\,\partial_j\varphi(x)\,dx
+    = -\int_{\mathbb{R}^n} \partial_j h_\alpha(x)\,\varphi(x)\,dx
+    = -\int_{\mathbb{R}^n} \sqrt2\,\bigl(F_\alpha(x)\bigr)_j\,\varphi(x)\,dx ,
+\]
+the last equality by $(1)$.  As $j$ and $\varphi$ were arbitrary, this is exactly
+the defining identity of \noderef{HasGaussWeakGrad} for the pair
+$(h_\alpha, \sqrt2\,F_\alpha)$.  Note that these are Lebesgue integrals, as
+\noderef{HasGaussWeakGrad} requires; no Gaussian weight enters at this step, and
+none is needed, since all three integrands have compact support.
+
+\emph{Step 3: proof of (i).}
+By Step 1 the field $F_\alpha$ determines an element of
+$L^2(\gamma_n;\mathbb{R}^n)$, which we again call $F_\alpha$; it agrees
+$\gamma_n$-almost everywhere with the function $F_\alpha$, so by
+\noderef{GaussWeakGradAECongr} the conclusion of Step 2 holds for that element as
+well.  The same applies on the other side: $h_\alpha$ as an element of
+$L^2(\gamma_n)$ via \noderef{HermiteL2} agrees $\gamma_n$-almost everywhere with
+the function $h_\alpha$ of \noderef{HermiteFun}.  Thus $\sqrt2\,F_\alpha$ is a
+weak Euclidean gradient of the $L^2(\gamma_n)$ element $h_\alpha$, and
+\noderef{GaussDWitness} applies and yields both
+\begin{equation*}
+  h_\alpha \in W^{1,2}(\gamma_n)
+  \qquad\text{and}\qquad
+  D h_\alpha = F_\alpha \ \text{ in } L^2(\gamma_n;\mathbb{R}^n). \tag{2}
+\end{equation*}
+The second equality of $(2)$ is an equality of $L^2$ elements, hence says that
+$Dh_\alpha$ agrees $\gamma_n$-almost everywhere with the function $F_\alpha$,
+which is the coordinate formula of (i).
+
+\emph{Step 4: proof of (ii).}
+Let $\alpha,\beta \in \mathbb{N}_0^n$.  The inner product of
+$L^2(\gamma_n;\mathbb{R}^n)$ pairs matching coordinates and integrates against
+$\gamma_n$, so by $(2)$ applied to $\alpha$ and to $\beta$,
+\begin{equation*}
+  \langle Dh_\alpha, Dh_\beta\rangle
+    = \sum_{j=1}^n \int_{\mathbb{R}^n}
+        \bigl(F_\alpha(x)\bigr)_j \bigl(F_\beta(x)\bigr)_j \, d\gamma_n(x)
+    = \sum_{j=1}^n \sqrt{\alpha_j}\sqrt{\beta_j}\;
+        \langle h_{\alpha-e_j}, h_{\beta-e_j}\rangle , \tag{3}
+\end{equation*}
+the interchange of the finite sum with the integral being legitimate because each
+summand is integrable: it is a product of two $L^2(\gamma_n)$ functions by
+\noderef{HermiteFunMemLp}.  By \noderef{HermiteL2Orthonormal} the inner product in
+the $j$th summand of $(3)$ equals $1$ when $\alpha - e_j = \beta - e_j$ and $0$
+otherwise.
+
+The degenerate indices must be disposed of first, because under the convention of
+\noderef{MultiIndexSum} --- the $j$th entry is left at $0$ when $\alpha_j = 0$ ---
+the decremented multi-indices can coincide even for $\alpha \neq \beta$: for
+instance $n = 2$, $j = 1$, $\alpha = (0,5)$, $\beta = (1,5)$ give
+$\alpha - e_1 = \beta - e_1 = (0,5)$.  So it is the prefactor, not the Gram entry,
+that must kill those summands.
+
+\emph{(4a) If $\alpha_j = 0$ or $\beta_j = 0$, the $j$th summand of $(3)$ is $0$.}
+Its prefactor is $\sqrt{\alpha_j}\sqrt{\beta_j}$ and one of the two factors is
+$\sqrt{0} = 0$, so the prefactor is $0$; the Gram entry is a real number, hence the
+product vanishes whatever that entry is.
+
+\emph{(4b) If $\alpha_j \geq 1$ and $\beta_j \geq 1$, then
+$\alpha - e_j = \beta - e_j$ forces $\alpha = \beta$.}  By
+\noderef{MultiIndexSum} the multi-index $\alpha - e_j$ agrees with $\alpha$ at
+every entry $i \neq j$ and has $j$th entry $\alpha_j - 1$, and likewise for
+$\beta$; the convention plays no role here, since both $j$th entries are at least
+$1$ and the decrement is therefore genuine.  So $\alpha - e_j = \beta - e_j$ gives
+$\alpha_i = \beta_i$ for every $i \neq j$ together with
+$\alpha_j - 1 = \beta_j - 1$, and the latter yields $\alpha_j = \beta_j$ because
+both $\alpha_j$ and $\beta_j$ are at least $1$.  Hence $\alpha = \beta$.
+
+Suppose now $\alpha \neq \beta$, and let $j$ be arbitrary.  If $\alpha_j = 0$ or
+$\beta_j = 0$, the $j$th summand is $0$ by (4a).  Otherwise $\alpha_j \geq 1$ and
+$\beta_j \geq 1$, and then $\alpha - e_j \neq \beta - e_j$ --- equality would force
+$\alpha = \beta$ by (4b), contradicting $\alpha \neq \beta$ --- so the Gram entry
+is $0$ and the $j$th summand is $0$ again.  Every summand of $(3)$ vanishes, so
+$\langle Dh_\alpha, Dh_\beta\rangle = 0$.
+
+Suppose instead $\alpha = \beta$.  The $j$th summand of $(3)$ is
+$\sqrt{\alpha_j}\sqrt{\alpha_j}\,\langle h_{\alpha-e_j}, h_{\alpha-e_j}\rangle$,
+and this equals $\alpha_j$: if $\alpha_j \geq 1$ the two decremented indices are
+literally the same multi-index, so the Gram entry is $1$ and
+$\sqrt{\alpha_j}\sqrt{\alpha_j} = \alpha_j$; if $\alpha_j = 0$ the summand is $0$
+by (4a) and $\alpha_j = 0$ as well.  Summing over $j$ and using
+\noderef{MultiIndexSum} gives $\sum_{j=1}^n \alpha_j = |\alpha|$.  This is (ii).
+\end{proof}

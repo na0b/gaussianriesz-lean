@@ -1,0 +1,18 @@
+\begin{definition}[The Gaussian measure $\gamma_n$]
+Fix $n \geq 1$ and work on $\mathbb{R}^n$, equipped with the Euclidean norm
+$|x| = (\sum_{j=1}^n x_j^2)^{1/2}$.  The Gaussian measure $\gamma_n$ is the Borel
+measure on $\mathbb{R}^n$ that is absolutely continuous with respect to Lebesgue
+measure with density
+\[
+  \frac{d\gamma_n}{dx}(x) = \pi^{-n/2} e^{-|x|^2}.
+\]
+Equivalently, for every Borel set $A \subseteq \mathbb{R}^n$,
+\[
+  \gamma_n(A) = \int_A \pi^{-n/2} e^{-|x|^2} \, dx .
+\]
+This is the measure denoted $\gamma$ in the reference paper, with the
+normalization $d\gamma(x) = \pi^{-n/2} e^{-|x|^2}\,dx$; its covariance is
+$\tfrac12 I$, i.e. each coordinate has variance $1/2$.  All function spaces,
+integrals and inner products in the tablet are real and taken with respect to
+$\gamma_n$ unless stated otherwise.
+\end{definition}

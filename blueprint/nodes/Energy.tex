@@ -1,0 +1,23 @@
+\begin{definition}[The fractional energy and the form domain $\mathcal{V}$]
+For $v \in L^2(\gamma_n)$ with Hermite coefficients $v_\alpha$ relative to
+\noderef{HermiteBasis}, define the fractional energy as the value in
+$[0,+\infty]$
+\[
+  \mathcal{E}(v) = \sum_{\alpha \neq 0} |\alpha|^{1/2}\, |v_\alpha|^2 ,
+\]
+with $|\alpha|$ as in \noderef{MultiIndexSum}.  All summands are nonnegative, so
+the sum is unconditionally defined in $[0,+\infty]$; it is finite exactly when
+$v$ lies in the fractional form domain
+\[
+  \mathcal{V} = \{v \in L^2(\gamma_n) : \mathcal{E}(v) < \infty\}
+    = \operatorname{Dom}(L^{1/4}) ,
+\]
+the second equality being the case $s = 1/4$ of \noderef{FracPowDomain}, since
+the multiplier there is $|\alpha|^{2\cdot(1/4)} = |\alpha|^{1/2}$.  Thus
+$\mathcal{E}(v) = \|L^{1/4}v\|_2^2$ for $v \in \mathcal{V}$, and the convention
+$\mathcal{E}(v) = +\infty$ for $v \in L^2(\gamma_n)\setminus\mathcal{V}$ is built
+into the definition, as in the reference paper.  The space $\mathcal{V}$ carries
+the Hilbert norm $\|v\|_{\mathcal{V}}^2 = \|v\|_2^2 + \mathcal{E}(v)$.  Constants
+belong to $\mathcal{V}$ and have zero energy, since the index $\alpha = 0$ is
+omitted from the sum; no mean-zero condition is imposed.
+\end{definition}

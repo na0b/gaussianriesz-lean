@@ -1,0 +1,94 @@
+\begin{lemma}[Elementary Gaussian moment bounds on $\mathbb{R}^n$]
+Fix $n \geq 1$ and work on $\mathbb{R}^n$ with Lebesgue measure.  Then all of the
+following hold.
+\begin{enumerate}
+  \item For every $b > 0$ the function $w \mapsto e^{-b|w|^2}$ is Lebesgue integrable
+    on $\mathbb{R}^n$.
+  \item For every $b > 0$,
+    \[
+      \int_{\mathbb{R}^n} e^{-b|w|^2}\,dw = \Bigl(\frac{\pi}{b}\Bigr)^{n/2}.
+    \]
+  \item For every $w \in \mathbb{R}^n$ and every coordinate $j$, $|w_j| \leq |w|$.
+  \item For every $b > 0$ and every $v \in \mathbb{R}^n$,
+    \[
+      |v|\,e^{-b|v|^2} \leq \Bigl(1 + \frac{2}{b}\Bigr)\,e^{-(b/2)|v|^2}.
+    \]
+  \item For every $b > 0$ the function $w \mapsto |w|\,e^{-b|w|^2}$ is Lebesgue
+    integrable on $\mathbb{R}^n$, and
+    \[
+      \int_{\mathbb{R}^n} |w|\,e^{-b|w|^2}\,dw
+        \leq \Bigl(1 + \frac{2}{b}\Bigr)\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2}.
+    \]
+  \item For all $\sigma > 0$ and $b' > 0$,
+    \[
+      \pi^{-n/2}\,\sigma^{-n/2}\,\Bigl(\frac{\pi}{b'}\Bigr)^{n/2}
+        = \Bigl(\frac{1}{\sigma b'}\Bigr)^{n/2}.
+    \]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Each item is proved separately; items (4) and (5) use the earlier ones, and no item
+uses any later one.
+
+\emph{(1).}  Fix $b > 0$.  The Gaussian $w \mapsto e^{-b|w|^2}$ on the $n$-dimensional
+inner product space $\mathbb{R}^n$ is integrable: this is the real part of the standard
+complex Gaussian integrability statement for $w \mapsto e^{-b|w + c|^2}$ with complex
+parameter $b$ of positive real part, specialised to $c = 0$ and to real $b > 0$.  Since
+$e^{-b|w|^2}$ is real valued, taking real parts changes nothing, and integrability of
+the complex function gives integrability of this one.
+
+\emph{(2).}  Fix $b > 0$.  The standard Gaussian integral over a real inner product
+space of finite dimension $d$ is
+$\int e^{-b|w|^2}\,dw = (\pi/b)^{d/2}$.  Here the space is $\mathbb{R}^n$, whose
+dimension is $d = n$, which gives $(\pi/b)^{n/2}$.
+
+\emph{(3).}  Fix $w$ and $j$.  Writing the Euclidean norm as
+$|w| = \bigl(\sum_i |w_i|^2\bigr)^{1/2}$, the single term $|w_j|^2$ is at most the full
+sum $\sum_i |w_i|^2$, because every term is nonnegative.  Taking square roots, which is
+monotone, gives
+\[
+  |w_j| = \bigl(|w_j|^2\bigr)^{1/2} \leq \Bigl(\sum_i |w_i|^2\Bigr)^{1/2} = |w| .
+\]
+
+\emph{(4).}  Fix $b > 0$ and $v$, and set $t = |v| \geq 0$ and
+$E = e^{-(b/2)t^2}$.  Then $E > 0$, and $E \leq 1$ because $(b/2)t^2 \geq 0$.  Also
+$e^{-bt^2} = E^2$, since $-bt^2 = -(b/2)t^2 + (-(b/2)t^2)$.  Next, from the elementary
+inequality $1 + u \leq e^u$ applied at $u = (b/2)t^2$ we get
+$(b/2)t^2 \leq e^{(b/2)t^2}$, and since $e^{(b/2)t^2}E = 1$ this yields
+\[
+  \bigl((b/2)t^2\bigr)E \leq 1 .
+\]
+Multiplying by $2/b > 0$ and simplifying gives $t^2 E \leq 2/b$.  Now estimate, using
+$t \leq 1 + t^2$ (equivalently $(t-1)^2 \geq 0$ together with $t \ge 0$) and $E^2 > 0$:
+\[
+  t\,e^{-bt^2} = t\,E^2 \leq (1 + t^2)E^2 = E^2 + (t^2E)E
+    \leq 1 \cdot E + \frac{2}{b}\,E = \Bigl(1 + \frac{2}{b}\Bigr)E ,
+\]
+where the last inequality used $E \leq 1$ on the first summand and $t^2E \leq 2/b$ on
+the second.  This is the claim, since $E = e^{-(b/2)|v|^2}$.
+
+\emph{(5).}  Fix $b > 0$ and put $b/2 > 0$.  By (1) the function
+$w \mapsto e^{-(b/2)|w|^2}$ is integrable, hence so is its constant multiple
+$w \mapsto (1 + 2/b)e^{-(b/2)|w|^2}$; call that majorant $M$.  The function
+$w \mapsto |w|e^{-b|w|^2}$ is continuous, hence strongly measurable, and by (4) it is
+pointwise dominated in absolute value by $M$ (the function is nonnegative, so its
+absolute value is itself).  Domination by an integrable majorant gives integrability,
+which is the first half of the claim.  For the second half, monotonicity of the integral
+applied to the pointwise bound of (4), followed by (2) at rate $b/2$, gives
+\[
+  \int |w|e^{-b|w|^2}\,dw
+    \leq \int \Bigl(1 + \frac{2}{b}\Bigr)e^{-(b/2)|w|^2}\,dw
+    = \Bigl(1 + \frac{2}{b}\Bigr)\int e^{-(b/2)|w|^2}\,dw
+    = \Bigl(1 + \frac{2}{b}\Bigr)\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2} .
+\]
+
+\emph{(6).}  Fix $\sigma, b' > 0$.  All bases below are positive, so the real power
+laws apply.  Rewriting $-n/2 = -(n/2)$ and using
+$c^{-n/2} = (c^{n/2})^{-1}$ for $c > 0$, together with
+$(\pi/b')^{n/2} = \pi^{n/2}/(b')^{n/2}$ and
+$(1/(\sigma b'))^{n/2} = \bigl((\sigma b')^{n/2}\bigr)^{-1}
+  = \bigl(\sigma^{n/2}(b')^{n/2}\bigr)^{-1}$, both sides become quotients of products
+of the positive quantities $\pi^{n/2}$, $\sigma^{n/2}$ and $(b')^{n/2}$.  The left side
+is $\pi^{n/2}/\bigl(\pi^{n/2}\sigma^{n/2}(b')^{n/2}\bigr)$ and the right side is
+$1/\bigl(\sigma^{n/2}(b')^{n/2}\bigr)$; these agree because $\pi^{n/2} \neq 0$.
+\end{proof}

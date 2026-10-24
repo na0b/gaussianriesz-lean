@@ -1,0 +1,138 @@
+\begin{lemma}[The per-time-slice bound for the truncated Mehler gradient kernel]
+Fix $n \geq 1$.  Let $j$ be a coordinate, $x \in \mathbb{R}^n$, let
+$\varepsilon > 0$ and $s > 0$, and write
+\[
+  r = e^{-s} \in (0,1) , \qquad \sigma = 1 - e^{-2s} \in (0,1] ,
+  \qquad \Omega_\varepsilon = \{y \in \mathbb{R}^n : \varepsilon < |x-y|\} .
+\]
+Let $D : \mathbb{R}^n \to \mathbb{R}$ be the slice
+\[
+  D(y) = \frac{\sqrt2\,r\,(y_j - r x_j)}{\sigma}\,
+    \pi^{-n/2}\sigma^{-n/2}
+    \exp\Bigl(-\frac{|r x - y|^2}{\sigma}\Bigr) ,
+\]
+written out as the hypothesis of the lemma rather than abbreviated, so that the
+statement applies to any family presented in that form.  Then both of the
+following hold.
+\begin{enumerate}
+  \item If $|x - rx| \leq \varepsilon/2$, then
+    \[
+      \int^*_{\Omega_\varepsilon}\bigl|D(y)\bigr|\,dy
+        \leq \frac{40\sqrt2\cdot4^{n/2}}{\varepsilon^2} .
+    \]
+  \item Without any hypothesis on $|x-rx|$,
+    \[
+      \int^*_{\Omega_\varepsilon}\bigl|D(y)\bigr|\,dy
+        \leq \frac{3\sqrt2\cdot2^{n/2}\,e^{-s}}{\sigma} .
+    \]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Throughout $b, b' > 0$ denote arbitrary positive rates and $|v|$ is the Euclidean
+norm on $\mathbb{R}^n$.  Note $r > 0$ and $\sigma > 0$, because $-s < 0$ and
+$-2s < 0$.
+
+\emph{Step 0: the inputs.}
+Four facts come from \noderef{GaussEuclideanMomentBounds}: for every $\beta > 0$
+the function $w \mapsto e^{-\beta|w|^2}$ is integrable with
+\begin{equation*}
+  \int_{\mathbb{R}^n} e^{-\beta|w|^2}\,dw = (\pi/\beta)^{n/2} ; \tag{1}
+\end{equation*}
+for every $\beta > 0$ and every $w$,
+\begin{equation*}
+  |w|\,e^{-\beta|w|^2} \leq \Bigl(1+\frac2\beta\Bigr)e^{-(\beta/2)|w|^2} ; \tag{2}
+\end{equation*}
+the function $w \mapsto |w|e^{-\beta|w|^2}$ is integrable with
+\begin{equation*}
+  \int_{\mathbb{R}^n}|w|\,e^{-\beta|w|^2}\,dw
+    \leq \Bigl(1+\frac2\beta\Bigr)\Bigl(\frac{\pi}{\beta/2}\Bigr)^{n/2} ; \tag{3}
+\end{equation*}
+and, for all $\sigma', \beta > 0$,
+\begin{equation*}
+  \pi^{-n/2}(\sigma')^{-n/2}(\pi/\beta)^{n/2}
+    = \bigl(1/(\sigma'\beta)\bigr)^{n/2} ; \tag{4}
+\end{equation*}
+together with the coordinate bound $|w_i| \leq |w|$ for every $w$ and every
+coordinate $i$.  One further fact we prove here: for every $t > 0$,
+\begin{equation*}
+  e^{-t} \leq \frac1t . \tag{5}
+\end{equation*}
+Indeed $1 + t \leq e^t$ gives $t \leq e^t$, so
+$t\,e^{-t} \leq e^t e^{-t} = 1$, and dividing by $t > 0$ gives $(5)$.
+
+\emph{Step 1: the translation and the pointwise majorant.}
+Put
+\[
+  d = x - rx , \qquad b = \frac1\sigma > 0 ,
+  \qquad c = \frac{\sqrt2\,r}{\sigma}\,\pi^{-n/2}\sigma^{-n/2} > 0 .
+\]
+The translation $T(w) = rx+w$ is measure preserving on $\mathbb{R}^n$ and is a
+measurable embedding, and
+\[
+  T^{-1}(\Omega_\varepsilon)
+    = \{w : \varepsilon < |x-(rx+w)|\} = \{w : \varepsilon < |d-w|\} =: R ,
+\]
+because $x - (rx+w) = d-w$.  Hence for every nonnegative extended-real $G$,
+\begin{equation*}
+  \int^*_{R} G(rx+w)\,dw = \int^*_{\Omega_\varepsilon} G(y)\,dy . \tag{6}
+\end{equation*}
+Moreover, at $y = rx+w$ we have $y_j - rx_j = w_j$ and $|rx-y| = |{-w}| = |w|$,
+so $D(rx+w) = c\,w_j\,e^{-b|w|^2}$, and since $|w_j| \leq |w|$,
+\begin{equation*}
+  \bigl|D(rx+w)\bigr| \leq c\,|w|\,e^{-b|w|^2}
+  \qquad (w \in \mathbb{R}^n) . \tag{7}
+\end{equation*}
+
+\emph{Step 2: the small-time bound, clause (1).}
+Suppose $|d| \leq \varepsilon/2$.  If $w \in R$ then
+$\varepsilon < |d-w| \leq |d| + |w|$, so $|w| > \varepsilon/2$.  For such $w$,
+splitting $e^{-b|w|^2} = e^{-(b/2)|w|^2}e^{-(b/2)|w|^2}$, bounding the first
+factor together with $|w|$ by $(2)$ at the rate $b/2$, and the remaining factor
+by $e^{-(b/2)(\varepsilon/2)^2} = e^{-b\varepsilon^2/8}$, we get
+\[
+  c\,|w|\,e^{-b|w|^2} \leq C\,e^{-(b/4)|w|^2} ,
+  \qquad C = c\,e^{-b\varepsilon^2/8}\Bigl(1+\frac4b\Bigr) \geq 0 .
+\]
+Hence by $(7)$, monotonicity of the upper integral in the integrand and in the
+region, $(6)$, and then $(1)$ at the rate $b/4$,
+\[
+  \int^*_{\Omega_\varepsilon}\bigl|D(y)\bigr|\,dy
+    = \int^*_{R}\bigl|D(rx+w)\bigr|\,dw
+    \leq \int_{\mathbb{R}^n} C\,e^{-(b/4)|w|^2}\,dw
+    = C\Bigl(\frac{\pi}{b/4}\Bigr)^{n/2} .
+\]
+By $(4)$ with $\beta = b/4 = 1/(4\sigma)$ the product
+$\pi^{-n/2}\sigma^{-n/2}(\pi/(b/4))^{n/2}$ is $4^{n/2}$, so
+\[
+  C\Bigl(\frac{\pi}{b/4}\Bigr)^{n/2}
+    = \frac{\sqrt2\,r}{\sigma}\,4^{n/2}\,e^{-\varepsilon^2/(8\sigma)}(1+4\sigma) ,
+\]
+using $4/b = 4\sigma$ and $b\varepsilon^2/8 = \varepsilon^2/(8\sigma)$.  Finally
+$(5)$ at $t = \varepsilon^2/(8\sigma) > 0$ gives
+$e^{-\varepsilon^2/(8\sigma)} \leq 8\sigma/\varepsilon^2$, which cancels the one
+power of $\sigma^{-1}$, and $r < 1$, $\sigma \leq 1$ give $1+4\sigma \leq 5$;
+therefore
+\[
+  \int^*_{\Omega_\varepsilon}\bigl|D(y)\bigr|\,dy
+    \leq \frac{40\sqrt2\cdot4^{n/2}}{\varepsilon^2} ,
+\]
+which is clause (1).  This is the paper's ``exponential decay in
+$\varepsilon^2/\sigma$ dominates the powers of $\sigma^{-1}$'', with the single
+power $\sigma^{-1}$ named and cancelled.
+
+\emph{Step 3: the bound valid at every time, clause (2).}
+Without any hypothesis on $|d|$, discard the region: by $(7)$, $(6)$, $(3)$ at
+the rate $b$, and $(4)$ with $\beta = b/2 = 1/(2\sigma)$,
+\[
+  \int^*_{\Omega_\varepsilon}\bigl|D(y)\bigr|\,dy
+    \leq c\int_{\mathbb{R}^n}|w|e^{-b|w|^2}\,dw
+    \leq c\Bigl(1+\frac2b\Bigr)\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2}
+    = \frac{\sqrt2\,r}{\sigma}\,2^{n/2}(1+2\sigma) ,
+\]
+and $\sigma \leq 1$ gives $1+2\sigma \leq 3$, so
+\[
+  \int^*_{\Omega_\varepsilon}\bigl|D(y)\bigr|\,dy
+    \leq \frac{3\sqrt2\cdot2^{n/2}\,e^{-s}}{\sigma} ,
+\]
+which is clause (2).
+\end{proof}

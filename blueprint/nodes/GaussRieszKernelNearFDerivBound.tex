@@ -1,0 +1,161 @@
+\begin{lemma}[Near-diagonal derivative bound for $K_{\gamma,j}$ by differentiation under the integral sign]
+Fix $n \geq 1$, a coordinate $j$, a radius $R > 0$, and set $M = R + 3$.  Write
+$c_n = \sqrt2\,\pi^{-(n+1)/2}$ and, for $w,y \in \mathbb{R}^n$ and $r \in (0,1)$,
+\[
+  \Phi_{w,y}(r) = \frac{y_j - rw_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+    \exp\Bigl(-\frac{|rw-y|^2}{1-r^2}\Bigr) ,
+\]
+so that $K_{\gamma,j}(w,y) = c_n\int_0^1\Phi_{w,y}(r)\,dr$ as in
+\noderef{GaussRieszKernel}.  Then there is a constant $C > 0$, depending only on
+$n$ and $M$, with the following property.  Let $x,y \in \mathbb{R}^n$ satisfy
+$|x| \leq R+1$, $|y| \leq M$ and $0 < |x-y| \leq 2$, and suppose
+$r \mapsto \Phi_{x,y}(r)$ is integrable on $(0,1)$.  Then there is a continuous
+linear functional $g$ on $\mathbb{R}^n$ such that $w \mapsto K_{\gamma,j}(w,y)$
+is Fr\'echet differentiable at $x$ with derivative $g$, and
+\[
+  \|g\| \leq C\,|x-y|^{-(n+1)} .
+\]
+\end{lemma}
+\begin{proof}
+Throughout $\tau = 1-r$, so $r \in (0,1)$ corresponds to $\tau \in (0,1)$, and the
+substitution $r \mapsto 1-r$ preserves Lebesgue measure on $\mathbb{R}$, being a
+reflection followed by a translation.  Note $M = R+3 \geq 3$ and $M > 0$.
+
+\emph{Step 1: the splitting identity and the elementary $\tau$-bounds.}
+For all $w,y \in \mathbb{R}^n$ and $r \in (0,1)$,
+\begin{equation*}
+  \frac{|rw-y|^2}{1-r^2} = \bigl(|y|^2-|w|^2\bigr) + \frac{|w-ry|^2}{1-r^2} ,
+  \tag{1}
+\end{equation*}
+since after multiplying by $1-r^2 > 0$ both
+$|rw-y|^2 - (1-r^2)(|y|^2-|w|^2)$ and $|w-ry|^2$ expand to
+$|w|^2 - 2r\langle w,y\rangle + r^2|y|^2$.  Hence, whenever $|w| \leq M$,
+\begin{equation*}
+  \exp\Bigl(-\frac{|rw-y|^2}{1-r^2}\Bigr)
+    = e^{|w|^2}e^{-|y|^2}\exp\Bigl(-\frac{|w-ry|^2}{1-r^2}\Bigr)
+    \leq e^{M^2}\exp\Bigl(-\frac{|w-ry|^2}{1-r^2}\Bigr) , \tag{2}
+\end{equation*}
+using $e^{-|y|^2} \leq 1$.  Also $1-r^2 = \tau(1+r) \in [\tau,2\tau]$, and
+$\log r = \log(1-\tau) \leq -\tau$ gives $-\log r \geq \tau$, so
+\begin{equation*}
+  \frac{1}{(1-r^2)^{n/2+1}\sqrt{-\log r}} \leq \tau^{-n/2-3/2} ,
+  \qquad
+  \exp\Bigl(-\frac{|w-ry|^2}{1-r^2}\Bigr)
+    \leq \exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr) . \tag{3}
+\end{equation*}
+We use two integral facts, both supplied by \noderef{TauPowerIntegralBounds}: for
+$a > 1$ there is $K_a > 0$ with
+\begin{equation*}
+  \int_0^\infty \tau^{-a}e^{-b/\tau}\,d\tau \leq K_a\,b^{1-a} < \infty
+  \qquad (b > 0) , \tag{4}
+\end{equation*}
+and for $0 < a \leq 1$ and real $p \leq q$ with $q > 1$,
+\begin{equation*}
+  \int_a^1\tau^{-p}\,d\tau \leq \int_a^1\tau^{-q}\,d\tau
+    = \frac{a^{1-q}-1}{q-1} \leq \frac{a^{1-q}}{q-1} , \tag{5}
+\end{equation*}
+the first inequality because $\tau^{-p} \leq \tau^{-q}$ on $(0,1]$.
+
+\emph{Step 2: the pointwise gradient bound.}
+Fix $y$ with $|y| \leq M$, let $w$ satisfy $|w| \leq M$, and put $\rho = |w-y|$.
+Since $y_j - rw_j = (y_j-w_j) + \tau w_j$ and $y - rw = (y-w) + \tau w$,
+\begin{equation*}
+  |y_j - rw_j| \leq \rho + \tau M, \qquad |rw - y| \leq \rho + \tau M . \tag{6}
+\end{equation*}
+For each fixed $r \in (0,1)$ the map $w \mapsto \Phi_{w,y}(r)$ is smooth on
+$\mathbb{R}^n$: it is a product of a polynomial in $w$ with the exponential of a
+polynomial in $w$, divided by the positive constants $(1-r^2)^{n/2+1}$ and
+$\sqrt{-\log r}$; this per-slice smoothness, together with the continuity in $r$
+used below, is the content of \noderef{GaussRieszKernelNearSliceBounds}.
+Differentiating, with $e_j$ the $j$th standard basis vector,
+\[
+  \nabla_w\Phi_{w,y}(r)
+    = \frac{\exp\bigl(-|rw-y|^2/(1-r^2)\bigr)}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \Bigl[\,-r\,e_j - (y_j - rw_j)\,\frac{2r(rw-y)}{1-r^2}\,\Bigr] ,
+\]
+because $\nabla_w(y_j-rw_j) = -re_j$ and
+$\nabla_w\bigl(-|rw-y|^2/(1-r^2)\bigr) = -2r(rw-y)/(1-r^2)$.  Using
+$r \leq 1$, $1-r^2 \geq \tau$, and then $(2)$, $(3)$ and $(6)$,
+\begin{equation*}
+  |\nabla_w\Phi_{w,y}(r)|
+    \leq e^{M^2}\,\tau^{-n/2-3/2}\Bigl(1 + \frac{2(\rho+\tau M)^2}{\tau}\Bigr)
+      \exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr) . \tag{7}
+\end{equation*}
+
+\emph{Step 3: a majorant uniform on a ball around $x$.}
+Let $x,y$ be as in the statement and put $d = |x-y| \in (0,2]$.  Then
+$|x| \leq R+1 \leq M$, and $U = B(x,d/4)$ is an open convex set.  For $w \in U$
+we have $|w| \leq |x| + \tfrac12 \leq R + \tfrac32 \leq M$, and
+$|w-y| \geq d - d/4 = \tfrac34 d > 0$ while $|w-y| \leq \tfrac54 d$.  Also
+$w - ry = (w-y) + \tau y$ gives
+$|w-ry| \geq |w-y| - \tau|y| \geq \tfrac34 d - \tau M$.  Applying $(7)$ at $w$,
+whose $\rho = |w-y|$ is at most $\tfrac54 d$, and noting that the right-hand side
+of $(7)$ is increasing in $\rho$ and decreasing in $|w-ry|$,
+\noderef{GaussRieszKernelNearBallUniformTauMajorant} removes the $w$-dependence:
+for all $w \in U$ and all $\tau \in (0,1)$
+\[
+  |\nabla_w\Phi_{w,y}(r)| \leq H(\tau)
+    := e^{M^2}\tau^{-n/2-3/2}
+       \Bigl(1 + \frac{2(\tfrac54 d+\tau M)^2}{\tau}\Bigr)
+       \exp\Bigl(-\frac{\bigl((\tfrac34 d - \tau M)^+\bigr)^2}{2\tau}\Bigr) ,
+\]
+where $s^+ = \max(s,0)$; the right-hand side no longer depends on $w$.  Put
+$\tau'' = 3d/(8M)$, which satisfies $\tau'' \leq \tfrac14 < 1$ because $d \leq 2$
+and $M \geq 3$.
+
+By that node, for $0 < \tau \leq \tau''$ one has $\tau M \leq \tfrac38 d$, hence
+$\tfrac34 d - \tau M \geq \tfrac38 d$ and $\tfrac54 d + \tau M \leq 2d$, so
+\[
+  H(\tau) \leq e^{M^2}\Bigl(\tau^{-n/2-3/2} + 8d^2\tau^{-n/2-5/2}\Bigr)
+    e^{-9d^2/(128\tau)} ,
+\]
+and $(4)$ with $b = 9d^2/128$, applied at $a = \tfrac{n+3}{2}$ and at
+$a = \tfrac{n+5}{2}$ (both $>1$), bounds $\int_{\{0<\tau\leq\tau''\}}H$ by a
+constant depending only on $n$ and $M$ times $d^{-n-1}$: the two values of
+$b^{1-a}$ are supplied by clauses (1) and (2) of
+\noderef{RpowPowerReductionsToNegPower}.
+
+For $\tau'' < \tau < 1$ the same node discards the exponential and uses
+$(\tfrac54 d+\tau M)^2 \leq 4d^2 + 2\tau^2M^2$, so
+$H(\tau) \leq e^{M^2}\bigl(\tau^{-n/2-3/2} + 8d^2\tau^{-n/2-5/2}
+ + 4M^2\tau^{-n/2-1/2}\bigr)$.  By $(5)$, with $q = \tfrac{n+3}{2}$,
+$q = \tfrac{n+5}{2}$ and $q = \tfrac{n+2}{2}$ respectively (each $>1$, and in the
+third case $p = \tfrac{n+1}{2} \leq q$),
+\[
+  \int_{\tau''}^1 H
+    \leq e^{M^2}\Bigl[\tfrac{2}{n+1}(\tau'')^{-(n+1)/2}
+      + \tfrac{16d^2}{n+3}(\tau'')^{-(n+3)/2}
+      + \tfrac{8M^2}{n}(\tau'')^{-n/2}\Bigr] .
+\]
+Substituting $\tau'' = 3d/(8M)$ and using $0 < d \leq 2$, each of the three terms
+reduces to a constant multiple, depending only on $n$ and $M$, of $d^{-n-1}$: these
+are clauses (3), (4) and (5) of \noderef{RpowPowerReductionsToNegPower}, one per
+power of $\tau''$, each absorbing it into $d^{-(n+1)}$ at the cost of an explicit
+constant.
+Altogether there is $\kappa(n,M) > 0$ with
+\begin{equation*}
+  \int_0^1 H(\tau)\,d\tau \leq \kappa(n,M)\,d^{-n-1} < \infty . \tag{8}
+\end{equation*}
+
+\emph{Step 4: differentiation under the integral sign.}
+Consider $F(w,r) = \Phi_{w,y}(r)$ on $U\times(0,1)$.  Then: (i) for each
+$r \in (0,1)$, $F(\cdot,r)$ is differentiable on $U$, by Step 2; (ii) for each
+$w \in U$, both $F(w,\cdot)$ and $\nabla_wF(w,\cdot)$ are measurable on $(0,1)$,
+being continuous there, and $F(x,\cdot)$ is integrable on $(0,1)$ by the
+hypothesis of the lemma; (iii) $|\nabla_wF(w,r)| \leq H(\tau)$ for all $w \in U$
+and $r \in (0,1)$, with $H$ integrable on $(0,1)$ by $(8)$.  By the classical
+theorem on differentiation under the integral sign --- for a convex open
+parameter set $U$, hypotheses (i)--(iii) imply that
+$w \mapsto \int_0^1F(w,r)\,dr$ is differentiable on $U$ with derivative
+$h \mapsto \int_0^1\nabla_wF(w,r)\cdot h\,dr$ --- the map
+$w \mapsto \int_0^1\Phi_{w,y}(r)\,dr$ is differentiable at $x$, hence so is
+$w \mapsto K_{\gamma,j}(w,y) = c_n\int_0^1\Phi_{w,y}(r)\,dr$, and its derivative
+$g$ at $x$ is the continuous linear functional
+$h \mapsto c_n\int_0^1\nabla_x\Phi_{x,y}(r)\cdot h\,dr$.  Its operator norm is
+$c_n\bigl|\int_0^1\nabla_x\Phi_{x,y}(r)\,dr\bigr|$, which by $(8)$ is at most
+\[
+  c_n\int_0^1|\nabla_x\Phi_{x,y}(r)|\,dr \leq c_n\,\kappa(n,M)\,d^{-n-1} .
+\]
+So $C := c_n\,\kappa(n,M)$, which depends only on $n$ and $M$, has the required
+property.
+\end{proof}

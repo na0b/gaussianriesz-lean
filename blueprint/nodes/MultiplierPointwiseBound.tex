@@ -1,0 +1,76 @@
+\begin{lemma}[Pointwise Lewy--Stampacchia bounds for the representing function]
+Let $F \in L^2(\gamma_n)$ be nonnegative $\gamma_n$-a.e., let $a > 0$, let
+$u \in \mathcal{K}$ minimize the functional $J$ of \noderef{ObstacleFunctional}
+over the cone $\mathcal{K}$ of \noderef{ObstacleCone}, and let
+$\eta_2 \in L^2(\gamma_n)$ satisfy
+$\langle\eta,\varphi\rangle = \int \eta_2 \varphi\, d\gamma_n$ for every
+$\varphi \in \mathcal{V}$, where $\eta$ is the multiplier of
+\noderef{ObstacleMultiplier}.  Then
+\[
+  0 \leq \eta_2 \leq (a - F)^+ \qquad \gamma_n\text{-a.e.}
+\]
+In particular $0 \leq \eta_2 \leq a$ a.e., since $F \geq 0$ a.e.\ and $a > 0$.
+\end{lemma}
+\begin{proof}
+Write $k = (a-F)^+$.  Then $k \in L^2(\gamma_n)$, since $0 \leq k \leq a$
+$\gamma_n$-a.e.\ (using $F \geq 0$ a.e.\ and $a > 0$) and $\gamma_n$ is a
+probability measure (\noderef{GaussIsProb}).
+
+\emph{Step 1: smoothed indicators are admissible test functions.}
+Let $A \subseteq \mathbb{R}^n$ be an arbitrary Borel set.  Its indicator
+$\mathbf{1}_A$ lies in $L^2(\gamma_n)$, because
+$\int \mathbf{1}_A^2 \, d\gamma_n = \gamma_n(A) \leq 1$ by
+\noderef{GaussIsProb}.  For $s > 0$ put $\varphi_s = P_s \mathbf{1}_A$ with $P_s$
+the semigroup of \noderef{OUSemigroup}.  By part (1) of
+\noderef{SemigroupRegularity}, $\mathcal{E}(\varphi_s) < \infty$, i.e.
+$\varphi_s \in \mathcal{V}$.  By \noderef{MehlerFormula}, applied with this
+$s > 0$ and the nonnegative function $\mathbf{1}_A$, we get
+$\varphi_s \geq 0$ $\gamma_n$-a.e.  Hence $\varphi_s \in \mathcal{K}$ by
+\noderef{ObstacleCone}.
+
+\emph{Step 2: two inequalities for each $s > 0$.}
+Apply \noderef{MultiplierPositive} with the test function
+$\varphi_s \in \mathcal{K}$: it gives $\langle\eta,\varphi_s\rangle \geq 0$.
+Apply \noderef{LewyStampacchia} with the same test function: it gives
+$\langle\eta,\varphi_s\rangle \leq \int k\,\varphi_s\, d\gamma_n$.  Rewriting the
+middle quantity by the representation hypothesis (legitimate since
+$\varphi_s \in \mathcal{V}$),
+\begin{equation*}
+  0 \;\leq\; \int \eta_2\, \varphi_s\, d\gamma_n
+    \;\leq\; \int k\, \varphi_s \, d\gamma_n
+  \qquad\text{for every } s > 0 . \tag{1}
+\end{equation*}
+
+\emph{Step 3: letting $s \downarrow 0$.}
+By part (2) of \noderef{SemigroupRegularity},
+$\varphi_s = P_s\mathbf{1}_A \to \mathbf{1}_A$ in $L^2(\gamma_n)$ as
+$s \downarrow 0$.  Since $\eta_2, k \in L^2(\gamma_n)$, the two maps
+$\varphi \mapsto \int \eta_2\varphi \, d\gamma_n$ and
+$\varphi \mapsto \int k \varphi\, d\gamma_n$ are continuous linear functionals on
+$L^2(\gamma_n)$ by Cauchy--Schwarz.  Passing to the limit in (1) therefore gives
+\begin{equation*}
+  0 \;\leq\; \int_A \eta_2 \, d\gamma_n \;\leq\; \int_A k \, d\gamma_n . \tag{2}
+\end{equation*}
+Both integrals are finite, since $\eta_2, k \in L^2(\gamma_n) \subseteq L^1(\gamma_n)$
+by \noderef{L2IntoL1}.
+
+\emph{Step 4: from arbitrary sets to pointwise bounds.}
+The Borel set $A$ in (2) was arbitrary.
+
+Take $A = \{\eta_2 < 0\}$.  The left inequality of (2) gives
+$\int_A \eta_2 \, d\gamma_n \geq 0$.  But $\eta_2 < 0$ everywhere on $A$, so if
+$\gamma_n(A) > 0$ then $\int_A \eta_2\,d\gamma_n < 0$: indeed
+$A = \bigcup_{j\geq1}\{\eta_2 < -1/j\}$, so some $A_j = \{\eta_2 < -1/j\}$ has
+$\gamma_n(A_j) > 0$, and then
+$\int_A \eta_2 d\gamma_n \leq \int_{A_j}\eta_2 d\gamma_n \leq -\gamma_n(A_j)/j < 0$
+(the first step because $\eta_2 \leq 0$ on $A \setminus A_j$).  This contradiction
+forces $\gamma_n(A) = 0$, i.e.\ $\eta_2 \geq 0$ $\gamma_n$-a.e.
+
+Take $A' = \{\eta_2 - k > 0\}$.  The right inequality of (2) gives
+$\int_{A'} (\eta_2 - k)\, d\gamma_n \leq 0$, while $\eta_2 - k > 0$ everywhere on
+$A'$.  By the same decomposition argument, $\gamma_n(A') = 0$, i.e.
+$\eta_2 \leq k$ $\gamma_n$-a.e.
+
+Thus $0 \leq \eta_2 \leq k = (a-F)^+$ $\gamma_n$-a.e., and
+$k \leq a$ a.e.\ as noted at the outset.
+\end{proof}

@@ -1,0 +1,415 @@
+\begin{lemma}[Principal-value cancellation of the Gaussian Riesz kernel on constants]
+Fix $n \geq 1$, $j \in \{1,\ldots,n\}$ and $x \in \mathbb{R}^n$.  For $s > 0$ write
+\[
+  r = e^{-s} \in (0,1), \qquad \sigma = 1 - e^{-2s} = 1 - r^2 \in (0,1),
+  \qquad
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}\exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr) ,
+\]
+and let
+\[
+  D_j^x p_s(x,y) = \sqrt2\,r\,\frac{y_j - r x_j}{\sigma}\,p_s(x,y)
+\]
+be the energy-normalized $x$-derivative of the Lebesgue kernel, as evaluated in
+\noderef{MehlerKernelXDerivative} (the displayed right-hand side is the
+closed-form expression that node proves $2^{-1/2}\partial_{x_j}p_s(x,y)$ equals,
+and it is that explicit expression, not a derivative, that occurs below).  Let
+$K_{\gamma,j}$ be the normalized Gaussian Riesz kernel of
+\noderef{GaussRieszKernel}.  Then:
+\begin{enumerate}
+\item for every $s > 0$ the function $y \mapsto D_j^xp_s(x,y)$ is Lebesgue
+integrable on $\mathbb{R}^n$ and
+\[
+  \int_{\mathbb{R}^n} D_j^xp_s(x,y)\,dy = 0 ;
+\]
+\item for every $\varepsilon > 0$ the function $y \mapsto K_{\gamma,j}(x,y)$ is
+Lebesgue integrable on the exterior region $\{y : |x-y| > \varepsilon\}$; and
+\item
+\[
+  \lim_{\varepsilon\downarrow0}
+    \int_{|x-y|>\varepsilon} K_{\gamma,j}(x,y)\,dy = 0 ,
+\]
+the limit being taken along $\varepsilon \to 0$ with $\varepsilon > 0$.
+\end{enumerate}
+
+Clause (3) is the reference paper's appendix display asserting that the
+truncated kernel integrals of the constant function $1$ tend to zero, i.e.\ that
+no diagonal multiplication term is left undetermined by the principal-value
+realization; clauses (1) and (2) are the two well-definedness facts the
+appendix establishes on the way, and both are used again downstream, clause (1)
+in the subtracted-input step and clause (2) to know that the truncated integrals
+of the appendix's final splitting are genuine Lebesgue integrals.  Every
+constant occurring in the proof is allowed to depend on $n$, on $j$ and on $x$;
+as the appendix header instructs, these constants serve only to identify two
+realizations of one operator and no claim of uniformity in $n$ is made or used.
+\end{lemma}
+\begin{proof}
+Throughout, $\lambda$ denotes Lebesgue measure on $\mathbb{R}^n$ and $n \geq 1$,
+$j$ and $x$ are fixed.  Fix also, for the whole proof, the abbreviations: for
+$s > 0$,
+\[
+  r = e^{-s} \in (0,1),\quad \sigma = 1-r^2 \in (0,1),\quad d = (1-r)x,
+\]
+and, for $z \in \mathbb{R}^n$,
+\[
+  q_\sigma(z) = (\pi\sigma)^{-n/2}e^{-|z|^2/\sigma},
+  \qquad
+  V_{j,\sigma}(z) = \frac{z_j}{\sigma}\,q_\sigma(z) .
+\]
+These are the appendix's letters; they are local notation for this proof and not
+new objects.  Note $\sigma = 1-e^{-2s}$ because $r^2 = e^{-2s}$, and that
+$0 < r < 1$ and $0 < \sigma < 1$ because $s > 0$.
+
+\emph{Step 0: the kernel derivative in the appendix's letters.}
+For $y \in \mathbb{R}^n$ put $z = y - x$.  Then
+\[
+  z + d = (y-x) + (1-r)x = y - rx ,
+\]
+so $|z+d| = |y-rx| = |rx-y|$ and therefore
+$q_\sigma(z+d) = (\pi\sigma)^{-n/2}e^{-|rx-y|^2/\sigma} = p_s(x,y)$, while
+$(z+d)_j = y_j - rx_j$.  Consequently
+\begin{equation*}
+  D_j^xp_s(x,y)
+    = \sqrt2\,r\,\frac{(z+d)_j}{\sigma}\,q_\sigma(z+d)
+    = \sqrt2\,r\,V_{j,\sigma}(z+d),
+  \qquad z = y-x . \tag{0}
+\end{equation*}
+In particular $y \mapsto D_j^xp_s(x,y)$ is continuous, hence Borel measurable.
+
+\emph{Step 1: Gaussian scaling identities.}
+For $c > 0$ the dilation $w \mapsto cw$ of $\mathbb{R}^n$ multiplies Lebesgue
+measure by $c^n$, $\lambda(cB) = c^n\lambda(B)$ for Borel $B$; hence for every
+Borel $h : \mathbb{R}^n \to [0,+\infty]$,
+\begin{equation*}
+  \int_{\mathbb{R}^n} h(z)\,dz = c^n\int_{\mathbb{R}^n} h(cw)\,dw . \tag{1}
+\end{equation*}
+By \noderef{GaussMeasure} the measure $\gamma_n$ is Lebesgue measure with
+density $\pi^{-n/2}e^{-|w|^2}$, and by \noderef{GaussIsProb} it is a probability
+measure; hence
+\begin{equation*}
+  \int_{\mathbb{R}^n} \pi^{-n/2}e^{-|w|^2}\,dw = 1 . \tag{2}
+\end{equation*}
+Put
+\[
+  a_n = \int_{\mathbb{R}^n} |w_j|\,d\gamma_n(w),
+  \qquad
+  b_n = \int_{\mathbb{R}^n} |w_j|\,|w|\,d\gamma_n(w) .
+\]
+Both are finite: $|w_j| \leq |w| \leq 1 + |w|^2$ and $|w_j||w| \leq |w|^2$, and
+$1+|w|^2$ and $|w|^2$ are polynomials in the coordinates of $w$, so finiteness
+follows from the Gaussian exponential moments item of the shared context (with
+$t = 0$) together with \noderef{GaussMeasure}.
+
+Apply $(1)$ with $c = \sqrt\sigma$ and the three choices
+$h = q_\sigma$, $h = |z_j|q_\sigma$ and $h = |z_j|\,|z|\,q_\sigma$, using
+$q_\sigma(\sqrt\sigma w) = (\pi\sigma)^{-n/2}e^{-|w|^2}$,
+$|(\sqrt\sigma w)_j| = \sqrt\sigma|w_j|$ and $|\sqrt\sigma w| = \sqrt\sigma|w|$,
+and then $(2)$:
+\begin{align}
+  \int_{\mathbb{R}^n} q_\sigma(z)\,dz &= \sigma^{n/2}(\pi\sigma)^{-n/2}\!\!
+     \int_{\mathbb{R}^n}\!\! e^{-|w|^2}dw = 1 , \tag{3a}\\
+  \int_{\mathbb{R}^n} |z_j|\,q_\sigma(z)\,dz &= \sqrt\sigma\,a_n , \tag{3b}\\
+  \int_{\mathbb{R}^n} |z_j|\,|z|\,q_\sigma(z)\,dz &= \sigma\,b_n . \tag{3c}
+\end{align}
+From $(3b)$,
+\begin{equation*}
+  \int_{\mathbb{R}^n}|V_{j,\sigma}(z)|\,dz
+    = \frac1\sigma\int_{\mathbb{R}^n}|z_j|q_\sigma(z)\,dz
+    = \frac{a_n}{\sqrt\sigma} < \infty , \tag{4}
+\end{equation*}
+so $V_{j,\sigma}$ is Lebesgue integrable.  By $(0)$ and the translation
+invariance of Lebesgue measure (shared context), applied first to $y = x+z$ and
+then to $z \mapsto z+d$,
+\begin{equation*}
+  \int_{\mathbb{R}^n}\bigl|D_j^xp_s(x,y)\bigr|\,dy
+    = \sqrt2\,r\int_{\mathbb{R}^n}|V_{j,\sigma}(z+d)|\,dz
+    = \sqrt2\,r\,\frac{a_n}{\sqrt\sigma} < \infty . \tag{5}
+\end{equation*}
+In particular $y \mapsto D_j^xp_s(x,y)$ is Lebesgue integrable on
+$\mathbb{R}^n$, which is the integrability assertion of clause (1).
+
+\emph{Step 2: the gradient and translation bounds for $V_{j,\sigma}$.}
+The function $z \mapsto -|z|^2/\sigma$ is a polynomial in the coordinates with
+gradient $-2z/\sigma$, so by the chain rule $q_\sigma$ is smooth with
+$\nabla q_\sigma(z) = -\frac{2z}{\sigma}q_\sigma(z)$, and therefore
+$V_{j,\sigma}$ is smooth with
+\[
+  \nabla V_{j,\sigma}(z)
+    = \frac{q_\sigma(z)}{\sigma}\,e_j - \frac{2z_j}{\sigma^2}\,q_\sigma(z)\,z ,
+\]
+$e_j$ being the $j$th standard basis vector.  By the triangle inequality and
+$|e_j| = 1$,
+\[
+  |\nabla V_{j,\sigma}(z)|
+    \leq \frac{q_\sigma(z)}{\sigma} + \frac{2|z_j|\,|z|}{\sigma^2}q_\sigma(z) ,
+\]
+so integrating and using $(3a)$ and $(3c)$,
+\begin{equation*}
+  \int_{\mathbb{R}^n}|\nabla V_{j,\sigma}(z)|\,dz
+    \leq \frac1\sigma + \frac{2}{\sigma^2}\,\sigma\,b_n
+    = \frac{1+2b_n}{\sigma}
+    =: \frac{C^{(1)}_n}{\sigma} . \tag{6}
+\end{equation*}
+Next, for any $e \in \mathbb{R}^n$ and any $z$, the function
+$t \mapsto V_{j,\sigma}(z+te)$ is smooth on $[0,1]$, so by the fundamental
+theorem of calculus
+\[
+  V_{j,\sigma}(z+e) - V_{j,\sigma}(z)
+    = \int_0^1 \nabla V_{j,\sigma}(z+te)\cdot e\,dt ,
+\]
+whence $|V_{j,\sigma}(z+e)-V_{j,\sigma}(z)| \leq |e|\int_0^1
+|\nabla V_{j,\sigma}(z+te)|\,dt$ by Cauchy--Schwarz (shared context) applied
+pointwise in $t$.  The function $(z,t) \mapsto |\nabla V_{j,\sigma}(z+te)|$ is
+continuous, hence product-measurable and nonnegative, so Tonelli (shared
+context) and the translation invariance of $\lambda$ for each fixed $t$ give
+\begin{equation*}
+  \int_{\mathbb{R}^n}\bigl|V_{j,\sigma}(z+e)-V_{j,\sigma}(z)\bigr|\,dz
+    \leq |e|\int_0^1\!\!\int_{\mathbb{R}^n}|\nabla V_{j,\sigma}(z+te)|\,dz\,dt
+    \leq \frac{C^{(1)}_n\,|e|}{\sigma} . \tag{7}
+\end{equation*}
+
+\emph{Step 3: oddness, and clause (1).}
+Let $R_j : \mathbb{R}^n \to \mathbb{R}^n$ be the reflection in the $j$th
+coordinate, $R_jz = z - 2z_je_j$; it is linear, satisfies $R_j\circ R_j =
+\mathrm{id}$ and preserves the Euclidean norm.  Lebesgue measure on
+$\mathbb{R}^n$ is the $n$-fold product of one-dimensional Lebesgue measure, and
+$R_j$ acts as the reflection $v \mapsto -v$ in the $j$th factor and as the
+identity in the others; one-dimensional Lebesgue measure is invariant under that
+reflection (shared context), and a product of measure-preserving maps of the
+factors preserves the product measure, so $\lambda$ is invariant under $R_j$.
+Since $|R_jz| = |z|$ we have
+$q_\sigma\circ R_j = q_\sigma$, while $(R_jz)_j = -z_j$; hence
+\[
+  V_{j,\sigma}\circ R_j = -V_{j,\sigma} .
+\]
+Let $A \subseteq \mathbb{R}^n$ be Borel with $R_j(A) = A$; both $A = \mathbb{R}^n$
+and $A = \{|z| > \varepsilon\}$ for $\varepsilon > 0$ have this property, the
+latter because $|R_jz| = |z|$.  Since $V_{j,\sigma}$ is integrable by $(4)$,
+invariance of $\lambda$ under $R_j$ gives
+\[
+  \int_A V_{j,\sigma}(z)\,dz
+    = \int_A V_{j,\sigma}(R_jz)\,dz
+    = -\int_A V_{j,\sigma}(z)\,dz ,
+\]
+so
+\begin{equation*}
+  \int_{\mathbb{R}^n} V_{j,\sigma}\,dz = 0
+  \qquad\text{and}\qquad
+  \int_{|z|>\varepsilon} V_{j,\sigma}\,dz = 0
+  \quad(\varepsilon>0) . \tag{8}
+\end{equation*}
+Now by $(0)$, the translation invariance of $\lambda$ (first $y = x+z$, then
+$z \mapsto z+d$) and the first identity of $(8)$,
+\[
+  \int_{\mathbb{R}^n} D_j^xp_s(x,y)\,dy
+    = \sqrt2\,r\int_{\mathbb{R}^n}V_{j,\sigma}(z+d)\,dz
+    = \sqrt2\,r\int_{\mathbb{R}^n}V_{j,\sigma}(w)\,dw
+    = 0 ,
+\]
+all the integrals being absolutely convergent by $(4)$ and $(5)$.  Together with
+$(5)$ this is clause (1).
+
+\emph{Step 4: the $\varepsilon$-independent majorant.}
+For $\varepsilon > 0$ and $s > 0$ set
+$\Omega_\varepsilon = \{y \in \mathbb{R}^n : |x-y| > \varepsilon\}$ and
+\[
+  I_{\varepsilon,s} = \int_{\Omega_\varepsilon} D_j^xp_s(x,y)\,dy ,
+\]
+which is a well-defined real number by $(5)$.  Translating $y = x+z$, so that
+$|x-y| = |z|$, and using $(0)$ and then the second identity of $(8)$,
+\[
+  I_{\varepsilon,s}
+    = \sqrt2\,r\int_{|z|>\varepsilon}V_{j,\sigma}(z+d)\,dz
+    = \sqrt2\,r\int_{|z|>\varepsilon}
+        \bigl[V_{j,\sigma}(z+d)-V_{j,\sigma}(z)\bigr]\,dz ,
+\]
+both integrands being integrable by $(4)$ and $(7)$.  Hence by $(7)$ with
+$e = d$,
+\[
+  |I_{\varepsilon,s}| \leq \sqrt2\,r\,\frac{C^{(1)}_n|d|}{\sigma} .
+\]
+Since $|d| = (1-r)|x|$ and $\sigma = 1-r^2 = (1-r)(1+r)$ with $1-r > 0$,
+\[
+  \frac{r|d|}{\sigma} = \frac{r(1-r)|x|}{(1-r)(1+r)}
+    = |x|\,\frac{e^{-s}}{1+e^{-s}} \leq |x|\,e^{-s} ,
+\]
+which is the appendix's displayed majorant.  Therefore, with
+$C^{(2)}_n = \sqrt2\,C^{(1)}_n$,
+\begin{equation*}
+  |I_{\varepsilon,s}| \leq C^{(2)}_n\,|x|\,e^{-s}
+  \qquad\text{for every }\varepsilon>0\text{ and every }s>0 . \tag{9}
+\end{equation*}
+Moreover, for each fixed $s > 0$,
+\begin{equation*}
+  \lim_{\varepsilon\downarrow0} I_{\varepsilon,s} = 0 . \tag{10}
+\end{equation*}
+Indeed, by clause (1) already proved,
+$|I_{\varepsilon,s}| = \bigl|\int_{\mathbb{R}^n}D_j^xp_s(x,y)\,dy
+ - \int_{|x-y|\leq\varepsilon}D_j^xp_s(x,y)\,dy\bigr|
+ = \bigl|\int_{|x-y|\leq\varepsilon}D_j^xp_s(x,y)\,dy\bigr|
+ \leq \int_{\mathbb{R}^n}\mathbf 1_{\{|x-y|\leq\varepsilon\}}
+   |D_j^xp_s(x,y)|\,dy$.
+Given any sequence $\varepsilon_k \downarrow 0$ of positive reals, the
+integrands $\mathbf 1_{\{|x-y|\leq\varepsilon_k\}}|D_j^xp_s(x,y)|$ converge
+pointwise to $\mathbf 1_{\{y = x\}}|D_j^xp_s(x,y)|$, which vanishes
+$\lambda$-almost everywhere since $\{x\}$ is Lebesgue-null, and they are
+dominated by the integrable function $|D_j^xp_s(x,\cdot)|$ of $(5)$; dominated
+convergence (shared context) gives $I_{\varepsilon_k,s} \to 0$.  As the sequence
+was arbitrary and $\mathbb{R}$ is a metric space, so that convergence along
+$\varepsilon \downarrow 0$ is equivalent to convergence along every such
+sequence, $(10)$ follows.
+
+\emph{Step 5: $K_{\gamma,j}$ as a time integral.}
+We claim that for every $y \in \mathbb{R}^n$,
+\begin{equation*}
+  K_{\gamma,j}(x,y)
+    = \frac{1}{\sqrt\pi}\int_0^\infty \frac{D_j^xp_s(x,y)}{\sqrt s}\,ds ,
+  \tag{11}
+\end{equation*}
+with the convention --- the one \noderef{GaussRieszKernel} uses for its own
+defining integral --- that an integral of a non-integrable integrand is $0$;
+moreover the integrand on the right is Lebesgue integrable on $(0,\infty)$ if
+and only if the integrand in the definition of $K_{\gamma,j}(x,y)$ is Lebesgue
+integrable on $(0,1)$.
+
+To see this, expand the right-hand integrand.  With $r = e^{-s}$ and
+$\sigma = 1-r^2$,
+\[
+  \frac{1}{\sqrt\pi}\,\frac{D_j^xp_s(x,y)}{\sqrt s}
+    = \frac{\sqrt2}{\pi^{(n+1)/2}}\;
+      \frac{r\,(y_j-rx_j)}{\sqrt s\,(1-r^2)^{n/2+1}}\,
+      \exp\Bigl(-\frac{|rx-y|^2}{1-r^2}\Bigr) ,
+\]
+where we used $p_s(x,y) = \pi^{-n/2}(1-r^2)^{-n/2}e^{-|rx-y|^2/(1-r^2)}$ and
+$\pi^{-1/2}\pi^{-n/2} = \pi^{-(n+1)/2}$.  Let
+\[
+  h(\varrho) = \frac{y_j - \varrho x_j}{(1-\varrho^2)^{n/2+1}\sqrt{-\log \varrho}}
+     \exp\Bigl(-\frac{|\varrho x-y|^2}{1-\varrho^2}\Bigr),
+  \qquad \varrho \in (0,1) ,
+\]
+so that by \noderef{GaussRieszKernel},
+$K_{\gamma,j}(x,y) = \sqrt2\,\pi^{-(n+1)/2}\int_{(0,1)}h(\varrho)\,d\varrho$.
+The map $\psi(s) = e^{-s}$ is a continuously differentiable bijection of
+$(0,\infty)$ onto $(0,1)$ with $\psi'(s) = -e^{-s} \neq 0$ and inverse
+$\varrho \mapsto -\log\varrho$; in particular $-\log\psi(s) = s$, so
+$\sqrt{-\log\psi(s)} = \sqrt s$, and $|\psi'(s)| = e^{-s}$.  By the
+one-dimensional change-of-variables formula for such a bijection, which inserts
+the factor $|\psi'|$, applied first to $|h|$ (a nonnegative Borel function, both
+sides then being elements of $[0,+\infty]$) and then, when those are finite, to
+$h$ itself,
+\[
+  \int_{(0,1)}h(\varrho)\,d\varrho = \int_{(0,\infty)}h(e^{-s})\,e^{-s}\,ds ,
+\]
+with the left integrand Lebesgue integrable exactly when the right one is.  A
+direct substitution gives
+\[
+  h(e^{-s})\,e^{-s}
+    = \frac{r\,(y_j-rx_j)}{(1-r^2)^{n/2+1}\sqrt s}
+      \exp\Bigl(-\frac{|rx-y|^2}{1-r^2}\Bigr) ,
+\]
+which is exactly $\pi^{(n+1)/2}2^{-1/2}$ times the displayed right-hand
+integrand above.  Multiplying through by $\sqrt2\,\pi^{-(n+1)/2}$ yields $(11)$
+together with the stated equivalence of integrability; and when neither
+integrand is integrable both sides of $(11)$ are $0$ by the convention.
+
+\emph{Step 6: Fubini on $\Omega_\varepsilon \times (0,\infty)$, and clause (2).}
+Fix $\varepsilon > 0$ and put
+$F(y,s) = s^{-1/2}D_j^xp_s(x,y)$ for $(y,s) \in \Omega_\varepsilon\times(0,\infty)$.
+It is continuous in $(y,s)$, hence product-measurable.  We bound
+$\int_{\Omega_\varepsilon}|F(y,s)|\,dy$ in two regimes.  Put
+\[
+  s_0 = \min\Bigl(1,\ \frac{\varepsilon}{2(1+|x|)}\Bigr) > 0 .
+\]
+
+\emph{Small $s$.}  Let $0 < s \leq s_0$.  Since $1-e^{-s} \leq s$ we get
+$|d| = (1-r)|x| \leq s|x| \leq \varepsilon|x|/(2(1+|x|)) \leq \varepsilon/2$.
+Translating $y = x+z$ and then $w = z+d$, the region
+$\{|z| > \varepsilon\}$ becomes $\{|w-d| > \varepsilon\}$, and
+$|w-d| > \varepsilon$ with $|d| \leq \varepsilon/2$ forces
+$|w| \geq |w-d| - |d| > \varepsilon/2$.  Hence, using $(0)$ and
+$|w_j| \leq |w|$,
+\[
+  \int_{\Omega_\varepsilon}|D_j^xp_s(x,y)|\,dy
+    \leq \sqrt2\,r\int_{|w|>\varepsilon/2}\frac{|w|}{\sigma}q_\sigma(w)\,dw .
+\]
+By $(1)$ with $c = \sqrt\sigma$ this equals
+$\sqrt2\,\frac{r}{\sqrt\sigma}\int_{|u|>T}|u|\,\pi^{-n/2}e^{-|u|^2}\,du$ with
+$T = \varepsilon/(2\sqrt\sigma)$.  For $|u| > T$ we have
+$e^{-|u|^2} = e^{-|u|^2/2}e^{-|u|^2/2} \leq e^{-T^2/2}e^{-|u|^2/2}$, so
+\[
+  \int_{|u|>T}|u|\,\pi^{-n/2}e^{-|u|^2}\,du \leq \kappa_n\,e^{-T^2/2},
+  \qquad
+  \kappa_n := \pi^{-n/2}\int_{\mathbb{R}^n}|u|\,e^{-|u|^2/2}\,du ,
+\]
+and $\kappa_n < \infty$: by $(1)$ with $c = \sqrt2$,
+$\int |u|e^{-|u|^2/2}du = 2^{n/2}\sqrt2\int|v|e^{-|v|^2}dv$, finite by the
+Gaussian exponential moments item of the shared context (with $t=0$ and the
+polynomial $1+|v|^2 \geq |v|$).  Finally $e^{-t} \leq 1/t$ for $t > 0$ with
+$t = \varepsilon^2/(8\sigma)$ gives
+$e^{-T^2/2} = e^{-\varepsilon^2/(8\sigma)} \leq 8\sigma/\varepsilon^2$, so,
+using $r \leq 1$ and $\sigma \leq 1$,
+\begin{equation*}
+  \int_{\Omega_\varepsilon}|D_j^xp_s(x,y)|\,dy
+    \leq \frac{8\sqrt2\,\kappa_n\,r\sqrt\sigma}{\varepsilon^2}
+    \leq \frac{8\sqrt2\,\kappa_n}{\varepsilon^2}
+  \qquad (0 < s \leq s_0) . \tag{12}
+\end{equation*}
+
+\emph{Large $s$.}  Let $s \geq s_0$.  Then
+$\sigma = 1-e^{-2s} \geq 1-e^{-2s_0} > 0$, so with
+$c_0 = (1-e^{-2s_0})^{-1/2} < \infty$, $(5)$ gives
+\begin{equation*}
+  \int_{\Omega_\varepsilon}|D_j^xp_s(x,y)|\,dy
+    \leq \int_{\mathbb{R}^n}|D_j^xp_s(x,y)|\,dy
+    \leq \sqrt2\,a_n\,c_0\,e^{-s}
+  \qquad (s \geq s_0) . \tag{13}
+\end{equation*}
+
+Combining, and using $\int_0^{s_0}s^{-1/2}\,ds = 2\sqrt{s_0} < \infty$ for the
+first regime and \noderef{SubordinationWeightIntegral} for the second,
+\[
+  \int_{(0,\infty)}\!\!\int_{\Omega_\varepsilon}|F(y,s)|\,dy\,ds
+    \leq \frac{8\sqrt2\,\kappa_n}{\varepsilon^2}\cdot 2\sqrt{s_0}
+      + \sqrt2\,a_n\,c_0\int_0^\infty \frac{e^{-s}}{\sqrt s}\,ds
+    < \infty ,
+\]
+the iterated integral of the nonnegative product-measurable $|F|$ being the
+product integral by Tonelli (shared context).  Hence $F$ is integrable on
+$\Omega_\varepsilon\times(0,\infty)$, and Fubini (shared context) applies: for
+$\lambda$-almost every $y \in \Omega_\varepsilon$ the slice
+$s \mapsto F(y,s)$ is integrable on $(0,\infty)$, the function
+$y \mapsto \int_0^\infty F(y,s)\,ds$ --- read with the same convention, so that
+it is defined at \emph{every} $y$, with value $0$ at the exceptional ones --- is
+Lebesgue integrable on $\Omega_\varepsilon$, and
+\begin{equation*}
+  \int_{\Omega_\varepsilon}\Bigl(\int_0^\infty F(y,s)\,ds\Bigr)dy
+    = \int_0^\infty\Bigl(\int_{\Omega_\varepsilon}F(y,s)\,dy\Bigr)ds
+    = \int_0^\infty \frac{I_{\varepsilon,s}}{\sqrt s}\,ds . \tag{14}
+\end{equation*}
+By $(11)$, $\int_0^\infty F(y,s)\,ds = \sqrt\pi\,K_{\gamma,j}(x,y)$ for every
+$y$ --- for those $y$ at which the $s$-integrand is integrable this is $(11)$
+itself, and at the remaining $y$ both sides are $0$ by the convention.  So
+$y \mapsto \sqrt\pi K_{\gamma,j}(x,y)$ is Lebesgue integrable on
+$\Omega_\varepsilon$, which is clause (2), and dividing $(14)$ by $\sqrt\pi$,
+\begin{equation*}
+  \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)\,dy
+    = \frac{1}{\sqrt\pi}\int_0^\infty \frac{I_{\varepsilon,s}}{\sqrt s}\,ds .
+  \tag{15}
+\end{equation*}
+
+\emph{Step 7: dominated convergence in $\varepsilon$, and clause (3).}
+By Fubini in Step 6 the function $s \mapsto I_{\varepsilon,s}$ is measurable on
+$(0,\infty)$ for each $\varepsilon > 0$, and by $(9)$
+\[
+  \Bigl|\frac{I_{\varepsilon,s}}{\sqrt s}\Bigr|
+    \leq C^{(2)}_n|x|\,\frac{e^{-s}}{\sqrt s}
+  \qquad\text{for all }\varepsilon>0,\ s>0 ,
+\]
+the majorant being Lebesgue integrable on $(0,\infty)$ by
+\noderef{SubordinationWeightIntegral}.  Let $\varepsilon_k \downarrow 0$ be any
+sequence of positive reals.  By $(10)$, $I_{\varepsilon_k,s} \to 0$ for every
+fixed $s > 0$, so dominated convergence (shared context, which is stated for
+sequences) gives
+$\int_0^\infty s^{-1/2}I_{\varepsilon_k,s}\,ds \to 0$.  Since the sequence was
+arbitrary and $\mathbb{R}$ is a metric space, the limit along
+$\varepsilon\downarrow0$ exists and equals $0$.  By $(15)$ this is clause (3).
+\end{proof}

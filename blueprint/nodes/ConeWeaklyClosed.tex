@@ -1,0 +1,26 @@
+\begin{lemma}[Weak closedness in $L^2(\gamma_n)$ of the nonnegativity constraint]
+Let $(v_k)_{k \geq 1} \subseteq L^2(\gamma_n)$ satisfy $v_k \geq 0$
+$\gamma_n$-almost everywhere for every $k$, and suppose $v_k \rightharpoonup v$
+weakly in $L^2(\gamma_n)$, i.e.
+$\langle v_k, \varphi\rangle \to \langle v, \varphi\rangle$ for every
+$\varphi \in L^2(\gamma_n)$.  Then $v \geq 0$ $\gamma_n$-almost everywhere.
+Consequently the admissible cone $\mathcal{K}$ of \noderef{ObstacleCone} is
+closed under weak $L^2(\gamma_n)$ limits of sequences with uniformly bounded
+energy, and no pointwise convergence is needed.
+\end{lemma}
+\begin{proof}
+Let $\varphi \in L^2(\gamma_n)$ with $\varphi \geq 0$ $\gamma_n$-a.e.  By the
+implication $(1) \Rightarrow (2)$ of \noderef{NonnegTestCharacterization}, applied
+to each $v_k$, we have
+\[
+  \langle v_k, \varphi\rangle = \int v_k \varphi \, d\gamma_n \geq 0
+  \qquad\text{for every } k .
+\]
+By the weak convergence hypothesis, $\langle v_k, \varphi\rangle \to \langle v, \varphi\rangle$.
+A limit of a sequence of nonnegative reals is nonnegative, so
+$\int v \varphi \, d\gamma_n = \langle v, \varphi\rangle \geq 0$.
+
+Since $\varphi$ was an arbitrary nonnegative element of $L^2(\gamma_n)$, the
+implication $(2) \Rightarrow (1)$ of \noderef{NonnegTestCharacterization} applies
+to $v$ and yields $v \geq 0$ $\gamma_n$-almost everywhere.
+\end{proof}

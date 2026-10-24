@@ -1,0 +1,39 @@
+\begin{lemma}[Dual complementarity: the multiplier annihilates the potential]
+Let $F \in L^2(\gamma_n)$, $a \in \mathbb{R}$, and let $u \in \mathcal{K}$ minimize
+the functional $J$ of \noderef{ObstacleFunctional} over the cone $\mathcal{K}$ of
+\noderef{ObstacleCone}.  Let $\eta$ be the multiplier of
+\noderef{ObstacleMultiplier} associated with $u$, $F$ and $a$.  Then
+\[
+  \langle \eta, u\rangle = 0 ,
+\]
+equivalently $\mathcal{E}(u) = \int (F-a)\,u\, d\gamma_n$.
+\end{lemma}
+\begin{proof}
+Both $v = 0$ and $v = 2u$ belong to $\mathcal{K}$: the first by
+\noderef{ObstacleCone}, the second because $\mathcal{K}$ is a convex cone there,
+so it is stable under multiplication by the nonnegative scalar $2$.
+
+Apply \noderef{VariationalInequality} with $v = 0$.  Then $v - u = -u$, and the
+inequality reads
+\[
+  \mathcal{E}(u, -u) \;\geq\; \int (F-a)(-u)\, d\gamma_n ,
+\]
+i.e., multiplying by $-1$ and using bilinearity of $\mathcal{E}(\cdot,\cdot)$
+from \noderef{EnergyBil},
+\[
+  \mathcal{E}(u,u) - \int (F-a)u \, d\gamma_n \;\leq\; 0 ,
+\]
+which by \noderef{ObstacleMultiplier} says $\langle\eta, u\rangle \leq 0$.
+
+Apply \noderef{VariationalInequality} with $v = 2u$.  Then $v - u = u$, and the
+inequality reads
+\[
+  \mathcal{E}(u, u) \;\geq\; \int (F-a)u\, d\gamma_n ,
+\]
+which by \noderef{ObstacleMultiplier} says $\langle\eta, u\rangle \geq 0$.
+
+Combining the two, $\langle\eta,u\rangle = 0$.  Since
+$\langle\eta,u\rangle = \mathcal{E}(u,u) - \int(F-a)u\,d\gamma_n$ and
+$\mathcal{E}(u,u) = \mathcal{E}(u)$ for $u \in \mathcal{V}$ by
+\noderef{EnergyBil}, this is the stated identity.
+\end{proof}

@@ -1,0 +1,57 @@
+\begin{definition}[The complex Riesz transform $R_\gamma^{\mathbb{C}}$]
+Write $\iota : \mathbb{R}^n \to \mathbb{C}^n$ for the coordinatewise inclusion
+$\iota(y)_j = y_j$ of a real vector as a complex one; it is a bounded
+$\mathbb{R}$-linear map, and it is a real-linear isometry for the Euclidean
+norms, since $|\iota(y)|_{\mathbb{C}^n}^2 = \sum_j |y_j|^2 = |y|_{\mathbb{R}^n}^2$.
+
+Let $v \in L^2(\gamma_n;\mathbb{C})$.  Composing $v$ pointwise with the two
+bounded $\mathbb{R}$-linear maps $\operatorname{Re},\operatorname{Im} :
+\mathbb{C} \to \mathbb{R}$ produces the real and imaginary parts
+\[
+  \operatorname{Re} v, \ \operatorname{Im} v \ \in \ L^2(\gamma_n;\mathbb{R}),
+  \qquad
+  (\operatorname{Re} v)(x) = \operatorname{Re}\bigl(v(x)\bigr),
+  \quad
+  (\operatorname{Im} v)(x) = \operatorname{Im}\bigl(v(x)\bigr) ,
+\]
+each of them square $\gamma_n$-integrable because composition with a bounded
+linear map preserves membership in a Lebesgue space.  Define the
+\emph{complex Riesz transform} of $v$ as the element of
+$L^2(\gamma_n;\mathbb{C}^n)$
+\[
+  R_\gamma^{\mathbb{C}} v
+    \;=\; \iota\bigl(R_\gamma(\operatorname{Re} v)\bigr)
+      \;+\; i\,\iota\bigl(R_\gamma(\operatorname{Im} v)\bigr) ,
+\]
+where $R_\gamma$ is the energy-normalized vector Riesz transform of
+\noderef{RieszTransform} and $i\,(\cdot)$ is multiplication by $i$ in the
+complex vector space $L^2(\gamma_n;\mathbb{C}^n)$.  Equivalently, coordinate by
+coordinate and $\gamma_n$-almost everywhere,
+\[
+  \bigl(R_\gamma^{\mathbb{C}} v\bigr)_j
+    = R_{\gamma,j}(\operatorname{Re} v) + i\,R_{\gamma,j}(\operatorname{Im} v),
+  \qquad j \in \{1,\ldots,n\} .
+\]
+
+The domain of the functions stays real: the underlying measure space is
+$(\mathbb{R}^n,\gamma_n)$ throughout, and only the scalars of the values become
+complex.  The definition is unconditional --- every $v \in L^2(\gamma_n;\mathbb{C})$
+has real and imaginary parts in $L^2(\gamma_n;\mathbb{R})$, to which $R_\gamma$
+applies with no differentiability or domain hypothesis by
+\noderef{RieszTransform}, and $\iota$ carries $L^2(\gamma_n;\mathbb{R}^n)$ into
+$L^2(\gamma_n;\mathbb{C}^n)$ --- so $R_\gamma^{\mathbb{C}}$ is a map
+$L^2(\gamma_n;\mathbb{C}) \to L^2(\gamma_n;\mathbb{C}^n)$ defined on all of
+$L^2(\gamma_n;\mathbb{C})$.
+
+On real inputs it agrees with $R_\gamma$ up to the inclusion $\iota$: if
+$\operatorname{Im} v = 0$ then $R_\gamma^{\mathbb{C}} v = \iota(R_\gamma
+(\operatorname{Re} v))$, since $R_\gamma 0 = 0$.  This is the operator the
+reference paper calls the complex-linear extension of $R_\gamma$ and writes
+again as $R_\gamma$ when the input is complex, its values being measured in the
+norm $|\cdot|_{\mathbb{C}^n}$.  That $R_\gamma^{\mathbb{C}}$ really is
+$\mathbb{C}$-linear is not asserted here.  It is not formal either: the real
+and imaginary parts of $c\,v$ are not $c$ times those of $v$ --- for $c = i$
+they are exchanged, up to a sign --- so complex homogeneity has to be derived
+from the $\mathbb{R}$-linearity of $R_\gamma$, and that derivation belongs to a
+separate proof-bearing node rather than to this definition.
+\end{definition}

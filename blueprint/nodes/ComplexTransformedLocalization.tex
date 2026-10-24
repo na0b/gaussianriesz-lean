@@ -1,0 +1,125 @@
+\begin{lemma}[Exact localization of the transformed bad part, complex inputs]
+Let $v, w \in L^2(\gamma_n;\mathbb{C})$, let
+$g_1, g_2, u_1, u_2 \in L^2(\gamma_n;\mathbb{R})$ with
+$u_1, u_2 \in \operatorname{Dom}(L^{1/2})$ in the sense of
+\noderef{FracPowDomain}, and suppose that, with $B = L^{1/2}$ as in
+\noderef{FracPow},
+\[
+  \operatorname{Re} v = g_1 + Bu_1, \qquad \operatorname{Im} v = g_2 + Bu_2
+  \qquad\text{in } L^2(\gamma_n;\mathbb{R}),
+\]
+and that $w$ has these good parts as its own real and imaginary parts:
+\[
+  \operatorname{Re} w = g_1, \qquad \operatorname{Im} w = g_2 .
+\]
+Let $t \in \mathbb{R}$ and let $\Omega \subseteq \mathbb{R}^n$ be an arbitrary
+subset such that $Du_1 = 0$ and $Du_2 = 0$ $\gamma_n$-a.e.\ on $\Omega^c$, with
+$D$ as in \noderef{GaussD}; no measurability of $\Omega$ is required, and
+$\gamma_n(\Omega)$ below is the outer measure, which agrees with the measure
+when $\Omega$ is measurable.  Then, with $R_\gamma^{\mathbb{C}}$ as in
+\noderef{ComplexRieszTransform}:
+\begin{enumerate}
+\item for $\gamma_n$-almost every $x$ with $x \notin \Omega$,
+  $R_\gamma^{\mathbb{C}} v(x) = R_\gamma^{\mathbb{C}} w(x)$; and
+\item
+\[
+  \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} v|_{\mathbb{C}^n} > t\}\bigr)
+    \;\leq\; \gamma_n(\Omega)
+      + \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} w|_{\mathbb{C}^n} > t\}\bigr) .
+\]
+\end{enumerate}
+
+This is the reference paper's sentence ``The transformed bad part vanishes
+outside $\Omega$'' in the complex setting, and it is the complex counterpart of
+\noderef{TransformedLocalization}.  It is not a restatement of that node: here
+there are \emph{two} bad parts $u_1, u_2$, sharing a \emph{single} exceptional
+set $\Omega$, and the conclusion is about the complex operator
+$R_\gamma^{\mathbb{C}}$ and the norm of $\mathbb{C}^n$, which is not a level set
+of either real transform.  As in the real node, there is no splitting of the
+level into $t/2 + t/2$: off $\Omega$ the two complex outputs are exactly equal.
+\end{lemma}
+\begin{proof}
+Write $\iota : \mathbb{R}^n \to \mathbb{C}^n$ for the coordinatewise inclusion
+of \noderef{ComplexRieszTransform}, so that by that node
+\begin{equation*}
+  R_\gamma^{\mathbb{C}} v
+    = \iota\bigl(R_\gamma(\operatorname{Re} v)\bigr)
+      + i\,\iota\bigl(R_\gamma(\operatorname{Im} v)\bigr),
+  \qquad
+  R_\gamma^{\mathbb{C}} w
+    = \iota\bigl(R_\gamma(\operatorname{Re} w)\bigr)
+      + i\,\iota\bigl(R_\gamma(\operatorname{Im} w)\bigr) . \tag{D}
+\end{equation*}
+By the hypotheses $\operatorname{Re} w = g_1$ and $\operatorname{Im} w = g_2$, the
+second formula reads
+$R_\gamma^{\mathbb{C}} w = \iota(R_\gamma g_1) + i\,\iota(R_\gamma g_2)$.
+
+\emph{Step 1: the two real localizations.}
+Apply \noderef{TransformedLocalization} with the data
+$(f, g, u) = (\operatorname{Re} v,\, g_1,\, u_1)$, this $t$ and this $\Omega$.
+Its hypotheses are met: $u_1 \in \operatorname{Dom}(L^{1/2})$ is hypothesis
+$hu_1$ here, $\operatorname{Re} v = g_1 + Bu_1$ is hypothesis $h_1$, and
+$Du_1 = 0$ a.e.\ on $\Omega^c$ is the first locality hypothesis.  Its first
+clause gives
+\begin{equation*}
+  R_\gamma(\operatorname{Re} v) = R_\gamma g_1 + Du_1
+  \qquad \gamma_n\text{-a.e.} \tag{1}
+\end{equation*}
+Applying the same node with $(f,g,u) = (\operatorname{Im} v,\, g_2,\, u_2)$, the
+same $t$ and the same $\Omega$, whose hypotheses are $hu_2$, $h_2$ and the
+second locality hypothesis, gives
+\begin{equation*}
+  R_\gamma(\operatorname{Im} v) = R_\gamma g_2 + Du_2
+  \qquad \gamma_n\text{-a.e.} \tag{2}
+\end{equation*}
+
+\emph{Step 2: a single null set.}
+Let $N$ be the union of the following five $\gamma_n$-null sets: the set where
+$x \notin \Omega$ but $Du_1(x) \neq 0$; the set where $x \notin \Omega$ but
+$Du_2(x) \neq 0$; the sets where $(1)$ and where $(2)$ fail; and the set where
+the two formulas $(\mathrm{D})$ fail for the chosen representatives (each of the
+operations in $(\mathrm{D})$ --- applying $\iota$ pointwise, adding, and
+multiplying by $i$ --- is performed on representatives and so induces an
+identity valid outside a null set).  A finite union of null sets is null
+(subadditivity of a measure, shared context), so $\gamma_n(N) = 0$.
+
+\emph{Step 3: clause (1).}
+Let $x \notin \Omega \cup N$.  Then $Du_1(x) = 0$ and $Du_2(x) = 0$, so $(1)$
+and $(2)$ at this $x$ give
+\[
+  R_\gamma(\operatorname{Re} v)(x) = R_\gamma g_1(x),
+  \qquad
+  R_\gamma(\operatorname{Im} v)(x) = R_\gamma g_2(x) .
+\]
+Substituting into the first formula of $(\mathrm{D})$ at this $x$, and then
+reading the second formula backwards,
+\[
+  R_\gamma^{\mathbb{C}} v(x)
+    = \iota\bigl(R_\gamma g_1(x)\bigr) + i\,\iota\bigl(R_\gamma g_2(x)\bigr)
+    = R_\gamma^{\mathbb{C}} w(x) .
+\]
+Since $N$ is null, this holds for $\gamma_n$-almost every $x$ with
+$x \notin \Omega$, which is clause (1).
+
+\emph{Step 4: clause (2).}
+Let $x$ satisfy $|R_\gamma^{\mathbb{C}} v(x)|_{\mathbb{C}^n} > t$ and
+$x \notin \Omega \cup N$.  By Step 3,
+$R_\gamma^{\mathbb{C}} v(x) = R_\gamma^{\mathbb{C}} w(x)$, so
+$|R_\gamma^{\mathbb{C}} w(x)|_{\mathbb{C}^n} > t$ as well.  Hence
+\[
+  \{|R_\gamma^{\mathbb{C}} v|_{\mathbb{C}^n} > t\}
+    \;\subseteq\; \Omega \cup N \cup
+      \{|R_\gamma^{\mathbb{C}} w|_{\mathbb{C}^n} > t\} ,
+\]
+that is, $\{|R_\gamma^{\mathbb{C}} v| > t\}$ is contained in
+$\Omega \cup \{|R_\gamma^{\mathbb{C}} w| > t\}$ up to the null set $N$.  By
+monotonicity of $\gamma_n$ up to null sets and then subadditivity (both shared
+context),
+\[
+  \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} v| > t\}\bigr)
+    \leq \gamma_n\bigl(\Omega \cup \{|R_\gamma^{\mathbb{C}} w| > t\}\bigr)
+    \leq \gamma_n(\Omega)
+      + \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} w| > t\}\bigr) ,
+\]
+which is clause (2).
+\end{proof}

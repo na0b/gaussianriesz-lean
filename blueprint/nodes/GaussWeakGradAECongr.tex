@@ -1,0 +1,60 @@
+\begin{lemma}[The weak-gradient relation depends only on the $\gamma_n$-a.e. classes]
+Let $v, v' : \mathbb{R}^n \to \mathbb{R}$ and
+$F, F' : \mathbb{R}^n \to \mathbb{R}^n$ be measurable, and suppose
+$v = v'$ $\gamma_n$-almost everywhere and $F = F'$ $\gamma_n$-almost everywhere,
+with $\gamma_n$ the measure of \noderef{GaussMeasure}.  If $F$ is a weak
+Euclidean gradient of $v$ in the sense of \noderef{HasGaussWeakGrad}, then $F'$
+is a weak Euclidean gradient of $v'$.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: $\gamma_n$-null sets are Lebesgue-null sets.}
+By \noderef{GaussMeasure}, $\gamma_n(A) = \int_A \rho\, dx$ for every Borel
+$A \subseteq \mathbb{R}^n$, where $\rho(x) = \pi^{-n/2}e^{-|x|^2}$; the function
+$\rho$ is Borel measurable and satisfies $\rho(x) > 0$ for every $x$, since
+$\pi^{-n/2} > 0$ and the real exponential is strictly positive.  Let
+$A \subseteq \mathbb{R}^n$ be Borel with $\gamma_n(A) = 0$, i.e.
+$\int_A \rho\, dx = 0$.  The integrand $\rho$ is nonnegative and the integral of a
+nonnegative measurable function over $A$ vanishes only if that function is $0$
+Lebesgue-almost everywhere on $A$; since $\rho > 0$ everywhere, the set where
+$\rho = 0$ is empty, and therefore $A$ has Lebesgue measure $0$.  Consequently
+every property that holds $\gamma_n$-almost everywhere holds Lebesgue-almost
+everywhere.
+
+Applying this to the hypotheses, we get
+\begin{equation*}
+  v = v' \quad\text{Lebesgue-a.e.},
+  \qquad
+  F = F' \quad\text{Lebesgue-a.e.} \tag{1}
+\end{equation*}
+In particular, for each fixed $j \in \{1,\ldots,n\}$ the $j$th coordinates satisfy
+$F_j = F'_j$ Lebesgue-almost everywhere, because equality of the vectors at a
+point implies equality of their coordinates at that point.
+
+\emph{Step 2: the test identities agree.}
+Fix $j \in \{1,\ldots,n\}$ and $\varphi \in C_c^\infty(\mathbb{R}^n)$.  By
+\noderef{HasGaussWeakGrad} applied to the pair $(v,F)$,
+\begin{equation*}
+  \int_{\mathbb{R}^n} v\, \partial_j\varphi \, dx
+    = -\int_{\mathbb{R}^n} F_j\, \varphi \, dx , \tag{2}
+\end{equation*}
+both integrals being with respect to Lebesgue measure.  By $(1)$ the integrands
+$v\,\partial_j\varphi$ and $v'\,\partial_j\varphi$ agree Lebesgue-almost
+everywhere, and likewise $F_j\,\varphi$ and $F'_j\,\varphi$ agree
+Lebesgue-almost everywhere; functions agreeing almost everywhere have equal
+integrals, so
+\[
+  \int_{\mathbb{R}^n} v'\, \partial_j\varphi \, dx
+    = \int_{\mathbb{R}^n} v\, \partial_j\varphi \, dx,
+  \qquad
+  \int_{\mathbb{R}^n} F'_j\, \varphi \, dx
+    = \int_{\mathbb{R}^n} F_j\, \varphi \, dx .
+\]
+Substituting both into $(2)$ gives
+\[
+  \int_{\mathbb{R}^n} v'\, \partial_j\varphi \, dx
+    = -\int_{\mathbb{R}^n} F'_j\, \varphi \, dx .
+\]
+Since $j$ and $\varphi$ were arbitrary, this is exactly the defining condition of
+\noderef{HasGaussWeakGrad} for the pair $(v', F')$, i.e. $F'$ is a weak Euclidean
+gradient of $v'$.
+\end{proof}

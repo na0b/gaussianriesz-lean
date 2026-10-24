@@ -1,0 +1,53 @@
+\begin{lemma}[Sign of the cross term for disjoint nonnegative functions]
+Let $\mathcal{E}(\cdot,\cdot)$ be the form of \noderef{EnergyBil} and
+$\mathcal{E}(\cdot)$ the energy of \noderef{Energy}.
+\begin{enumerate}
+\item If $v, w \in \mathcal{V}$ are nonnegative $\gamma_n$-a.e.\ and
+$vw = 0$ $\gamma_n$-a.e., then $\mathcal{E}(v,w) \leq 0$.
+\item Consequently, for every $z \in \mathcal{V}$ and every
+$z^- \in L^2(\gamma_n)$ with $z^- = \max\{-z, 0\}$ $\gamma_n$-a.e.,
+\[
+  \mathcal{E}(z, z^-) \leq -\mathcal{E}(z^-) .
+\]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1)  Fix $s > 0$.  Since $v \geq 0$ a.e., \noderef{MehlerFormula} gives
+$P_s v \geq 0$ $\gamma_n$-a.e.  As also $w \geq 0$ a.e., the product
+$(P_s v)\, w$ is nonnegative a.e., and it is integrable because
+$P_s v, w \in L^2(\gamma_n)$.  Hence
+\[
+  \langle P_s v, w\rangle = \int (P_s v)\, w \, d\gamma_n \geq 0 .
+\]
+On the other hand $\langle v, w\rangle = \int v w \, d\gamma_n = 0$, because
+$vw = 0$ a.e.\ by hypothesis.  Therefore
+\[
+  \bigl\langle (I - P_s)v,\, w\bigr\rangle
+    = \langle v, w\rangle - \langle P_s v, w\rangle
+    = -\langle P_s v, w\rangle \leq 0
+  \qquad\text{for every } s > 0 .
+\]
+Both $v$ and $w$ lie in $\mathcal{V}$, so \noderef{BilinearEnergyFormula} applies
+and expresses $\mathcal{E}(v,w)$ as the positive constant
+$(2\sqrt\pi)^{-1}$ times the absolutely convergent integral of the nonpositive
+function $s \mapsto \langle (I-P_s)v, w\rangle\, s^{-3/2}$ over $(0,\infty)$.  An
+absolutely convergent integral of a nonpositive function is nonpositive, so
+$\mathcal{E}(v,w) \leq 0$.
+
+(2)  By hypothesis $z \in \mathcal{V}$, i.e.\ $\mathcal{E}(z) < \infty$, which is
+the finite-energy hypothesis \noderef{LatticeContraction} requires of its input.
+Let $z^+ \in L^2(\gamma_n)$ be (a representative of) $\max\{z,0\}$.  The maps
+$t \mapsto t^+$ and $t \mapsto t^-$ are $1$-Lipschitz and vanish at $0$, so
+\noderef{LatticeContraction}, applied to this $z$ with each of them in turn,
+gives $z^+, z^- \in \mathcal{V}$.  Pointwise a.e.\ we
+have $z = z^+ - z^-$, $z^+ \geq 0$, $z^- \geq 0$ and $z^+ z^- = 0$, so by
+bilinearity of $\mathcal{E}(\cdot,\cdot)$ on $\mathcal{V}$ (\noderef{EnergyBil})
+\[
+  \mathcal{E}(z, z^-) = \mathcal{E}(z^+, z^-) - \mathcal{E}(z^-, z^-)
+    = \mathcal{E}(z^+, z^-) - \mathcal{E}(z^-) .
+\]
+Part (1), applied to the pair $(z^+, z^-)$, gives
+$\mathcal{E}(z^+, z^-) \leq 0$.  Hence
+$\mathcal{E}(z, z^-) \leq -\mathcal{E}(z^-)$, and all quantities are finite real
+numbers because $z, z^+, z^- \in \mathcal{V}$.
+\end{proof}

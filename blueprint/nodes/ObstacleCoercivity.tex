@@ -1,0 +1,97 @@
+\begin{lemma}[Coercivity of $J$ and finiteness of its infimum]
+Let $F \in L^2(\gamma_n)$, put $m = \int F \, d\gamma_n$ and let $a > m$.
+No sign condition on $F$ is assumed.  Let $J$ be the functional of
+\noderef{ObstacleFunctional} and $\mathcal{K}$ the cone of
+\noderef{ObstacleCone}.  Then:
+\begin{enumerate}
+\item for every $v \in \mathcal{K}$, writing $c = \int v \, d\gamma_n$,
+\[
+  J(v) \;\geq\; \tfrac14 \mathcal{E}(v) + (a-m)\,c - \|F - m\mathbf{1}\|_2^2 ;
+\]
+\item the infimum $I = \inf_{v\in\mathcal{K}} J(v)$ is finite and satisfies
+\[
+  -\|F - m\mathbf{1}\|_2^2 \;\leq\; I \;\leq\; 0 .
+\]
+\end{enumerate}
+Here $\mathbf{1} = h_0$ is the constant function of \noderef{HermiteL2} and
+\noderef{Hermite1Zero}.
+\end{lemma}
+\begin{proof}
+Let $v \in \mathcal{K}$, so by \noderef{ObstacleCone} we have
+$\mathcal{E}(v) < \infty$ and $v \geq 0$ $\gamma_n$-a.e.  Put
+$c = \int v \, d\gamma_n$; the integral is finite by \noderef{L2IntoL1}, and
+$c \geq 0$ because $v \geq 0$ a.e.  Put $w = v - c\mathbf{1}$.  Since $\gamma_n$
+is a probability measure (\noderef{GaussIsProb}),
+$\int w\, d\gamma_n = c - c = 0$.
+
+\emph{Step 1: the energy is unchanged by centring, and controls $\|w\|_2$.}
+By \noderef{EnergyConstantInvariance} applied with the constant $-c$,
+$\mathcal{E}(w) = \mathcal{E}(v - c\mathbf{1}) = \mathcal{E}(v)$.  By
+\noderef{ProjZeroCentering}, $\Pi_0 v = v - \mathfrak{m}(v)\mathbf{1} = w$ since
+$\mathfrak{m}(v) = c$.  Hence \noderef{FractionalGap} gives
+\begin{equation*}
+  \|w\|_2^2 = \|\Pi_0 v\|_2^2 \leq \mathcal{E}(v),
+  \qquad\text{so}\qquad
+  \|w\|_2 \leq \mathcal{E}(v)^{1/2} . \tag{1}
+\end{equation*}
+
+\emph{Step 2: splitting the linear term.}
+Using $v = c\mathbf{1} + w$, $\gamma_n(\mathbb{R}^n) = 1$
+(\noderef{GaussIsProb}), $\int w\,d\gamma_n = 0$ and $m = \int F\,d\gamma_n$, and
+noting all integrals are finite by Cauchy--Schwarz and \noderef{L2IntoL1},
+\[
+  \int (a-F)\,v \, d\gamma_n
+    = c\int (a-F)\, d\gamma_n + \int (a-F)\,w\, d\gamma_n
+    = (a-m)\,c - \int (F - m)\,w\, d\gamma_n ,
+\]
+where we used $\int (a - F)d\gamma_n = a - m$ for the first term, and for the
+second $\int a\,w\,d\gamma_n = a\int w \, d\gamma_n = 0$ together with
+$\int F w \, d\gamma_n = \int (F - m)w\, d\gamma_n$ (again because
+$\int w\,d\gamma_n = 0$).
+
+\emph{Step 3: estimating the cross term.}
+By Cauchy--Schwarz and (1),
+\[
+  \Bigl|\int (F-m)\,w \, d\gamma_n\Bigr|
+    \leq \|F - m\mathbf{1}\|_2\, \|w\|_2
+    \leq \|F - m\mathbf{1}\|_2\, \mathcal{E}(v)^{1/2} .
+\]
+Young's inequality in the form $pq \leq p^2 + \tfrac14 q^2$ (equivalent to
+$(p - \tfrac12 q)^2 \geq 0$), applied with $p = \|F-m\mathbf{1}\|_2 \geq 0$ and
+$q = \mathcal{E}(v)^{1/2} \geq 0$, gives
+\begin{equation*}
+  \|F-m\mathbf{1}\|_2\,\mathcal{E}(v)^{1/2}
+    \leq \|F-m\mathbf{1}\|_2^2 + \tfrac14\,\mathcal{E}(v) . \tag{2}
+\end{equation*}
+
+\emph{Step 4: proof of (1) of the statement.}
+By \noderef{ObstacleFunctional} and Step 2,
+\[
+  J(v) = \tfrac12 \mathcal{E}(v) + (a-m)c - \int (F-m)w\, d\gamma_n .
+\]
+Bounding the last term below by $-\bigl(\|F-m\mathbf{1}\|_2^2 + \tfrac14\mathcal{E}(v)\bigr)$
+via Step 3 and (2),
+\[
+  J(v) \geq \tfrac12\mathcal{E}(v) + (a-m)c
+          - \|F-m\mathbf{1}\|_2^2 - \tfrac14\mathcal{E}(v)
+       = \tfrac14\mathcal{E}(v) + (a-m)c - \|F-m\mathbf{1}\|_2^2 ,
+\]
+since $\tfrac12 - \tfrac14 = \tfrac14$.  This is assertion (1).  (All quantities
+are finite real numbers: $\mathcal{E}(v) < \infty$ since $v \in \mathcal{K}$, and
+the linear term is finite by Step 2.)
+
+\emph{Step 5: proof of (2) of the statement.}
+In the inequality of Step 4 we have $\tfrac14\mathcal{E}(v) \geq 0$ and
+$(a-m)c \geq 0$, the latter because $a - m > 0$ by hypothesis and $c \geq 0$.
+Hence
+\[
+  J(v) \geq -\|F-m\mathbf{1}\|_2^2 \qquad\text{for every } v \in \mathcal{K},
+\]
+so the same lower bound holds for $I = \inf_{\mathcal{K}} J$.  Conversely,
+$0 \in \mathcal{K}$ by \noderef{ObstacleCone} (the zero function is nonnegative
+and has $\mathcal{E}(0) = 0 < \infty$ by \noderef{Energy}), and
+\noderef{ObstacleFunctional} gives
+$J(0) = \tfrac12\mathcal{E}(0) + \int (a-F)\cdot 0\, d\gamma_n = 0$.  Hence
+$I \leq J(0) = 0$.  Together, $-\|F-m\mathbf{1}\|_2^2 \leq I \leq 0$; in
+particular $I$ is a finite real number.
+\end{proof}

@@ -1,0 +1,75 @@
+\begin{lemma}[$D$ is linear on $W^{1,2}(\gamma_n)$ and annihilates constants]
+Let $W^{1,2}(\gamma_n)$ be as in \noderef{SobolevW12} and $D$ as in
+\noderef{GaussD}.  Then:
+\begin{enumerate}
+\item for all $u, v \in W^{1,2}(\gamma_n)$, also $u + v \in W^{1,2}(\gamma_n)$ and
+$D(u+v) = Du + Dv$;
+\item for every $c \in \mathbb{R}$ and $u \in W^{1,2}(\gamma_n)$, also
+$c\,u \in W^{1,2}(\gamma_n)$ and $D(c\,u) = c\,Du$;
+\item for every $c \in \mathbb{R}$ the constant function $c\mathbf{1} = c\,h_0$ of
+\noderef{HermiteL2} and \noderef{Hermite1Zero} lies in $W^{1,2}(\gamma_n)$ and
+$D(c\mathbf{1}) = 0$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Throughout, recall from \noderef{SobolevW12} that $w \in W^{1,2}(\gamma_n)$ means
+precisely that there is $\Gamma \in L^2(\gamma_n;\mathbb{R}^n)$ such that
+$\sqrt2\,\Gamma$ is a weak Euclidean gradient of $w$ in the sense of
+\noderef{HasGaussWeakGrad}, and from \noderef{GaussD} that $Dw$ is then that
+$\Gamma$; it is unique as an element of $L^2(\gamma_n;\mathbb{R}^n)$ by
+\noderef{GaussWeakGradUnique}.  Note also that the defining identity of
+\noderef{HasGaussWeakGrad}, namely
+\[
+  \int_{\mathbb{R}^n} w\,\partial_j\varphi\, dx
+    = -\int_{\mathbb{R}^n} G_j\,\varphi\, dx
+  \qquad (j = 1,\ldots,n,\ \varphi \in C_c^\infty(\mathbb{R}^n)),
+\]
+is, for each fixed $j$ and $\varphi$, linear in the pair $(w, G)$: both sides are
+linear in $(w,G)$ separately.
+
+(1) Let $u,v \in W^{1,2}(\gamma_n)$ and put $G = \sqrt2\,Du$,
+$H = \sqrt2\,Dv$, the weak Euclidean gradients of $u$ and $v$.  Then
+$G + H \in L^2(\gamma_n;\mathbb{R}^n)$, and adding the two defining identities
+for the same $j$ and $\varphi$ gives
+\[
+  \int (u+v)\,\partial_j\varphi\, dx
+    = -\int (G_j + H_j)\,\varphi\, dx ,
+\]
+so $G+H$ is a weak Euclidean gradient of $u+v$.  Writing
+$G + H = \sqrt2\,(Du + Dv)$ with $Du + Dv \in L^2(\gamma_n;\mathbb{R}^n)$, the
+criterion of \noderef{SobolevW12} is met with the witness $Du+Dv$, so
+$u + v \in W^{1,2}(\gamma_n)$; and since by \noderef{GaussD} the element
+$D(u+v)$ is a witness too, \noderef{GaussWeakGradUnique} applied to the
+function $u+v$ and the two fields $\sqrt2\,D(u+v)$ and $\sqrt2(Du+Dv)$ gives
+$D(u+v) = Du + Dv$.
+
+(2) Identical, multiplying the single defining identity for $u$ by the scalar
+$c$: $c\,G = \sqrt2\,(c\,Du)$ is a weak Euclidean gradient of $c\,u$, so
+$c\,u \in W^{1,2}(\gamma_n)$ with witness $c\,Du$, and
+\noderef{GaussWeakGradUnique} gives $D(c\,u) = c\,Du$.
+
+(3) By \noderef{Hermite1Zero} and \noderef{HermiteL2}, $h_0$ is the constant
+function $1$, so $c\,h_0$ is the constant function $c$; it lies in
+$L^2(\gamma_n)$ because $\gamma_n$ is a probability measure
+(\noderef{GaussIsProb}).  We claim the zero field is a weak Euclidean gradient
+of it.  Indeed, let $j \in \{1,\ldots,n\}$ and $\varphi \in C_c^\infty(\mathbb{R}^n)$.
+Then $\partial_j \varphi$ is smooth with compact support, and integrating in the
+$x_j$ variable first (Fubini applies, the integrand being continuous with compact
+support, hence absolutely integrable) the fundamental theorem of calculus gives
+\[
+  \int_{\mathbb{R}} \partial_j \varphi(x)\, dx_j = 0
+  \qquad\text{for every fixed value of the other coordinates,}
+\]
+because $\varphi$ vanishes outside a compact set, so the inner integral is
+$\varphi\big|_{x_j = +\infty} - \varphi\big|_{x_j=-\infty} = 0$.  Hence
+$\int_{\mathbb{R}^n}\partial_j\varphi\, dx = 0$ and therefore
+\[
+  \int_{\mathbb{R}^n} c\,\partial_j\varphi\, dx = 0 = -\int_{\mathbb{R}^n} 0\cdot\varphi\, dx ,
+\]
+which is the defining identity of \noderef{HasGaussWeakGrad} for the function
+$c\mathbf{1}$ and the field $G = 0$.  Since $0 = \sqrt2\cdot 0$ with
+$0 \in L^2(\gamma_n;\mathbb{R}^n)$, the criterion of \noderef{SobolevW12} holds
+with witness $0$, so $c\mathbf{1} \in W^{1,2}(\gamma_n)$; and
+\noderef{GaussWeakGradUnique}, applied to $c\mathbf{1}$ and the two fields
+$\sqrt2\,D(c\mathbf{1})$ and $0$, gives $D(c\mathbf{1}) = 0$.
+\end{proof}

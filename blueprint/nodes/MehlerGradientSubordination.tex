@@ -1,0 +1,137 @@
+\begin{lemma}[Absolute convergence and continuity of the subordinated Mehler gradient average]
+For $s > 0$ write $r_s = e^{-s}$ and $\tau_s = \sqrt{1-e^{-2s}}$, and for
+$g : \mathbb{R}^n \to \mathbb{R}$ write
+$(A_s g)(x) = \int g(r_sx+\tau_sz)\,d\gamma_n(z)$ for the Mehler average of
+\noderef{MehlerFormula}.  Let $f : \mathbb{R}^n \to \mathbb{R}$ be smooth with
+compact support, let $j \in \{1,\ldots,n\}$, and put $D_j = 2^{-1/2}\partial_j$,
+the $j$th component of the energy-normalized gradient $D = 2^{-1/2}\nabla$, so
+that
+$(A_s(D_jf))(x) = 2^{-1/2}\bigl(A_s(\partial_jf)\bigr)(x)$.  Then:
+\begin{enumerate}
+\item for every $x \in \mathbb{R}^n$ the function
+\[
+  s \;\longmapsto\; s^{-1/2}\,e^{-s}\,\bigl(A_s(D_jf)\bigr)(x)
+\]
+is Lebesgue integrable on $(0,\infty)$; and
+\item the function
+\[
+  x \;\longmapsto\; \frac{1}{\sqrt\pi}\int_0^\infty
+      s^{-1/2}\,e^{-s}\,\bigl(A_s(D_jf)\bigr)(x)\,ds
+\]
+is continuous on $\mathbb{R}^n$.
+\end{enumerate}
+
+These two assertions are the reference paper's remark that the subordination
+integral for $R_\gamma f$ in the gradient form converges absolutely at every $x$,
+because $|P_sDf(x)| \leq \|Df\|_\infty$, and provides a continuous
+representative.  Both are consequences of that one sup-norm bound, which is
+uniform in $x$ and in $s$; no identification of the resulting function with
+$R_\gamma f$ is asserted here.  No square-integrability hypothesis on $f$ is
+needed or imposed, since neither clause mentions $L^2(\gamma_n)$: the Mehler
+average is taken of the honest function $\partial_jf$, not of an
+$L^2(\gamma_n)$ class.  The factor $(\sqrt\pi)^{-1}$ is carried in clause (2)
+for agreement with the normalization of the subordination formula; it is a
+nonzero constant and does not affect continuity.
+\end{lemma}
+\begin{proof}
+Write $S = \operatorname{supp}f$, a compact set.
+
+\emph{Step 0: the sup-norm bound on the gradient.}
+For each index $i$ the function $\partial_i f$ is continuous, $f$ being smooth,
+and it vanishes off $S$: a point $x \notin S$ has an open neighbourhood on which
+$f$ vanishes identically, hence on which all derivatives of $f$ vanish.  If
+$S = \emptyset$ then $\partial_if \equiv 0$; otherwise $|\partial_i f|$,
+continuous on the nonempty compact set $S$, attains a maximum there by the
+extreme value theorem (shared context, ``Compact sets: extreme values and finite
+Lebesgue measure'', clause (1)).  In either case
+\[
+  M_1 = \sup_{y \in \mathbb{R}^n}\bigl|\partial_j f(y)\bigr| < \infty .
+\]
+By \noderef{GaussIsProb} the measure $\gamma_n$ is a probability measure.  Fix
+$s>0$ and $x$.  By clause (2) of \noderef{SemigroupGradientCommute}, applied at
+this $s$, to this $f$ --- smooth with compact support --- and at the index $j$,
+the function $z \mapsto \partial_jf(r_sx+\tau_sz)$ is $\gamma_n$-integrable, so
+$(A_s(\partial_jf))(x)$ is a well-defined real number; and since the integrand is
+bounded in absolute value by the constant $M_1$ while
+$\gamma_n(\mathbb{R}^n) = 1$, monotonicity of the integral gives
+\begin{equation*}
+  \bigl|\bigl(A_s(\partial_jf)\bigr)(x)\bigr| \leq M_1 ,
+  \qquad\text{hence}\qquad
+  \bigl|\bigl(A_s(D_jf)\bigr)(x)\bigr| \leq 2^{-1/2}M_1 , \tag{0}
+\end{equation*}
+for every $s>0$ and every $x$.  Both bounds are uniform in $s$ and in $x$; this
+single estimate is all that is used below.
+
+\emph{Step 1: joint continuity of the average.}
+The map
+$(s,x) \mapsto \bigl(A_s(\partial_jf)\bigr)(x)$
+is continuous on $(0,\infty)\times\mathbb{R}^n$.  Indeed, let
+$(s_k,x_k) \to (s,x)$ in $(0,\infty)\times\mathbb{R}^n$.  The scalar functions
+$t \mapsto r_t = e^{-t}$ and $t \mapsto \tau_t = \sqrt{1-e^{-2t}}$ are continuous
+on $(0,\infty)$ --- the exponential is continuous, and the square root is
+continuous on $[0,\infty)$ while $1-e^{-2t} > 0$ for $t>0$ --- so
+$r_{s_k} \to r_s$ and $\tau_{s_k} \to \tau_s$.  Hence for each fixed $z$ we have
+$r_{s_k}x_k+\tau_{s_k}z \to r_sx+\tau_sz$, and therefore
+$\partial_jf(r_{s_k}x_k+\tau_{s_k}z) \to \partial_jf(r_sx+\tau_sz)$ by
+continuity of $\partial_jf$.  Every one of these integrands is bounded in
+absolute value by the constant $M_1$, which is $\gamma_n$-integrable because
+$\gamma_n$ is a probability measure (\noderef{GaussIsProb}), and each is
+$\gamma_n$-integrable by clause (2) of \noderef{SemigroupGradientCommute} as in
+Step 0.  Dominated convergence (shared context) therefore gives
+$\bigl(A_{s_k}(\partial_jf)\bigr)(x_k) \to \bigl(A_s(\partial_jf)\bigr)(x)$.
+Sequential continuity is continuity on the metric space
+$(0,\infty)\times\mathbb{R}^n$, so the claim follows.
+
+In particular, for each fixed $x$ the map $s \mapsto (A_s(D_jf))(x)$ is
+continuous on $(0,\infty)$, and for each fixed $s>0$ the map
+$x \mapsto (A_s(D_jf))(x)$ is continuous on $\mathbb{R}^n$ --- the latter being
+also exactly clause (3) of \noderef{SemigroupGradientCommute} up to the constant
+factor $2^{-1/2}$.
+
+\emph{Step 2: the scalar majorant.}
+By clause (1) of \noderef{SubordinationWeightIntegral} the function
+$s \mapsto s^{-1/2}e^{-s}$ is Lebesgue integrable on $(0,\infty)$; hence so is
+its constant multiple
+\begin{equation*}
+  b(s) = 2^{-1/2}M_1\,s^{-1/2}e^{-s} . \tag{1}
+\end{equation*}
+By $(0)$, for every $x \in \mathbb{R}^n$ and every $s > 0$,
+\begin{equation*}
+  \bigl|s^{-1/2}e^{-s}\bigl(A_s(D_jf)\bigr)(x)\bigr|
+    = s^{-1/2}e^{-s}\,\bigl|\bigl(A_s(D_jf)\bigr)(x)\bigr|
+    \leq b(s) , \tag{2}
+\end{equation*}
+using that $s^{-1/2} > 0$ and $e^{-s} > 0$ for $s>0$.  The majorant $b$ does not
+depend on $x$.
+
+\emph{Step 3: clause (1).}
+Fix $x$.  By Step 1 the function $s \mapsto (A_s(D_jf))(x)$ is continuous, hence
+Lebesgue measurable, on $(0,\infty)$; the factors $s \mapsto s^{-1/2}$ and
+$s \mapsto e^{-s}$ are continuous there as well, so the function
+$s \mapsto s^{-1/2}e^{-s}(A_s(D_jf))(x)$ is measurable on $(0,\infty)$.  By
+$(2)$ its absolute value is dominated by the integrable function $b$ of $(1)$.
+A measurable function dominated in absolute value by an integrable function is
+integrable (shared context), so the function is Lebesgue integrable on
+$(0,\infty)$.  This is clause (1), and it makes the integral appearing in
+clause (2) a well-defined real number for every $x$.
+
+\emph{Step 4: clause (2).}
+Let $x_k \to x$ in $\mathbb{R}^n$.  For each fixed $s>0$, Step 1 gives
+$\bigl(A_s(D_jf)\bigr)(x_k) \to \bigl(A_s(D_jf)\bigr)(x)$, so the integrands
+\[
+  s \longmapsto s^{-1/2}e^{-s}\bigl(A_s(D_jf)\bigr)(x_k)
+\]
+converge pointwise on $(0,\infty)$ to
+$s \mapsto s^{-1/2}e^{-s}(A_s(D_jf))(x)$.  Each of them is measurable by Step 3
+and, by $(2)$, is dominated in absolute value by the single $x$-independent
+integrable function $b$.  Dominated convergence (shared context) therefore gives
+\[
+  \int_0^\infty s^{-1/2}e^{-s}\bigl(A_s(D_jf)\bigr)(x_k)\,ds
+    \;\longrightarrow\;
+  \int_0^\infty s^{-1/2}e^{-s}\bigl(A_s(D_jf)\bigr)(x)\,ds .
+\]
+Multiplying by the constant $(\sqrt\pi)^{-1}$ preserves the convergence, so the
+function of clause (2) is sequentially continuous at $x$.  Since $x$ was
+arbitrary and $\mathbb{R}^n$ is a metric space, sequential continuity is
+continuity, which is clause (2).
+\end{proof}

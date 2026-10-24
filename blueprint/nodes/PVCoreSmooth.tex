@@ -1,0 +1,410 @@
+\begin{lemma}[Agreement of the kernel and spectral realizations on a smooth core]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$.  Let $f : \mathbb{R}^n \to \mathbb{R}$
+be smooth with compact support, and let $x \in \mathbb{R}^n$.  For $s > 0$ write
+\[
+  r = e^{-s},\qquad \tau = \sqrt{1-e^{-2s}},\qquad
+  (A_sg)(x) = \int_{\mathbb{R}^n} g(rx+\tau z)\,d\gamma_n(z)
+\]
+for the Mehler average of \noderef{MehlerFormula}, let $D_j = 2^{-1/2}\partial_j$
+be the energy-normalized partial derivative of \noderef{GaussD}, and put
+\[
+  \Phi_j(x) = \frac{1}{\sqrt\pi}\int_0^\infty
+      e^{-s}\,\bigl(A_s(D_jf)\bigr)(x)\,\frac{ds}{\sqrt s}
+    = \frac{1}{\sqrt\pi}\int_0^\infty
+      e^{-s}\,\frac{1}{\sqrt2}\bigl(A_s(\partial_jf)\bigr)(x)\,\frac{ds}{\sqrt s} ,
+\]
+the function of \noderef{RieszSemigroupPointwise}.  Let $K_{\gamma,j}$ be the
+normalized Gaussian Riesz kernel of \noderef{GaussRieszKernel}.  Then:
+\begin{enumerate}
+\item for every $\varepsilon > 0$ the function $y \mapsto K_{\gamma,j}(x,y)f(y)$
+is Lebesgue integrable on the exterior region $\{y : |x-y| > \varepsilon\}$; and
+\item
+\[
+  \lim_{\varepsilon\downarrow0}
+    \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)\,f(y)\,dy
+  \;=\; \Phi_j(x) ,
+\]
+the limit being taken along $\varepsilon \to 0$ with $\varepsilon > 0$.
+\end{enumerate}
+
+This is the reference paper's appendix lemma: the truncated kernel integrals of
+a smooth compactly supported input converge, at \emph{every} $x$ and not merely
+almost everywhere, to the Gaussian Riesz transform of that input, the
+right-hand side being read as the continuous semigroup representative.  That
+reading is exactly what $\Phi_j$ is: by \noderef{RieszSemigroupPointwise} the
+integral defining $\Phi_j(x)$ converges absolutely at every $x$ (clause (1)),
+$\Phi_j$ is continuous on $\mathbb{R}^n$ (clause (2)), and $\Phi_j$ represents
+the $j$th coordinate of $R_\gamma u$, where $u \in L^2(\gamma_n)$ is the class
+of $f$ (clause (3)).  The every-$x$ strength of the present statement is what
+later nodes consume, so it is not weakened to an almost-everywhere assertion;
+it is available because both sides are honest pointwise quantities, the
+left-hand side by clause (1) above and the right-hand side by the continuity of
+$\Phi_j$.
+
+Every constant appearing in the proof may depend on $n$, on $j$, on $x$ and on
+$f$.  As the appendix header instructs, these constants serve only to identify
+two realizations of one operator, and nothing below is uniform in $n$ or feeds
+any endpoint constant.
+\end{lemma}
+\begin{proof}
+Throughout, $\lambda$ is Lebesgue measure on $\mathbb{R}^n$, $\gamma_n$ is the
+Gaussian measure of \noderef{GaussMeasure}, and $n \geq 1$, $j$, $f$ and $x$ are
+fixed.  For $s > 0$ we keep the abbreviations
+\[
+  r = e^{-s} \in (0,1),\quad \sigma = 1-r^2 = 1-e^{-2s} \in (0,1),
+  \quad \tau = \sqrt\sigma, \quad d = (1-r)x ,
+\]
+and we write
+\[
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr),
+  \qquad
+  q_\sigma(z) = (\pi\sigma)^{-n/2}e^{-|z|^2/\sigma},
+  \qquad
+  V_{j,\sigma}(z) = \frac{z_j}{\sigma}q_\sigma(z) ,
+\]
+so that, exactly as in \noderef{PVKernelConstantCancellation}, with $z = y-x$ we
+have $z+d = y-rx$, $p_s(x,y) = q_\sigma(z+d)$ and
+\begin{equation*}
+  D_j^xp_s(x,y) := \frac{1}{\sqrt2}\,\partial_{x_j}p_s(x,y)
+    = \sqrt2\,r\,\frac{y_j-rx_j}{\sigma}\,p_s(x,y)
+    = \sqrt2\,r\,V_{j,\sigma}(z+d) , \tag{0}
+\end{equation*}
+the middle equality being \noderef{MehlerKernelXDerivative}.  Finally put
+\[
+  \Phi^{(s)}(w) = \int_{\mathbb{R}^n}p_s(w,y)f(y)\,dy, \qquad w \in \mathbb{R}^n .
+\]
+
+\emph{Step 0: elementary bounds on $f$.}
+Let $S = \operatorname{supp}f$, a compact set, and let
+$M_0 = \sup_{\mathbb{R}^n}|f|$ and $L_f = \sup_{\mathbb{R}^n}|\nabla f|$.  Both
+are finite: $f$ and $|\nabla f|$ are continuous and vanish off $S$ (at a point
+outside $S$ the function $f$ vanishes on a neighbourhood, hence so do all its
+derivatives), so the extreme value theorem on $S$ (shared context) bounds them.
+Also $\lambda(S) < \infty$, a compact set having finite Lebesgue measure (shared
+context).  By the mean value inequality applied along the segment from $x$ to
+$y$ --- $t \mapsto f(x+t(y-x))$ is smooth with derivative
+$\nabla f(x+t(y-x))\cdot(y-x)$, so
+$|f(y)-f(x)| \leq \int_0^1|\nabla f(x+t(y-x))|\,|y-x|\,dt$ --- we get
+\begin{equation*}
+  |f(y)-f(x)| \leq L_f\,|y-x| \qquad \text{for all } y \in \mathbb{R}^n . \tag{1}
+\end{equation*}
+Finally $f$ is bounded and continuous and $\gamma_n$ is a probability measure
+(\noderef{GaussIsProb}), so $f$ is square $\gamma_n$-integrable and determines a
+class $u \in L^2(\gamma_n)$; this is the $u$ of the statement, and it is the
+hypothesis under which \noderef{RieszSemigroupPointwise} is applied below.
+
+\emph{Step 1: $\gamma_n$ and $\lambda$ have the same null sets, and $\gamma_n$
+has full support.}
+By \noderef{GaussMeasure}, $\gamma_n$ is $\lambda$ weighted by the density
+$\rho(y) = \pi^{-n/2}e^{-|y|^2}$, i.e.\ $\gamma_n(A) = \int_A\rho\,d\lambda$ for
+measurable $A$.  The density is finite and strictly positive at every point.
+
+If $\lambda(A) = 0$ then $\int_A\rho\,d\lambda = 0$, so $\gamma_n(A) = 0$.
+Conversely suppose $\gamma_n(A) = 0$ and put $A_m = A\cap\{\rho>1/m\}$ for
+$m \in \mathbb{N}$.  Then
+$\lambda(A_m)/m \leq \int_{A_m}\rho\,d\lambda \leq \gamma_n(A) = 0$, so
+$\lambda(A_m) = 0$; since $\rho > 0$ everywhere we have $A = \bigcup_m A_m$, and
+countable subadditivity (shared context) gives $\lambda(A) = 0$.  So the two
+measures have the same null sets.
+
+If $U \subseteq \mathbb{R}^n$ is open and nonempty it contains a ball, so
+$\lambda(U) > 0$, hence $\gamma_n(U) > 0$ by the previous paragraph.
+Consequently:
+\begin{equation*}
+  \parbox{0.86\textwidth}{if $g_1,g_2 : \mathbb{R}^n \to \mathbb{R}$ are
+  continuous and $g_1 = g_2$ $\gamma_n$-almost everywhere, then $g_1 = g_2$
+  everywhere.} \tag{2}
+\end{equation*}
+Indeed, if $g_1(w_0) \neq g_2(w_0)$ then $|g_1-g_2| > 0$ on some open ball $U$
+around $w_0$ by continuity of $g_1-g_2$, and $\gamma_n(U) > 0$ contradicts
+$\gamma_n(\{g_1 \neq g_2\}) = 0$.
+
+\emph{Step 2: the kernel form of the semigroup derivative.}
+Fix $s > 0$.
+
+\emph{(a) $\Phi^{(s)}$ is well defined and continuous on $\mathbb{R}^n$.}
+For each $w$ the function $y \mapsto p_s(w,y)f(y)$ is continuous, vanishes off
+$S$ and is bounded in absolute value by $\pi^{-n/2}\sigma^{-n/2}M_0$, because
+the exponential factor of $p_s$ is at most $1$; since $\lambda(S) < \infty$ it
+is Lebesgue integrable, so $\Phi^{(s)}(w)$ is a well-defined real number.  If
+$w_k \to w$ then $p_s(w_k,y)f(y) \to p_s(w,y)f(y)$ for every $y$, by continuity
+of $p_s$ in its first argument, and all these functions are dominated by the
+integrable function $\pi^{-n/2}\sigma^{-n/2}M_0\mathbf 1_S$; dominated
+convergence (shared context) gives $\Phi^{(s)}(w_k) \to \Phi^{(s)}(w)$.  As
+$\mathbb{R}^n$ is a metric space, $\Phi^{(s)}$ is continuous.
+
+\emph{(b) $\Phi^{(s)} = A_sf$ everywhere on $\mathbb{R}^n$.}
+Let $\tilde u$ denote the function underlying the class $u$ of Step 0, the same
+representative that \noderef{MehlerFormula} and \noderef{MehlerLebesgueKernel}
+use.  By clause (2) of \noderef{MehlerFormula} applied to $s$ and $u$, and
+clause (2) of \noderef{MehlerLebesgueKernel} applied to the same $s$ and $u$,
+there is a $\gamma_n$-null set off which both
+\[
+  (P_su)(w) = \int_{\mathbb{R}^n}\tilde u(rw+\tau z)\,d\gamma_n(z)
+  \qquad\text{and}\qquad
+  (P_su)(w) = \int_{\mathbb{R}^n}p_s(w,y)\,\tilde u(y)\,dy
+\]
+hold; hence for $\gamma_n$-almost every $w$,
+\begin{equation*}
+  \int_{\mathbb{R}^n}p_s(w,y)\,\tilde u(y)\,dy
+    = \int_{\mathbb{R}^n}\tilde u(rw+\tau z)\,d\gamma_n(z) . \tag{3}
+\end{equation*}
+Now replace $\tilde u$ by $f$ on both sides of $(3)$, for \emph{every} $w$.  Let
+$N = \{\tilde u \neq f\}$; then $\gamma_n(N) = 0$, since $\tilde u$ is a
+representative of the class of $f$, and therefore $\lambda(N) = 0$ by Step 1.
+On the left, the integrands $p_s(w,\cdot)\tilde u$ and $p_s(w,\cdot)f$ differ
+only on $N$, a $\lambda$-null set, so the two Lebesgue integrals agree for every
+$w$ (and in particular the second is absolutely convergent by (a)).  On the
+right, fix $w$ and note that
+$\{z : rw+\tau z \in N\} = \tau^{-1}(N - rw)$, which is $\lambda$-null because
+$\lambda$ is translation invariant (shared context) and the dilation
+$v \mapsto \tau^{-1}v$ multiplies $\lambda$ by $\tau^{-n}$; hence it is
+$\gamma_n$-null by Step 1, and the two $\gamma_n$-integrals agree for every $w$
+(the one with $f$ being absolutely convergent by clause (1) of
+\noderef{SemigroupGradientCommute}).  Therefore
+\[
+  \Phi^{(s)}(w) = (A_sf)(w) \qquad\text{for } \gamma_n\text{-almost every } w .
+\]
+Both sides are continuous: the left by (a), and the right because clause (4) of
+\noderef{SemigroupGradientCommute} asserts that $A_sf$ is differentiable at
+every point, hence continuous there.  By $(2)$ of Step 1 they agree at every
+$w$.
+
+\emph{(c) the kernel form.}  Set
+$G(w,y) = 2r(y_j-rw_j)\sigma^{-1}p_s(w,y)$; by
+\noderef{MehlerKernelXDerivative} the map $w \mapsto p_s(w,y)$ is differentiable
+at every $w$ and $2^{-1/2}G(w,y) = D_j^xp_s(w,y)$, i.e.\
+$G(w,y) = \partial_{w_j}p_s(w,y)$ --- multiply that node's displayed identity by
+$\sqrt2$ and use $\sqrt2\cdot\sqrt2 = 2$.  The function $G$ is continuous on
+$\mathbb{R}^n\times\mathbb{R}^n$, being a product and composition of continuous
+functions.
+
+We claim
+\begin{equation*}
+  \lim_{t\to0}\frac{\Phi^{(s)}(x+te_j)-\Phi^{(s)}(x)}{t}
+    = \int_{\mathbb{R}^n}G(x,y)f(y)\,dy , \tag{4}
+\end{equation*}
+$e_j$ being the $j$th standard basis vector.  Let $\eta > 0$.  The set
+$\overline B(x,1)\times S$ is compact, so $G$ is uniformly continuous on it
+(Heine--Cantor); choose $\delta \in (0,1]$ with
+$|G(w,y)-G(x,y)| \leq \eta$ whenever $w \in \overline B(x,1)$,
+$|w-x| \leq \delta$ and $y \in S$.  Fix $y \in S$ and $t$ with
+$0 < |t| \leq \delta$.  The function $t' \mapsto p_s(x+t'e_j,y)$ is
+differentiable on $\mathbb{R}$ with derivative $t' \mapsto G(x+t'e_j,y)$, which
+is continuous; so by the fundamental theorem of calculus
+\[
+  p_s(x+te_j,y) - p_s(x,y) = \int_0^t G(x+t'e_j,y)\,dt' ,
+\]
+and subtracting $t\,G(x,y) = \int_0^tG(x,y)\,dt'$,
+\[
+  \bigl|p_s(x+te_j,y)-p_s(x,y)-t\,G(x,y)\bigr| \leq |t|\,\eta ,
+\]
+because every $x+t'e_j$ with $t'$ between $0$ and $t$ lies in
+$\overline B(x,1)$ at distance at most $\delta$ from $x$.  Multiplying by
+$f(y)$, which is bounded by $M_0$ and vanishes off $S$, and integrating over
+$y$ --- the three functions $y \mapsto p_s(x+te_j,y)f(y)$,
+$y \mapsto p_s(x,y)f(y)$ and $y \mapsto G(x,y)f(y)$ are continuous, vanish off
+$S$ and are bounded, hence integrable, the last because $G(x,\cdot)$ is
+continuous --- we obtain
+\[
+  \Bigl|\Phi^{(s)}(x+te_j)-\Phi^{(s)}(x)-t\int G(x,y)f(y)\,dy\Bigr|
+    \leq |t|\,\eta\,M_0\,\lambda(S) .
+\]
+Dividing by $|t|$ shows that the difference quotient in $(4)$ differs from
+$\int G(x,y)f(y)\,dy$ by at most $\eta M_0\lambda(S)$ for every $t$ with
+$0 < |t| \leq \delta$.  As $\eta > 0$ was arbitrary, $(4)$ follows.
+
+On the other hand, by (b) the functions $\Phi^{(s)}$ and $A_sf$ coincide, so the
+limit in $(4)$ is also the derivative at $t=0$ of $t \mapsto (A_sf)(x+te_j)$.
+By clause (4) of \noderef{SemigroupGradientCommute}, $A_sf$ is differentiable at
+$x$ and the value of its derivative at $e_j$ --- which is precisely that
+derivative along the line --- equals $e^{-s}\int(\partial_jf)(rx+\tau z)\,
+d\gamma_n(z) = e^{-s}\bigl(A_s(\partial_jf)\bigr)(x)$.  Hence
+\[
+  \int_{\mathbb{R}^n}\partial_{x_j}p_s(x,y)\,f(y)\,dy
+    = e^{-s}\bigl(A_s(\partial_jf)\bigr)(x) .
+\]
+Multiplying by $2^{-1/2}$ and using $D_j^xp_s = 2^{-1/2}\partial_{x_j}p_s$ and
+$D_j = 2^{-1/2}\partial_j$ (\noderef{GaussD}),
+\begin{equation*}
+  \int_{\mathbb{R}^n}D_j^xp_s(x,y)\,f(y)\,dy
+    = e^{-s}\,\frac{1}{\sqrt2}\bigl(A_s(\partial_jf)\bigr)(x)
+    = e^{-s}\bigl(A_s(D_jf)\bigr)(x)
+    =: \Theta(s) . \tag{5}
+\end{equation*}
+The integral on the left is absolutely convergent, since
+$|D_j^xp_s(x,\cdot)|$ is Lebesgue integrable by clause (1) of
+\noderef{PVKernelConstantCancellation} and $|f| \leq M_0$.
+
+\emph{Step 3: the subtracted bound.}
+We claim that there is a constant $C_n$, depending only on $n$, with
+\begin{equation*}
+  \int_{\mathbb{R}^n}\bigl|D_j^xp_s(x,y)\bigr|\,|f(y)-f(x)|\,dy
+    \leq C_n\,L_f\,e^{-s}\,(1+|x|)
+  \qquad\text{for every } s > 0 . \tag{6}
+\end{equation*}
+First record two Gaussian moment identities.  The dilation $v \mapsto cv$
+multiplies $\lambda$ by $c^n$, so for every Borel
+$h : \mathbb{R}^n \to [0,+\infty]$ and every $c > 0$,
+$\int h(z)\,dz = c^n\int h(cv)\,dv$; applying this with $c = \sqrt\sigma$ and
+$h = |z_j|q_\sigma$, respectively $h = |z_j|\,|z|\,q_\sigma$, and using
+$q_\sigma(\sqrt\sigma v) = (\pi\sigma)^{-n/2}e^{-|v|^2}$ together with
+\noderef{GaussMeasure},
+\begin{equation*}
+  \int_{\mathbb{R}^n}|z_j|\,q_\sigma(z)\,dz = \sqrt\sigma\,a_n ,
+  \qquad
+  \int_{\mathbb{R}^n}|z_j|\,|z|\,q_\sigma(z)\,dz = \sigma\,b_n , \tag{7}
+\end{equation*}
+where $a_n = \int|v_j|\,d\gamma_n(v)$ and $b_n = \int|v_j|\,|v|\,d\gamma_n(v)$
+are finite, since $|v_j| \leq |v| \leq 1+|v|^2$ and $|v_j||v| \leq |v|^2$ are
+dominated by polynomials and the Gaussian exponential moments item of the
+shared context (with $t = 0$) applies.
+
+Now use $(1)$ and $(0)$, substitute $y = x+z$ and then $w = z+d$ (two
+translations, which preserve $\lambda$; shared context), and use
+$|z| = |w-d| \leq |w|+|d|$:
+\begin{align*}
+  \int_{\mathbb{R}^n}|D_j^xp_s(x,y)|\,|f(y)-f(x)|\,dy
+    &\leq L_f\sqrt2\,r\int_{\mathbb{R}^n}|V_{j,\sigma}(z+d)|\,|z|\,dz\\
+    &\leq \frac{\sqrt2\,r\,L_f}{\sigma}
+        \int_{\mathbb{R}^n}|w_j|\,\bigl(|w|+|d|\bigr)\,q_\sigma(w)\,dw\\
+    &= \frac{\sqrt2\,r\,L_f}{\sigma}\bigl(\sigma b_n + |d|\sqrt\sigma a_n\bigr)
+     = \sqrt2\,L_f\,r\Bigl(b_n + a_n\frac{|d|}{\sqrt\sigma}\Bigr) ,
+\end{align*}
+by $(7)$.  Since $|d| = (1-r)|x|$ and $\sigma = (1-r)(1+r)$ with $0 < r < 1$,
+\[
+  \frac{|d|}{\sqrt\sigma} = |x|\sqrt{\frac{1-r}{1+r}} \leq |x| ,
+\]
+so the right-hand side is at most
+$\sqrt2\,L_f\,e^{-s}(b_n+a_n|x|) \leq C_nL_fe^{-s}(1+|x|)$ with
+$C_n = \sqrt2\max(a_n,b_n)$.  This is $(6)$.
+
+\emph{Step 4: Fubini in $(y,s)$, and the subtracted identity.}
+We first record the time-integral representation of the kernel: for every
+$y \in \mathbb{R}^n$,
+\begin{equation*}
+  K_{\gamma,j}(x,y)
+    = \frac{1}{\sqrt\pi}\int_0^\infty \frac{D_j^xp_s(x,y)}{\sqrt s}\,ds ,
+  \tag{8}
+\end{equation*}
+with the convention --- the one \noderef{GaussRieszKernel} uses for its own
+defining integral --- that an integral of a non-integrable integrand is $0$, and
+with the $s$-integrand Lebesgue integrable on $(0,\infty)$ exactly when the
+integrand of that defining integral is Lebesgue integrable on $(0,1)$.  Indeed,
+by $(0)$ and $p_s(x,y) = \pi^{-n/2}(1-r^2)^{-n/2}e^{-|rx-y|^2/(1-r^2)}$,
+\[
+  \frac{1}{\sqrt\pi}\,\frac{D_j^xp_s(x,y)}{\sqrt s}
+    = \frac{\sqrt2}{\pi^{(n+1)/2}}\,
+      \frac{r\,(y_j-rx_j)}{\sqrt s\,(1-r^2)^{n/2+1}}
+      \exp\Bigl(-\frac{|rx-y|^2}{1-r^2}\Bigr) ,
+\]
+while \noderef{GaussRieszKernel} gives
+$K_{\gamma,j}(x,y) = \sqrt2\,\pi^{-(n+1)/2}\int_{(0,1)}h(\varrho)\,d\varrho$
+with
+\[
+  h(\varrho) = \frac{y_j-\varrho x_j}{(1-\varrho^2)^{n/2+1}\sqrt{-\log\varrho}}
+      \exp\Bigl(-\frac{|\varrho x-y|^2}{1-\varrho^2}\Bigr) .
+\]
+The map $\psi(s) = e^{-s}$ is a continuously differentiable bijection of
+$(0,\infty)$ onto $(0,1)$ with $|\psi'(s)| = e^{-s} \neq 0$ and inverse
+$\varrho\mapsto-\log\varrho$, so that $\sqrt{-\log\psi(s)} = \sqrt s$.  The
+one-dimensional change-of-variables formula for such a bijection, which inserts
+the factor $|\psi'|$, applied first to the nonnegative Borel function $|h|$ (an
+identity in $[0,+\infty]$, so that integrability of one side is equivalent to
+integrability of the other) and then to $h$ itself, gives
+$\int_{(0,1)}h(\varrho)\,d\varrho = \int_{(0,\infty)}h(e^{-s})e^{-s}\,ds$; and
+\[
+  h(e^{-s})\,e^{-s}
+    = \frac{r\,(y_j-rx_j)}{(1-r^2)^{n/2+1}\sqrt s}
+      \exp\Bigl(-\frac{|rx-y|^2}{1-r^2}\Bigr) ,
+\]
+which is $\pi^{(n+1)/2}2^{-1/2}$ times the displayed integrand above.
+Multiplying by $\sqrt2\pi^{-(n+1)/2}$ gives $(8)$; and when neither integrand is
+integrable both sides of $(8)$ are $0$ by the convention.
+
+Now put $F(y,s) = s^{-1/2}D_j^xp_s(x,y)\bigl(f(y)-f(x)\bigr)$ on
+$\mathbb{R}^n\times(0,\infty)$.  It is continuous in $(y,s)$, hence
+product-measurable.  By Tonelli (shared context), $(6)$ and
+\noderef{SubordinationWeightIntegral},
+\[
+  \iint |F|
+    \leq \int_0^\infty \frac{C_nL_f(1+|x|)e^{-s}}{\sqrt s}\,ds
+    = C_nL_f(1+|x|)\sqrt\pi < \infty ,
+\]
+so $F$ is integrable on the product and Fubini (shared context) applies:
+\begin{equation*}
+  \int_{\mathbb{R}^n}\Bigl(\int_0^\infty F(y,s)\,ds\Bigr)dy
+    = \int_0^\infty\Bigl(\int_{\mathbb{R}^n}F(y,s)\,dy\Bigr)ds , \tag{9}
+\end{equation*}
+the inner integral on the left being Lebesgue integrable in $y$ and the inner
+integral on the right Lebesgue integrable in $s$.
+
+The inner integral on the left is, by $(8)$,
+$(f(y)-f(x))\sqrt\pi\,K_{\gamma,j}(x,y)$ for every $y$ --- at the $y$ for which
+the $s$-integrand is integrable this is $(8)$, and at the remaining $y$ both
+sides are $0$ by the convention.  So
+$y \mapsto K_{\gamma,j}(x,y)(f(y)-f(x))$ is Lebesgue integrable on
+$\mathbb{R}^n$.  The inner integral on the right is, for each $s > 0$,
+\[
+  \int_{\mathbb{R}^n}F(y,s)\,dy
+    = \frac{1}{\sqrt s}\Bigl(\int D_j^xp_s(x,y)f(y)\,dy
+        - f(x)\int D_j^xp_s(x,y)\,dy\Bigr)
+    = \frac{\Theta(s)}{\sqrt s} ,
+\]
+splitting the integral --- legitimate because both pieces are absolutely
+convergent, by clause (1) of \noderef{PVKernelConstantCancellation} and
+$|f| \leq M_0$ --- and then using $(5)$ for the first piece and clause (1) of
+\noderef{PVKernelConstantCancellation} again, which says
+$\int D_j^xp_s(x,y)\,dy = 0$, for the second.  Therefore $(9)$ reads
+\[
+  \sqrt\pi\int_{\mathbb{R}^n}K_{\gamma,j}(x,y)\bigl(f(y)-f(x)\bigr)\,dy
+    = \int_0^\infty \frac{\Theta(s)}{\sqrt s}\,ds
+    = \sqrt\pi\,\Phi_j(x) ,
+\]
+the last equality being the definition of $\Phi_j$ together with $(5)$; the
+$s$-integral converges absolutely, which is also clause (1) of
+\noderef{RieszSemigroupPointwise}.  Dividing by $\sqrt\pi$,
+\begin{equation*}
+  \int_{\mathbb{R}^n}K_{\gamma,j}(x,y)\bigl(f(y)-f(x)\bigr)\,dy = \Phi_j(x) ,
+  \tag{10}
+\end{equation*}
+the left-hand side being an absolutely convergent Lebesgue integral.  This is
+the appendix's subtracted identity.
+
+\emph{Step 5: splitting the truncated integrals, and the limit.}
+Fix $\varepsilon > 0$ and write
+$\Omega_\varepsilon = \{y : |x-y| > \varepsilon\}$.  By clause (2) of
+\noderef{PVKernelConstantCancellation}, $K_{\gamma,j}(x,\cdot)$ is Lebesgue
+integrable on $\Omega_\varepsilon$; since $f$ is continuous with
+$|f| \leq M_0$, the product $K_{\gamma,j}(x,\cdot)f$ is measurable and dominated
+by $M_0|K_{\gamma,j}(x,\cdot)|$ there, hence integrable on $\Omega_\varepsilon$.
+This is clause (1) of the lemma.  By $(10)$ the function
+$K_{\gamma,j}(x,\cdot)(f-f(x))$ is integrable on $\mathbb{R}^n$, hence on
+$\Omega_\varepsilon$, and therefore
+\begin{equation*}
+  \int_{\Omega_\varepsilon}K_{\gamma,j}(x,y)f(y)\,dy
+    = \int_{\Omega_\varepsilon}K_{\gamma,j}(x,y)\bigl(f(y)-f(x)\bigr)\,dy
+      + f(x)\int_{\Omega_\varepsilon}K_{\gamma,j}(x,y)\,dy , \tag{11}
+\end{equation*}
+all three integrals being absolutely convergent.
+
+Let $\varepsilon_k\downarrow0$ be any sequence of positive reals.  The second
+term of $(11)$ tends to $0$ by clause (3) of
+\noderef{PVKernelConstantCancellation}.  For the first, the functions
+$\mathbf 1_{\Omega_{\varepsilon_k}}K_{\gamma,j}(x,\cdot)(f-f(x))$ converge
+pointwise on $\mathbb{R}^n\setminus\{x\}$ --- hence $\lambda$-almost everywhere,
+a single point being $\lambda$-null --- to
+$K_{\gamma,j}(x,\cdot)(f-f(x))$, and they are dominated in absolute value by
+that same integrable function; dominated convergence (shared context) gives
+\[
+  \int_{\Omega_{\varepsilon_k}}K_{\gamma,j}(x,y)(f(y)-f(x))\,dy
+    \longrightarrow
+  \int_{\mathbb{R}^n}K_{\gamma,j}(x,y)(f(y)-f(x))\,dy = \Phi_j(x)
+\]
+by $(10)$.  Hence
+$\int_{\Omega_{\varepsilon_k}}K_{\gamma,j}(x,y)f(y)\,dy \to \Phi_j(x)$.  Since
+the sequence $(\varepsilon_k)$ was arbitrary and $\mathbb{R}$ is a metric space,
+so that convergence along $\varepsilon\downarrow0$ is equivalent to convergence
+along every such sequence, clause (2) follows.
+\end{proof}

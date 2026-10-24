@@ -1,0 +1,91 @@
+\begin{lemma}[Existence of a minimizer of $J$ over the cone]
+Let $F \in L^2(\gamma_n)$ be nonnegative $\gamma_n$-a.e., put
+$m = \int F \, d\gamma_n$ and let $a > m$.  Then there exists
+$u \in \mathcal{K}$ with
+\[
+  J(u) \leq J(v) \qquad\text{for every } v \in \mathcal{K},
+\]
+where $\mathcal{K}$ is the cone of \noderef{ObstacleCone} and $J$ the functional
+of \noderef{ObstacleFunctional}.
+\end{lemma}
+\begin{proof}
+By part (2) of \noderef{ObstacleCoercivity}, the infimum
+$I = \inf_{v \in \mathcal{K}} J(v)$ is a finite real number with $I \leq 0$.
+
+\emph{Step 1: a bounded minimizing sequence.}
+By the definition of the infimum, for each integer $k \geq 1$ there is
+$v_k \in \mathcal{K}$ with
+\[
+  I \leq J(v_k) < I + \tfrac1k .
+\]
+This uses only that $I$ is finite and does not presuppose that it is attained.
+Since $I \leq 0$ we get $J(v_k) < I + 1 \leq 1$ for every $k$, so
+\noderef{ObstacleSublevelBounded} applies with $C = 1$ and yields a finite
+constant
+$R^2 = M_1^2/(a-m)^2 + 8M_1$, $M_1 = 1 + \|F - m\mathbf{1}\|_2^2$, independent of
+$k$, with
+\begin{equation*}
+  \|v_k\|_2^2 + \mathcal{E}(v_k) \leq R^2 \qquad\text{for every } k . \tag{1}
+\end{equation*}
+In particular $\|v_k\|_2 \leq R$ and $\mathcal{E}(v_k) \leq R^2$.  Also
+$J(v_k) \to I$, since $I \leq J(v_k) < I + 1/k$.
+
+\emph{Step 2: a weakly convergent subsequence in $L^2(\gamma_n)$.}
+By (1) and the nonnegativity of $\mathcal{E}(v_k)$ (which holds by
+\noderef{Energy}, the energy being a sum of nonnegative terms) we have
+$\|v_k\|_2^2 \leq R^2$, hence $\|v_k\|_2 \leq R$ for every $k$, taking $R \geq 0$
+to be the nonnegative square root of $R^2$.  Apply
+\noderef{GaussL2WeakSeqCompact} to the sequence $(v_k)$ with this bound $R$: it
+supplies indices $k_1 < k_2 < \cdots$ and $u \in L^2(\gamma_n)$ with
+$\|u\|_2 \leq R$ and
+\begin{equation*}
+  \langle v_{k_j}, \varphi\rangle \longrightarrow \langle u, \varphi\rangle
+  \qquad\text{for every } \varphi \in L^2(\gamma_n). \tag{2}
+\end{equation*}
+No compact embedding, and no compactness uniform in $n$, is used; in particular
+no weak topology on $\mathcal{V}$ and no reflexivity of $\mathcal{V}$ is
+invoked, which is where this proof departs from the reference paper's route.
+
+\emph{Step 3: the limit is admissible.}
+Each $v_{k_j}$ satisfies $v_{k_j} \geq 0$ $\gamma_n$-a.e.\ by
+\noderef{ObstacleCone}, so \noderef{ConeWeaklyClosed}, applied to the sequence
+$(v_{k_j})_j$ and the limit $u$ with hypothesis (2), gives $u \geq 0$
+$\gamma_n$-a.e.  Moreover \noderef{EnergyWeaklyLSC}, applied to the same
+sequence and limit, gives
+\begin{equation*}
+  \mathcal{E}(u) \leq \liminf_{j\to\infty} \mathcal{E}(v_{k_j}) \leq R^2 < \infty,
+  \tag{3}
+\end{equation*}
+using (1).  By \noderef{ObstacleCone} these two facts say $u \in \mathcal{K}$.
+
+\emph{Step 4: the linear term is weakly continuous.}
+Since $\gamma_n$ is a probability measure (\noderef{GaussIsProb}), the constant
+function $\mathbf{1}$ lies in $L^2(\gamma_n)$, hence so does
+$a\mathbf{1} - F$.  Therefore, by (2) applied with
+$\varphi = a\mathbf{1} - F$,
+\begin{equation*}
+  \int (a - F)\, v_{k_j}\, d\gamma_n
+    = \langle v_{k_j},\, a\mathbf{1} - F\rangle
+    \longrightarrow \langle u,\, a\mathbf{1} - F\rangle
+    = \int (a-F)\, u \, d\gamma_n . \tag{4}
+\end{equation*}
+
+\emph{Step 5: $J(u) \leq I$.}
+By \noderef{ObstacleFunctional} and then (3) and (4),
+\[
+  J(u) = \tfrac12 \mathcal{E}(u) + \int (a-F)u\, d\gamma_n
+   \leq \tfrac12 \liminf_j \mathcal{E}(v_{k_j})
+         + \lim_j \int (a-F)v_{k_j}\, d\gamma_n
+   = \liminf_j J(v_{k_j}) ,
+\]
+where the last equality uses that the liminf of a sum of a sequence with a
+liminf and a sequence with a limit is the sum of the liminf and the limit, all
+quantities being finite reals by (1) and (3).  Since $J(v_k) \to I$ by Step 1, the
+subsequence also satisfies $J(v_{k_j}) \to I$, so $\liminf_j J(v_{k_j}) = I$ and
+hence $J(u) \leq I$.
+
+\emph{Step 6: conclusion.}
+By Step 3, $u \in \mathcal{K}$, so the definition of $I$ as the infimum over
+$\mathcal{K}$ gives $I \leq J(u)$.  Combined with Step 5, $J(u) = I$, and
+therefore $J(u) = I \leq J(v)$ for every $v \in \mathcal{K}$.
+\end{proof}

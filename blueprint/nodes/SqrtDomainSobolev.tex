@@ -1,0 +1,220 @@
+\begin{lemma}[The operator domain of $L^{1/2}$ sits inside $W^{1,2}(\gamma_n)$, isometrically]
+Let $v \in \operatorname{Dom}(L^{1/2})$ in the sense of \noderef{FracPowDomain}.
+Then $v \in W^{1,2}(\gamma_n)$ in the sense of \noderef{SobolevW12}, and
+\[
+  \|L^{1/2}v\|_{L^2(\gamma_n)} = \|Dv\|_{L^2(\gamma_n;\mathbb{R}^n)},
+  \qquad\text{equivalently}\qquad
+  \|L^{1/2}v\|_2^2 = \tfrac12\int |\nabla v|^2 \, d\gamma_n ,
+\]
+with $L^{1/2}$ as in \noderef{FracPow} and $D = 2^{-1/2}\nabla$ as in
+\noderef{GaussD}.  Only this inclusion and this norm identity are asserted; the
+reverse inclusion $W^{1,2}(\gamma_n) \subseteq \operatorname{Dom}(L^{1/2})$ is not
+claimed here and is not used anywhere below.
+\end{lemma}
+\begin{proof}
+Write $v_\alpha$ for the Hermite coefficients of $v$ relative to
+\noderef{HermiteBasis}, so $v_\alpha = \langle v, h_\alpha\rangle$.  By
+\noderef{FracPowDomain} with $s = 1/2$,
+\begin{equation*}
+  \textstyle\sum_{\alpha \neq 0} |\alpha|\,|v_\alpha|^2 < \infty . \tag{1}
+\end{equation*}
+
+\emph{Step 1: the gradient of a single Hermite function.}
+Let $\alpha \in \mathbb{N}_0^n$.  By \noderef{HermiteFunDeriv},
+$D_j h_\alpha = \sqrt{\alpha_j}\, h_{\alpha - e_j}$ for each $j$, as an identity
+between polynomials; a classical derivative of a polynomial is in particular a
+weak Euclidean derivative in the sense of \noderef{HasGaussWeakGrad}, because the
+defining identity is ordinary integration by parts against a smooth compactly
+supported test function.  All the functions $h_\beta$ lie in $L^2(\gamma_n)$ by
+\noderef{HermiteFunMemLp}, so $Dh_\alpha \in L^2(\gamma_n;\mathbb{R}^n)$ and
+$h_\alpha \in W^{1,2}(\gamma_n)$ by \noderef{SobolevW12}.
+
+\emph{Step 2: the Gram matrix of the gradients.}
+Let $\alpha, \beta \in \mathbb{N}_0^n$.  The inner product of
+$L^2(\gamma_n;\mathbb{R}^n)$ pairs matching coordinates, so by Step 1
+\[
+  \langle D h_\alpha, D h_\beta\rangle
+    = \sum_{j=1}^n \bigl\langle D_j h_\alpha,\, D_j h_\beta\bigr\rangle
+    = \sum_{j=1}^n \sqrt{\alpha_j}\,\sqrt{\beta_j}\;
+        \bigl\langle h_{\alpha-e_j},\, h_{\beta-e_j}\bigr\rangle .
+\]
+By \noderef{HermiteL2Orthonormal} the inner product in the $j$th summand equals
+$1$ when $\alpha - e_j = \beta - e_j$ and $0$ otherwise.  We evaluate the $j$th
+summand by first disposing of the degenerate indices, because under the convention
+of \noderef{MultiIndexSum} --- the $j$th entry is left at $0$ when $\alpha_j = 0$
+--- the decremented multi-indices can coincide even for $\alpha \neq \beta$: for
+instance $n = 2$, $j = 1$, $\alpha = (0,5)$, $\beta = (1,5)$ give
+$\alpha - e_1 = \beta - e_1 = (0,5)$.  So it is the prefactor, not the Gram entry,
+that must kill those summands.
+
+\emph{(2a) If $\alpha_j = 0$ or $\beta_j = 0$, the $j$th summand is $0$.}  Its
+prefactor is $\sqrt{\alpha_j}\sqrt{\beta_j}$ and one of the two factors is
+$\sqrt{0} = 0$, so the prefactor is $0$; the Gram entry is a real number, hence
+the product vanishes whatever that entry is.
+
+\emph{(2b) If $\alpha_j \geq 1$ and $\beta_j \geq 1$, then
+$\alpha - e_j = \beta - e_j$ forces $\alpha = \beta$.}  By
+\noderef{MultiIndexSum} the multi-index $\alpha - e_j$ agrees with $\alpha$ at
+every entry $i \neq j$ and has $j$th entry $\alpha_j - 1$, and likewise for
+$\beta$; the convention plays no role here, since both $j$th entries are at least
+$1$ and the decrement is therefore genuine.  So $\alpha - e_j = \beta - e_j$ gives
+$\alpha_i = \beta_i$ for every $i \neq j$ together with
+$\alpha_j - 1 = \beta_j - 1$, and the latter yields $\alpha_j = \beta_j$ because
+both $\alpha_j$ and $\beta_j$ are at least $1$.  Hence $\alpha = \beta$.
+
+Suppose now $\alpha \neq \beta$, and let $j$ be arbitrary.  If $\alpha_j = 0$ or
+$\beta_j = 0$, the $j$th summand is $0$ by (2a).  Otherwise $\alpha_j \geq 1$ and
+$\beta_j \geq 1$, and then $\alpha - e_j \neq \beta - e_j$ --- equality would
+force $\alpha = \beta$ by (2b), contradicting $\alpha \neq \beta$ --- so the Gram
+entry is $0$ and the $j$th summand is $0$ again.  Every summand vanishes, so
+$\langle D h_\alpha, D h_\beta\rangle = 0$.
+
+Suppose instead $\alpha = \beta$.  The $j$th summand is
+$\sqrt{\alpha_j}\sqrt{\alpha_j}\,\langle h_{\alpha-e_j}, h_{\alpha-e_j}\rangle$,
+and this equals $\alpha_j$: if $\alpha_j \geq 1$ the two decremented indices are
+literally the same multi-index, so the Gram entry is $1$ and
+$\sqrt{\alpha_j}\sqrt{\alpha_j} = \alpha_j$; if $\alpha_j = 0$ the summand is $0$
+by (2a) and $\alpha_j = 0$ as well.  Summing over $j$ and using
+\noderef{MultiIndexSum} gives $\sum_{j=1}^n \alpha_j = |\alpha|$.  Altogether
+\begin{equation*}
+  \langle D h_\alpha, D h_\beta\rangle
+    = \begin{cases}
+        |\alpha|, & \alpha = \beta,\\
+        0, & \alpha \neq \beta.
+      \end{cases} \tag{2}
+\end{equation*}
+
+\emph{Step 3: the identity on finite Hermite sums.}
+Let $S \subseteq \mathbb{N}_0^n$ be finite and $v_S = \sum_{\alpha\in S} v_\alpha h_\alpha$.
+
+\emph{(3a) The gradient side.}  By Step 1 each $h_\alpha$ lies in
+$W^{1,2}(\gamma_n)$, so by induction on the finite set $S$, using the two-term
+additivity clause and the homogeneity clause of \noderef{GaussDLinear} at each
+step, $v_S \in W^{1,2}(\gamma_n)$ and
+$D v_S = \sum_{\alpha\in S} v_\alpha\, Dh_\alpha$; the base case $S = \emptyset$
+gives $v_\emptyset = 0$, and taking $c = 0$ in the third clause of
+\noderef{GaussDLinear} puts $0$ in $W^{1,2}(\gamma_n)$ with $D0 = 0$.  Expanding
+the squared norm of this finite sum bilinearly and inserting (2),
+\[
+  \|D v_S\|^2
+    = \sum_{\alpha,\beta \in S} v_\alpha v_\beta \langle Dh_\alpha, Dh_\beta\rangle
+    = \sum_{\alpha \in S} |\alpha|\,|v_\alpha|^2 ,
+\]
+the off-diagonal terms vanishing by the second case of (2).  The term $\alpha = 0$
+carries the factor $|0| = 0$ by \noderef{MultiIndexSum} and may be dropped, so
+\begin{equation*}
+  \|D v_S\|^2 = \sum_{\alpha \in S,\ \alpha \neq 0} |\alpha|\, |v_\alpha|^2 . \tag{3}
+\end{equation*}
+
+We now compute $\|L^{1/2}v_S\|_2^2$ and obtain the same quantity.  This is done
+through the Hermite coefficients of $v_S$, and not by invoking additivity or
+homogeneity of $L^{1/2}$: by \noderef{FracPow} the map $L^{1/2}$ is given by its
+series only on $\operatorname{Dom}(L^{1/2})$ and is $0$ off that set, so membership
+must be established before the series may be used at all.
+
+\emph{(3b) The coefficients of $v_S$.}  By \noderef{HermiteBasis} the $\beta$th
+Hermite coefficient of an element of $L^2(\gamma_n)$ is its inner product with
+$h_\beta$.  Hence, by linearity of the inner product in its second argument over
+the finite sum defining $v_S$, and by \noderef{HermiteL2Orthonormal},
+\[
+  (v_S)_\beta = \langle h_\beta, v_S\rangle
+    = \sum_{\alpha \in S} v_\alpha \langle h_\beta, h_\alpha\rangle
+    = \begin{cases} v_\beta, & \beta \in S, \\ 0, & \beta \notin S. \end{cases}
+\]
+
+\emph{(3c) $v_S \in \operatorname{Dom}(L^{1/2})$.}  By (3b) the family
+$\beta \mapsto |\beta|\,|(v_S)_\beta|^2$ vanishes at every $\beta \notin S$, so
+\[
+  \textstyle\sum_{\beta \neq 0} |\beta|\,|(v_S)_\beta|^2
+    = \sum_{\beta \in S,\ \beta \neq 0} |\beta|\,|v_\beta|^2 ,
+\]
+a sum of finitely many real numbers, hence finite.  By the $s = 1/2$ criterion of
+\noderef{FracPowDomain} this says exactly $v_S \in \operatorname{Dom}(L^{1/2})$.
+
+\emph{(3d) The coefficients of $L^{1/2}v_S$, and its norm.}  Since $v_S$ lies in
+$\operatorname{Dom}(L^{1/2})$ by (3c), \noderef{FracPow} applies to $v_S$ and
+states that $L^{1/2}v_S$ is the element of $L^2(\gamma_n)$ whose $\beta$th
+Hermite coefficient is $0$ at $\beta = 0$ and $|\beta|^{1/2}(v_S)_\beta$ at
+$\beta \neq 0$; by (3b) that coefficient is $|\beta|^{1/2}v_\beta$ for
+$\beta \in S$ with $\beta \neq 0$, and $0$ for every other $\beta$.  Parseval's
+identity of \noderef{HermiteBasis} therefore gives
+\begin{equation*}
+  \|L^{1/2}v_S\|_2^2
+    = \sum_{\beta \in S,\ \beta \neq 0} \bigl(|\beta|^{1/2}v_\beta\bigr)^2
+    = \sum_{\beta \in S,\ \beta \neq 0} |\beta|\,|v_\beta|^2 . \tag{4}
+\end{equation*}
+Comparing (3) and (4), $\|Dv_S\| = \|L^{1/2}v_S\|_2$ for every finite
+$S \subseteq \mathbb{N}_0^n$.  That the number $|\alpha|$ carried by these two
+expressions really is the eigenvalue of the Ornstein--Uhlenbeck differential
+operator $-\tfrac12\Delta + x\cdot\nabla$ on $h_\alpha$, so that the spectral
+multiplier $|\alpha|^{1/2}$ of \noderef{FracPow} is the square root of that
+eigenvalue, is the content of \noderef{HermiteFunOU}.
+
+\emph{Step 4: passing to the limit on the gradient side.}
+Let $S_N = \{\alpha \in \mathbb{N}_0^n : |\alpha| \leq N\}$ and $v_N = v_{S_N}$.
+Each $S_N$ is finite, since $|\alpha| \leq N$ forces $\alpha_j \leq N$ for every
+$j$, so $S_N \subseteq \{0,1,\ldots,N\}^n$.  Moreover every finite subset of
+$\mathbb{N}_0^n$ is contained in some $S_N$, namely for $N$ the maximum of
+$|\alpha|$ over that subset; consequently, for any family $(c_\alpha)$ of
+nonnegative reals with $\sum_\alpha c_\alpha < \infty$, the partial sums
+$\sum_{\alpha \in S_N} c_\alpha$ increase to $\sum_\alpha c_\alpha$, and therefore
+the tails $\sum_{\alpha \notin S_N} c_\alpha$ tend to $0$ as $N \to \infty$.  We
+use this twice.
+
+First, $\|v - v_N\|_2^2 = \sum_{|\alpha| > N} |v_\alpha|^2$ by (3b) and Parseval
+(\noderef{HermiteBasis}), and $\sum_\alpha |v_\alpha|^2 = \|v\|_2^2 < \infty$ by
+Parseval again, so $v_N \to v$ in $L^2(\gamma_n)$.
+
+Second, let $M < N$.  Then $S_M \subseteq S_N$ and
+$v_N - v_M = \sum_{\alpha \in S_N \setminus S_M} v_\alpha h_\alpha$, which is
+$v_{S_N \setminus S_M}$ for the finite set $S_N \setminus S_M$; by
+\noderef{GaussDLinear} (additivity and homogeneity, applied as in (3a)) we have
+$Dv_N - Dv_M = D v_{S_N\setminus S_M}$, so (3) gives
+\[
+  \|Dv_N - Dv_M\|^2 = \sum_{M < |\alpha| \leq N} |\alpha|\,|v_\alpha|^2
+    \leq \sum_{\alpha \notin S_M,\ \alpha \neq 0} |\alpha|\,|v_\alpha|^2 ,
+\]
+the inequality because the left sum is over a subset of the index set of the right
+sum and all terms are nonnegative.  By (1) the family
+$\alpha \mapsto |\alpha|\,|v_\alpha|^2$ restricted to $\alpha \neq 0$ is summable
+with nonnegative terms, so its tails tend to $0$; hence $(Dv_N)_N$ is Cauchy in
+$L^2(\gamma_n;\mathbb{R}^n)$, which is complete, and we let $\Gamma$ be its limit.
+
+By Step 1 and (3a) each $\sqrt2\,Dv_N$ is a weak Euclidean gradient of $v_N$ in
+the sense of \noderef{HasGaussWeakGrad}, and $\sqrt2\,Dv_N \to \sqrt2\,\Gamma$ in
+$L^2(\gamma_n;\mathbb{R}^n)$.  Applying \noderef{GaussWeakGradClosed} to the
+sequences $v_N \to v$ and $\sqrt2\,Dv_N \to \sqrt2\,\Gamma$, the field
+$\sqrt2\,\Gamma$ is a weak Euclidean gradient of $v$.  Since
+$\Gamma \in L^2(\gamma_n;\mathbb{R}^n)$, the criterion of \noderef{SobolevW12} is
+met, so $v \in W^{1,2}(\gamma_n)$, which is the first assertion; and $Dv = \Gamma$
+by \noderef{GaussD} together with \noderef{GaussWeakGradUnique}, since both
+$\sqrt2\,Dv$ and $\sqrt2\,\Gamma$ are weak Euclidean gradients of $v$.
+
+\emph{Step 5: passing to the limit on the spectral side, and the norm identity.}
+By hypothesis $v \in \operatorname{Dom}(L^{1/2})$, so \noderef{FracPow} applies to
+$v$ and the $\beta$th Hermite coefficient of $L^{1/2}v$ is $0$ at $\beta = 0$ and
+$|\beta|^{1/2}v_\beta$ at $\beta \neq 0$.  By (3d) with $S = S_N$, the $\beta$th
+coefficient of $L^{1/2}v_N$ is $|\beta|^{1/2}v_\beta$ for $\beta \in S_N$ with
+$\beta \neq 0$ and $0$ otherwise.  The coefficient map of \noderef{HermiteBasis}
+is linear, being an isometric isomorphism onto $\ell^2(\mathbb{N}_0^n)$, so the
+coefficient family of $L^{1/2}v - L^{1/2}v_N$ is $|\beta|^{1/2}v_\beta$ at those
+$\beta \neq 0$ with $\beta \notin S_N$ and $0$ at all other $\beta$.  Parseval's
+identity of \noderef{HermiteBasis} then gives
+\[
+  \|L^{1/2}v - L^{1/2}v_N\|_2^2
+    = \sum_{\alpha \notin S_N,\ \alpha \neq 0} |\alpha|\,|v_\alpha|^2 ,
+\]
+which tends to $0$ as $N \to \infty$ by (1) and the tail statement of Step 4.
+Hence $L^{1/2}v_N \to L^{1/2}v$ in $L^2(\gamma_n)$.
+
+The norm is continuous, so from $Dv_N \to Dv$ (Step 4, since $Dv = \Gamma$ is the
+limit of $Dv_N$) and $L^{1/2}v_N \to L^{1/2}v$ we may pass to the limit in the
+equality $\|Dv_N\| = \|L^{1/2}v_N\|_2$ of Step 3 and conclude
+\[
+  \|Dv\| = \lim_{N\to\infty}\|Dv_N\| = \lim_{N\to\infty}\|L^{1/2}v_N\|_2
+    = \|L^{1/2}v\|_2 ,
+\]
+which is the second assertion.  Finally $D = 2^{-1/2}\nabla$ by \noderef{GaussD},
+so $\|Dv\|^2 = \tfrac12\int|\nabla v|^2\,d\gamma_n$, giving the second displayed
+form in the statement.
+\end{proof}

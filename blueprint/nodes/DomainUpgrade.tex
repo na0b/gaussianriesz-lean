@@ -1,0 +1,82 @@
+\begin{lemma}[Upgrading the potential from the form domain to the operator domain]
+Let $F \in L^2(\gamma_n)$, $a \in \mathbb{R}$, $u \in \mathcal{K}$ as in
+\noderef{ObstacleCone}, and suppose $\eta_2 \in L^2(\gamma_n)$ represents the
+multiplier functional of \noderef{ObstacleMultiplier}, i.e.
+\[
+  \mathcal{E}(u, \varphi) - \int (F-a)\varphi\, d\gamma_n
+    = \int \eta_2\,\varphi \, d\gamma_n
+  \qquad\text{for every } \varphi \in \mathcal{V} .
+\]
+Put $g = a\mathbf{1} - \eta_2 \in L^2(\gamma_n)$.  Then
+\[
+  u \in \operatorname{Dom}(L^{1/2})
+  \qquad\text{and}\qquad
+  L^{1/2} u = F - g \quad\text{in } L^2(\gamma_n) .
+\]
+In particular the form identity becomes an $L^2$ operator identity, and
+$F = g + Bu$ with $B = L^{1/2}$.
+\end{lemma}
+\begin{proof}
+Set $h = F - g = F - a\mathbf{1} + \eta_2$, an element of $L^2(\gamma_n)$ (the
+constant $\mathbf{1}$ lies in $L^2(\gamma_n)$ because $\gamma_n$ is a probability
+measure, \noderef{GaussIsProb}).  Rearranging the representation hypothesis, it
+says exactly
+\begin{equation*}
+  \mathcal{E}(u,\varphi) = \int h\,\varphi\, d\gamma_n = \langle h, \varphi\rangle
+  \qquad\text{for every } \varphi \in \mathcal{V} . \tag{$*$}
+\end{equation*}
+
+\emph{Step 1: the Hermite elements are admissible test functions.}
+For each $\beta \in \mathbb{N}_0^n$ the element $h_\beta$ of \noderef{HermiteL2}
+lies in $\mathcal{V}$: by \noderef{HermiteL2Orthonormal} its coefficients are
+$\delta_{\beta\cdot}$, so the defining series of \noderef{Energy} reduces to the
+single term $|\beta|^{1/2}$ when $\beta \neq 0$ and to the empty sum when
+$\beta = 0$; either way $\mathcal{E}(h_\beta) < \infty$.
+
+\emph{Step 2: testing $(*)$ on $h_\beta$.}
+Let $\beta \neq 0$.  By \noderef{EnergyBil} and \noderef{HermiteL2Orthonormal},
+the defining series of $\mathcal{E}(u, h_\beta)$ has exactly one nonzero term,
+namely the one at $\alpha = \beta$, so
+$\mathcal{E}(u, h_\beta) = |\beta|^{1/2}\, u_\beta$ where
+$u_\beta = \langle u, h_\beta\rangle$.  Hence $(*)$ with $\varphi = h_\beta$ gives
+\begin{equation*}
+  \langle h, h_\beta\rangle = |\beta|^{1/2}\, u_\beta \qquad (\beta \neq 0).
+  \tag{1}
+\end{equation*}
+For $\beta = 0$, the defining series of \noderef{EnergyBil} runs over indices
+$\alpha \neq 0$ only, and every term carries the factor
+$(h_0)_\alpha = 0$ (again \noderef{HermiteL2Orthonormal}), so
+$\mathcal{E}(u, h_0) = 0$ and $(*)$ gives
+\begin{equation*}
+  \langle h, h_0\rangle = 0 . \tag{2}
+\end{equation*}
+Recall $h_0 = \mathbf{1}$ by \noderef{Hermite1Zero}.
+
+\emph{Step 3: Parseval yields the domain criterion.}
+By Parseval's identity for the orthonormal basis of \noderef{HermiteBasis},
+applied to $h \in L^2(\gamma_n)$, and using (1) and (2),
+\[
+  \sum_{\beta \neq 0} |\beta|\,|u_\beta|^2
+    = \sum_{\beta \neq 0} \bigl|\langle h, h_\beta\rangle\bigr|^2
+    = \sum_{\beta} \bigl|\langle h, h_\beta\rangle\bigr|^2
+    = \|h\|_2^2 < \infty ,
+\]
+the middle equality because the $\beta = 0$ term vanishes by (2).  The criterion
+of \noderef{FracPowDomain} for $s = 1/2$ is precisely
+$\sum_{\beta\neq0}|\beta|\,|u_\beta|^2 < \infty$, so
+$u \in \operatorname{Dom}(L^{1/2})$.
+
+\emph{Step 4: identifying $L^{1/2}u$.}
+Now that $u \in \operatorname{Dom}(L^{1/2})$, the defining formula of
+\noderef{FracPow} with $s = 1/2$ applies and gives $L^{1/2}u$ the coefficients
+$0$ at $\beta = 0$ and $|\beta|^{1/2}u_\beta$ at $\beta \neq 0$.  By (1) and (2)
+these are exactly $\langle h, h_\beta\rangle$ for every $\beta$, including
+$\beta = 0$.  Since the coefficient map of \noderef{HermiteBasis} is injective,
+$L^{1/2}u = h = F - g$.  Consistently, Step 3 gives
+$u \in \operatorname{Dom}(L^{1/2})$, which is exactly the hypothesis
+\noderef{EnergyBilIsOperator} requires of its first argument; it imposes no
+condition on its second argument, so it applies to the pair $(u,\varphi)$ for
+every $\varphi \in L^2(\gamma_n)$, and in particular for every
+$\varphi \in \mathcal{V}$, and identifies the left-hand side of $(*)$ as
+$\langle L^{1/2}u,\varphi\rangle$.
+\end{proof}

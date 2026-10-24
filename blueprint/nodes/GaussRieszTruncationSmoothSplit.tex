@@ -1,0 +1,171 @@
+\begin{lemma}[Smooth approximation of an $L^1(\gamma)$ datum, and the three-term splitting of every truncated Riesz integral]
+Fix $n \geq 1$, let $\lambda$ be Lebesgue measure on $\mathbb{R}^n$, let
+$\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure}, and let
+$K_{\gamma,j}$ be the kernel of \noderef{GaussRieszKernel}.  For a
+$\gamma_n$-integrable $h : \mathbb{R}^n \to \mathbb{R}$, a coordinate
+$j \in \{1,\ldots,n\}$, a point $x \in \mathbb{R}^n$ and a real
+$\varepsilon > 0$ write
+\[
+  T_{j,\varepsilon}h(x)
+    = \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)\,h(y)\,dy ,
+\]
+the $y$-integral against $\lambda$; for an element of $L^1(\gamma_n)$ this is
+read through its canonical representative.
+
+Let $f \in L^1(\gamma_n)$ and let $k \in \mathbb{N}$.  Then there exist a
+function $\varphi : \mathbb{R}^n \to \mathbb{R}$ and an element
+$g \in L^1(\gamma_n)$ such that
+\begin{enumerate}
+\item[(i)] $\varphi$ is smooth, has compact support, and is
+$\gamma_n$-integrable;
+\item[(ii)] $\displaystyle\int_{\mathbb{R}^n}|g|\,d\gamma_n
+  \;<\; \frac1{k+1}$, the integral of the canonical representative of $g$; and
+\item[(iii)] $f = \varphi + g$ holds $\gamma_n$-almost everywhere, as an
+identity between the canonical representative of $f$, the function $\varphi$,
+and the canonical representative of $g$; equivalently $f = [\varphi] + g$ in
+$L^1(\gamma_n)$, where $[\varphi]$ is the class of $\varphi$, which exists by
+(i); and
+\item[(iv)] for every coordinate $j$, every $x \in \mathbb{R}^n$ and every
+real $\varepsilon > 0$, each of the three functions
+\[
+  y \mapsto K_{\gamma,j}(x,y)f(y), \qquad
+  y \mapsto K_{\gamma,j}(x,y)\varphi(y), \qquad
+  y \mapsto K_{\gamma,j}(x,y)g(y)
+\]
+is Lebesgue integrable on $\{y : |x-y| > \varepsilon\}$, and
+\[
+  T_{j,\varepsilon}f(x)
+    \;=\; T_{j,\varepsilon}\varphi(x) + T_{j,\varepsilon}g(x) .
+\]
+\end{enumerate}
+
+\emph{Why $g$ is an element of $L^1(\gamma_n)$ and not the function
+$f - \varphi$.}  The intended consumer feeds $g$ to a weak-type estimate whose
+input is an $L^1(\gamma_n)$ element, so what it needs is a class, not a
+representative; and it needs the splitting (iv) stated for \emph{that class's
+own} canonical representative, since that is the function whose truncations
+and maximal truncation the estimate controls.  Stating (iv) with $g$ rather
+than with $f - \varphi$ is therefore not a convenience: it discharges here,
+once, the reconciliation between the class $f - [\varphi]$ and the pointwise
+difference $f - \varphi$, which otherwise has to be carried through every later
+step.  The two agree $\gamma_n$-almost everywhere and hence, by clause (4) of
+\noderef{GaussLebesgueBallComparison}, $\lambda$-almost everywhere, which is
+what makes the substitution legitimate inside a Lebesgue integral.
+
+\emph{Why (iii) is stated between representatives rather than between
+classes.}  The two formulations are equivalent --- two elements of
+$L^1(\gamma_n)$ whose representatives agree $\gamma_n$-almost everywhere are
+equal --- and the representative form is the one a consumer can use without
+first naming the class $[\varphi]$, which needs the membership (i) as a datum.
+A consumer that wants the class form reads it off: (iii) says that $g$ and
+$f - \varphi$ agree $\gamma_n$-almost everywhere, so $g = f - [\varphi]$ in
+$L^1(\gamma_n)$, and hence
+$\|g\|_{L^1(\gamma_n)} = \|f - [\varphi]\|_{L^1(\gamma_n)}$ and, for any linear
+$T$ on $L^1(\gamma_n)$, $Tg = Tf - T[\varphi]$.
+
+\emph{The finiteness in (iv) is at every point, with no exceptional set.}
+Each of the three integrands is asserted integrable on
+$\{|x-y| > \varepsilon\}$ for \emph{every} $x$ and every $\varepsilon > 0$, so
+each truncation is a finite real number everywhere, and the identity in (iv)
+is an identity between finite reals rather than an almost-everywhere statement.
+This is available because the far majorant of
+\noderef{GaussRieszKernelFarMajorant} is a genuine pointwise kernel bound off
+the diagonal; no maximal-function or almost-everywhere finiteness input is used
+or needed.
+
+\emph{What the bound in (ii) does and does not say.}  The constant $1/(k+1)$ is
+the only role $k$ plays: the statement is an approximation statement at the
+single accuracy $1/(k+1)$, and $\varphi$ and $g$ both depend on $k$.  Nothing
+is claimed about how $\varphi$ or $g$ vary with $k$, and in particular no
+uniformity in $k$ and no convergence as $k \to \infty$ is asserted; a consumer
+that wants a sequence applies the lemma once for each $k$.  Note also that
+$\varphi$ and $g$ do not depend on the coordinate $j$: $j$ is quantified
+inside (iv), after both have been produced.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: the approximant and the class $g$.}
+Apply \noderef{SmoothCompactDenseL1Gauss} to $f$ with
+$\delta = 1/(k+1) > 0$.  It produces a function
+$\varphi : \mathbb{R}^n \to \mathbb{R}$ which is smooth, has compact support,
+is $\gamma_n$-integrable, and satisfies
+\begin{equation*}
+  \bigl\|\,f - \varphi\,\bigr\|_{L^1(\gamma_n)} < \frac1{k+1} , \tag{1}
+\end{equation*}
+where $f - \varphi$ means the pointwise difference of the canonical
+representative of $f$ and $\varphi$, and the norm is the $L^1(\gamma_n)$ norm
+of that function.  This gives (i).
+
+Let $[\varphi] \in L^1(\gamma_n)$ be the class of $\varphi$, which exists
+because $\varphi$ is $\gamma_n$-integrable, and put
+\[
+  g = f - [\varphi] \;\in\; L^1(\gamma_n) .
+\]
+The canonical representative of $g$ agrees $\gamma_n$-almost everywhere with
+the pointwise difference $f - \varphi$: the representative of a difference of
+classes agrees almost everywhere with the difference of the representatives,
+and the representative of $[\varphi]$ agrees almost everywhere with $\varphi$.
+Hence
+\begin{equation*}
+  g = f - \varphi \quad \gamma_n\text{-almost everywhere.} \tag{2}
+\end{equation*}
+Rearranging $(2)$ pointwise at each of the $\gamma_n$-almost every $y$
+at which it holds gives $f(y) = \varphi(y) + g(y)$ there, which is (iii).
+
+Since the $L^1(\gamma_n)$ norm of a function is unchanged by a
+$\gamma_n$-almost-everywhere modification, $(2)$ and $(1)$ give
+$\|g\|_{L^1(\gamma_n)} < 1/(k+1)$; and
+$\|g\|_{L^1(\gamma_n)} = \int|g|\,d\gamma_n$, the integral of the canonical
+representative.  That is (ii).
+
+\emph{Step 2: every truncation is finite, and the splitting.}
+Fix $j$, $x \in \mathbb{R}^n$ and a real $\varepsilon > 0$, and put
+$R_x = \max(|x|,1)$, so that $R_x > 0$ and $|x| \leq R_x$.  Apply clause (1) of
+\noderef{GaussRieszKernelFarMajorant} with $R := R_x > 0$ and
+$\rho := \varepsilon > 0$.  Its second part states that for every
+$h \in L^1(\gamma_n)$ --- more precisely for every $h$ that is
+$\gamma_n$-integrable --- and every $x'$ with $|x'| \leq R_x$, the function
+$y \mapsto K_{\gamma,j}(x',y)h(y)$ is Lebesgue integrable on
+$\{y : |x'-y| > \varepsilon\}$.  Taking $x' = x$, which is legitimate because
+$|x| \leq R_x$, and taking $h$ in turn to be the canonical representative of
+$f$, then $\varphi$, then the canonical representative of $g$ --- all three
+being $\gamma_n$-integrable, the first and third as representatives of elements
+of $L^1(\gamma_n)$ and the second by (i) --- gives the three integrability
+assertions of (iv).  In particular each of
+$T_{j,\varepsilon}f(x)$, $T_{j,\varepsilon}\varphi(x)$ and
+$T_{j,\varepsilon}g(x)$ is a finite real number.
+
+For the identity, note first that by clause (4) of
+\noderef{GaussLebesgueBallComparison} a subset of $\mathbb{R}^n$ is
+$\gamma_n$-null if and only if it is $\lambda$-null, so the
+$\gamma_n$-almost-everywhere identity $(2)$ is also a
+$\lambda$-almost-everywhere identity:
+\begin{equation*}
+  g(y) = f(y) - \varphi(y) \quad \text{for } \lambda\text{-almost every } y .
+  \tag{3}
+\end{equation*}
+Consequently, for $\lambda$-almost every $y$,
+\[
+  K_{\gamma,j}(x,y)f(y)
+    = K_{\gamma,j}(x,y)\varphi(y) + K_{\gamma,j}(x,y)\bigl(f(y)-\varphi(y)\bigr)
+    = K_{\gamma,j}(x,y)\varphi(y) + K_{\gamma,j}(x,y)g(y) ,
+\]
+the first equality being the distributive law at the point $y$ and the second
+substituting $(3)$.  The set $\{y : |x-y| > \varepsilon\}$ is Lebesgue
+measurable, being the strict superlevel set of the continuous function
+$y \mapsto |x-y|$, so two functions agreeing $\lambda$-almost everywhere have
+the same integral over it; hence
+\[
+  T_{j,\varepsilon}f(x)
+    = \int_{|x-y|>\varepsilon}
+        \bigl(K_{\gamma,j}(x,y)\varphi(y) + K_{\gamma,j}(x,y)g(y)\bigr)dy .
+\]
+Both summands are Lebesgue integrable on $\{y : |x-y| > \varepsilon\}$ by the
+previous paragraph, so the integral of the sum is the sum of the integrals:
+\[
+  T_{j,\varepsilon}f(x)
+    = \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)\varphi(y)\,dy
+      + \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)g(y)\,dy
+    = T_{j,\varepsilon}\varphi(x) + T_{j,\varepsilon}g(x) .
+\]
+As $j$, $x$ and $\varepsilon > 0$ were arbitrary, this is (iv).
+\end{proof}

@@ -1,0 +1,152 @@
+\begin{lemma}[Vanishing of the fixed-time Mehler gradient slice]
+Fix $n \geq 1$, $j \in \{1,\ldots,n\}$ and $x \in \mathbb{R}^n$.  For $s > 0$
+write
+\[
+  r = e^{-s} \in (0,1), \qquad \sigma = 1 - e^{-2s} \in (0,1),
+  \qquad
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr) ,
+\]
+and let
+\[
+  D_j^x p_s(x,y) = \sqrt2\,r\,\frac{y_j - r x_j}{\sigma}\,p_s(x,y)
+\]
+be the energy-normalized $x$-derivative of the Lebesgue kernel, as evaluated in
+\noderef{MehlerKernelXDerivative} (the displayed right-hand side is the
+closed-form expression that node proves $2^{-1/2}\partial_{x_j}p_s(x,y)$ equals,
+and it is that explicit expression, not a derivative, that occurs here).  Then
+for every $s > 0$ the function $y \mapsto D_j^xp_s(x,y)$ is Lebesgue integrable
+on $\mathbb{R}^n$ and
+\[
+  \int_{\mathbb{R}^n} D_j^xp_s(x,y)\,dy = 0 .
+\]
+
+This is the fixed-time half of the reference paper's appendix cancellation
+computation: the appendix isolates the odd part of the heat-kernel derivative
+and records that the function $V_{j,\sigma}(z) = (z_j/\sigma)q_\sigma(z)$
+appearing in it is odd in $z_j$, so that its integral over all of
+$\mathbb{R}^n$ vanishes.  The statement above is exactly that vanishing,
+together with the absolute convergence that makes it meaningful, at one fixed
+$s$.  Nothing is asserted here about any truncation $\{|x-y|>\varepsilon\}$, nor
+about the normalized Gaussian Riesz kernel obtained by integrating in $s$, nor
+about any limit as $\varepsilon \downarrow 0$; and no claim of uniformity in
+$s$ is made.  Every constant occurring in the proof is allowed to depend on $n$,
+on $j$, on $x$ and on $s$, as the appendix header permits.
+\end{lemma}
+\begin{proof}
+Throughout, $\lambda$ denotes Lebesgue measure on $\mathbb{R}^n$, and $n \geq 1$,
+$j$, $x$ and $s > 0$ are fixed.  Since $s > 0$ we have $e^{-2s} < 1$, so
+$\sigma = 1 - e^{-2s} > 0$; also $r = e^{-s} > 0$.
+
+\emph{Step 0: translating the integrand to the origin.}
+Define
+\[
+  G(w) = \sqrt2\,r\,\frac{w_j}{\sigma}\cdot
+      \frac{1}{\pi^{n/2}\sigma^{n/2}}e^{-|w|^2/\sigma} ,
+  \qquad w \in \mathbb{R}^n .
+\]
+For every $w \in \mathbb{R}^n$ we claim $D_j^xp_s(x,\,rx+w) = G(w)$.  Indeed,
+putting $y = rx+w$ we have $y_j - rx_j = (rx)_j + w_j - rx_j = w_j$, because the
+$j$th coordinate of $rx$ is $rx_j$; and $rx - y = rx - (rx+w) = -w$, so
+$|rx-y| = |-w| = |w|$.  Substituting these two identities into the displayed
+formula for $D_j^xp_s$ gives exactly $G(w)$.
+
+\emph{Step 1: a Gaussian majorant for $G$.}
+We first record the elementary inequality
+\begin{equation*}
+  u\,e^{-u} \leq 1 \qquad (u \geq 0) . \tag{1}
+\end{equation*}
+Indeed $1+u \leq e^u$ for every real $u$ (shared context, the exponential
+inequality), so $u \leq e^u$, and multiplying by $e^{-u} > 0$ gives $(1)$.
+
+Fix $w$ and put $t = |w| \geq 0$ and $E = e^{-t^2/(2\sigma)}$.  Then
+$0 < E \leq 1$, since $t^2/(2\sigma) \geq 0$, and
+$e^{-t^2/\sigma} = E\cdot E$ because
+$-t^2/\sigma = -t^2/(2\sigma) - t^2/(2\sigma)$.  Applying $(1)$ with
+$u = t^2/(2\sigma)$ gives $\bigl(t^2/(2\sigma)\bigr)E \leq 1$, i.e.
+\begin{equation*}
+  t^2E \leq 2\sigma . \tag{2}
+\end{equation*}
+Also $t \leq 1+t^2$, since $(t-1)^2 \geq 0$ gives $2t \leq 1+t^2$ and hence
+$t \leq (1+t^2)/2 \leq 1+t^2$.  Therefore, using $E > 0$, then $E \leq 1$ and
+$(2)$,
+\[
+  t\,e^{-t^2/\sigma} = t\,E\,E \leq (1+t^2)E\,E = E\,E + (t^2E)E
+    \leq E + 2\sigma E = (1+2\sigma)E ,
+\]
+that is,
+\begin{equation*}
+  |w|\,e^{-|w|^2/\sigma} \leq (1+2\sigma)\,e^{-|w|^2/(2\sigma)}
+  \qquad (w \in \mathbb{R}^n) . \tag{3}
+\end{equation*}
+
+Next, $|w_j| \leq |w|$ for every $w$ and every $j$: writing
+$|w| = \bigl(\sum_i |w_i|^2\bigr)^{1/2}$, the sum of nonnegative terms is at
+least its $j$th term, so $|w_j|^2 \leq |w|^2$, and the square root is monotone.
+
+Finally, $e^{-|w|^2/(2\sigma)}$ is Lebesgue integrable on $\mathbb{R}^n$: with
+$b = 1/(2\sigma) > 0$ we have
+$e^{-b|w|^2} = \prod_{i=1}^n e^{-bw_i^2}$, Lebesgue measure on $\mathbb{R}^n$ is
+the $n$-fold product of one-dimensional Lebesgue measure, the integrand is
+nonnegative and continuous hence product-measurable, so by Tonelli (shared
+context) and the scalar Gaussian integral (shared context, $\int_{\mathbb{R}}
+e^{-bv^2}dv = \sqrt{\pi/b}$),
+\begin{equation*}
+  \int_{\mathbb{R}^n} e^{-b|w|^2}\,dw = (\pi/b)^{n/2} < \infty . \tag{4}
+\end{equation*}
+
+Combining, $G$ is continuous, hence Borel measurable, and for every $w$
+\[
+  |G(w)|
+    = \frac{\sqrt2\,r}{\sigma}\cdot\frac{1}{\pi^{n/2}\sigma^{n/2}}\,
+      |w_j|\,e^{-|w|^2/\sigma}
+    \leq \frac{\sqrt2\,r}{\sigma}\cdot\frac{1}{\pi^{n/2}\sigma^{n/2}}\,
+      (1+2\sigma)\,e^{-|w|^2/(2\sigma)} ,
+\]
+all the displayed factors $\sqrt2$, $r$, $\sigma^{-1}$, $\pi^{-n/2}$,
+$\sigma^{-n/2}$ and $e^{-|w|^2/\sigma}$ being strictly positive.  The
+right-hand side is a constant multiple of the integrable function of $(4)$, so
+by the domination criterion for integrability (shared context) $G$ is Lebesgue
+integrable on $\mathbb{R}^n$.
+
+\emph{Step 2: integrability of the slice.}
+The map $w \mapsto rx+w$ is a translation, and Lebesgue measure is translation
+invariant (shared context), so a function is $\lambda$-integrable if and only if
+its composition with that translation is.  By Step 0 the composition of
+$y \mapsto D_j^xp_s(x,y)$ with $w \mapsto rx+w$ is $G$, which is
+$\lambda$-integrable by Step 1.  Hence $y \mapsto D_j^xp_s(x,y)$ is
+$\lambda$-integrable on $\mathbb{R}^n$, which is the first assertion.
+
+\emph{Step 3: oddness, and the vanishing.}
+For every $w$ we have $(-w)_j = -w_j$ and $|-w| = |w|$, so
+\[
+  G(-w) = \sqrt2\,r\,\frac{-w_j}{\sigma}\cdot
+      \frac{1}{\pi^{n/2}\sigma^{n/2}}e^{-|w|^2/\sigma} = -G(w) ,
+\]
+i.e.\ $G$ is odd.  This is the appendix's observation that
+$V_{j,\sigma}$ is odd, in the form in which it is used: the linear factor
+changes sign and the Gaussian factor, depending on $w$ only through $|w|$, does
+not.  Lebesgue measure on $\mathbb{R}^n$ is invariant under the reflection
+$w \mapsto -w$ (shared context), so for the $\lambda$-integrable function $G$,
+\[
+  \int_{\mathbb{R}^n} G(w)\,dw
+    = \int_{\mathbb{R}^n} G(-w)\,dw
+    = \int_{\mathbb{R}^n} -G(w)\,dw
+    = -\int_{\mathbb{R}^n} G(w)\,dw ,
+\]
+the middle equality by oddness and the last by linearity of the integral, which
+applies because $G$ is integrable.  A real number equal to its own negative is
+$0$, so
+\begin{equation*}
+  \int_{\mathbb{R}^n} G(w)\,dw = 0 . \tag{5}
+\end{equation*}
+By translation invariance of $\lambda$ once more and Step 0,
+\[
+  \int_{\mathbb{R}^n} D_j^xp_s(x,y)\,dy
+    = \int_{\mathbb{R}^n} D_j^xp_s(x,\,rx+w)\,dw
+    = \int_{\mathbb{R}^n} G(w)\,dw
+    = 0 ,
+\]
+both integrals converging absolutely by Step 2 and Step 1.  This is the second
+assertion.
+\end{proof}

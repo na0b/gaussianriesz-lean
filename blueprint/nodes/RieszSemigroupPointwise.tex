@@ -1,0 +1,205 @@
+\begin{lemma}[The semigroup formula for $R_\gamma$ on the smooth core, with a continuous representative]
+For $s > 0$ write $r_s = e^{-s}$, $\tau_s = \sqrt{1-e^{-2s}}$, and for
+$g : \mathbb{R}^n \to \mathbb{R}$ write
+$(A_s g)(x) = \int g(r_s x + \tau_s z)\,d\gamma_n(z)$ for the Mehler average of
+\noderef{MehlerFormula}.  Let $f : \mathbb{R}^n \to \mathbb{R}$ be smooth with
+compact support and square $\gamma_n$-integrable --- the last hypothesis is
+carried explicitly but is automatic here, such an $f$ being bounded and
+$\gamma_n$ finite --- and write $u \in L^2(\gamma_n)$ for the class it
+determines.  Let $j \in \{1,\ldots,n\}$.  Put
+\[
+  \Phi_j(x) = \frac{1}{\sqrt\pi}\int_0^\infty
+      e^{-s}\,\bigl(A_s(D_j f)\bigr)(x)\,\frac{ds}{\sqrt s},
+  \qquad D_j = 2^{-1/2}\partial_j ,
+\]
+so that the inner average is $2^{-1/2}(A_s(\partial_j f))(x)$, with
+$D = 2^{-1/2}\nabla$ the energy-normalized gradient of \noderef{GaussD}.  Then:
+\begin{enumerate}
+\item for every $x \in \mathbb{R}^n$ the integral defining $\Phi_j(x)$ converges
+absolutely, i.e.\ $s \mapsto s^{-1/2}e^{-s}(A_s(D_jf))(x)$ is integrable on
+$(0,\infty)$;
+\item $\Phi_j$ is continuous on $\mathbb{R}^n$; and
+\item $\Phi_j$ is a representative of the $j$th coordinate of $R_\gamma u$:
+\[
+  \Phi_j = \bigl(R_\gamma u\bigr)_j \qquad \gamma_n\text{-almost everywhere},
+\]
+with $R_\gamma$ as in \noderef{RieszTransform}.
+\end{enumerate}
+
+This is the reference paper's displayed semigroup formula for $R_\gamma$ together
+with the sentence that follows it: the second integral there converges
+absolutely at every $x$, since $|P_sDf(x)| \leq \|Df\|_\infty$, and provides a
+continuous representative of $R_\gamma f$.  Clauses (1) and (2) are that
+sentence and clause (3) is the identification.  All three are asserted at
+\emph{every} $x$ except (3), which is an identity between an everywhere-defined
+continuous function and an almost-everywhere class and cannot be more than an
+almost-everywhere identity; that is exactly the strength needed downstream,
+where the point is to have a canonical continuous function to evaluate
+pointwise and to know that it represents the transform.
+
+\emph{Route.}  The reference paper derives the formula by truncating the time
+integral and invoking closedness of $D$ together with $L^2$ convergence.  The
+proof below reaches the same conclusion differently, by testing the subordination
+formula against a fixed smooth compactly supported weight: for each such weight
+the pairing is a bounded linear functional on $L^2(\gamma_n)$, so it passes
+inside the Bochner integral, and the per-time identity is then ordinary
+integration by parts for a smooth function.  No closedness of $D$ and no
+continuity of $s \mapsto P_s v$ in $L^2$ is used.
+\end{lemma}
+\begin{proof}
+With $u \in L^2(\gamma_n)$ the class of $f$, write $\Pi_0 = L^0$ and
+$L^{-1/2}\Pi_0$ for the operators of \noderef{FracPow}, and
+$w = L^{-1/2}\Pi_0 u$.  Throughout, $\lambda$ denotes Lebesgue measure on
+$\mathbb{R}^n$; the integrals in the definition of a weak Euclidean gradient in
+\noderef{HasGaussWeakGrad} are taken against $\lambda$, not against $\gamma_n$.
+
+\emph{Step 0: bounds.}
+Write $S = \operatorname{supp} f$, a compact set.  The function $f$ is
+continuous, being smooth, and vanishes off $S$, so if $S = \emptyset$ then
+$f \equiv 0$; otherwise $|f|$, being continuous on the nonempty compact set
+$S$, attains a maximum there by the extreme value theorem (shared context,
+``Compact sets: extreme values and finite Lebesgue measure'', clause (1)).  In
+either case $M_0 = \sup_{\mathbb{R}^n}|f| < \infty$.  The same argument applies
+to each partial derivative: for every index $i$ the function $\partial_i f$ is
+continuous, $f$ being smooth, and it vanishes off $S$, because a point
+$x \notin S$ has an open neighbourhood on which $f$ vanishes identically and
+hence on which all its derivatives vanish; so by the extreme value theorem
+applied to $|\partial_i f|$ on $S$ (or trivially when $S = \emptyset$),
+$M^{(i)} = \sup_{\mathbb{R}^n}|\partial_i f| < \infty$.  Write $M_1 = M^{(j)}$.  By
+\noderef{GaussIsProb} the measure $\gamma_n$ is a probability measure, so for
+every $s>0$ and every $x$, using clause (2) of \noderef{SemigroupGradientCommute}
+for integrability,
+\begin{equation*}
+  \bigl|(A_s(\partial_j f))(x)\bigr| \leq M_1 ,
+  \qquad
+  \bigl|(A_s f)(x)\bigr| \leq M_0 . \tag{0}
+\end{equation*}
+
+\emph{Step 1: the scalar time integral.}
+$\int_0^\infty s^{-1/2}e^{-s}\,ds = \sqrt\pi$.  Substituting $s = v^2$, a $C^1$
+increasing bijection of $(0,\infty)$ onto itself with $ds = 2v\,dv$ and
+$s^{-1/2} = v^{-1}$, and noting the integrand is nonnegative and measurable so
+the change of variables is valid in $[0,+\infty]$,
+\[
+  \int_0^\infty s^{-1/2}e^{-s}ds = \int_0^\infty v^{-1}e^{-v^2}2v\,dv
+    = 2\int_0^\infty e^{-v^2}dv = \int_{\mathbb{R}}e^{-v^2}dv = \sqrt\pi ,
+\]
+by evenness and the scalar Gaussian integral of the shared context.
+
+\emph{Step 2: clause (1).}
+Fix $x$.  The map $s \mapsto (A_s(\partial_jf))(x)$ is continuous on
+$(0,\infty)$: if $s_k \to s$ in $(0,\infty)$ then $r_{s_k} \to r_s$ and
+$\tau_{s_k} \to \tau_s$ by continuity of the exponential and of the square root
+at $1-e^{-2s} > 0$, so for each $z$ the integrand converges by continuity of
+$\partial_j f$, and all integrands are bounded by the constant $M_1$, which is
+$\gamma_n$-integrable since $\gamma_n$ is finite; dominated convergence (shared
+context) applies.  Hence the integrand of $\Phi_j(x)$ is continuous, so
+measurable, on $(0,\infty)$, and by $(0)$ it is bounded in absolute value by
+$2^{-1/2}M_1\,s^{-1/2}e^{-s}$, which is integrable there by Step 1.  So the
+integral converges absolutely, which is clause (1); and
+\begin{equation*}
+  |\Phi_j(x)| \leq \frac{1}{\sqrt\pi}\cdot 2^{-1/2}M_1 \cdot \sqrt\pi
+    = 2^{-1/2}M_1 \qquad\text{for every } x . \tag{1}
+\end{equation*}
+
+\emph{Step 3: clause (2).}
+Let $x_k \to x$.  For each fixed $s > 0$, clause (3) of
+\noderef{SemigroupGradientCommute} says $A_s(\partial_j f)$ is continuous, so the
+integrands converge pointwise in $s$; they are dominated by
+$2^{-1/2}M_1 s^{-1/2}e^{-s}$, integrable by Step 1.  Dominated convergence gives
+$\Phi_j(x_k) \to \Phi_j(x)$, and sequential continuity is continuity on the
+metric space $\mathbb{R}^n$.
+
+\emph{Step 4: $\gamma_n$ and $\lambda$ have the same null sets.}
+By \noderef{GaussMeasure}, $\gamma_n(A) = \int_A \rho\,d\lambda$ with
+$\rho(x) = \pi^{-n/2}e^{-|x|^2}$, and $\rho(x) > 0$ for every $x$.  If
+$\lambda(A) = 0$ then the integral of any function over $A$ vanishes, so
+$\gamma_n(A) = 0$.  Conversely, suppose $\gamma_n(A) = 0$ and write
+$A = \bigcup_{m\geq1} A_m$ with $A_m = A \cap \{x : \rho(x) > 1/m\}$, a countable
+increasing union since $\rho > 0$ everywhere.  Then
+$0 = \gamma_n(A) \geq \gamma_n(A_m) \geq \lambda(A_m)/m$, so $\lambda(A_m) = 0$
+for each $m$, and $\lambda(A) = 0$ by countable subadditivity (shared context).
+Hence the two measures have exactly the same null sets, and the phrases
+``$\gamma_n$-almost everywhere'' and ``$\lambda$-almost everywhere'' are
+interchangeable from here on.
+
+\emph{Step 5: the Mehler average of the class equals the Mehler average of $f$.}
+Fix $s > 0$ and $x$.  The coercion of $u$ to a function agrees with $f$ off a
+$\gamma_n$-null set $N$, by construction of the class of $f$; by Step 4,
+$\lambda(N) = 0$.  Put $\Psi(z) = r_sx+\tau_sz$.  Then
+\[
+  \Psi^{-1}(N) = \{z : r_sx+\tau_sz \in N\}
+    = \{z : \tau_s z \in N - r_sx\} ,
+\]
+where $N - r_sx$ is the translate of $N$ by $-r_sx$.  Lebesgue measure is
+translation invariant (shared context), so $\lambda(N - r_sx) = \lambda(N) = 0$.
+Since $\tau_s = \sqrt{1-e^{-2s}} > 0$ for $s > 0$, in particular
+$\tau_s \neq 0$, clause (2) of \noderef{LebesgueDilation} applied with the
+scalar $c = \tau_s$ and the $\lambda$-null set $N - r_sx$ gives
+$\lambda(\Psi^{-1}(N)) = 0$.  By Step 4 again $\gamma_n(\Psi^{-1}(N)) = 0$, so
+the two integrands $z \mapsto u(r_sx+\tau_sz)$ and $z \mapsto f(r_sx+\tau_sz)$
+agree $\gamma_n$-almost everywhere and their integrals coincide.  Combining
+with the averaging formula of \noderef{MehlerFormula} applied to $u$ at this
+$s$ --- that node states, for every $s>0$ and every $v \in L^2(\gamma_n)$, that
+$P_sv(x) = \int v(r_sx+\tau_sz)\,d\gamma_n(z)$ for $\gamma_n$-a.e.\ $x$, the
+inner integral being absolutely convergent for $\gamma_n$-a.e.\ $x$ --- we get
+\begin{equation*}
+  (P_s u)(x) = (A_s f)(x) \qquad\text{for } \gamma_n\text{-a.e. } x,
+  \text{ hence for } \lambda\text{-a.e. } x. \tag{2}
+\end{equation*}
+
+\emph{Steps 6--10: the tested identity, by citation.}
+Fix an index $i \in \{1,\ldots,n\}$ and a smooth compactly supported
+$\varphi : \mathbb{R}^n \to \mathbb{R}$.  Beyond the data already assembled, one
+further fact is needed: the map $(s,x) \mapsto (A_s(\partial_if))(x)$ is jointly
+continuous on $(0,\infty)\times\mathbb{R}^n$.  This is dominated continuity.  For
+each fixed $z$ the integrand
+$\partial_if\bigl(e^{-s}x + \sqrt{1-e^{-2s}}\,z\bigr)$ is continuous in $(s,x)$,
+since $\partial_if$ is continuous and $(s,x) \mapsto e^{-s}x+\sqrt{1-e^{-2s}}\,z$
+is; it is bounded in absolute value by the constant $M_1$ of $(0)$, uniformly in
+$(s,x,z)$; and that constant is $\gamma_n$-integrable because $\gamma_n$ is a
+finite measure.  Dominated continuity (shared context) therefore makes the
+integral jointly continuous in $(s,x)$.
+
+With that, \noderef{RieszPseudoInverseTestedIdentity} applies.  Its hypotheses are
+exactly the data in hand: $f$ smooth, compactly supported and in
+$L^2(\gamma_n)$, with $u$ its class; the defining formulas for $A$ and for
+$\Phi$; the uniform bound $M_1$ on $A_s(\partial_if)$ from $(0)$; the joint
+continuity just established; the integrability of $s^{-1/2}e^{-s}$ on
+$(0,\infty)$ from Step 1; and the identification of the $\gamma_n$-null and
+$\lambda$-null sets from Step 4.  Its conclusion is the identity displayed
+below, for every such $i$ and $\varphi$.
+
+\emph{Step 11: the weak gradient of $w$, and clause (3).}
+Let $\vec\Phi : \mathbb{R}^n \to \mathbb{R}^n$ have coordinates
+$\vec\Phi(x)_i = \Phi_i(x)$.  Each $\Phi_i$ is continuous by Step 3 and bounded
+by $2^{-1/2}M^{(i)}$ by $(1)$, so $\vec\Phi$ is continuous and bounded; since
+$\gamma_n$ is finite (\noderef{GaussIsProb}), $\vec\Phi$ determines an element
+$\Psi \in L^2(\gamma_n;\mathbb{R}^n)$ whose coercion agrees with $\vec\Phi$
+$\gamma_n$-a.e., hence $\lambda$-a.e.\ by Step 4.
+
+The identity supplied by that node holds for an arbitrary index $i$ and an
+arbitrary smooth compactly supported $\varphi$, and reads
+\[
+  \int w(x)\,\partial_i\varphi(x)\,d\lambda(x)
+    = -\int \bigl(\sqrt2\,\vec\Phi(x)\bigr)_i\,\varphi(x)\,d\lambda(x) ,
+\]
+which is the defining identity of \noderef{HasGaussWeakGrad} for the pair
+$(w, \sqrt2\,\vec\Phi)$.  Replacing $\vec\Phi$ by the coercion of $\Psi$ changes
+the right-hand side on a $\lambda$-null set only, so the same identity holds
+with $\sqrt2\,\Psi$, i.e.\ $\sqrt2\,\Psi$ is a weak Euclidean gradient of $w$.
+
+On the other hand, \noderef{PseudoInverseSqrt} gives
+$w = L^{-1/2}\Pi_0 u \in \operatorname{Dom}(L^{1/2})$, so
+\noderef{SqrtDomainSobolev} puts $w$ in $W^{1,2}(\gamma_n)$, i.e.\ in the set of
+\noderef{SobolevW12}; by \noderef{GaussD} the element $Dw$ satisfies the same
+defining identity with $\sqrt2\,Dw$ in place of $\sqrt2\,\Psi$.  Both
+$\sqrt2\,\Psi$ and $\sqrt2\,Dw$ are elements of $L^2(\gamma_n;\mathbb{R}^n)$ and
+both are weak Euclidean gradients of $w$, so \noderef{GaussWeakGradUnique} gives
+$\sqrt2\,\Psi = \sqrt2\,Dw$, hence $\Psi = Dw$.
+
+Finally, by \noderef{RieszTransform}, $R_\gamma u = D\bigl(L^{-1/2}\Pi_0 u\bigr)
+= Dw = \Psi$.  Taking $j$th coordinates and recalling that the coercion of
+$\Psi$ agrees $\gamma_n$-a.e.\ with $\vec\Phi$, we get
+$(R_\gamma u)_j = \Phi_j$ $\gamma_n$-almost everywhere, which is clause (3).
+\end{proof}

@@ -1,0 +1,78 @@
+\begin{lemma}[An integral dominated by a product of two $L^2$ functions]
+Fix $n \in \mathbb{N}_0$ and write $\lambda$ for Lebesgue measure on
+$\mathbb{R}^n$.  Let $K \subseteq \mathbb{R}^n$ and let
+$\lambda_K$ denote the restriction of $\lambda$ to $K$, so that for a function
+$f$ one writes $\|f\|_{L^2(K)} = \|f\|_{L^2(\lambda_K)}$ and
+$\int_K f \, d\lambda$ for the integral against $\lambda_K$.  Let
+$h, a, b : \mathbb{R}^n \to \mathbb{R}$ and let $C \in \mathbb{R}$ with
+$C \geq 0$.  Assume
+\begin{enumerate}
+  \item $a \in L^2(\lambda_K)$ and $b \in L^2(\lambda_K)$;
+  \item $|h(x)| \leq C\,\bigl(|a(x)|\,|b(x)|\bigr)$ for every
+    $x \in \mathbb{R}^n$.
+\end{enumerate}
+Then
+\[
+  \Bigl\| \int_K h \, d\lambda \Bigr\|
+    \leq C\,\|a\|_{L^2(K)}\,\|b\|_{L^2(K)} .
+\]
+
+Two points about the hypotheses, both of which are exactly as stated and not
+abbreviations of something stronger.  First, every measure here is Lebesgue:
+$\lambda_K$ is Lebesgue measure restricted to $K$ and the $L^2(K)$ norms are
+taken against it, with no Gaussian weight anywhere, even though the lemma is
+used inside the tablet's Gaussian development.  Second, nothing at all is
+assumed about $h$ beyond the pointwise bound (2) --- no integrability and no
+measurability --- and no such hypothesis is needed: if $h$ fails to be
+integrable then the Bochner integral $\int_K h \, d\lambda$ is by convention
+$0$, while the right-hand side is nonnegative because $C \geq 0$ and norms are
+nonnegative, so the inequality holds a fortiori.  Correspondingly the lemma
+cites no other tablet node; it rests only on the shared background measure
+theory.
+\end{lemma}
+\begin{proof}
+Step 1 (Cauchy--Schwarz on $K$).  We first record that for $a, b \in
+L^2(\lambda_K)$,
+\[
+  \int_K |a|\,|b| \, d\lambda
+    \leq \|a\|_{L^2(K)}\,\|b\|_{L^2(K)} . \tag{CS}
+\]
+Indeed, the product $ab$ lies in $L^1(\lambda_K)$, by the H\"older pairing of
+the exponents $2$ and $2$ into $1$, so it is $\lambda_K$-integrable.  Since
+$\bigl\| a(x)b(x) \bigr\| = |a(x)|\,|b(x)|$ at every $x$, the integral on the
+left of (CS) is the $L^1(\lambda_K)$ norm of $ab$, read as a real number; and
+the H\"older inequality for the exponent pairing $1/2 + 1/2 = 1$ bounds that
+$L^1$ norm by the product of the two $L^2$ norms.  Both sides are finite --- the
+right side because $a$ and $b$ are in $L^2(\lambda_K)$, the left because of the
+bound itself --- so passing from the inequality between extended-real norms to
+the inequality (CS) between their real values is legitimate, the monotonicity of
+$t \mapsto t$ on $[0,\infty]$ restricted to finite values being all that is
+used.
+
+Step 2 (the integrand of the majorant is integrable).  The function
+$x \mapsto |a(x)|\,|b(x)|$ is $\lambda_K$-integrable: it has the same absolute
+value as $ab$, which is integrable by Step 1, so integrability transfers.
+
+Step 3 (dominating the integral).  By hypothesis (2) the integrand $h$ is
+dominated in absolute value by $C\,|a|\,|b|$, which is $\lambda_K$-integrable by
+Step 2 and by $C \geq 0$.  The norm of an integral is at most the integral of
+the norm of the integrand, and the integral is monotone on integrable
+dominating pairs, so
+\[
+  \Bigl\| \int_K h \, d\lambda \Bigr\|
+    \leq \int_K |h| \, d\lambda
+    \leq \int_K C\,|a|\,|b| \, d\lambda .
+\]
+(If $h$ is not integrable the left side is $0$ and the chain holds trivially, as
+noted in the statement.)
+
+Step 4 (conclusion).  Pulling the nonnegative constant $C$ out of the last
+integral by linearity and applying (CS),
+\[
+  \int_K C\,|a|\,|b| \, d\lambda
+    = C \int_K |a|\,|b| \, d\lambda
+    \leq C\,\|a\|_{L^2(K)}\,\|b\|_{L^2(K)} ,
+\]
+the final inequality being (CS) multiplied by $C \geq 0$, which preserves the
+direction.  Chaining with Step 3 gives the assertion.
+\end{proof}

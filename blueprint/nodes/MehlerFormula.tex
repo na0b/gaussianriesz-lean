@@ -1,0 +1,124 @@
+\begin{lemma}[Mehler averaging formula and positivity preservation]
+Let $s > 0$ and $v \in L^2(\gamma_n)$, and write $r = e^{-s} \in (0,1)$ and
+$\tau = \sqrt{1-e^{-2s}} = \sqrt{1-r^2} \in (0,1]$.  Then the spectrally defined
+semigroup $P_s$ of \noderef{OUSemigroup} is given by the probabilistic averaging
+formula
+\[
+  P_s v(x)
+    = \int_{\mathbb{R}^n} v\bigl(r\,x + \tau\,y\bigr)\, d\gamma_n(y)
+  \qquad\text{for } \gamma_n\text{-a.e. } x \in \mathbb{R}^n ,
+\]
+the inner integral being absolutely convergent for $\gamma_n$-a.e.\ $x$.
+Consequently $P_s$ is positivity preserving: if $v \geq 0$ $\gamma_n$-a.e.\ then
+$P_s v \geq 0$ $\gamma_n$-a.e.
+\end{lemma}
+\begin{proof}
+Define, for $v \in L^2(\gamma_n)$,
+\[
+  (Q_s v)(x) = \int_{\mathbb{R}^n} v(r x + \tau y)\, d\gamma_n(y) .
+\]
+
+\emph{Step 1: the affine map pushes $\gamma_n\otimes\gamma_n$ to a measure with second marginal $\gamma_n$.}
+By \noderef{GaussMeasure} the density of $\gamma_n$ factorizes over the
+coordinates as $\prod_j \pi^{-1/2}e^{-x_j^2}$, and $\gamma_n$ is a probability
+measure by \noderef{GaussIsProb}; thus $\gamma_n$ is the $n$-fold product of the
+one-dimensional measure $d\gamma_1(t) = \pi^{-1/2}e^{-t^2}dt$, which is the
+centred Gaussian law of variance $1/2$ on $\mathbb{R}$.  Consequently, if $X$ and
+$Y$ are independent with law $\gamma_n$, then each coordinate of
+$rX + \tau Y$ is a sum of two independent centred Gaussians of variances
+$r^2/2$ and $\tau^2/2$, hence centred Gaussian of variance
+$(r^2+\tau^2)/2 = 1/2$, and distinct coordinates remain independent.  Therefore
+\begin{equation*}
+  rX + \tau Y \ \text{ has law } \ \gamma_n . \tag{1}
+\end{equation*}
+
+\emph{Step 2: $Q_s$ is a well-defined contraction on $L^2(\gamma_n)$.}
+By Tonelli and (1),
+\[
+  \iint |v(rx+\tau y)|^2\, d\gamma_n(y)\, d\gamma_n(x)
+    = \int |v|^2\, d\gamma_n = \|v\|_2^2 < \infty .
+\]
+Hence for $\gamma_n$-a.e.\ $x$ the function $y \mapsto v(rx+\tau y)$ is in
+$L^2(\gamma_n)$, so in $L^1(\gamma_n)$ by \noderef{L2IntoL1}; thus $Q_sv(x)$ is
+defined by an absolutely convergent integral for a.e.\ $x$.  Jensen's inequality
+for the probability measure $\gamma_n$ gives
+$|Q_sv(x)|^2 \leq \int |v(rx+\tau y)|^2 d\gamma_n(y)$, and integrating in $x$ and
+using the display above,
+\begin{equation*}
+  \|Q_s v\|_{L^2(\gamma_n)} \leq \|v\|_{L^2(\gamma_n)} . \tag{2}
+\end{equation*}
+In particular $Q_s$ is a bounded linear operator on $L^2(\gamma_n)$.  The
+argument of this step used nothing about $v$ beyond $v \in L^2(\gamma_n)$, so
+its conclusions hold with any element of $L^2(\gamma_n)$ in place of $v$.
+
+\emph{Step 3: $Q_s$ and $P_s$ agree on each Hermite function.}
+Fix $\alpha \in \mathbb{N}_0^n$.  By \noderef{HermiteFun},
+$h_\alpha(z) = \prod_{j} h_{\alpha_j}(z_j)$, and the $j$th coordinate of
+$rx+\tau y$ is $r x_j + \tau y_j$.  Hence
+\[
+  h_\alpha(rx+\tau y) = \prod_{j=1}^n h_{\alpha_j}(r x_j + \tau y_j),
+\]
+a product of functions of the separate coordinates $y_j$.
+
+We justify the factorization of the integral.  By \noderef{HermiteFunMemLp},
+$h_\alpha \in L^2(\gamma_n)$, so Step 2 applied with $v = h_\alpha$ shows that for
+$\gamma_n$-a.e.\ $x$ the function $y \mapsto h_\alpha(rx+\tau y)$ is
+$\gamma_n$-integrable; fix such an $x$.  Tonelli's theorem for the product measure
+$\gamma_n = \gamma_1^{\otimes n}$ of Step 1, applied to the nonnegative function
+$y \mapsto \prod_j |h_{\alpha_j}(rx_j+\tau y_j)|$, gives
+\[
+  \int \prod_{j=1}^n \bigl|h_{\alpha_j}(rx_j+\tau y_j)\bigr|\, d\gamma_n(y)
+    = \prod_{j=1}^n \int_{\mathbb{R}} \bigl|h_{\alpha_j}(rx_j+\tau\sigma)\bigr|\,
+        d\gamma_1(\sigma)
+\]
+as an identity in $[0,+\infty]$, and the left-hand side is finite by the previous
+sentence.  No factor on the right vanishes: by \noderef{Hermite1} and the
+recurrence recorded there, $\mathrm{He}_{\alpha_j}$ is monic of degree $\alpha_j$, so
+$h_{\alpha_j}$ is a nonzero polynomial; since $\tau > 0$, the map
+$\sigma \mapsto h_{\alpha_j}(rx_j+\tau\sigma)$ is again a nonzero polynomial, hence
+nonzero off a finite set, and $\gamma_1$ has a strictly positive density by
+\noderef{GaussMeasure}, so its integral against $\gamma_1$ is strictly positive.
+A product of elements of $[0,+\infty]$ with no vanishing factor is finite only if
+every factor is finite, so each one-dimensional integral above is finite.
+Fubini's theorem for the product measure therefore gives
+\[
+  (Q_s h_\alpha)(x)
+    = \prod_{j=1}^n \int_{\mathbb{R}} \pi^{-1/2}e^{-\sigma^2}\,
+        h_{\alpha_j}(r x_j + \tau \sigma)\, d\sigma .
+\]
+Since $0 < r < 1$, \noderef{Hermite1Reproduction} applies with this $r$ (note
+$\tau = \sqrt{1-r^2}$ as required there) and evaluates the $j$th factor as
+$r^{\alpha_j} h_{\alpha_j}(x_j)$.  Multiplying,
+\[
+  (Q_s h_\alpha)(x)
+    = r^{\sum_j \alpha_j}\prod_j h_{\alpha_j}(x_j)
+    = r^{|\alpha|}\, h_\alpha(x)
+    = e^{-s|\alpha|}\, h_\alpha(x),
+\]
+using \noderef{MultiIndexSum} and $r = e^{-s}$.  On the other hand
+\noderef{OUSemigroupSpectral} (applicable since $s > 0 \geq 0$) gives
+$P_s h_\alpha = e^{-s|\alpha|}h_\alpha$, because the coefficients of $h_\beta$ are
+$\delta_{\alpha\beta}$ by \noderef{HermiteL2Orthonormal}.  Hence
+$Q_s h_\alpha = P_s h_\alpha$ for every $\alpha$.
+
+\emph{Step 4: $Q_s = P_s$ on all of $L^2(\gamma_n)$.}
+Both operators are linear and bounded on $L^2(\gamma_n)$: $Q_s$ by (2), and
+$P_s$ by \noderef{OUSelfAdjointContraction}, which gives
+$\|P_s v\|_2 \leq \|v\|_2$.  They agree on every $h_\alpha$ by Step 3, hence on
+the linear span of $\{h_\alpha\}$ by linearity, hence on the closure of that span
+by continuity.  By \noderef{HermiteL2Complete} that closure is all of
+$L^2(\gamma_n)$.  Therefore $Q_s v = P_s v$ in $L^2(\gamma_n)$, i.e.\
+$P_s v(x) = \int v(rx+\tau y)\, d\gamma_n(y)$ for $\gamma_n$-a.e.\ $x$, which is
+the asserted formula.
+
+\emph{Step 5: positivity preservation.}
+Suppose $v \geq 0$ $\gamma_n$-a.e., and let $N$ be the $\gamma_n$-null set where
+this fails.  By (1) the map $(x,y) \mapsto rx+\tau y$ pushes
+$\gamma_n\otimes\gamma_n$ forward to $\gamma_n$, so the set of pairs $(x,y)$ with
+$rx+\tau y \in N$ has $(\gamma_n\otimes\gamma_n)$-measure $\gamma_n(N) = 0$.  By
+Fubini for this null set, for $\gamma_n$-a.e.\ $x$ we have $rx+\tau y \notin N$
+for $\gamma_n$-a.e.\ $y$, and then $v(rx+\tau y) \geq 0$ for $\gamma_n$-a.e.\ $y$.
+For such $x$ the integral defining $Q_sv(x)$ is an integral of an a.e.\
+nonnegative integrable function, hence $Q_s v(x) \geq 0$.  Combining with Step 4,
+$P_s v \geq 0$ $\gamma_n$-a.e.
+\end{proof}

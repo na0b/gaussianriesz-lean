@@ -1,0 +1,31 @@
+\begin{definition}[The inclusion $L^2(\gamma_n;\mathbb{C}) \hookrightarrow L^1(\gamma_n;\mathbb{C})$]
+Let $\gamma_n$ be as in \noderef{GaussMeasure}; it is a probability measure by
+\noderef{GaussIsProb}, hence finite.  Consequently every
+$v \in L^2(\gamma_n;\mathbb{C})$, that is, every $\gamma_n$-a.e.\ class of
+measurable $\mathbb{C}$-valued functions on $\mathbb{R}^n$ with
+$\int|v|^2 d\gamma_n < \infty$, is also $\gamma_n$-integrable, and we write
+$\iota_{\mathbb{C}} v \in L^1(\gamma_n;\mathbb{C})$ for the class of $v$ in
+$L^1(\gamma_n;\mathbb{C})$.  The map
+$\iota_{\mathbb{C}} : L^2(\gamma_n;\mathbb{C}) \to L^1(\gamma_n;\mathbb{C})$ is
+the identity on representatives: $\iota_{\mathbb{C}} v$ and $v$ are the same
+function, viewed in the two different Lebesgue spaces.  It is $\mathbb{C}$-linear
+and injective, and
+\[
+  \|\iota_{\mathbb{C}} v\|_{L^1(\gamma_n;\mathbb{C})}
+    = \int_{\mathbb{R}^n} |v(x)| \, d\gamma_n(x) ,
+\]
+since the $L^1$ norm of a class is the integral of the modulus of any of its
+representatives and $v$ is one of them.
+
+This is the complex-scalar inclusion.  It is a different map from the tablet's
+real inclusion $\iota : L^2(\gamma_n;\mathbb{R}) \to L^1(\gamma_n;\mathbb{R})$,
+which acts between spaces of real-valued classes, whereas $\iota_{\mathbb{C}}$
+acts between the corresponding spaces of complex-valued classes; neither is a
+special case of the other, since a complex $L^2$ class is not a real one.  The
+complex-valued estimate of the reference paper is stated for complex $L^1$
+inputs, so the complex inclusion is what its statement needs, and it is
+introduced as its own object because three later statements use it: the
+norm-control and $L^1$-convergence clauses of the complex in-measure limit
+lemma, and the clause ``agrees with the $L^2$ transform'' in each of the complex
+$L^1$ extension lemma and the complex endpoint theorem.
+\end{definition}

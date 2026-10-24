@@ -1,0 +1,147 @@
+\section*{Deviation: localization in $x$ of the fixed-dimensional maximal
+truncation estimate}
+
+\subsection*{1. The affected node}
+
+This deviation is claimed by exactly one tablet node,
+\texttt{GaussMaximalTruncationLocal}, and by no other.  No other node's
+statement or proof depends on it, and it relies on no other deviation: the
+return-to-faithful argument below uses only the reference paper and the
+tablet's own nodes.
+
+\subsection*{2. The paper statement, and the departure}
+
+The reference paper displays, as (5.15) of the paper (paper lines
+2123--2125), the fixed-dimensional maximal estimate it takes from
+Fabes, Guti\'errez and Scotto:
+\[
+  \gamma\Bigl(\Bigl\{\sup_{\varepsilon>0}|T_{j,\varepsilon}h|>t\Bigr\}\Bigr)
+    \leq \frac{C_{n,j}}{t}\,\|h\|_1 , \qquad t>0 .
+\]
+The level set here is taken over all of $\mathbb{R}^n$, and the constant
+depends only on $n$ and $j$.
+
+\texttt{GaussMaximalTruncationLocal} states instead: for every $R \geq 1$ there
+is $C = C(n,j,R)$ such that for every $f \in L^1(\gamma_n)$ and every
+$t \in (0,+\infty]$,
+\[
+  \gamma_n\Bigl(\Bigl\{x : |x| \leq R \text{ and }
+      \sup_{\varepsilon>0}|T_{j,\varepsilon}f(x)| > t\Bigr\}\Bigr)
+    \leq \frac{C}{t}\,\|f\|_{L^1(\gamma_n)} .
+\]
+
+The departure is therefore exactly two things, and nothing else:
+\begin{enumerate}
+\item the level set is intersected with the closed ball $\overline B(0,R)$; and
+\item the constant is allowed to depend on $R$ in addition to $n$ and $j$.
+\end{enumerate}
+The operator, the truncations $T_{j,\varepsilon}$, the coordinate index $j$
+(the paper's display is already coordinatewise, so there is no change there),
+the class of inputs, the exponent, and the shape $C\|f\|_1/t$ are the paper's,
+unchanged.  The departure is a \emph{weakening} of an intermediate estimate: the
+localized statement is implied by the paper's for each $R$, so nothing is
+claimed that the paper does not already assert.
+
+\subsection*{3. Why the departure is minor}
+
+\paragraph{The paper licenses the dimension dependence outright.}  Immediately
+after the display, at line 2127, the paper writes:
+\begin{quote}
+``No uniformity in $n$ is needed in this step.''
+\end{quote}
+So the constant at this step is explicitly allowed to degrade in $n$, and the
+only genuine addition is the dependence on $R$.
+
+\paragraph{The $R$-dependence is forced, and is confined to this step.}  The
+tablet's route to this estimate runs a Cotlar inequality,
+\texttt{GaussRieszCotlarLocal}, whose constant degrades in $R$ through two
+places: the near-diagonal kernel estimates of
+\texttt{GaussRieszKernelNearBounds}, whose constant carries the factor
+$e^{|x|^2-|y|^2}$ bounded only on bounded sets of $x$; and the lower bound
+$a_{R+2} = \pi^{-n/2}e^{-(R+2)^2}$ for the Gaussian density on
+$\overline B(0,R+2)$, which is what lets a local Gaussian averaging argument be
+run against the \emph{Lebesgue} Hardy--Littlewood maximal function and so avoids
+covering theory for the non-doubling measure $\gamma_n$.  Both degrade as
+$|x|$ grows; recovering the global-in-$x$ constant is precisely the theorem the
+paper cites to [FGS94] and is not reproved here.
+
+\subsection*{4. Where the difference is absorbed}
+
+The estimate is used in the paper's proof of Proposition~5.3 of the paper
+exactly three times, at paper lines 2129--2156, and every one of the three is an
+almost-everywhere statement or a limit statement:
+\begin{enumerate}
+\item $\gamma(\{\omega_f>t\}) \leq 2C_{n,j}\|f-f_k\|_1/t$, from which
+``letting $k \to \infty$ shows that $\omega_f = 0$ almost everywhere''
+(lines 2142--2144);
+\item almost-everywhere finiteness of the maximal truncation, ``so the
+principal value exists and is finite'' (lines 2145--2146);
+\item $\gamma(\{|T_jf-T_jf_k|>t\}) \leq C_{n,j}\|f-f_k\|_1/t$, i.e.\
+convergence in measure (lines 2149--2153).
+\end{enumerate}
+None of the three asserts anything at a single point, and none of the three
+retains the constant: in each, the constant is multiplied by a quantity tending
+to $0$, or the conclusion is that a set is null.
+
+The tablet's covering node \texttt{PVIdentification} therefore uses the
+localized estimate as follows.  For each fixed $R \in \mathbb{N}$ it runs the
+three steps above \emph{on} $\overline B(0,R)$, obtaining in each case an
+assertion that holds for $\gamma_n$-almost every $x \in \overline B(0,R)$.
+Since $\mathbb{R}^n = \bigcup_{R\in\mathbb{N}}\overline B(0,R)$ and a countable
+union of $\gamma_n$-null sets is $\gamma_n$-null, the three assertions then hold
+for $\gamma_n$-almost every $x \in \mathbb{R}^n$.  Two further remarks make the
+absorption exact:
+\begin{itemize}
+\item Use (2) is not even needed in the tablet's route: clause (1)(b) of
+\texttt{GaussRieszKernelFarMajorant} already makes \emph{every}
+$T_{j,\varepsilon}f(x)$ a finite number, so $\omega_f(x) = 0$ by itself gives
+the Cauchy property and a finite limit.
+\item Use (3) closes on $\overline B(0,R)$ because that set has finite
+$\gamma_n$-measure, so uniqueness of limits in measure applies there; it is the
+finiteness of the localizing set, not the size of the constant, that this step
+needs.
+\end{itemize}
+Consequently \texttt{PVIdentification}'s own statement is the paper's
+proposition verbatim: it is quantified over all of $\mathbb{R}^n$ and all of
+$L^1(\gamma_n)$, it contains no $R$, and it contains no constant coming from
+this estimate.  No consumer inherits the localization.
+
+\paragraph{The paper itself isolates the absorption point.}  At line 2158 the
+paper writes, of the identification argument:
+\begin{quote}
+``The constant $2$ is supplied by Theorem~5.1 of the paper, not by the constants
+$C_{n,j}$ used for this identification.''
+\end{quote}
+That sentence is the return-to-faithful argument in the paper's own words.  The
+constants of the maximal estimate --- here $C(n,j,R)$ --- do only
+almost-everywhere and limit work; the one constant that survives into the
+proposition's final clause, the full-vector bound $2$ for the principal-value
+realization, comes from Theorem~5.1 of the paper through
+\texttt{CoordinateEndpointBound}, which is a different source entirely and is
+untouched by this deviation.
+
+\subsection*{5. What this deviation does \emph{not} claim}
+
+The paper, at lines 2275--2289, is explicit about what is open:
+\begin{quote}
+``Hard truncation does not preserve this identity, so the obstacle argument
+does not yield a weak-type $(1,1)$ estimate for the Gaussian maximal truncation
+$R_{\gamma,*}$ \dots\ A dimension-independent weak-type bound for either maximal
+truncation is a separate question, not a consequence of the present argument.''
+\end{quote}
+Nothing here contradicts or silently strengthens that passage.  The passage
+denies two things: that a \emph{dimension-independent} weak-type bound for the
+maximal truncation follows, and that the \emph{obstacle argument} yields one.
+
+\texttt{GaussMaximalTruncationLocal} claims neither.  Its constant
+$C(n,j,R)$ degrades in $n$, in $j$ and in $R$, so it is not dimension
+independent.  And its proof runs no obstacle argument on truncations: it
+consumes that argument's finished output --- the untruncated weak-type bound
+with constant $2$, as \texttt{CoordinateEndpointBound} states it --- as a black
+box inside a classical Cotlar argument, together with the Euclidean
+Hardy--Littlewood layer of \texttt{LocalMaximalWeakType} and
+\texttt{LocalMaximalWeakL2} and the kernel estimates of
+\texttt{GaussRieszKernelFarMajorant} and \texttt{GaussRieszKernelNearBounds}.
+The exact identity $R_\gamma L^{1/2}u = Du$, which the quoted passage says hard
+truncation destroys, is never applied to a truncated operator anywhere in that
+chain.

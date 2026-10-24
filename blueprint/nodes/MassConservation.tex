@@ -1,0 +1,38 @@
+\begin{lemma}[Conservation of Gaussian mass]
+Let $F \in L^2(\gamma_n)$ with $m = \int F \, d\gamma_n$, let $a \in \mathbb{R}$,
+let $u \in L^2(\gamma_n)$, and suppose
+$\eta_2 \in L^2(\gamma_n)$ represents the multiplier functional of
+\noderef{ObstacleMultiplier} on $\mathcal{V}$.  Put $g = a\mathbf{1} - \eta_2$.
+Then
+\[
+  \int g \, d\gamma_n = m ,
+  \qquad\text{equivalently}\qquad
+  \int \eta_2 \, d\gamma_n = a - m .
+\]
+\end{lemma}
+\begin{proof}
+The constant function $\mathbf{1} = h_0$ of \noderef{HermiteL2} and
+\noderef{Hermite1Zero} is an admissible form-domain test function: by
+\noderef{Energy} its energy is $0$, since the defining series omits the index
+$\alpha = 0$ and all other coefficients of $h_0$ vanish; hence
+$\mathbf{1} \in \mathcal{V}$.
+
+Apply the representation hypothesis with $\varphi = \mathbf{1}$.  Its left-hand
+side is, by \noderef{ObstacleMultiplier},
+\[
+  \mathcal{E}(u, \mathbf{1}) - \int (F - a)\, d\gamma_n .
+\]
+By \noderef{EnergyConstantInvariance} the first term is
+$\mathcal{E}(u,\mathbf{1}) = 0$.  Hence the hypothesis reads
+\[
+  -\int (F-a)\, d\gamma_n = \int \eta_2 \, d\gamma_n ,
+\]
+all integrals being finite by \noderef{L2IntoL1} together with
+$\gamma_n(\mathbb{R}^n) = 1$ (\noderef{GaussIsProb}).  Using
+$\int F \, d\gamma_n = m$ and $\int a \, d\gamma_n = a$, the left-hand side is
+$a - m$, so
+\[
+  \int \eta_2 \, d\gamma_n = a - m .
+\]
+Finally $\int g \, d\gamma_n = \int (a - \eta_2)\, d\gamma_n = a - (a-m) = m$.
+\end{proof}

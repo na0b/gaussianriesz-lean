@@ -1,0 +1,42 @@
+\begin{lemma}[Coordinate bound on the Mehler numerator over a ball]
+Fix a dimension $n$, a coordinate index $j \in \{0,\dots,n-1\}$ and a real
+number $R$.  Then for all $x, y \in \mathbb{R}^n$ with $\|x\| \leq R$, and for
+every real $r$ with $0 \leq r \leq 1$,
+\[
+  |y_j - r\,x_j| \leq \|y\| + R ,
+\]
+where $\|\cdot\|$ is the Euclidean norm and $v_j$ denotes the $j$-th coordinate
+of $v$.  No sign or size condition on $R$ is assumed: for $R < 0$ the hypothesis
+$\|x\| \leq R$ cannot hold and the assertion is vacuous, and for $R \geq 0$ the
+proof below uses only $\|x\| \leq R$ itself.
+\end{lemma}
+\begin{proof}
+Fix $x, y$ with $\|x\| \leq R$, and fix $r$ with $0 \leq r \leq 1$.  The bound
+follows from four steps, each applied to the quantity $|y_j - r\,x_j|$.
+
+\emph{Step 1: the triangle inequality.}  Writing $y_j - r\,x_j$ as
+$y_j + (-(r\,x_j))$ and applying $|a+b| \leq |a| + |b|$ with $a = y_j$ and
+$b = -(r\,x_j)$, and using $|-(r\,x_j)| = |r\,x_j|$,
+\[
+  |y_j - r\,x_j| \leq |y_j| + |r\,x_j| .
+\]
+Since $|r\,x_j| = |r|\,|x_j|$ and $r \geq 0$ gives $|r| = r$, the right-hand
+side is $|y_j| + r\,|x_j|$.
+
+\emph{Step 2: discarding $r$.}  From $r \leq 1$ and $|x_j| \geq 0$ we get
+$r\,|x_j| \leq 1 \cdot |x_j| = |x_j|$, multiplying the inequality $r \leq 1$ by
+the nonnegative number $|x_j|$.
+
+\emph{Step 3: a coordinate is dominated by the norm.}  For any
+$v \in \mathbb{R}^n$ and any index $i$ we have $|v_i| \leq \|v\|$, since
+$\|v\|^2 = \sum_{k} |v_k|^2 \geq |v_i|^2$ and both sides of
+$|v_i| \leq \|v\|$ are nonnegative.  Applying this to $v = y$, $i = j$ gives
+$|y_j| \leq \|y\|$, and to $v = x$, $i = j$ gives $|x_j| \leq \|x\|$.
+
+\emph{Step 4: the hypothesis.}  Chaining steps 2 and 3 with $\|x\| \leq R$,
+\[
+  r\,|x_j| \leq |x_j| \leq \|x\| \leq R .
+\]
+Substituting this and $|y_j| \leq \|y\|$ into the bound from step 1 gives
+$|y_j - r\,x_j| \leq \|y\| + R$, as claimed.
+\end{proof}

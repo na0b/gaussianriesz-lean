@@ -1,0 +1,90 @@
+\begin{lemma}[The $x$-derivative of the Lebesgue kernel]
+Fix $s > 0$ and write $r = e^{-s} \in (0,1)$ and $\sigma = 1 - e^{-2s} = 1-r^2 \in (0,1)$,
+and let
+\[
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}
+    \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr)
+\]
+be the Lebesgue kernel of \noderef{MehlerLebesgueKernel}.  Then for every
+$x, y \in \mathbb{R}^n$ and every $j \in \{1,\ldots,n\}$ the function
+$w \mapsto p_s(w,y)$ is differentiable at $x$, and
+\[
+  D_j^x\,p_s(x,y)
+    = \sqrt2\,r\,\frac{y_j - r x_j}{\sigma}\;p_s(x,y) ,
+\]
+where $D_j = 2^{-1/2}\partial_j$ is the energy-normalized partial derivative, so
+that the left-hand side means $2^{-1/2}\,\partial_{x_j}p_s(x,y)$.
+
+\emph{The normalization matters and is the easiest thing here to misread.}  In
+the Euclidean normalization the same computation reads
+$\partial_{x_j}p_s = 2r(y_j-rx_j)\sigma^{-1}p_s$, which is the form the reference
+paper uses when it derives the normalized kernel; the $\sqrt2$ above is that $2$
+multiplied by the $2^{-1/2}$ of $D = 2^{-1/2}\nabla$, the convention of
+\noderef{GaussD} that the whole tablet uses.  The two displays are the same
+identity, not two different constants.
+
+The statement is also exactly the appendix's derivative identity in different
+letters.  With the appendix's reparametrization $\sigma = 1-r^2$, $d = (1-r)x$,
+$z = y-x$ and $q_\sigma(z) = (\pi\sigma)^{-n/2}e^{-|z|^2/\sigma}$ one has
+$z + d = y - rx$, hence $p_s(x,y) = q_\sigma(z+d)$ and
+$\sqrt2\,r\,(y_j-rx_j)\sigma^{-1}p_s(x,y) = \sqrt2\,r\,V_{j,\sigma}(z+d)$ with
+$V_{j,\sigma}(z) = (z_j/\sigma)q_\sigma(z)$.  So the appendix's displayed
+derivative identity is this node, and the appendix's $(\sigma, d, z, q_\sigma)$
+notation is a change of letters to be introduced locally where it is used, not a
+second fact.
+
+Unlike \noderef{MehlerLebesgueKernel}, this is an assertion at \emph{every}
+$(x,y)$: no almost-everywhere qualifier appears, because $p_s$ is an explicit
+smooth function of its first argument and no equivalence class is involved.
+\end{lemma}
+\begin{proof}
+Fix $s>0$, $y \in \mathbb{R}^n$ and $j$.  Since $s>0$ we have $0 < r < 1$, hence
+$0 < \sigma = 1-r^2 < 1$; in particular $\sigma \neq 0$, so every division by
+$\sigma$ below is legitimate, and the constant
+$c = \pi^{-n/2}\sigma^{-n/2}$ is a well-defined positive real.
+
+\emph{Step 1: the exponent is a polynomial.}
+Write $A(w) = -\sigma^{-1}|rw-y|^2$, so that $p_s(w,y) = c\,e^{A(w)}$.  In
+coordinates,
+\[
+  A(w) = -\sigma^{-1}\sum_{i=1}^n (r\,w_i - y_i)^2 ,
+\]
+a polynomial in the coordinates $w_1,\ldots,w_n$; polynomials are differentiable
+everywhere, and the $j$th partial derivative is computed termwise.  Only the
+$i = j$ term depends on $w_j$, and by the chain rule for $t \mapsto (rt-y_j)^2$,
+\[
+  \partial_{w_j}A(w)
+    = -\sigma^{-1}\cdot 2\,(r w_j - y_j)\cdot r
+    = \frac{2r\,(y_j - r w_j)}{\sigma} ,
+\]
+the last step using $-(rw_j - y_j) = y_j - r w_j$.
+
+\emph{Step 2: differentiating the exponential.}
+The real exponential is differentiable with derivative itself, so by the chain
+rule $w \mapsto c\,e^{A(w)}$ is differentiable at every $w$, in particular at
+$x$, which is the first assertion.  Its $j$th partial derivative is
+\[
+  \partial_{w_j}\bigl(c\,e^{A(w)}\bigr)
+    = c\,e^{A(w)}\,\partial_{w_j}A(w)
+    = p_s(w,y)\cdot\frac{2r\,(y_j - r w_j)}{\sigma} .
+\]
+Evaluating at $w = x$,
+\begin{equation*}
+  \partial_{x_j}p_s(x,y)
+    = \frac{2r\,(y_j - r x_j)}{\sigma}\,p_s(x,y) . \tag{1}
+\end{equation*}
+This is the Euclidean-normalized form quoted in the statement, and it is the
+identity the reference paper displays when it passes from the semigroup to the
+normalized kernel.
+
+\emph{Step 3: passing to the $D$ normalization.}
+By \noderef{GaussD} the energy-normalized derivative is $D = 2^{-1/2}\nabla$, so
+$D_j^x p_s(x,y) = 2^{-1/2}\partial_{x_j}p_s(x,y)$.  Multiplying $(1)$ by
+$2^{-1/2}$ and using $2^{-1/2}\cdot 2 = 2^{1/2} = \sqrt2$,
+\[
+  D_j^x p_s(x,y)
+    = 2^{-1/2}\cdot\frac{2r\,(y_j-rx_j)}{\sigma}\,p_s(x,y)
+    = \sqrt2\,r\,\frac{y_j - r x_j}{\sigma}\,p_s(x,y) ,
+\]
+which is the assertion.
+\end{proof}

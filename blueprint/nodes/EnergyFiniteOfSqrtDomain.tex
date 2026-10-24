@@ -1,0 +1,64 @@
+\begin{lemma}[The operator domain sits inside the form domain: $\operatorname{Dom}(L^{1/2}) \subseteq \operatorname{Dom}(L^{1/4})$]
+Let $v \in \operatorname{Dom}(L^{1/2})$ in the sense of \noderef{FracPowDomain}.
+Then the fractional energy of \noderef{Energy} is finite,
+\[
+  \mathcal{E}(v) = \sum_{\alpha \neq 0} |\alpha|^{1/2}\,|v_\alpha|^2 < \infty ,
+\]
+where $v_\alpha$ are the Hermite coefficients of \noderef{HermiteBasis} and
+$|\alpha|$ is the weight of \noderef{MultiIndexSum}.  Equivalently, $v$ belongs
+to the form domain
+$\mathcal{V} = \{w \in L^2(\gamma_n) : \mathcal{E}(w) < \infty\}
+ = \operatorname{Dom}(L^{1/4})$ of \noderef{Energy}: the operator domain of
+$B = L^{1/2}$ is contained in the form domain of the energy.  Only this
+inclusion is asserted; the reverse inclusion is false and is not claimed.
+\end{lemma}
+\begin{proof}
+Write $v_\alpha$ for the Hermite coefficients of $v$ relative to
+\noderef{HermiteBasis}.
+
+\emph{Step 1: what the hypothesis says.}
+By the criterion of \noderef{FracPowDomain} at $s = 1/2$, whose multiplier is
+$|\alpha|^{2s} = |\alpha|$, the hypothesis $v \in \operatorname{Dom}(L^{1/2})$
+says exactly
+\begin{equation*}
+  \sum_{\alpha \neq 0} |\alpha|\,|v_\alpha|^2 < \infty . \tag{1}
+\end{equation*}
+All summands are nonnegative, since $|\alpha|$ is a nonnegative integer by
+\noderef{MultiIndexSum}, so by the extended-real bridge clause of the
+summable-families item of the shared context, $(1)$ is equivalent to
+summability of the family $\bigl(|\alpha|\,|v_\alpha|^2\bigr)_{\alpha \neq 0}$
+as a family of real numbers.
+
+\emph{Step 2: $|\alpha| \geq 1$ for $\alpha \neq 0$.}
+By \noderef{MultiIndexSum}, $|\alpha| = \sum_{j=1}^n \alpha_j$ with every
+$\alpha_j \in \mathbb{N}_0$.  If $\alpha \neq 0$ then $\alpha_{j_0} \geq 1$ for
+some $j_0$, and all the remaining summands are $\geq 0$, so
+$|\alpha| \geq \alpha_{j_0} \geq 1$.
+
+\emph{Step 3: the termwise comparison.}
+Let $\alpha \neq 0$ and put $t = |\alpha| \geq 1$ by Step 2.  Then
+$t^{1/2} \geq 1$, because $t^{1/2} < 1$ would give
+$t = t^{1/2}\,t^{1/2} < 1$; and multiplying the inequality $1 \leq t^{1/2}$ by
+the nonnegative number $t^{1/2}$ gives $t^{1/2} \leq t$.  Hence, multiplying by
+$|v_\alpha|^2 \geq 0$,
+\begin{equation*}
+  0 \leq |\alpha|^{1/2}\,|v_\alpha|^2 \leq |\alpha|\,|v_\alpha|^2
+  \qquad (\alpha \neq 0). \tag{2}
+\end{equation*}
+
+\emph{Step 4: conclusion.}
+By Step 1 the majorant family in $(2)$ is summable, so by the comparison clause
+of the summable-families item of the shared context the family
+$\bigl(|\alpha|^{1/2}|v_\alpha|^2\bigr)_{\alpha \neq 0}$ is summable as well,
+with
+\[
+  \sum_{\alpha \neq 0} |\alpha|^{1/2}\,|v_\alpha|^2
+    \leq \sum_{\alpha \neq 0} |\alpha|\,|v_\alpha|^2 < \infty .
+\]
+Its summands being nonnegative, the extended-real bridge clause applies once
+more and says that the same sum, read in $[0,+\infty]$, is finite and equal to
+the real number just bounded.  By \noderef{Energy} that extended-real sum is
+precisely $\mathcal{E}(v)$, so $\mathcal{E}(v) < \infty$.  By the description of
+the form domain in \noderef{Energy} this is the assertion
+$v \in \mathcal{V} = \operatorname{Dom}(L^{1/4})$.
+\end{proof}

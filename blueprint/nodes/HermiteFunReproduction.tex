@@ -1,0 +1,90 @@
+\begin{lemma}[$n$-dimensional Hermite reproduction identity]
+Fix $n \in \mathbb{N}$ and let $a \in \mathbb{R}$ satisfy $0 \leq a \leq 1$.  Write
+$\tau = \sqrt{1-a^2}$.  Then for every multi-index $\alpha \in \mathbb{N}_0^n$ and
+every $x \in \mathbb{R}^n$,
+\[
+  \int_{\mathbb{R}^n} h_\alpha\bigl(a\,x + \tau\,y\bigr) \, d\gamma_n(y)
+    = a^{|\alpha|}\, h_\alpha(x),
+\]
+where $h_\alpha$ is the $n$-dimensional Hermite function of \noderef{HermiteFun},
+$|\alpha| = \alpha_1 + \cdots + \alpha_n$ is the order of \noderef{MultiIndexSum},
+and $\gamma_n$ is the Gaussian measure of \noderef{GaussMeasure}.
+
+The integral on the left is taken against the \emph{Gaussian} measure $\gamma_n$,
+which already carries the normalising factor $\pi^{-n/2}$ and the weight
+$e^{-|y|^2}$ in its density; no further weight appears in the integrand.  This is
+the direct multi-index companion of \noderef{Hermite1Reproduction}, whose
+one-dimensional statement is instead written as a Lebesgue integral $d\sigma$ with
+the weight $\pi^{-1/2}e^{-\sigma^2}$ displayed in the integrand.  The two
+conventions describe the same object in dimension one, and the proof below passes
+between them explicitly.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: unfold $\gamma_n$ as a weighted Lebesgue integral.}
+By \noderef{GaussMeasure}, $\gamma_n$ is Lebesgue measure on $\mathbb{R}^n$ with
+density $\rho(y) = \pi^{-n/2}e^{-|y|^2}$.  That density is measurable and finite
+at every point, so integration against $\gamma_n$ is integration of the
+density-weighted integrand against Lebesgue measure:
+\[
+  \int_{\mathbb{R}^n} h_\alpha(a x + \tau y)\, d\gamma_n(y)
+    = \int_{\mathbb{R}^n} \pi^{-n/2} e^{-|y|^2}\, h_\alpha(a x + \tau y)\, dy .
+\]
+
+\emph{Step 2: the integrand factorizes over the coordinates.}
+Fix $y \in \mathbb{R}^n$.  Three factorizations combine.  First,
+$|y|^2 = \sum_{j=1}^n y_j^2$, so
+$e^{-|y|^2} = \prod_{j=1}^n e^{-y_j^2}$.  Second, the constant splits as
+$\pi^{-n/2} = \prod_{j=1}^n \pi^{-1/2}$, since the product of $n$ equal factors
+$\pi^{-1/2}$ is $\pi^{-n/2}$.  Third, by \noderef{HermiteFun} the
+$n$-dimensional Hermite function is the product of one-dimensional ones over the
+coordinates, and the $j$th coordinate of $a x + \tau y$ is $a x_j + \tau y_j$,
+so
+\[
+  h_\alpha(a x + \tau y)
+    = \prod_{j=1}^n h_{\alpha_j}\bigl(a x_j + \tau y_j\bigr)
+\]
+with $h_k$ the one-dimensional Hermite function of \noderef{Hermite1}.
+Multiplying the three and regrouping the factors coordinatewise,
+\begin{equation*}
+  \pi^{-n/2} e^{-|y|^2}\, h_\alpha(a x + \tau y)
+    = \prod_{j=1}^n \Bigl( \pi^{-1/2} e^{-y_j^2}\,
+        h_{\alpha_j}\bigl(a x_j + \tau y_j\bigr) \Bigr) . \tag{1}
+\end{equation*}
+
+\emph{Step 3: the integral of a product splits.}
+Lebesgue measure on $\mathbb{R}^n$ is the $n$-fold product of Lebesgue measure on
+$\mathbb{R}$, the identification of $\mathbb{R}^n$ with the product being measure
+preserving.  Each factor in $(1)$ depends on one coordinate only, so Fubini's
+theorem for a finite product of measures applies and gives
+\[
+  \int_{\mathbb{R}^n} \prod_{j=1}^n \Bigl( \pi^{-1/2} e^{-y_j^2}\,
+      h_{\alpha_j}(a x_j + \tau y_j)\Bigr) dy
+  = \prod_{j=1}^n \int_{\mathbb{R}} \pi^{-1/2} e^{-\sigma^2}\,
+      h_{\alpha_j}(a x_j + \tau \sigma)\, d\sigma .
+\]
+
+\emph{Step 4: evaluate each one-dimensional factor.}
+The hypotheses $0 \leq a \leq 1$ are exactly what
+\noderef{Hermite1Reproduction} requires of its contraction parameter, and
+$\tau = \sqrt{1-a^2}$ is the spreading factor that lemma pairs with it.  Applying
+it with $r = a$, $k = \alpha_j$ and $t = x_j$ evaluates the $j$th factor as
+\[
+  \int_{\mathbb{R}} \pi^{-1/2} e^{-\sigma^2}\,
+      h_{\alpha_j}(a x_j + \tau \sigma)\, d\sigma
+    = a^{\alpha_j}\, h_{\alpha_j}(x_j) .
+\]
+
+\emph{Step 5: multiply.}
+Taking the product over $j$ and separating the two kinds of factor,
+\[
+  \prod_{j=1}^n a^{\alpha_j}\, h_{\alpha_j}(x_j)
+    = \Bigl(\prod_{j=1}^n a^{\alpha_j}\Bigr)
+      \prod_{j=1}^n h_{\alpha_j}(x_j)
+    = a^{\sum_{j} \alpha_j}\, h_\alpha(x)
+    = a^{|\alpha|}\, h_\alpha(x),
+\]
+where the exponents were collected using $\prod_j a^{\alpha_j} = a^{\sum_j
+\alpha_j}$, the remaining product was recognised as $h_\alpha(x)$ by
+\noderef{HermiteFun}, and $\sum_j \alpha_j = |\alpha|$ by
+\noderef{MultiIndexSum}.  Chaining Steps 1 through 5 gives the assertion.
+\end{proof}

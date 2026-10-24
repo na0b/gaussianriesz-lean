@@ -1,0 +1,8 @@
+import GaussianRiesz.FracPowDomain
+import GaussianRiesz.HermiteFunOU
+open MeasureTheory
+open scoped Classical in
+noncomputable def FracPow {n : ℕ} (s : ℝ) (v : Lp ℝ 2 (GaussMeasure n)) :
+    Lp ℝ 2 (GaussMeasure n) :=
+  if h : Memℓp (FracPowCoeff s (fun α => (HermiteBasis n).repr v α)) 2
+    then (HermiteBasis n).repr.symm ⟨_, h⟩ else 0

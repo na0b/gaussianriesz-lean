@@ -1,0 +1,170 @@
+\begin{lemma}[The tested identity for the pseudoinverse of the smooth core]
+Fix $n \geq 1$.  Let $f : \mathbb{R}^n \to \mathbb{R}$ be smooth with compact
+support and with $f \in L^2(\gamma_n)$, and let $u \in L^2(\gamma_n)$ be the
+class of $f$.  Let $\lambda$ denote Lebesgue measure on $\mathbb{R}^n$, write
+$P_s$ for the Ornstein--Uhlenbeck semigroup of \noderef{OUSemigroup}, $\Pi_0$ for
+the projection off the zeroth Hermite mode, and $w = L^{-1/2}u$ for the
+pseudoinverse of \noderef{FracPow} at exponent $-1/2$.  Suppose given
+\begin{enumerate}
+  \item[(a)] a family $A : (0,\infty) \times \{1,\ldots,n\} \times \mathbb{R}^n
+    \to \mathbb{R}$ with
+    \[
+      A_s(\partial_i f)(x)
+        := A(s,i,x)
+        = \int_{\mathbb{R}^n} \partial_i f\bigl(e^{-s}x
+            + \sqrt{1-e^{-2s}}\,z\bigr)\,d\gamma_n(z) ,
+    \]
+    the Mehler average of $\partial_i f$ at time $s$;
+  \item[(b)] a family $\Phi : \{1,\ldots,n\} \times \mathbb{R}^n \to \mathbb{R}$
+    with
+    \[
+      \Phi_i(x) = \frac{1}{\sqrt\pi}\int_0^\infty s^{-1/2}
+        \Bigl(e^{-s}\bigl(2^{-1/2}A_s(\partial_i f)(x)\bigr)\Bigr)\,ds ,
+    \]
+    its subordination integral;
+  \item[(c)] a constant $N$ with $|A_s(\partial_i f)(x)| \leq N$ for all $s$, $i$
+    and $x$;
+  \item[(d)] joint continuity of $(s,x) \mapsto A_s(\partial_i f)(x)$ on
+    $(0,\infty)\times\mathbb{R}^n$, for each $i$;
+  \item[(e)] integrability of $s \mapsto s^{-1/2}e^{-s}$ on $(0,\infty)$; and
+  \item[(f)] that every $\gamma_n$-almost-everywhere statement holds
+    $\lambda$-almost everywhere.
+\end{enumerate}
+Then for every index $i$ and every smooth compactly supported
+$\psi : \mathbb{R}^n \to \mathbb{R}$,
+\[
+  \int_{\mathbb{R}^n} w(x)\,\partial_i\psi(x)\,d\lambda(x)
+    = -\int_{\mathbb{R}^n} \bigl(\sqrt2\,\Phi_i(x)\bigr)\,\psi(x)\,d\lambda(x) .
+\]
+\end{lemma}
+\begin{proof}
+Fix an index $i$ and a smooth compactly supported $\psi$, and set
+\[
+  \Lambda(v) = \int_{\mathbb{R}^n} v(x)\,\partial_i\psi(x)\,d\lambda(x),
+  \qquad v \in L^2(\gamma_n) .
+\]
+
+\emph{Step 1: $\Lambda$ is a bounded linear functional on $L^2(\gamma_n)$.}
+Let $K = \operatorname{supp}\psi$, a compact set.  The function
+$\partial_i\psi$ is continuous, $\psi$ being smooth, and vanishes off $K$,
+because a point outside $K$ has an open neighbourhood on which $\psi$ vanishes
+identically and hence on which all its derivatives vanish.  So
+$|\partial_i\psi|$ attains a maximum on $K$ by the extreme value theorem when
+$K \neq \emptyset$, and $\partial_i\psi \equiv 0$ when $K = \emptyset$; in either
+case $\|\partial_i\psi\|_\infty < \infty$.  By clause (3) of
+\noderef{GaussL2LocallyIntegrable} applied to $K$ there is $C \geq 0$, depending
+on $K$ but not on the function, such that every $g \in L^2(\gamma_n)$ is
+Lebesgue integrable on $K$ with
+$\int_K |g|\,d\lambda \leq C\,\|g\|_{L^2(\gamma_n)}$.  Hence
+$v\,\partial_i\psi$ is $\lambda$-integrable and
+\[
+  |\Lambda(v)| \leq \|\partial_i\psi\|_\infty \int_K |v|\,d\lambda
+    \leq \|\partial_i\psi\|_\infty\,C\,\|v\|_{L^2(\gamma_n)} .
+\]
+$\Lambda$ is linear by linearity of the integral, and well defined on
+$L^2(\gamma_n)$ classes: two representatives agree $\gamma_n$-a.e., hence
+$\lambda$-a.e.\ by (f), so the Lebesgue integral is unchanged.
+
+\emph{Step 2: pushing $\Lambda$ inside the subordination integral.}
+By clauses (1) and (2) of \noderef{SubordinationPseudoInverse} the
+$L^2(\gamma_n)$-valued map $s \mapsto s^{-1/2}P_s\Pi_0u$ is Bochner integrable on
+$(0,\infty)$ and $w = (\sqrt\pi)^{-1}\int_0^\infty s^{-1/2}P_s\Pi_0u\,ds$.
+Apply mathlib's \texttt{ContinuousLinearMap.integral\_comp\_commSL}, which
+commutes a continuous linear map with a Bochner integral, with
+$X = (0,\infty)$ carrying Lebesgue
+measure, with $E = L^2(\gamma_n)$ --- a real Banach space, being a Hilbert space
+--- with $F(s) = s^{-1/2}P_s\Pi_0u$, Bochner integrable by the clause just
+quoted, and with the continuous linear functional $\Lambda$ of Step 1.  It gives
+$\int_0^\infty \Lambda(s^{-1/2}P_s\Pi_0u)\,ds
+  = \Lambda\bigl(\int_0^\infty s^{-1/2}P_s\Pi_0u\,ds\bigr)$.  Multiplying by
+$(\sqrt\pi)^{-1}$ and using linearity of $\Lambda$ both to pull that constant out
+and to pull the scalar $s^{-1/2}$ out of $\Lambda(s^{-1/2}P_s\Pi_0u)$,
+\begin{equation*}
+  \Lambda(w) = \frac{1}{\sqrt\pi}\int_0^\infty s^{-1/2}\,\Lambda(P_s\Pi_0u)\,ds .
+  \tag{1}
+\end{equation*}
+
+\emph{Step 3: the projection may be dropped inside $\Lambda$.}
+Let $c = \langle u, h_0\rangle$ be the zeroth Hermite coefficient of $u$ with
+respect to \noderef{HermiteBasis}.  By \noderef{FracPow} at exponent $0$, the
+element $\Pi_0u$ has coefficients $0$ at $\alpha = 0$ and $u_\alpha$ at
+$\alpha \neq 0$; the element $u - c\,h_0$ has, by linearity of the coefficient
+map and orthonormality of the basis, coefficients $u_0 - c = 0$ at $\alpha = 0$
+and $u_\alpha$ at $\alpha \neq 0$.  The coefficient map is injective, so
+$\Pi_0 u = u - c\,h_0$.  Applying \noderef{OUSemigroupSpectral} to both sides,
+the coefficients of $P_s\Pi_0u$ are $0$ at $\alpha = 0$ and
+$e^{-s|\alpha|}u_\alpha$ at $\alpha \neq 0$, and those of $P_su - c\,h_0$ are
+$u_0 - c = 0$ at $\alpha = 0$ and $e^{-s|\alpha|}u_\alpha$ at $\alpha \neq 0$; by
+injectivity again $P_s\Pi_0 u = P_s u - c\,h_0$.
+
+By \noderef{HermiteL2ZeroAEOne} the class $h_0$ agrees $\gamma_n$-a.e.\ with the
+constant function $1$, hence $\lambda$-a.e.\ by (f), so
+$\Lambda(c\,h_0) = c\int_{\mathbb{R}^n}\partial_i\psi\,d\lambda$.  That integral
+vanishes, by \noderef{CompIntegrationByParts} at the index $j := i$ with the
+following data.  Take $q = \mathrm{id}_{\mathbb{R}}$ and $q' \equiv 1$: then $q$
+is differentiable at every $t$ with derivative $1$, and $q'$, being constant, is
+continuous.  Take the inner function to be $\equiv 1$, the constant function on
+$\mathbb{R}^n$: it is differentiable everywhere with vanishing derivative, so its
+$i$th partial is the zero function, which is continuous.  Take the test function
+to be $\psi$.  The conclusion of that node reads
+$\int q(1)\,\partial_i\psi\,d\lambda
+  = -\int \bigl(q'(1)\cdot 0\bigr)\psi\,d\lambda$, i.e.
+$\int\partial_i\psi\,d\lambda = 0$.  Hence $\Lambda(c\,h_0) = 0$ and
+\begin{equation*}
+  \Lambda(P_s\Pi_0u) = \Lambda(P_su) \qquad\text{for every } s>0. \tag{2}
+\end{equation*}
+
+\emph{Step 4: the identity at a fixed time.}
+Fix $s > 0$.  Since $u$ is the class of $f$ and, by \noderef{MehlerFixedTimeTesting},
+the coercion of $P_su$ agrees $\gamma_n$-a.e.\ with $A_sf$ --- hence
+$\lambda$-a.e.\ by (f) --- we get
+$\Lambda(P_su) = \int (A_sf)\,\partial_i\psi\,d\lambda$.  Apply
+\noderef{SemigroupGradientCommute} at this $s$, to this $f$, and at the index
+$i$: its clause (4) says $A_sf$ is differentiable at every $x$ with
+$\partial_i(A_sf)(x) = e^{-s}A_s(\partial_i f)(x)$, and its clause (3) says
+$A_s(\partial_i f)$ is continuous.  Hence $x \mapsto \partial_i(A_sf)(x)$, the
+constant $e^{-s}$ times a continuous function, is continuous.
+
+These are exactly the two hypotheses \noderef{CompIntegrationByParts} places on
+its inner function at the index $j := i$: differentiability everywhere, and
+continuity of the single partial $\partial_i$.  Apply it with inner function
+$A_sf$, with $q = \mathrm{id}_{\mathbb{R}}$, $q' \equiv 1$, and test function
+$\psi$.  Its conclusion reads
+\[
+  \int (A_sf)\,\partial_i\psi\,d\lambda
+    = -\int \partial_i(A_sf)\,\psi\,d\lambda
+    = -e^{-s}\int A_s(\partial_i f)\,\psi\,d\lambda ,
+\]
+the last equality by clause (4).  Convergence of both integrals is part of that
+node's conclusion, and there is no boundary term because $\psi$ is compactly
+supported.  Combining with $(2)$,
+$\Lambda(P_s\Pi_0u) = -e^{-s}\int A_s(\partial_i f)\,\psi\,d\lambda$.
+
+\emph{Step 5: Fubini in $(s,x)$.}
+Substituting the last display into $(1)$,
+\[
+  \Lambda(w) = -\frac{1}{\sqrt\pi}\int_0^\infty\!\!\int_{\mathbb{R}^n}
+      s^{-1/2}e^{-s}\,A_s(\partial_i f)(x)\,\psi(x)\,d\lambda(x)\,ds .
+\]
+The integrand is jointly measurable: $(s,x) \mapsto A_s(\partial_i f)(x)$ is
+jointly continuous by (d), and $(s,x) \mapsto s^{-1/2}e^{-s}\psi(x)$ is
+continuous.  It is absolutely integrable, since by (c), the vanishing of $\psi$
+off the compact set $K$, the finiteness of $\lambda(K)$ and (e),
+\[
+  \int_0^\infty\!\!\int
+      \bigl|s^{-1/2}e^{-s}A_s(\partial_i f)(x)\,\psi(x)\bigr|\,d\lambda(x)\,ds
+    \leq N\,\|\psi\|_\infty\,\lambda(K)\int_0^\infty s^{-1/2}e^{-s}\,ds
+    < \infty .
+\]
+Both factor measures are $\sigma$-finite, so Fubini permits exchanging the order:
+\[
+  \Lambda(w) = -\int_{\mathbb{R}^n}\psi(x)
+      \Bigl[\frac{1}{\sqrt\pi}\int_0^\infty s^{-1/2}e^{-s}
+        A_s(\partial_i f)(x)\,ds\Bigr]d\lambda(x)
+    = -\int_{\mathbb{R}^n} \sqrt2\,\Phi_i(x)\,\psi(x)\,d\lambda(x) ,
+\]
+the last equality because, by (b), $\Phi_i(x)$ is
+$(\sqrt\pi)^{-1}\int_0^\infty s^{-1/2}e^{-s}2^{-1/2}A_s(\partial_i f)(x)\,ds$, so
+multiplying by $\sqrt2$ removes the factor $2^{-1/2}$.  Since
+$\Lambda(w) = \int w\,\partial_i\psi\,d\lambda$, this is the stated identity.
+\end{proof}

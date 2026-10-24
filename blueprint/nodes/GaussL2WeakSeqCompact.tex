@@ -1,0 +1,117 @@
+\begin{lemma}[Bounded sequences in $L^2(\gamma_n)$ have weakly convergent subsequences]
+Let $(v_k)_{k \geq 0}$ be a sequence in $L^2(\gamma_n)$ and let $R \in \mathbb{R}$
+satisfy $\|v_k\|_{L^2(\gamma_n)} \leq R$ for every $k$.  Then there are indices
+$k_0 < k_1 < k_2 < \cdots$ and an element $u \in L^2(\gamma_n)$ with
+$\|u\|_{L^2(\gamma_n)} \leq R$ such that
+\[
+  \langle v_{k_j},\, \varphi\rangle_{L^2(\gamma_n)}
+    \longrightarrow \langle u,\, \varphi\rangle_{L^2(\gamma_n)}
+  \qquad\text{as } j \to \infty, \text{ for every } \varphi \in L^2(\gamma_n).
+\]
+This is weak sequential compactness of bounded sets in the single Hilbert space
+$L^2(\gamma_n)$.  No weak topology on $\mathcal{V} = \operatorname{Dom}(L^{1/4})$
+is used, no reflexivity of $\mathcal{V}$ is invoked, and no compactness of any
+embedding and no dependence on the dimension $n$ is asserted.
+\end{lemma}
+\begin{proof}
+Write $H = L^2(\gamma_n)$, a real Hilbert space, and $H^*$ for its dual.  The
+proof has two steps: $H$ is separable, and the weak-$*$ statement for $H^*$
+recorded in the shared context transports to $H$ through the Riesz
+representation.  If $R < 0$ the hypothesis is vacuous, since
+$\|v_0\| \geq 0 > R$ is impossible; so $R \geq 0$ throughout.
+
+\emph{Step 1: the index set $\mathbb{N}_0^n$ is countable.}
+$\mathbb{N}_0^n$ is the set of functions $\{1,\dots,n\} \to \mathbb{N}_0$, i.e.\ a
+product of $n$ copies of the countable set $\mathbb{N}_0$.  A product of finitely
+many countable sets is countable, by induction on the number of factors: the
+empty product is a one-point set, and if $A$ is countable and $B$ is countable
+then $A \times B$ is countable because $\mathbb{N}_0 \times \mathbb{N}_0$ is
+countable (e.g.\ by the injection $(i,j) \mapsto 2^i 3^j$) and a set injecting
+into a countable set is countable.  Hence $\mathbb{N}_0^n$ is countable, and we
+may fix an enumeration of it.
+
+\emph{Step 2: $H$ is separable.}
+Let
+\[
+  D = \Bigl\{\textstyle\sum_{\alpha \in F} q_\alpha\, h_\alpha
+      \;:\; F \subseteq \mathbb{N}_0^n \text{ finite},\;
+            q_\alpha \in \mathbb{Q} \text{ for } \alpha \in F \Bigr\}
+    \subseteq H ,
+\]
+with $h_\alpha$ the Hermite functions of \noderef{HermiteL2}.
+
+$D$ is countable.  By Step 1 the set of finite subsets of $\mathbb{N}_0^n$ is
+countable (the finite subsets of a countable set form a countable union, over
+$m \in \mathbb{N}_0$, of the images of the countable sets
+$(\mathbb{N}_0^n)^m$ under the map sending an $m$-tuple to the set of its
+entries), and for each fixed finite $F$ the set of families
+$(q_\alpha)_{\alpha \in F} \in \mathbb{Q}^F$ is countable, $\mathbb{Q}$ being
+countable and $F$ finite.  So $D$ is a countable union of countable sets, hence
+countable.
+
+$D$ is dense in $H$.  Let $v \in H$ and $\varepsilon > 0$.  By
+\noderef{HermiteL2Complete} the closed linear span of
+$\{h_\alpha : \alpha \in \mathbb{N}_0^n\}$ is all of $H$, so $v$ lies in the
+closure of the set of finite real linear combinations of the $h_\alpha$; hence
+there are a finite $F \subseteq \mathbb{N}_0^n$ and reals $(c_\alpha)_{\alpha\in F}$
+with
+\[
+  \Bigl\| v - \sum_{\alpha \in F} c_\alpha h_\alpha \Bigr\| < \frac{\varepsilon}{2}.
+\]
+If $F = \emptyset$ the element $0 \in D$ already satisfies
+$\|v - 0\| < \varepsilon/2$, so assume $F \neq \emptyset$ and let $N = |F| \geq 1$.
+Since $\mathbb{Q}$ is dense in $\mathbb{R}$, choose for each $\alpha \in F$ a
+rational $q_\alpha$ with $|c_\alpha - q_\alpha| < \varepsilon/(2N)$, and put
+$w = \sum_{\alpha\in F} q_\alpha h_\alpha \in D$.  By
+\noderef{HermiteL2Orthonormal} each $h_\alpha$ is a unit vector,
+$\|h_\alpha\| = 1$, so by the triangle inequality in $H$
+\[
+  \Bigl\| \sum_{\alpha\in F} c_\alpha h_\alpha - w \Bigr\|
+    = \Bigl\| \sum_{\alpha\in F} (c_\alpha - q_\alpha) h_\alpha \Bigr\|
+    \leq \sum_{\alpha\in F} |c_\alpha - q_\alpha|\,\|h_\alpha\|
+    < N \cdot \frac{\varepsilon}{2N} = \frac{\varepsilon}{2}.
+\]
+Adding the two displays, $\|v - w\| < \varepsilon$ with $w \in D$.  As $v$ and
+$\varepsilon$ were arbitrary, $D$ is a countable dense subset of $H$, i.e.\ $H$
+is separable.
+
+\emph{Step 3: the sequence of associated functionals.}
+For each $k$ define $\Lambda_k : H \to \mathbb{R}$ by
+$\Lambda_k(w) = \langle v_k, w\rangle$.  Each $\Lambda_k$ is linear in $w$ by
+linearity of the inner product in its second argument, and by Cauchy--Schwarz,
+which is shared context, $|\Lambda_k(w)| \leq \|v_k\|\,\|w\|$ for every $w$, so
+$\Lambda_k$ is continuous with $\|\Lambda_k\|_{H^*} \leq \|v_k\|$.  Thus
+$\Lambda_k \in H^*$, and applying the Riesz representation item of the shared
+context to $\Lambda_k$ produces a \emph{unique} $y \in H$ with
+$\Lambda_k = \langle y, \cdot\rangle$ and $\|\Lambda_k\|_{H^*} = \|y\|$; since
+$v_k$ is such an element by the definition of $\Lambda_k$, uniqueness gives
+$y = v_k$ and therefore
+\begin{equation*}
+  \|\Lambda_k\|_{H^*} = \|v_k\| \leq R \qquad\text{for every } k. \tag{1}
+\end{equation*}
+
+\emph{Step 4: extraction, and transport back to $H$.}
+By Step 2 the normed space $H$ is separable, and by $(1)$ the sequence
+$(\Lambda_k)$ lies in the ball of radius $R$ of $H^*$.  The weak-$*$ sequential
+compactness item of the shared context, applied to $E = H$, this $R \geq 0$ and
+this sequence, therefore yields indices $k_0 < k_1 < k_2 < \cdots$ and
+$\Lambda \in H^*$ with $\|\Lambda\|_{H^*} \leq R$ such that
+\begin{equation*}
+  \Lambda_{k_j}(w) \longrightarrow \Lambda(w)
+  \qquad\text{for every } w \in H. \tag{2}
+\end{equation*}
+Applying the Riesz representation item once more, now to $\Lambda$, gives
+$u \in H$ with $\Lambda(w) = \langle u, w\rangle$ for every $w \in H$ and
+$\|u\| = \|\Lambda\|_{H^*} \leq R$.
+
+Finally, let $\varphi \in H$ be arbitrary.  By the definition of $\Lambda_{k_j}$,
+by $(2)$ with $w = \varphi$, and by the representation of $\Lambda$,
+\[
+  \langle v_{k_j},\, \varphi\rangle
+    = \Lambda_{k_j}(\varphi)
+    \longrightarrow \Lambda(\varphi)
+    = \langle u,\, \varphi\rangle .
+\]
+So the indices $k_0 < k_1 < \cdots$ and the element $u$, with $\|u\| \leq R$,
+are as asserted.
+\end{proof}

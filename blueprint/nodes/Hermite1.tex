@@ -1,0 +1,22 @@
+\begin{definition}[The normalized one-dimensional Hermite functions]
+Let $\mathrm{He}_k \in \mathbb{Z}[X]$ be the probabilists' Hermite polynomials,
+determined by
+\[
+  \mathrm{He}_0 = 1,
+  \qquad
+  \mathrm{He}_{k+1} = X\,\mathrm{He}_k - \mathrm{He}_k'
+  \quad (k \geq 0).
+\]
+For $k \in \mathbb{N}_0$ define $h_k : \mathbb{R} \to \mathbb{R}$ by
+\[
+  h_k(x) = \frac{\mathrm{He}_k(\sqrt{2}\,x)}{\sqrt{k!}} .
+\]
+This rescaling is dictated by the variance $1/2$ of the one-dimensional measure
+$\pi^{-1/2} e^{-x^2}\,dx$: the substitution $y = \sqrt2\,x$ carries that measure to
+the standard Gaussian, against which $\mathrm{He}_k$ is orthogonal with
+$\int \mathrm{He}_k^2 \, d\mathcal{N}(0,1) = k!$.  Equivalently, $h_k$ is the classical
+positive-leading-coefficient Hermite polynomial $H_k$ for the weight $e^{-x^2}$
+divided by $(2^k k!)^{1/2}$, which is the normalization used in the reference
+paper; the two powers of $2$ in $H_k(x) = 2^{k/2}\,\mathrm{He}_k(\sqrt2\,x)$ and in
+$(2^k k!)^{1/2}$ cancel exactly.
+\end{definition}

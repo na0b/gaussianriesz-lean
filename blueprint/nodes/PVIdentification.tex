@@ -1,0 +1,545 @@
+\begin{theorem}[Principal-value realization of the $L^1$ extension]
+Fix $n \geq 1$, let $\lambda$ be Lebesgue measure on $\mathbb{R}^n$, let
+$\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure}, and let
+$K_{\gamma,j}$ be the \emph{Lebesgue} Gaussian Riesz kernel of
+\noderef{GaussRieszKernel}.  Let
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions on $\mathbb{R}^n$ such
+that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item[(T2)] $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+\leq 2\,\|f\|_{L^1(\gamma_n)}$ for every $f \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$.
+\end{enumerate}
+Let $f \in L^1(\gamma_n;\mathbb{R})$, written also for its canonical
+representative, and for $\varepsilon > 0$ and $j \in \{1,\ldots,n\}$ write
+\[
+  T_{j,\varepsilon}f(x)
+    = \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)\,f(y)\,dy ,
+\]
+the $y$-integral taken against Lebesgue measure.  Then:
+\begin{enumerate}
+\item for $\gamma_n$-almost every $x$, and for all $n$ coordinates $j$
+simultaneously, the principal value
+$\lim_{\varepsilon\downarrow0}T_{j,\varepsilon}f(x)$ exists in $\mathbb{R}$ and
+equals $\bigl(Tf(x)\bigr)_j$, the class $Tf$ being evaluated through any
+representative, which is immaterial because the assertion is almost
+everywhere; and
+\item every realization of that principal value satisfies the full-vector
+endpoint bound with constant $2$: if $F : \mathbb{R}^n \to \mathbb{R}^n$ is any
+function such that for $\gamma_n$-almost every $x$ and every
+$j \in \{1,\ldots,n\}$ one has
+$T_{j,\varepsilon}f(x) \to F(x)_j$ as $\varepsilon \downarrow 0$ --- here $F$ is
+a genuine function, not an equivalence class, and the conclusion is about that
+function --- then
+\[
+  t\,\gamma_n\bigl(\{x : |F(x)|_{\mathbb{R}^n} > t\}\bigr)
+    \leq 2\,\|f\|_{L^1(\gamma_n)}
+  \qquad\text{for every real } t > 0 .
+\]
+\end{enumerate}
+
+\emph{This is the reference paper's principal-value proposition, both of its
+assertions.}  Clause (1) is the first: the truncated kernel integrals of an
+$L^1(\gamma_n)$ input converge almost everywhere, and the limit is the $L^1$
+extension of the spectrally defined transform, with $K_{\gamma,j}$ the Lebesgue
+kernel as the paper specifies.  Clause (2) is the paper's closing sentence,
+``Consequently, the same full-vector bound $2$ holds for this principal-value
+realization on real inputs'': it is carried here as a conjunct of the same
+statement rather than as a separate result, since it is a consequence of
+clause (1) and of (T2) and has no independent content.  The paper's qualifier
+\emph{on real inputs} is carried literally: $f$ ranges over the real space
+$L^1(\gamma_n;\mathbb{R})$ and $F$ is $\mathbb{R}^n$-valued, and nothing is
+asserted for complex inputs.
+
+\emph{The statement is unconditional.}  It carries no hypothesis expressing the
+fixed-dimensional maximal estimate, no constant depending on a radius, and no
+restriction of $x$ to a ball; those appear only inside the proof, through
+\noderef{GaussMaximalTruncationLocal}, and are consumed there.  Accordingly
+this node claims no deviation.
+
+\emph{Why clause (2) quantifies over realizations $F$.}  A principal value that
+exists only almost everywhere does not single out a function, so ``this
+principal-value realization'' is not one object but any function realizing the
+limit; the assertion is that every one of them obeys the bound, which is the
+strongest reading and the one a consumer can use.  The quantifier is not
+vacuous: by clause (1) the canonical representative of $Tf$ is such an $F$.
+Note also that no measurability of $F$, and none of the level set
+$\{|F| > t\}$, is assumed: $\gamma_n$ is applied to that set as an outer
+measure, which is what (T2) also does, so clause (2) is exactly as strong as
+(T2) is for $Tf$ itself.
+
+\emph{The hypothetical style, and where the constant $2$ comes from.}  (T1) and
+(T2) are written out in full and not imported by citation; the theorem is a
+statement about every $T$ satisfying them, as \noderef{CoordinateEndpointBound}
+and \noderef{GaussMaximalTruncationLocal} are, and it is not vacuous because
+\noderef{L1Extension} exhibits such a $T$.  The constant $2$ in clause (2) is
+(T2)'s own constant, transported along the almost-everywhere identity of
+clause (1); it is not obtained by tracking any constant through the localized
+estimates used in the proof, and indeed those constants depend on $n$, on $j$
+and on a radius, while this one does not.
+\end{theorem}
+\begin{proof}
+Write $\gamma = \gamma_n$ and $\lambda$ for Lebesgue measure on $\mathbb{R}^n$.
+Both are applied to arbitrary, not necessarily measurable, sets as outer
+measures; monotonicity and countable subadditivity, which are all that is used
+of them, hold in that generality (Preamble, monotonicity and subadditivity of
+a measure).  For a function $g : \mathbb{R}^n \to \mathbb{R}$ and $x$ at which
+the integrals converge put
+\[
+  T_{j,\varepsilon}g(x) = \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)g(y)\,dy ,
+  \qquad
+  T_{j,*}g(x) = \sup_{\varepsilon>0}
+     \bigl|T_{j,\varepsilon}g(x)\bigr| \;\in\;[0,+\infty] ,
+\]
+the supremum taken in the extended nonnegative reals, so that it is defined
+whether or not the family is bounded; for an element $g \in L^1(\gamma)$ these
+are read through its canonical representative.  Four facts are used
+repeatedly and are recorded here in the exact form in which they are applied.
+
+\textbf{(A1)} $\gamma$ is a probability measure (\noderef{GaussIsProb}); in
+particular $\gamma(S) \leq 1$ for every $S \subseteq \mathbb{R}^n$, and every
+bounded set has finite $\gamma$-measure.
+
+\textbf{(A2)} For $h \in L^1(\gamma)$ one has
+$\|h\|_{L^1(\gamma)} = \int_{\mathbb{R}^n}|h|\,d\gamma < \infty$, the integral
+of the canonical representative.
+
+\textbf{(A3)} By clause (4) of \noderef{GaussLebesgueBallComparison}, a subset
+of $\mathbb{R}^n$ is $\gamma$-null if and only if it is $\lambda$-null.
+Consequently two functions that agree $\gamma$-almost everywhere agree
+$\lambda$-almost everywhere, hence have the same Lebesgue integral over every
+region; in particular $T_{j,\varepsilon}$ is unchanged, \emph{at every $x$ and
+every $\varepsilon > 0$}, by a $\gamma$-almost-everywhere change of its
+integrand.
+
+\textbf{(A4)} If $A \subseteq B \cup N$ with $\gamma(N) = 0$ then
+$\gamma(A) \leq \gamma(B)$ (Preamble, monotonicity up to null sets).
+
+We also use the elementary facts that $a \mapsto \mathrm{ofReal}(a)$ from
+$[0,\infty)$ to $[0,+\infty]$ is strictly increasing and additive, and that if
+$a, b \in [0,+\infty]$ satisfy $b \leq \eta + a$ for \emph{every} real
+$\eta > 0$, the sum read in $[0,+\infty]$, then $b \leq a$.  (For the latter: if $a = +\infty$ there is nothing
+to prove, and if $a < \infty$ and $a < b$, choose a real $c$ with $a < c < b$
+--- take $c = a+1$ when $b = +\infty$ and $c = (a+b)/2$ otherwise --- and apply
+the hypothesis with $\eta = c - a > 0$ to get $b \leq c < b$, a contradiction.)
+
+\medskip
+\noindent\textbf{Step 1: the approximating sequence.}
+For each $k \in \mathbb{N}$ apply \noderef{SmoothCompactDenseL1Gauss} to $f$
+with $\delta = 1/(k+1) > 0$.  It produces a function
+$\varphi_k : \mathbb{R}^n \to \mathbb{R}$ which is smooth, has compact support
+and is $\gamma$-integrable, with
+\begin{equation}\label{eq:pvid-approx}
+  \int_{\mathbb{R}^n}|f(y) - \varphi_k(y)|\,d\gamma(y) < \frac1{k+1} .
+\end{equation}
+The sequence $(\varphi_k)$ does not depend on the coordinate $j$.  Let
+$\psi_k \in L^1(\gamma)$ be the class of $\varphi_k$.  Then
+$f - \psi_k \in L^1(\gamma)$, its canonical representative agrees
+$\gamma$-almost everywhere with $f - \varphi_k$, and therefore by (A2) and
+\eqref{eq:pvid-approx}
+\begin{equation}\label{eq:pvid-approx-norm}
+  \|f - \psi_k\|_{L^1(\gamma)}
+    = \int_{\mathbb{R}^n}|f - \varphi_k|\,d\gamma < \frac1{k+1} .
+\end{equation}
+By (A3) the canonical representative of $f - \psi_k$ agrees with
+$f - \varphi_k$ $\lambda$-almost everywhere, so
+\begin{equation}\label{eq:pvid-rep}
+  T_{j,\varepsilon}(f - \psi_k)(x) = T_{j,\varepsilon}(f - \varphi_k)(x)
+  \qquad\text{for every } x \in \mathbb{R}^n,\ \varepsilon > 0,\ j ,
+\end{equation}
+and likewise $T_{j,*}(f-\psi_k)(x) = T_{j,*}(f-\varphi_k)(x)$ for every $x$.
+
+\medskip
+\noindent\textbf{Step 2: all truncated integrals converge, at every $x$ and
+every $\varepsilon$.}
+Fix $x \in \mathbb{R}^n$, $\varepsilon > 0$ and $j$, and put
+$R_x = \max(|x|,1) > 0$.  Apply clause (1) of
+\noderef{GaussRieszKernelFarMajorant} with $R := R_x > 0$ and
+$\rho := \varepsilon > 0$.  It supplies a constant
+$C = C(n,j,R_x,\varepsilon) > 0$ such that for every
+$g \in L^1(\gamma)$ and every $x'$ with $|x'| \leq R_x$, the function
+$y \mapsto K_{\gamma,j}(x',y)g(y)$ is Lebesgue integrable on
+$\{y : |x'-y| > \varepsilon\}$ and
+\begin{equation}\label{eq:pvid-far}
+  \Bigl|\int_{|x'-y|>\varepsilon}K_{\gamma,j}(x',y)g(y)\,dy\Bigr|
+    \leq C\int_{\mathbb{R}^n}|g|\,d\gamma .
+\end{equation}
+Since $|x| \leq R_x$, this applies at $x' = x$ to the three $\gamma$-integrable
+functions $f$, $\varphi_k$ and $f - \varphi_k$ (the first is an $L^1(\gamma)$
+representative, the second is $\gamma$-integrable by Step 1, the third is
+their difference).  Hence $T_{j,\varepsilon}f(x)$,
+$T_{j,\varepsilon}\varphi_k(x)$ and $T_{j,\varepsilon}(f-\varphi_k)(x)$ are
+\emph{finite real numbers} for every $x$, every $\varepsilon > 0$ and every
+$k$, and since the integrands satisfy
+$K_{\gamma,j}(x,y)f(y) = K_{\gamma,j}(x,y)\varphi_k(y)
+  + K_{\gamma,j}(x,y)(f-\varphi_k)(y)$ pointwise in $y$, additivity of the
+Lebesgue integral of integrable functions gives
+\begin{equation}\label{eq:pvid-split}
+  T_{j,\varepsilon}f(x) = T_{j,\varepsilon}\varphi_k(x)
+     + T_{j,\varepsilon}(f-\varphi_k)(x)
+  \qquad\text{for every } x,\ \varepsilon > 0,\ k .
+\end{equation}
+This is the point at which the tablet is stronger than the paper, which
+obtains finiteness of its truncations from almost-everywhere finiteness of the
+maximal function; here every single truncation is finite at every point, with
+no exceptional set, so that citation is not needed and is not made.
+
+\medskip
+\noindent\textbf{Step 3: the smooth core.}
+Fix $k$ and $j$, and let $x \in \mathbb{R}^n$ be arbitrary.  Put
+\[
+  \Phi^{(k)}_j(x) = \frac1{\sqrt\pi}\int_0^\infty
+     \frac{e^{-s}}{\sqrt s}\cdot\frac1{\sqrt2}
+     \int_{\mathbb{R}^n}
+       \partial_j\varphi_k\bigl(e^{-s}x + \sqrt{1-e^{-2s}}\,z\bigr)
+     \,d\gamma(z)\,ds ,
+\]
+which is the function $\Phi_j$ of \noderef{PVCoreSmooth} and of
+\noderef{RieszSemigroupPointwise} for the input $\varphi_k$, written out: the
+inner integral is the Mehler average of $\partial_j\varphi_k$ at time $s$ and
+the factor $2^{-1/2}$ makes it the energy-normalized derivative $D_j$.  Since
+$\varphi_k$ is smooth with compact support, \noderef{PVCoreSmooth} applies to
+it at the coordinate $j$ and the point $x$, and its clause (2) gives
+\begin{equation}\label{eq:pvid-core}
+  \lim_{\varepsilon\downarrow0}T_{j,\varepsilon}\varphi_k(x)
+    = \Phi^{(k)}_j(x) ,
+\end{equation}
+a limit of real numbers, valid at \emph{every} $x$ with no exceptional set.
+
+\medskip
+\noindent\textbf{Step 4: the bridge $\Phi^{(k)}_j = (T\psi_k)_j$ almost
+everywhere.}
+This is a composition of three links, and none of them states it alone.
+
+(a) $\varphi_k$ is continuous with compact support, hence bounded: by the
+extreme value theorem (Preamble) it attains a maximum of $|\varphi_k|$ on the
+compact set $\operatorname{supp}\varphi_k$, and it vanishes off that set, so
+$|\varphi_k| \leq M_k$ for some real $M_k$.  Since $\gamma$ is a probability
+measure by (A1), $\int|\varphi_k|^2\,d\gamma \leq M_k^2 < \infty$, so
+$\varphi_k \in L^2(\gamma)$; write $u_k \in L^2(\gamma)$ for its class.
+
+(b) Apply \noderef{RieszSemigroupPointwise} to $\varphi_k$ --- smooth,
+compactly supported, square $\gamma$-integrable by (a) --- at the coordinate
+$j$.  Its clause (3) says
+\begin{equation}\label{eq:pvid-link2}
+  \Phi^{(k)}_j = \bigl(R_\gamma u_k\bigr)_j
+  \qquad \gamma\text{-almost everywhere} .
+\end{equation}
+
+(c) $\iota u_k = \psi_k$ in $L^1(\gamma)$: the canonical representative of
+$\iota u_k$ agrees $\gamma$-almost everywhere with that of $u_k$, which agrees
+$\gamma$-almost everywhere with $\varphi_k$, and $\psi_k$ is by definition the
+$L^1(\gamma)$-class of $\varphi_k$; two elements of $L^1(\gamma)$ whose
+representatives agree almost everywhere are equal.  Hence hypothesis (T1)
+gives $T\psi_k = T(\iota u_k) = R_\gamma u_k$ as elements of
+$\mathcal{M}(\gamma;\mathbb{R}^n)$, so their canonical representatives agree
+$\gamma$-almost everywhere, and in particular so do their $j$th coordinates.
+
+Combining (b) and (c),
+\begin{equation}\label{eq:pvid-bridge}
+  \Phi^{(k)}_j = \bigl(T\psi_k\bigr)_j
+  \qquad \gamma\text{-almost everywhere} .
+\end{equation}
+
+\medskip
+\noindent\textbf{Step 5: the oscillation is dominated by the maximal
+truncation of the error.}
+Fix $j$.  For $x \in \mathbb{R}^n$ and $\rho > 0$ put
+\[
+  S_\rho(x) = \sup_{0<\varepsilon,\delta<\rho}
+     \bigl|T_{j,\varepsilon}f(x) - T_{j,\delta}f(x)\bigr| ,
+  \qquad
+  S^{(k)}_\rho(x) = \sup_{0<\varepsilon,\delta<\rho}
+     \bigl|T_{j,\varepsilon}\varphi_k(x) - T_{j,\delta}\varphi_k(x)\bigr| ,
+\]
+both suprema taken in $[0,+\infty]$, and
+\[
+  \omega_f(x) = \inf_{\rho>0}S_\rho(x) \;\in\;[0,+\infty] .
+\]
+$S_\rho(x)$ is nondecreasing in $\rho$, so $\omega_f(x)$ is the limit of
+$S_\rho(x)$ as $\rho \downarrow 0$; this is the paper's oscillation at zero.
+
+\emph{Claim.}  For every $x \in \mathbb{R}^n$ and every $k \in \mathbb{N}$,
+\begin{equation}\label{eq:pvid-osc}
+  \omega_f(x) \;\leq\; 2\,T_{j,*}(f-\psi_k)(x) .
+\end{equation}
+
+Indeed, fix $\rho > 0$ and $\varepsilon,\delta \in (0,\rho)$.  Using
+\eqref{eq:pvid-split} at $\varepsilon$ and at $\delta$, all six quantities
+involved being finite reals by Step 2, the triangle inequality gives
+\[
+  \bigl|T_{j,\varepsilon}f(x) - T_{j,\delta}f(x)\bigr|
+    \leq \bigl|T_{j,\varepsilon}\varphi_k(x) - T_{j,\delta}\varphi_k(x)\bigr|
+      + \bigl|T_{j,\varepsilon}(f-\varphi_k)(x)\bigr|
+      + \bigl|T_{j,\delta}(f-\varphi_k)(x)\bigr| .
+\]
+By \eqref{eq:pvid-rep} the last two terms are
+$|T_{j,\varepsilon}(f-\psi_k)(x)|$ and $|T_{j,\delta}(f-\psi_k)(x)|$, each at
+most $T_{j,*}(f-\psi_k)(x)$ by definition of that supremum.  Reading the
+inequality in $[0,+\infty]$ and bounding the first term by its supremum,
+\[
+  \bigl|T_{j,\varepsilon}f(x) - T_{j,\delta}f(x)\bigr|
+    \leq S^{(k)}_\rho(x) + 2\,T_{j,*}(f-\psi_k)(x) ,
+\]
+and the right-hand side does not involve $\varepsilon$ or $\delta$, so
+\begin{equation}\label{eq:pvid-osc-rho}
+  S_\rho(x) \leq S^{(k)}_\rho(x) + 2\,T_{j,*}(f-\psi_k)(x)
+  \qquad\text{for every }\rho > 0 .
+\end{equation}
+Next, $\inf_{\rho>0}S^{(k)}_\rho(x) = 0$.  To see this, let $\eta > 0$ and let
+$L$ be the real limit \eqref{eq:pvid-core}; there is $\rho > 0$ with
+$|T_{j,\varepsilon}\varphi_k(x) - L| < \eta/2$ for all
+$\varepsilon \in (0,\rho)$, whence
+$|T_{j,\varepsilon}\varphi_k(x) - T_{j,\delta}\varphi_k(x)| < \eta$ for all
+$\varepsilon,\delta \in (0,\rho)$ and therefore $S^{(k)}_\rho(x) \leq \eta$.
+Feeding this $\rho$ into \eqref{eq:pvid-osc-rho} gives
+$\omega_f(x) \leq S_\rho(x) \leq \eta + 2T_{j,*}(f-\psi_k)(x)$ for every real
+$\eta > 0$, and the elementary fact recorded before Step 1 yields
+\eqref{eq:pvid-osc}.
+
+\medskip
+\noindent\textbf{Step 6: $\omega_f = 0$ almost everywhere.}
+Still with $j$ fixed, let $R$ be an integer with $R \geq 1$ and write
+$A_R = \{x : |x| \leq R\}$.  Apply
+\noderef{GaussMaximalTruncationLocal} to the same $T$, with the same
+properties (T1) and (T2) written out there, the same coordinate $j$, and this
+$R$.  It supplies a constant $C_R \in (0,\infty)$, depending only on $n$, $j$
+and $R$ --- in particular produced before the input is quantified, hence the
+same for every input --- such that
+\begin{equation}\label{eq:pvid-maximal}
+  \gamma\bigl(\{x : |x| \leq R \text{ and } T_{j,*}g(x) > t\}\bigr)
+    \leq \frac{C_R}{t}\,\|g\|_{L^1(\gamma)}
+\end{equation}
+for every $g \in L^1(\gamma)$ and every $t \in (0,+\infty]$, the left-hand
+side being the $\gamma$-outer measure of a set about which no measurability is
+asserted and the right-hand side read in $[0,+\infty]$.
+
+For $k,m \in \mathbb{N}$ put
+\[
+  N_{k,m} = \Bigl\{x : |x| \leq R \text{ and }
+     T_{j,*}(f-\psi_k)(x) > \tfrac1{m+1}\Bigr\} .
+\]
+Applying \eqref{eq:pvid-maximal} with $g = f - \psi_k$ and $t = 1/(m+1)$, and
+using \eqref{eq:pvid-approx-norm},
+\[
+  \gamma(N_{k,m}) \leq C_R\,(m+1)\,\|f-\psi_k\|_{L^1(\gamma)}
+     \leq \frac{C_R\,(m+1)}{k+1} .
+\]
+Let $N_m = \bigcap_{k\in\mathbb{N}}N_{k,m}$.  By monotonicity
+$\gamma(N_m) \leq \gamma(N_{k,m}) \leq C_R(m+1)/(k+1)$ for every $k$, and the
+right-hand side tends to $0$ as $k \to \infty$ with $m$ fixed, so
+$\gamma(N_m) = 0$.  Let $N^{(R)}_j = \bigcup_{m\in\mathbb{N}}N_m$; by countable
+subadditivity $\gamma\bigl(N^{(R)}_j\bigr) = 0$.
+
+Let $x \in A_R \setminus N^{(R)}_j$ and let $m \in \mathbb{N}$.  Since
+$x \notin N_m$ there is $k$ with $x \notin N_{k,m}$, and since $|x| \leq R$
+this forces $T_{j,*}(f-\psi_k)(x) \leq 1/(m+1)$.  By \eqref{eq:pvid-osc},
+$\omega_f(x) \leq 2/(m+1)$.  As $m$ was arbitrary, $\omega_f(x) = 0$.
+
+Finally put $N_j^{\mathrm{osc}} = \bigcup_{R\in\mathbb{N},\,R\geq1}N^{(R)}_j$,
+a countable union of $\gamma$-null sets, so $\gamma(N_j^{\mathrm{osc}}) = 0$.
+Every $x \in \mathbb{R}^n$ lies in $A_R$ for some integer $R \geq 1$, so for
+every $x \notin N_j^{\mathrm{osc}}$ we have $\omega_f(x) = 0$.
+
+\medskip
+\noindent\textbf{Step 7: the principal value exists off that null set.}
+Let $x \notin N_j^{\mathrm{osc}}$, so $\inf_{\rho>0}S_\rho(x) = 0$.  For each
+$m \in \mathbb{N}$ choose $\rho_m > 0$ with $S_{\rho_m}(x) < 1/(m+1)$, and set
+$\sigma_m = \min\{\rho_0,\ldots,\rho_m\} > 0$; then $(\sigma_m)$ is
+nonincreasing and, $S_\rho(x)$ being nondecreasing in $\rho$ and
+$\sigma_m \leq \rho_m$,
+\begin{equation}\label{eq:pvid-sigma}
+  S_{\sigma_m}(x) \leq S_{\rho_m}(x) < \frac1{m+1} .
+\end{equation}
+Put $a_m = T_{j,\sigma_m/2}f(x)$, a finite real by Step 2.  For $p \geq q$ both
+$\sigma_p/2$ and $\sigma_q/2$ lie in $(0,\sigma_q)$, because
+$\sigma_p \leq \sigma_q$; hence $|a_p - a_q| \leq S_{\sigma_q}(x) < 1/(q+1)$ by
+\eqref{eq:pvid-sigma}.  So $(a_m)$ is a Cauchy sequence of reals and converges,
+$\mathbb{R}$ being complete; call its limit $L$.  For $0 < \varepsilon <
+\sigma_m$, both $\varepsilon$ and $\sigma_m/2$ lie in $(0,\sigma_m)$, so
+$|T_{j,\varepsilon}f(x) - a_m| \leq S_{\sigma_m}(x) < 1/(m+1)$ and therefore
+\[
+  \bigl|T_{j,\varepsilon}f(x) - L\bigr| \leq \frac1{m+1} + |a_m - L| .
+\]
+Given $\eta > 0$, choose $m$ with $1/(m+1) < \eta/2$ and $|a_m - L| < \eta/2$;
+then $|T_{j,\varepsilon}f(x) - L| < \eta$ for every
+$\varepsilon \in (0,\sigma_m)$.  Hence
+\begin{equation}\label{eq:pvid-limit}
+  T_jf(x) := \lim_{\varepsilon\downarrow0}T_{j,\varepsilon}f(x)
+\end{equation}
+exists in $\mathbb{R}$ for every $x \notin N_j^{\mathrm{osc}}$.
+
+\medskip
+\noindent\textbf{Step 8: $T_jf = (Tf)_j$ almost everywhere.}
+Fix $j$, an integer $R \geq 1$ and a real $t > 0$.
+
+(a) Let $x \notin N_j^{\mathrm{osc}}$.  By \eqref{eq:pvid-split} and
+\eqref{eq:pvid-rep}, $T_{j,\varepsilon}(f-\psi_k)(x)
+ = T_{j,\varepsilon}f(x) - T_{j,\varepsilon}\varphi_k(x)$ for every
+$\varepsilon > 0$, and both terms on the right converge as
+$\varepsilon\downarrow0$, by \eqref{eq:pvid-limit} and \eqref{eq:pvid-core}.
+Hence
+$T_{j,\varepsilon}(f-\psi_k)(x) \to T_jf(x) - \Phi^{(k)}_j(x)$, and so
+$|T_{j,\varepsilon}(f-\psi_k)(x)| \to |T_jf(x) - \Phi^{(k)}_j(x)|$.  Now
+$|T_{j,\varepsilon}(f-\psi_k)(x)| \leq T_{j,*}(f-\psi_k)(x)$ for every
+$\varepsilon$.  If $T_{j,*}(f-\psi_k)(x) = +\infty$ the bound
+\begin{equation}\label{eq:pvid-limit-bd}
+  \bigl|T_jf(x) - \Phi^{(k)}_j(x)\bigr| \leq T_{j,*}(f-\psi_k)(x)
+\end{equation}
+is trivial; otherwise $T_{j,*}(f-\psi_k)(x)$ is a real number $M$, every term
+of the convergent family is $\leq M$, and so is its limit.  Thus
+\eqref{eq:pvid-limit-bd} holds for every $x \notin N_j^{\mathrm{osc}}$ and
+every $k$.  Consequently
+\[
+  E^{(k)}_1 := \Bigl\{x \in A_R\setminus N_j^{\mathrm{osc}} :
+     \bigl|T_jf(x) - \Phi^{(k)}_j(x)\bigr| > \tfrac t3\Bigr\}
+  \;\subseteq\;
+  \Bigl\{x : |x| \leq R \text{ and } T_{j,*}(f-\psi_k)(x) > \tfrac t3\Bigr\} ,
+\]
+so \eqref{eq:pvid-maximal} with $g = f-\psi_k$ and the level $t/3$, together
+with \eqref{eq:pvid-approx-norm}, gives
+$\gamma\bigl(E^{(k)}_1\bigr) \leq 3C_R/\bigl(t(k+1)\bigr)$.
+
+(b) Let $E^{(k)}_2 = \{x : \Phi^{(k)}_j(x) \neq (T\psi_k)_j(x)\}$.  By
+\eqref{eq:pvid-bridge}, $\gamma\bigl(E^{(k)}_2\bigr) = 0$.
+
+(c) $T$ is linear, so $T(f - \psi_k) = Tf - T\psi_k$ in
+$\mathcal{M}(\gamma;\mathbb{R}^n)$; the canonical representative of a
+difference of classes agrees $\gamma$-almost everywhere with the difference of
+the canonical representatives, so there is a $\gamma$-null set $N'_k$ off which
+$\bigl(T(f-\psi_k)\bigr)_j(x) = (Tf)_j(x) - (T\psi_k)_j(x)$.  Apply
+\noderef{CoordinateEndpointBound} to the same $T$, with the same properties
+(T1) and (T2) written out there, to the input $f - \psi_k \in L^1(\gamma)$, the
+coordinate $j$ and the level $t/3 > 0$:
+\[
+  \tfrac t3\,\gamma\Bigl(\bigl\{x :
+      \bigl|\bigl(T(f-\psi_k)\bigr)_j(x)\bigr| > \tfrac t3\bigr\}\Bigr)
+  \leq 2\,\|f-\psi_k\|_{L^1(\gamma)} \leq \frac2{k+1} ,
+\]
+using \eqref{eq:pvid-approx-norm}.  Since $t/3 \in (0,\infty)$ we may divide,
+and then (A4) with the null set $N'_k$ transfers the bound to
+\[
+  E^{(k)}_3 := \Bigl\{x : \bigl|(Tf)_j(x) - (T\psi_k)_j(x)\bigr|
+     > \tfrac t3\Bigr\} ,
+  \qquad
+  \gamma\bigl(E^{(k)}_3\bigr) \leq \frac{6}{t\,(k+1)} .
+\]
+
+(d) Let $x \in A_R \setminus N_j^{\mathrm{osc}}$ with
+$|T_jf(x) - (Tf)_j(x)| > t$.  If all three of
+$|T_jf(x) - \Phi^{(k)}_j(x)|$, $|\Phi^{(k)}_j(x) - (T\psi_k)_j(x)|$ and
+$|(T\psi_k)_j(x) - (Tf)_j(x)|$ were at most $t/3$, the triangle inequality
+would give $|T_jf(x) - (Tf)_j(x)| \leq t$; so at least one exceeds $t/3$, i.e.
+$x \in E^{(k)}_1 \cup E^{(k)}_2 \cup E^{(k)}_3$ (note that
+$|\Phi^{(k)}_j(x) - (T\psi_k)_j(x)| > t/3 > 0$ forces
+$x \in E^{(k)}_2$).  By subadditivity and (a)--(c), for every $k$,
+\[
+  \gamma\Bigl(\bigl\{x \in A_R\setminus N_j^{\mathrm{osc}} :
+      |T_jf(x) - (Tf)_j(x)| > t\bigr\}\Bigr)
+    \leq \frac{3C_R}{t(k+1)} + 0 + \frac{6}{t(k+1)}
+    = \frac{3C_R + 6}{t\,(k+1)} .
+\]
+The left-hand side does not depend on $k$, and the right-hand side tends to
+$0$ as $k \to \infty$; a quantity in $[0,+\infty]$ bounded by every term of a
+sequence tending to $0$ is $0$.  Hence that $\gamma$-measure is $0$.
+
+This is where the paper invokes uniqueness of a limit in measure.  The
+three-way split above is the quantitative form of that argument and gives the
+conclusion directly from the two weak-type bounds, so no separate uniqueness
+statement is needed; the ball $A_R$ has finite $\gamma$-measure by (A1), but
+that finiteness is not used, and the role of $A_R$ here is solely that
+\eqref{eq:pvid-maximal} is available only on it.
+
+(e) Taking the union over the levels $t = 1/(m+1)$, $m \in \mathbb{N}$, over
+the integers $R \geq 1$, and with $N_j^{\mathrm{osc}}$ adjoined, countable
+subadditivity produces a $\gamma$-null set
+$N_j \supseteq N_j^{\mathrm{osc}}$ such that for every $x \notin N_j$ the limit
+$T_jf(x)$ of \eqref{eq:pvid-limit} exists and
+\begin{equation}\label{eq:pvid-ident}
+  T_jf(x) = (Tf)_j(x) .
+\end{equation}
+(Every $x \notin N_j^{\mathrm{osc}}$ with $T_jf(x) \neq (Tf)_j(x)$ lies in
+$A_R$ for some integer $R \geq 1$ and satisfies
+$|T_jf(x) - (Tf)_j(x)| > 1/(m+1)$ for some $m$, so it lies in one of the
+countably many null sets just bounded.)
+
+\medskip
+\noindent\textbf{Step 9: the coordinate assembly, giving clause (1).}
+Steps 5 to 8 were carried out for a fixed coordinate $j$, using the
+$j$-independent approximants of Step 1, and produced a $\gamma$-null set
+$N_j$.  Doing this for each of the $n$ coordinates and putting
+$N_* = \bigcup_{j=1}^n N_j$ --- a finite union, so $\gamma(N_*) = 0$ by
+subadditivity --- we obtain: for every $x \notin N_*$ and every
+$j \in \{1,\ldots,n\}$, the limit
+$\lim_{\varepsilon\downarrow0}T_{j,\varepsilon}f(x)$ exists in $\mathbb{R}$ and
+equals $(Tf(x))_j$.  This is clause (1), and the finiteness of the number of
+coordinates is exactly the paper's reason for the same step.
+
+\medskip
+\noindent\textbf{Step 10: clause (2).}
+Let $F : \mathbb{R}^n \to \mathbb{R}^n$ be as in clause (2), and let $N_F$ be a
+$\gamma$-null set off which, for every $j$,
+$T_{j,\varepsilon}f(x) \to F(x)_j$ as $\varepsilon\downarrow0$.  Put
+$N' = N_* \cup N_F$, so $\gamma(N') = 0$.  For $x \notin N'$ and each $j$ the
+family $\varepsilon \mapsto T_{j,\varepsilon}f(x)$ converges, as
+$\varepsilon \downarrow 0$, both to $F(x)_j$ and to $(Tf(x))_j$ by Step 9.
+The filter of right-hand neighbourhoods of $0$ is not the trivial filter, since
+every neighbourhood of $0$ meets $(0,\infty)$, and $\mathbb{R}$ is Hausdorff,
+so a limit along it is unique; hence $F(x)_j = (Tf(x))_j$ for every $j$, and
+therefore $F(x) = Tf(x)$ as elements of $\mathbb{R}^n$, two vectors with the
+same $n$ coordinates being equal.
+
+Now fix a real $t > 0$.  Then
+\[
+  \{x : |F(x)| > t\} \subseteq \{x : |Tf(x)| > t\} \cup N' ,
+  \qquad
+  \{x : |Tf(x)| > t\} \subseteq \{x : |F(x)| > t\} \cup N' ,
+\]
+since the two functions agree off $N'$.  By (A4) in both directions the two
+sets have the same $\gamma$-outer measure.  Hypothesis (T2), applied to $f$ and
+this $t$, gives $t\,\gamma(\{x : |Tf(x)| > t\}) \leq 2\|f\|_{L^1(\gamma)}$, and
+therefore
+\[
+  t\,\gamma\bigl(\{x : |F(x)| > t\}\bigr) \leq 2\,\|f\|_{L^1(\gamma)} ,
+\]
+which is clause (2).  The constant is (T2)'s, transported along the
+almost-everywhere identity $F = Tf$ of the previous paragraph; the constants
+$C_R$ of \eqref{eq:pvid-maximal}, which depend on $n$, $j$ and $R$, enter only
+through Steps 6 and 8 and do not appear in this bound.  This is the paper's
+closing remark that the constant $2$ is supplied by its endpoint theorem and
+not by the constants used for the identification.
+%
+% FORMALIZATION NOTE (cut points for ProofFormalization, recorded while the
+% argument is fresh; decomposition is free once a child's Lean closes, and must
+% not be done in the stating phase).  Four natural children, in dependency
+% order:
+%   (P1) Steps 1-2 as "the approximants and the three-term splitting": for
+%        f in L^1(gamma) and k, a smooth compactly supported phi_k with
+%        ||f - phi_k||_{L^1(gamma)} < 1/(k+1), finiteness of each truncation at
+%        every (x, eps), and the identity (eq:pvid-split).  Pure bookkeeping
+%        over SmoothCompactDenseL1Gauss and the far majorant.
+%   (P2) Step 4 as "SmoothCoreSpectralBridge": for phi smooth with compact
+%        support, Phi_j(phi) = (T (class of phi))_j gamma-a.e.  This is the
+%        three-link composition and is independent of every truncation; it is
+%        the one piece that uses hext.  Likely a genuine tablet node in
+%        ProofFormalization rather than a private helper.
+%   (P3) Steps 5-7 as "the Cauchy criterion off a null set": omega_f <= 2 M_k
+%        pointwise, omega_f = 0 a.e. by the double-indexed null-set argument,
+%        and existence of the limit by completeness.  The longest piece; it
+%        needs only GaussMaximalTruncationLocal and PVCoreSmooth.
+%   (P4) Step 8 as "the three-way split in measure", parameterized by R and t.
+%        Its content is subadditivity plus CoordinateEndpointBound; it touches
+%        no kernel.
+% Steps 9 and 10 then assemble (P2)-(P4) in a few lines each.  Do NOT split
+% (P3) further along the Step 6 / Step 7 boundary: the two share the set
+% N_j^{osc} and the family S_rho, and separating them would force that family
+% into an interface for no gain.
+\end{proof}

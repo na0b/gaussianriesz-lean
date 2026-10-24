@@ -1,0 +1,21 @@
+\begin{definition}[The obstacle multiplier $\eta$ as a functional on the form domain]
+Let $F \in L^2(\gamma_n)$, let $a \in \mathbb{R}$ and let $u \in \mathcal{V}$.
+Define, for test functions $\varphi \in \mathcal{V}$,
+\[
+  \langle \eta, \varphi\rangle
+    = \mathcal{E}(u, \varphi) - \int (F - a)\, \varphi \, d\gamma_n ,
+\]
+with $\mathcal{E}(\cdot,\cdot)$ as in \noderef{EnergyBil}.  Both terms are finite
+real numbers for $u, \varphi \in \mathcal{V}$: the first by the Cauchy--Schwarz
+bound $|\mathcal{E}(u,\varphi)| \leq \mathcal{E}(u)^{1/2}\mathcal{E}(\varphi)^{1/2}$
+recorded in \noderef{EnergyBil}, the second because
+$|\int(F-a)\varphi \, d\gamma_n| \leq \|F - a\mathbf{1}\|_2\|\varphi\|_2$.  Thus
+$\eta$ is a linear functional on $\mathcal{V}$, bounded for the graph norm
+$\|\varphi\|_{\mathcal{V}}^2 = \|\varphi\|_2^2 + \mathcal{E}(\varphi)$, and it is
+completely determined by $u$, $F$ and $a$.  It is the first variation of the
+functional $J$ of \noderef{ObstacleFunctional} at $u$:
+$J(u + t\varphi) - J(u) = t\langle\eta,\varphi\rangle + \tfrac{t^2}{2}\mathcal{E}(\varphi)$
+for every $t \in \mathbb{R}$.  At this stage $\eta$ is a functional only; the
+shorthand $\eta = Bu + a - F$ is to be read in this form sense and is not yet a
+pointwise formula for a function.
+\end{definition}

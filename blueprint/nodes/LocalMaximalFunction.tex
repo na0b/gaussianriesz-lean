@@ -1,0 +1,49 @@
+\begin{definition}[The local Hardy--Littlewood maximal function $M_2$]
+Fix $n \in \mathbb{N}_0$ and let $\lambda$ denote Lebesgue measure on
+$\mathbb{R}^n$.  For $w : \mathbb{R}^n \to \mathbb{R}$ and $x \in \mathbb{R}^n$
+define
+\[
+  M_2 w(x)
+    = \sup_{0 < \rho \leq 2}
+        \frac{1}{\lambda\bigl(\overline B(x,\rho)\bigr)}
+        \int_{\overline B(x,\rho)} |w(y)| \, dy
+  \;\in\; [0,+\infty] ,
+\]
+the supremum being over real radii $\rho$ in the half-open interval $(0,2]$ and
+$\overline B(x,\rho) = \{y : |y-x| \leq \rho\}$ the closed ball.  The integral
+is the Lebesgue (lower) integral of the nonnegative function $|w|$ over
+$\overline B(x,\rho)$ with respect to $\lambda$, taken in $[0,+\infty]$.
+
+\emph{No Gaussian measure occurs here.}  Both the integral and the normalizing
+volume are taken against Lebesgue measure, with no Gaussian weight in the
+integrand and no Gaussian measure in the normalization, even though this object
+is used inside the tablet's Gaussian development.  Its role there is to control
+the \emph{local} Gaussian maximal operator on a fixed ball, where the Gaussian
+density is bounded above and below by positive constants, so that no covering
+theory for a non-doubling measure is needed.
+
+\emph{The radius cap at $2$ is part of the definition, not a convenience.}  The
+covering step used to prove the weak-type bound for $M_2$ extracts a disjoint
+subfamily from a family of closed balls whose radii admit a common upper bound;
+without a cap on $\rho$ no such bound exists.  Every downstream use is on balls
+of radius at most $2$, so nothing is lost.
+
+\emph{Values in $[0,+\infty]$, and no hypotheses on $w$.}  The supremum is taken
+in the extended nonnegative reals, so $M_2w(x)$ is defined for every
+$w$ and every $x$ with no measurability, local integrability or boundedness
+hypothesis: an unbounded family of averages gives the value $+\infty$ rather
+than an undefined or conventional value.  This is deliberate.  A real-valued
+supremum would silently take a junk value where the averages are unbounded, and
+a statement bounding such a junk value above would then be satisfiable without
+any analytic content; the extended-real-valued definition makes every bound on
+$M_2w$ an honest bound.  For the same reason the integrals are lower Lebesgue
+integrals of a nonnegative function, which are defined for every $w$, rather
+than Bochner integrals, which would be $0$ by convention on a non-integrable
+integrand.
+
+Finally, for every $x$ and every $\rho \in (0,2]$ the normalizing factor
+$\lambda(\overline B(x,\rho))$ is a strictly positive real number: this is clear
+for $n \geq 1$, and for $n = 0$ the space $\mathbb{R}^0$ is a single point,
+every closed ball is the whole space, and $\lambda$ is the unit mass.  So the
+quotient inside the supremum never involves division by $0$ or by $+\infty$.
+\end{definition}

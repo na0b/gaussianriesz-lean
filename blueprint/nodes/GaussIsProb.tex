@@ -1,0 +1,29 @@
+\begin{lemma}[$\gamma_n$ is a probability measure]
+For every $n \geq 1$ the measure $\gamma_n$ of \noderef{GaussMeasure} is a
+probability measure: $\gamma_n(\mathbb{R}^n) = 1$.
+\end{lemma}
+\begin{proof}
+By \noderef{GaussMeasure}, $\gamma_n$ is Lebesgue measure on $\mathbb{R}^n$
+weighted by the density $\rho(x) = \pi^{-n/2}e^{-|x|^2}$, so
+\[
+  \gamma_n(\mathbb{R}^n) = \int_{\mathbb{R}^n} \pi^{-n/2} e^{-|x|^2}\, dx .
+\]
+Since $|x|^2 = \sum_{j=1}^n x_j^2$, the exponential factorizes:
+\[
+  \pi^{-n/2} e^{-|x|^2}
+    = \prod_{j=1}^n \pi^{-1/2} e^{-x_j^2} .
+\]
+The integrand is nonnegative and measurable, and Lebesgue measure on
+$\mathbb{R}^n$ is the $n$-fold product of Lebesgue measure on $\mathbb{R}$, so
+Tonelli's theorem applies and gives
+\[
+  \int_{\mathbb{R}^n} \prod_{j=1}^n \pi^{-1/2}e^{-x_j^2}\, dx
+    = \prod_{j=1}^n \int_{\mathbb{R}} \pi^{-1/2} e^{-s^2}\, ds .
+\]
+The classical Gaussian integral is
+$\int_{\mathbb{R}} e^{-s^2}\, ds = \sqrt{\pi}$, so each of the $n$ factors equals
+$\pi^{-1/2}\cdot\sqrt{\pi} = 1$.  Hence the product is $1$ and
+$\gamma_n(\mathbb{R}^n) = 1$.  In particular the total mass is finite, so
+$\gamma_n$ is a finite measure, and being of total mass exactly $1$ it is a
+probability measure.
+\end{proof}

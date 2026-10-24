@@ -1,0 +1,99 @@
+\begin{corollary}[Endpoint weak-type $(1,1)$ bound for the complex Gaussian Riesz transform]
+Let $\mathcal{M}(\gamma_n;\mathbb{C}^n)$ denote the space of
+$\gamma_n$-almost-everywhere equivalence classes of measurable
+$\mathbb{C}^n$-valued functions on $\mathbb{R}^n$.  There is exactly one
+$\mathbb{C}$-linear map
+\[
+  T_{\mathbb{C}} : L^1(\gamma_n;\mathbb{C}) \longrightarrow
+    \mathcal{M}(\gamma_n;\mathbb{C}^n)
+\]
+with the following two properties:
+\begin{enumerate}
+\item $T_{\mathbb{C}}$ extends the complex transform of
+\noderef{ComplexRieszTransform} from $L^2$, i.e.
+$T_{\mathbb{C}}(\iota_{\mathbb{C}} v) = R_\gamma^{\mathbb{C}} v$ for every
+$v \in L^2(\gamma_n;\mathbb{C})$, with $\iota_{\mathbb{C}}$ the inclusion of
+\noderef{ComplexToL1}; and
+\item $T_{\mathbb{C}}$ satisfies the weak-type bound
+\[
+  \sup_{t>0}\; t\,\gamma_n\bigl(\{x :
+    |T_{\mathbb{C}}f(x)|_{\mathbb{C}^n} > t\}\bigr)
+    \;\leq\; \frac{8}{\pi}\,\|f\|_{L^1(\gamma_n;\mathbb{C})}
+  \qquad\text{for every } f \in L^1(\gamma_n;\mathbb{C}) .
+\]
+\end{enumerate}
+The constant $8/\pi$ does not depend on $n$.
+
+This is the reference paper's complex-valued corollary: its displayed estimate
+is clause (2), and the phrase ``the complex-linear extension'' naming the
+operator it is about is clauses (1) and the $\mathbb{C}$-linearity together,
+which the last sentence of its proof supplies as a \emph{unique continuous}
+complex-linear extension to $L^1$.  Property (2) is precisely boundedness from
+$L^1(\gamma_n;\mathbb{C})$ into $L^{1,\infty}(\gamma_n;\mathbb{C}^n)$ with
+quasi-norm at most $8/\pi$, hence continuity of $T_{\mathbb{C}}$ for the weak
+$L^1$ quasi-norm.  Both clauses are needed for the uniqueness assertion to have
+content: clause (2) alone is satisfied by the zero map, so it is the agreement
+with $R_\gamma^{\mathbb{C}}$ on $L^2$ in clause (1) that pins the operator down,
+and the bound in (2) that propagates that agreement from the $L^2$ functions to
+all of $L^1$.  Uniqueness is asserted in the larger class of all
+$\mathbb{C}$-linear maps into $\mathcal{M}(\gamma_n;\mathbb{C}^n)$ satisfying (1)
+and (2), not merely among continuous ones.
+\end{corollary}
+\begin{proof}
+\emph{Existence.}
+\noderef{ComplexL1Extension} supplies a $\mathbb{C}$-linear map
+$T_{\mathbb{C}} : L^1(\gamma_n;\mathbb{C}) \to \mathcal{M}(\gamma_n;\mathbb{C}^n)$
+satisfying (1) and (2); the supremum form of (2) in the present statement is the
+same assertion as the per-level form there, since a family of real numbers is
+bounded by a constant exactly when its supremum is.
+
+\emph{Uniqueness.}
+Let $T$ and $T'$ both be $\mathbb{C}$-linear and satisfy (1) and (2), and fix
+$f \in L^1(\gamma_n;\mathbb{C})$.
+
+\emph{Step 1: an approximating sequence.}
+By clause (2) of \noderef{ComplexRieszL1Limit} applied to $f$ there is a
+sequence $(v_k)$ in $L^2(\gamma_n;\mathbb{C})$ with
+$\iota_{\mathbb{C}} v_k \to f$ in $L^1(\gamma_n;\mathbb{C})$, i.e.
+$\|f - \iota_{\mathbb{C}} v_k\|_{L^1} \to 0$.
+
+\emph{Step 2: the two maps agree on the approximants.}
+By clause (1) for $T$ and for $T'$,
+$T(\iota_{\mathbb{C}} v_k) = R_\gamma^{\mathbb{C}} v_k
+ = T'(\iota_{\mathbb{C}} v_k)$ for every $k$.  Writing
+$f = (f - \iota_{\mathbb{C}} v_k) + \iota_{\mathbb{C}} v_k$ and using
+$\mathbb{C}$-linearity of $T$ and of $T'$,
+\[
+  Tf - T'f = T\bigl(f - \iota_{\mathbb{C}} v_k\bigr)
+    - T'\bigl(f - \iota_{\mathbb{C}} v_k\bigr) \qquad\text{for every } k .
+\]
+
+\emph{Step 3: the level sets.}
+Let $\varepsilon > 0$.  If $|Tf(x) - T'f(x)|_{\mathbb{C}^n} > 2\varepsilon$ then,
+by Step 2 and the triangle inequality in $\mathbb{C}^n$, at least one of
+$|T(f - \iota_{\mathbb{C}} v_k)(x)| > \varepsilon$ and
+$|T'(f - \iota_{\mathbb{C}} v_k)(x)| > \varepsilon$ holds.  Hence, by
+monotonicity and subadditivity of $\gamma_n$ (shared context) and then clause
+(2) applied to each of $T$ and $T'$ with the input $f - \iota_{\mathbb{C}} v_k$
+and the level $\varepsilon$,
+\[
+  \gamma_n\bigl(\{|Tf - T'f| > 2\varepsilon\}\bigr)
+    \leq \frac{8}{\pi\varepsilon}\|f - \iota_{\mathbb{C}} v_k\|_{L^1}
+       + \frac{8}{\pi\varepsilon}\|f - \iota_{\mathbb{C}} v_k\|_{L^1}
+    = \frac{16}{\pi\varepsilon}\,\|f - \iota_{\mathbb{C}} v_k\|_{L^1} .
+\]
+
+\emph{Step 4: conclusion.}
+The left-hand side of the last display does not depend on $k$, while by Step 1
+the right-hand side tends to $0$ as $k \to \infty$; a nonnegative constant
+bounded by a sequence tending to $0$ is $0$, so
+$\gamma_n(\{|Tf - T'f| > 2\varepsilon\}) = 0$ for every $\varepsilon > 0$.
+Taking $\varepsilon = 1/j$ for $j \geq 1$ and using
+\[
+  \{Tf \neq T'f\} = \bigcup_{j \geq 1}\{|Tf - T'f| > 2/j\} ,
+\]
+a countable union of $\gamma_n$-null sets is null by subadditivity, so
+$Tf = T'f$ $\gamma_n$-almost everywhere, i.e.\ $Tf = T'f$ in
+$\mathcal{M}(\gamma_n;\mathbb{C}^n)$.  As $f \in L^1(\gamma_n;\mathbb{C})$ was
+arbitrary, $T = T'$.
+\end{proof}

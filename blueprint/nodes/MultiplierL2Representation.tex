@@ -1,0 +1,79 @@
+\begin{lemma}[The multiplier is represented by an $L^2$ function]
+Let $F \in L^2(\gamma_n)$ be nonnegative $\gamma_n$-a.e., let $a > 0$, and let
+$u \in \mathcal{K}$ minimize the functional $J$ of \noderef{ObstacleFunctional}
+over the cone $\mathcal{K}$ of \noderef{ObstacleCone}.  Let $\eta$ be the
+multiplier functional of \noderef{ObstacleMultiplier}.  Then there exists
+$\eta_2 \in L^2(\gamma_n)$ with
+\[
+  \langle \eta, \varphi\rangle = \int \eta_2\, \varphi \, d\gamma_n
+  \qquad\text{for every } \varphi \in \mathcal{V} .
+\]
+\end{lemma}
+\begin{proof}
+\emph{Step 1: an $L^2$ bound for the functional on $\mathcal{V}$.}
+Let $\psi \in \mathcal{V}$.  The maps $t \mapsto t^+$, $t\mapsto t^-$ and
+$t \mapsto |t|$ are $1$-Lipschitz and vanish at $0$, so
+\noderef{LatticeContraction}, applied to $\psi$ with each of these in turn, gives
+$\psi^+, \psi^-, |\psi| \in \mathcal{V}$.  All three are nonnegative, so by
+\noderef{ObstacleCone} they lie in $\mathcal{K}$.
+
+The map $\varphi \mapsto \langle \eta,\varphi\rangle$ is linear on $\mathcal{V}$,
+by inspection of the formula in \noderef{ObstacleMultiplier} (the form
+$\mathcal{E}(u,\cdot)$ is linear in its second argument and the integral is
+linear).  Writing $\psi = \psi^+ - \psi^-$ and using
+\noderef{MultiplierPositive}, which gives
+$\langle\eta,\psi^+\rangle \geq 0$ and $\langle\eta,\psi^-\rangle \geq 0$,
+\[
+  \bigl|\langle \eta, \psi\rangle\bigr|
+    = \bigl|\langle\eta,\psi^+\rangle - \langle\eta,\psi^-\rangle\bigr|
+    \leq \langle\eta,\psi^+\rangle + \langle\eta,\psi^-\rangle
+    = \langle \eta, \psi^+ + \psi^-\rangle
+    = \langle\eta, |\psi|\rangle ,
+\]
+the last step because $\psi^+ + \psi^- = |\psi|$ pointwise.  By
+\noderef{LewyStampacchia} applied to the test function $|\psi| \in \mathcal{K}$,
+\[
+  \langle\eta, |\psi|\rangle \leq \int k\,|\psi|\, d\gamma_n,
+  \qquad k = (a-F)^+ .
+\]
+Since $F \geq 0$ $\gamma_n$-a.e.\ and $a > 0$, we have
+$0 \leq k = (a-F)^+ \leq a$ a.e.  Therefore, using \noderef{L2IntoL1},
+\begin{equation*}
+  \bigl|\langle\eta,\psi\rangle\bigr|
+    \;\leq\; a \int |\psi|\, d\gamma_n
+    \;=\; a\,\|\psi\|_{L^1(\gamma_n)}
+    \;\leq\; a\,\|\psi\|_{L^2(\gamma_n)}
+  \qquad\text{for every } \psi \in \mathcal{V}. \tag{1}
+\end{equation*}
+
+\emph{Step 2: $\mathcal{V}$ is dense in $L^2(\gamma_n)$.}
+Every finite linear combination $\sum_{\alpha \in S} c_\alpha h_\alpha$ with
+$S \subseteq \mathbb{N}_0^n$ finite lies in $\mathcal{V}$: by
+\noderef{HermiteL2Orthonormal} its Hermite coefficients vanish outside $S$, so the
+defining series of \noderef{Energy} has finitely many nonzero terms and is
+finite.  By \noderef{HermiteL2Complete} the closed linear span of
+$\{h_\alpha\}$ is all of $L^2(\gamma_n)$, so the set of such finite combinations
+is dense; hence so is the larger set $\mathcal{V}$.
+
+\emph{Step 3: extension and Riesz representation.}
+By (1) the linear functional $\psi \mapsto \langle\eta,\psi\rangle$ on the dense
+subspace $\mathcal{V} \subseteq L^2(\gamma_n)$ is bounded for the
+$L^2(\gamma_n)$-norm, with norm at most $a$.  A bounded linear functional on a
+dense subspace of a normed space extends uniquely to a bounded linear functional
+on the whole space, with the same norm: for $\psi \in L^2(\gamma_n)$ choose
+$\psi_j \in \mathcal{V}$ with $\psi_j \to \psi$ in $L^2(\gamma_n)$ (Step 2), note
+that $(\langle\eta,\psi_j\rangle)_j$ is Cauchy in $\mathbb{R}$ by (1) applied to
+$\psi_j - \psi_i \in \mathcal{V}$, and define the extension as the limit; it is
+independent of the chosen sequence by the same estimate, and it is linear and
+bounded by $a\|\cdot\|_2$.
+
+$L^2(\gamma_n)$ is a Hilbert space, so the Riesz representation theorem supplies a
+unique $\eta_2 \in L^2(\gamma_n)$ with $\|\eta_2\|_2 \leq a$ representing this
+extension, i.e.
+\[
+  \langle\eta,\psi\rangle = \langle \eta_2, \psi\rangle = \int \eta_2\,\psi\, d\gamma_n
+  \qquad\text{for every } \psi \in \mathcal{V} ,
+\]
+where we used that the extension agrees with $\langle\eta,\cdot\rangle$ on
+$\mathcal{V}$.  This is the assertion.
+\end{proof}

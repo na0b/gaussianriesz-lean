@@ -1,0 +1,43 @@
+\begin{lemma}[Exponential decay by a negative power, and absorption of a negative rpow factor]
+Fix $n \geq 0$.  Then both of the following hold.
+\begin{enumerate}
+  \item For every real $t > 0$,
+    \[
+      e^{-t} \leq (n+2)^{n+2}\,(t^{-1})^{n+2} .
+    \]
+  \item For all reals $r,c$ with $\tfrac12 \leq r < 1$ and $c > 0$,
+    \[
+      (1-r)^{-(n/2+3/2)}\Bigl((n+2)^{n+2}\bigl(c(1-r)\bigr)^{n+2}\Bigr)
+        \leq (n+2)^{n+2}c^{\,n+2} .
+    \]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Clause (1).}
+Let $t > 0$ and put $u = t/(n+2)$, which is positive since $n+2 > 0$.  From
+$1+u \leq e^u$ we get $u \leq e^u$, and raising both nonnegative sides to the
+natural power $n+2$ gives $u^{n+2} \leq (e^u)^{n+2}$.  Now
+$(e^u)^{n+2} = e^{(n+2)u} = e^t$, so
+\[
+  \frac{t^{\,n+2}}{(n+2)^{n+2}} \leq e^t .
+\]
+Multiplying by $(n+2)^{n+2} > 0$ gives $t^{\,n+2} \leq (n+2)^{n+2}e^t$, and
+dividing by the positive quantities $e^t$ and $t^{\,n+2}$ rearranges this to
+$e^{-t} \leq (n+2)^{n+2}t^{-(n+2)}$, which is clause (1) since
+$t^{-(n+2)} = (t^{-1})^{n+2}$.
+
+\emph{Clause (2).}
+Let $\tfrac12 \leq r < 1$ and $c > 0$, and put $\tau = 1-r$, so $0 < \tau \leq 1$.
+Expanding $(c\tau)^{n+2} = c^{\,n+2}\tau^{\,n+2}$ and regrouping,
+\[
+  \tau^{-(n/2+3/2)}\Bigl((n+2)^{n+2}(c\tau)^{n+2}\Bigr)
+    = \bigl((n+2)^{n+2}c^{\,n+2}\bigr)\,
+      \bigl(\tau^{-(n/2+3/2)}\tau^{\,n+2}\bigr) .
+\]
+Reading the natural power $\tau^{n+2}$ as the real power $\tau^{(n+2)}$ and
+adding exponents, the second factor is
+$\tau^{-(n/2+3/2)+(n+2)}$, whose exponent $n/2 + 1/2$ is nonnegative.  Since
+$0 < \tau \leq 1$, a nonnegative real power of $\tau$ is at most $1$, so that
+factor is at most $1$.  Multiplying by the nonnegative constant
+$(n+2)^{n+2}c^{\,n+2}$ gives clause (2).
+\end{proof}

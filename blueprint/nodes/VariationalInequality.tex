@@ -1,0 +1,45 @@
+\begin{lemma}[The variational inequality satisfied by the minimizer]
+Let $F \in L^2(\gamma_n)$, $a \in \mathbb{R}$, and let $u \in \mathcal{K}$ minimize
+the functional $J$ of \noderef{ObstacleFunctional} over the cone $\mathcal{K}$ of
+\noderef{ObstacleCone}.  Then for every $v \in \mathcal{K}$,
+\[
+  \mathcal{E}(u,\, v - u) \;\geq\; \int (F - a)\,(v-u)\, d\gamma_n ,
+\]
+with $\mathcal{E}(\cdot,\cdot)$ the energy form of \noderef{EnergyBil}.
+\end{lemma}
+\begin{proof}
+Fix $v \in \mathcal{K}$ and put $h = v - u$.  For $0 \leq \theta \leq 1$ the
+function
+\[
+  u + \theta h = (1-\theta)u + \theta v
+\]
+is a convex combination of $u$ and $v$, hence lies in $\mathcal{K}$ because
+$\mathcal{K}$ is convex by \noderef{ObstacleCone}.  It is therefore an admissible
+competitor, and minimality of $u$ gives
+$q(\theta) := J(u+\theta h) \geq q(0) = J(u)$ for all such $\theta$.
+
+Both $u$ and $v$ lie in $\mathcal{V}$, hence so does $h$, and
+$\mathcal{E}(h) < \infty$.  Using \noderef{ObstacleFunctional}, the identity
+$\mathcal{E}(w) = \mathcal{E}(w,w)$ and bilinearity and symmetry of
+$\mathcal{E}(\cdot,\cdot)$ from \noderef{EnergyBil}, we compute for
+$0 < \theta \leq 1$:
+\[
+  q(\theta) - q(0)
+    = \tfrac12\bigl(\mathcal{E}(u + \theta h) - \mathcal{E}(u)\bigr)
+      + \theta\int (a-F)h\, d\gamma_n
+    = \theta\Bigl(\mathcal{E}(u,h) + \int(a-F)h\, d\gamma_n\Bigr)
+      + \frac{\theta^2}{2}\mathcal{E}(h),
+\]
+all terms being finite real numbers.  Dividing the inequality
+$q(\theta)-q(0) \geq 0$ by $\theta > 0$ gives
+\[
+  \mathcal{E}(u,h) + \int(a-F)h \, d\gamma_n + \frac{\theta}{2}\mathcal{E}(h)
+    \;\geq\; 0 .
+\]
+Letting $\theta \downarrow 0$, the last term tends to $0$ because
+$\mathcal{E}(h)$ is a fixed finite number.  Hence
+\[
+  \mathcal{E}(u,h) + \int (a-F)h\, d\gamma_n \geq 0 ,
+\]
+that is, $\mathcal{E}(u, v-u) \geq \int (F-a)(v-u)\, d\gamma_n$.
+\end{proof}

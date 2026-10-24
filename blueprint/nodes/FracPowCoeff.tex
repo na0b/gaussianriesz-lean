@@ -1,0 +1,18 @@
+\begin{definition}[The spectral multiplier of order $s$]
+For $s \in \mathbb{R}$ and a family of real numbers
+$c = (c_\alpha)_{\alpha \in \mathbb{N}_0^n}$, define a new family
+$m_s(c) = (m_s(c)_\alpha)_{\alpha \in \mathbb{N}_0^n}$ by
+\[
+  m_s(c)_\alpha =
+  \begin{cases}
+    0, & \alpha = 0,\\[2pt]
+    |\alpha|^{s}\, c_\alpha, & \alpha \neq 0,
+  \end{cases}
+\]
+with $|\alpha|$ as in \noderef{MultiIndexSum}.  The convention
+$m_s(c)_0 = 0$ is built into the multiplier for every $s$, including $s \geq 0$;
+it records the fact that the constant Hermite mode $\alpha = 0$ is annihilated,
+which is exactly the pseudoinverse convention of the reference paper for $s<0$
+and, for $s=0$, the removal of the constant mode.  Note $|\alpha|^s$ is
+well-defined for $\alpha \neq 0$ because then $|\alpha| \geq 1 > 0$.
+\end{definition}

@@ -1,0 +1,60 @@
+\begin{lemma}[The energy form as a semigroup integral]
+Let $v, w \in \mathcal{V}$, i.e. $\mathcal{E}(v) < \infty$ and
+$\mathcal{E}(w) < \infty$ in the sense of \noderef{Energy}.  Then the integral
+below converges absolutely and
+\[
+  \mathcal{E}(v, w)
+    = \frac{1}{2\sqrt\pi}\int_0^\infty
+        \bigl\langle (I-P_s)v,\, w\bigr\rangle\, \frac{ds}{s^{3/2}} ,
+\]
+with $\mathcal{E}(\cdot,\cdot)$ as in \noderef{EnergyBil} and $P_s$ as in
+\noderef{OUSemigroup}.
+\end{lemma}
+\begin{proof}
+Write $v_\alpha, w_\alpha$ for the Hermite coefficients of $v, w$ relative to
+\noderef{HermiteBasis}.
+
+Step 1 (pointwise in $s$).  Fix $s > 0$.  By \noderef{OUSemigroupSpectral} the
+coefficients of $P_s v$ are $e^{-s|\alpha|}v_\alpha$, so Parseval
+(\noderef{HermiteBasis}) gives
+\[
+  \bigl\langle (I-P_s)v, w\bigr\rangle
+    = \sum_{\alpha \neq 0}\bigl(1-e^{-s|\alpha|}\bigr) v_\alpha w_\alpha ,
+\]
+the index $\alpha = 0$ dropping out because $1 - e^{0} = 0$.  The series converges
+absolutely since $0 \leq 1-e^{-s|\alpha|}\leq1$ and $(v_\alpha), (w_\alpha)$ are
+square summable.  (The expression is symmetric in $v$ and $w$, as it must be by
+\noderef{OUSelfAdjointContraction}.)
+
+Step 2 (absolute convergence of the $s$-integral).  All terms below are
+nonnegative, so Tonelli's theorem applies to counting measure on
+$\mathbb{N}_0^n\setminus\{0\}$ and $s^{-3/2}ds$ on $(0,\infty)$:
+\[
+  \frac{1}{2\sqrt\pi}\int_0^\infty
+    \sum_{\alpha\neq0}\bigl(1-e^{-s|\alpha|}\bigr)|v_\alpha w_\alpha|
+      \frac{ds}{s^{3/2}}
+  = \sum_{\alpha\neq0}|v_\alpha w_\alpha| \cdot
+    \frac{1}{2\sqrt\pi}\int_0^\infty\bigl(1-e^{-s|\alpha|}\bigr)\frac{ds}{s^{3/2}} .
+\]
+For $\alpha \neq 0$ we have $|\alpha| \geq 1 > 0$ by \noderef{MultiIndexSum}, so
+\noderef{ScalarFractional} with $\lambda = |\alpha|$ evaluates each inner integral
+as $|\alpha|^{1/2}$.  Hence the double integral equals
+$\sum_{\alpha\neq0}|\alpha|^{1/2}|v_\alpha w_\alpha|$, which by the
+Cauchy--Schwarz bound recorded in \noderef{EnergyBil} is at most
+$\mathcal{E}(v)^{1/2}\mathcal{E}(w)^{1/2}$, finite by hypothesis.  This is exactly
+where the assumptions $\mathcal{E}(v), \mathcal{E}(w) < \infty$ are used.  In
+particular $s \mapsto \langle(I-P_s)v,w\rangle\, s^{-3/2}$ is absolutely
+integrable on $(0,\infty)$.
+
+Step 3 (Fubini).  By Step 2 the double family is absolutely integrable, so
+Fubini's theorem allows exchanging sum and integral in the signed identity of
+Step 1:
+\[
+  \frac{1}{2\sqrt\pi}\int_0^\infty\langle(I-P_s)v,w\rangle\frac{ds}{s^{3/2}}
+    = \sum_{\alpha\neq0} v_\alpha w_\alpha \cdot
+      \frac{1}{2\sqrt\pi}\int_0^\infty\bigl(1-e^{-s|\alpha|}\bigr)\frac{ds}{s^{3/2}}
+    = \sum_{\alpha\neq0}|\alpha|^{1/2}v_\alpha w_\alpha ,
+\]
+again by \noderef{ScalarFractional}.  By \noderef{EnergyBil} the last sum is
+$\mathcal{E}(v,w)$, its summability hypothesis being met by Step 2.
+\end{proof}

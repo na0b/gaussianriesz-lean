@@ -1,0 +1,142 @@
+\begin{lemma}[The weak-type level set of a coordinate of $Th$ occupies at most a quarter of a small ball]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$ and let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}.  Let
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions such that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item[(T2)] $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+\leq 2\,\|f\|_{L^1(\gamma_n)}$ for every $f \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$.
+\end{enumerate}
+Let $R \geq 1$.  Then there is a constant $K \in (0,\infty)$, depending only on
+$n$, $j$ and $R$, such that the following holds.
+
+Let $h \in L^1(\gamma_n)$, written also for its canonical representative, let
+$x \in \mathbb{R}^n$ and let $\varepsilon$ and $\Phi$ be real, and suppose
+\[
+  |x| \leq R, \qquad 0 < \varepsilon \leq 1, \qquad 0 \leq \Phi ,
+  \qquad
+  \int_{\mathbb{R}^n}|h|\,d\gamma_n \;\leq\; \Phi\cdot\lambda\bigl(B(x,\varepsilon)\bigr) .
+\]
+Then
+\[
+  \gamma_n\Bigl(\bigl\{z \in B(x,\tfrac12\varepsilon)
+      : \bigl|(Th)_j(z)\bigr| > K\Phi\bigr\}\Bigr)
+    \;\leq\; \tfrac14\,\gamma_n\bigl(B(x,\tfrac12\varepsilon)\bigr) ,
+\]
+where $(Th)_j$ denotes the $j$th coordinate of the canonical representative of
+$Th$, and $\lambda(B(x,\varepsilon))$ is read as the real number it is, the
+ball being bounded and hence of finite measure.
+
+\emph{The threshold is $K\Phi$ and not a named constant, deliberately.}  A
+consumer arrives with a specific threshold built from its own bookkeeping ---
+in the intended application, $8\cdot2^n\pi^{-n/2}e^{(R+2)^2}\Phi$ --- and the
+only thing that matters about it is that it is a large enough multiple of
+$\Phi$.  Exporting the multiple existentially rather than writing the
+consumer's expression into this statement keeps the node free of arithmetic
+that is none of its business, and the existential constant absorbs it at no
+cost.  One may take $K = 8\cdot2^n/a$ with
+$a = \pi^{-n/2}e^{-(R+2)^2}$.
+
+\emph{The degenerate case $\Phi = 0$ is included and is not vacuous.}  When
+$\Phi = 0$ the hypothesis forces $\int|h|\,d\gamma_n = 0$, hence $h = 0$ in
+$L^1(\gamma_n)$, and the conclusion asserts that
+$\{z \in B(x,\tfrac12\varepsilon) : |(Th)_j(z)| > 0\}$ is $\gamma_n$-null.
+That is true but it needs the \emph{linearity} of $T$ --- it is $T0 = 0$ that
+makes it true --- and not (T2), which is unavailable at threshold $0$.  So the
+statement is not merely the weak-type bound rearranged: it covers a case the
+weak-type bound cannot reach.
+
+\emph{Both the hypothesis and the conclusion are insensitive to the
+representative.}  Changing the representative of $h$ on a $\gamma_n$-null set
+changes neither $\int|h|\,d\gamma_n$ nor the class $Th$, and changing the
+representative of $Th$ on a null set changes neither the level set's
+$\gamma_n$-measure nor the conclusion; so fixing the canonical representatives
+is notation, not an extra hypothesis.
+
+\emph{The constant depends on $R$, necessarily, and no uniformity is claimed.}
+$K$ degrades in $R$ through $a$, the lower bound for the Gaussian density on
+$\overline B(0,R+2)$, and in $n$ through both $a$ and the factor $2^n$ coming
+from the ratio $\lambda(B(x,\tfrac12\varepsilon))/\lambda(B(x,\varepsilon))$.
+\end{lemma}
+\begin{proof}
+Put $a = \pi^{-n/2}e^{-(R+2)^2} > 0$ and $K = 8\cdot2^n/a \in (0,\infty)$,
+which depends only on $n$, $j$ and $R$.  Fix $h$, $x$, $\varepsilon$, $\Phi$
+and the hypotheses, and write $V = \lambda(B(x,\varepsilon)) \in [0,\infty)$,
+finite because the ball is bounded, and
+$B' = B(x,\tfrac12\varepsilon)$.
+
+\emph{Step 1: three facts about the balls.}  Lebesgue measure on
+$\mathbb{R}^n$ is an additive Haar measure and $\mathbb{R}^n$ has real
+dimension $n$, so $\lambda(B(x,r)) = r^n\lambda(B(0,1))$ for every $r \geq 0$
+(shared context; the hypothesis $n \geq 1$ is what makes $\mathbb{R}^n$
+nontrivial, as that statement requires).  Taking $r = \tfrac12\varepsilon$ and
+$r = \varepsilon$ and dividing,
+\begin{equation*}
+  \lambda(B') = 2^{-n}\,V . \tag{1}
+\end{equation*}
+Next, $B'$ is measurable and $B' \subseteq \overline B(0,R+2)$: for $y \in B'$
+we have $|y| - |x| \leq |y-x| < \tfrac12\varepsilon \leq \tfrac12$, so
+$|y| \leq R + \tfrac12 \leq R+2$.  Hence clause (2) of
+\noderef{GaussLebesgueBallComparison}, applied with $R+2$ in place of its $R$
+and with $E = B'$, gives
+\begin{equation*}
+  a\,\lambda(B') \leq \gamma_n(B') . \tag{2}
+\end{equation*}
+Combining $(1)$ and $(2)$ and dividing by $4$,
+\begin{equation*}
+  a\,2^{-n}\,V/4 \;\leq\; \tfrac14\gamma_n(B') . \tag{3}
+\end{equation*}
+Finally, the $L^1(\gamma_n)$ norm of $h$ is the integral of the absolute value
+of its canonical representative, so the hypothesis reads
+\begin{equation*}
+  \|h\|_{L^1(\gamma_n)} \leq \Phi\,V . \tag{4}
+\end{equation*}
+
+\emph{Step 2: the case $\Phi = 0$.}  Then $(4)$ gives
+$\|h\|_{L^1(\gamma_n)} \leq 0$, and a norm is nonnegative, so
+$\|h\|_{L^1(\gamma_n)} = 0$ and therefore $h = 0$ in $L^1(\gamma_n)$.  Since
+$T$ is linear, $Th = T0 = 0$, so the canonical representative of $Th$ is $0$
+$\gamma_n$-almost everywhere.  The threshold is $K\Phi = 0$, so the level set
+in question is $\{z \in B' : |(Th)_j(z)| > 0\}$, and every $z$ in it has
+$(Th)_j(z) \neq 0$, hence $(Th)(z) \neq 0$.  So the level set is contained in
+the $\gamma_n$-null set $\{z : (Th)(z) \neq 0\}$ and is therefore itself
+$\gamma_n$-null, which is at most $\tfrac14\gamma_n(B')$.
+
+\emph{Step 3: the case $\Phi > 0$.}  Then $t := K\Phi > 0$.  Write
+\[
+  E_1 = \{z \in B' : |(Th)_j(z)| > t\}, \qquad
+  F = \{z : |(Th)_j(z)| > t\} ,
+\]
+so $E_1 \subseteq F$ and hence $\gamma_n(E_1) \leq \gamma_n(F)$ by
+monotonicity of the measure.  Applying \noderef{CoordinateEndpointBound} to
+this $T$ with its two properties, which are (T1) and (T2) and hold by
+assumption, to the element $h$, to the coordinate $j$ and to this $t > 0$,
+\[
+  t\,\gamma_n(F) \leq 2\,\|h\|_{L^1(\gamma_n)} .
+\]
+Since $t > 0$ is finite and nonzero, multiplying through by $t^{-1}$ gives
+$\gamma_n(F) \leq 2\|h\|_{L^1(\gamma_n)}/t$.  By $(4)$ and then the definition
+of $K$,
+\[
+  \frac{2\|h\|_{L^1(\gamma_n)}}{t}
+    \leq \frac{2\,\Phi V}{K\Phi}
+    = \frac{2V}{K}
+    = \frac{2V\,a}{8\cdot2^n}
+    = \frac{a\,2^{-n}V}{4} ,
+\]
+the cancellation of $\Phi$ being legitimate because $\Phi > 0$.  Chaining this
+with $\gamma_n(E_1) \leq \gamma_n(F)$ and with $(3)$,
+\[
+  \gamma_n(E_1) \leq \frac{a\,2^{-n}V}{4} \leq \tfrac14\gamma_n(B') ,
+\]
+which is the assertion.
+\end{proof}

@@ -1,0 +1,117 @@
+\begin{lemma}[The energy form is a real symmetric bilinear form with quadratic form $\mathcal{E}$]
+Let $\mathcal{E}(\cdot)$ be the $[0,+\infty]$-valued energy of \noderef{Energy},
+let $\mathcal{E}(\cdot,\cdot)$ be the real-valued form of \noderef{EnergyBil},
+and write $v_\alpha$ for the Hermite coefficients of \noderef{HermiteBasis} and
+$|\alpha|$ for the multi-index weight of \noderef{MultiIndexSum}.  Then:
+\begin{enumerate}
+\item for all $v, w \in L^2(\gamma_n)$ with $\mathcal{E}(v) < \infty$ and
+$\mathcal{E}(w) < \infty$, the family
+$\bigl(|\alpha|^{1/2}\,v_\alpha\,w_\alpha\bigr)_{\alpha \neq 0}$ is summable;
+\item for every $v \in L^2(\gamma_n)$ with $\mathcal{E}(v) < \infty$,
+$\mathcal{E}(v,v) = \mathcal{E}(v)$, the right-hand side being read as a real
+number;
+\item for all $v_1, v_2, w \in L^2(\gamma_n)$ with $\mathcal{E}(v_1) < \infty$,
+$\mathcal{E}(v_2) < \infty$ and $\mathcal{E}(w) < \infty$, and for every
+$c \in \mathbb{R}$,
+\[
+  \mathcal{E}(v_1+v_2,\,w) = \mathcal{E}(v_1,w) + \mathcal{E}(v_2,w),
+  \qquad
+  \mathcal{E}(c\,v_1,\,w) = c\,\mathcal{E}(v_1,w),
+  \qquad
+  \mathcal{E}(v_1,w) = \mathcal{E}(w,v_1);
+\]
+\item for all $v_1, v_2 \in L^2(\gamma_n)$ with $\mathcal{E}(v_1) < \infty$ and
+$\mathcal{E}(v_2) < \infty$, and every $c \in \mathbb{R}$, also
+$\mathcal{E}(v_1+v_2) < \infty$ and $\mathcal{E}(c\,v_1) < \infty$.
+\end{enumerate}
+Clause (2) is the bridge between the $[0,+\infty]$-valued energy, whose
+$+\infty$ convention off $\mathcal{V}$ is built into \noderef{Energy}, and the
+real-valued form; clauses (3) and (4) say that $\mathcal{E}(\cdot,\cdot)$ is a
+symmetric bilinear form on the linear subspace
+$\mathcal{V} = \{v : \mathcal{E}(v) < \infty\}$.
+\end{lemma}
+\begin{proof}
+Throughout write, for $\alpha \neq 0$,
+\[
+  e_\alpha(v) = |\alpha|^{1/2}\,v_\alpha^2 \geq 0 ,
+\]
+the $\alpha$-th summand of $\mathcal{E}$; the inequality holds because
+$|\alpha|$ is a nonnegative integer by \noderef{MultiIndexSum}, so
+$|\alpha|^{1/2} \geq 0$, and $v_\alpha^2 \geq 0$.  By \noderef{Energy},
+\[
+  \mathcal{E}(v) = \sum_{\alpha \neq 0} e_\alpha(v)
+  \qquad\text{as an element of } [0,+\infty] ,
+\]
+and by \noderef{EnergyBil},
+$\mathcal{E}(v,w) = \sum_{\alpha\neq0} |\alpha|^{1/2} v_\alpha w_\alpha$.
+
+\emph{Step 1: finiteness of the energy is summability of its summands.}
+Since every $e_\alpha(v)$ is nonnegative, the extended-real bridge of the shared
+context applies to the family $(e_\alpha(v))_{\alpha \neq 0}$: the sum
+$\sum_{\alpha\neq0} e_\alpha(v)$ is finite in $[0,+\infty]$ if and only if the
+family is summable as a family of real numbers, and in that case the two
+readings of the sum agree.  Hence
+\begin{equation*}
+  \mathcal{E}(v) < \infty
+  \iff \bigl(e_\alpha(v)\bigr)_{\alpha\neq0} \text{ is summable},
+  \quad\text{and then}\quad
+  \mathcal{E}(v) = \sum_{\alpha\neq0} e_\alpha(v) \in \mathbb{R}. \tag{1}
+\end{equation*}
+
+\emph{Step 2: clause (1).}
+Let $\mathcal{E}(v), \mathcal{E}(w) < \infty$.  For every $\alpha \neq 0$, the
+elementary inequality $|s|\,|t| \leq \tfrac12(s^2+t^2)$ --- which is
+$0 \leq (|s|-|t|)^2$ rearranged --- applied with $s = v_\alpha$, $t = w_\alpha$
+and multiplied by $|\alpha|^{1/2} \geq 0$ gives
+\begin{equation*}
+  \bigl||\alpha|^{1/2} v_\alpha w_\alpha\bigr|
+    = |\alpha|^{1/2}\,|v_\alpha|\,|w_\alpha|
+    \leq \tfrac12\bigl(e_\alpha(v) + e_\alpha(w)\bigr). \tag{2}
+\end{equation*}
+By Step 1 both $(e_\alpha(v))$ and $(e_\alpha(w))$ are summable, so by linearity
+of summation (shared context) the right-hand side of $(2)$ is a summable family
+of nonnegative reals; by the comparison test (shared context) the family of
+absolute values on the left is then summable, and a family whose absolute values
+are summable is itself summable.  This is clause (1).
+
+\emph{Step 3: clause (2).}
+Let $\mathcal{E}(v) < \infty$.  Termwise
+$|\alpha|^{1/2} v_\alpha v_\alpha = e_\alpha(v)$, so the two series defining
+$\mathcal{E}(v,v)$ and $\sum_{\alpha\neq0} e_\alpha(v)$ have identical terms and
+hence identical sums.  By the second half of $(1)$ that common value is
+$\mathcal{E}(v)$ read as a real number, which is clause (2).
+
+\emph{Step 4: clause (3).}
+By \noderef{HermiteBasis} the coefficient map $v \mapsto (v_\alpha)_\alpha$ is
+linear, so $(v_1+v_2)_\alpha = (v_1)_\alpha + (v_2)_\alpha$ and
+$(c\,v_1)_\alpha = c\,(v_1)_\alpha$ for every $\alpha$.  Therefore, termwise,
+\[
+  |\alpha|^{1/2}(v_1+v_2)_\alpha w_\alpha
+    = |\alpha|^{1/2}(v_1)_\alpha w_\alpha + |\alpha|^{1/2}(v_2)_\alpha w_\alpha ,
+  \qquad
+  |\alpha|^{1/2}(c\,v_1)_\alpha w_\alpha
+    = c\,|\alpha|^{1/2}(v_1)_\alpha w_\alpha .
+\]
+By Step 2 the two families $(|\alpha|^{1/2}(v_i)_\alpha w_\alpha)_{\alpha\neq0}$,
+$i = 1,2$, are summable, so by linearity of summation (shared context) the sum of
+the first display is the sum of the two sums, giving additivity, and the sum of
+the second display is $c$ times the sum, giving homogeneity.  Symmetry is
+immediate termwise from $v_\alpha w_\alpha = w_\alpha v_\alpha$, the two series
+again having identical terms.
+
+\emph{Step 5: clause (4).}
+Let $\mathcal{E}(v_1), \mathcal{E}(v_2) < \infty$ and $c \in \mathbb{R}$.  From
+$0 \leq (s-t)^2$ we get $(s+t)^2 \leq 2s^2 + 2t^2$, so multiplying by
+$|\alpha|^{1/2} \geq 0$,
+\[
+  0 \leq e_\alpha(v_1+v_2)
+    = |\alpha|^{1/2}\bigl((v_1)_\alpha + (v_2)_\alpha\bigr)^2
+    \leq 2\,e_\alpha(v_1) + 2\,e_\alpha(v_2),
+\]
+using linearity of the coefficient map as in Step 4.  By Step 1 the right-hand
+side is summable, so by the comparison test (shared context)
+$(e_\alpha(v_1+v_2))$ is summable, and by the other direction of $(1)$,
+$\mathcal{E}(v_1+v_2) < \infty$.  Likewise
+$e_\alpha(c\,v_1) = c^2\,e_\alpha(v_1)$, a scalar multiple of a summable family,
+hence summable, so $\mathcal{E}(c\,v_1) < \infty$.
+\end{proof}

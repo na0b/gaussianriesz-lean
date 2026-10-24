@@ -1,0 +1,156 @@
+\begin{lemma}[Two integral bounds for negative powers of $\tau$]
+Let $\lambda$ be Lebesgue measure on $\mathbb{R}$.  Then:
+\begin{enumerate}
+\item for every real $a > 1$ there is a constant $K = K(a) > 0$ such that for
+every real $b > 0$ the function $\tau \mapsto \tau^{-a}e^{-b/\tau}$ is Lebesgue
+integrable on $(0,\infty)$ and
+\[
+  \int_0^\infty \tau^{-a}e^{-b/\tau}\,d\tau \leq K\,b^{1-a} ;
+\]
+\item for all real $q > 1$ and $c$ with $0 < c \leq 1$, the function
+$\tau \mapsto \tau^{-q}$ is Lebesgue integrable on $(c,1)$ and
+\[
+  \int_c^1 \tau^{-q}\,d\tau \leq \frac{c^{1-q}}{q-1} .
+\]
+\end{enumerate}
+Here $\tau^{-a}$, $\tau^{-q}$ and $b^{1-a}$, $c^{1-q}$ are real powers of
+positive reals.
+
+\emph{Why integrability is part of both statements.}  Each displayed integral is
+a Bochner integral, whose value is $0$ by convention when the integrand is not
+integrable, and $0$ satisfies every upper bound; so either inequality on its own
+would be provable with no information about the integrand.  The integrability
+assertions remove that, and they are also what a consumer needs in order to
+split the integral over a subinterval or add two such bounds.
+
+\emph{Why clause (1) is a bound with an unnamed constant and not the exact
+value.}  The constant may be taken to be
+$K(a) = \int_0^\infty u^{-a}e^{-1/u}\,du$, which the proof below shows is
+finite and positive and which the substitution $u = 1/s$ identifies with
+$\Gamma(a-1)$; the proof in fact gives equality,
+$\int_0^\infty\tau^{-a}e^{-b/\tau}d\tau = K(a)\,b^{1-a}$.  The clause is stated
+as an inequality with an existentially quantified $K$ because that is all any
+consumer uses: what matters is the exact power $b^{1-a}$ of $b$, which is what
+converts a Gaussian decay rate into a negative power of a distance, while the
+value of $K$ is absorbed into a constant depending only on the dimension.  An
+inequality with an existential constant is weaker than the identity, so nothing
+is claimed here that the identity does not give.
+
+\emph{The dependence on $b$ is exact, and that is the point.}  Replacing
+$b^{1-a}$ by any larger power of $b$ --- for instance by the bound
+$\int_0^1\tau^{-a}e^{-b/\tau}d\tau \leq C_m b^{-m}$ with $m > a-1$, which
+follows from the elementary decay bound alone without any change of variables
+--- would be useless to a consumer, because the exponent of $b$ is what fixes
+the exponent of the distance in the final estimate.  The change of variables is
+therefore not an optimization but the content of the clause.
+\end{lemma}
+\begin{proof}
+\emph{An elementary decay bound.}  For every integer $m \geq 1$ and every real
+$t > 0$,
+\begin{equation*}
+  e^{-t} \leq m^m\,t^{-m} . \tag{$\dagger$}
+\end{equation*}
+Indeed $1 + s \leq e^s$ for all real $s$; taking $s = t/m$ gives
+$t/m \leq 1 + t/m \leq e^{t/m}$.  Both sides are nonnegative, so raising to the
+$m$th power preserves the inequality:
+$(t/m)^m \leq (e^{t/m})^m = e^t$, that is $t^m/m^m \leq e^t$.  Since $t^m > 0$
+and $e^t > 0$, rearranging gives $e^{-t} = 1/e^t \leq m^m/t^m$, which is
+$(\dagger)$.
+
+\emph{Clause (1): integrability.}  Fix $a > 1$ and choose an integer
+$m \geq 1$ with $a \leq m$ (for instance $m = \lceil a\rceil$, which is at least
+$1$ because $a > 1$).  Fix $b > 0$.  The function
+$\tau \mapsto \tau^{-a}e^{-b/\tau}$ is continuous on $(0,\infty)$, since
+$\tau \mapsto \tau^{-a}$ is continuous where $\tau \neq 0$ and
+$\tau \mapsto -b/\tau$ is continuous there, so it is Borel measurable on every
+subset of $(0,\infty)$.  We bound it on two pieces whose union is
+$(0,\infty)$.
+
+On $(0,1)$: applying $(\dagger)$ with $t = b/\tau > 0$ gives
+\[
+  e^{-b/\tau} \leq m^m\Bigl(\frac{b}{\tau}\Bigr)^{-m}
+    = m^m\frac{\tau^m}{b^m} = \frac{m^m}{b^m}\,\tau^m ,
+\]
+so, multiplying by $\tau^{-a} > 0$ and using $\tau^{-a}\tau^m = \tau^{m-a}$,
+\[
+  \tau^{-a}e^{-b/\tau} \leq \frac{m^m}{b^m}\,\tau^{m-a}
+  \qquad (0 < \tau < 1) .
+\]
+Since $a \leq m$ we have $m - a \geq 0 > -1$, and $\tau \mapsto \tau^{s}$ is
+Lebesgue integrable on $(0,1)$ exactly when $s > -1$; hence the right-hand side
+is integrable on $(0,1)$.  A measurable function dominated in absolute value by
+an integrable function is integrable, and the integrand is nonnegative, so
+$\tau \mapsto \tau^{-a}e^{-b/\tau}$ is integrable on $(0,1)$.
+
+On $[1,\infty)$: for $\tau \geq 1$ we have $b/\tau \geq 0$, hence
+$-b/\tau \leq 0$ and $e^{-b/\tau} \leq 1$, so
+$\tau^{-a}e^{-b/\tau} \leq \tau^{-a}$.  Since $-a < -1$, the function
+$\tau \mapsto \tau^{-a}$ is Lebesgue integrable on $(1,\infty)$; as the single
+point $\{1\}$ is Lebesgue-null, integrability on $(1,\infty)$ and on
+$[1,\infty)$ are equivalent.  Domination again gives integrability of
+$\tau \mapsto \tau^{-a}e^{-b/\tau}$ on $[1,\infty)$.
+
+As $(0,\infty) = (0,1) \cup [1,\infty)$, the function is integrable on
+$(0,\infty)$.
+
+\emph{Clause (1): the constant and the scaling.}  Set
+\[
+  K = \int_0^\infty u^{-a}e^{-1/u}\,du ,
+\]
+which is the case $b = 1$ just treated, hence a finite real number.  It is
+positive: the integrand $u \mapsto u^{-a}e^{-1/u}$ is strictly positive at every
+$u > 0$, so its support contains $(0,1)$, a set of Lebesgue measure $1 > 0$; a
+nonnegative integrable function whose support has positive measure has positive
+integral.
+
+Now fix $b > 0$ and let $g(\tau) = \tau^{-a}e^{-b/\tau}$.  The map
+$v \mapsto bv$ is a scaling of $\mathbb{R}$ by the positive factor $b$ which
+carries $(0,\infty)$ onto $(0,\infty)$ and multiplies Lebesgue measure by $b$,
+so
+\[
+  \int_0^\infty g(bv)\,dv = b^{-1}\int_0^\infty g(\tau)\,d\tau .
+\]
+For $v > 0$,
+\[
+  g(bv) = (bv)^{-a}\exp\Bigl(-\frac{b}{bv}\Bigr)
+    = b^{-a}v^{-a}e^{-1/v} ,
+\]
+using $(bv)^{-a} = b^{-a}v^{-a}$ for $b,v > 0$ and $b/(bv) = 1/v$.  Therefore
+\[
+  b^{-1}\int_0^\infty \tau^{-a}e^{-b/\tau}\,d\tau
+    = \int_0^\infty b^{-a}v^{-a}e^{-1/v}\,dv
+    = b^{-a}K ,
+\]
+and multiplying by $b > 0$,
+\[
+  \int_0^\infty \tau^{-a}e^{-b/\tau}\,d\tau = b\cdot b^{-a}K = b^{1-a}K ,
+\]
+using $b^{1}b^{-a} = b^{1-a}$.  In particular the asserted inequality holds,
+with equality, and $K$ depends only on $a$.
+
+\emph{Clause (2).}  Let $q > 1$ and $0 < c \leq 1$.  On the closed interval
+$[c,1]$ the function $\tau \mapsto \tau^{-q}$ is continuous, because $c > 0$ so
+$\tau \neq 0$ throughout; a continuous function on a compact interval is
+Lebesgue integrable there, and $(c,1) \subseteq [c,1]$, so it is integrable on
+$(c,1)$.
+
+For the value: $0 \notin [c,1]$ because $c > 0$, and $-q \neq -1$ because
+$q > 1$, so the power function $\tau \mapsto \tau^{-q}$ has the antiderivative
+$\tau \mapsto \tau^{-q+1}/(-q+1)$ on $[c,1]$ and the fundamental theorem of
+calculus gives
+\[
+  \int_c^1\tau^{-q}\,d\tau
+    = \frac{1^{-q+1} - c^{-q+1}}{-q+1}
+    = \frac{1 - c^{1-q}}{1-q} .
+\]
+Since $1 - q = -(q-1)$,
+\[
+  \frac{1 - c^{1-q}}{1-q} = \frac{c^{1-q} - 1}{q-1} ,
+\]
+and because $q - 1 > 0$ and $c^{1-q} - 1 \leq c^{1-q}$, dividing the latter
+inequality by $q-1$ gives
+\[
+  \int_c^1\tau^{-q}\,d\tau = \frac{c^{1-q}-1}{q-1} \leq \frac{c^{1-q}}{q-1} ,
+\]
+which is clause (2).
+\end{proof}

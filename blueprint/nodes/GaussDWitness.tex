@@ -1,0 +1,52 @@
+\begin{lemma}[Characterization of the chosen energy-normalized gradient]
+Let $v \in L^2(\gamma_n)$ and let $\Gamma \in L^2(\gamma_n;\mathbb{R}^n)$, and
+suppose $\sqrt2\,\Gamma$ is a weak Euclidean gradient of $v$ in the sense of
+\noderef{HasGaussWeakGrad}.  Then $v \in W^{1,2}(\gamma_n)$ in the sense of
+\noderef{SobolevW12}, and $Dv = \Gamma$ with $D$ the operator of \noderef{GaussD}.
+The conjunction is the whole content: by \noderef{GaussD} the value $Dv$ is set to
+$0$ by convention when $v \notin W^{1,2}(\gamma_n)$, so the equality $Dv = \Gamma$
+on its own asserts nothing about $\Gamma$ unless the membership is also asserted.
+\end{lemma}
+\begin{proof}
+The two conclusions are proved from different inputs: the membership comes from the
+existential form of \noderef{SobolevW12}, which the hypothesis witnesses directly,
+while the identification $Dv = \Gamma$ requires \noderef{GaussWeakGradUnique}, which
+is what upgrades ``$\Gamma$ is \emph{a} field with the defining property'' to
+``$\Gamma$ is \emph{the} field with it''.
+
+\emph{Step 1: membership.}
+By \noderef{SobolevW12}, $v \in W^{1,2}(\gamma_n)$ means precisely that
+$v \in L^2(\gamma_n)$ and that there exists some
+$\Gamma' \in L^2(\gamma_n;\mathbb{R}^n)$ for which $\sqrt2\,\Gamma'$ is a weak
+Euclidean gradient of $v$ in the sense of \noderef{HasGaussWeakGrad}.  The
+hypotheses of the present lemma supply $v \in L^2(\gamma_n)$ and exhibit
+$\Gamma' = \Gamma$ as such a witness.  Hence $v \in W^{1,2}(\gamma_n)$.
+
+\emph{Step 2: the selected gradient is itself a weak gradient.}
+By \noderef{GaussD}, for $v \in W^{1,2}(\gamma_n)$ the element $Dv$ of
+$L^2(\gamma_n;\mathbb{R}^n)$ is characterized by the property that $\sqrt2\,(Dv)$
+is a weak Euclidean gradient of $v$ in the sense of \noderef{HasGaussWeakGrad}.
+Since Step 1 has established $v \in W^{1,2}(\gamma_n)$, this property is available:
+\begin{equation*}
+  \sqrt2\,(Dv) \ \text{is a weak Euclidean gradient of } v. \tag{1}
+\end{equation*}
+In reading $(1)$ and the hypothesis we are free to replace the pointwise scalar
+multiple $x \mapsto \sqrt2\,(Dv)(x)$ by the element $\sqrt2\,(Dv)$ of
+$L^2(\gamma_n;\mathbb{R}^n)$, and likewise for $\Gamma$: the two agree
+$\gamma_n$-almost everywhere, and by \noderef{GaussWeakGradAECongr} the
+weak-gradient relation is unchanged when either argument is replaced by a
+$\gamma_n$-almost-everywhere equal function.
+
+\emph{Step 3: uniqueness.}
+Both $\sqrt2\,(Dv)$ and $\sqrt2\,\Gamma$ lie in $L^2(\gamma_n;\mathbb{R}^n)$,
+being scalar multiples of elements of that space, and by $(1)$ and the hypothesis
+both are weak Euclidean gradients of the same function $v$.  Therefore
+\noderef{GaussWeakGradUnique}, applied to the function $v$ and to the two fields
+$\sqrt2\,(Dv)$ and $\sqrt2\,\Gamma$, gives
+\[
+  \sqrt2\,(Dv) = \sqrt2\,\Gamma
+  \qquad\text{in } L^2(\gamma_n;\mathbb{R}^n).
+\]
+Since $\sqrt2 \neq 0$ and $L^2(\gamma_n;\mathbb{R}^n)$ is a real vector space,
+scalar multiplication by $\sqrt2$ is injective on it, so $Dv = \Gamma$.
+\end{proof}

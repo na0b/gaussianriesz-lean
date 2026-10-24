@@ -1,0 +1,216 @@
+\begin{lemma}[The weak-type bound for complex $L^2$ inputs, with constant $8/\pi$]
+For every $v \in L^2(\gamma_n;\mathbb{C})$ and every real $t > 0$,
+\[
+  t\,\gamma_n\bigl(\{x : |R_\gamma^{\mathbb{C}} v(x)|_{\mathbb{C}^n} > t\}\bigr)
+    \;\leq\; \frac{8}{\pi}\int_{\mathbb{R}^n} |v(x)| \, d\gamma_n(x) ,
+\]
+with $R_\gamma^{\mathbb{C}}$ as in \noderef{ComplexRieszTransform} and the
+Euclidean norm of $\mathbb{C}^n$ on the vector output.  The constant $8/\pi$ does
+not depend on $n$.
+
+This is the estimate the reference paper proves for complex $L^2$ inputs before
+extending it to $L^1$, i.e.\ its displayed complex bound restricted to
+$f \in L^2$.  The right-hand side is written as the integral
+$\int|v|\,d\gamma_n$ rather than as a norm in a complex $L^1$ space: that is the
+same real number as the paper's $\|f\|_{L^1(\gamma;\mathbb{C})}$, and writing it
+this way keeps the input in $L^2(\gamma_n;\mathbb{C})$ and avoids introducing a
+complex $L^1$ inclusion the tablet does not yet have.  The constant is $8/\pi$
+and not $2\sqrt2$: the paper obtains it by averaging the bound over rotations
+$e^{i\theta}$ rather than by the cruder comparison
+$S \leq \sqrt2\,\|f\|_1$, and $8/\pi < 2\sqrt2$.
+\end{lemma}
+\begin{proof}
+Put $M = \int_{\mathbb{R}^n}|v(x)|\,d\gamma_n(x)$.  By \noderef{GaussIsProb}
+$\gamma_n$ is a probability measure, so the constant function $1$ is in
+$L^2(\gamma_n)$ and the integral form of Cauchy--Schwarz (shared context)
+applied to $|v|$ and $1$ gives $M \leq \|v\|_{L^2} < \infty$; also $M \geq 0$,
+the integrand being nonnegative.  Every measure of a set below is at most
+$\gamma_n(\mathbb{R}^n) = 1$, so all the quantities appearing are finite real
+numbers.  Note $8/\pi > 1$, since $\pi < 8$; hence $M \leq \frac{8}{\pi}M$,
+because $M \geq 0$.  (``Step~0'' below refers to this paragraph.)
+
+\emph{Case 1: $0 < t \leq M$.}
+By monotonicity of $\gamma_n$,
+$\gamma_n(\{|R_\gamma^{\mathbb{C}} v| > t\}) \leq \gamma_n(\mathbb{R}^n) = 1$
+using \noderef{GaussIsProb}, so, multiplying by $t > 0$,
+\[
+  t\,\gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} v| > t\}\bigr)
+    \leq t \leq M \leq \frac{8}{\pi}M ,
+\]
+which is the assertion.  (This is the paper's ``smaller levels are bounded by
+$\|f\|_1$ since $\gamma$ has mass one''; it includes the borderline level
+$t = M$, so no decomposition at a borderline height is needed.)
+
+\emph{Case 2: $t > M$.}  Fix $\theta \in \mathbb{R}$ and put $c_\theta = e^{i\theta}$,
+so $|c_\theta| = 1$.  Write
+\[
+  v_\theta = c_\theta\,v \in L^2(\gamma_n;\mathbb{C}),
+  \qquad
+  f_1 = \operatorname{Re} v_\theta, \quad f_2 = \operatorname{Im} v_\theta
+  \ \in L^2(\gamma_n;\mathbb{R}),
+  \qquad
+  S_\theta = \|f_1\|_{L^1(\gamma_n)} + \|f_2\|_{L^1(\gamma_n)} ,
+\]
+the $L^1$ norms through the inclusion of \noderef{ToL1}, which by that node has
+the same representative, so $\|h\|_{L^1(\gamma_n)} = \int|h|\,d\gamma_n$ for
+real $h \in L^2(\gamma_n)$.
+
+\emph{Step 2.1: each part has $L^1$ norm at most $M$, hence less than $t$.}
+For $\gamma_n$-almost every $x$ we have
+$|f_1(x)| = |\operatorname{Re}(c_\theta v(x))| \leq |c_\theta v(x)|
+ = |c_\theta|\,|v(x)| = |v(x)|$, using that the real part of a complex number is
+bounded in absolute value by its modulus and that $|c_\theta| = 1$.  Both
+$|f_1|$ and $|v|$ are $\gamma_n$-integrable: the first because $f_1$ has an
+$L^1(\gamma_n)$ class with the same representative by \noderef{ToL1}, and the
+second by Step~0 of this proof, where $M < \infty$ was checked.  Integrating the
+pointwise inequality between these two nonnegative integrable functions,
+\[
+  \|f_1\|_{L^1(\gamma_n)} = \int |f_1| \, d\gamma_n
+    \leq \int |v| \, d\gamma_n = M < t ,
+\]
+and the same computation with $\operatorname{Im}$ in place of $\operatorname{Re}$
+gives $\|f_2\|_{L^1(\gamma_n)} \leq M < t$.
+
+\emph{Step 2.2: two signed decompositions at height $t$.}
+Step 2.1 is exactly the hypothesis of \noderef{SignedDecomposition} for each
+$f_i$ at this level $t$.  Applying it to $f_1$ gives
+$u_1 \in \operatorname{Dom}(L^{1/2})$, $g_1 \in L^2(\gamma_n)$ and a measurable
+$\Omega_1 \subseteq \mathbb{R}^n$ with
+\[
+  f_1 = g_1 + Bu_1, \qquad
+  t\,\gamma_n(\Omega_1) \leq \|f_1\|_{L^1(\gamma_n)}, \qquad
+  \|g_1\|_{L^2(\gamma_n)}^2 \leq t\,\|f_1\|_{L^1(\gamma_n)}, \qquad
+  Du_1 = 0 \ \text{a.e. on } \Omega_1^c ,
+\]
+and applying it to $f_2$ gives $u_2, g_2, \Omega_2$ with the same four
+properties, with the index $2$ throughout.  (The node also supplies
+$|g_i| \leq t$ a.e.\ and $\|g_i\|_{L^1} \leq \|f_i\|_{L^1}$; neither is used
+here.)  These two applications are exactly the paper's ``four nonnegative
+decompositions of $f_1^+, f_1^-, f_2^+, f_2^-$'': \noderef{SignedDecomposition}
+is itself the signed statement obtained from the positive and negative parts of
+one real input, so two applications of it, to $f_1$ and to $f_2$, deliver all
+four.
+
+\emph{Step 2.3: the shared exceptional set.}
+Put $\Omega = \Omega_1 \cup \Omega_2$.  Since $\Omega_1 \subseteq \Omega$ we have
+$\Omega^c \subseteq \Omega_1^c$, so $Du_1 = 0$ a.e.\ on $\Omega^c$; likewise
+$Du_2 = 0$ a.e.\ on $\Omega^c$.  By subadditivity of $\gamma_n$ (shared
+context) and the two measure bounds of Step 2.2, multiplied through by $t > 0$,
+\begin{equation*}
+  t\,\gamma_n(\Omega) \leq t\,\gamma_n(\Omega_1) + t\,\gamma_n(\Omega_2)
+    \leq \|f_1\|_{L^1} + \|f_2\|_{L^1} = S_\theta ,
+  \qquad\text{so}\qquad
+  \gamma_n(\Omega) \leq \frac{S_\theta}{t} . \tag{1}
+\end{equation*}
+Adding the two $L^2$ bounds of Step 2.2,
+\begin{equation*}
+  \|g_1\|_{L^2}^2 + \|g_2\|_{L^2}^2
+    \leq t\,\|f_1\|_{L^1} + t\,\|f_2\|_{L^1} = t\,S_\theta . \tag{2}
+\end{equation*}
+
+\emph{Step 2.4: the complex good function.}
+Let $w$ be the $\gamma_n$-a.e.\ class of the function
+$x \mapsto g_1(x) + i\,g_2(x)$.  It is measurable, being a sum of a measurable
+function and $i$ times a measurable function, and
+$|g_1(x) + ig_2(x)|^2 = g_1(x)^2 + g_2(x)^2$ is $\gamma_n$-integrable because
+$g_1, g_2 \in L^2(\gamma_n)$; hence $w \in L^2(\gamma_n;\mathbb{C})$.  Taking
+real and imaginary parts pointwise, $\operatorname{Re} w = g_1$ and
+$\operatorname{Im} w = g_2$ in $L^2(\gamma_n;\mathbb{R})$.  This is the paper's
+$g_1 + ig_2$.
+
+\emph{Step 2.5: localization.}
+Apply \noderef{ComplexTransformedLocalization} with the complex inputs
+$v_\theta$ and $w$, the real data $g_1, g_2, u_1, u_2$, this $t$ and this
+$\Omega$.  Its hypotheses hold: $u_1, u_2 \in \operatorname{Dom}(L^{1/2})$ and
+$\operatorname{Re} v_\theta = f_1 = g_1 + Bu_1$,
+$\operatorname{Im} v_\theta = f_2 = g_2 + Bu_2$ by Step 2.2;
+$\operatorname{Re} w = g_1$ and $\operatorname{Im} w = g_2$ by Step 2.4; and
+$Du_1 = Du_2 = 0$ a.e.\ on $\Omega^c$ by Step 2.3.  Its second clause gives
+\begin{equation*}
+  \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} v_\theta| > t\}\bigr)
+    \leq \gamma_n(\Omega)
+      + \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} w| > t\}\bigr) . \tag{3}
+\end{equation*}
+
+\emph{Step 2.6: Chebyshev on the good part.}
+The function $|R_\gamma^{\mathbb{C}} w|^2$ is nonnegative and
+$\gamma_n$-integrable, its integral being
+$\|R_\gamma^{\mathbb{C}} w\|_{L^2(\gamma_n;\mathbb{C}^n)}^2 < \infty$.  Since
+$t > 0$, the set $\{|R_\gamma^{\mathbb{C}} w| > t\}$ is the set
+$\{|R_\gamma^{\mathbb{C}} w|^2 > t^2\}$, so Chebyshev's inequality (shared
+context --- it is the integration of the pointwise bound
+$t^2\,\mathbf{1}_{\{|R_\gamma^{\mathbb{C}} w|^2 > t^2\}}
+  \leq |R_\gamma^{\mathbb{C}} w|^2$, both sides being nonnegative and the
+right-hand side integrable) gives
+\[
+  \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} w| > t\}\bigr)
+    \leq t^{-2}\,\bigl\|R_\gamma^{\mathbb{C}} w\bigr\|_{L^2(\gamma_n;\mathbb{C}^n)}^2 .
+\]
+By clause (1) of \noderef{ComplexRieszL2Identity} applied to $w$, and then
+$\operatorname{Re} w = g_1$, $\operatorname{Im} w = g_2$ from Step 2.4,
+\[
+  \bigl\|R_\gamma^{\mathbb{C}} w\bigr\|^2
+    = \bigl\|R_\gamma(\operatorname{Re} w)\bigr\|^2
+      + \bigl\|R_\gamma(\operatorname{Im} w)\bigr\|^2
+    = \|R_\gamma g_1\|^2 + \|R_\gamma g_2\|^2 .
+\]
+By \noderef{RieszL2Identity} applied to $g_1$ and to $g_2$,
+$\|R_\gamma g_i\|^2 \leq \|g_i\|_{L^2}^2$ for $i = 1,2$.  Combining with $(2)$,
+\begin{equation*}
+  \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} w| > t\}\bigr)
+    \leq t^{-2}\bigl(\|g_1\|_{L^2}^2 + \|g_2\|_{L^2}^2\bigr)
+    \leq t^{-2}\,t\,S_\theta = \frac{S_\theta}{t} . \tag{4}
+\end{equation*}
+
+\emph{Step 2.7: the bound at the rotation $\theta$.}
+Substituting $(1)$ and $(4)$ into $(3)$,
+\[
+  \gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} v_\theta| > t\}\bigr)
+    \leq \frac{S_\theta}{t} + \frac{S_\theta}{t} = \frac{2S_\theta}{t} ,
+\]
+and multiplying by $t > 0$,
+\begin{equation*}
+  t\,\gamma_n\bigl(\{|R_\gamma^{\mathbb{C}} v_\theta| > t\}\bigr)
+    \leq 2\,S_\theta . \tag{5}
+\end{equation*}
+
+\emph{Step 2.8: the left-hand side does not depend on $\theta$.}
+Since $|c_\theta| = 1$, clause (3) of \noderef{ComplexRieszTransformLinear},
+applied with $c = c_\theta$ and this $v$, gives
+$|R_\gamma^{\mathbb{C}}(c_\theta v)(x)| = |R_\gamma^{\mathbb{C}} v(x)|$ for
+$\gamma_n$-almost every $x$.  The two sets
+$\{|R_\gamma^{\mathbb{C}} v_\theta| > t\}$ and
+$\{|R_\gamma^{\mathbb{C}} v| > t\}$ therefore differ only inside a
+$\gamma_n$-null set, so by monotonicity up to null sets applied in both
+directions they have the same measure.  Writing
+$A = t\,\gamma_n(\{|R_\gamma^{\mathbb{C}} v| > t\})$, which is a real number in
+$[0,t]$ because $\gamma_n$ is a probability measure, $(5)$ becomes
+\begin{equation*}
+  A \leq 2\,S_\theta \qquad\text{for every } \theta \in \mathbb{R}. \tag{6}
+\end{equation*}
+This is the paper's ``Complex linearity implies
+$|R_\gamma(e^{i\theta}f)| = |R_\gamma f|$''.
+
+\emph{Step 2.9: averaging over $\theta$.}
+By clause (1) of \noderef{RotationAverageL1} the function $\theta \mapsto S_\theta$
+is integrable on $[0,2\pi]$, hence so is $\theta \mapsto 2S_\theta$; the constant
+function $A$ is integrable on $[0,2\pi]$ as well.  Both being integrable, the
+pointwise inequality $(6)$ may be integrated over $[0,2\pi]$ by monotonicity of
+the integral:
+\[
+  2\pi A = \int_0^{2\pi} A \, d\theta \leq \int_0^{2\pi} 2S_\theta \, d\theta .
+\]
+Dividing by $2\pi > 0$ and applying clause (2) of \noderef{RotationAverageL1},
+\[
+  A \leq 2 \cdot \frac{1}{2\pi}\int_0^{2\pi} S_\theta \, d\theta
+    = 2 \cdot \frac{4}{\pi}\int |v| \, d\gamma_n
+    = \frac{8}{\pi}M ,
+\]
+which is the assertion in Case 2.  (It is exactly here that the integrability
+clause of \noderef{RotationAverageL1} is needed: without it the inequality
+$(6)$, which holds at every $\theta$, could not be integrated.)
+
+In both cases
+$t\,\gamma_n(\{|R_\gamma^{\mathbb{C}} v| > t\}) \leq \frac{8}{\pi}M$, which is
+the asserted bound.
+\end{proof}

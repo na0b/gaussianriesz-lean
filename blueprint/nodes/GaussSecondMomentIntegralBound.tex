@@ -1,0 +1,63 @@
+\begin{lemma}[Second-moment Gaussian majorant and integral bound]
+Fix $n \geq 1$.  Then for every $b > 0$ all of the following hold, the integrals
+being taken with respect to Lebesgue measure on $\mathbb{R}^n$.
+\begin{enumerate}
+  \item For every $v \in \mathbb{R}^n$,
+    \[
+      |v|^2e^{-b|v|^2} \leq \frac2b\,e^{-(b/2)|v|^2} .
+    \]
+  \item The function $w \mapsto |w|^2e^{-b|w|^2}$ is Lebesgue integrable on
+    $\mathbb{R}^n$.
+  \item Its integral satisfies
+    \[
+      \int_{\mathbb{R}^n}|w|^2e^{-b|w|^2}\,dw
+        \leq \frac2b\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2} .
+    \]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Fix $b > 0$.  Two facts come from \noderef{GaussEuclideanMomentBounds}: for every
+$\beta > 0$ the function $w \mapsto e^{-\beta|w|^2}$ is Lebesgue integrable on
+$\mathbb{R}^n$, and
+\begin{equation*}
+  \int_{\mathbb{R}^n} e^{-\beta|w|^2}\,dw = (\pi/\beta)^{n/2} . \tag{1}
+\end{equation*}
+
+\emph{Clause (1): the pointwise majorant.}
+Fix $v$ and put $u = (b/2)|v|^2 \geq 0$.  From $1+u \leq e^u$ we get $u \leq e^u$,
+and multiplying by $e^{-u} > 0$ gives
+\begin{equation*}
+  u\,e^{-u} \leq 1 . \tag{2}
+\end{equation*}
+Multiplying $(2)$ by $2/b > 0$ and substituting $u = (b/2)|v|^2$ turns it into
+\begin{equation*}
+  |v|^2e^{-(b/2)|v|^2} \leq \frac2b . \tag{3}
+\end{equation*}
+Since $-b|v|^2 = -(b/2)|v|^2 - (b/2)|v|^2$, the exponential splits as
+$e^{-b|v|^2} = e^{-(b/2)|v|^2}e^{-(b/2)|v|^2}$, so multiplying $(3)$ by
+$e^{-(b/2)|v|^2} > 0$ gives
+\[
+  |v|^2e^{-b|v|^2} = \bigl(|v|^2e^{-(b/2)|v|^2}\bigr)e^{-(b/2)|v|^2}
+    \leq \frac2b\,e^{-(b/2)|v|^2} ,
+\]
+which is clause (1).
+
+\emph{Clause (2): integrability.}
+The function $w \mapsto |w|^2e^{-b|w|^2}$ is continuous, hence measurable, and the
+function $w \mapsto (2/b)e^{-(b/2)|w|^2}$ is integrable, being a constant multiple
+of an integrable function at the rate $b/2 > 0$.  By clause (1) the former is
+bounded in absolute value by the latter at every point, both sides being
+nonnegative, so domination by an integrable function gives integrability.
+
+\emph{Clause (3): the integral bound.}
+Both functions of clause (2) are integrable, so monotonicity of the integral
+applies to the pointwise inequality of clause (1), and then $(1)$ at the rate
+$b/2$ evaluates the majorant:
+\[
+  \int_{\mathbb{R}^n}|w|^2e^{-b|w|^2}\,dw
+    \leq \int_{\mathbb{R}^n}\frac2b\,e^{-(b/2)|w|^2}\,dw
+    = \frac2b\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2} ,
+\]
+the last step by pulling the constant $2/b$ out of the integral.  That is
+clause (3).
+\end{proof}

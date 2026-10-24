@@ -1,0 +1,210 @@
+\begin{lemma}[Pointwise slice bounds and the slice gradient for $K_{\gamma,j}$]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, and let
+\[
+  \Phi_{w,y}(r)
+    = \frac{y_j - r w_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \exp\Bigl(-\frac{|rw-y|^2}{1-r^2}\Bigr),
+  \qquad w,y \in \mathbb{R}^n,\ r \in (0,1),
+\]
+be the $r$-integrand of the normalized Gaussian Riesz kernel of
+\noderef{GaussRieszKernel}.  Let $M \geq 3$ and let $y \in \mathbb{R}^n$ satisfy
+$|y| \leq M$.  Write $\tau = 1-r$, so that $\tau \in (0,1)$ for $r \in (0,1)$.
+Then:
+\begin{enumerate}
+\item for all $w \in \mathbb{R}^n$ and all $r \in (0,1)$,
+\[
+  \frac{|rw-y|^2}{1-r^2} = \bigl(|y|^2-|w|^2\bigr) + \frac{|w-ry|^2}{1-r^2} ;
+\]
+\item for all $w \in \mathbb{R}^n$ with $|w| \leq M$ and all $r \in (0,1)$,
+\[
+  \bigl|\Phi_{w,y}(r)\bigr|
+    \leq e^{M^2}\,\bigl(|w-y| + \tau M\bigr)\,\tau^{-n/2-3/2}
+      \exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr) ;
+\]
+\item there is a map $G$ assigning to each $w \in \mathbb{R}^n$ and each
+$r \in (0,1)$ a vector $G(w,r) \in \mathbb{R}^n$ such that
+  \begin{enumerate}
+  \item for every $w \in \mathbb{R}^n$ the map $r \mapsto G(w,r)$ is continuous
+    on $(0,1)$; and
+  \item for all $w \in \mathbb{R}^n$ with $|w| \leq M$ and all $r \in (0,1)$,
+    the map $v \mapsto \Phi_{v,y}(r)$ is (Fr\'echet) differentiable at $w$ with
+    derivative the continuous linear functional
+    $h \mapsto \langle G(w,r), h\rangle$, and
+    \[
+      |G(w,r)| \leq e^{M^2}\,\tau^{-n/2-3/2}
+        \Bigl(1 + \frac{2\bigl(|w-y| + \tau M\bigr)^2}{\tau}\Bigr)
+        \exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr) .
+    \]
+  \end{enumerate}
+\end{enumerate}
+
+\emph{Why clause (3) produces the gradient rather than bounding a chosen
+derivative.}  A bound on a derivative operator selected by convention where a
+function is not differentiable is vacuous wherever differentiability fails.
+Clause (3)(b) therefore asserts genuine differentiability at $w$ and bounds the
+vector that represents the actual derivative there.  Clause (3)(a) records that
+the representing vector may be chosen to depend continuously on $r$; this is
+what makes $r \mapsto G(w,r)$ measurable on $(0,1)$, which is one of the
+hypotheses of the theorem on differentiation under the integral sign that a
+consumer applies to $\int_0^1\Phi_{w,y}(r)\,dr$.
+
+\emph{Clause (1) carries no hypothesis on $w$, $y$ or $M$.}  It is an algebraic
+identity valid for every $w,y \in \mathbb{R}^n$ and every $r \in (0,1)$; the
+hypotheses $M \geq 3$ and $|y| \leq M$ are used only in clauses (2) and (3).
+Clause (1) is stated because it is the step that makes the factor
+$e^{|w|^2-|y|^2}$ visible, and it is what both of the other clauses are proved
+from.
+
+\emph{The bounds are stated for a general $w$, not at a single base point.}  A
+consumer of clause (3) needs a bound on $|G(w,r)|$ that is valid simultaneously
+at every $w$ of a ball, with the dependence on $w$ exhibited through $|w-y|$,
+in order to produce a majorant of $G(\cdot,r)$ that is independent of $w$ on
+that ball.  A version pinned at one point would not serve that use.
+\end{lemma}
+\begin{proof}
+Throughout fix $r \in (0,1)$ and write $\tau = 1-r \in (0,1)$,
+\[
+  c = (1-r^2)^{n/2+1}\sqrt{-\log r},
+  \qquad
+  A(w,r) = \exp\Bigl(-\frac{|rw-y|^2}{1-r^2}\Bigr) ,
+\]
+so that $\Phi_{w,y}(r) = (y_j - r w_j)\,A(w,r)/c$.  Note $1-r^2 = \tau(1+r)$, so
+$0 < \tau \leq 1-r^2 \leq 2\tau$; and $\log r \leq r-1 = -\tau$, so
+$-\log r \geq \tau > 0$.  In particular $\sqrt{-\log r} > 0$ and $c > 0$, and
+$A(w,r) > 0$.
+
+\emph{Clause (1).}  Expanding squares,
+\[
+  |rw-y|^2 = r^2|w|^2 - 2r\langle w,y\rangle + |y|^2,
+  \qquad
+  |w-ry|^2 = |w|^2 - 2r\langle w,y\rangle + r^2|y|^2 .
+\]
+Hence
+\begin{align*}
+  (1-r^2)\bigl(|y|^2-|w|^2\bigr) + |w-ry|^2
+    &= |y|^2 - r^2|y|^2 - |w|^2 + r^2|w|^2
+       + |w|^2 - 2r\langle w,y\rangle + r^2|y|^2 \\
+    &= |y|^2 + r^2|w|^2 - 2r\langle w,y\rangle
+     = |rw-y|^2 .
+\end{align*}
+Dividing by $1-r^2 > 0$ gives clause (1).
+
+\emph{The common estimate $(\ast)$.}  We claim that for $|w| \leq M$ and
+$r \in (0,1)$,
+\[
+  \frac{A(w,r)}{c}
+    \leq e^{M^2}\,\tau^{-n/2-3/2}\exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr).
+  \tag{$\ast$}
+\]
+For the numerator, clause (1) gives
+$-|rw-y|^2/(1-r^2) = |w|^2 - |y|^2 - |w-ry|^2/(1-r^2)$, so
+\[
+  A(w,r) = e^{|w|^2-|y|^2}\exp\Bigl(-\frac{|w-ry|^2}{1-r^2}\Bigr) .
+\]
+Since $|w| \leq M$ and $|y|^2 \geq 0$ we have $|w|^2 - |y|^2 \leq M^2$, so
+$e^{|w|^2-|y|^2} \leq e^{M^2}$ by monotonicity of $\exp$.  Since
+$0 < 1-r^2 \leq 2\tau$ and $|w-ry|^2 \geq 0$ we have
+$|w-ry|^2/(2\tau) \leq |w-ry|^2/(1-r^2)$, hence
+$\exp(-|w-ry|^2/(1-r^2)) \leq \exp(-|w-ry|^2/(2\tau))$.  Multiplying the two
+(both factors being positive) bounds $A(w,r)$ by
+$e^{M^2}\exp(-|w-ry|^2/(2\tau))$.
+
+For the denominator, $0 < \tau \leq 1-r^2$ and $n/2+1 \geq 0$ give
+$\tau^{n/2+1} \leq (1-r^2)^{n/2+1}$ by monotonicity of $t \mapsto t^{n/2+1}$ on
+$[0,\infty)$; and $0 \leq \tau \leq -\log r$ gives
+$\tau^{1/2} = \sqrt\tau \leq \sqrt{-\log r}$.  Both factors on the left being
+nonnegative, multiplying the two inequalities gives
+$\tau^{n/2+3/2} = \tau^{n/2+1}\tau^{1/2} \leq c$, and $\tau^{n/2+3/2} > 0$, so
+$c^{-1} \leq \tau^{-n/2-3/2}$.  Multiplying the numerator and denominator
+bounds (all quantities being nonnegative) gives $(\ast)$.
+
+\emph{The two numerator bounds.}  Let $|w| \leq M$.  Since
+$y_j - r w_j = (y_j - w_j) + \tau w_j$ and $|y_j - w_j| = |(y-w)_j| \leq |y-w|
+= |w-y|$ and $|\tau w_j| = \tau|w_j| \leq \tau|w| \leq \tau M$,
+\[
+  |y_j - r w_j| \leq |w-y| + \tau M . \tag{6a}
+\]
+Since $rw - y = (w-y) - \tau w$ and $|\tau w| = \tau|w| \leq \tau M$,
+\[
+  |rw - y| \leq |w-y| + \tau M . \tag{6b}
+\]
+
+\emph{Clause (2).}  Because $c > 0$ and $A(w,r) > 0$,
+\[
+  \bigl|\Phi_{w,y}(r)\bigr|
+    = \bigl|y_j - r w_j\bigr|\cdot\frac{A(w,r)}{c} .
+\]
+Both factors are nonnegative, and the right-hand sides of $(6a)$ and of
+$(\ast)$ are nonnegative, so multiplying $(6a)$ by $(\ast)$ gives clause (2).
+
+\emph{Clause (3): the gradient.}  Fix $r \in (0,1)$.  The map
+$v \mapsto y_j - r v_j$ is affine, hence differentiable at every $w$ with
+derivative $h \mapsto -r h_j = \langle -r e_j, h\rangle$, where $e_j$ is the
+$j$th standard basis vector (so $h_j = \langle e_j,h\rangle$ and $|e_j| = 1$).
+The map $v \mapsto rv - y$ is affine with derivative $h \mapsto rh$, so
+$v \mapsto |rv-y|^2$ is differentiable at $w$ with derivative
+$h \mapsto 2\langle rw-y, rh\rangle = 2r\langle rw-y,h\rangle$; dividing by the
+constant $1-r^2$, negating, and composing with $\exp$, the map
+$v \mapsto A(v,r)$ is differentiable at $w$ with derivative
+\[
+  h \mapsto A(w,r)\cdot\Bigl(-\frac{2r}{1-r^2}\Bigr)\langle rw-y,h\rangle .
+\]
+By the product rule and division by the constant $c$, the map
+$v \mapsto \Phi_{v,y}(r)$ is differentiable at every $w \in \mathbb{R}^n$, with
+derivative
+\[
+  h \mapsto \frac{A(w,r)}{c}
+    \Bigl[\,-r\langle e_j,h\rangle
+      - (y_j - r w_j)\frac{2r}{1-r^2}\langle rw-y,h\rangle\Bigr]
+  = \langle G(w,r), h\rangle ,
+\]
+where we define
+\[
+  G(w,r) := \frac{A(w,r)}{c}
+    \Bigl(-r\,e_j - (y_j - r w_j)\frac{2r}{1-r^2}\,(rw-y)\Bigr) .
+\]
+This is a continuous linear functional of $h$, being an inner product against a
+fixed vector.  So clause (3)(b)'s differentiability assertion holds, with this
+$G$, for every $w$ --- in particular for every $w$ with $|w| \leq M$.
+
+\emph{Clause (3)(a): continuity in $r$.}  Fix $w \in \mathbb{R}^n$ and
+$r \in (0,1)$.  On $(0,1)$ the functions $r \mapsto 1-r^2$ and
+$r \mapsto -\log r$ are continuous and strictly positive (as noted at the
+start), so $r \mapsto (1-r^2)^{n/2+1}$ and $r \mapsto \sqrt{-\log r}$ are
+continuous and strictly positive, and hence so is $r \mapsto c$.  Also
+$r \mapsto |rw-y|^2$, $r \mapsto y_j - r w_j$ and $r \mapsto rw-y$ are
+continuous, so $r \mapsto A(w,r)$ is continuous, and $r \mapsto 2r/(1-r^2)$ is
+continuous because its denominator does not vanish.  A quotient of continuous
+functions with nonvanishing denominator is continuous, and sums, products and
+scalar multiples of continuous maps are continuous; therefore
+$r \mapsto G(w,r)$ is continuous on $(0,1)$.
+
+\emph{Clause (3)(b): the bound.}  Let $|w| \leq M$.  By the triangle inequality
+and homogeneity of the norm,
+\[
+  |G(w,r)| \leq \frac{A(w,r)}{c}
+    \Bigl(r\,|e_j| + |y_j - r w_j|\,\frac{2r}{1-r^2}\,|rw-y|\Bigr) ,
+\]
+using that $A(w,r)/c > 0$ and $2r/(1-r^2) > 0$.  Now $|e_j| = 1$ and $r \leq 1$,
+so the first summand is at most $1$.  For the second, $2r/(1-r^2) \leq 2/\tau$:
+indeed both denominators are positive and
+$2r\tau \leq 2\tau(1+r) = 2(1-r^2)$ because $r \leq 1+r$.  Combining this with
+$(6a)$ and $(6b)$, and using that all the factors involved are nonnegative,
+\[
+  |y_j - r w_j|\,\frac{2r}{1-r^2}\,|rw-y|
+    \leq \bigl(|w-y| + \tau M\bigr)\frac{2}{\tau}\bigl(|w-y| + \tau M\bigr)
+    = \frac{2\bigl(|w-y| + \tau M\bigr)^2}{\tau} .
+\]
+Hence
+\[
+  |G(w,r)| \leq \frac{A(w,r)}{c}
+    \Bigl(1 + \frac{2(|w-y| + \tau M)^2}{\tau}\Bigr) ,
+\]
+and since the bracket is nonnegative, $(\ast)$ bounds the right-hand side by
+\[
+  e^{M^2}\,\tau^{-n/2-3/2}
+    \Bigl(1 + \frac{2(|w-y| + \tau M)^2}{\tau}\Bigr)
+    \exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr) ,
+\]
+which is clause (3)(b)'s bound.
+\end{proof}

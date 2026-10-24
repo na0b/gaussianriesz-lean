@@ -1,0 +1,79 @@
+\begin{lemma}[A $w$-uniform $\tau$-majorant on a ball for the near-diagonal gradient]
+Fix $n \geq 1$ and $M \geq 3$.  Let $x,y \in \mathbb{R}^n$ with $|y| \leq M$ and
+$d := |x-y| > 0$, and put $U = B(x,d/4)$ and $\tau'' = 3d/(8M)$.  Let
+$G : \mathbb{R}^n \times (0,1) \to \mathbb{R}^n$ satisfy, for every $w$ with
+$|w| \leq M$ and every $r \in (0,1)$,
+\[
+  |G(w,r)| \leq e^{M^2}(1-r)^{-n/2-3/2}
+    \Bigl(1 + \frac{2\bigl(|w-y|+(1-r)M\bigr)^2}{1-r}\Bigr)
+    \exp\Bigl(-\frac{|w-ry|^2}{2(1-r)}\Bigr) ,
+\]
+and suppose every $w \in U$ satisfies $|w| \leq M$ and
+$\tfrac34 d \leq |w-y| \leq \tfrac54 d$.  Then for every $w \in U$ and every
+$\tau \in (0,1)$,
+\[
+  |G(w,1-\tau)|
+    \leq e^{M^2}\Bigl(\tau^{-n/2-3/2} + 8d^2\,\tau^{-n/2-5/2}\Bigr)
+        e^{-9d^2/(128\tau)}
+      + e^{M^2}\Bigl((\tau'')^{-n/2-3/2} + 8d^2(\tau'')^{-n/2-5/2}
+        + 4M^2(\tau'')^{-n/2-1/2}\Bigr) .
+\]
+\end{lemma}
+\begin{proof}
+Fix $w \in U$ and $\tau \in (0,1)$, and write $r = 1-\tau \in (0,1)$.  By
+hypothesis $|w| \leq M$ and $\tfrac34 d \leq |w-y| \leq \tfrac54 d$.  Both
+groups on the right are nonnegative, so it suffices to bound $|G(w,1-\tau)|$ by
+one of them in each of two complementary cases.
+
+\emph{Step 0: the separation estimate.}
+Since $w - (1-\tau)y = (w-y) + \tau y$ and $|y| \leq M$, the triangle inequality
+in the form $|a+b| \geq |a|-|b|$ gives
+\begin{equation*}
+  |w-(1-\tau)y| \geq |w-y| - \tau M \geq \tfrac34 d - \tau M . \tag{1}
+\end{equation*}
+Applying the hypothesis on $G$ at this $w$ and $r = 1-\tau$, and using
+$|w-y| \leq \tfrac54 d$ in the increasing factor,
+\begin{equation*}
+  |G(w,1-\tau)| \leq e^{M^2}\tau^{-n/2-3/2}
+    \Bigl(1 + \frac{2\bigl(\tfrac54 d+\tau M\bigr)^2}{\tau}\Bigr)
+    \exp\Bigl(-\frac{|w-(1-\tau)y|^2}{2\tau}\Bigr) . \tag{2}
+\end{equation*}
+
+\emph{Step 1: small $\tau$.}
+Suppose $\tau \leq \tau'' = 3d/(8M)$.  Multiplying by $8M/3 > 0$ gives
+$\tau M \leq \tfrac38 d$, so by $(1)$ we get
+$|w-(1-\tau)y| \geq \tfrac34 d - \tfrac38 d = \tfrac38 d \geq 0$; squaring the
+nonnegative sides and dividing by $2\tau > 0$,
+\[
+  \exp\Bigl(-\frac{|w-(1-\tau)y|^2}{2\tau}\Bigr)
+    \leq \exp\Bigl(-\frac{9d^2}{128\tau}\Bigr) .
+\]
+Also $\tfrac54 d + \tau M \leq \tfrac54 d + \tfrac38 d = \tfrac{13}8 d \leq 2d$,
+so $2(\tfrac54 d+\tau M)^2 \leq 8d^2$ and the bracket in $(2)$ is at most
+$1 + 8d^2/\tau$.  Hence $(2)$ gives
+\[
+  |G(w,1-\tau)|
+    \leq e^{M^2}\bigl(\tau^{-n/2-3/2} + 8d^2\tau^{-n/2-5/2}\bigr)
+        e^{-9d^2/(128\tau)} ,
+\]
+using $\tau^{-n/2-3/2}/\tau = \tau^{-n/2-5/2}$.  This is the first group, and
+the second is nonnegative, so the claim holds in this case.
+
+\emph{Step 2: large $\tau$.}
+Suppose $\tau'' < \tau$.  Bound the exponential in $(2)$ by $1$, legitimate
+because its argument is nonpositive, and use
+$(\tfrac54 d+\tau M)^2 \leq 2(\tfrac54 d)^2 + 2(\tau M)^2 \leq 4d^2+2\tau^2M^2$,
+which follows from $(p+q)^2 \leq 2p^2+2q^2$ and $2(\tfrac54)^2 = \tfrac{25}8
+\leq 4$.  Then the bracket in $(2)$ is at most
+$1 + (8d^2 + 4\tau^2M^2)/\tau$, so
+\[
+  |G(w,1-\tau)| \leq e^{M^2}\bigl(\tau^{-n/2-3/2} + 8d^2\tau^{-n/2-5/2}
+    + 4M^2\tau^{-n/2-1/2}\bigr) ,
+\]
+using $\tau^{-n/2-3/2}\tau = \tau^{-n/2-1/2}$.  Each exponent here is negative
+and $\tau'' \leq \tau$ with $\tau'' > 0$, so $t \mapsto t^{-s}$ being
+nonincreasing for $s \geq 0$ gives $\tau^{-s} \leq (\tau'')^{-s}$ for each of
+$s = \tfrac n2+\tfrac32,\ \tfrac n2+\tfrac52,\ \tfrac n2+\tfrac12$.  Hence the
+displayed bound is at most the second group, and the first group is nonnegative,
+so the claim holds in this case too.
+\end{proof}

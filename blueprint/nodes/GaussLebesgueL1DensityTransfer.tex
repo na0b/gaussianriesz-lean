@@ -1,0 +1,84 @@
+\begin{lemma}[Gaussian-to-Lebesgue transfer of an $L^1$ bound through the density]
+Fix $n \geq 1$, let $\lambda$ denote Lebesgue measure on $\mathbb{R}^n$, and let
+$v \in L^1(\gamma_n)$.  Then the function
+$y \mapsto e^{-|y|^2}\,|v(y)|$ is Lebesgue integrable on $\mathbb{R}^n$, and
+\[
+  \int_{\mathbb{R}^n} e^{-|y|^2}\,|v(y)|\,d\lambda(y)
+    \leq \pi^{n/2}\int_{\mathbb{R}^n} |v|\,d\gamma_n .
+\]
+\end{lemma}
+\begin{proof}
+Write $\varrho(y) = \pi^{-n/2}e^{-|y|^2}$, so that by \noderef{GaussMeasure} the
+measure $\gamma_n$ is $\lambda$ weighted by $\varrho$.  The inequality is in fact
+proved as an equality and then weakened, so it suffices to produce the equality.
+
+\emph{Step 1: measurability against $\lambda$.}
+Being an element of $L^1(\gamma_n)$, $v$ has a $\gamma_n$-almost-everywhere
+strongly measurable representative.  Moreover $\lambda$ is absolutely continuous
+with respect to $\gamma_n$: by clause (4) of \noderef{GaussLebesgueBallComparison},
+a $\gamma_n$-null set is $\lambda$-null.  Absolute continuity carries a
+$\gamma_n$-almost-everywhere equality to a $\lambda$-almost-everywhere one, so
+the same representative witnesses that $v$ is $\lambda$-almost-everywhere
+strongly measurable.  The density $y \mapsto \varrho(y)$ is continuous, hence
+$\lambda$-measurable.
+
+\emph{Step 2: the identity between the two upper integrals.}
+Since $\gamma_n = \varrho\,\lambda$, the change-of-density formula for upper
+integrals of nonnegative functions gives, for the $\lambda$-measurable density
+$\varrho$ and the $\lambda$-measurable $\|v\|$,
+\[
+  \int^*_{\mathbb{R}^n} \|v(y)\|\,d\gamma_n(y)
+    = \int^*_{\mathbb{R}^n} \varrho(y)\,\|v(y)\|\,d\lambda(y) .
+\]
+Now $\varrho(y) = \bigl(\pi^{n/2}\bigr)^{-1}e^{-|y|^2}$, because
+$\pi^{-n/2} = (\pi^{n/2})^{-1}$ for the positive base $\pi$, so for every $y$
+\[
+  \pi^{n/2}\cdot\varrho(y)\,\|v(y)\| = e^{-|y|^2}\,|v(y)|
+    = \bigl\|e^{-|y|^2}v(y)\bigr\| ,
+\]
+the last equality because $e^{-|y|^2} > 0$, so the absolute value of the product
+is the product of $e^{-|y|^2}$ with $|v(y)|$.  Pulling the constant
+$\pi^{n/2}$ out of the upper integral, which is legitimate as it is finite and
+positive, we obtain
+\begin{equation*}
+  \int^*_{\mathbb{R}^n}\bigl\|e^{-|y|^2}v(y)\bigr\|\,d\lambda(y)
+    = \pi^{n/2}\int^*_{\mathbb{R}^n}\|v(y)\|\,d\gamma_n(y) . \tag{1}
+\end{equation*}
+
+\emph{Step 3: both sides are finite.}
+The right-hand upper integral of $(1)$ is the $L^1(\gamma_n)$ norm of $v$, which
+is finite because $v \in L^1(\gamma_n)$.  Multiplying by the finite constant
+$\pi^{n/2}$, the left-hand side of $(1)$ is finite too.
+
+\emph{Step 4: integrability.}
+The function $y \mapsto e^{-|y|^2}v(y)$ is $\lambda$-almost-everywhere strongly
+measurable, being the product of the continuous function $y \mapsto e^{-|y|^2}$
+--- a composition of the exponential with $y \mapsto -|y|^2$ --- and the
+$\lambda$-almost-everywhere strongly measurable $v$ of Step 1.  Together with the
+finiteness of its upper integral from Step 3, that is exactly Lebesgue
+integrability.  Since $e^{-|y|^2} > 0$ for every $y$ we have
+$e^{-|y|^2}|v(y)| = \bigl|e^{-|y|^2}v(y)\bigr|$ pointwise, and the absolute value
+of an integrable function is integrable, so $y \mapsto e^{-|y|^2}|v(y)|$ is
+Lebesgue integrable.  That is the first assertion.
+
+\emph{Step 5: the bound.}
+For a real-valued integrable function the Bochner integral of its norm and the
+upper integral of its norm agree after the passage from extended reals, so
+applying that to $y \mapsto e^{-|y|^2}v(y)$ against $\lambda$ on the left of
+$(1)$, and to $v$ against $\gamma_n$ on the right --- both integrable, the first
+by Step 4 and the second because $v \in L^1(\gamma_n)$ --- turns $(1)$ into an
+identity between nonnegative real numbers:
+\[
+  \int_{\mathbb{R}^n}\bigl|e^{-|y|^2}v(y)\bigr|\,d\lambda(y)
+    = \pi^{n/2}\int_{\mathbb{R}^n}|v|\,d\gamma_n .
+\]
+Both sides are nonnegative, so the comparison of their images under
+$t \mapsto \max(t,0)$ is an equality of reals rather than merely of extended
+reals.  Rewriting the left-hand integrand as $e^{-|y|^2}|v(y)|$, again by
+positivity of $e^{-|y|^2}$, gives
+\[
+  \int_{\mathbb{R}^n} e^{-|y|^2}|v(y)|\,d\lambda(y)
+    = \pi^{n/2}\int_{\mathbb{R}^n}|v|\,d\gamma_n ,
+\]
+and in particular the stated inequality.
+\end{proof}

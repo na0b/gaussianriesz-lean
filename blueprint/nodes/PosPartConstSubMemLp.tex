@@ -1,0 +1,61 @@
+\begin{lemma}[The positive part of a constant minus an $L^2(\gamma_n)$ function is $L^2(\gamma_n)$]
+Fix $n \in \mathbb{N}_0$ and let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}.  Let $F \in L^2(\gamma_n)$ and let $a \in \mathbb{R}$ be
+any real number.  Then the positive part of $a - F$,
+\[
+  (a - F)^{+}(x) = \max\bigl(a - F(x),\, 0\bigr),
+\]
+again lies in $L^2(\gamma_n)$.
+
+All three memberships here are with respect to the Gaussian measure $\gamma_n$:
+$F$ is square $\gamma_n$-integrable and so is the conclusion's function, the
+integrals being taken against $\gamma_n$ and not against Lebesgue measure.  Note
+also that no sign condition on $a$ is assumed or needed --- $a$ ranges over all
+of $\mathbb{R}$, and the argument below uses nothing about whether $a$ is
+positive.
+\end{lemma}
+\begin{proof}
+Step 1 (the constant is square integrable).  A constant function is square
+integrable for any finite measure, and $\gamma_n$ is a probability measure by
+\noderef{GaussIsProb}, hence finite.  So $x \mapsto a$ lies in $L^2(\gamma_n)$.
+
+Step 2 ($a - F$ is square integrable).  $L^2(\gamma_n)$ is a vector space, so
+the difference of the constant $a$ of Step 1 and the given $F \in L^2(\gamma_n)$
+lies in $L^2(\gamma_n)$:
+\[
+  x \longmapsto a - F(x) \quad \in L^2(\gamma_n). \tag{D}
+\]
+
+Step 3 (pointwise domination of the positive part).  For every
+$x \in \mathbb{R}^n$,
+\[
+  \bigl| \max(a - F(x), 0) \bigr| \leq \bigl| a - F(x) \bigr| . \tag{P}
+\]
+To see this, write $t = a - F(x)$ and note first that $\max(t,0) \geq 0$, so the
+left-hand side is $\max(t,0)$ itself.  Now distinguish two cases, which together
+are exhaustive.  If $t \leq 0$ then $\max(t,0) = 0$, and the right-hand side
+$|t|$ is nonnegative, so the inequality reads $0 \leq |t|$ and holds.  If
+$t \geq 0$ then $\max(t,0) = t$, and $t \leq |t|$ holds because a real number is
+at most its own absolute value.  In both cases (P) follows.  This is the only
+step that touches the shape of the positive part, and it is where the absence of
+any hypothesis on $a$ shows: the comparison is between $\max(t,0)$ and $|t|$ for
+an arbitrary real $t$, with no reference to how $t$ arose.
+
+Step 4 (measurability of the positive part).  The function $F$ is
+$\gamma_n$-almost-everywhere strongly measurable, being an element of
+$L^2(\gamma_n)$, hence so is $x \mapsto a - F(x)$ by Step 2.  Taking the
+pointwise maximum with the constant $0$ preserves almost-everywhere
+measurability, since the maximum of two almost-everywhere measurable real
+functions is almost-everywhere measurable, and for real-valued functions
+almost-everywhere measurability and almost-everywhere strong measurability
+agree.  So $x \mapsto \max(a - F(x), 0)$ is $\gamma_n$-almost-everywhere
+strongly measurable.
+
+Step 5 (conclusion).  A function that is $\gamma_n$-almost-everywhere strongly
+measurable and dominated in absolute value, $\gamma_n$-almost everywhere, by a
+function of $L^2(\gamma_n)$ is itself in $L^2(\gamma_n)$.  Step 4 supplies the
+measurability, (P) supplies the domination --- indeed at every point, so in
+particular $\gamma_n$-almost everywhere --- and (D) says the dominating function
+$x \mapsto a - F(x)$ is in $L^2(\gamma_n)$.  Hence
+$x \mapsto \max(a - F(x), 0)$ lies in $L^2(\gamma_n)$, as asserted.
+\end{proof}

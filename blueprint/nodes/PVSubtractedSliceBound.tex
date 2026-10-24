@@ -1,0 +1,218 @@
+\begin{lemma}[The subtracted slice bound for the Mehler gradient kernel]
+Fix $n \geq 1$, $j \in \{1,\ldots,n\}$ and $x \in \mathbb{R}^n$.  For $s > 0$ write
+\[
+  r = e^{-s} \in (0,1), \qquad \sigma = 1 - e^{-2s} \in (0,1],
+  \qquad
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr) ,
+\]
+and let
+\[
+  D_j^xp_s(x,y) = \sqrt2\,r\,\frac{y_j-rx_j}{\sigma}\,p_s(x,y)
+\]
+be the energy-normalized $x$-derivative of the Lebesgue kernel, written in the closed
+form that the surrounding nodes of this layer all use: the displayed right-hand side is
+that explicit expression, and it is that expression, not a derivative, that occurs
+below.  Let $\lambda$ be Lebesgue measure.
+
+Then there is a constant $C \geq 0$ such that for every function
+$f : \mathbb{R}^n \to \mathbb{R}$, every $L \geq 0$ satisfying
+\begin{equation*}
+  |f(y)-f(x)| \leq L\,|y-x| \qquad \text{for all } y \in \mathbb{R}^n , \tag{$*$}
+\end{equation*}
+and every $s > 0$,
+\[
+  \int^*_{\mathbb{R}^n} \bigl|D_j^xp_s(x,y)\bigr|\,|f(y)-f(x)|\,dy
+    \;\leq\; C\,L\,e^{-s}\,(1+|x|) ,
+\]
+where $\int^*$ denotes the upper (lower Lebesgue) integral of a nonnegative
+extended-real integrand, taken in $[0,+\infty]$.  The constant is quantified before
+$f$, $L$ and $s$, so it is independent of all three; the witness exhibited in the proof
+is $C = 3\sqrt2\cdot2^{n/2}$, which depends only on $n$.
+
+Three points about the shape of the statement.  First, the hypothesis $(*)$ is the only
+property of $f$ that is used, and it is exactly the mean-value bound that a Lipschitz
+function --- in particular a smooth compactly supported one, with $L = \sup|\nabla f|$
+--- satisfies; stating the bound against $(*)$ rather than against smoothness keeps the
+estimate and the regularity of $f$ in separate nodes, and is what the consumer supplies.
+Second, no measurability or integrability hypothesis on $f$ is needed or asserted,
+because the left-hand side is an upper integral of a nonnegative quantity: it is defined
+for every $f$ and every $s > 0$, and it is $+\infty$, not $0$, whenever the integrand
+fails to be integrable.  So the bound genuinely forces integrability rather than being
+satisfied by a conventional value --- which is the whole point of the statement, since
+its consumer is a Tonelli argument on $\mathbb{R}^n\times(0,\infty)$ that needs the
+finiteness at every $s$ at once.  Third, the bound $C\,L\,e^{-s}(1+|x|)$ is
+$\varepsilon$-free and integrable against $ds/\sqrt s$ on $(0,\infty)$, which is the
+property the consumer uses; no uniformity in $n$ is claimed and nothing here feeds an
+endpoint constant.
+
+This is the reference paper's appendix bound: $|f(y)-f(x)| \leq L_f|y-x|$ together with
+the substitution $w = z + d$ gives
+$\int|D_j^xp_s(x,y)||f(y)-f(x)|\,dy \leq C_nL_fr(1+|d|/\sqrt\sigma) \leq C_nL_fe^{-s}(1+|x|)$,
+with $|d| = (1-r)|x|$ and $(1-r)/\sqrt{1-r^2} \leq 1$.  The proof below is that argument
+with the two Gaussian moments taken directly at the rate $1/\sigma$ instead of being
+rescaled to the unit Gaussian, so that the paper's means $a_n$ and $b_n$ are never
+named.  Taking the moments at the rate $1/\sigma$ costs a factor $\sigma^{-1/2}$ in the
+first-moment bound, and the taming factor correspondingly becomes
+$|d|/\sigma = |x|/(1+r) \leq |x|$ in place of $|d|/\sqrt\sigma \leq |x|$; the end served
+is the same displayed bound, so the constant is the only thing that changes.
+\end{lemma}
+\begin{proof}
+Throughout $n \geq 1$, $j$ and $x$ are fixed, and $b, b' > 0$ denote arbitrary positive
+rates.  We will verify the assertion with
+\[
+  C = 3\sqrt2\cdot2^{n/2} \geq 0 .
+\]
+So let $f$, $L \geq 0$ satisfying $(*)$, and $s > 0$ be given, and keep
+$r = e^{-s}$, $\sigma = 1-e^{-2s}$, $b = 1/\sigma$ and
+\[
+  d = x - rx , \qquad
+  c = \frac{\sqrt2\,r}{\sigma}\,\pi^{-n/2}\sigma^{-n/2} .
+\]
+
+\emph{Step 0: the elementary quantities.}
+Since $-s < 0$ we have $0 < r < 1$, and since $e^{-s}e^{-s} = e^{-2s}$ we have
+$r^2 = e^{-2s}$, so
+\begin{equation*}
+  \sigma = 1-r^2 = (1-r)(1+r) , \tag{1}
+\end{equation*}
+whence $0 < \sigma$ (a product of two positive numbers) and $\sigma \leq 1$ (because
+$(1-r)(1+r) = 1-r^2 \leq 1$).  Thus $b = 1/\sigma > 0$, $\sigma b = 1$, and $c > 0$,
+the factors $\pi^{-n/2}$ and $\sigma^{-n/2}$ being positive powers of positive numbers.
+Also $d = (1-r)x$, so
+\begin{equation*}
+  |d| = (1-r)\,|x| . \tag{2}
+\end{equation*}
+
+\emph{Step 1: the Gaussian integral at an arbitrary rate.}
+For every $b > 0$ the function $v \mapsto e^{-b|v|^2}$ is Lebesgue integrable on
+$\mathbb{R}^n$ and
+\begin{equation*}
+  \int_{\mathbb{R}^n} e^{-b|v|^2}\,dv = \Bigl(\frac{\pi}{b}\Bigr)^{n/2} .
+  \tag{3}
+\end{equation*}
+Both are the shared-context Gaussian integral on a finite-dimensional inner product
+space, read at the rate $b$ and with $\dim\mathbb{R}^n = n$.
+
+\emph{Step 2: the two half-rate moment majorants.}
+From $1+u \leq e^u$ at $u = (b/2)|v|^2$ we get
+$(b/2)|v|^2 \leq e^{(b/2)|v|^2}$, hence, multiplying by
+$E := e^{-(b/2)|v|^2} \in (0,1]$ and using $e^{(b/2)|v|^2}E = 1$,
+\begin{equation*}
+  |v|^2\,E \leq \frac2b . \tag{4}
+\end{equation*}
+By \noderef{GaussSecondMomentIntegralBound}, at every rate $b > 0$ the
+second-moment majorant
+\begin{equation*}
+  |v|^2\,e^{-b|v|^2} \leq \frac2b\,e^{-(b/2)|v|^2} \tag{5}
+\end{equation*}
+holds for every $v$, and $v \mapsto |v|^2e^{-b|v|^2}$ is Lebesgue integrable with
+integral at most $\frac2b(\pi/(b/2))^{n/2}$.  For the first moment, $(4)$ together
+with $|v| \leq 1+|v|^2$ gives
+\begin{equation*}
+  |v|\,e^{-b|v|^2} \leq (1+|v|^2)E\cdot E = E^2 + (|v|^2E)E
+    \leq \Bigl(1+\frac2b\Bigr)e^{-(b/2)|v|^2} . \tag{6}
+\end{equation*}
+The function $v \mapsto |v|e^{-b|v|^2}$ is continuous and, by $(6)$, dominated in
+absolute value by a constant multiple of the integrable function $e^{-(b/2)|v|^2}$
+of Step 1; hence it is Lebesgue integrable, and integrating $(6)$ and using $(3)$
+at the rate $b/2$, together with the integral bound just cited,
+\begin{equation*}
+  \int_{\mathbb{R}^n}|v|^2e^{-b|v|^2}dv \leq \frac2b\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2},
+  \qquad
+  \int_{\mathbb{R}^n}|v|\,e^{-b|v|^2}dv
+    \leq \Bigl(1+\frac2b\Bigr)\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2} . \tag{7}
+\end{equation*}
+
+\emph{Step 3: the normalization identity.}
+For $\sigma > 0$ and $b' > 0$,
+\begin{equation*}
+  \pi^{-n/2}\sigma^{-n/2}\Bigl(\frac{\pi}{b'}\Bigr)^{n/2}
+    = \Bigl(\frac{1}{\sigma b'}\Bigr)^{n/2} , \tag{8}
+\end{equation*}
+since $\pi^{-n/2}\pi^{n/2} = 1$ and $\sigma^{-n/2}(b')^{-n/2} = (\sigma b')^{-n/2}$.
+With $b' = b/2 = 1/(2\sigma)$ we have $\sigma b' = 1/2$, so the right-hand side is
+$2^{n/2}$, and therefore
+\begin{equation*}
+  c\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2}
+    = \frac{\sqrt2\,r}{\sigma}\cdot2^{n/2} . \tag{9}
+\end{equation*}
+
+\emph{Step 4: the translation and the pointwise majorant.}
+The translation $T(w) = rx+w$ preserves $\lambda$ (shared context) and is a measurable
+embedding, so for every nonnegative extended-real $G$ on $\mathbb{R}^n$,
+\begin{equation*}
+  \int^*_{\mathbb{R}^n} G(rx+w)\,dw = \int^*_{\mathbb{R}^n} G(y)\,dy . \tag{10}
+\end{equation*}
+At $y = rx+w$ we have $y_j - rx_j = w_j$ and $|rx-y| = |{-w}| = |w|$, so by the
+definition of $p_s$ and of $c$,
+\[
+  D_j^xp_s(x,rx+w) = c\,w_j\,e^{-b|w|^2} ,
+\]
+the exponent being $-|w|^2/\sigma = -b|w|^2$.  Also $y-x = w-d$, so
+$|y-x| \leq |w|+|d|$, and therefore by $(*)$
+\[
+  |f(rx+w)-f(x)| \leq L\bigl(|w|+|d|\bigr) .
+\]
+Multiplying the two displays, and using $|w_j| \leq |w|$ together with $c > 0$,
+$e^{-b|w|^2} > 0$, $L \geq 0$ and $|d| \geq 0$,
+\begin{align*}
+  \bigl|D_j^xp_s(x,rx+w)\bigr|\,|f(rx+w)-f(x)|
+    &= c\,|w_j|\,e^{-b|w|^2}\,|f(rx+w)-f(x)|\\
+    &\leq c\,|w|\,e^{-b|w|^2}\cdot L\bigl(|w|+|d|\bigr)\\
+    &= cL\,|w|^2e^{-b|w|^2} + cL|d|\,|w|\,e^{-b|w|^2} =: H(w) . \tag{11}
+\end{align*}
+
+\emph{Step 5: integrating the majorant.}
+By Step 2 the function $H$ is a nonnegative linear combination, with the nonnegative
+coefficients $cL$ and $cL|d|$, of the two integrable functions of $(7)$; hence $H$ is
+Lebesgue integrable and, by additivity and homogeneity of the integral and then $(7)$,
+\[
+  \int_{\mathbb{R}^n}H
+    = cL\!\int\!|w|^2e^{-b|w|^2} + cL|d|\!\int\!|w|e^{-b|w|^2}
+    \leq cL\,\frac2b\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2}
+       + cL|d|\Bigl(1+\frac2b\Bigr)\Bigl(\frac{\pi}{b/2}\Bigr)^{n/2} .
+\]
+Since $2/b = 2\sigma$, factoring out $c(\pi/(b/2))^{n/2}$ and using $(9)$,
+\begin{equation*}
+  \int_{\mathbb{R}^n}H
+    \leq \frac{\sqrt2\,r}{\sigma}\,2^{n/2}\,L\,
+      \bigl(2\sigma + |d|(1+2\sigma)\bigr) . \tag{12}
+\end{equation*}
+Because $H \geq 0$ is integrable, its upper integral equals its Lebesgue integral; so
+combining $(10)$, $(11)$ and monotonicity of the upper integral,
+\begin{equation*}
+  \int^*_{\mathbb{R}^n}\bigl|D_j^xp_s(x,y)\bigr|\,|f(y)-f(x)|\,dy
+    = \int^*_{\mathbb{R}^n}\bigl|D_j^xp_s(x,rx+w)\bigr|\,|f(rx+w)-f(x)|\,dw
+    \leq \int_{\mathbb{R}^n}H . \tag{13}
+\end{equation*}
+
+\emph{Step 6: the taming factor.}
+We claim
+\begin{equation*}
+  2\sigma + |d|(1+2\sigma) \leq 3\sigma(1+|x|) . \tag{14}
+\end{equation*}
+Indeed, substituting $(2)$ and then $(1)$ for the single factor $\sigma$ multiplying
+$|x|$ on the right,
+\[
+  3\sigma(1+|x|) - \bigl(2\sigma + (1-r)|x|(1+2\sigma)\bigr)
+    = \sigma + (1-r)\,|x|\,\bigl(3(1+r) - (1+2\sigma)\bigr) ,
+\]
+an identity between polynomials in $r$ and $|x|$ once $\sigma$ is replaced by
+$(1-r)(1+r)$ throughout: both sides reduce to
+$\sigma + (1-r)|x|(2+3r) - 2\sigma(1-r)|x|$, using
+$3(1-r)(1+r) - (1-r) = (1-r)(2+3r)$.  Now $1-r \geq 0$, $|x| \geq 0$ and
+$3(1+r) - (1+2\sigma) = 2+3r-2\sigma \geq 3r > 0$ because $\sigma \leq 1$; so the
+right-hand side is at least $\sigma > 0$, which gives $(14)$.
+
+Finally, combining $(13)$, $(12)$ and $(14)$, and using that
+$\sqrt2\,r\sigma^{-1}2^{n/2}L \geq 0$,
+\[
+  \int^*_{\mathbb{R}^n}\bigl|D_j^xp_s(x,y)\bigr|\,|f(y)-f(x)|\,dy
+    \leq \frac{\sqrt2\,r}{\sigma}\,2^{n/2}\,L\cdot3\sigma(1+|x|)
+    = 3\sqrt2\cdot2^{n/2}\,L\,e^{-s}\,(1+|x|) ,
+\]
+the last step cancelling $\sigma \neq 0$ and recalling $r = e^{-s}$.  This is the
+assertion with $C = 3\sqrt2\cdot2^{n/2}$, a constant depending only on $n$ and in
+particular independent of $f$, $L$ and $s$.
+\end{proof}

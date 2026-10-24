@@ -1,0 +1,184 @@
+\begin{lemma}[Weak-type $(1,1)$ bound for the local maximal function]
+Fix $n \in \mathbb{N}_0$ and let $\lambda$ denote Lebesgue measure on
+$\mathbb{R}^n$.  Let $w : \mathbb{R}^n \to \mathbb{R}$ be almost everywhere
+equal, for $\lambda$, to a Borel measurable function, and let
+$t \in (0,+\infty]$.  Then
+\[
+  \lambda\bigl(\{\,x \in \mathbb{R}^n : M_2w(x) > t\,\}\bigr)
+    \;\leq\; \frac{4^n}{t}\int_{\mathbb{R}^n}|w(y)|\,dy ,
+\]
+where $M_2$ is the local maximal function of \noderef{LocalMaximalFunction},
+the integral is the lower Lebesgue integral of the nonnegative function $|w|$,
+taken in $[0,+\infty]$, and both sides and the quotient are read in
+$[0,+\infty]$, with the conventions $a/(+\infty) = 0$ and, for $a > 0$,
+$a/0 = +\infty$.
+
+Two points about the shape of the statement.  First, no measurability is
+asserted for the level set $\{M_2w > t\}$, and none is needed: $\lambda$ is
+applied to it as an outer measure, which is defined on every subset of
+$\mathbb{R}^n$ and is monotone and countably subadditive there.  This is what
+lets consumers apply the bound to a level set of a maximal function without
+first proving that set measurable.  Second, no integrability hypothesis is
+placed on $w$: if $\int|w| = +\infty$ the right-hand side is $+\infty$ and the
+inequality is vacuous, while the content of the lemma is the case
+$\int|w| < \infty$.  The constant $4^n$ is explicit rather than existentially
+quantified; it is the $\tau^n$ produced by a Vitali covering argument at
+$\tau = 4$, and it is not claimed to be optimal.
+
+\emph{No Gaussian measure occurs here.}  Every measure and every integral in the
+statement is Lebesgue, with no Gaussian weight anywhere, exactly as in
+\noderef{LocalMaximalFunction}; the statement is a classical fact about
+Euclidean space recorded here because it is not available in the ambient
+library.
+\end{lemma}
+\begin{proof}
+Write $E = \{x \in \mathbb{R}^n : M_2w(x) > t\}$ and
+$I = \int_{\mathbb{R}^n}|w(y)|\,dy \in [0,+\infty]$, and recall from
+\noderef{LocalMaximalFunction} that
+\begin{equation*}
+  M_2w(x) = \sup_{\rho \in (0,2]} \frac{1}{\lambda(\overline B(x,\rho))}
+      \int_{\overline B(x,\rho)}|w|\,d\lambda . \tag{1}
+\end{equation*}
+
+\emph{Step 0: reduction to a measurable $w$.}
+By hypothesis there is a Borel measurable $\widetilde w : \mathbb{R}^n \to
+\mathbb{R}$ with $w = \widetilde w$ $\lambda$-almost everywhere.  Two
+nonnegative functions that agree $\lambda$-almost everywhere have the same lower
+Lebesgue integral against $\lambda$ and against every restriction of $\lambda$
+to a measurable set, since a $\lambda$-null set is null for each such
+restriction.  Hence $\int_{\overline B(x,\rho)}|w| = \int_{\overline
+B(x,\rho)}|\widetilde w|$ for every $x$ and $\rho$, so by $(1)$ $M_2w = M_2
+\widetilde w$ pointwise on $\mathbb{R}^n$, and also $I = \int|\widetilde w|$.
+Both sides of the asserted inequality are therefore unchanged if $w$ is replaced
+by $\widetilde w$, and we may and do assume from now on that $w$ is measurable.
+
+\emph{Step 1: closed balls have positive finite volume, and the dilation rule.}
+We claim that
+\begin{equation*}
+  0 < \lambda\bigl(\overline B(x,\rho)\bigr) < \infty
+  \qquad\text{for all } x \in \mathbb{R}^n,\ \rho > 0 . \tag{2}
+\end{equation*}
+Finiteness holds because $\overline B(x,\rho)$ is compact and a compact subset
+of $\mathbb{R}^n$ has finite Lebesgue measure (shared context).  Positivity
+holds because $\overline B(x,\rho)$ contains the open ball $B(x,\rho)$, which
+is nonempty (it contains $x$) and open, and Lebesgue measure assigns strictly
+positive mass to every nonempty open subset of $\mathbb{R}^n$.  Both arguments
+are valid for every $n \in \mathbb{N}_0$: when $n = 0$ the space $\mathbb{R}^0$
+is a single point and every ball of nonnegative radius is the whole space,
+which is nonempty, open and compact.
+
+We claim next the dilation rule
+\begin{equation*}
+  \lambda\bigl(\overline B(x,c\rho)\bigr) = c^n\,\lambda\bigl(\overline
+  B(x,\rho)\bigr), \qquad c > 0,\ \rho \geq 0,\ x \in \mathbb{R}^n . \tag{3}
+\end{equation*}
+The ball $\overline B(x,c\rho)$ is the image of $\overline B(x,\rho)$ under the
+affine map $y \mapsto x + c(y-x)$, which is the composition of the translation
+by $-x$, the dilation $y \mapsto cy$ and the translation by $x$; concretely,
+$\overline B(x,c\rho) = x + c\,\bigl(\overline B(x,\rho) - x\bigr)$, since
+$|y-x| \leq c\rho$ holds exactly when $y = x + c z$ with $|z| \leq \rho$,
+$c$ being positive.  Lebesgue measure is translation invariant (shared
+context), so the two translations leave the measure unchanged:
+$\lambda(\overline B(x,c\rho))
+   = \lambda\bigl(c\,(\overline B(x,\rho) - x)\bigr)$ and
+$\lambda(\overline B(x,\rho) - x) = \lambda(\overline B(x,\rho))$.  For the
+dilation itself, clause (1) of \noderef{LebesgueDilation} gives
+$\lambda(cA) = |c|^n\lambda(A)$ for every $c \in \mathbb{R}$ and every
+$A \subseteq \mathbb{R}^n$, measurable or not; at $c > 0$ one has $|c| = c$, so
+applying it with $A = \overline B(x,\rho) - x$ yields
+$\lambda(\overline B(x,c\rho)) = c^n\lambda(\overline B(x,\rho))$, which is
+$(3)$.  Because that clause is stated for arbitrary sets and for every
+$c \in \mathbb{R}$ and every $n \in \mathbb{N}_0$, no measurability side
+condition and no separate $n = 0$ case is needed; at $n = 0$ it reads
+$\lambda(\mathbb{R}^0) = c^0\lambda(\mathbb{R}^0)$, which is consistent with
+both balls being the whole space.
+
+\emph{Step 2: the case $t = +\infty$, and selection of radii.}
+If $t = +\infty$ then $M_2w(x) > t$ is impossible, because $M_2w(x) \in
+[0,+\infty]$; so $E = \emptyset$, $\lambda(E) = 0$, and the inequality holds.
+Assume from now on $0 < t < \infty$.
+
+Let $x \in E$.  By $(1)$ and the definition of a supremum there is
+$\rho_x \in (0,2]$ with
+\[
+  t < \frac{1}{\lambda(\overline B(x,\rho_x))}
+      \int_{\overline B(x,\rho_x)}|w|\,d\lambda .
+\]
+By $(2)$ the number $\lambda(\overline B(x,\rho_x))$ lies in $(0,\infty)$, so
+multiplying through by it is legitimate in $[0,+\infty]$ and gives
+\begin{equation*}
+  t\,\lambda\bigl(\overline B(x,\rho_x)\bigr)
+    < \int_{\overline B(x,\rho_x)}|w|\,d\lambda ;
+  \qquad\text{hence}\qquad
+  \lambda\bigl(\overline B(x,\rho_x)\bigr)
+    \leq \frac1t\int_{\overline B(x,\rho_x)}|w|\,d\lambda , \tag{4}
+\end{equation*}
+the second form following by dividing by $t \in (0,\infty)$.
+
+\emph{Step 3: the Vitali covering step.}
+Consider the family of closed balls $\overline B(x,\rho_x)$ indexed by
+$x \in E$.  All the radii satisfy $\rho_x \leq 2$, so the family has a uniform
+upper bound on its radii.  By the Vitali covering theorem for closed balls
+(classical; the version used is: given a family of closed balls
+$\overline B(x_a,r_a)$, $a \in T$, with $r_a \leq R$ for all $a$, and given
+$\tau > 3$, there is $U \subseteq T$ such that the balls
+$\overline B(x_a,r_a)$, $a \in U$, are pairwise disjoint and every
+$\overline B(x_a,r_a)$, $a \in T$, is contained in $\overline
+B(x_b,\tau r_b)$ for some $b \in U$), applied with $R = 2$ and $\tau = 4$,
+there is $U \subseteq E$ such that
+\begin{itemize}
+\item[(a)] the balls $\overline B(b,\rho_b)$, $b \in U$, are pairwise
+  disjoint; and
+\item[(b)] for every $x \in E$ there is $b \in U$ with
+  $\overline B(x,\rho_x) \subseteq \overline B(b,4\rho_b)$.
+\end{itemize}
+Since $x \in \overline B(x,\rho_x)$ for each $x \in E$, item (b) gives
+\begin{equation*}
+  E \subseteq \bigcup_{b \in U} \overline B(b,4\rho_b) . \tag{5}
+\end{equation*}
+
+\emph{Step 4: $U$ is countable.}
+The sets $\overline B(b,\rho_b)$, $b \in U$, are pairwise disjoint Borel sets
+(disjointness is item (a) of Step 3; they are Borel because closed balls are
+closed), each of strictly positive measure by $(2)$, and $\lambda$ is
+$\sigma$-finite (shared context).  A pairwise disjoint family of measurable
+sets of positive measure in a $\sigma$-finite measure space is countable.  In
+detail: write
+$\mathbb{R}^n = \bigcup_{k\in\mathbb{N}} B(0,k)$, each $B(0,k)$ having finite
+measure because it is contained in the compact set $\overline B(0,k)$ (shared
+context), and for $k,m \in \mathbb{N}$ let
+$U_{k,m} = \{b \in U : \lambda(\overline B(b,\rho_b)\cap B(0,k)) > 1/m\}$.  For
+fixed $k,m$ the set $U_{k,m}$ is finite, since any $N$ of its members contribute
+disjoint subsets of $B(0,k)$ of measure more than $1/m$ each, forcing
+$N/m \leq \lambda(B(0,k)) < \infty$ and hence
+$N \leq m\,\lambda(B(0,k))$.  Every $b \in U$ lies in some $U_{k,m}$: since
+$\lambda(\overline B(b,\rho_b)) > 0$ and
+$\overline B(b,\rho_b)\cap B(0,k) \uparrow \overline B(b,\rho_b)$ as
+$k \to \infty$, some $k$ has
+$\lambda(\overline B(b,\rho_b)\cap B(0,k)) > 0$, and then some $m$ has
+$1/m$ below that value.  So $U = \bigcup_{k,m}U_{k,m}$ is a countable union of
+finite sets, hence countable.
+
+\emph{Step 5: summation.}
+By $(5)$, monotonicity of $\lambda$ as an outer measure, countable
+subadditivity over the countable family $U$ (Step 4), and $(3)$ with $c = 4$,
+\[
+  \lambda(E)
+    \leq \lambda\Bigl(\bigcup_{b\in U}\overline B(b,4\rho_b)\Bigr)
+    \leq \sum_{b\in U}\lambda\bigl(\overline B(b,4\rho_b)\bigr)
+    = 4^n\sum_{b\in U}\lambda\bigl(\overline B(b,\rho_b)\bigr) ,
+\]
+all sums being sums of countable families of elements of $[0,+\infty]$.  By
+$(4)$, applied to each $b \in U \subseteq E$, and then by countable additivity
+of the integral of the nonnegative measurable function $|w|$ over the pairwise
+disjoint Borel sets $\overline B(b,\rho_b)$, $b \in U$, together with
+monotonicity of that integral in the domain,
+\[
+  4^n\sum_{b\in U}\lambda\bigl(\overline B(b,\rho_b)\bigr)
+    \leq \frac{4^n}{t}\sum_{b\in U}\int_{\overline B(b,\rho_b)}|w|\,d\lambda
+    = \frac{4^n}{t}\int_{\bigcup_{b\in U}\overline B(b,\rho_b)}|w|\,d\lambda
+    \leq \frac{4^n}{t}\,I .
+\]
+Combining the two displays gives $\lambda(E) \leq 4^nI/t$, which is the
+assertion.
+\end{proof}

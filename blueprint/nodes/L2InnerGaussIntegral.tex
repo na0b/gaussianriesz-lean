@@ -1,0 +1,54 @@
+\begin{lemma}[The $L^2(\gamma_n)$ inner product is the tested Gaussian integral]
+Fix $n \in \mathbb{N}_0$ and let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure} on $\mathbb{R}^n$.  Let $x, y \in L^2(\gamma_n)$ be two
+elements of the real Hilbert space of (equivalence classes modulo
+$\gamma_n$-null sets of) square-$\gamma_n$-integrable real-valued functions on
+$\mathbb{R}^n$, and write again $x, y : \mathbb{R}^n \to \mathbb{R}$ for the
+representative functions they determine.  Then the product $xy$ is
+$\gamma_n$-integrable and the inner product of $x$ and $y$ is the Gaussian
+integral of their pointwise product:
+\[
+  \langle x, y \rangle
+    = \int_{\mathbb{R}^n} x(z)\,y(z) \, d\gamma_n(z) .
+\]
+\end{lemma}
+\begin{proof}
+Both sides are unchanged if $x$ or $y$ is replaced by another representative of
+the same class: the inner product is a function of the classes alone, and two
+representatives of $x$ agree $\gamma_n$-almost everywhere, so the two integrands
+agree $\gamma_n$-almost everywhere and the integrals coincide.  The asserted
+identity is therefore well posed, and it suffices to prove it for the chosen
+representatives.
+
+The space $L^2(\gamma_n)$ of real-valued functions is the Lebesgue space of
+order $2$ over the measure $\gamma_n$, whose Hilbert-space structure is the
+standard one: by construction of the inner product on a Lebesgue space of order
+$2$ with values in a real inner-product space, which is shared background,
+\[
+  \langle x, y \rangle
+    = \int_{\mathbb{R}^n} \langle x(z), y(z) \rangle_{\mathbb{R}} \, d\gamma_n(z) ,
+\]
+the integral existing because the pointwise inner product is dominated in
+absolute value by $\tfrac12\bigl(x(z)^2 + y(z)^2\bigr)$, which is
+$\gamma_n$-integrable as $x, y \in L^2(\gamma_n)$.  (This domination also gives
+the asserted integrability of $xy$; alternatively it is the integral form of
+Cauchy--Schwarz, which is shared background.)
+
+It remains to identify the integrand pointwise.  The scalar field here is
+$\mathbb{R}$, regarded as a one-dimensional real inner-product space over
+itself, whose inner product is
+$\langle a, b \rangle_{\mathbb{R}} = \bar{a}\,b = a\,b$, complex conjugation
+being the identity on $\mathbb{R}$.  Hence for every $z \in \mathbb{R}^n$,
+\[
+  \langle x(z), y(z) \rangle_{\mathbb{R}} = x(z)\,y(z) ,
+\]
+using in addition the commutativity of multiplication in $\mathbb{R}$ to present
+the product in the stated order $x(z)\,y(z)$ rather than $y(z)\,x(z)$.
+Substituting this pointwise identity --- valid at every $z$, hence in particular
+$\gamma_n$-almost everywhere --- into the displayed formula for
+$\langle x, y \rangle$ gives
+\[
+  \langle x, y \rangle = \int_{\mathbb{R}^n} x(z)\,y(z)\, d\gamma_n(z),
+\]
+which is the assertion.
+\end{proof}

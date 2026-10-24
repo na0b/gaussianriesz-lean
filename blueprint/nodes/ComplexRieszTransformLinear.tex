@@ -1,0 +1,166 @@
+\begin{lemma}[The complex Riesz transform is $\mathbb{C}$-linear, and unimodular rotations do not change the pointwise size of its values]
+Let $R_\gamma^{\mathbb{C}} : L^2(\gamma_n;\mathbb{C}) \to L^2(\gamma_n;\mathbb{C}^n)$
+be the complex Riesz transform of \noderef{ComplexRieszTransform}.  Then:
+\begin{enumerate}
+\item (additivity) $R_\gamma^{\mathbb{C}}(v + w)
+  = R_\gamma^{\mathbb{C}} v + R_\gamma^{\mathbb{C}} w$ for all
+  $v, w \in L^2(\gamma_n;\mathbb{C})$;
+\item ($\mathbb{C}$-homogeneity) $R_\gamma^{\mathbb{C}}(c\,v)
+  = c\,R_\gamma^{\mathbb{C}} v$ for every $c \in \mathbb{C}$ and every
+  $v \in L^2(\gamma_n;\mathbb{C})$;
+\item (unimodular invariance of the pointwise size) if $c \in \mathbb{C}$ with
+  $|c| = 1$, then for every $v \in L^2(\gamma_n;\mathbb{C})$ and
+  $\gamma_n$-almost every $x \in \mathbb{R}^n$,
+\[
+  \bigl|R_\gamma^{\mathbb{C}}(c\,v)(x)\bigr|_{\mathbb{C}^n}
+    = \bigl|R_\gamma^{\mathbb{C}} v(x)\bigr|_{\mathbb{C}^n} .
+\]
+\end{enumerate}
+Clauses (1) and (2) say that $R_\gamma^{\mathbb{C}}$ is the complex-linear
+extension of $R_\gamma$ that the reference paper's complex-valued estimate is
+about, and clause (3) is the sentence ``Complex linearity implies
+$|R_\gamma(e^{i\theta}f)| = |R_\gamma f|$'' that licenses the paper's rotation
+average; it is stated for an arbitrary unimodular $c$, of which $c = e^{i\theta}$
+is the case the paper uses.  Clause (3) is recorded here, rather than left to
+the reader of clause (2), because it is an assertion about the values of
+representatives at almost every point, whereas clause (2) is an identity between
+equivalence classes.
+
+The scalars in clause (2) are the \emph{complex} ones.  This is strictly more
+than the real linearity of $R_\gamma$ in \noderef{RieszTransformLinear}: the
+real and imaginary parts of $c\,v$ are not $c$ times those of $v$ --- already for
+$c = i$ one has $\operatorname{Re}(iv) = -\operatorname{Im} v$ and
+$\operatorname{Im}(iv) = \operatorname{Re} v$, so the two parts are exchanged ---
+and clause (2) is therefore not a restatement of real homogeneity but a genuine
+consequence of it combined with the structure of
+\noderef{ComplexRieszTransform}.
+\end{lemma}
+\begin{proof}
+Throughout write $\iota : \mathbb{R}^n \to \mathbb{C}^n$ for the coordinatewise
+inclusion of \noderef{ComplexRieszTransform} and recall from that node the
+defining formula
+\begin{equation*}
+  R_\gamma^{\mathbb{C}} z
+    = \iota\bigl(R_\gamma(\operatorname{Re} z)\bigr)
+      + i\,\iota\bigl(R_\gamma(\operatorname{Im} z)\bigr),
+  \qquad z \in L^2(\gamma_n;\mathbb{C}) . \tag{D}
+\end{equation*}
+Three elementary facts are used repeatedly.  First, the maps
+$z \mapsto \operatorname{Re} z$ and $z \mapsto \operatorname{Im} z$ from
+$L^2(\gamma_n;\mathbb{C})$ to $L^2(\gamma_n;\mathbb{R})$ are additive and
+$\mathbb{R}$-homogeneous, because they are composition with the
+$\mathbb{R}$-linear maps $\operatorname{Re}, \operatorname{Im} : \mathbb{C} \to
+\mathbb{R}$ and the vector operations on a Lebesgue space are performed on
+representatives.  Second, the map $y \mapsto \iota(y)$ from
+$L^2(\gamma_n;\mathbb{R}^n)$ to $L^2(\gamma_n;\mathbb{C}^n)$ is additive and
+$\mathbb{R}$-homogeneous, for the same reason, $\iota$ being
+$\mathbb{R}$-linear.  Third, $L^2(\gamma_n;\mathbb{C}^n)$ is a complex vector
+space whose real scalar action is the restriction of its complex one, so real
+and complex scalars may be combined freely.
+
+\emph{Step 1: clause (1).}
+Let $v, w \in L^2(\gamma_n;\mathbb{C})$.  By the first fact,
+$\operatorname{Re}(v+w) = \operatorname{Re} v + \operatorname{Re} w$ and
+$\operatorname{Im}(v+w) = \operatorname{Im} v + \operatorname{Im} w$.  By the
+additivity clause of \noderef{RieszTransformLinear}, applied to the two real
+inputs in each line,
+\[
+  R_\gamma\bigl(\operatorname{Re}(v+w)\bigr)
+    = R_\gamma(\operatorname{Re} v) + R_\gamma(\operatorname{Re} w),
+  \qquad
+  R_\gamma\bigl(\operatorname{Im}(v+w)\bigr)
+    = R_\gamma(\operatorname{Im} v) + R_\gamma(\operatorname{Im} w).
+\]
+Substituting into (D) at $z = v + w$ and using the second and third facts to
+distribute $\iota$ and the factor $i$ over the sums,
+\[
+  R_\gamma^{\mathbb{C}}(v+w)
+    = \Bigl(\iota R_\gamma(\operatorname{Re} v)
+        + i\,\iota R_\gamma(\operatorname{Im} v)\Bigr)
+      + \Bigl(\iota R_\gamma(\operatorname{Re} w)
+        + i\,\iota R_\gamma(\operatorname{Im} w)\Bigr)
+    = R_\gamma^{\mathbb{C}} v + R_\gamma^{\mathbb{C}} w ,
+\]
+the regrouping of the four summands being commutativity and associativity of
+addition in $L^2(\gamma_n;\mathbb{C}^n)$, and the two bracketed expressions
+being $R_\gamma^{\mathbb{C}} v$ and $R_\gamma^{\mathbb{C}} w$ by (D).
+
+\emph{Step 2: the parts of $c\,v$.}
+Let $c \in \mathbb{C}$ and put $a = \operatorname{Re} c$, $b = \operatorname{Im} c$,
+so $c = a + ib$ with $a, b$ real.  For any $z \in \mathbb{C}$,
+\[
+  c\,z = (a + ib)(\operatorname{Re} z + i\operatorname{Im} z)
+    = \bigl(a\operatorname{Re} z - b\operatorname{Im} z\bigr)
+      + i\bigl(a\operatorname{Im} z + b\operatorname{Re} z\bigr),
+\]
+and the two bracketed quantities are real, so
+$\operatorname{Re}(cz) = a\operatorname{Re} z - b\operatorname{Im} z$ and
+$\operatorname{Im}(cz) = a\operatorname{Im} z + b\operatorname{Re} z$.  Applying
+this at $z = v(x)$ for almost every $x$, and using that the vector operations on
+$L^2$ are representativewise, we get the identities in
+$L^2(\gamma_n;\mathbb{R})$
+\[
+  \operatorname{Re}(c\,v) = a\,\operatorname{Re} v - b\,\operatorname{Im} v,
+  \qquad
+  \operatorname{Im}(c\,v) = a\,\operatorname{Im} v + b\,\operatorname{Re} v .
+\]
+
+\emph{Step 3: transforming the parts.}
+Write $u_1 = R_\gamma(\operatorname{Re} v)$ and
+$u_2 = R_\gamma(\operatorname{Im} v)$.  Both clauses of
+\noderef{RieszTransformLinear} are unconditional, so they may be applied to the
+combinations of Step 2 with the real scalars $a$, $-b$ and $b$ (additivity for
+the sum, homogeneity for each scalar multiple, a difference being the sum with
+the scalar multiple by $-1$):
+\[
+  R_\gamma\bigl(\operatorname{Re}(c\,v)\bigr) = a\,u_1 - b\,u_2,
+  \qquad
+  R_\gamma\bigl(\operatorname{Im}(c\,v)\bigr) = a\,u_2 + b\,u_1 .
+\]
+
+\emph{Step 4: clause (2).}
+Substituting Step 3 into (D) at $z = c\,v$ and distributing $\iota$ and the
+factor $i$ by the second and third facts,
+\[
+  R_\gamma^{\mathbb{C}}(c\,v)
+    = \iota\bigl(a\,u_1 - b\,u_2\bigr) + i\,\iota\bigl(a\,u_2 + b\,u_1\bigr)
+    = a\,\iota u_1 - b\,\iota u_2 + ia\,\iota u_2 + ib\,\iota u_1 .
+\]
+Collecting the two terms carrying $\iota u_1$ and the two carrying $\iota u_2$,
+\[
+  R_\gamma^{\mathbb{C}}(c\,v)
+    = (a + ib)\,\iota u_1 + (ia - b)\,\iota u_2 .
+\]
+Now $ia - b = i(a + ib)$, because $i(a+ib) = ia + i^2 b = ia - b$.  Hence
+\[
+  R_\gamma^{\mathbb{C}}(c\,v)
+    = c\,\iota u_1 + i\,c\,\iota u_2
+    = c\,\bigl(\iota u_1 + i\,\iota u_2\bigr)
+    = c\,R_\gamma^{\mathbb{C}} v ,
+\]
+the last equality by (D) at $z = v$.  This is clause (2).  Taking $c = i$, that
+is $a = 0$ and $b = 1$, the computation reads
+$R_\gamma^{\mathbb{C}}(iv) = -\iota u_2 + i\,\iota u_1 = i(\iota u_1 + i\iota u_2)
+= i R_\gamma^{\mathbb{C}} v$, and it is visibly the real homogeneity of
+$R_\gamma$ --- through $R_\gamma(-\operatorname{Im} v) = -u_2$ --- that makes it
+work.
+
+\emph{Step 5: clause (3).}
+Let $|c| = 1$ and $v \in L^2(\gamma_n;\mathbb{C})$.  By clause (2),
+$R_\gamma^{\mathbb{C}}(c\,v) = c\,R_\gamma^{\mathbb{C}} v$ as elements of
+$L^2(\gamma_n;\mathbb{C}^n)$, that is, as $\gamma_n$-a.e.\ equivalence classes.
+Scalar multiplication there is performed on representatives, so for
+$\gamma_n$-almost every $x$,
+\[
+  R_\gamma^{\mathbb{C}}(c\,v)(x) = c\,\bigl(R_\gamma^{\mathbb{C}} v(x)\bigr)
+  \qquad\text{in } \mathbb{C}^n .
+\]
+Taking norms at such an $x$ and using absolute homogeneity of the norm of
+$\mathbb{C}^n$ over the complex scalars,
+\[
+  \bigl|R_\gamma^{\mathbb{C}}(c\,v)(x)\bigr|_{\mathbb{C}^n}
+    = |c|\;\bigl|R_\gamma^{\mathbb{C}} v(x)\bigr|_{\mathbb{C}^n}
+    = \bigl|R_\gamma^{\mathbb{C}} v(x)\bigr|_{\mathbb{C}^n} ,
+\]
+since $|c| = 1$.  This is clause (3).
+\end{proof}

@@ -1,0 +1,274 @@
+\begin{lemma}[The $\varepsilon$-independent majorant for the truncated Mehler gradient slice]
+Fix $n \geq 1$, $j \in \{1,\ldots,n\}$ and $x \in \mathbb{R}^n$.  For $s > 0$
+write
+\[
+  r = e^{-s} \in (0,1), \qquad \sigma = 1 - e^{-2s} \in (0,1),
+  \qquad
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr) ,
+\]
+and let
+\[
+  D_j^x p_s(x,y) = \sqrt2\,r\,\frac{y_j - r x_j}{\sigma}\,p_s(x,y)
+\]
+be the energy-normalized $x$-derivative of the Lebesgue kernel, as evaluated in
+\noderef{MehlerKernelXDerivative} (the displayed right-hand side is the
+closed-form expression that node proves $2^{-1/2}\partial_{x_j}p_s(x,y)$ equals,
+and it is that explicit expression, not a derivative, that occurs here).  For
+$\varepsilon > 0$ put
+$\Omega_\varepsilon = \{\,y \in \mathbb{R}^n : |x-y| > \varepsilon\,\}$ and
+\[
+  I_{\varepsilon,s} = \int_{\Omega_\varepsilon} D_j^xp_s(x,y)\,dy .
+\]
+Then:
+\begin{enumerate}
+\item there is a constant $C \geq 0$ such that
+\[
+  \bigl|I_{\varepsilon,s}\bigr| \leq C\,|x|\,e^{-s}
+  \qquad\text{for every } \varepsilon > 0 \text{ and every } s > 0 ;
+\]
+\item for every $s > 0$,
+$\displaystyle\lim_{\varepsilon\downarrow0} I_{\varepsilon,s} = 0$, the limit
+being taken along $\varepsilon \to 0$ with $\varepsilon > 0$.
+\end{enumerate}
+
+The force of clause (1) is the quantifier order: $C$ is chosen after $n$, $j$
+and $x$ and so may depend on all three, but \emph{before} $\varepsilon$ and $s$,
+so it is independent of both.  That independence is the whole point --- the
+truncated integrals blow up like $\sigma^{-1/2}$ if the cancellation between the
+two translates is not used, and the bound above is uniform in the truncation
+parameter and decays in $s$.  This is the constant the reference paper's
+appendix header licenses: it may depend on $n$, it serves only to identify two
+realizations of one operator, and no claim of uniformity in $n$ is made or used
+here.  Clause (2) is the fixed-time limit, with no claim of uniformity in $s$.
+Nothing is asserted about the normalized Gaussian Riesz kernel, about any time
+integral, or about any exchange of the two integrations.
+\end{lemma}
+\begin{proof}
+Throughout, $\lambda$ denotes Lebesgue measure on $\mathbb{R}^n$, and $n \geq 1$,
+$j$ and $x$ are fixed.  We take
+\[
+  C = \sqrt2\,\bigl(5 + 24\cdot8^{n/2}\bigr) \geq 0 ,
+\]
+which depends on $n$ only.
+
+\emph{Step 0: a Gaussian toolkit.}
+First, for every real $u \geq 0$,
+\begin{equation*}
+  u\,e^{-u} \leq 1 . \tag{0}
+\end{equation*}
+Indeed $1+u \leq e^u$ (shared context, the exponential inequality), so
+$u \leq e^u$, and multiplying by $e^{-u} > 0$ gives $(0)$.
+
+Second, for every $\beta > 0$ the function $w \mapsto e^{-\beta|w|^2}$ is
+Lebesgue integrable on $\mathbb{R}^n$ with
+\begin{equation*}
+  \int_{\mathbb{R}^n} e^{-\beta|w|^2}\,dw = (\pi/\beta)^{n/2} . \tag{1}
+\end{equation*}
+Indeed $e^{-\beta|w|^2} = \prod_{i=1}^n e^{-\beta w_i^2}$, Lebesgue measure on
+$\mathbb{R}^n$ is the $n$-fold product of one-dimensional Lebesgue measure, and
+the integrand is nonnegative and continuous, hence product-measurable; so
+Tonelli (shared context) and the scalar Gaussian integral (shared context,
+$\int_{\mathbb{R}}e^{-\beta v^2}dv = \sqrt{\pi/\beta}$) give $(1)$, the value
+being finite.
+
+Third, for every $\beta > 0$ and every $w$,
+\begin{equation*}
+  |w|^2e^{-\beta|w|^2} \leq \frac2\beta\,e^{-(\beta/2)|w|^2} , \tag{2}
+\end{equation*}
+whence $w \mapsto |w|^2e^{-\beta|w|^2}$ is integrable, being continuous and
+dominated by an integrable function (shared context), and
+\begin{equation*}
+  \int_{\mathbb{R}^n}|w|^2e^{-\beta|w|^2}\,dw
+    \leq \frac2\beta\,(2\pi/\beta)^{n/2} . \tag{3}
+\end{equation*}
+For $(2)$: put $u = (\beta/2)|w|^2 \geq 0$; then
+$e^{-\beta|w|^2} = e^{-u}e^{-(\beta/2)|w|^2}$, and $(0)$ gives
+$u\,e^{-u} \leq 1$, i.e.\ $|w|^2e^{-u} \leq 2/\beta$ after multiplying by
+$2/\beta > 0$; multiplying by $e^{-(\beta/2)|w|^2} > 0$ gives $(2)$.  Then $(3)$
+follows by integrating $(2)$ and using $(1)$ at $\beta/2$.
+
+Fourth, for all reals $a$, $b$, $m$ with $m \leq a$ and $m \leq b$,
+\begin{equation*}
+  \bigl|e^{-a}-e^{-b}\bigr| \leq |a-b|\,e^{-m} . \tag{4}
+\end{equation*}
+By symmetry assume $a \leq b$.  Then $e^{-b} \leq e^{-a}$, so the left side is
+$e^{-a}-e^{-b} = e^{-a}\bigl(1-e^{-(b-a)}\bigr)$; and $1-e^{-t} \leq t$ for
+$t \geq 0$ by the exponential inequality again, with $t = b-a \geq 0$; so the
+left side is at most $e^{-a}(b-a) \leq e^{-m}|a-b|$, using $e^{-a} \leq e^{-m}$.
+
+Fifth, $|w_j| \leq |w|$ for every $w$: writing
+$|w| = (\sum_i|w_i|^2)^{1/2}$, a sum of nonnegative terms is at least its $j$th
+term, so $|w_j|^2 \leq |w|^2$, and the square root is monotone.
+
+\emph{Step 1: the integrand after translation.}
+Fix $s > 0$ and put $\beta = 1/\sigma > 0$,
+\[
+  c = \frac{\sqrt2\,r\,\pi^{-n/2}\sigma^{-n/2}}{\sigma} \geq 0,
+  \qquad d = (1-r)x,
+  \qquad W(w) = c\,w_j\,e^{-\beta|w|^2} .
+\]
+For every $w$ we have $(rx+w)_j - rx_j = w_j$ and $rx - (rx+w) = -w$, so
+$|rx-(rx+w)| = |w|$ and hence
+\begin{equation*}
+  D_j^xp_s(x,\,rx+w) = W(w) . \tag{5}
+\end{equation*}
+Note $|d| = (1-r)|x|$ since $1-r > 0$, and $\sigma = 1-r^2 = (1-r)(1+r)$.
+
+\emph{Step 2: the pointwise majorant for the translation difference.}
+We claim that for every $z$,
+\begin{equation*}
+  \bigl|W(z+d)-W(z)\bigr|
+    \leq c\,|d|\Bigl(3e^{-\beta|z+d|^2} + 2e^{-\beta|z|^2}
+        + 3\beta\,|z|^2e^{-(\beta/4)|z|^2}\Bigr) =: M(z) . \tag{6}
+\end{equation*}
+Write $E(w) = e^{-\beta|w|^2}$.  Since $(z+d)_j = z_j + d_j$,
+\[
+  W(z+d)-W(z) = c\,d_j\,E(z+d) + c\,z_j\bigl(E(z+d)-E(z)\bigr) ,
+\]
+so by the triangle inequality, $|d_j| \leq |d|$ and $E > 0$,
+\begin{equation*}
+  \bigl|W(z+d)-W(z)\bigr|
+    \leq c\,|d|\,E(z+d) + c\,|z_j|\,\bigl|E(z+d)-E(z)\bigr| . \tag{7}
+\end{equation*}
+If $|z| \leq 2|d|$, then $|z_j| \leq |z| \leq 2|d|$ and
+$|E(z+d)-E(z)| \leq E(z+d)+E(z)$, so the second term of $(7)$ is at most
+$2c|d|(E(z+d)+E(z))$ and the right side of $(7)$ is at most
+$c|d|(3E(z+d)+2E(z))$, which is at most $M(z)$ because the remaining term of
+$M$ is nonnegative.
+
+If $|z| > 2|d|$, put $a = \beta|z+d|^2$, $b = \beta|z|^2$ and
+$m = (\beta/4)|z|^2$.  Then $m \leq b$; and $|d| \leq |z|/2$ gives
+$|z+d| \geq |z|-|d| \geq |z|/2$, so $|z+d|^2 \geq |z|^2/4$ and $m \leq a$.
+Moreover $|z+d|^2 - |z|^2 = 2\langle z,d\rangle + |d|^2$, so by Cauchy--Schwarz
+(shared context) and $|d|^2 \leq (|z|/2)|d|$,
+\[
+  |a-b| = \beta\bigl|2\langle z,d\rangle+|d|^2\bigr|
+    \leq \beta\bigl(2|z||d| + \tfrac12|z||d|\bigr) \leq 3\beta|z||d| .
+\]
+By $(4)$, $|E(z+d)-E(z)| \leq 3\beta|z||d|\,e^{-(\beta/4)|z|^2}$, so with
+$|z_j| \leq |z|$ the second term of $(7)$ is at most
+$3\beta c|d|\,|z|^2e^{-(\beta/4)|z|^2}$, and the right side of $(7)$ is at most
+$c|d|\bigl(E(z+d) + 3\beta|z|^2e^{-(\beta/4)|z|^2}\bigr) \leq M(z)$.  This
+proves $(6)$ in both cases.
+
+\emph{Step 3: integrating the majorant.}
+By $(1)$, translation invariance of $\lambda$ (shared context) and $(3)$ at
+$\beta/4$, each of the three summands of $M$ is integrable and
+\begin{align*}
+  \int_{\mathbb{R}^n} M
+    &= c|d|\Bigl(3(\pi/\beta)^{n/2} + 2(\pi/\beta)^{n/2}
+        + 3\beta\int|z|^2e^{-(\beta/4)|z|^2}dz\Bigr)\\
+    &\leq c|d|\Bigl(5(\pi/\beta)^{n/2}
+        + 3\beta\cdot\frac8\beta\,(8\pi/\beta)^{n/2}\Bigr)
+     = c|d|\,(\pi/\beta)^{n/2}\bigl(5+24\cdot8^{n/2}\bigr) ,
+\end{align*}
+using $(8\pi/\beta)^{n/2} = 8^{n/2}(\pi/\beta)^{n/2}$.  The function
+$z \mapsto W(z+d)-W(z)$ is integrable: $W$ is integrable because, by $(5)$ and
+translation invariance, it is the composition of
+$y \mapsto D_j^xp_s(x,y)$ with a translation, and that function is integrable by
+clause (1) of \noderef{MehlerKernelSliceVanishing}; and $z \mapsto W(z+d)$ is
+then integrable by translation invariance again.  Hence, by $(6)$ and
+monotonicity of the integral,
+\begin{equation*}
+  \int_{\mathbb{R}^n}\bigl|W(z+d)-W(z)\bigr|\,dz
+    \leq c|d|\,(\pi/\beta)^{n/2}\bigl(5+24\cdot8^{n/2}\bigr) . \tag{8}
+\end{equation*}
+Steps 2 and 3 together are \noderef{GaussFirstMomentTranslationL1Bound}, which states
+exactly the bound $(8)$ for every $b > 0$, every $c \geq 0$ and every $d$, and is what
+the formalization invokes here; the Gaussian toolkit of Step 0 that it needs is in turn
+supplied to it by \noderef{GaussEuclideanMomentBounds}.
+
+\emph{Step 4: two translations and the oddness.}
+Fix $\varepsilon > 0$.  The set $\Omega_\varepsilon$ is open, hence measurable,
+$y \mapsto |x-y|$ being continuous.  Translating by $rx$: the preimage of
+$\Omega_\varepsilon$ under $w \mapsto rx+w$ is
+$\{w : |d-w| > \varepsilon\}$, because $x-(rx+w) = d-w$; so by translation
+invariance of $\lambda$ and $(5)$,
+\[
+  I_{\varepsilon,s} = \int_{\{|d-w|>\varepsilon\}} W(w)\,dw .
+\]
+Translating by $d$: the preimage of $\{|d-w|>\varepsilon\}$ under
+$z \mapsto z+d$ is $\{z : |z| > \varepsilon\}$, because $d-(z+d) = -z$ and
+$|-z| = |z|$; so
+\[
+  I_{\varepsilon,s} = \int_{\{|z|>\varepsilon\}} W(z+d)\,dz .
+\]
+Next, $W$ is odd: $(-z)_j = -z_j$ and $|-z| = |z|$ give $W(-z) = -W(z)$.  The
+set $\{|z|>\varepsilon\}$ is invariant under $z \mapsto -z$, again because
+$|-z| = |z|$, and Lebesgue measure is invariant under that reflection (shared
+context); so, $W$ being integrable,
+\[
+  \int_{\{|z|>\varepsilon\}} W
+    = \int_{\{|z|>\varepsilon\}} W(-z)\,dz
+    = -\int_{\{|z|>\varepsilon\}} W ,
+\]
+whence $\int_{\{|z|>\varepsilon\}}W = 0$.  Subtracting,
+\[
+  I_{\varepsilon,s}
+    = \int_{\{|z|>\varepsilon\}}\bigl(W(z+d)-W(z)\bigr)\,dz ,
+\]
+both terms being integrable, and therefore, by $(8)$ and the fact that the
+integral of a nonnegative integrable function over a measurable set is at most
+its integral over $\mathbb{R}^n$,
+\begin{equation*}
+  \bigl|I_{\varepsilon,s}\bigr|
+    \leq \int_{\mathbb{R}^n}\bigl|W(z+d)-W(z)\bigr|\,dz
+    \leq c|d|\,(\pi/\beta)^{n/2}\bigl(5+24\cdot8^{n/2}\bigr) . \tag{9}
+\end{equation*}
+
+\emph{Step 5: the constant, and clause (1).}
+Since $\beta = 1/\sigma$ we have $\pi/\beta = \pi\sigma$ and therefore
+$(\pi/\beta)^{n/2} = \pi^{n/2}\sigma^{n/2}$, so
+\[
+  c\,(\pi/\beta)^{n/2}
+    = \frac{\sqrt2\,r}{\sigma}\,
+      \bigl(\pi^{-n/2}\pi^{n/2}\bigr)\bigl(\sigma^{-n/2}\sigma^{n/2}\bigr)
+    = \frac{\sqrt2\,r}{\sigma} .
+\]
+Using $|d| = (1-r)|x|$ and $\sigma = (1-r)(1+r)$ with $1-r > 0$,
+\[
+  \frac{\sqrt2\,r}{\sigma}\,|d|
+    = \sqrt2\,|x|\,r\cdot\frac{1}{1+r}
+    \leq \sqrt2\,|x|\,r ,
+\]
+because $0 \leq 1/(1+r) \leq 1$ and $\sqrt2|x|r \geq 0$.  Substituting into
+$(9)$,
+\[
+  \bigl|I_{\varepsilon,s}\bigr|
+    \leq \sqrt2\,\bigl(5+24\cdot8^{n/2}\bigr)\,|x|\,e^{-s} = C\,|x|\,e^{-s} ,
+\]
+for every $\varepsilon > 0$ and every $s > 0$, which is clause (1).
+
+\emph{Step 6: clause (2).}
+Fix $s > 0$.  By clause (1) of \noderef{MehlerKernelSliceVanishing} the function
+$y \mapsto D_j^xp_s(x,y)$ is integrable on $\mathbb{R}^n$ with integral $0$, so
+splitting the integral over $\Omega_\varepsilon$ and its complement,
+\[
+  I_{\varepsilon,s}
+    = -\int_{\Omega_\varepsilon^{\,c}} D_j^xp_s(x,y)\,dy
+    = -\int_{\mathbb{R}^n}
+        \mathbf 1_{\Omega_\varepsilon^{\,c}}(y)\,D_j^xp_s(x,y)\,dy ,
+\]
+where $\Omega_\varepsilon^{\,c} = \{y : |x-y| \leq \varepsilon\}$.  For each
+$\varepsilon > 0$ the integrand is measurable, being the product of a
+measurable indicator with an integrable function, and it is dominated in
+absolute value by $|D_j^xp_s(x,\cdot)|$, which is integrable and independent of
+$\varepsilon$.  Moreover, for every $y \neq x$ we have $|x-y| > 0$, and
+$\{\varepsilon : \varepsilon < |x-y|\}$ is a neighbourhood of $0$, so for all
+$\varepsilon$ in a neighbourhood of $0$ within $(0,\infty)$ we have
+$\varepsilon < |x-y|$, i.e.\ $y \notin \Omega_\varepsilon^{\,c}$ and the
+integrand vanishes at $y$; hence the integrand tends to $0$ as
+$\varepsilon \downarrow 0$ for every such $y$.  Since $n \geq 1$, the singleton
+$\{x\}$ is $\lambda$-null, so this holds $\lambda$-almost everywhere.  Dominated
+convergence along the filter of neighbourhoods of $0$ within $(0,\infty)$
+(shared context; that filter is countably generated, $\mathbb{R}$ being
+first countable) therefore gives
+\[
+  \int_{\mathbb{R}^n}
+      \mathbf 1_{\Omega_\varepsilon^{\,c}}(y)\,D_j^xp_s(x,y)\,dy
+    \longrightarrow \int_{\mathbb{R}^n} 0\,dy = 0
+  \qquad (\varepsilon\downarrow0) ,
+\]
+and hence $I_{\varepsilon,s} \to 0$, which is clause (2).
+\end{proof}

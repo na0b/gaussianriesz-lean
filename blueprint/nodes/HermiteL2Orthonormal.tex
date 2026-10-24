@@ -1,0 +1,37 @@
+\begin{lemma}[The $n$-dimensional Hermite family is orthonormal]
+The family $\{h_\alpha : \alpha \in \mathbb{N}_0^n\}$ of \noderef{HermiteL2} is
+orthonormal in $L^2(\gamma_n)$:
+\[
+  \int_{\mathbb{R}^n} h_\alpha h_\beta \, d\gamma_n
+    = \begin{cases} 1, & \alpha = \beta,\\ 0, & \alpha \neq \beta,\end{cases}
+  \qquad \alpha, \beta \in \mathbb{N}_0^n .
+\]
+\end{lemma}
+\begin{proof}
+By \noderef{GaussMeasure} the density of $\gamma_n$ factorizes as
+$\pi^{-n/2}e^{-|x|^2} = \prod_{j=1}^n \pi^{-1/2}e^{-x_j^2}$, and Lebesgue measure
+on $\mathbb{R}^n$ is the $n$-fold product of Lebesgue measure on $\mathbb{R}$;
+hence $\gamma_n$ is the $n$-fold product of the one-dimensional measure
+$d\gamma_1(s) = \pi^{-1/2}e^{-s^2}\,ds$.
+
+By \noderef{HermiteFun},
+\[
+  h_\alpha(x)\, h_\beta(x)
+    = \prod_{j=1}^n \bigl(h_{\alpha_j}(x_j)\, h_{\beta_j}(x_j)\bigr),
+\]
+a product of functions of the separate coordinates.  The product is
+$\gamma_n$-integrable: by \noderef{HermiteFunMemLp} both $h_\alpha$ and $h_\beta$
+lie in $L^2(\gamma_n)$, so their product is in $L^1(\gamma_n)$ by
+Cauchy--Schwarz.  Fubini's theorem for the product measure therefore applies and
+gives
+\[
+  \int_{\mathbb{R}^n} h_\alpha h_\beta \, d\gamma_n
+    = \prod_{j=1}^n \int_{\mathbb{R}} \pi^{-1/2}e^{-s^2}\,
+        h_{\alpha_j}(s)\, h_{\beta_j}(s)\, ds .
+\]
+By \noderef{Hermite1Orthonormal} the $j$th factor equals $1$ if
+$\alpha_j = \beta_j$ and $0$ otherwise.  Consequently the product equals $1$
+exactly when $\alpha_j = \beta_j$ for every $j \in \{1,\ldots,n\}$, i.e.\ when
+$\alpha = \beta$, and it contains a zero factor, hence vanishes, as soon as
+$\alpha_j \neq \beta_j$ for some $j$, i.e.\ when $\alpha \neq \beta$.
+\end{proof}

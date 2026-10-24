@@ -1,0 +1,73 @@
+\begin{lemma}[Integrability of the subordination integrand on $(0,\infty)$]
+Let $\lambda \in \mathbb{R}$ with $\lambda \geq 0$.  Then the function
+\[
+  s \longmapsto \frac{1 - e^{-s\lambda}}{s^{3/2}}
+\]
+is integrable on the half-line $(0,\infty)$ with respect to Lebesgue measure.
+\end{lemma}
+\begin{proof}
+Write $f(s) = (1 - e^{-s\lambda})\,s^{-3/2}$ for $s > 0$.  Since
+$(0,\infty) = (0,1] \cup (1,\infty)$ is a disjoint union of measurable sets, $f$
+is integrable on $(0,\infty)$ if and only if it is integrable on each of the two
+pieces, so it suffices to treat the two regimes separately.  They genuinely need
+different arguments: near the origin the numerator is small and must be used,
+while at infinity the numerator is merely bounded and it is the decay of
+$s^{-3/2}$ that is used.
+
+Two elementary facts about the exponential are used in both regimes.  First, from
+the convexity inequality $1 + x \leq e^{x}$ applied at $x = -u$,
+\[
+  1 - e^{-u} \leq u \qquad \text{for every } u \in \mathbb{R}. \tag{E1}
+\]
+Second, if $u \geq 0$ then $-u \leq 0$, so $e^{-u} \leq 1$ and hence
+\[
+  0 \leq 1 - e^{-u} \qquad \text{for every } u \geq 0. \tag{E2}
+\]
+Note also that $f$ is measurable on $(0,\infty)$, being built from the continuous
+functions $s \mapsto e^{-s\lambda}$ and $s \mapsto s^{-3/2}$ by arithmetic
+operations, the latter continuous and positive on $(0,\infty)$.  In each regime
+we therefore only need a dominating integrable majorant.
+
+Regime 1: the interval $(0,1]$.  Let $0 < s \leq 1$.  Then $s\lambda \geq 0$
+because $s > 0$ and $\lambda \geq 0$, so (E2) at $u = s\lambda$ gives
+$0 \leq 1 - e^{-s\lambda}$, and therefore $f(s) \geq 0$ and $|f(s)| = f(s)$.  By
+(E1) at $u = s\lambda$ we have $1 - e^{-s\lambda} \leq s\lambda$, and dividing by
+the positive number $s^{3/2}$ preserves the inequality:
+\[
+  |f(s)| = \frac{1 - e^{-s\lambda}}{s^{3/2}}
+    \leq \frac{s\lambda}{s^{3/2}}
+    = \lambda\, s^{1 - 3/2}
+    = \lambda\, s^{-1/2} ,
+\]
+where $s/s^{3/2} = s^{-1/2}$ because $s^{-1/2}\,s^{3/2} = s^{1}$ for $s > 0$.
+The function $s \mapsto s^{p}$ is integrable on $(0,1]$ whenever $p > -1$, and
+$p = -\tfrac12 > -1$, so $s \mapsto \lambda\,s^{-1/2}$ is integrable on $(0,1]$.
+A measurable function dominated in absolute value by an integrable function is
+integrable, so $f$ is integrable on $(0,1]$.
+
+Regime 2: the interval $(1,\infty)$.  Let $s > 1$.  Again $s\lambda \geq 0$, so
+(E2) gives $0 \leq 1 - e^{-s\lambda}$ and $|f(s)| = f(s)$.  This time we use only
+that the numerator is bounded above by $1$: since $e^{-s\lambda} > 0$, we have
+$1 - e^{-s\lambda} \leq 1$, and hence
+\[
+  |f(s)| = \frac{1 - e^{-s\lambda}}{s^{3/2}} \leq \frac{1}{s^{3/2}}
+    = s^{-3/2} .
+\]
+The function $s \mapsto s^{a}$ is integrable on $(1,\infty)$ whenever $a < -1$,
+and $a = -\tfrac32 < -1$, so $s \mapsto s^{-3/2}$ is integrable on
+$(1,\infty)$.  By the same domination principle, $f$ is integrable on
+$(1,\infty)$.
+
+Conclusion.  As $f$ is integrable on $(0,1]$ and on $(1,\infty)$, it is
+integrable on their union $(0,\infty)$, which is the assertion.
+
+Two remarks.  The case $\lambda = 0$ is not exceptional: both (E1) and (E2) hold
+at $\lambda = 0$, where the numerator $1 - e^{0} = 0$ and the integrand vanishes
+identically, so the two bounds above degenerate harmlessly to $0 \leq 0$ and
+$0 \le s^{-3/2}$.  Also, the exponent $3/2$ is what makes both ends work at once:
+for a general exponent $a > 0$ in place of $3/2$, the bound near the origin is
+$\lambda s^{1-a}$, which is integrable on $(0,1]$ exactly when $1 - a > -1$, that
+is $a < 2$, while the bound at infinity is $s^{-a}$, which is integrable on
+$(1,\infty)$ exactly when $a > 1$.  Both regimes therefore require
+$1 < a < 2$, and $a = 3/2$ is the midpoint of that range.
+\end{proof}

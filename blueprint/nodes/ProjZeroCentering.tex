@@ -1,0 +1,54 @@
+\begin{lemma}[The spectral projection removes exactly the Gaussian mean]
+Write $\mathfrak{m}(v) = \int v \, d\gamma_n$ for $v \in L^2(\gamma_n)$.  Then for
+every $v \in L^2(\gamma_n)$,
+\[
+  \Pi_0 v = v - \mathfrak{m}(v)\, h_0
+  \qquad\text{in } L^2(\gamma_n),
+\]
+where $\Pi_0 = L^0$ is the operator of \noderef{FracPow} and $h_0 \in L^2(\gamma_n)$
+is the Hermite element of index $0$ from \noderef{HermiteL2}.  Since $h_0$ is the
+constant function $1$ by \noderef{Hermite1Zero}, this is the identity
+$\Pi_0 v = v - \mathfrak{m}(v)\mathbf{1}$ of the reference paper.
+\end{lemma}
+\begin{proof}
+Both sides are elements of $L^2(\gamma_n)$.  By \noderef{HermiteBasis} the Hermite
+coefficient map $w \mapsto (w_\beta)_\beta$, $w_\beta = \langle w, h_\beta\rangle$,
+is an injective linear isometry onto $\ell^2(\mathbb{N}_0^n)$; so it suffices to
+check that the two sides have the same coefficient at every
+$\beta \in \mathbb{N}_0^n$.
+
+\emph{Step 1: the zeroth coefficient of $v$ is its mean.}
+By \noderef{Hermite1Zero} the function $h_0$ is the constant $1$, and
+$\gamma_n$ is a probability measure by \noderef{GaussIsProb}.  Hence
+\[
+  v_0 = \langle v, h_0\rangle = \int v \cdot 1 \, d\gamma_n = \mathfrak{m}(v),
+\]
+the integral being finite because $v \in L^2(\gamma_n) \subseteq L^1(\gamma_n)$ by
+\noderef{L2IntoL1}.
+
+\emph{Step 2: the coefficients of the right-hand side.}
+By \noderef{HermiteL2Orthonormal}, $\langle h_0, h_\beta\rangle = 1$ for
+$\beta = 0$ and $= 0$ for $\beta \neq 0$.  By linearity of the coefficient map,
+the element $v - \mathfrak{m}(v) h_0$ therefore has coefficients
+\[
+  \bigl(v - \mathfrak{m}(v)h_0\bigr)_0 = v_0 - \mathfrak{m}(v) = 0,
+  \qquad
+  \bigl(v - \mathfrak{m}(v)h_0\bigr)_\beta = v_\beta \quad (\beta \neq 0),
+\]
+using Step 1 for the first equality.
+
+\emph{Step 3: the coefficients of the left-hand side.}
+By \noderef{FracPowCoeff} with $s = 0$, the multiplied coefficient family is
+\[
+  m_0\bigl((v_\beta)_\beta\bigr)_\beta
+    = \begin{cases} 0, & \beta = 0,\\ |\beta|^0 v_\beta = v_\beta, & \beta \neq 0.\end{cases}
+\]
+This family is square summable, being dominated termwise by $(|v_\beta|^2)_\beta$,
+which is summable with sum $\|v\|_2^2$ by Parseval (\noderef{HermiteBasis}).  By
+\noderef{FracPowDomain} with $s = 0$ this says $v \in \operatorname{Dom}(L^0)$, so
+the defining formula of \noderef{FracPow} applies and gives $\Pi_0 v$ precisely
+those coefficients: $0$ at $\beta = 0$ and $v_\beta$ at $\beta \neq 0$.
+
+Steps 2 and 3 produce the same coefficient family, so the two elements of
+$L^2(\gamma_n)$ coincide.
+\end{proof}

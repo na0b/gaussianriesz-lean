@@ -1,0 +1,56 @@
+\begin{lemma}[Coordinates of a vector-valued $L^2(\gamma_n)$ element are scalar $L^2(\gamma_n)$]
+Fix $n \in \mathbb{N}_0$ and let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure} on $\mathbb{R}^n$.  Let
+$W \in L^2(\gamma_n; \mathbb{R}^n)$ be a square-$\gamma_n$-integrable
+$\mathbb{R}^n$-valued function on $\mathbb{R}^n$, and let $i$ be a coordinate
+index, $1 \leq i \leq n$.  Then the scalar function
+\[
+  x \longmapsto \bigl(W(x)\bigr)_i
+\]
+is square $\gamma_n$-integrable, that is, it belongs to $L^2(\gamma_n)$.
+\end{lemma}
+\begin{proof}
+Write $W_i(x) = (W(x))_i$ for the $i$-th coordinate function.  Membership in
+$L^2(\gamma_n)$ is the conjunction of two assertions, almost-everywhere strong
+measurability and finiteness of the $L^2$ seminorm, and we verify them in turn.
+
+Measurability.  The $i$-th coordinate projection
+$\pi_i : \mathbb{R}^n \to \mathbb{R}$, $\pi_i(y) = y_i$, is linear and
+continuous, being a bounded linear functional on a finite-dimensional normed
+space.  As $W$ is an element of $L^2(\gamma_n;\mathbb{R}^n)$ it is
+$\gamma_n$-almost-everywhere strongly measurable, and the composition of a
+continuous map with an almost-everywhere strongly measurable map is again
+almost-everywhere strongly measurable.  Since $W_i = \pi_i \circ W$, the
+function $W_i$ is $\gamma_n$-almost-everywhere strongly measurable.
+
+Pointwise domination.  For every $y \in \mathbb{R}^n$ and every coordinate index
+$i$,
+\[
+  |y_i| \leq |y| ,
+\]
+where $|y| = \bigl(\sum_{m=1}^n |y_m|^2\bigr)^{1/2}$ is the Euclidean norm.  This
+is the coordinate-versus-norm inequality for the $\ell^2$ norm, and it is where
+the exponent enters: it holds because a single summand of a sum of nonnegative
+terms is at most the whole sum, so $|y_i|^2 \leq \sum_{m=1}^n |y_m|^2$, and the
+square root is monotone on $[0,\infty)$, whence
+$|y_i| = (|y_i|^2)^{1/2} \leq \bigl(\sum_m |y_m|^2\bigr)^{1/2} = |y|$.  (The
+same argument works verbatim for the $\ell^p$ norm with $1 \le p < \infty$; no
+feature special to $p = 2$ is used.)  Applying this at $y = W(x)$ gives
+\[
+  |W_i(x)| \leq |W(x)| \qquad \text{for every } x \in \mathbb{R}^n ,
+\]
+and in particular for $\gamma_n$-almost every $x$.
+
+Conclusion.  The function $x \mapsto |W(x)|$ lies in $L^2(\gamma_n)$, since by
+hypothesis $W \in L^2(\gamma_n;\mathbb{R}^n)$, which is precisely the statement
+that its pointwise norm is square $\gamma_n$-integrable.  A function that is
+almost-everywhere strongly measurable and is dominated almost everywhere in
+absolute value by a function of $L^2(\gamma_n)$ is itself in $L^2(\gamma_n)$:
+monotonicity of the integral gives
+\[
+  \int_{\mathbb{R}^n} |W_i|^2 \, d\gamma_n
+    \leq \int_{\mathbb{R}^n} |W|^2 \, d\gamma_n < \infty .
+\]
+Combining this with the measurability established above, $W_i \in L^2(\gamma_n)$,
+as asserted.
+\end{proof}

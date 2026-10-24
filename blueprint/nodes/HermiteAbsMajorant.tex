@@ -1,0 +1,122 @@
+\begin{lemma}[Absolute-value majorant for the Hermite generating series]
+Let $\mathrm{He}_k$ be the probabilists' Hermite polynomials of
+\noderef{HermiteDerivative}.  For all real $w$ and $z$ the series
+$\sum_{k\geq0} |\mathrm{He}_k(w)|\,|z|^k/k!$ converges, and
+\[
+  \sum_{k=0}^\infty \bigl|\mathrm{He}_k(w)\bigr|\,\frac{|z|^k}{k!}
+    \;\leq\; \exp\bigl(|w|\,|z| + z^2/2\bigr) .
+\]
+Note the sign of the $z^2$ term: it is $+z^2/2$, not $-z^2/2$.
+\end{lemma}
+\begin{proof}
+\emph{Step 0: the route taken, and why.}
+The asserted bound cannot be obtained by inserting absolute values into a signed
+generating identity for $\mathrm{He}_k$: from any identity of the form
+$\sum_k \mathrm{He}_k(w) z^k/k! = \Phi(w,z)$ the triangle inequality yields
+$|\Phi(w,z)| \leq \sum_k |\mathrm{He}_k(w)|\,|z|^k/k!$, which is a lower bound for
+the quantity to be estimated rather than the upper bound asserted.  No such
+identity is used anywhere below.  Instead the proof builds an all-plus
+comparison family $\widehat{\mathrm{He}}_k$ from the defining recurrence, bounds
+$|\mathrm{He}_k|$ by it, and computes its generating function directly.
+
+\emph{Step 1: the three-term recurrence for $\mathrm{He}_k$.}
+By the defining recurrence of the probabilists' Hermite polynomials, which is
+shared context, $\mathrm{He}_0 = 1$ and
+$\mathrm{He}_{k+1} = X\,\mathrm{He}_k - \mathrm{He}_k'$ for every $k \geq 0$.  Since $\mathrm{He}_0$ is constant, $\mathrm{He}_0' = 0$ and
+hence $\mathrm{He}_1 = X$.  For $k \geq 1$ the conclusion of
+\noderef{HermiteDerivative}, applied at index $k-1$, gives
+$\mathrm{He}_k' = k\,\mathrm{He}_{k-1}$.  Substituting,
+\begin{equation*}
+  \mathrm{He}_{k+1} = X\,\mathrm{He}_k - k\,\mathrm{He}_{k-1},
+  \qquad k \geq 1, \tag{1}
+\end{equation*}
+together with $\mathrm{He}_0 = 1$ and $\mathrm{He}_1 = X$.
+
+\emph{Step 2: the all-plus companion family.}
+Define real polynomials $\widehat{\mathrm{He}}_k$ by
+\[
+  \widehat{\mathrm{He}}_0 = 1,
+  \qquad
+  \widehat{\mathrm{He}}_1 = X,
+  \qquad
+  \widehat{\mathrm{He}}_{k+1} = X\,\widehat{\mathrm{He}}_k + k\,\widehat{\mathrm{He}}_{k-1}
+  \quad (k \geq 1),
+\]
+i.e.\ the recurrence (1) with the minus sign replaced by a plus.  By induction on
+$k$, every $\widehat{\mathrm{He}}_k$ has nonnegative coefficients: this holds for
+$k = 0, 1$, and if it holds at $k-1$ and $k$ then $X\widehat{\mathrm{He}}_k$ and
+$k\widehat{\mathrm{He}}_{k-1}$ both have nonnegative coefficients, hence so does
+their sum.  Consequently
+\begin{equation*}
+  \widehat{\mathrm{He}}_k(W) \geq 0 \qquad\text{for every } W \geq 0 . \tag{2}
+\end{equation*}
+
+\emph{Step 3: $|\mathrm{He}_k(w)| \leq \widehat{\mathrm{He}}_k(|w|)$.}
+We prove this for all real $w$ by induction on $k$, using the two preceding
+values.  For $k = 0$ both sides equal $1$, and for $k = 1$ both sides equal
+$|w|$.  Let $k \geq 1$ and assume the bound at $k-1$ and at $k$.  Evaluating (1)
+at $w$ and applying the triangle inequality,
+\[
+  \bigl|\mathrm{He}_{k+1}(w)\bigr|
+    \leq |w|\,\bigl|\mathrm{He}_k(w)\bigr| + k\,\bigl|\mathrm{He}_{k-1}(w)\bigr|
+    \leq |w|\,\widehat{\mathrm{He}}_k(|w|) + k\,\widehat{\mathrm{He}}_{k-1}(|w|)
+    = \widehat{\mathrm{He}}_{k+1}(|w|),
+\]
+where the middle step uses the two inductive hypotheses together with
+$|w| \geq 0$ and $k \geq 0$ (both multipliers are nonnegative, so the
+inequalities are preserved), and the last step is the defining recurrence of
+Step 2 evaluated at $|w| \geq 0$.  This completes the induction.
+
+\emph{Step 4: the generating function of the all-plus family.}
+Fix $W \in \mathbb{R}$ and set $\widehat{G}(z) = e^{\,Wz + z^2/2}$, an entire
+function of $z$ (the exponential of a polynomial), so $\widehat G$ equals its
+Taylor series about $0$ with absolute convergence for every $z$:
+$\widehat G(z) = \sum_{k\geq0} \hat c_k z^k/k!$ with
+$\hat c_k = \widehat G^{(k)}(0)$.  Differentiating,
+$\widehat G'(z) = (W + z)\,\widehat G(z)$.  Writing both sides as power series,
+\[
+  \widehat G'(z) = \sum_{k\geq0} \hat c_{k+1}\frac{z^k}{k!},
+  \qquad
+  (W+z)\widehat G(z)
+    = \sum_{k\geq0} W\hat c_k \frac{z^k}{k!}
+      + \sum_{k\geq0} \hat c_k \frac{z^{k+1}}{k!}
+    = \sum_{k\geq0}\bigl(W\hat c_k + k\,\hat c_{k-1}\bigr)\frac{z^k}{k!},
+\]
+where the second sum was reindexed by $k \mapsto k+1$ using
+$\frac{1}{k!}\cdot k = \frac{1}{(k-1)!}$, the $k=0$ term being absent.  Two
+everywhere-convergent power series are equal only if their coefficients agree, so
+$\hat c_{k+1} = W\hat c_k + k\,\hat c_{k-1}$ for $k \geq 0$, with the $k=0$
+instance reading $\hat c_1 = W\hat c_0$.  Also $\hat c_0 = \widehat G(0) = 1$.
+The numbers $\widehat{\mathrm{He}}_k(W)$ satisfy the identical recurrence and the
+identical initial value by Step 2, so by induction on $k$,
+$\hat c_k = \widehat{\mathrm{He}}_k(W)$ for every $k$.  Therefore
+\begin{equation*}
+  \sum_{k=0}^\infty \widehat{\mathrm{He}}_k(W)\,\frac{z^k}{k!}
+    = e^{\,Wz + z^2/2},
+  \qquad W, z \in \mathbb{R}, \tag{3}
+\end{equation*}
+with absolute convergence.
+
+\emph{Step 5: conclusion by comparison.}
+Apply (3) with $W = |w| \geq 0$ and with $|z|$ in place of $z$, noting
+$|z|^2 = z^2$:
+\[
+  \sum_{k=0}^\infty \widehat{\mathrm{He}}_k(|w|)\,\frac{|z|^k}{k!}
+    = e^{\,|w|\,|z| + z^2/2} < \infty .
+\]
+By (2) every term of this series is nonnegative, and by Step 3 we have the
+termwise bound
+\[
+  0 \;\leq\; \bigl|\mathrm{He}_k(w)\bigr|\,\frac{|z|^k}{k!}
+    \;\leq\; \widehat{\mathrm{He}}_k(|w|)\,\frac{|z|^k}{k!}
+  \qquad\text{for every } k .
+\]
+A series of nonnegative terms dominated termwise by a convergent series of
+nonnegative terms converges, with sum at most that of the dominating series.
+Hence $\sum_k |\mathrm{He}_k(w)|\,|z|^k/k!$ converges and
+\[
+  \sum_{k=0}^\infty \bigl|\mathrm{He}_k(w)\bigr|\,\frac{|z|^k}{k!}
+    \;\leq\; e^{\,|w|\,|z| + z^2/2},
+\]
+which is the assertion.
+\end{proof}

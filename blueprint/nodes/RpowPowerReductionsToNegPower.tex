@@ -1,0 +1,70 @@
+\begin{lemma}[Reduction of the near-diagonal power factors to a single negative power of $d$]
+Fix $n \geq 1$ with $1 \leq n$ as a real number, and let $M \geq 3$ and
+$0 < d \leq 2$.  Write $a = n/2+3/2$.  Then all five of the following hold, every
+power being a real power.
+\begin{enumerate}
+  \item $\bigl(\tfrac{9}{128}d^2\bigr)^{1-a}
+          = \bigl(\tfrac{9}{128}\bigr)^{1-a}d^{-(n+1)}$.
+  \item $8d^2\bigl(\tfrac{9}{128}d^2\bigr)^{1-(n/2+5/2)}
+          = 8\bigl(\tfrac{9}{128}\bigr)^{-a}d^{-(n+1)}$.
+  \item $\bigl(d/(8M/3)\bigr)^{-a}
+          \leq (8M/3)^{a}\,2^{-a+(n+1)}\,d^{-(n+1)}$.
+  \item $8d^2\bigl(d/(8M/3)\bigr)^{-(n/2+5/2)}
+          \leq 8\,(8M/3)^{n/2+5/2}\,2^{1-a+(n+1)}\,d^{-(n+1)}$.
+  \item $4M^2\bigl(d/(8M/3)\bigr)^{-(n/2+1/2)}
+          \leq 4M^2(8M/3)^{n/2+1/2}\,2^{1-a+(n+1)}\,d^{-(n+1)}$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Four elementary rules are used throughout; in each, $d > 0$ so every real power
+of $d$ is defined and positive.
+
+\emph{(i) Splitting a scaled square.}
+For $\kappa > 0$ and real $s$,
+$(\kappa d^2)^{-s} = \kappa^{-s}d^{-2s}$: the product rule for real powers of
+positive bases gives $(\kappa d^2)^{-s} = \kappa^{-s}(d^2)^{-s}$, and reading
+$d^2$ as the real power $d^{2}$ and composing exponents gives
+$(d^{2})^{-s} = d^{-2s}$.
+
+\emph{(ii) Splitting a quotient.}
+For $u > 0$ and real $s$, $(d/u)^{-s} = d^{-s}u^{s}$, by the quotient rule for
+real powers of positive bases together with $u^{-s} = (u^{s})^{-1}$.
+
+\emph{(iii) Absorbing a square.}
+For real $\beta$, $d^2d^{\beta} = d^{\beta+2}$, by adding exponents.
+
+\emph{(iv) The scale comparison.}
+If $\beta + \gamma \geq 0$ then $d^{\beta} \leq 2^{\beta+\gamma}d^{-\gamma}$ for
+every $0 < d \leq 2$.  Indeed $d^{\beta+\gamma} \leq 2^{\beta+\gamma}$ because
+$d \leq 2$ and the exponent is nonnegative, and multiplying by
+$d^{-\gamma} > 0$ gives the claim after adding exponents on the left.
+
+\emph{Clauses (1) and (2).}
+Since $1 - a = -(n/2+1/2)$, rule (i) with $\kappa = \tfrac9{128}$ and
+$s = n/2+1/2$ gives
+$(\tfrac9{128}d^2)^{1-a} = (\tfrac9{128})^{1-a}d^{-(n+1)}$, because
+$2s = n+1$.  This is clause (1).  For clause (2), $1-(n/2+5/2) = -a$, so rule
+(i) with $s = a$ gives
+$(\tfrac9{128}d^2)^{1-(n/2+5/2)} = (\tfrac9{128})^{-a}d^{-(n+3)}$, as
+$2a = n+3$; multiplying by $8d^2$ and applying rule (iii) with
+$\beta = -(n+3)$, whose effect is $d^2d^{-(n+3)} = d^{-(n+1)}$, gives clause (2).
+
+\emph{Clauses (3), (4) and (5).}
+Each starts from rule (ii) with $u = 8M/3 > 0$, which is positive because
+$M \geq 3$.  For clause (3), rule (ii) with $s = a$ turns the left side into
+$d^{-a}(8M/3)^{a}$, and rule (iv) with $\beta = -a$ and $\gamma = n+1$ applies
+because $-a + (n+1) = n/2 - 1/2 \geq 0$ by $n \geq 1$; multiplying the resulting
+bound $d^{-a} \leq 2^{-a+(n+1)}d^{-(n+1)}$ by the nonnegative constant
+$(8M/3)^{a}$ gives clause (3).
+
+For clause (4), rule (ii) with $s = n/2+5/2$ gives
+$d^{-(n/2+5/2)}(8M/3)^{n/2+5/2}$; rule (iii) with $\beta = -(n/2+5/2)$ turns
+$d^2d^{-(n/2+5/2)}$ into $d^{1-a}$, and rule (iv) with $\beta = 1-a$ and
+$\gamma = n+1$ applies because $1-a+(n+1) = n/2+1/2 \geq 0$.  Multiplying by the
+nonnegative constant $8(8M/3)^{n/2+5/2}$ gives clause (4).
+
+For clause (5), rule (ii) with $s = n/2+1/2$ gives
+$d^{-(n/2+1/2)}(8M/3)^{n/2+1/2}$, and $-(n/2+1/2) = 1-a$, so rule (iv) applies
+exactly as in clause (4); multiplying by the nonnegative constant
+$4M^2(8M/3)^{n/2+1/2}$ gives clause (5).
+\end{proof}

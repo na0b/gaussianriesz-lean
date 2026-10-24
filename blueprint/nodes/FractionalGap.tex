@@ -1,0 +1,50 @@
+\begin{lemma}[The fractional spectral gap]
+For every $v \in L^2(\gamma_n)$,
+\[
+  \|\Pi_0 v\|_2^2 \leq \mathcal{E}(v)
+\]
+as an inequality in $[0,+\infty]$, where $\Pi_0$ is as in \noderef{FracPow} and
+$\mathcal{E}$ as in \noderef{Energy}.  Equivalently, by
+\noderef{ProjZeroCentering},
+$\|v - \mathfrak{m}(v)\mathbf{1}\|_2^2 \leq \mathcal{E}(v)$ with
+$\mathfrak{m}(v) = \int v \, d\gamma_n$; in particular the inequality is vacuously
+true when $\mathcal{E}(v) = +\infty$, and it is the spectral gap estimate of the
+reference paper when $v$ lies in the form domain $\mathcal{V}$.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: the left-hand side as a coefficient sum.}
+By \noderef{FracPowCoeff} and \noderef{FracPow} with $s = 0$, the element
+$\Pi_0 v$ has Hermite coefficients $0$ at $\alpha = 0$ and $v_\alpha$ at
+$\alpha \neq 0$ (the domain condition of \noderef{FracPowDomain} being satisfied,
+as the multiplied family is dominated by the square-summable family
+$(|v_\alpha|^2)_\alpha$).  Parseval's identity from \noderef{HermiteBasis}
+therefore gives
+\[
+  \|\Pi_0 v\|_2^2 = \sum_{\alpha \neq 0} |v_\alpha|^2 .
+\]
+
+\emph{Step 2: a termwise comparison.}
+Let $\alpha \neq 0$.  By \noderef{MultiIndexSum}, $|\alpha| = \sum_j \alpha_j$ is
+a nonnegative integer which vanishes only for $\alpha = 0$; hence
+$|\alpha| \geq 1$, and so $|\alpha|^{1/2} \geq 1$.  Multiplying the nonnegative
+number $|v_\alpha|^2$ by this gives
+\[
+  |v_\alpha|^2 \leq |\alpha|^{1/2}\,|v_\alpha|^2 .
+\]
+
+\emph{Step 3: summation.}
+All terms on both sides are nonnegative, so summing the Step-2 inequalities over
+$\alpha \in \mathbb{N}_0^n \setminus\{0\}$ is legitimate in $[0,+\infty]$ and
+preserves the inequality:
+\[
+  \sum_{\alpha \neq 0} |v_\alpha|^2
+    \;\leq\; \sum_{\alpha \neq 0} |\alpha|^{1/2}|v_\alpha|^2 .
+\]
+By \noderef{Energy} the right-hand side is exactly $\mathcal{E}(v)$, interpreted in
+$[0,+\infty]$.  Combining with Step 1 gives
+$\|\Pi_0 v\|_2^2 \leq \mathcal{E}(v)$.
+
+Finally, by \noderef{ProjZeroCentering}, $\Pi_0 v = v - \mathfrak{m}(v)h_0$ with
+$h_0 = \mathbf{1}$, so the left-hand side also equals
+$\|v - \mathfrak{m}(v)\mathbf{1}\|_2^2$, giving the centred form.
+\end{proof}

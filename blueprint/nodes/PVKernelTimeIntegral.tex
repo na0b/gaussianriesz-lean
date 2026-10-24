@@ -1,0 +1,178 @@
+\begin{lemma}[The normalized Gaussian Riesz kernel as a time integral]
+Fix $n \geq 1$, $j \in \{1,\ldots,n\}$ and $x, y \in \mathbb{R}^n$.  For $s > 0$
+write
+\[
+  r = e^{-s} \in (0,1), \qquad \sigma = 1 - e^{-2s} \in (0,1),
+  \qquad
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr) ,
+\]
+and let
+\[
+  D_j^x p_s(x,y) = \sqrt2\,r\,\frac{y_j - r x_j}{\sigma}\,p_s(x,y)
+\]
+be the energy-normalized $x$-derivative of the Lebesgue kernel, as evaluated in
+\noderef{MehlerKernelXDerivative} (the displayed right-hand side is the
+closed-form expression that node proves $2^{-1/2}\partial_{x_j}p_s(x,y)$ equals,
+and it is that explicit expression, not a derivative, that occurs here).  Let
+$K_{\gamma,j}$ be the normalized Gaussian Riesz kernel of
+\noderef{GaussRieszKernel}, so that by definition
+\[
+  K_{\gamma,j}(x,y)
+    = \sqrt2\,\pi^{-(n+1)/2}\int_{(0,1)} h(\varrho)\,d\varrho,
+  \qquad
+  h(\varrho)
+    = \frac{y_j - \varrho x_j}
+        {(1-\varrho^2)^{n/2+1}\sqrt{-\log\varrho}}
+      \exp\Bigl(-\frac{|\varrho x-y|^2}{1-\varrho^2}\Bigr) ,
+\]
+the integral being a Lebesgue integral over $(0,1)$.  Then:
+\begin{enumerate}
+\item the function $s \mapsto s^{-1/2}D_j^xp_s(x,y)$ is Lebesgue integrable on
+$(0,\infty)$ \emph{if and only if} $h$ is Lebesgue integrable on $(0,1)$; and
+\item
+\[
+  K_{\gamma,j}(x,y)
+    = \frac{1}{\sqrt\pi}\int_0^\infty \frac{D_j^xp_s(x,y)}{\sqrt s}\,ds .
+\]
+\end{enumerate}
+
+Both clauses are read under the convention --- the one
+\noderef{GaussRieszKernel} already uses for its own defining integral --- that
+the Lebesgue integral of a non-integrable integrand is $0$.  Clause (2) is
+therefore asserted for every $x$ and $y$ with no integrability hypothesis, and
+clause (1) is exactly what keeps that convention from hiding anything: it says
+the two integrals are simultaneously genuine or simultaneously conventional, so
+a consumer that needs to know which case it is in can read it off from either
+side.  The identity is the change of variables $\varrho = e^{-s}$ and nothing
+more; no estimate, no uniformity in $x$ or $y$, and no truncation
+$\{|x-y|>\varepsilon\}$ occurs here.  The reference paper writes the time-integral
+form of the kernel directly, so clause (2) is the rigorization of a step the
+paper performs silently, and clause (1) is the bookkeeping that rigorization
+needs.
+\end{lemma}
+\begin{proof}
+Throughout, $n \geq 1$, $j$, $x$ and $y$ are fixed, $\lambda$ denotes Lebesgue
+measure, and we abbreviate
+\[
+  A = \sqrt2\,\pi^{-(n+1)/2} > 0 ,
+  \qquad
+  H(s) = \frac{D_j^xp_s(x,y)}{\sqrt s} \quad (s>0) ,
+\]
+so that $K_{\gamma,j}(x,y) = A\int_{(0,1)}h\,d\lambda$ by the definition recalled
+in the statement, and the two assertions concern $H$ and $h$.
+
+\emph{Step 1: the substitution is a change of variables.}
+Let $\psi(s) = e^{-s}$.  We check three things about $\psi$ on $(0,\infty)$.
+
+First, $\psi\bigl((0,\infty)\bigr) = (0,1)$.  If $s > 0$ then $e^{-s} > 0$ and
+$e^{-s} < 1$ because $-s < 0$ and the exponential is $<1$ exactly on the
+negatives.  Conversely if $0 < \varrho < 1$ then $\log\varrho < 0$, so
+$s = -\log\varrho > 0$ and $\psi(s) = e^{\log\varrho} = \varrho$.
+
+Second, $\psi$ is differentiable at every $s$ with $\psi'(s) = -e^{-s}$, by the
+chain rule applied to the exponential and to $s \mapsto -s$; in particular
+$\psi$ has that derivative within $(0,\infty)$ at each of its points, and
+$|\psi'(s)| = e^{-s}$ since $e^{-s} > 0$.
+
+Third, $\psi$ is injective on $(0,\infty)$: if $e^{-a} = e^{-b}$ then $-a = -b$
+by injectivity of the exponential, so $a = b$.
+
+Since $(0,\infty)$ is measurable, the one-dimensional change-of-variables
+theorem for an injective differentiable map (shared context) applies to $\psi$
+on $(0,\infty)$ and gives, for every Borel $G : \mathbb{R} \to \mathbb{R}$,
+\begin{equation*}
+  \int_{(0,1)} G\,d\lambda
+    = \int_{(0,\infty)} |\psi'(s)|\,G(\psi(s))\,ds
+    = \int_{(0,\infty)} e^{-s}\,G(e^{-s})\,ds , \tag{1}
+\end{equation*}
+and, in its integrability form, $G$ is Lebesgue integrable on $(0,1)$ if and
+only if $s \mapsto e^{-s}G(e^{-s})$ is Lebesgue integrable on $(0,\infty)$.
+Both forms hold with no integrability hypothesis, the two sides of $(1)$ being
+simultaneously genuine or simultaneously $0$ by the convention.
+
+\emph{Step 2: the pointwise identity under the substitution.}
+We claim that for every $s > 0$,
+\begin{equation*}
+  e^{-s}\,h(e^{-s}) = \frac{1}{\sqrt\pi\,A}\,H(s) . \tag{2}
+\end{equation*}
+Fix $s > 0$ and put $r = e^{-s} > 0$ and $\sigma = 1-e^{-2s}$.  Then
+$\sigma > 0$, since $-2s < 0$ gives $e^{-2s} < 1$; and
+\[
+  1 - r^2 = 1 - e^{-s}e^{-s} = 1 - e^{-2s} = \sigma ,
+  \qquad
+  -\log r = -\log e^{-s} = s ,
+\]
+the first because $e^{-s}e^{-s} = e^{-s-s} = e^{-2s}$ and the second because
+$\log e^{t} = t$.  Substituting these into the formula for $h$,
+\[
+  h(e^{-s})
+    = \frac{y_j - rx_j}{\sigma^{n/2+1}\sqrt s}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr) .
+\]
+Next, two identities for the powers.  Since $\sigma > 0$,
+\[
+  \sigma^{-n/2} = \bigl(\sigma^{n/2}\bigr)^{-1},
+  \qquad
+  \sigma^{n/2+1} = \sigma^{n/2}\,\sigma ,
+\]
+the first because $t \mapsto \sigma^t$ sends negation to inversion and the
+second because it sends addition to multiplication, with $\sigma^1 = \sigma$.
+And since $\pi > 0$,
+\[
+  \sqrt\pi\,\pi^{-(n+1)/2} = \pi^{1/2}\pi^{-(n+1)/2} = \pi^{1/2-(n+1)/2}
+    = \pi^{-n/2} ,
+\]
+so that
+\begin{equation*}
+  \sqrt\pi\,A = \sqrt2\,\pi^{-n/2} . \tag{3}
+\end{equation*}
+Now expand $H$:
+\[
+  H(s) = \frac{1}{\sqrt s}\cdot
+    \sqrt2\,r\,\frac{y_j-rx_j}{\sigma}\cdot
+      \pi^{-n/2}\sigma^{-n/2}\exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr) .
+\]
+Using $\sigma^{-n/2} = (\sigma^{n/2})^{-1}$ and $\sigma^{n/2+1} = \sigma^{n/2}\sigma$,
+the factor $\sigma^{-1}\sigma^{-n/2}$ equals $(\sigma^{n/2+1})^{-1}$, so
+\[
+  H(s) = \sqrt2\,\pi^{-n/2}\cdot
+    r\,\frac{y_j-rx_j}{\sigma^{n/2+1}\sqrt s}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr)
+    = \sqrt2\,\pi^{-n/2}\,e^{-s}h(e^{-s}) ,
+\]
+and dividing by $\sqrt2\,\pi^{-n/2} \neq 0$ and using $(3)$ gives $(2)$.  All the
+divisors occurring here --- $\sqrt s$, $\sqrt 2$, $\pi^{-n/2}$, $\sigma^{n/2}$
+and $\sigma$ --- are nonzero, being positive.
+
+\emph{Step 3: clause (1).}
+By the integrability form of $(1)$ applied to $G = h$, the function $h$ is
+integrable on $(0,1)$ if and only if $s \mapsto e^{-s}h(e^{-s})$ is integrable
+on $(0,\infty)$.  By $(2)$ the latter function equals $(\sqrt\pi A)^{-1}H$ on
+$(0,\infty)$, and $(\sqrt\pi A)^{-1}$ is a nonzero constant, so it is integrable
+on $(0,\infty)$ if and only if $H$ is: a nonzero constant multiple of an
+integrable function is integrable, in either direction, and two functions
+agreeing at every point of $(0,\infty)$ are integrable there together.  This is
+clause (1).
+
+\emph{Step 4: clause (2).}
+By $(1)$ applied to $G = h$, then $(2)$ at every point of $(0,\infty)$, then
+linearity of the integral for the constant $(\sqrt\pi A)^{-1}$,
+\[
+  \int_{(0,1)} h\,d\lambda
+    = \int_{(0,\infty)} e^{-s}h(e^{-s})\,ds
+    = \int_{(0,\infty)} \frac{1}{\sqrt\pi\,A}H(s)\,ds
+    = \frac{1}{\sqrt\pi\,A}\int_{(0,\infty)} H(s)\,ds .
+\]
+Multiplying by $A$ and using $K_{\gamma,j}(x,y) = A\int_{(0,1)}h\,d\lambda$ from
+the definition,
+\[
+  K_{\gamma,j}(x,y)
+    = A\cdot\frac{1}{\sqrt\pi\,A}\int_{(0,\infty)} H(s)\,ds
+    = \frac{1}{\sqrt\pi}\int_0^\infty \frac{D_j^xp_s(x,y)}{\sqrt s}\,ds ,
+\]
+since $\sqrt\pi\,A \neq 0$.  This is clause (2).  Note that no integrability was
+assumed at any point: the change of variables $(1)$, the pointwise identity
+$(2)$ and the extraction of the constant all hold under the convention, both
+sides being $0$ together when neither integrand is integrable.
+\end{proof}

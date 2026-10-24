@@ -1,0 +1,72 @@
+\begin{lemma}[Action of the energy-normalized gradient on Hermite functions]
+Let $D = 2^{-1/2}\nabla$, so that $D_j = 2^{-1/2}\partial_j$.  For every
+multi-index $\alpha \in \mathbb{N}_0^n$, every $j \in \{1,\ldots,n\}$ and every
+$x \in \mathbb{R}^n$, the Hermite function $h_\alpha$ of \noderef{HermiteFun} is
+differentiable at $x$ and
+\[
+  \partial_j h_\alpha(x) = \sqrt{2}\,\sqrt{\alpha_j}\; h_{\alpha - e_j}(x),
+  \qquad\text{equivalently}\qquad
+  D_j h_\alpha = \sqrt{\alpha_j}\, h_{\alpha - e_j},
+\]
+where $\alpha - e_j$ is the multi-index of \noderef{MultiIndexSum} obtained by
+decreasing the $j$th entry of $\alpha$ by one, with the convention that this entry
+stays at $0$ when $\alpha_j = 0$ (in which case the right-hand side vanishes
+anyway, because of the factor $\sqrt{\alpha_j} = 0$).
+\end{lemma}
+\begin{proof}
+\emph{Step 1: the one-dimensional identity.}
+We first prove
+\begin{equation*}
+  h_k'(s) = \sqrt2\,\sqrt{k}\; h_{k-1}(s),
+  \qquad k \in \mathbb{N}_0,\ s \in \mathbb{R}, \tag{1}
+\end{equation*}
+with the right-hand side read as $0$ when $k = 0$.
+
+For $k = 0$: by \noderef{Hermite1Zero}, $h_0 \equiv 1$, so $h_0' = 0$; and the
+right-hand side carries the factor $\sqrt{0} = 0$.  Both sides vanish.
+
+For $k \geq 1$ write $k = m+1$.  By \noderef{Hermite1},
+$h_{m+1}(s) = \mathrm{He}_{m+1}(\sqrt2\,s)/\sqrt{(m+1)!}$, a polynomial in $s$, hence
+differentiable, and the chain rule gives
+\[
+  h_{m+1}'(s) = \frac{\sqrt2\;\mathrm{He}_{m+1}'(\sqrt2\,s)}{\sqrt{(m+1)!}} .
+\]
+By \noderef{HermiteDerivative}, $\mathrm{He}_{m+1}' = (m+1)\,\mathrm{He}_m$, so
+\[
+  h_{m+1}'(s)
+    = \frac{\sqrt2\,(m+1)\,\mathrm{He}_m(\sqrt2\,s)}{\sqrt{(m+1)!}}
+    = \sqrt2\,\frac{m+1}{\sqrt{m+1}}\cdot
+        \frac{\mathrm{He}_m(\sqrt2\,s)}{\sqrt{m!}}
+    = \sqrt2\,\sqrt{m+1}\; h_m(s),
+\]
+where the middle step used $(m+1)! = (m+1)\,m!$, so that
+$\sqrt{(m+1)!} = \sqrt{m+1}\,\sqrt{m!}$, and the last step used
+\noderef{Hermite1} again.  This is (1) with $k = m+1$.
+
+\emph{Step 2: differentiability.}
+By \noderef{HermiteFunContDiff}, $h_\alpha \in C^\infty(\mathbb{R}^n)$.  A
+$C^\infty$ function is in particular differentiable at every point, so
+$h_\alpha$ is differentiable at $x$; this is the first assertion, and it also
+licenses the use of $\partial_j h_\alpha(x)$ and of the product rule below.
+
+\emph{Step 3: the $n$-dimensional identity.}
+By \noderef{HermiteFun}, $h_\alpha(x) = \prod_{i=1}^n h_{\alpha_i}(x_i)$.  Only
+the $i = j$ factor depends on $x_j$, so the product rule gives
+\[
+  \partial_j h_\alpha(x)
+    = h_{\alpha_j}'(x_j) \prod_{i \neq j} h_{\alpha_i}(x_i) .
+\]
+Substituting (1) with $k = \alpha_j$ and $s = x_j$,
+\[
+  \partial_j h_\alpha(x)
+    = \sqrt2\,\sqrt{\alpha_j}\;
+      h_{\alpha_j - 1}(x_j) \prod_{i \neq j} h_{\alpha_i}(x_i) .
+\]
+The multi-index $\alpha - e_j$ agrees with $\alpha$ in every entry $i \neq j$ and
+has $j$th entry $\alpha_j - 1$, so by \noderef{HermiteFun} the product on the
+right is exactly $h_{\alpha-e_j}(x)$.  Hence
+$\partial_j h_\alpha(x) = \sqrt2\sqrt{\alpha_j}\, h_{\alpha-e_j}(x)$.  When
+$\alpha_j = 0$ the prefactor is $0$, so the identity holds regardless of how
+$\alpha - e_j$ is interpreted, which justifies the stated convention.  Dividing
+by $\sqrt2$ gives the form for $D_j = 2^{-1/2}\partial_j$.
+\end{proof}

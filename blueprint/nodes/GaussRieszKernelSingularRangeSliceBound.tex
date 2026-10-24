@@ -1,0 +1,141 @@
+\begin{lemma}[A constant bound on the singular range $r \in [\tfrac12,1)$, at normalised radii]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$.  For $x,y \in \mathbb{R}^n$ and
+$r \in (0,1)$ put
+\[
+  \Psi_{x,y}(r)
+    = \frac{y_j - r x_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \exp\Bigl(-\frac{|x-ry|^2}{1-r^2}\Bigr) ,
+\]
+the reflected integrand of the raw Gaussian Riesz kernel.  Let $R'$, $\rho'$ and
+$\tau_0$ be reals with
+\[
+  1 \leq R' , \qquad 0 < \rho' , \qquad
+  0 < \tau_0 \leq \tfrac12 , \qquad \tau_0 \leq \frac{\rho'}{8R'} .
+\]
+Then there is a constant $C_2 > 0$ such that
+\[
+  \bigl|\Psi_{x,y}(r)\bigr| \leq C_2
+  \qquad\text{whenever } |x| \leq R',\quad \rho' \leq |x-y|,\quad
+  \tfrac12 \leq r < 1 .
+\]
+\end{lemma}
+\begin{proof}
+Put $m = n+2 \in \mathbb{N}$, and throughout write $\tau = 1-r \in (0,\tfrac12]$
+for $r \in [\tfrac12,1)$ and $d = |x-ry|$.  Note $0 < R'$, since $1 \leq R'$.  We
+verify the assertion with
+\[
+  C_2 = \underbrace{5R'\,m^m\Bigl(\frac{8}{\rho'^2}\Bigr)^{m}}_{C_1'}
+    + \underbrace{5R'\,\tau_0^{-(n+3)/2}}_{C_2'}
+    + \underbrace{\tfrac54\,m^m\,32^{m}}_{C_3'} \;>\; 0 ,
+\]
+each of the three summands being positive.
+
+\emph{Step 1: an elementary decay inequality.}
+For every $t > 0$,
+\begin{equation*}
+  e^{-t} \leq \frac{m^m}{t^m} . \tag{1}
+\end{equation*}
+This is clause (1) of \noderef{ExpDecayPowerBoundAndRpowAbsorption}, with
+$m = n+2$.
+
+\emph{Step 2: the prefactor.}
+Let $\tfrac12 \leq r < 1$.  Then $1-r^2 = \tau(1+r) \geq \tau > 0$, and since
+$\log s \leq s-1$ for $s > 0$ applied at $s = r$ gives $\log r \leq r-1$, also
+$-\log r \geq 1-r = \tau > 0$.  As $t \mapsto t^{n/2+1}$ and $\sqrt{\cdot}$ are
+nondecreasing on $[0,\infty)$,
+\[
+  (1-r^2)^{n/2+1}\sqrt{-\log r} \;\geq\; \tau^{n/2+1}\sqrt\tau
+    \;=\; \tau^{(n+3)/2} > 0 ,
+\]
+the last equality because $\tau^{a}\tau^{1/2} = \tau^{a+1/2}$ for $\tau > 0$.
+Taking reciprocals,
+\begin{equation*}
+  \frac{1}{(1-r^2)^{n/2+1}\sqrt{-\log r}} \;\leq\; \tau^{-(n+3)/2} . \tag{2}
+\end{equation*}
+
+\emph{Step 3: the absorption of the surviving power.}
+For $\tfrac12 \leq r < 1$ and every $c > 0$,
+\begin{equation*}
+  \tau^{-(n+3)/2}\,\bigl(m^m\,(c\tau)^m\bigr) \;\leq\; m^m c^m . \tag{3}
+\end{equation*}
+This is clause (2) of \noderef{ExpDecayPowerBoundAndRpowAbsorption}, again with
+$m = n+2$.
+
+\emph{Step 4: the exponent, and the two cases.}
+Since $1-r^2 = \tau(1+r) \leq 2\tau$ and $1-r^2 > 0$ and $d^2 \geq 0$, we have
+$d^2/(1-r^2) \geq d^2/(2\tau)$, hence
+\begin{equation*}
+  \exp\Bigl(-\frac{d^2}{1-r^2}\Bigr)
+    \leq \exp\Bigl(-\frac{d^2}{2\tau}\Bigr) . \tag{4}
+\end{equation*}
+Also, for $0 \leq r \leq 1$,
+\begin{equation*}
+  |y_j - rx_j| \leq |y_j| + r|x_j| \leq |y| + |x| \leq |y| + R' , \tag{5}
+\end{equation*}
+using $|v_i| \leq |v|$ for every coordinate, $r \leq 1$ and $|x| \leq R'$.
+
+Now fix $x,y$ with $|x| \leq R'$ and $\rho' \leq |x-y|$, and fix
+$r \in [\tfrac12,1)$.  Because the prefactor and the exponential are positive,
+$|\Psi_{x,y}(r)| = |y_j-rx_j|\cdot\bigl((1-r^2)^{n/2+1}\sqrt{-\log r}\bigr)^{-1}
+ \cdot e^{-d^2/(1-r^2)}$.  We distinguish two cases.
+
+\emph{Case A: $|y| \leq 4R'$.}  Then $(5)$ gives $|y_j-rx_j| \leq 5R'$.  Writing
+$x-ry = (x-y) + \tau y$ we get, from $|x-y| \leq |x-ry| + \tau|y|$ and
+$|y| \leq 4R'$,
+\begin{equation*}
+  d \;\geq\; |x-y| - \tau|y| \;\geq\; \rho' - 4R'\tau . \tag{6}
+\end{equation*}
+
+\emph{Sub-case $\tau \leq \tau_0$.}  Then $\tau \leq \rho'/(8R')$, so
+$4R'\tau \leq \rho'/2$ and $(6)$ gives $d \geq \rho'/2 > 0$.  Hence
+$d^2 \geq \rho'^2/4$ and $d^2/(2\tau) \geq \rho'^2/(8\tau) > 0$, so by $(4)$ and
+then $(1)$ at $t = \rho'^2/(8\tau)$,
+\[
+  \exp\Bigl(-\frac{d^2}{1-r^2}\Bigr) \leq e^{-\rho'^2/(8\tau)}
+    \leq m^m\Bigl(\frac{8\tau}{\rho'^2}\Bigr)^{m}
+    = m^m\Bigl(\frac{8}{\rho'^2}\cdot\tau\Bigr)^{m} .
+\]
+Combining with $|y_j-rx_j| \leq 5R'$, with $(2)$, and then with $(3)$ at
+$c = 8/\rho'^2 > 0$,
+\[
+  |\Psi_{x,y}(r)|
+    \leq 5R'\cdot\tau^{-(n+3)/2}\cdot m^m\Bigl(\frac{8}{\rho'^2}\tau\Bigr)^{m}
+    \leq 5R'\,m^m\Bigl(\frac{8}{\rho'^2}\Bigr)^{m} = C_1' \leq C_2 ,
+\]
+the last step because $C_2', C_3' \geq 0$.
+
+\emph{Sub-case $\tau > \tau_0$.}  Here we discard the Gaussian:
+$e^{-d^2/(1-r^2)} \leq 1$, because $d^2/(1-r^2) \geq 0$.  And $\tau \geq \tau_0 > 0$
+with the exponent $-(n+3)/2 \leq 0$ gives
+$\tau^{-(n+3)/2} \leq \tau_0^{-(n+3)/2}$ --- for $0 < \tau_0 \leq \tau$ one has
+$\tau_0^{(n+3)/2} \leq \tau^{(n+3)/2}$, and inverting reverses the inequality.  So
+by $(2)$ and $(5)$,
+\[
+  |\Psi_{x,y}(r)| \leq 5R'\,\tau_0^{-(n+3)/2} = C_2' \leq C_2 .
+\]
+
+\emph{Case B: $|y| > 4R'$.}  Then $|y| > 4R' \geq 4 > 1$, and $(5)$ gives
+$|y_j-rx_j| \leq |y| + R' \leq \tfrac54|y|$.  From $|ry| - |x| \leq |x-ry|$ and
+$r \geq \tfrac12$, $|x| \leq R' < |y|/4$,
+\[
+  d \;\geq\; r|y| - |x| \;\geq\; \tfrac12|y| - \tfrac14|y| \;=\; \tfrac14|y| > 0 ,
+\]
+so $d^2 \geq |y|^2/16$ and $d^2/(2\tau) \geq |y|^2/(32\tau) > 0$.  By $(4)$ and
+$(1)$ at $t = |y|^2/(32\tau)$,
+\[
+  \exp\Bigl(-\frac{d^2}{1-r^2}\Bigr)
+    \leq m^m\Bigl(\frac{32}{|y|^2}\cdot\tau\Bigr)^{m} ,
+\]
+and so by $(2)$ and $(3)$ at $c = 32/|y|^2 > 0$,
+\[
+  |\Psi_{x,y}(r)|
+    \leq \tfrac54|y|\cdot m^m\Bigl(\frac{32}{|y|^2}\Bigr)^{m}
+    = \tfrac54\,m^m\,32^{m}\cdot\frac{|y|}{|y|^{2m}} .
+\]
+Finally $|y| > 1$ and $2m \geq 1$ give $|y| = |y|^1 \leq |y|^{2m}$, so the last
+fraction is at most $1$ and
+$|\Psi_{x,y}(r)| \leq \tfrac54m^m32^m = C_3' \leq C_2$.
+
+In all cases $|\Psi_{x,y}(r)| \leq C_2$, with $C_2$ depending only on $n$, $j$,
+$R'$, $\rho'$ and $\tau_0$.
+\end{proof}

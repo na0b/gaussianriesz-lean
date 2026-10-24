@@ -1,0 +1,23 @@
+\begin{definition}[The Gaussian Sobolev space $W^{1,2}(\gamma_n)$]
+Set
+\[
+  W^{1,2}(\gamma_n)
+    = \bigl\{ v \in L^2(\gamma_n) :
+        \text{$v$ has a weak Euclidean gradient $\nabla v$ with }
+        2^{-1/2}\nabla v \in L^2(\gamma_n;\mathbb{R}^n) \bigr\},
+\]
+the weak gradient being understood in the sense of \noderef{HasGaussWeakGrad} and
+$L^2(\gamma_n;\mathbb{R}^n)$ denoting the space of $\mathbb{R}^n$-valued functions
+square integrable against the measure $\gamma_n$ of \noderef{GaussMeasure}, with
+the Euclidean norm on the target.  Equivalently, $v \in W^{1,2}(\gamma_n)$ iff
+$v \in L^2(\gamma_n)$ and there is $\Gamma \in L^2(\gamma_n;\mathbb{R}^n)$ with
+$\sqrt2\,\Gamma$ a weak Euclidean gradient of $v$; the factor $\sqrt2$ records the
+energy normalization $D = 2^{-1/2}\nabla$ of the reference paper, so that $\Gamma$
+is $Dv$.  This is the characterization of $W^{1,2}(\gamma_n)$ used throughout: the
+functions in $L^2(\gamma_n)$ whose weak Euclidean derivatives again lie in
+$L^2(\gamma_n)$.  The reference paper notes that this coincides with the
+completion of $C_c^\infty(\mathbb{R}^n)$ in the norm
+$\|v\|^2 = \|v\|_2^2 + \tfrac12\|\nabla v\|_2^2$; that equivalence is not used
+anywhere below, and only the weak-derivative description is taken as the
+definition.
+\end{definition}

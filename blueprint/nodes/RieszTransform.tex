@@ -1,0 +1,16 @@
+\begin{definition}[The energy-normalized vector Riesz transform]
+For $f \in L^2(\gamma_n)$ set
+\[
+  R_\gamma f = D\, L^{-1/2}\Pi_0 f \in L^2(\gamma_n;\mathbb{R}^n),
+\]
+with $L^{-1/2}\Pi_0$ the pseudoinverse of \noderef{FracPow} and
+$D = 2^{-1/2}\nabla$ the energy-normalized weak gradient of \noderef{GaussD}.
+Its $j$th coordinate is $R_{\gamma,j} f = D_j L^{-1/2}\Pi_0 f$.  The arbitrary
+$L^2$ input $f$ is never differentiated: one first forms the potential
+$v = L^{-1/2}\Pi_0 f$, which lies in $\operatorname{Dom}(L^{1/2})$ and hence in
+$W^{1,2}(\gamma_n)$ by \noderef{PseudoInverseSqrt} and
+\noderef{SqrtDomainSobolev}, so its weak gradient exists in
+$L^2(\gamma_n;\mathbb{R}^n)$.  Consequently $R_\gamma f$ is well defined for every
+$f \in L^2(\gamma_n)$, with no differentiability assumption on $f$, and
+$R_\gamma : L^2(\gamma_n) \to L^2(\gamma_n;\mathbb{R}^n)$ is linear.
+\end{definition}

@@ -1,0 +1,99 @@
+\begin{lemma}[Mollification commutes with the weak gradient]
+Fix $n \in \mathbb{N}_0$ and write $\lambda$ for Lebesgue measure on
+$\mathbb{R}^n$.  Let $\rho : \mathbb{R}^n \to \mathbb{R}$ be smooth with compact
+support, let $v : \mathbb{R}^n \to \mathbb{R}$ be locally
+$\lambda$-integrable, and let $G = (G_1,\ldots,G_n) : \mathbb{R}^n \to
+\mathbb{R}^n$ be a weak Euclidean gradient of $v$ in the sense of
+\noderef{HasGaussWeakGrad}.  Then for every coordinate index
+$j \in \{1,\ldots,n\}$ and every point $x \in \mathbb{R}^n$,
+\[
+  \partial_j (\rho * v)(x) = (\rho * G_j)(x) ,
+\]
+where $*$ denotes convolution against $\lambda$ with the pointwise product as
+its bilinear pairing,
+$(\rho * w)(x) = \int_{\mathbb{R}^n} \rho(y)\, w(x - y)\, d\lambda(y)$, and
+$\partial_j$ on the left is the Fr\'echet derivative of the mollification,
+evaluated at the $j$-th standard basis vector $e_j$.  Both sides are real
+numbers, for each fixed $j$ and $x$; the identity is pointwise in $x$, not an
+almost-everywhere one.
+
+Every measure in this statement is Lebesgue measure: $v$ is assumed locally
+$\lambda$-integrable, both convolutions are against $\lambda$, and the weak
+gradient of \noderef{HasGaussWeakGrad} is, by that node's own definition, the
+ordinary distributional gradient, its two integrals taken against $\lambda$ and
+not against a Gaussian weight.  No Gaussian density enters anywhere, and the
+$\gamma_n$ of the surrounding development plays no role here.
+\end{lemma}
+\begin{proof}
+Fix $j$ and $x$.  Write $L : \mathbb{R} \to \mathbb{R} \to \mathbb{R}$ for the
+pointwise-multiplication pairing, so that $\rho * w$ means convolution with
+respect to $L$ and $\lambda$.  Two preliminary remarks about $\rho$: being
+smooth it is in particular $C^1$, and its derivative $y \mapsto D\rho(y)$ is
+continuous and again compactly supported, the support of a derivative being
+contained in that of the function.
+
+Step 0 (symmetry of the convolution).  Because $L$ is the symmetric pairing of
+multiplication on $\mathbb{R}$ --- it equals its own flip, $L^{\mathrm{t}} = L$
+--- convolution against $L$ is commutative where defined:
+$\rho * v = v * \rho$.  We may therefore compute with $v * \rho$, which puts the
+smooth factor on the right, where the differentiation theorem wants it.
+
+Step A (differentiating the mollification).  Since $\rho$ is $C^1$ with
+$D\rho$ continuous and compactly supported, and $v$ is locally
+$\lambda$-integrable, the convolution $v * \rho$ is differentiable at $x$ and
+its derivative may be computed by differentiating inside the integral, in the
+second factor:
+\[
+  D(v * \rho)(x) = \bigl(v * D\rho\bigr)(x) ,
+\]
+an identity of continuous linear maps $\mathbb{R}^n \to \mathbb{R}$, where on the
+right $D\rho$ is paired with $v$ through $L$ in its scalar slot.  This is the
+standard theorem that a convolution inherits the smoothness of whichever factor
+is smooth, and it is where the compact support of $D\rho$ is used, to make the
+defining integral converge for a merely locally integrable $v$.
+
+Step B (evaluating in the direction $e_j$).  Applying the linear map of Step A
+to $e_j$ and exchanging that application with the integral, which is legitimate
+because evaluation at $e_j$ is a continuous linear functional,
+\[
+  \partial_j (v * \rho)(x)
+    = \bigl( a \mapsto (D\rho(a))(e_j) \bigr) * v \, (x)
+      \quad\text{after a further use of Step 0,}
+\]
+so the left-hand side of the lemma is the convolution of $v$ against the scalar
+function $a \mapsto (D\rho(a))(e_j) = \partial_j \rho(a)$.
+
+Step C (the weak-gradient identity with a reflected test function).  Fix $x$ and
+consider the function
+\[
+  \varphi(y) = \rho(x - y) ,
+\]
+the reflection of $\rho$ about $x$.  It is smooth and compactly supported, hence
+an admissible test function, and its $j$-th partial derivative is
+$\partial_j \varphi(y) = -(\partial_j \rho)(x-y)$ by the chain rule for the
+reflection $y \mapsto x-y$, whose derivative is $-\mathrm{id}$.  Applying
+\noderef{HasGaussWeakGrad} to this $\varphi$ and this $j$ gives
+\[
+  \int_{\mathbb{R}^n} v(y)\, \partial_j\varphi(y)\, d\lambda(y)
+    = -\int_{\mathbb{R}^n} G_j(y)\, \varphi(y)\, d\lambda(y),
+\]
+that is, after substituting the two displayed formulas for $\varphi$ and
+$\partial_j \varphi$ and cancelling the two minus signs,
+\[
+  \int_{\mathbb{R}^n} v(y)\, (\partial_j\rho)(x-y)\, d\lambda(y)
+    = \int_{\mathbb{R}^n} G_j(y)\, \rho(x-y)\, d\lambda(y) .
+\]
+The left-hand side is the convolution appearing at the end of Step B, and the
+right-hand side is $(G_j * \rho)(x)$.
+
+Step D (conclusion).  Chaining Step 0, Step B and Step C,
+\[
+  \partial_j(\rho * v)(x) = \partial_j(v * \rho)(x)
+    = \bigl(\partial_j\rho\bigr) * v \,(x)
+    = \bigl(G_j * \rho\bigr)(x)
+    = \bigl(\rho * G_j\bigr)(x),
+\]
+the last equality being commutativity of the convolution once more, available
+because $L$ equals its own flip.  Since $j$ and $x$ were arbitrary, this is the
+assertion.
+\end{proof}

@@ -1,0 +1,83 @@
+\begin{lemma}[Characteristic function of the Gaussian measure $\gamma_n$]
+Fix $n \in \mathbb{N}_0$ and let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure} on $\mathbb{R}^n$, with density
+$\pi^{-n/2} e^{-|x|^2}$ with respect to Lebesgue measure.  Then for every
+$t \in \mathbb{R}^n$ the characteristic function of $\gamma_n$, namely
+$\widehat{\gamma_n}(t) = \int_{\mathbb{R}^n} e^{\,i \langle x, t\rangle}
+  \, d\gamma_n(x)$, is given by
+\[
+  \int_{\mathbb{R}^n} e^{\,i \langle x, t\rangle} \, d\gamma_n(x)
+    = e^{-|t|^2/4} .
+\]
+Note the denominator $4$ rather than the $2$ of the standard normal law: with the
+normalization $d\gamma_n = \pi^{-n/2} e^{-|x|^2}\,dx$ of \noderef{GaussMeasure}
+each coordinate has variance $\tfrac12$ rather than $1$, and the characteristic
+function of a centred Gaussian of covariance $\sigma^2 I$ is
+$e^{-\sigma^2|t|^2/2}$, which at $\sigma^2 = \tfrac12$ is $e^{-|t|^2/4}$.
+\end{lemma}
+\begin{proof}
+Fix $t \in \mathbb{R}^n$.
+
+Step 1 (unfolding the characteristic function and the density).  By definition
+the characteristic function of a measure $\mu$ on an inner-product space at $t$
+is $\int e^{\,i\langle x,t\rangle}\,d\mu(x)$, so the quantity to compute is
+$\int_{\mathbb{R}^n} e^{\,i\langle x,t\rangle}\,d\gamma_n(x)$.  By
+\noderef{GaussMeasure}, $\gamma_n$ is Lebesgue measure weighted by the density
+\[
+  \rho(x) = \pi^{-n/2} e^{-|x|^2} ,
+\]
+which is measurable and everywhere finite (indeed $0 < \rho(x) \le \pi^{-n/2}$).
+Integration against a weighted measure is integration of the weighted integrand,
+so
+\[
+  \int_{\mathbb{R}^n} e^{\,i\langle x,t\rangle} \, d\gamma_n(x)
+    = \int_{\mathbb{R}^n} \rho(x)\, e^{\,i\langle x,t\rangle} \, dx ,
+\]
+the right-hand integral being with respect to Lebesgue measure on
+$\mathbb{R}^n$.
+
+Step 2 (rewriting the integrand).  For every $x \in \mathbb{R}^n$, using
+$e^{a}e^{b} = e^{a+b}$, the symmetry $\langle x,t\rangle = \langle t,x\rangle$ of
+the real inner product, and the factorization
+$\rho(x) = \pi^{-n/2}\cdot e^{-|x|^2}$,
+\[
+  \rho(x)\, e^{\,i\langle x,t\rangle}
+    = \pi^{-n/2}\, e^{-|x|^2}\, e^{\,i \langle t,x\rangle}
+    = \pi^{-n/2}\, e^{\,-|x|^2 + i\langle t, x\rangle} .
+\]
+Since the two integrands agree at every point, their Lebesgue integrals agree,
+and the constant $\pi^{-n/2}$ may be taken outside the integral by linearity:
+\[
+  \int_{\mathbb{R}^n} e^{\,i\langle x,t\rangle}\, d\gamma_n(x)
+    = \pi^{-n/2} \int_{\mathbb{R}^n}
+        e^{\,-|x|^2 + i \langle t, x\rangle} \, dx .
+\]
+
+Step 3 (the Gaussian Fourier integral).  The Gaussian Fourier transform in the
+form valid on a real inner-product space $V$ of finite dimension $d$ states that
+for complex $b$ with $\operatorname{Re} b > 0$, complex $c$ and $w \in V$,
+\[
+  \int_V e^{\,-b|x|^2 + c\,\langle w, x\rangle} \, dx
+    = \Bigl(\frac{\pi}{b}\Bigr)^{d/2}
+      \exp\Bigl(\frac{c^2 |w|^2}{4b}\Bigr) .
+\]
+Apply this with $V = \mathbb{R}^n$, so $d = \dim_{\mathbb{R}} V = n$, and with
+$b = 1$ (whose real part is $1 > 0$), $c = i$ and $w = t$.  Since $i^2 = -1$,
+\[
+  \int_{\mathbb{R}^n} e^{\,-|x|^2 + i\langle t, x\rangle} \, dx
+    = \pi^{n/2} \exp\Bigl(\frac{i^2 |t|^2}{4}\Bigr)
+    = \pi^{n/2}\, e^{-|t|^2/4} .
+\]
+
+Step 4 (conclusion).  Substituting Step 3 into Step 2 and cancelling the
+powers of $\pi$, which is legitimate because $\pi \neq 0$ and
+$\pi^{-n/2}\pi^{n/2} = \pi^{-n/2 + n/2} = \pi^0 = 1$,
+\[
+  \int_{\mathbb{R}^n} e^{\,i\langle x,t\rangle} \, d\gamma_n(x)
+    = \pi^{-n/2}\cdot \pi^{n/2}\, e^{-|t|^2/4}
+    = e^{-|t|^2/4} ,
+\]
+which is the assertion.  As a check on the normalization, $t = 0$ gives
+$\gamma_n(\mathbb{R}^n) = 1$, and the exponent $-|t|^2/4$ is the one recorded in
+the statement.
+\end{proof}

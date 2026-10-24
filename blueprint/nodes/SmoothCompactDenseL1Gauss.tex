@@ -1,0 +1,149 @@
+\begin{lemma}[Smooth compactly supported functions are dense in $L^1(\gamma_n)$]
+Fix $n \in \mathbb{N}_0$, let $\lambda$ be Lebesgue measure on $\mathbb{R}^n$ and
+let $\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure}.  Let
+$g \in L^1(\gamma_n)$, and write $g$ also for its canonical representative, a
+function $\mathbb{R}^n \to \mathbb{R}$.  Let $\delta > 0$.  Then there is a
+function $\varphi : \mathbb{R}^n \to \mathbb{R}$ which is smooth, has compact
+support and is $\gamma_n$-integrable, such that
+\[
+  \|g - \varphi\|_{L^1(\gamma_n)}
+    = \int_{\mathbb{R}^n}|g(y) - \varphi(y)|\,d\gamma_n(y) < \delta ,
+\]
+the integral being read in $[0,+\infty]$ as the $L^1(\gamma_n)$ seminorm of the
+difference, so that the inequality asserts in particular that it is finite.
+
+This is the density statement the reference paper uses when it writes ``choose
+$f_k \in C_c^\infty$ with $f_k \to f$ in $L^1(\gamma)$'': applying the lemma
+with $\delta = 1/(k+1)$ produces exactly such a sequence.  It is stated plainly,
+with no side condition on the support of $\varphi$ beyond compactness, because
+that is the form the paper uses and the form that is reusable; callers that need
+$\varphi$ to vanish on a prescribed ball obtain that for themselves by
+multiplying by a cut-off, which costs nothing because the function being
+approximated already vanishes there.
+
+\emph{Why the tablet's existing approximation results do not give this.}  Two
+of them are nearby and neither suffices, which is why this statement is
+separate from both; they are named here for contrast only, are not used in the
+proof below, and are correspondingly neither cited as dependencies nor
+imported.  \texttt{L1ApproxByL2Truncations} produces elements of
+$L^2(\gamma_n)$ whose $L^1(\gamma_n)$ images converge to $g$; those are
+equivalence classes carrying no smoothness and no support control whatever.
+\texttt{MollifierL2Local} concludes convergence of mollifications in $L^2$ of
+\emph{Lebesgue} measure restricted to a compact set --- a local statement, about
+a different measure and a different exponent.  Neither yields a $C_c^\infty$
+approximant in $L^1(\gamma_n)$.
+\end{lemma}
+\begin{proof}
+Write $\varrho(y) = \pi^{-n/2}e^{-|y|^2}$, which is smooth, strictly positive and
+bounded above by $\pi^{-n/2}$ at every point of $\mathbb{R}^n$.  By
+\noderef{GaussMeasure}, $\gamma_n$ is $\lambda$ weighted by $\varrho$, so that
+for every measurable $w : \mathbb{R}^n \to \mathbb{R}$
+\begin{equation*}
+  \int_{\mathbb{R}^n}|w|\,d\gamma_n
+    = \int_{\mathbb{R}^n}|w(y)|\,\varrho(y)\,d\lambda(y) , \tag{1}
+\end{equation*}
+both sides read in $[0,+\infty]$.
+
+\emph{Step 0: measurability bookkeeping.}
+The canonical representative $g$ is $\gamma_n$-almost everywhere equal to a Borel
+function $\widetilde g$.  By clause (4) of \noderef{GaussLebesgueBallComparison}
+the measures $\gamma_n$ and $\lambda$ have the same null sets, so
+$g = \widetilde g$ also $\lambda$-almost everywhere.  Replacing $g$ by
+$\widetilde g$ changes neither side of the asserted inequality --- the
+integrand $|g - \varphi|$ changes only on a $\gamma_n$-null set --- so we may and
+do assume $g$ Borel measurable.  Being the representative of an element of
+$L^1(\gamma_n)$, it satisfies $\int|g|\,d\gamma_n < \infty$.
+
+\emph{Step 1: transport to $L^1(\lambda)$.}
+Put $h(y) = g(y)\varrho(y)$, a Borel function.  By $(1)$,
+$\int|h|\,d\lambda = \int|g|\,d\gamma_n < \infty$, so $h \in L^1(\lambda)$.
+
+\emph{Step 2: a continuous compactly supported approximant to $h$.}
+By the density of compactly supported continuous functions in $L^p$ of a regular
+Borel measure (shared context, applied to $\mu = \lambda$, $p = 1$ and the
+function $h$) there is $u : \mathbb{R}^n \to \mathbb{R}$ which is continuous,
+has compact support, lies in $L^1(\lambda)$ and satisfies
+\begin{equation*}
+  \int_{\mathbb{R}^n}|h - u|\,d\lambda \leq \frac{\delta}{3} . \tag{2}
+\end{equation*}
+The same shared-context item records that such a $u$ is bounded and uniformly
+continuous on $\mathbb{R}^n$.
+
+\emph{Step 3: a smooth compactly supported approximant to $u$.}
+For $\varepsilon > 0$ fix $\rho_\varepsilon : \mathbb{R}^n \to \mathbb{R}$ which
+is smooth, nonnegative, has $\operatorname{supp}\rho_\varepsilon \subseteq
+\overline B(0,\varepsilon)$, and satisfies $\int\rho_\varepsilon\,d\lambda = 1$.
+Such a family exists.  For $n \geq 1$: take the standard radial bump $b$ at
+centre $0$ with inner radius $\varepsilon/2$ and outer radius $\varepsilon$, so
+that $b$ is smooth, takes values in $[0,1]$, equals $1$ on
+$\overline B(0,\varepsilon/2)$ and is supported in $B(0,\varepsilon)$; then
+$\int b\,d\lambda > 0$, because $b$ is nonnegative, continuous and equal to $1$
+on a ball of positive Lebesgue measure, and $\rho_\varepsilon = b/\int b\,d\lambda$
+has all four properties.  For $n = 0$ the space $\mathbb{R}^0$ is a single point
+of unit $\lambda$-mass and $\rho_\varepsilon \equiv 1$ has all four properties.  Set
+\[
+  u_\varepsilon(x) = (\rho_\varepsilon * u)(x)
+    = \int_{\mathbb{R}^n}\rho_\varepsilon(t)\,u(x-t)\,d\lambda(t) .
+\]
+By the shared-context item on smoothness of a mollification, $u_\varepsilon$ is
+defined at every $x$ and is smooth.
+
+\emph{Support.}  Let $S = \operatorname{supp}u$, compact, and let
+$K = \{x : \operatorname{dist}(x,S) \leq 1\}$, which is closed and bounded,
+hence compact, and has $\lambda(K) < \infty$ (shared context).  If
+$0 < \varepsilon \leq 1$ and $x \notin K$ then for every $t$ with
+$|t| \leq \varepsilon$ we have $x - t \notin S$, so $u(x-t) = 0$; since
+$\rho_\varepsilon$ vanishes off $\overline B(0,\varepsilon)$, the integrand
+above vanishes identically and $u_\varepsilon(x) = 0$.  Thus
+$\{u_\varepsilon \neq 0\} \subseteq K$, and as $K$ is closed,
+$\operatorname{supp}u_\varepsilon \subseteq K$ is compact.
+
+\emph{Uniform convergence.}  Since $\int\rho_\varepsilon\,d\lambda = 1$ we have
+$u(x) = \int\rho_\varepsilon(t)u(x)\,d\lambda(t)$, so for every $x$
+\[
+  |u_\varepsilon(x) - u(x)|
+    = \Bigl|\int\rho_\varepsilon(t)\bigl(u(x-t)-u(x)\bigr)d\lambda(t)\Bigr|
+    \leq \sup_{|t|\leq\varepsilon}\ \sup_{w\in\mathbb{R}^n}|u(w-t)-u(w)| ,
+\]
+using $\rho_\varepsilon \geq 0$, $\int\rho_\varepsilon = 1$ and that
+$\rho_\varepsilon$ vanishes for $|t| > \varepsilon$.  By the uniform continuity
+of $u$ (Step 2), given $\eta > 0$ there is $\varepsilon \in (0,1]$ with
+$|u(w-t)-u(w)| \leq \eta$ for all $w$ and all $|t| \leq \varepsilon$, and then
+$\sup_x|u_\varepsilon(x)-u(x)| \leq \eta$.  Since $u_\varepsilon - u$ vanishes
+off $K$,
+\[
+  \int_{\mathbb{R}^n}|u_\varepsilon - u|\,d\lambda \leq \eta\,\lambda(K) .
+\]
+Choose $\eta > 0$ with $\eta\,\lambda(K) \leq \delta/3$ --- possible because
+$\lambda(K) < \infty$ --- and let $v = u_\varepsilon$ for the corresponding
+$\varepsilon$.  Then $v$ is smooth with compact support and
+\begin{equation*}
+  \int_{\mathbb{R}^n}|u - v|\,d\lambda \leq \frac{\delta}{3} . \tag{3}
+\end{equation*}
+
+\emph{Step 4: transport back, and conclusion.}
+Define
+\[
+  \varphi(y) = \pi^{n/2}e^{|y|^2}\,v(y) ,
+  \qquad\text{so that}\qquad
+  \varphi(y)\,\varrho(y) = v(y) \text{ for every } y .
+\]
+The function $y \mapsto \pi^{n/2}e^{|y|^2}$ is smooth and nowhere zero, so
+$\varphi$ is smooth and $\{\varphi \neq 0\} = \{v \neq 0\}$, whence
+$\operatorname{supp}\varphi = \operatorname{supp}v$ is compact.  Being
+continuous with compact support, $\varphi$ is bounded; and $\gamma_n$ is a
+probability measure, hence finite (\noderef{GaussIsProb}), so a bounded
+measurable function is $\gamma_n$-integrable: $\varphi \in L^1(\gamma_n)$.
+
+Finally, by $(1)$ applied to $w = g - \varphi$, then
+$(g(y)-\varphi(y))\varrho(y) = h(y) - v(y)$, then the triangle inequality in
+$L^1(\lambda)$ together with $(2)$ and $(3)$,
+\[
+  \int_{\mathbb{R}^n}|g - \varphi|\,d\gamma_n
+    = \int_{\mathbb{R}^n}|h - v|\,d\lambda
+    \leq \int_{\mathbb{R}^n}|h - u|\,d\lambda
+      + \int_{\mathbb{R}^n}|u - v|\,d\lambda
+    \leq \frac{\delta}{3} + \frac{\delta}{3} < \delta .
+\]
+This is the assertion.
+\end{proof}

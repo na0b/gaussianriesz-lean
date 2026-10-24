@@ -1,0 +1,18 @@
+\begin{definition}[The spectral domains $\operatorname{Dom}(L^s)$]
+Let $v \in L^2(\gamma_n)$ have Hermite coefficients
+$v_\alpha = \langle v, h_\alpha\rangle$ relative to the basis of
+\noderef{HermiteBasis}.  For $s \in \mathbb{R}$ set
+\[
+  \operatorname{Dom}(L^s)
+    = \Bigl\{ v \in L^2(\gamma_n) :
+        \sum_{\alpha \neq 0} |\alpha|^{2s}\,|v_\alpha|^2 < \infty \Bigr\},
+\]
+i.e. $v \in \operatorname{Dom}(L^s)$ exactly when the multiplied coefficient family
+$m_s\bigl((v_\alpha)_\alpha\bigr)$ of \noderef{FracPowCoeff} is square summable.
+This is the spectral domain criterion of the reference paper.  For $s \geq 0$ the
+multiplier $|\alpha|^{2s}$ is at least $1$ on every nonconstant mode, while for
+$s \leq 0$ it is at most $1$.  The two cases used below are $s = 1/2$, where
+$\operatorname{Dom}(L^{1/2}) = \{v : \sum_{\alpha\neq0}|\alpha||v_\alpha|^2<\infty\}$
+is the operator domain of $B = L^{1/2}$, and $s = 1/4$, whose domain is the
+fractional form domain.
+\end{definition}

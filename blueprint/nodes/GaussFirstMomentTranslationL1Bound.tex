@@ -1,0 +1,105 @@
+\begin{lemma}[$L^1$ translation-difference bound for the coordinate-weighted Gaussian]
+Fix $n \geq 1$ and a coordinate $j$.  For $b > 0$, $c \geq 0$ and
+$w \in \mathbb{R}^n$ write $W(w) = c\,w_j\,e^{-b|w|^2}$.  Then for every $b > 0$,
+every $c \geq 0$ and every $d \in \mathbb{R}^n$,
+\[
+  \int_{\mathbb{R}^n}\bigl|W(z+d)-W(z)\bigr|\,dz
+    \leq c\,|d|\,(\pi/b)^{n/2}\bigl(5+24\cdot 8^{n/2}\bigr) ,
+\]
+the integral being taken with respect to Lebesgue measure.
+\end{lemma}
+\begin{proof}
+Fix $b > 0$, $c \geq 0$ and $d$, and write $E(w) = e^{-b|w|^2}$, so that
+$W(w) = c\,w_j\,E(w)$.
+
+\emph{Step 0: the Gaussian toolkit.}
+Four of the facts we need are already available.  By
+\noderef{GaussEuclideanMomentBounds}, for every $\beta > 0$ the function
+$w \mapsto e^{-\beta|w|^2}$ is Lebesgue integrable on $\mathbb{R}^n$ with
+\begin{equation*}
+  \int_{\mathbb{R}^n} e^{-\beta|w|^2}\,dw = (\pi/\beta)^{n/2} , \tag{1}
+\end{equation*}
+and $|w_i| \leq |w|$ for every $w$ and every coordinate $i$.  By
+\noderef{GaussSecondMomentIntegralBound}, for every $\beta > 0$ and every $w$
+\begin{equation*}
+  |w|^2e^{-\beta|w|^2} \leq \frac2\beta\,e^{-(\beta/2)|w|^2} , \tag{2}
+\end{equation*}
+and $w \mapsto |w|^2e^{-\beta|w|^2}$ is Lebesgue integrable on $\mathbb{R}^n$ with
+\begin{equation*}
+  \int_{\mathbb{R}^n}|w|^2e^{-\beta|w|^2}\,dw
+    \leq \frac2\beta\,(2\pi/\beta)^{n/2} , \tag{3}
+\end{equation*}
+the displayed constant because $\pi/(\beta/2) = 2\pi/\beta$.  We prove the one
+remaining fact here.
+
+Finally, for all reals $a$, $b'$, $m$ with $m \leq a$ and $m \leq b'$,
+\begin{equation*}
+  \bigl|e^{-a}-e^{-b'}\bigr| \leq |a-b'|\,e^{-m} . \tag{4}
+\end{equation*}
+By symmetry assume $a \leq b'$.  Then $e^{-b'} \leq e^{-a}$, so the left side is
+$e^{-a}-e^{-b'} = e^{-a}\bigl(1-e^{-(b'-a)}\bigr)$; and $1-e^{-t} \leq t$ for
+$t \geq 0$ by the exponential inequality with $t = b'-a \geq 0$; so the left side
+is at most $e^{-a}(b'-a) \leq e^{-m}|a-b'|$, using $e^{-a} \leq e^{-m}$.
+
+\emph{Step 1: the pointwise majorant.}
+We claim that for every $z$,
+\begin{equation*}
+  \bigl|W(z+d)-W(z)\bigr|
+    \leq c\,|d|\Bigl(3E(z+d) + 2E(z) + 3b\,|z|^2e^{-(b/4)|z|^2}\Bigr)
+    =: M(z) . \tag{5}
+\end{equation*}
+Since $(z+d)_j = z_j + d_j$,
+\[
+  W(z+d)-W(z) = c\,d_j\,E(z+d) + c\,z_j\bigl(E(z+d)-E(z)\bigr) ,
+\]
+so by the triangle inequality, $|d_j| \leq |d|$ and $E > 0$,
+\begin{equation*}
+  \bigl|W(z+d)-W(z)\bigr|
+    \leq c\,|d|\,E(z+d) + c\,|z_j|\,\bigl|E(z+d)-E(z)\bigr| . \tag{6}
+\end{equation*}
+
+If $|z| \leq 2|d|$, then $|z_j| \leq |z| \leq 2|d|$ and
+$|E(z+d)-E(z)| \leq E(z+d)+E(z)$, so the second term of $(6)$ is at most
+$2c|d|\bigl(E(z+d)+E(z)\bigr)$ and the right side of $(6)$ is at most
+$c|d|\bigl(3E(z+d)+2E(z)\bigr)$, which is at most $M(z)$ because the remaining
+summand of $M$ is nonnegative.
+
+If $|z| > 2|d|$, put $a = b|z+d|^2$, $b' = b|z|^2$ and $m = (b/4)|z|^2$.  Then
+$m \leq b'$; and $|d| \leq |z|/2$ gives $|z+d| \geq |z|-|d| \geq |z|/2$, so
+$|z+d|^2 \geq |z|^2/4$ and $m \leq a$.  Moreover
+$|z+d|^2 - |z|^2 = 2\langle z,d\rangle + |d|^2$, so by Cauchy--Schwarz and
+$|d|^2 \leq (|z|/2)|d|$,
+\[
+  |a-b'| = b\bigl|2\langle z,d\rangle+|d|^2\bigr|
+    \leq b\bigl(2|z||d| + \tfrac12|z||d|\bigr) \leq 3b|z||d| .
+\]
+By $(4)$, $|E(z+d)-E(z)| \leq 3b|z||d|\,e^{-(b/4)|z|^2}$, so with
+$|z_j| \leq |z|$ the second term of $(6)$ is at most
+$3bc|d|\,|z|^2e^{-(b/4)|z|^2}$, and the right side of $(6)$ is at most
+$c|d|\bigl(E(z+d) + 3b|z|^2e^{-(b/4)|z|^2}\bigr) \leq M(z)$.  This proves $(5)$
+in both cases.
+
+\emph{Step 2: integrating the majorant.}
+By $(1)$, the translation invariance of Lebesgue measure, and $(3)$ at $b/4$,
+each of the three summands of $M$ is integrable and
+\begin{align*}
+  \int_{\mathbb{R}^n} M
+    &= c|d|\Bigl(3(\pi/b)^{n/2} + 2(\pi/b)^{n/2}
+        + 3b\int_{\mathbb{R}^n}|z|^2e^{-(b/4)|z|^2}\,dz\Bigr)\\
+    &\leq c|d|\Bigl(5(\pi/b)^{n/2} + 3b\cdot\frac8b\,(8\pi/b)^{n/2}\Bigr)
+     = c|d|\,(\pi/b)^{n/2}\bigl(5+24\cdot8^{n/2}\bigr) ,
+\end{align*}
+using $(8\pi/b)^{n/2} = 8^{n/2}(\pi/b)^{n/2}$.
+
+Finally $z \mapsto W(z+d)-W(z)$ is integrable.  Indeed $|W(w)| \leq c\,|w|\,E(w)$
+by the coordinate bound, and $|w|E(w) \leq \tfrac12\bigl(1+|w|^2\bigr)E(w)$, which
+is integrable by $(1)$ and $(3)$; so $W$ is integrable, being continuous and
+dominated by an integrable function, and $z \mapsto W(z+d)$ is integrable by
+translation invariance.  Hence, by $(5)$ and monotonicity of the integral,
+\[
+  \int_{\mathbb{R}^n}\bigl|W(z+d)-W(z)\bigr|\,dz
+    \leq \int_{\mathbb{R}^n} M
+    \leq c|d|\,(\pi/b)^{n/2}\bigl(5+24\cdot8^{n/2}\bigr) ,
+\]
+which is the stated bound.
+\end{proof}

@@ -1,0 +1,26 @@
+\begin{lemma}[Nonnegativity tested against nonnegative $L^2$ functions]
+For $v \in L^2(\gamma_n)$ the following are equivalent:
+\begin{enumerate}
+\item $v \geq 0$ $\gamma_n$-almost everywhere;
+\item $\int v \varphi \, d\gamma_n \geq 0$ for every $\varphi \in L^2(\gamma_n)$
+with $\varphi \geq 0$ $\gamma_n$-almost everywhere.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+$(1) \Rightarrow (2)$.  If $v \geq 0$ and $\varphi \geq 0$ a.e., then
+$v\varphi \geq 0$ a.e.; the product is integrable by Cauchy--Schwarz since
+$v, \varphi \in L^2(\gamma_n)$, and the integral of an a.e.\ nonnegative
+integrable function is nonnegative.
+
+$(2) \Rightarrow (1)$.  Let $v^- = \max\{-v, 0\}$.  Then $v^-$ is measurable and
+$0 \leq v^- \leq |v|$, so $v^- \in L^2(\gamma_n)$ and $v^- \geq 0$ a.e.  Taking
+$\varphi = v^-$ in (2) gives
+\[
+  0 \leq \int v\, v^- \, d\gamma_n .
+\]
+Pointwise, $v \, v^- = -(v^-)^2$: at points where $v \geq 0$ we have $v^- = 0$ so
+both sides vanish, and at points where $v < 0$ we have $v^- = -v$ so
+$v v^- = -v^2 = -(v^-)^2$.  Hence
+$0 \leq \int v v^- d\gamma_n = -\|v^-\|_2^2 \leq 0$, so $\|v^-\|_2 = 0$ and
+therefore $v^- = 0$ $\gamma_n$-a.e., i.e. $v \geq 0$ $\gamma_n$-a.e.
+\end{proof}

@@ -1,0 +1,90 @@
+\begin{lemma}[Integration by parts against the weight $e^{-\sigma^2}$ on the line]
+Let $g, g' : \mathbb{R} \to \mathbb{R}$ be such that $g$ is differentiable at
+every $\sigma \in \mathbb{R}$ with derivative $g'(\sigma)$.  Assume the three
+integrability conditions
+\begin{enumerate}
+  \item $\sigma \mapsto e^{-\sigma^2}\, g'(\sigma)$ is integrable on
+    $\mathbb{R}$;
+  \item $\sigma \mapsto e^{-\sigma^2}\,\bigl(\sigma\, g(\sigma)\bigr)$ is
+    integrable on $\mathbb{R}$;
+  \item $\sigma \mapsto e^{-\sigma^2}\, g(\sigma)$ is integrable on
+    $\mathbb{R}$.
+\end{enumerate}
+Then
+\[
+  \int_{\mathbb{R}} e^{-\sigma^2}\,\sigma\, g(\sigma) \, d\sigma
+    = \frac{1}{2} \int_{\mathbb{R}} e^{-\sigma^2}\, g'(\sigma) \, d\sigma .
+\]
+
+Both integrals are ordinary Lebesgue integrals over $\mathbb{R}$ with respect to
+$d\sigma$: the weight $e^{-\sigma^2}$ sits inside the integrand, and the measure
+is Lebesgue measure, unnormalised.  In particular this is not an identity about
+the Gaussian measure $\gamma_1$ of the surrounding development, which carries an
+extra normalising factor $\pi^{-1/2}$ appearing nowhere above; no Gaussian
+measure occurs in this statement at all.  Note also that no decay hypothesis on
+$g$ is assumed beyond the three integrability conditions --- there is no
+requirement that $g$ vanish at infinity, and no boundary term appears in the
+conclusion.
+\end{lemma}
+\begin{proof}
+Set
+\[
+  G(\sigma) = -\tfrac{1}{2}\, e^{-\sigma^2} ,
+\]
+which is the point of the argument: $G$ is an explicit antiderivative of the
+function $\sigma \mapsto \sigma\, e^{-\sigma^2}$ appearing on the left.
+
+Step 1 ($G' (\sigma)= \sigma e^{-\sigma^2}$).  The map $s \mapsto -s^2$ is
+differentiable with derivative $-2\sigma$ at $\sigma$, so by the chain rule
+$s \mapsto e^{-s^2}$ is differentiable with derivative $-2\sigma e^{-\sigma^2}$,
+and multiplying by the constant $-\tfrac12$,
+\[
+  G'(\sigma) = -\tfrac12 \cdot \bigl(-2\sigma\, e^{-\sigma^2}\bigr)
+    = \sigma\, e^{-\sigma^2} \qquad (\sigma \in \mathbb{R}).
+\]
+In particular $G$ is differentiable at every point, as is $g$ by hypothesis.
+
+Step 2 (recasting the integrability hypotheses).  The integration-by-parts
+theorem to be applied asks for the integrability of the three products
+$g' \cdot G$, $g \cdot G'$ and $g \cdot G$.  Each is a constant multiple of one
+of the given integrands, by Step 1 and the definition of $G$: $g' \cdot G$ is
+$-\tfrac12$ times the integrand of (1), $g \cdot G'$ is the integrand of (2)
+rearranged, and $g \cdot G$ is $-\tfrac12$ times the integrand of (3).  Since a
+constant multiple of an integrable function is integrable, all three products
+are integrable.
+
+Step 3 (integration by parts).  Both $g$ and $G$ are differentiable at every
+real number, so in particular each is differentiable at every point of the
+closed support of the other, and the integration-by-parts identity on
+$\mathbb{R}$ applies with the integrability of Step 2 as its hypothesis:
+\[
+  \int_{\mathbb{R}} g(\sigma)\, G'(\sigma)\, d\sigma
+    = -\int_{\mathbb{R}} g'(\sigma)\, G(\sigma)\, d\sigma .
+\]
+It is the integrability assumptions, not any decay of $g$, that licenses this;
+no boundary contribution survives.
+
+Step 4 (reading off the two sides).  By Step 1 the left-hand integrand is
+$g(\sigma)\,\sigma\, e^{-\sigma^2}$, which is the integrand of the asserted
+left-hand side, so
+\[
+  \int_{\mathbb{R}} e^{-\sigma^2}\,\sigma\, g(\sigma)\, d\sigma
+    = \int_{\mathbb{R}} g(\sigma)\, G'(\sigma)\, d\sigma .
+\]
+On the right, substituting $G(\sigma) = -\tfrac12 e^{-\sigma^2}$ and taking the
+constant out of the integral,
+\[
+  -\int_{\mathbb{R}} g'(\sigma)\, G(\sigma)\, d\sigma
+    = -\int_{\mathbb{R}} g'(\sigma)\cdot
+        \bigl(-\tfrac12 e^{-\sigma^2}\bigr)\, d\sigma
+    = \frac{1}{2}\int_{\mathbb{R}} e^{-\sigma^2}\, g'(\sigma)\, d\sigma .
+\]
+Chaining these two identities with Step 3 gives the assertion.
+
+Remark.  The identity is the Gaussian integration-by-parts formula in disguise:
+dividing both sides by $\sqrt{\pi}$ turns the weight $e^{-\sigma^2}\,d\sigma$
+into the probability measure $\gamma_1$, and the statement becomes
+$\int \sigma\, g \, d\gamma_1 = \tfrac12 \int g' \, d\gamma_1$.  That normalised
+form is not what is proved here, and the factor $\tfrac12$ above reflects the
+variance $\tfrac12$ of the weight rather than any choice of normalisation.
+\end{proof}

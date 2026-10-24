@@ -1,0 +1,32 @@
+\begin{lemma}[Dual-order positivity of the multiplier]
+Let $F \in L^2(\gamma_n)$, $a \in \mathbb{R}$, and let $u \in \mathcal{K}$ minimize
+the functional $J$ of \noderef{ObstacleFunctional} over the cone $\mathcal{K}$ of
+\noderef{ObstacleCone}.  Let $\eta$ be the multiplier of
+\noderef{ObstacleMultiplier} associated with $u$, $F$ and $a$.  Then
+\[
+  \langle \eta, \varphi\rangle \geq 0
+  \qquad\text{for every } \varphi \in \mathcal{K},
+\]
+i.e. $\eta$ takes nonnegative values on every nonnegative test function of finite
+energy.  This is the statement $\eta \geq 0$ in the dual order; it is not yet a
+pointwise inequality for a function.
+\end{lemma}
+\begin{proof}
+Let $\varphi \in \mathcal{K}$, so $\varphi \geq 0$ $\gamma_n$-a.e.\ and
+$\mathcal{E}(\varphi) < \infty$.  Put $v = u + \varphi$.  Then $v \geq 0$ a.e.,
+because $u \geq 0$ and $\varphi \geq 0$ a.e., and $\mathcal{E}(v) < \infty$
+because $\mathcal{V}$ is a linear subspace of $L^2(\gamma_n)$; hence
+$v \in \mathcal{K}$ by \noderef{ObstacleCone}.
+
+Apply \noderef{VariationalInequality} with this competitor $v$.  Since
+$v - u = \varphi$, it gives
+\[
+  \mathcal{E}(u, \varphi) \;\geq\; \int (F-a)\,\varphi \, d\gamma_n .
+\]
+Rearranging,
+\[
+  \mathcal{E}(u,\varphi) - \int (F-a)\varphi\, d\gamma_n \;\geq\; 0 ,
+\]
+and by \noderef{ObstacleMultiplier} the left-hand side is exactly
+$\langle\eta,\varphi\rangle$.
+\end{proof}

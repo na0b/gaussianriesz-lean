@@ -1,0 +1,64 @@
+\begin{theorem}[Endpoint weak-type $(1,1)$ bound for the Gaussian vector Riesz transform]
+Let $\mathcal{M}(\gamma_n;\mathbb{R}^n)$ denote the space of
+$\gamma_n$-almost-everywhere equivalence classes of measurable
+$\mathbb{R}^n$-valued functions on $\mathbb{R}^n$.  There is exactly one linear
+map
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow \mathcal{M}(\gamma_n;\mathbb{R}^n)
+\]
+with the following two properties:
+\begin{enumerate}
+\item $T$ extends the transform of \noderef{RieszTransform} from $L^2$, i.e.
+$T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with $\iota$ the
+inclusion of \noderef{ToL1}; and
+\item $T$ satisfies the weak-type bound
+\[
+  \sup_{t>0}\; t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+    \;\leq\; 2\,\|f\|_{L^1(\gamma_n)}
+  \qquad\text{for every } f \in L^1(\gamma_n;\mathbb{R}) .
+\]
+\end{enumerate}
+The constant $2$ does not depend on $n$.  Property (2) is precisely boundedness
+from $L^1(\gamma_n)$ into $L^{1,\infty}(\gamma_n;\mathbb{R}^n)$ with quasi-norm at
+most $2$, hence continuity of $T$ for the weak-$L^1$ quasi-norm; so the statement
+is the assertion that $R_\gamma$ has a unique continuous linear extension from
+$L^1(\gamma_n)$ to $L^{1,\infty}(\gamma_n;\mathbb{R}^n)$ satisfying the bound with
+constant $2$, and uniqueness is asserted in the larger class of all linear maps
+into $\mathcal{M}(\gamma_n;\mathbb{R}^n)$ satisfying (1) and (2).
+\end{theorem}
+\begin{proof}
+Existence is \noderef{L1Extension}, which supplies a linear
+$T : L^1(\gamma_n) \to \mathcal{M}(\gamma_n;\mathbb{R}^n)$ satisfying (1) and (2).
+
+For uniqueness, let $T$ and $T'$ both be linear and satisfy (1) and (2), and fix
+$f \in L^1(\gamma_n)$.  Choose $f_k \in L^2(\gamma_n)$ with $f_k \to f$ in
+$L^1(\gamma_n)$: for instance the truncations
+$f_k = \max\{-k,\min\{f,k\}\}$, which are bounded, hence in $L^2(\gamma_n)$ since
+$\gamma_n$ is a probability measure (\noderef{GaussIsProb}), and converge to $f$
+in $L^1$ by dominated convergence.  (That $L^2(\gamma_n)$ is dense in
+$L^1(\gamma_n)$ also follows from \noderef{L2IntoL1} together with
+\noderef{HermiteL2Complete}; the explicit truncations suffice here.)
+
+By (1), $T(\iota f_k) = R_\gamma f_k = T'(\iota f_k)$ for every $k$, so
+\[
+  T f - T' f = T(f - \iota f_k) - T'(f - \iota f_k)
+\]
+by linearity of $T$ and $T'$.  Let $\varepsilon > 0$.  If
+$|Tf(x) - T'f(x)| > 2\varepsilon$ then at least one of
+$|T(f-\iota f_k)(x)| > \varepsilon$ and $|T'(f-\iota f_k)(x)| > \varepsilon$ holds,
+so by subadditivity and (2) applied to each of $T$ and $T'$ with the input
+$f - \iota f_k$ and the level $\varepsilon$,
+\[
+  \gamma_n\bigl(\{|Tf - T'f| > 2\varepsilon\}\bigr)
+    \leq \frac{2}{\varepsilon}\|f - \iota f_k\|_{L^1(\gamma_n)}
+       + \frac{2}{\varepsilon}\|f - \iota f_k\|_{L^1(\gamma_n)}
+    = \frac{4}{\varepsilon}\|f - \iota f_k\|_{L^1(\gamma_n)} .
+\]
+Letting $k \to \infty$, the right-hand side tends to $0$, so
+$\gamma_n(\{|Tf-T'f| > 2\varepsilon\}) = 0$ for every $\varepsilon > 0$.  Taking
+$\varepsilon = 1/j$ and using that
+$\{Tf \neq T'f\} = \bigcup_{j\geq1}\{|Tf-T'f| > 2/j\}$ is a countable union of
+null sets, we get $Tf = T'f$ $\gamma_n$-almost everywhere, i.e.\ $Tf = T'f$ in
+$\mathcal{M}(\gamma_n;\mathbb{R}^n)$.  As $f \in L^1(\gamma_n)$ was arbitrary,
+$T = T'$.
+\end{proof}

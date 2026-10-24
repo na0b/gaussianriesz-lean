@@ -1,0 +1,194 @@
+\begin{lemma}[The Gaussian far majorant for $K_{\gamma,j}$ off the diagonal]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure, and let
+$K_{\gamma,j}$ be the normalized Gaussian Riesz kernel of \noderef{GaussRieszKernel}, so
+that $K_{\gamma,j}(x,y) = c_n\int_0^1\Phi_{x,y}(r)\,dr$ with
+$c_n = \sqrt2\,\pi^{-(n+1)/2}$ and
+\[
+  \Phi_{x,y}(r)
+    = \frac{y_j - r x_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \exp\Bigl(-\frac{|rx-y|^2}{1-r^2}\Bigr),
+  \qquad r \in (0,1) .
+\]
+Then for all $R > 0$ and $\rho > 0$ there is a constant $C > 0$, depending only on $n$,
+$j$, $R$ and $\rho$, such that for all $x,y \in \mathbb{R}^n$ with $|x| \leq R$ and
+$|x-y| \geq \rho$:
+\begin{enumerate}
+\item $\Phi_{x,y}$ is Lebesgue integrable on $(0,1)$; and
+\item $\bigl|K_{\gamma,j}(x,y)\bigr| \leq C\,e^{-|y|^2}$.
+\end{enumerate}
+
+\emph{Why the integrability assertion is part of the content.}
+$K_{\gamma,j}(x,y)$ is defined in \noderef{GaussRieszKernel} as a Bochner integral over
+$(0,1)$, with the convention that the value is $0$ when the integrand is not integrable;
+and $0$ satisfies every upper bound.  A bare size bound
+$|K_{\gamma,j}| \leq Ce^{-|y|^2}$ would therefore be provable without establishing
+anything about the kernel, and would be useless to a consumer that needs the defining
+integral to converge.  Clause (1) is what rules that out, so it is asserted here rather
+than assumed.
+
+\emph{The majorant carries no polynomial factor in $|y|$.}
+The right-hand side of (2) is $Ce^{-|y|^2}$ with $C$ independent of $y$.  That exact
+pairing with the Gaussian density $\pi^{-n/2}e^{-|y|^2}$ is what later lets a truncated
+kernel integral be dominated by $\|f\|_{L^1(\gamma_n)}$; a residual factor $|y|^k$ would
+break it.  The constant does depend on $R$ and on $\rho$, and no uniformity in $n$, in
+$R$ or in $\rho$ is claimed.
+
+The reference paper derives $K_{\gamma,j}$ and fixes the prefactor $c_n$ --- it is
+explicit that an unnormalized kernel is a different family of operators, so $c_n$ is not
+cosmetic --- but it proves no off-diagonal majorant for it.  Clauses (1) and (2) are
+therefore tablet-side rigorization with no paper proof to transcribe: what the paper
+supplies is the kernel, and what is needed downstream, for the $L^1$ identification, is
+that the kernel is an honest function off the diagonal with Gaussian decay in $y$.
+\end{lemma}
+\begin{proof}
+Fix $n \geq 1$ and $j$, and let $R,\rho > 0$.  Put $R' = \max(R,1) \geq 1$ and
+$\rho' = \min(\rho,1) \in (0,1]$; a pair $(x,y)$ with $|x| \leq R$, $|x-y| \geq \rho$ also
+satisfies $|x| \leq R'$, $|x-y| \geq \rho'$, so it suffices to produce a constant for
+$(R',\rho')$.  Write
+\[
+  \Psi_{x,y}(r)
+    = \frac{y_j - r x_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \exp\Bigl(-\frac{|x-ry|^2}{1-r^2}\Bigr) ,
+  \qquad r \in (0,1) ,
+\]
+for the reflected integrand.  Throughout, $r \in (0,1)$ gives $1-r^2 > 0$ (because
+$r^2 < 1$) and $-\log r > 0$, so every denominator below is nonzero and the prefactor
+$\bigl((1-r^2)^{n/2+1}\sqrt{-\log r}\bigr)^{-1}$ is positive.
+
+\emph{Step 0: the splitting identity.}
+For all $x,y$ and all $r$,
+\begin{equation*}
+  |rx-y|^2 - (1-r^2)\bigl(|y|^2-|x|^2\bigr) = |x-ry|^2 , \tag{1}
+\end{equation*}
+since expanding both sides in the inner product gives
+$|x|^2 - 2r\langle x,y\rangle + r^2|y|^2$ for each.  Consequently, for $r \in (0,1)$,
+dividing $(1)$ by $1-r^2 > 0$ and rearranging,
+\[
+  -\frac{|rx-y|^2}{1-r^2}
+    = \bigl(|x|^2 - |y|^2\bigr) + \Bigl(-\frac{|x-ry|^2}{1-r^2}\Bigr) ,
+\]
+and therefore, since $e^{a+b} = e^ae^b$,
+\begin{equation*}
+  \Phi_{x,y}(r) = e^{|x|^2}e^{-|y|^2}\,\Psi_{x,y}(r)
+  \qquad (r \in (0,1)) . \tag{2}
+\end{equation*}
+
+\emph{Step 1: the prefactor on $(0,\tfrac12]$.}
+For $0 < r \leq \tfrac12$ we have $1-r^2 \geq \tfrac34$ and $r \leq \tfrac12$, so
+$\log r \leq \log\tfrac12 = -\log 2$, i.e. $-\log r \geq \log 2 > 0$.  Hence, by
+monotonicity of $t \mapsto t^{n/2+1}$ on $[0,\infty)$ and of $\sqrt\cdot$,
+\[
+  (1-r^2)^{n/2+1}\sqrt{-\log r} \;\geq\; (\tfrac34)^{n/2+1}\sqrt{\log 2} \;>\; 0 ,
+\]
+so with $K = \bigl((\tfrac34)^{n/2+1}\sqrt{\log 2}\bigr)^{-1} > 0$, a constant depending
+only on $n$,
+\begin{equation*}
+  \frac{1}{(1-r^2)^{n/2+1}\sqrt{-\log r}} \leq K
+  \qquad (0 < r \leq \tfrac12) . \tag{3}
+\end{equation*}
+
+\emph{Step 2: the bound on $(0,\tfrac12]$.}
+First, an elementary inequality: for every $t \geq 0$,
+\begin{equation*}
+  \bigl((t-R')^+\bigr)^2 \;\geq\; \frac{t^2}{4} - R'^2 , \tag{4}
+\end{equation*}
+where $s^+ = \max(s,0)$.  If $t \leq 2R'$ the right-hand side is $\leq R'^2-R'^2 = 0$ and
+the left-hand side is $\geq 0$; if $t > 2R'$ then $t-R' > t/2 > 0$, so the left-hand side
+is $> t^2/4 \geq t^2/4 - R'^2$.
+
+Now fix $x,y$ with $|x| \leq R'$ and let $0 < r \leq \tfrac12$.  From
+$|ry| - |x| \leq |x-ry|$ and $|x-ry| \geq 0$ we get
+$|x-ry| \geq \bigl(r|y| - R'\bigr)^+$, so squaring (both sides nonnegative) and using
+$(4)$ at $t = r|y| \geq 0$,
+\[
+  |x-ry|^2 \;\geq\; \frac{r^2|y|^2}{4} - R'^2 .
+\]
+Also $0 < 1-r^2 \leq 1$ gives $-|x-ry|^2/(1-r^2) \leq -|x-ry|^2$.  Combining,
+\[
+  \exp\Bigl(-\frac{|x-ry|^2}{1-r^2}\Bigr) \leq e^{-|x-ry|^2}
+    \leq e^{R'^2}\exp\Bigl(-\frac{|y|^2}{4}r^2\Bigr) .
+\]
+With $(3)$ and the numerator bound $|y_j-rx_j| \leq |y| + R'$ (which holds because
+$|v_i| \leq |v|$ for every coordinate, $r \leq 1$ and $|x| \leq R'$), and since all three
+factors are nonnegative,
+\begin{equation*}
+  \bigl|\Psi_{x,y}(r)\bigr|
+    \leq K\,(|y|+R')\,e^{R'^2}\exp\Bigl(-\frac{|y|^2}{4}r^2\Bigr)
+  \qquad (0 < r \leq \tfrac12) . \tag{5}
+\end{equation*}
+
+\emph{Step 3: the bound on $[\tfrac12,1)$.}
+By \noderef{GaussRieszKernelEndpointSliceBound} applied to $R'$ and $\rho'$ there is a
+constant $C_2 > 0$, depending only on $n$, $j$, $R'$ and $\rho'$, with
+\begin{equation*}
+  \bigl|\Psi_{x,y}(r)\bigr| \leq C_2
+  \qquad\text{whenever } |x| \leq R',\ |x-y| \geq \rho',\ \tfrac12 \leq r < 1 . \tag{6}
+\end{equation*}
+
+\emph{Step 4: one majorant on all of $(0,1)$.}
+Fix $x,y$ with $|x| \leq R'$ and $|x-y| \geq \rho'$, and set
+\[
+  B_1 = K\,e^{R'^2}\,5R' + C_2 \geq 0 , \qquad
+  B_2 = K\,(|y|+R')\,e^{R'^2} \geq 0 , \qquad
+  b = \frac{|y|^2}{4} \geq 0 ,
+\]
+\[
+  M(r) = B_1 + B_2\,e^{-br^2} .
+\]
+Then
+\begin{equation*}
+  \bigl|\Psi_{x,y}(r)\bigr| \leq M(r) \qquad (r \in (0,1)) , \tag{7}
+\end{equation*}
+because for $r \leq \tfrac12$ the bound $(5)$ is exactly $B_2e^{-br^2}$ and $B_1 \geq 0$,
+while for $r > \tfrac12$ the bound $(6)$ gives $C_2 \leq B_1$ and $B_2e^{-br^2} \geq 0$.
+Since $e^{-br^2} \leq 1$, $(7)$ also gives the cruder constant bound
+$|\Psi_{x,y}| \leq B_1+B_2$ on $(0,1)$.
+
+$\Psi_{x,y}$ is Borel measurable on $\mathbb{R}$ (it is built from $r \mapsto r$,
+$\log$, $\sqrt\cdot$, the real power $t \mapsto t^{n/2+1}$, the norm, division and
+$\exp$, all Borel), and $\lambda\bigl((0,1)\bigr) = 1 < \infty$, so the crude constant
+bound makes $\Psi_{x,y}$ Lebesgue integrable on $(0,1)$; by $(2)$, $\Phi_{x,y}$ is a
+constant multiple of $\Psi_{x,y}$ and is therefore integrable on $(0,1)$ as well.  This
+is clause (1).
+
+\emph{Step 5: the integral of the majorant.}
+$M$ is continuous and bounded by $B_1+B_2$ on $(0,1)$, hence integrable there, and by
+additivity and $\lambda((0,1)) = 1$,
+\[
+  \int_0^1 M \,d\lambda = B_1 + B_2\int_0^1 e^{-br^2}\,dr .
+\]
+We bound the last term by $K\,e^{R'^2}\bigl(5R' + \tfrac52\sqrt\pi\bigr)$.  By
+\noderef{GaussianUnitIntegralLinearFactorBound}, applied with $t = |y| \geq 0$ and
+the present $R' \geq 0$, and with $b = |y|^2/4$,
+\[
+  (|y|+R')\int_0^1e^{-br^2}\,dr \leq 5R' + \tfrac52\sqrt\pi ,
+\]
+the cited node proving this by the case split on whether $|y| \leq 4R'$.  Since
+$B_2 = Ke^{R'^2}(|y|+R')$, multiplying by the nonnegative constant $Ke^{R'^2}$ gives
+$B_2\int_0^1e^{-br^2}dr \leq Ke^{R'^2}\bigl(5R'+\tfrac52\sqrt\pi\bigr)$.  Adding the
+nonnegative missing summand,
+\begin{equation*}
+  \int_0^1 M\,d\lambda \;\leq\; C_0
+    := K\,e^{R'^2}5R' + C_2 + K\,e^{R'^2}\bigl(5R' + \tfrac52\sqrt\pi\bigr) . \tag{8}
+\end{equation*}
+
+\emph{Step 6: clause (2).}
+By $(7)$, $(8)$ and $|\int g| \leq \int|g|$,
+\[
+  \Bigl|\int_0^1 \Psi_{x,y}\,d\lambda\Bigr|
+    \leq \int_0^1|\Psi_{x,y}|\,d\lambda
+    \leq \int_0^1 M\,d\lambda \leq C_0 .
+\]
+By $(2)$ and linearity of the integral for the constant $e^{|x|^2}e^{-|y|^2}$,
+$\int_0^1\Phi_{x,y} = e^{|x|^2}e^{-|y|^2}\int_0^1\Psi_{x,y}$, so by the definition of
+$K_{\gamma,j}$ in \noderef{GaussRieszKernel}, and since $c_n > 0$, $e^{|x|^2} > 0$ and
+$e^{-|y|^2} > 0$,
+\[
+  \bigl|K_{\gamma,j}(x,y)\bigr|
+    = c_n\,e^{|x|^2}e^{-|y|^2}\Bigl|\int_0^1\Psi_{x,y}\,d\lambda\Bigr|
+    \leq c_n\,e^{R'^2}\,C_0\,e^{-|y|^2} ,
+\]
+using $|x| \leq R'$ and the monotonicity of $\exp$ to replace $e^{|x|^2}$ by $e^{R'^2}$.
+Setting $C = c_n\,e^{R'^2}C_0 > 0$, which depends only on $n$, $j$, $R'$ and $\rho'$ and
+hence only on $n$, $j$, $R$ and $\rho$, gives clause (2).
+\end{proof}

@@ -1,0 +1,325 @@
+\begin{lemma}[A Gaussian far majorant for $K_{\gamma,j}$, and well-definedness of its hard truncations]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ denote Lebesgue measure
+on $\mathbb{R}^n$, let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}, and let $K_{\gamma,j}$ be the normalized Gaussian Riesz
+kernel of \noderef{GaussRieszKernel}, so that
+$K_{\gamma,j}(x,y) = \sqrt2\,\pi^{-(n+1)/2}\int_0^1\Phi_{x,y}(r)\,dr$ with
+\[
+  \Phi_{x,y}(r)
+    = \frac{y_j - r x_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \exp\Bigl(-\frac{|rx-y|^2}{1-r^2}\Bigr),
+  \qquad r \in (0,1) .
+\]
+For $\varepsilon > 0$ and $f : \mathbb{R}^n \to \mathbb{R}$ write
+\[
+  T_{j,\varepsilon}f(x)
+    = \int_{|x-y|>\varepsilon} K_{\gamma,j}(x,y)\,f(y)\,dy ,
+\]
+the hard truncation at radius $\varepsilon$ of the $j$th coordinate, the
+integral being against Lebesgue measure in $y$.  Below, ``$f \in
+L^1(\gamma_n)$'' means that the \emph{function} $f : \mathbb{R}^n \to
+\mathbb{R}$ is $\gamma_n$-integrable; $f$ is a genuine function and not an
+equivalence class, because $T_{j,\varepsilon}f(x)$ is formed from its pointwise
+values.  Then:
+\begin{enumerate}
+\item for all $R > 0$ and $\rho > 0$ there is a constant $C > 0$, depending only
+on $n$, $j$, $R$ and $\rho$, such that
+  \begin{enumerate}
+  \item for all $x,y \in \mathbb{R}^n$ with $|x| \leq R$ and
+    $|x-y| \geq \rho$, the function $\Phi_{x,y}$ is Lebesgue integrable on
+    $(0,1)$ and
+    \[
+      \bigl|K_{\gamma,j}(x,y)\bigr| \leq C\,e^{-|y|^2} ;
+    \]
+  \item for every $f \in L^1(\gamma_n)$ and every $x$ with $|x| \leq R$, the
+    function $y \mapsto K_{\gamma,j}(x,y)f(y)$ is Lebesgue integrable on
+    $\{y : |x-y| > \rho\}$ and
+    \[
+      \bigl|T_{j,\rho}f(x)\bigr| \leq C\,\|f\|_{L^1(\gamma_n)} ,
+      \qquad \|f\|_{L^1(\gamma_n)} = \int_{\mathbb{R}^n}|f|\,d\gamma_n ;
+    \]
+  \end{enumerate}
+\item for every $f \in L^1(\gamma_n)$ and every $\varepsilon > 0$ the function
+$x \mapsto T_{j,\varepsilon}f(x)$ is Borel measurable on $\mathbb{R}^n$; and
+\item for every $f \in L^1(\gamma_n)$ and every $x \in \mathbb{R}^n$ the
+function $\varepsilon \mapsto T_{j,\varepsilon}f(x)$ is continuous on
+$(0,\infty)$.
+\end{enumerate}
+
+\emph{Why clause (1)(a) carries the integrability assertion, and (1)(b) its
+own.}  $K_{\gamma,j}(x,y)$ is defined in \noderef{GaussRieszKernel} as a
+Bochner integral over $(0,1)$, with the convention that the value is $0$ when
+the integrand is not integrable; and $0$ satisfies every upper bound.  A bare
+size bound $|K_{\gamma,j}| \leq Ce^{-|y|^2}$ would therefore be provable
+without establishing anything about the kernel, and would be useless to a
+consumer that needs the integral to converge.  The same applies one level up:
+$T_{j,\rho}f(x)$ is itself a Bochner integral in $y$, so the bound on it is
+stated only alongside the assertion that its integrand is integrable.  Both
+integrability assertions are part of the content, not hypotheses.  The clauses
+(2) and (3) need no such companion: measurability and continuity are not
+quantities with a conventional value.
+
+\emph{The majorant carries no polynomial factor in $|y|$.}  The right-hand side
+of (1)(a) is $Ce^{-|y|^2}$ with $C$ independent of $y$.  This is what makes
+(1)(b) true with $\|f\|_{L^1(\gamma_n)}$ on the right, since
+$\|f\|_{L^1(\gamma_n)} = \pi^{-n/2}\int|f(y)|e^{-|y|^2}\,dy$ pairs exactly with
+$e^{-|y|^2}$; a residual factor $|y|^k$ would break that pairing.  The constant
+$C$ does depend on $R$ and on $\rho$, and no uniformity in $n$, in $R$ or in
+$\rho$ is claimed.
+
+\emph{Notation.}  $T_{j,\varepsilon}$ is the $j$th coordinate of the hard
+truncation $T_\varepsilon$ displayed in the reference paper.  The paper's
+maximal truncation is $\sup_{\varepsilon>0}|T_\varepsilon f(x)|$ with the
+\emph{Euclidean vector} norm, which is a different object from the
+coordinatewise $\sup_{\varepsilon>0}|T_{j,\varepsilon}f(x)|$; only the
+coordinatewise truncations appear here, and the two are reconciled later by
+summing over the finitely many coordinates.  Nothing below asserts anything
+about the vector object.
+\end{lemma}
+\begin{proof}
+Throughout $n \geq 1$ (the index $j$ ranges over a nonempty set),
+$c_n = \sqrt2\,\pi^{-(n+1)/2}$, and $\lambda$ is Lebesgue measure.
+
+\emph{Step 0: the splitting identity.}
+For all $x,y \in \mathbb{R}^n$ and $r \in (0,1)$,
+\begin{equation*}
+  \frac{|rx-y|^2}{1-r^2} = \bigl(|y|^2-|x|^2\bigr) + \frac{|x-ry|^2}{1-r^2} .
+  \tag{1}
+\end{equation*}
+Indeed, multiplying by $1-r^2 > 0$, the claim is
+$|rx-y|^2 - (1-r^2)(|y|^2-|x|^2) = |x-ry|^2$, and expanding both sides in the
+inner product gives $|x|^2 - 2r\langle x,y\rangle + r^2|y|^2$ for each.
+Consequently, writing
+\[
+  \Psi_{x,y}(r)
+    = \frac{y_j-rx_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \exp\Bigl(-\frac{|x-ry|^2}{1-r^2}\Bigr) ,
+\]
+we have the pointwise identity
+$\Phi_{x,y}(r) = e^{|x|^2}e^{-|y|^2}\,\Psi_{x,y}(r)$ on $(0,1)$.  Since the
+factor $e^{|x|^2}e^{-|y|^2}$ is a positive constant in $r$, $\Phi_{x,y}$ is
+Lebesgue integrable on $(0,1)$ if and only if $\Psi_{x,y}$ is, and in that case
+\begin{equation*}
+  K_{\gamma,j}(x,y)
+    = c_n\,e^{|x|^2}e^{-|y|^2}\int_0^1\Psi_{x,y}(r)\,dr . \tag{2}
+\end{equation*}
+
+\emph{Step 1: a reduction.}
+Let $R,\rho > 0$ be given and put $R' = \max(R,1) \geq 1$ and
+$\rho' = \min(\rho,1) \in (0,1]$.  Any pair $(x,y)$ with $|x| \leq R$ and
+$|x-y| \geq \rho$ also satisfies $|x| \leq R'$ and $|x-y| \geq \rho'$, and
+$\|f\|_{L^1(\gamma_n)}$ does not involve $R$ or $\rho$; so a constant that works
+for $(R',\rho')$ works for $(R,\rho)$.  We may therefore assume
+\[
+  R \geq 1, \qquad 0 < \rho \leq 1 .
+\]
+Fix such $R,\rho$ and fix $x,y$ with $|x| \leq R$ and $|x-y| \geq \rho$.  We
+bound $\int_0^1|\Psi_{x,y}|\,d\lambda$ by a constant $C_0 = C_0(n,R,\rho)$ that
+does not depend on $x$ or $y$.  We will use throughout that
+$|y_j - rx_j| \leq |y| + |x| \leq |y| + R$ for $r \in (0,1)$.
+
+\emph{Step 2: the range $r \in (0,\tfrac12]$.}
+Here $1-r^2 \in [\tfrac34,1)$, so $(1-r^2)^{-n/2-1} \leq (4/3)^{n/2+1}$; and
+$-\log r \geq \log 2$, so $(-\log r)^{-1/2} \leq (\log 2)^{-1/2}$.  Also
+$1-r^2 \leq 1$ gives
+$\exp(-|x-ry|^2/(1-r^2)) \leq \exp(-|x-ry|^2)$, and
+$|x-ry| \geq r|y| - |x| \geq r|y| - R$, so with $s^+ = \max(s,0)$,
+\[
+  |\Psi_{x,y}(r)|
+    \leq (4/3)^{n/2+1}(\log2)^{-1/2}\,(|y|+R)\,
+         \exp\bigl(-((r|y|-R)^+)^2\bigr) .
+\]
+If $|y| \leq 4R$ then $|y| + R \leq 5R$ and, bounding the exponential by $1$,
+\[
+  \int_0^{1/2}(|y|+R)\exp\bigl(-((r|y|-R)^+)^2\bigr)\,dr \leq \tfrac52 R .
+\]
+If $|y| > 4R$ then $|y| > 0$ and the change of variables $t = r|y|$ (a dilation
+of $\mathbb{R}$, under which Lebesgue measure scales by $|y|$) gives
+\[
+  \int_0^{1/2}(|y|+R)\exp\bigl(-((r|y|-R)^+)^2\bigr)\,dr
+    = \frac{|y|+R}{|y|}\int_0^{|y|/2}\exp\bigl(-((t-R)^+)^2\bigr)\,dt
+    \leq \tfrac54\Bigl(R + \tfrac{\sqrt\pi}{2}\Bigr) ,
+\]
+using $(|y|+R)/|y| = 1 + R/|y| \leq \tfrac54$ and
+$\int_0^\infty\exp(-((t-R)^+)^2)\,dt
+ = \int_0^R 1\,dt + \int_R^\infty e^{-(t-R)^2}dt = R + \tfrac{\sqrt\pi}{2}$,
+the last integral being the half-line Gaussian integral (shared context: the
+scalar Gaussian integral together with the invariance of Lebesgue measure under
+the reflection $t \mapsto -t$, which makes the two half-lines contribute
+equally).  In either case
+\begin{equation*}
+  \int_0^{1/2}|\Psi_{x,y}|\,d\lambda
+    \leq (4/3)^{n/2+1}(\log2)^{-1/2}\Bigl(\tfrac52R + \tfrac54 R
+      + \tfrac{5\sqrt\pi}{8}\Bigr) =: C_1(n,R) . \tag{3}
+\end{equation*}
+
+\emph{Step 3: the range $r \in [\tfrac12,1)$.}
+Write $\tau = 1-r \in (0,\tfrac12]$.  Then $1-r^2 = \tau(1+r) \in [\tau,2\tau]$,
+and $\log r = \log(1-\tau) \leq -\tau$ gives $-\log r \geq \tau$.  Hence
+\[
+  \frac{1}{(1-r^2)^{n/2+1}\sqrt{-\log r}} \leq \tau^{-n/2-3/2} ,
+  \qquad
+  \exp\Bigl(-\frac{|x-ry|^2}{1-r^2}\Bigr) \leq \exp\Bigl(-\frac{|x-ry|^2}{2\tau}\Bigr) .
+\]
+We use repeatedly the elementary identity, valid for $a > 1$ and $b > 0$,
+\begin{equation*}
+  \int_0^\infty \tau^{-a}e^{-b/\tau}\,d\tau = b^{1-a}\,\Gamma(a-1) < \infty ,
+  \tag{4}
+\end{equation*}
+obtained from the substitution $\tau = b/u$, under which
+$d\tau = (b/u^2)\,du$ and the integral becomes
+$b^{1-a}\int_0^\infty u^{a-2}e^{-u}\,du$; the latter converges because
+$a - 2 > -1$ and because $e^{-u}$ decays at infinity.  We apply $(4)$ with
+$a = \tfrac{n+3}{2} > 1$, so $a - 1 = \tfrac{n+1}{2}$.
+
+\emph{Case $|y| \leq 4R$.}  Then $|y_j-rx_j| \leq 5R$.  Since
+$x - ry = (x-y) + \tau y$ we get
+$|x-ry| \geq |x-y| - \tau|y| \geq \rho - 4R\tau$.  Put
+$\tau_0 = \min(\tfrac12,\ \rho/(8R)) > 0$.  For $0 < \tau \leq \tau_0$ we have
+$4R\tau \leq \rho/2$, hence $|x-ry| \geq \rho/2$ and
+$\exp(-|x-ry|^2/(2\tau)) \leq \exp(-\rho^2/(8\tau))$, so by $(4)$ with
+$b = \rho^2/8$,
+\[
+  \int_{\{0<\tau\leq\tau_0\}} 5R\,\tau^{-n/2-3/2}e^{-\rho^2/(8\tau)}\,d\tau
+    \leq 5R\,(\rho^2/8)^{-(n+1)/2}\,\Gamma\bigl(\tfrac{n+1}{2}\bigr) .
+\]
+For $\tau_0 < \tau \leq \tfrac12$ we bound the exponential by $1$ and
+$\tau^{-n/2-3/2} \leq \tau_0^{-n/2-3/2}$, so that part of the integral is at
+most $\tfrac52 R\,\tau_0^{-n/2-3/2}$.
+
+\emph{Case $|y| > 4R$.}  Then $|y_j-rx_j| \leq |y| + R \leq \tfrac54|y|$, and
+for $r \geq \tfrac12$,
+$|x-ry| \geq r|y| - |x| \geq \tfrac12|y| - R > \tfrac12|y| - \tfrac14|y|
+ = \tfrac14|y|$, so $\exp(-|x-ry|^2/(2\tau)) \leq \exp(-|y|^2/(32\tau))$.  By
+$(4)$ with $b = |y|^2/32$,
+\[
+  \int_{\{0<\tau\leq 1/2\}}\tfrac54|y|\,\tau^{-n/2-3/2}e^{-|y|^2/(32\tau)}\,d\tau
+    \leq \tfrac54|y|\,(|y|^2/32)^{-(n+1)/2}\Gamma\bigl(\tfrac{n+1}{2}\bigr)
+    = \tfrac54\,32^{(n+1)/2}\Gamma\bigl(\tfrac{n+1}{2}\bigr)\,|y|^{-n} ,
+\]
+and $|y| > 4R \geq 4 > 1$ with $n \geq 1$ gives $|y|^{-n} \leq 1$.
+
+Adding the two cases (only one occurs, but the sum dominates either) and
+substituting $\tau = 1-r$, which is an isometry of $\mathbb{R}$ composed with a
+translation and therefore preserves Lebesgue measure (shared context),
+\begin{equation*}
+  \int_{1/2}^{1}|\Psi_{x,y}|\,d\lambda \leq C_2(n,R,\rho) , \tag{5}
+\end{equation*}
+where $C_2 = 5R(\rho^2/8)^{-(n+1)/2}\Gamma(\tfrac{n+1}{2})
+ + \tfrac52R\tau_0^{-n/2-3/2} + \tfrac54\,32^{(n+1)/2}\Gamma(\tfrac{n+1}{2})$
+depends only on $n$, $R$ and $\rho$.
+
+\emph{Step 4: clause (1)(a).}
+By $(3)$ and $(5)$, $\int_0^1|\Psi_{x,y}|\,d\lambda \leq C_0 := C_1 + C_2$,
+which is finite and independent of $x$ and $y$ in the range considered.  The
+function $\Psi_{x,y}$ is continuous on $(0,1)$, hence Borel measurable there,
+so it is Lebesgue integrable on $(0,1)$; by Step 0 so is $\Phi_{x,y}$.  By
+$(2)$ and $|x| \leq R$,
+\[
+  |K_{\gamma,j}(x,y)|
+    \leq c_n\,e^{R^2}e^{-|y|^2}\int_0^1|\Psi_{x,y}|\,d\lambda
+    \leq c_n\,e^{R^2}C_0\,e^{-|y|^2} .
+\]
+Set $C_{\mathrm{maj}} = c_n e^{R^2}C_0 > 0$.
+
+\emph{Step 5: joint measurability of the kernel.}
+The map
+$(x,y,r) \mapsto \Phi_{x,y}(r)$ is continuous on
+$\mathbb{R}^n\times\mathbb{R}^n\times(0,1)$: on that domain $1-r^2 \in (0,1]$
+and $-\log r \in (0,\infty)$, so every factor is a composition of continuous
+functions with nonvanishing denominators.  Hence it is Borel measurable for the
+product $\sigma$-algebra.  A partial Bochner integral of a jointly measurable
+function is measurable in the remaining parameters, with the convention value
+$0$ on the parameters whose slice is not integrable (this is the measurability
+half of the Fubini package, and uses only $\sigma$-finiteness of Lebesgue
+measure on $(0,1)$, shared context).  Therefore
+\begin{equation*}
+  (x,y) \longmapsto K_{\gamma,j}(x,y)
+  \quad\text{is Borel measurable on } \mathbb{R}^n\times\mathbb{R}^n . \tag{6}
+\end{equation*}
+
+\emph{Step 6: clause (1)(b).}
+Let $f \in L^1(\gamma_n)$ and let $x$ satisfy $|x| \leq R$.  Being
+$\gamma_n$-integrable, $f$ agrees $\gamma_n$-almost everywhere with a Borel
+measurable function $\widetilde f$; by clause (4) of
+\noderef{GaussLebesgueBallComparison} the measures $\gamma_n$ and $\lambda$ have
+the same null sets, so $f = \widetilde f$ also $\lambda$-almost everywhere, and
+in particular $f$ is $\lambda$-measurable up to a null set.  By $(6)$ the
+function $y \mapsto K_{\gamma,j}(x,y)$ is Borel, so
+$y \mapsto K_{\gamma,j}(x,y)f(y)$ is $\lambda$-measurable up to a null set, and
+the same is true of its restriction to $\{y : |x-y| > \rho\}$.
+
+On that set $|x-y| \geq \rho$, so clause (1)(a) applies and gives
+$|K_{\gamma,j}(x,y)f(y)| \leq C_{\mathrm{maj}}e^{-|y|^2}|f(y)|$.  By
+\noderef{GaussMeasure}, $\gamma_n$ is $\lambda$ weighted by
+$\pi^{-n/2}e^{-|y|^2}$, so
+\begin{equation*}
+  \int_{\mathbb{R}^n}e^{-|y|^2}|f(y)|\,dy
+    = \pi^{n/2}\int_{\mathbb{R}^n}|f|\,d\gamma_n
+    = \pi^{n/2}\|f\|_{L^1(\gamma_n)} < \infty , \tag{7}
+\end{equation*}
+the finiteness because $f \in L^1(\gamma_n)$.  Hence
+$y \mapsto K_{\gamma,j}(x,y)f(y)$ is dominated on $\{|x-y|>\rho\}$ by an
+integrable function, so it is Lebesgue integrable there, and
+\[
+  |T_{j,\rho}f(x)|
+    \leq \int_{\{|x-y|>\rho\}}|K_{\gamma,j}(x,y)|\,|f(y)|\,dy
+    \leq C_{\mathrm{maj}}\,\pi^{n/2}\,\|f\|_{L^1(\gamma_n)} .
+\]
+Taking $C = \max\bigl(C_{\mathrm{maj}},\ C_{\mathrm{maj}}\pi^{n/2}\bigr) > 0$
+makes both (1)(a) and (1)(b) hold with the single constant $C$, which depends
+only on $n$, $j$, $R$ and $\rho$.  This proves clause (1).
+
+\emph{Step 7: clause (2).}
+Fix $f \in L^1(\gamma_n)$ and $\varepsilon > 0$, and let $\widetilde f$ be a
+Borel function with $f = \widetilde f$ $\lambda$-almost everywhere (Step 6).
+For every $x$ the integrands $y \mapsto \mathbf 1_{\{|x-y|>\varepsilon\}}
+K_{\gamma,j}(x,y)f(y)$ and the same with $\widetilde f$ agree
+$\lambda$-almost everywhere, so they have the same integral; it therefore
+suffices to prove the measurability for $\widetilde f$.  The set
+$\{(x,y) : |x-y| > \varepsilon\}$ is open in
+$\mathbb{R}^n\times\mathbb{R}^n$, hence Borel, so by $(6)$ the function
+\[
+  (x,y) \longmapsto \mathbf 1_{\{|x-y|>\varepsilon\}}\,K_{\gamma,j}(x,y)\,
+  \widetilde f(y)
+\]
+is Borel on the product.  Applying again the measurability half of the Fubini
+package (Step 5), this time integrating out $y$ against the $\sigma$-finite
+measure $\lambda$, the function
+$x \mapsto \int \mathbf 1_{\{|x-y|>\varepsilon\}}K_{\gamma,j}(x,y)
+ \widetilde f(y)\,dy = T_{j,\varepsilon}\widetilde f(x)$ is Borel measurable.
+
+\emph{Step 8: clause (3).}
+Fix $f \in L^1(\gamma_n)$ and $x \in \mathbb{R}^n$, and fix
+$\varepsilon_* \in (0,\infty)$; we show continuity at $\varepsilon_*$ relative
+to $(0,\infty)$.  Put $R_x = \max(|x|,1)$ and $\rho_* = \varepsilon_*/2 > 0$,
+and let $C$ be the constant of clause (1) for the pair $(R_x,\rho_*)$.  By
+clause (1)(a) and $(7)$ the function
+\[
+  g(y) = \mathbf 1_{\{|x-y|>\rho_*\}}\,C\,e^{-|y|^2}\,|f(y)|
+\]
+is Lebesgue integrable, and for every $\varepsilon \geq \rho_*$,
+\[
+  \bigl|\mathbf 1_{\{|x-y|>\varepsilon\}}K_{\gamma,j}(x,y)f(y)\bigr| \leq g(y)
+  \qquad\text{for every } y ,
+\]
+because $\{|x-y|>\varepsilon\} \subseteq \{|x-y|>\rho_*\}$ and clause (1)(a)
+applies on the latter set.
+
+Let $(\varepsilon_k)$ be any sequence in $(0,\infty)$ with
+$\varepsilon_k \to \varepsilon_*$; discarding finitely many terms we may assume
+$\varepsilon_k \geq \rho_*$ for all $k$.  For every $y$ with
+$|x-y| \neq \varepsilon_*$ we have
+$\mathbf 1_{\{|x-y|>\varepsilon_k\}} \to \mathbf 1_{\{|x-y|>\varepsilon_*\}}$:
+if $|x-y| > \varepsilon_*$ then $|x-y| > \varepsilon_k$ for large $k$, and if
+$|x-y| < \varepsilon_*$ then $|x-y| < \varepsilon_k$ for large $k$.  The
+exceptional set $\{y : |x-y| = \varepsilon_*\}$ is a sphere in $\mathbb{R}^n$
+with $n \geq 1$, hence Lebesgue-null.  So the integrands converge
+$\lambda$-almost everywhere and are dominated by the integrable $g$; dominated
+convergence (shared context) gives
+$T_{j,\varepsilon_k}f(x) \to T_{j,\varepsilon_*}f(x)$.  Since the sequence was
+arbitrary and $(0,\infty)$ is a metric space, $\varepsilon \mapsto
+T_{j,\varepsilon}f(x)$ is continuous at $\varepsilon_*$ relative to
+$(0,\infty)$; as $\varepsilon_*$ was arbitrary, it is continuous on
+$(0,\infty)$.
+\end{proof}

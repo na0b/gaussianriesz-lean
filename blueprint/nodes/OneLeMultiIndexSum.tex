@@ -1,0 +1,39 @@
+\begin{lemma}[A nonzero multi-index has order at least one]
+Fix $n \in \mathbb{N}_0$ and let $\alpha \in \mathbb{N}_0^n$ be a multi-index
+with order $|\alpha| = \sum_{j=1}^n \alpha_j$ as in \noderef{MultiIndexSum}.
+If $\alpha \neq 0$, that is, if $\alpha$ is not the multi-index all of whose
+entries vanish, then
+\[
+  1 \leq |\alpha| ,
+\]
+an inequality between real numbers: the order $|\alpha|$ is a natural number,
+and it is its image under the canonical cast $\mathbb{N}_0 \to \mathbb{R}$ that
+is compared with the real number $1$.
+\end{lemma}
+\begin{proof}
+Step 1 (the order is a nonzero natural number).  We claim $|\alpha| \neq 0$ as a
+natural number.  Suppose instead that $|\alpha| = 0$, that is
+$\sum_{j=1}^n \alpha_j = 0$.  Every summand $\alpha_j$ is a natural number and
+so is nonnegative, and a finite sum of nonnegative integers vanishes only if
+every one of its terms vanishes; hence $\alpha_j = 0$ for every index
+$j \in \{1,\ldots,n\}$.  Two multi-indices that agree at every index are equal,
+so $\alpha = 0$, contradicting the hypothesis $\alpha \neq 0$.  Therefore
+$|\alpha| \neq 0$.
+
+Step 2 (a nonzero natural number is at least one).  In $\mathbb{N}_0$ the
+conditions $m \neq 0$ and $1 \leq m$ are equivalent, since the natural numbers
+below $1$ are exactly $\{0\}$.  Applying this to $m = |\alpha|$ and using
+Step 1 gives
+\[
+  1 \leq |\alpha| \qquad \text{in } \mathbb{N}_0 .
+\]
+
+Step 3 (transfer to the reals).  The canonical cast $\mathbb{N}_0 \to \mathbb{R}$
+is an order embedding: for natural numbers $m$ and $m'$ one has $m \leq m'$ if
+and only if the corresponding reals satisfy the same inequality, and the cast
+sends $1$ to the real number $1$.  Applying the forward direction to the
+inequality of Step 2 therefore yields $1 \leq |\alpha|$ as an inequality in
+$\mathbb{R}$, which is the assertion.  This cast is the only place the statement
+mixes the two number systems: the hypothesis and Steps 1--2 are statements about
+natural numbers, and only the conclusion is read in $\mathbb{R}$.
+\end{proof}

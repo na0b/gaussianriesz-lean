@@ -1,0 +1,217 @@
+\begin{lemma}[One-dimensional Hermite reproduction identity]
+Let $h_k$ be the normalized one-dimensional Hermite functions of
+\noderef{Hermite1}, let $0 \leq r \leq 1$ and write
+$\tau = \sqrt{1-r^2}$.  Then for every $k \in \mathbb{N}_0$ and every
+$t \in \mathbb{R}$ the integral below converges absolutely and
+\[
+  \int_{\mathbb{R}} \pi^{-1/2} e^{-\sigma^2}\;
+      h_k\bigl(r\,t + \tau\,\sigma\bigr)\, d\sigma
+    = r^k\, h_k(t) .
+\]
+\end{lemma}
+\begin{proof}
+Throughout write $d\gamma_1(\sigma) = \pi^{-1/2}e^{-\sigma^2}\,d\sigma$ and
+$\tau = \sqrt{1-r^2}$.  No change of variables is made anywhere in this proof:
+every integral below is taken against $\gamma_1$ in the variable $\sigma$, so the
+Gaussian background items are used at the weight $e^{-\sigma^2}$ at which they
+are stated.  Note at the outset that $0 \leq r \leq 1$ gives
+$0 \leq \tau \leq 1$, since $0 \leq 1 - r^2 \leq 1$.
+
+\emph{Step 0: $\gamma_1$ is a probability measure, and its moments.}
+By the scalar Gaussian integral of the shared context,
+$\int_{\mathbb{R}} e^{-\sigma^2}\,d\sigma = \sqrt\pi$, so
+$\gamma_1(\mathbb{R}) = 1$.  By the Gaussian exponential moment item of the
+shared context, taken with $n = 1$,
+\begin{equation*}
+  \int_{\mathbb{R}} e^{c|\sigma|}\, d\gamma_1(\sigma) < \infty
+  \quad\text{and}\quad
+  \int_{\mathbb{R}} |P(\sigma)|\, e^{c|\sigma|}\, d\gamma_1(\sigma) < \infty
+  \tag{0}
+\end{equation*}
+for every real $c$ and every real polynomial $P$.  In particular every
+polynomial is $\gamma_1$-integrable.
+
+By \noderef{Hermite1}, $h_k(x) = \mathrm{He}_k(\sqrt2\,x)/\sqrt{k!}$ for every $k$
+and every real $x$, where $\mathrm{He}_k$ is the probabilists' Hermite polynomial
+of degree $k$.  Applying this at $x = r t + \tau\sigma$, the integrand of the
+statement is $\pi^{-1/2}e^{-\sigma^2}\,\mathrm{He}_k(\sqrt2(rt+\tau\sigma))/\sqrt{k!}$;
+since $\sigma \mapsto \mathrm{He}_k(\sqrt2(rt+\tau\sigma))$ is a polynomial in
+$\sigma$, the second part of $(0)$ with $c = 0$ shows that the integral in the
+statement converges absolutely, and that
+\begin{equation*}
+  \int_{\mathbb{R}} \pi^{-1/2}e^{-\sigma^2}\,h_k(rt+\tau\sigma)\,d\sigma
+    = \frac{a_k}{\sqrt{k!}},
+  \qquad\text{where}\qquad
+  a_k := \int_{\mathbb{R}} \mathrm{He}_k\bigl(\sqrt2(rt+\tau\sigma)\bigr)\, d\gamma_1(\sigma).
+  \tag{1}
+\end{equation*}
+By $(1)$ and the same application of \noderef{Hermite1} to the right-hand side of
+the statement, namely $r^k h_k(t) = r^k\,\mathrm{He}_k(\sqrt2\,t)/\sqrt{k!}$, it
+suffices to prove
+\begin{equation*}
+  a_k = r^k\,\mathrm{He}_k(\sqrt2\,t)
+  \qquad\text{for every } k \in \mathbb{N}_0 .
+  \tag{$\ast$}
+\end{equation*}
+
+\emph{Step 1: the moment generating function of $\gamma_1$.}
+For every real $c$,
+\begin{equation*}
+  \int_{\mathbb{R}} e^{c\sigma}\, d\gamma_1(\sigma) = e^{c^2/4} .
+  \tag{2}
+\end{equation*}
+Indeed $c\sigma - \sigma^2 = -\bigl(\sigma - c/2\bigr)^2 + c^2/4$, so
+$e^{c\sigma}\pi^{-1/2}e^{-\sigma^2} = e^{c^2/4}\,\pi^{-1/2}e^{-(\sigma - c/2)^2}$
+pointwise; by the translation invariance of Lebesgue measure (shared context,
+with $t = c/2$ and $h(y) = \pi^{-1/2}e^{-y^2} \geq 0$),
+$\int \pi^{-1/2}e^{-(\sigma-c/2)^2}\,d\sigma = \int \pi^{-1/2}e^{-y^2}\,dy = 1$ by
+Step 0.  Integrating the pointwise identity between nonnegative measurable
+functions and pulling the constant $e^{c^2/4}$ out of the integral gives $(2)$;
+the left side is finite because $e^{c\sigma} \leq e^{|c|\,|\sigma|}$ and
+$\int e^{|c||\sigma|}d\gamma_1 < \infty$ by $(0)$.
+
+\emph{Step 2: the generating series at the shifted point, and its majorant.}
+Fix a real $z$ for the whole of Steps 2--4.  For $K \in \mathbb{N}$ put
+\[
+  S_K(\sigma) = \sum_{k=0}^{K} \mathrm{He}_k\bigl(\sqrt2(rt+\tau\sigma)\bigr)\,\frac{z^k}{k!},
+\]
+a polynomial in $\sigma$, hence continuous and measurable.  By
+\noderef{HermiteGenerating} applied at the point $\sqrt2(rt+\tau\sigma)$ with
+parameter $z$,
+\begin{equation*}
+  S_K(\sigma) \xrightarrow[K\to\infty]{}
+    \exp\bigl(\sqrt2(rt+\tau\sigma)z - z^2/2\bigr)
+  \qquad\text{for every real } \sigma .
+  \tag{3}
+\end{equation*}
+For the majorant, apply \noderef{HermiteAbsMajorant} with its first argument
+$\sqrt2(rt+\tau\sigma)$ and its second argument $z$: for every real $\sigma$,
+\begin{equation*}
+  \sum_{k=0}^\infty \bigl|\mathrm{He}_k\bigl(\sqrt2(rt+\tau\sigma)\bigr)\bigr|\,
+      \frac{|z|^k}{k!}
+    \;\leq\; \exp\bigl(\sqrt2\,|rt+\tau\sigma|\,|z| + z^2/2\bigr),
+  \tag{4}
+\end{equation*}
+the series converging.  (This is a genuine upper bound on the absolute-value
+series; it is \emph{not} obtained by putting absolute values on the signed
+identity of \noderef{HermiteGenerating}, which would bound that series from below
+instead.)  Since $0 \leq r \leq 1$ and $0 \leq \tau \leq 1$,
+$|rt + \tau\sigma| \leq |t| + |\sigma|$, so the right-hand side of $(4)$ is at
+most
+\[
+  \Phi(\sigma) := e^{\sqrt2\,|t|\,|z| + z^2/2}\; e^{\sqrt2\,|z|\,|\sigma|} .
+\]
+Truncating the sum in $(4)$ at $K$ and using $|\sum| \leq \sum|\cdot|$ for the
+\emph{finite} sum $S_K$,
+\begin{equation*}
+  \bigl|S_K(\sigma)\bigr| \leq \Phi(\sigma)
+  \qquad\text{for every } K \text{ and every } \sigma,
+  \tag{5}
+\end{equation*}
+and $\Phi$ is $\gamma_1$-integrable by $(0)$ with $c = \sqrt2\,|z|$.
+
+\emph{Step 3: passing to the limit, and the value of the limit.}
+By dominated convergence (shared context), applied to the sequence $(S_K)$ with
+dominating function $\Phi$ and pointwise limit $(3)$,
+\[
+  \int S_K \, d\gamma_1
+    \;\xrightarrow[K\to\infty]{}\;
+  \int \exp\bigl(\sqrt2(rt+\tau\sigma)z - z^2/2\bigr)\, d\gamma_1(\sigma) .
+\]
+The right-hand side is computed from $(2)$: pulling out the factor
+$e^{\sqrt2\,rtz - z^2/2}$, which does not depend on $\sigma$, and applying $(2)$
+with $c = \sqrt2\,\tau z$, so that $c^2/4 = 2\tau^2z^2/4 = (1-r^2)z^2/2$,
+\begin{equation*}
+  \int \exp\bigl(\sqrt2(rt+\tau\sigma)z - z^2/2\bigr)\, d\gamma_1(\sigma)
+    = e^{\sqrt2\,rtz - z^2/2 + (1-r^2)z^2/2}
+    = \exp\bigl(\sqrt2\,t\,(rz) - (rz)^2/2\bigr),
+  \tag{6}
+\end{equation*}
+using $\tau^2 = 1-r^2$ and $-z^2/2 + (1-r^2)z^2/2 = -r^2z^2/2 = -(rz)^2/2$.
+Applying \noderef{HermiteGenerating} once more, now at the point $\sqrt2\,t$ with
+the parameter $rz$ in place of $z$, the right-hand side of $(6)$ equals
+\begin{equation*}
+  \sum_{k=0}^\infty \mathrm{He}_k(\sqrt2\,t)\,\frac{(rz)^k}{k!}
+    = \sum_{k=0}^\infty r^k\,\mathrm{He}_k(\sqrt2\,t)\,\frac{z^k}{k!} .
+  \tag{7}
+\end{equation*}
+
+On the other hand $S_K$ is a \emph{finite} sum, and each of its terms
+$\sigma \mapsto \mathrm{He}_k(\sqrt2(rt+\tau\sigma))\,z^k/k!$ is
+$\gamma_1$-integrable by $(0)$, so additivity of the integral over finitely many
+integrable summands together with the fact that the integral commutes with
+multiplication by the constant $z^k/k!$ gives
+\begin{equation*}
+  \int S_K\, d\gamma_1 = \sum_{k=0}^{K} a_k\,\frac{z^k}{k!}
+  \qquad\text{for every } K .
+  \tag{8}
+\end{equation*}
+Combining the display above with $(6)$, $(7)$ and $(8)$: for every real $z$ the
+partial sums $\sum_{k\leq K} a_k z^k/k!$ converge as $K \to \infty$, with
+\begin{equation*}
+  \sum_{k=0}^\infty a_k\,\frac{z^k}{k!}
+    = \sum_{k=0}^\infty r^k\,\mathrm{He}_k(\sqrt2\,t)\,\frac{z^k}{k!} .
+  \tag{9}
+\end{equation*}
+
+\emph{Step 4: absolute summability of both coefficient families.}
+Let $\rho \geq 0$.  First, $|a_k| \leq \int |\mathrm{He}_k(\sqrt2(rt+\tau\sigma))|\,
+d\gamma_1(\sigma)$, so by Tonelli (shared context, with counting measure on
+$\mathbb{N}_0$ and $\gamma_1$, both $\sigma$-finite, applied to the nonnegative
+integrand $(k,\sigma) \mapsto |\mathrm{He}_k(\sqrt2(rt+\tau\sigma))|\rho^k/k!$)
+and then by $(4)$ with $|z|$ replaced by $\rho$,
+\begin{equation*}
+  \sum_{k=0}^\infty |a_k|\,\frac{\rho^k}{k!}
+    \leq \int \Bigl(\sum_{k=0}^\infty
+        \bigl|\mathrm{He}_k(\sqrt2(rt+\tau\sigma))\bigr|\frac{\rho^k}{k!}\Bigr)
+        d\gamma_1(\sigma)
+    \leq \int e^{\sqrt2|t|\rho + \rho^2/2}\,e^{\sqrt2\rho|\sigma|}\,d\gamma_1(\sigma)
+    < \infty ,
+  \tag{10}
+\end{equation*}
+the last integral being finite by $(0)$.  Second, since $0 \leq r \leq 1$ we have
+$|r^k| \leq 1$, so by \noderef{HermiteAbsMajorant} applied with first argument
+$\sqrt2\,t$ and second argument $\rho$,
+\begin{equation*}
+  \sum_{k=0}^\infty \bigl|r^k\,\mathrm{He}_k(\sqrt2\,t)\bigr|\frac{\rho^k}{k!}
+    \leq \sum_{k=0}^\infty \bigl|\mathrm{He}_k(\sqrt2\,t)\bigr|\frac{\rho^k}{k!}
+    \leq e^{\sqrt2|t|\rho + \rho^2/2} < \infty .
+  \tag{11}
+\end{equation*}
+
+\emph{Step 5: a one-variable coefficient-comparison principle, derived here.}
+We use the following elementary principle $(\mathrm{U})$.
+
+\smallskip
+\noindent\emph{$(\mathrm{U})$.  Let $(p_m)_{m\geq0}$ and $(q_m)_{m\geq0}$ be real
+sequences with $\sum_m |p_m|\rho^m < \infty$ and $\sum_m |q_m|\rho^m < \infty$ for
+every $\rho \geq 0$, and suppose $\sum_m p_m z^m = \sum_m q_m z^m$ for every real
+$z$.  Then $p_m = q_m$ for every $m$.}
+
+\smallskip
+\noindent This is the real-variable instance of the uniqueness of power-series
+coefficients recorded in the shared context; since that item is stated for a
+neighbourhood of the origin in $\mathbb{C}$ and the hypotheses here give
+agreement only for real $z$, it is derived here rather than assumed.  Put
+$e_m = p_m - q_m$, so $\sum_m |e_m|\rho^m < \infty$ for every $\rho \geq 0$ and,
+the two series being absolutely convergent, $E(z) := \sum_m e_m z^m = 0$ for every
+real $z$.  Argue by induction on $m$: suppose $L \geq 0$ and
+$e_0 = \cdots = e_{L-1} = 0$ (vacuous when $L = 0$).  For $0 < |z| \leq 1$,
+\[
+  0 = E(z) = \sum_{m\geq L} e_m z^m = z^L\bigl(e_L + R(z)\bigr),
+  \qquad R(z) := \sum_{m \geq L+1} e_m z^{m-L},
+\]
+and $|R(z)| \leq |z|\sum_{m\geq L+1}|e_m|\,|z|^{m-L-1}
+\leq |z|\sum_{m\geq L+1}|e_m| = C|z|$, where $C < \infty$ by the hypothesis with
+$\rho = 1$ and $|z|^{m-L-1} \leq 1$.  Dividing by $z^L \neq 0$ gives
+$e_L = -R(z)$, hence $|e_L| \leq C|z|$ for all $0 < |z| \leq 1$; letting
+$z \to 0$ gives $e_L = 0$.  This completes the induction and proves
+$(\mathrm{U})$.
+
+\emph{Step 6: conclusion.}
+Apply $(\mathrm{U})$ with $p_k = a_k/k!$ and $q_k = r^k\,\mathrm{He}_k(\sqrt2\,t)/k!$.
+Its summability hypotheses are exactly $(10)$ and $(11)$, and its agreement
+hypothesis is $(9)$.  Therefore $a_k/k! = r^k\,\mathrm{He}_k(\sqrt2\,t)/k!$ for
+every $k$, and multiplying by $k! \neq 0$ gives $(\ast)$.  By $(1)$ this is the
+assertion of the lemma.
+\end{proof}

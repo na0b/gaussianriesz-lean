@@ -1,0 +1,84 @@
+\begin{lemma}[Scaling of Lebesgue measure under a dilation, and null sets under its inverse]
+Fix $n \in \mathbb{N}_0$ and write $\lambda$ for Lebesgue measure on
+$\mathbb{R}^n$, applied to arbitrary subsets as an outer measure.  For a real
+number $c$ and a set $A \subseteq \mathbb{R}^n$ write
+$cA = \{c\,a : a \in A\}$ for the image of $A$ under the dilation
+$z \mapsto cz$.  Then:
+\begin{enumerate}
+\item for every $c \in \mathbb{R}$ and every $A \subseteq \mathbb{R}^n$,
+\[
+  \lambda(cA) = |c|^{\,n}\,\lambda(A) ,
+\]
+an identity in $[0,+\infty]$; and
+\item for every $c \in \mathbb{R}$ with $c \neq 0$ and every
+$N \subseteq \mathbb{R}^n$ with $\lambda(N) = 0$, the preimage of $N$ under the
+dilation is again null:
+\[
+  \lambda\bigl(\{z \in \mathbb{R}^n : cz \in N\}\bigr) = 0 .
+\]
+\end{enumerate}
+
+\emph{No measurability hypothesis, and no restriction on $c$ or on $n$.}
+Clause (1) is asserted for every set, measurable or not, with $\lambda$ read as
+an outer measure, which is the convention this tablet uses throughout; it holds
+in particular at $c = 0$, where for $A \neq \emptyset$ both sides read
+$0^n\lambda(A)$ against $\lambda(\{0\})$, and at $n = 0$, where both sides are
+$\lambda(\mathbb{R}^0)$ because $|c|^0 = 1$ and the dilation of the
+one-point space is itself.  Clause (2) needs $c \neq 0$, since at $c = 0$ the
+preimage of a null set containing the origin is all of $\mathbb{R}^n$.
+
+\emph{Why clause (2) is stated separately rather than left to the reader.}
+Clause (1) is about the forward image and clause (2) about the preimage, and the
+two consumers in this tablet use different ones: a covering argument compares
+the measures of two concentric balls and needs the image form, while a
+change-of-variables argument needs to know that an exceptional set pulled back
+along $z \mapsto cz$ is still exceptional.  Deriving (2) from (1) would mean
+rewriting the preimage as $c^{-1}N$ and invoking (1) at $c^{-1}$, a step whose
+only content is set-theoretic bookkeeping; stating it here means neither
+consumer carries that bookkeeping.
+
+\emph{This node exists to supply a classical fact that is not in the shared
+background.}  It is purely Euclidean: no Gaussian weight appears, and it cites
+no other tablet node.  The paper uses the dilation rule implicitly whenever it
+changes variables in the Mehler averaging formula, where the substitution
+$y = r x + \tau z$ has linear part $\tau$ times the identity.
+\end{lemma}
+\begin{proof}
+Write $E = \mathbb{R}^n$ with its Euclidean structure, so $E$ is a
+finite-dimensional real normed space of dimension $n$ and $\lambda$ is an
+additive Haar measure on it.
+
+Step 1 (clause (1)).  For an additive Haar measure $\mu$ on a finite-dimensional
+real normed space $E$, the behaviour of $\mu$ under the dilation $z \mapsto cz$
+is the classical scaling law
+\[
+  \mu(cA) = |c|^{\,\dim E}\,\mu(A)
+  \qquad\text{for every } c \in \mathbb{R}
+  \text{ and every } A \subseteq E ,
+\]
+read in $[0,+\infty]$ and valid for arbitrary $A$, $\mu$ being applied as an
+outer measure.  This is the standard scaling property of Haar measure under the
+scalar action: the pushforward of $\mu$ along the linear automorphism
+$z \mapsto cz$ (for $c \neq 0$) is again a translation-invariant measure, hence
+a constant multiple of $\mu$, and the constant is the absolute value of the
+determinant of that automorphism, namely $|c|^{\dim E}$; for $c = 0$ the image
+$cA$ is $\{0\}$ when $A \neq \emptyset$ and $\emptyset$ when $A = \emptyset$,
+and the identity holds in both cases because $0^{\dim E}\mu(A)$ and
+$\mu(\{0\})$ are both $0$ when $\dim E \geq 1$, while for $\dim E = 0$ the space
+is the single point $0$ and both sides equal $\mu(E)$.  Applying this with
+$\mu = \lambda$ and $\dim E = n$ gives clause (1).
+
+Step 2 (clause (2)).  Let $c \neq 0$ and let $N$ satisfy $\lambda(N) = 0$.  The
+dilation $z \mapsto cz$ is then a linear automorphism of $\mathbb{R}^n$, and the
+same scaling law applied to the preimage gives
+\[
+  \lambda\bigl(\{z : cz \in N\}\bigr) = |c|^{-n}\,\lambda(N) ,
+\]
+the exponent being negated because the preimage along $z \mapsto cz$ is the
+image along $z \mapsto c^{-1}z$: indeed $\{z : cz \in N\} = c^{-1}N$, since
+$cz \in N$ holds exactly when $z = c^{-1}(cz)$ with $cz \in N$.  Clause (1) at
+the scalar $c^{-1}$ therefore evaluates the left-hand side as
+$|c^{-1}|^n\lambda(N) = |c|^{-n}\lambda(N)$.  Since $\lambda(N) = 0$ and
+$|c|^{-n}$ is a finite nonnegative real, the product is $0$, which is clause
+(2).
+\end{proof}

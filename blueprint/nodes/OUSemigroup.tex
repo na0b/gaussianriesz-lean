@@ -1,0 +1,17 @@
+\begin{definition}[The Ornstein--Uhlenbeck semigroup, spectrally]
+For $s \geq 0$ and $v \in L^2(\gamma_n)$ with Hermite coefficients $v_\alpha$
+relative to \noderef{HermiteBasis}, define
+\[
+  P_s v = \sum_{\alpha \in \mathbb{N}_0^n} e^{-s|\alpha|}\, v_\alpha\, h_\alpha ,
+\]
+with $|\alpha|$ as in \noderef{MultiIndexSum}.  The series converges in
+$L^2(\gamma_n)$ for every $v \in L^2(\gamma_n)$ and every $s \geq 0$, because
+$0 < e^{-s|\alpha|} \leq 1$ makes the multiplied coefficient family square
+summable; $P_s v$ is then the unique element of $L^2(\gamma_n)$ with Hermite
+coefficients $e^{-s|\alpha|}v_\alpha$.  (For the degenerate case in which the
+multiplied family fails to be square summable, which cannot occur for $s\geq0$,
+we set $P_s v = 0$; this convention is never invoked below.)  Thus $P_0 = I$, the
+spectral action is $P_s h_\alpha = e^{-s|\alpha|} h_\alpha$, the constant mode is
+fixed ($P_s h_0 = h_0$, so $P_s \mathbf{1} = \mathbf{1}$ by
+\noderef{Hermite1Zero}), and $P_{s+t} = P_s P_t$.
+\end{definition}

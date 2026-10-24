@@ -1,0 +1,122 @@
+\begin{lemma}[Young $L^2$ contraction for a nonnegative kernel of unit mass]
+Fix $n \in \mathbb{N}$ and let $\kappa : \mathbb{R}^n \to \mathbb{R}$ be
+measurable with
+\[
+  \kappa(t) \geq 0 \ \text{ for every } t, \qquad
+  \kappa \in L^1(\mathbb{R}^n), \qquad
+  \int_{\mathbb{R}^n} \kappa(t)\, dt = 1 .
+\]
+Let $h : \mathbb{R}^n \to \mathbb{R}$ be almost everywhere strongly measurable and
+let
+\[
+  (\kappa * h)(x) = \int_{\mathbb{R}^n} \kappa(t)\, h(x-t)\, dt .
+\]
+Then
+\[
+  \|\kappa * h\|_{L^2(\mathbb{R}^n)} \leq \|h\|_{L^2(\mathbb{R}^n)} .
+\]
+
+Every measure in this statement is \emph{Lebesgue} measure on $\mathbb{R}^n$: no
+Gaussian measure and no Gaussian weight occurs anywhere, in the integrand or in
+the measure.  The two norms are the extended-valued $L^2$ seminorms, taking values
+in $[0,+\infty]$, so the inequality is meaningful without assuming $h \in L^2$;
+when $\|h\|_{L^2} = +\infty$ it holds trivially, and the content of the lemma is
+the case $\|h\|_{L^2} < \infty$, where it says that convolution with $\kappa$ is a
+contraction of $L^2(\mathbb{R}^n)$.  Note also that the conclusion is global on
+$\mathbb{R}^n$: no compact set, and no thickening of one, enters.
+\end{lemma}
+\begin{proof}
+All integrals below are against Lebesgue measure and are taken in $[0,+\infty]$,
+as integrals of nonnegative measurable functions; this is what makes every step
+available without a prior integrability hypothesis on $h$.
+
+\emph{Step 0: the mass hypothesis in the nonnegative calculus.}  Since $\kappa$ is
+integrable and nonnegative, its upper integral agrees with its Lebesgue integral,
+so
+\begin{equation*}
+  \int_{\mathbb{R}^n} \kappa(t)\, dt = 1
+  \qquad\text{holds in } [0,+\infty] \text{ as well.} \tag{0}
+\end{equation*}
+
+\emph{Step 1: the triangle inequality under the convolution integral.}
+Fix $x \in \mathbb{R}^n$.  Taking absolute values inside the defining integral of
+the convolution and using $\kappa \geq 0$,
+\begin{equation*}
+  |(\kappa*h)(x)|
+    \leq \int_{\mathbb{R}^n} \kappa(t)\, |h(x-t)| \, dt . \tag{1}
+\end{equation*}
+The integrand on the right is measurable in $t$: $\kappa$ is measurable by
+hypothesis, and $t \mapsto h(x-t)$ is almost everywhere strongly measurable
+because $t \mapsto x - t$ preserves Lebesgue measure.
+
+\emph{Step 2: Cauchy--Schwarz against the kernel, giving a pointwise Jensen bound.}
+Still with $x$ fixed, split the kernel as
+$\kappa(t) = \sqrt{\kappa(t)} \cdot \sqrt{\kappa(t)}$, which is legitimate because
+$\kappa(t) \geq 0$, and write
+\[
+  \kappa(t)\,|h(x-t)|
+    = \sqrt{\kappa(t)} \cdot \Bigl(\sqrt{\kappa(t)}\, |h(x-t)|\Bigr) .
+\]
+H\"older's inequality with the conjugate pair $(2,2)$ applied to the two factors
+gives
+\[
+  \int_{\mathbb{R}^n} \kappa(t)\,|h(x-t)| \, dt
+    \leq \Bigl(\int_{\mathbb{R}^n} \kappa(t) \, dt\Bigr)^{1/2}
+        \Bigl(\int_{\mathbb{R}^n} \kappa(t)\,|h(x-t)|^2 \, dt\Bigr)^{1/2} ,
+\]
+where the first bracket arose from $\bigl(\sqrt{\kappa}\bigr)^2 = \kappa$ and the
+second from $\bigl(\sqrt{\kappa}\,|h(x-\cdot)|\bigr)^2 = \kappa\,|h(x-\cdot)|^2$,
+again by $\kappa \geq 0$.  By $(0)$ the first bracket is $1$.  Combining with
+$(1)$ and squaring,
+\begin{equation*}
+  |(\kappa*h)(x)|^2
+    \leq \int_{\mathbb{R}^n} \kappa(t)\, |h(x-t)|^2 \, dt
+  \qquad \text{for every } x \in \mathbb{R}^n . \tag{2}
+\end{equation*}
+This is the Jensen inequality for the probability density $\kappa$, obtained here
+through Cauchy--Schwarz.
+
+\emph{Step 3: the degenerate case.}
+If $\int_{\mathbb{R}^n}|h|^2 = +\infty$ then $\|h\|_{L^2} = +\infty$ and the
+asserted inequality holds because the right-hand side is the top element of
+$[0,+\infty]$.  So assume from now on
+\begin{equation*}
+  \int_{\mathbb{R}^n} |h(y)|^2 \, dy < \infty . \tag{3}
+\end{equation*}
+This finiteness is used once, in Step 4, to move a constant out of an integral.
+
+\emph{Step 4: integrate $(2)$ and interchange.}
+Integrating $(2)$ in $x$ over $\mathbb{R}^n$ and then exchanging the order of the
+two integrations,
+\[
+  \int_{\mathbb{R}^n} |(\kappa*h)(x)|^2 \, dx
+    \leq \int_{\mathbb{R}^n}\!\!\int_{\mathbb{R}^n} \kappa(t)\,|h(x-t)|^2 \, dt\, dx
+    = \int_{\mathbb{R}^n}\!\!\int_{\mathbb{R}^n} \kappa(t)\,|h(x-t)|^2 \, dx\, dt .
+\]
+The interchange is Tonelli's theorem, which applies because the integrand is
+nonnegative and jointly measurable on $\mathbb{R}^n \times \mathbb{R}^n$: it is
+the composition of the jointly measurable map
+$(z_1,z_2) \mapsto \kappa(z_2)\,|h(z_1)|^2$ with the measure-preserving
+substitution $(x,t) \mapsto (x-t,t)$ of $\mathbb{R}^n\times\mathbb{R}^n$.
+
+For each fixed $t$, the inner integral is computed by translation invariance of
+Lebesgue measure:
+\[
+  \int_{\mathbb{R}^n} \kappa(t)\,|h(x-t)|^2 \, dx
+    = \kappa(t) \int_{\mathbb{R}^n} |h(x-t)|^2 \, dx
+    = \kappa(t) \int_{\mathbb{R}^n} |h(y)|^2 \, dy ,
+\]
+the constant $\kappa(t)$ coming out because it is finite.  Integrating in $t$ and
+using $(3)$ to pull the now-constant factor $\int |h|^2$ out, and then $(0)$,
+\begin{equation*}
+  \int_{\mathbb{R}^n} |(\kappa*h)(x)|^2 \, dx
+    \leq \Bigl(\int_{\mathbb{R}^n} \kappa(t)\,dt\Bigr)
+        \int_{\mathbb{R}^n} |h(y)|^2\, dy
+    = \int_{\mathbb{R}^n} |h(y)|^2 \, dy . \tag{4}
+\end{equation*}
+
+\emph{Step 5: take square roots.}
+Both $L^2$ seminorms are the one-half power of the corresponding integral of
+squares, and $u \mapsto u^{1/2}$ is monotone on $[0,+\infty]$, so $(4)$ gives
+$\|\kappa*h\|_{L^2} \leq \|h\|_{L^2}$, which is the assertion.
+\end{proof}

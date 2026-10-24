@@ -1,0 +1,487 @@
+\begin{lemma}[Cotlar's inequality for $K_{\gamma,j}$, localized to a ball]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$, let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}, let $K_{\gamma,j}$ be the kernel of
+\noderef{GaussRieszKernel} and let $M_2$ be the local maximal function of
+\noderef{LocalMaximalFunction}.  Let
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions such that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item[(T2)] $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+\leq 2\,\|f\|_{L^1(\gamma_n)}$ for every $f \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$.
+\end{enumerate}
+For $f \in L^1(\gamma_n)$, written also for its canonical representative, put
+\[
+  T_{j,\varepsilon}f(x) = \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)f(y)\,dy ,
+  \qquad
+  T_{j,*}f(x) = \sup_{\varepsilon>0}\bigl|T_{j,\varepsilon}f(x)\bigr|
+  \;\in\; [0,+\infty] ,
+\]
+the $y$-integral against Lebesgue measure and the supremum taken in the
+extended nonnegative reals.  Let $R \geq 1$.  Then there is a constant
+$C \in (0,\infty)$, depending only on $n$, $j$ and $R$, such that for every
+$f \in L^1(\gamma_n)$ and \emph{every} $x$ with $|x| \leq R$,
+\[
+  T_{j,*}f(x)
+    \;\leq\; C\Bigl[\,
+      M_2\bigl(|(Tf)_j|^{1/2}\,\mathbf 1_{\overline B(0,R+2)}\bigr)(x)^2
+      + M_2\bigl(f\,\mathbf 1_{\overline B(0,R+2)}\bigr)(x)
+      + \|f\|_{L^1(\gamma_n)}\,\Bigr] ,
+\]
+the right-hand side read in $[0,+\infty]$, where $(Tf)_j$ denotes the $j$th
+coordinate of the canonical representative of $Tf$.
+
+\emph{Every $x$, not almost every $x$.}  The conclusion holds at every point of
+the closed ball, with no exceptional set.  This matters downstream: the
+consumer integrates the right-hand side in $x$ against weak-type bounds for
+$M_2$, and an almost-everywhere conclusion in $x$ would still suffice there,
+but the stronger form costs nothing and is what the argument produces.  The
+exceptional sets that do arise --- three of them --- are all in the auxiliary
+variable $z$ over which a point is selected inside the proof, and they are
+discarded there.  Note also that both maximal functions and the level sets
+below are unchanged if the representative of $Tf$ or of $f$ is modified on a
+null set, so the choice of the canonical representative is a matter of fixing
+notation and not an extra hypothesis.
+
+\emph{Why both sides are read in $[0,+\infty]$.}  $M_2$ is extended-real valued
+by \noderef{LocalMaximalFunction}, and $T_{j,*}f(x)$ is a supremum over
+$\varepsilon > 0$ of real numbers which is not known in advance to be finite:
+the bound $|T_{j,\varepsilon}f(x)| \leq C(\varepsilon)\|f\|_{L^1(\gamma_n)}$
+available from the far majorant degrades as $\varepsilon \downarrow 0$.  Taking
+the supremum in $[0,+\infty]$ rather than as a real supremum is what keeps the
+inequality from being satisfiable by a conventional value where the family is
+unbounded; it is the same discipline that makes \noderef{LocalMaximalFunction}
+extended-real valued.  Each individual $T_{j,\varepsilon}f(x)$ is a genuine
+absolutely convergent integral, by clause (1)(b) of
+\noderef{GaussRieszKernelFarMajorant}.
+
+\emph{The constant depends on $R$, necessarily, and the statement is
+coordinatewise.}  $C$ degrades in $R$ through the far-majorant and
+near-diagonal constants and through $a_{R+2} = \pi^{-n/2}e^{-(R+2)^2}$, the
+lower bound for the Gaussian density on $\overline B(0,R+2)$; no uniformity in
+$n$, $j$ or $R$ is claimed.  The object bounded is the coordinatewise maximal
+truncation $\sup_\varepsilon|T_{j,\varepsilon}f|$, not the reference paper's
+$\sup_\varepsilon|T_\varepsilon f|_{\mathbb{R}^n}$, which is a different
+quantity; nothing here asserts anything about the latter.
+
+\emph{The hypothetical style.}  (T1) and (T2) are written out in full and are
+not imported by reference; the lemma is a statement about every $T$ satisfying
+them, exactly as \noderef{CoordinateEndpointBound} and
+\noderef{GaussRieszOffDiagonalL1} are, and it is not vacuous because
+\noderef{L1Extension} exhibits such a $T$.
+\end{lemma}
+\begin{proof}
+Fix $R \geq 1$ and $j$.  Write $p = \pi^{-n/2}$,
+$a = \pi^{-n/2}e^{-(R+2)^2} > 0$, and $\omega_n = \lambda(\overline B(0,1))$,
+which lies in $(0,\infty)$ because the closed unit ball is compact (so of
+finite measure, shared context) and contains a nonempty open set (so of
+positive measure).
+
+Fix once and for all the following three constants.
+\begin{itemize}
+\item $C_a > 0$: the constant supplied by clause (1) of
+\noderef{GaussRieszKernelFarMajorant} for the pair $(R,1)$.
+\item $C_b > 0$: the constant supplied by the same clause for the pair
+$(R+1,\tfrac12)$.
+\item $C_h > 0$: the constant supplied by \noderef{GaussRieszKernelNearBounds}
+at $R$ (its hypothesis $R > 0$ holds since $R \geq 1$).
+\end{itemize}
+Set
+\[
+  c = \max\Bigl(\,1,\ (C_a+C_b)\pi^{n/2},\
+      C_h\omega_n2^n + 8\cdot2^n p\,a^{-1},\
+      16\,p^2a^{-2}\,\Bigr) \in [1,\infty) ,
+\]
+which depends only on $n$, $j$ and $R$, and let $C$ be $c$ read in
+$(0,\infty)$.  We show the asserted inequality with this $C$.
+
+Fix $f \in L^1(\gamma_n)$ and $x$ with $|x| \leq R$, and abbreviate
+\[
+  \Phi = M_2\bigl(f\mathbf 1_{\overline B(0,R+2)}\bigr)(x),
+  \quad
+  \Psi = M_2\bigl(|(Tf)_j|^{1/2}\mathbf 1_{\overline B(0,R+2)}\bigr)(x),
+  \quad
+  N = \|f\|_{L^1(\gamma_n)} = \int|f|\,d\gamma_n < \infty .
+\]
+Write $w = f\mathbf 1_{\overline B(0,R+2)}$ and
+$u = |(Tf)_j|^{1/2}\mathbf 1_{\overline B(0,R+2)}$ for the two functions whose
+maximal functions these are.
+
+\emph{Step 0: the infinite cases, and the reduction to a real bound.}
+If $\Phi = +\infty$ or $\Psi = +\infty$ then the bracket on the right is
+$+\infty$ and, since $C > 0$, the right-hand side is $+\infty$ and there is
+nothing to prove.  So assume $\Phi,\Psi < \infty$ and write $\varphi,\psi \geq 0$ for the
+corresponding reals.  The embedding of $[0,\infty)$ into $[0,+\infty]$ is an
+order isomorphism onto its image and respects sums, products and squares, so
+$\Psi^2 + \Phi + N$ is the image of the real $\psi^2+\varphi+N$ and
+$C\,[\Psi^2+\Phi+N]$ is the image of $c(\psi^2+\varphi+N)$; and the supremum
+defining $T_{j,*}f(x)$ is the supremum in $[0,+\infty]$ of the images of the
+reals $|T_{j,\varepsilon}f(x)|$.  It therefore suffices to prove
+\begin{equation*}
+  \bigl|T_{j,\varepsilon}f(x)\bigr| \leq c\,\bigl(\psi^2 + \varphi + N\bigr)
+  \qquad\text{for every } \varepsilon > 0 , \tag{$\star$}
+\end{equation*}
+and then take the supremum over $\varepsilon$ on the left.
+
+\emph{Step 1: two consequences of finiteness of $\Phi$ and $\Psi$.}
+By \noderef{LocalMaximalFunction}, for every $\rho \in (0,2]$
+\[
+  \frac{1}{\lambda(\overline B(x,\rho))}\int_{\overline B(x,\rho)}|w|\,d\lambda
+    \leq \Phi ,
+  \qquad
+  \frac{1}{\lambda(\overline B(x,\rho))}\int_{\overline B(x,\rho)}|u|\,d\lambda
+    \leq \Psi ,
+\]
+the integrals being lower Lebesgue integrals in $[0,+\infty]$ and
+$\lambda(\overline B(x,\rho)) \in (0,\infty)$ for the same two reasons as
+$\omega_n$ above.  Multiplying by that finite positive number and using
+$\Phi,\Psi < \infty$,
+\begin{equation*}
+  \int_{\overline B(x,\rho)}|w|\,d\lambda \leq \varphi\,\lambda(\overline B(x,\rho)) < \infty,
+  \qquad
+  \int_{\overline B(x,\rho)}|u|\,d\lambda \leq \psi\,\lambda(\overline B(x,\rho)) < \infty
+  \tag{1}
+\end{equation*}
+for every $\rho \in (0,2]$; in particular $w$ and $u$ are Lebesgue integrable
+on every such ball.  We also record the dilation identity
+$\lambda(\overline B(x,r)) = \omega_n r^n$ for $r \geq 0$, which holds for every
+$n \in \mathbb{N}_0$: the closed ball $\overline B(x,r)$ is the image of
+$\overline B(0,1)$ under $v \mapsto x + rv$, Lebesgue measure is translation
+invariant (shared context) and satisfies $\lambda(rA) = r^n\lambda(A)$.
+
+\emph{Step 2: the Gaussian/Lebesgue conversions used below.}
+By \noderef{GaussMeasure}, $\gamma_n$ is $\lambda$ weighted by
+$\varrho(y) = \pi^{-n/2}e^{-|y|^2}$, so for every measurable $v \geq 0$
+\begin{equation*}
+  \int v\,d\gamma_n = \int v(y)\varrho(y)\,d\lambda(y) . \tag{2}
+\end{equation*}
+Two consequences.  First, taking $v = |f|$ and using $\varrho(y) = p\,e^{-|y|^2}$,
+\begin{equation*}
+  \int_{\mathbb{R}^n}e^{-|y|^2}|f(y)|\,d\lambda(y) = \pi^{n/2}N < \infty .
+  \tag{3}
+\end{equation*}
+The integrability of $y \mapsto e^{-|y|^2}|f(y)|$ against $\lambda$ together with the
+value in $(3)$ is \noderef{GaussLebesgueL1DensityTransfer}, stated there for an
+arbitrary element of $L^1(\gamma_n)$ and applied here to $f$; that node is what the
+formalization invokes at this point.
+Second, $\varrho \geq a$ on $\overline B(0,R+2)$ and $\varrho \leq p$
+everywhere, so for every measurable $v \geq 0$ vanishing off
+$\overline B(0,R+2)$,
+\begin{equation*}
+  a\int v\,d\lambda \leq \int v\,d\gamma_n \leq p\int v\,d\lambda . \tag{4}
+\end{equation*}
+In particular, with $v = |w|$, $\int_{\overline B(0,R+2)}|f|\,d\lambda
+ \leq a^{-1}N < \infty$, so $f$ is Lebesgue integrable on
+$\overline B(0,R+2)$.
+
+\emph{Step 3: the case $\varepsilon \geq 1$.}
+Let $\varepsilon \geq 1$.  By clause (1)(b) of
+\noderef{GaussRieszKernelFarMajorant} at the pair $(R,1)$ --- applicable since
+$f$ is $\gamma_n$-integrable and $|x| \leq R$ --- the function
+$y \mapsto K_{\gamma,j}(x,y)f(y)$ is Lebesgue integrable on
+$\{y : |x-y| > 1\}$, hence on the subset $\{y : |x-y| > \varepsilon\}$.  By
+clause (1)(a) of the same node at the same pair, $|K_{\gamma,j}(x,y)| \leq
+C_ae^{-|y|^2}$ whenever $|x| \leq R$ and $|x-y| \geq 1$, which holds throughout
+that subset.  Hence, by $(3)$,
+\[
+  |T_{j,\varepsilon}f(x)|
+    \leq \int_{\{|x-y|>\varepsilon\}}|K_{\gamma,j}(x,y)|\,|f(y)|\,d\lambda(y)
+    \leq C_a\int e^{-|y|^2}|f|\,d\lambda
+    = C_a\pi^{n/2}N \leq c\,N ,
+\]
+which is $(\star)$ for such $\varepsilon$.  For the rest of the proof fix
+$\varepsilon$ with $0 < \varepsilon \leq 1$.
+
+\emph{Step 4: the splitting of $f$, and the two inner balls.}
+Put
+\[
+  B = \overline B(x,\varepsilon), \qquad B' = B(x,\varepsilon/2),
+\]
+and let $h, g \in L^1(\gamma_n)$ be the classes of the functions
+$f\mathbf 1_{B}$ and $f\mathbf 1_{\mathbb{R}^n\setminus B}$ respectively; both
+are $\gamma_n$-integrable because they are dominated by $|f|$.  Their
+canonical representatives agree $\gamma_n$-almost everywhere, hence
+$\lambda$-almost everywhere by clause (4) of
+\noderef{GaussLebesgueBallComparison}, with those two functions, so we may and
+do use $f\mathbf 1_B$ and $f\mathbf 1_{\mathbb{R}^n\setminus B}$ as the
+representatives.  Since $f = f\mathbf 1_B + f\mathbf 1_{\mathbb{R}^n\setminus B}$
+pointwise, $f = h + g$ in $L^1(\gamma_n)$.
+
+Note $B' \subseteq B \subseteq \overline B(0,R+2)$, because $|x| \leq R$ and
+$\varepsilon \leq 1$; and $g$ vanishes identically on $B$, hence
+$\gamma_n$-almost everywhere on the open ball $B(x,\varepsilon)$.
+
+\emph{Step 5: the two integral representations at $x$ and on $B'$.}
+Apply \noderef{GaussRieszOffDiagonalL1} to $T$ (with its two properties, which
+are (T1) and (T2) and hold by assumption), to $g$, to $j$, and with
+$x_0 = x$ and $\rho = \varepsilon > 0$; its vanishing hypothesis was verified at
+the end of Step 4.  Its clause (1) gives that for \emph{every}
+$z \in B(x,\varepsilon/2) = B'$ the function
+$y \mapsto K_{\gamma,j}(z,y)g(y)$ is Lebesgue integrable on $\mathbb{R}^n$, and
+its clause (2) gives a $\gamma_n$-null set $N_1$ off which
+\begin{equation*}
+  z \in B' \implies (Tg)_j(z) = \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)g(y)\,dy .
+  \tag{5}
+\end{equation*}
+Since $\varepsilon > 0$ we have $x \in B'$, so clause (1) applies at $z = x$ as
+well.  Moreover $\mathbb{R}^n\setminus B = \{y : |x-y| > \varepsilon\}$ exactly, so
+$K_{\gamma,j}(x,\cdot)g$ is the restriction of $K_{\gamma,j}(x,\cdot)f$ to that
+set, extended by zero; since it is Lebesgue integrable on $\mathbb{R}^n$ by the
+previous paragraph,
+\begin{equation*}
+  T_{j,\varepsilon}f(x) = \int_{\mathbb{R}^n}K_{\gamma,j}(x,y)g(y)\,dy , \tag{6}
+\end{equation*}
+both sides being absolutely convergent.
+
+\emph{Step 6: the difference estimate, uniformly over $z \in B'$.}
+We claim that for every $z \in B'$,
+\begin{equation*}
+  \Bigl|\int K_{\gamma,j}(x,y)g(y)\,dy - \int K_{\gamma,j}(z,y)g(y)\,dy\Bigr|
+    \leq C_h\omega_n2^n\varphi + (C_a+C_b)\pi^{n/2}N . \tag{7}
+\end{equation*}
+Fix $z \in B'$, so $|x-z| < \varepsilon/2 \leq 1/2$ and
+$|z| \leq |x| + 1/2 \leq R+1$.  Both integrals in $(7)$ are absolutely
+convergent by Step 5, and $g$ vanishes off
+$\{y : |x-y| > \varepsilon\} = A_1 \cup A_2$, where
+\[
+  A_1 = \{y : \varepsilon < |x-y| \leq 1\}, \qquad A_2 = \{y : |x-y| > 1\} ,
+\]
+disjoint.  So the left-hand side of $(7)$ is at most
+\[
+  \int_{A_1}\bigl|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr|\,|f(y)|\,d\lambda(y)
+  \;+\;\int_{A_2}|K_{\gamma,j}(x,y)||f|\,d\lambda
+  \;+\;\int_{A_2}|K_{\gamma,j}(z,y)||f|\,d\lambda .
+\]
+Here we used that the difference of the two absolutely convergent integrals is
+$\int(K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y))g(y)\,dy$, that $g$ vanishes off
+$A_1 \cup A_2$ and equals $f$ on it, and that on $A_2$ the integrand is bounded
+in absolute value by the sum of the two separate absolute values.  All three
+integrals are finite: on $A_1$ the integrand is
+$|K_{\gamma,j}(x,y)g(y) - K_{\gamma,j}(z,y)g(y)|$, dominated by
+$|K_{\gamma,j}(x,\cdot)g| + |K_{\gamma,j}(z,\cdot)g|$, and on $A_2$ the two
+integrands are $|K_{\gamma,j}(x,\cdot)g|$ and $|K_{\gamma,j}(z,\cdot)g|$; both
+of those functions are Lebesgue integrable on $\mathbb{R}^n$ by Step 5.
+
+\emph{The far part $A_2$.}  For $y \in A_2$: $|x| \leq R$ and $|x-y| \geq 1$,
+so clause (1)(a) of \noderef{GaussRieszKernelFarMajorant} at $(R,1)$ gives
+$|K_{\gamma,j}(x,y)| \leq C_ae^{-|y|^2}$; and
+$|z-y| \geq |x-y| - |x-z| > 1 - \tfrac12 = \tfrac12$ with $|z| \leq R+1$, so
+clause (1)(a) at $(R+1,\tfrac12)$ gives
+$|K_{\gamma,j}(z,y)| \leq C_be^{-|y|^2}$.  With $(3)$, the two $A_2$ terms are
+together at most $(C_a+C_b)\pi^{n/2}N$.
+
+\emph{The near part $A_1$, by the H\"ormander estimate.}  Let $y \in A_1$.
+Then $|x| \leq R$, $0 < \varepsilon < |x-y| \leq 1$ and
+$|x-z| < \varepsilon/2 < |x-y|/2$, which are exactly the hypotheses of clause
+(2) of \noderef{GaussRieszKernelNearBounds} at $R$; it gives
+\[
+  \bigl|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr|
+    \leq \frac{C_h\,|x-z|}{|x-y|^{\,n+1}}
+    \leq \frac{C_h\,\varepsilon/2}{|x-y|^{\,n+1}} .
+\]
+Decompose $A_1$ dyadically.  For $k \in \mathbb{N}_0$ let
+$D_k = \{y : 2^k\varepsilon < |x-y| \leq 2^{k+1}\varepsilon\}$; these are
+pairwise disjoint, and every $y \in A_1$ lies in exactly one of them, namely
+the one with $k$ the largest integer $\geq 0$ with $2^k\varepsilon < |x-y|$
+(such a $k$ exists because $|x-y| > \varepsilon = 2^0\varepsilon$ and
+$2^k\varepsilon \to \infty$).  Let $\mathcal{K}$ be the set of $k \in
+\mathbb{N}_0$ with $D_k \cap A_1 \neq \emptyset$; for $k \in \mathcal{K}$ we
+have $2^k\varepsilon < 1$, hence
+\[
+  r_k := 2^{k+1}\varepsilon < 2 ,
+\]
+so that $r_k \in (0,2]$ and $(1)$ applies at radius $r_k$.  This is the only
+place the radius cap of \noderef{LocalMaximalFunction} is used, and it is used
+with no margin: the cap is $2$ and the H\"ormander estimate is available only
+for $|x-y| \leq 1$, which is exactly what forces $r_k < 2$.
+
+For $k \in \mathcal{K}$, on $D_k$ we have $|x-y|^{-n-1} \leq
+(2^k\varepsilon)^{-n-1}$ and $D_k \subseteq \overline B(x,r_k)$.  Also
+$\overline B(x,r_k) \subseteq \overline B(0,R+2)$, since $|x| \leq R$ and
+$r_k \leq 2$; hence $f = w$ on $\overline B(x,r_k)$ and, by $(1)$ and the
+dilation identity of Step 1,
+\[
+  \int_{D_k}|f|\,d\lambda \leq \int_{\overline B(x,r_k)}|w|\,d\lambda
+    \leq \varphi\,\omega_n r_k^{\,n} .
+\]
+Therefore
+\[
+  \int_{D_k\cap A_1}\bigl|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr|\,|f|\,d\lambda
+    \leq C_h\frac{\varepsilon}{2}\,(2^k\varepsilon)^{-n-1}\varphi\,\omega_n
+        (2^{k+1}\varepsilon)^n
+    = C_h\,\omega_n\,2^{\,n-1}\,2^{-k}\varphi ,
+\]
+because
+$(2^k\varepsilon)^{-n-1}(2^{k+1}\varepsilon)^n = 2^{\,n-k}\varepsilon^{-1}$ and
+$(\varepsilon/2)\cdot2^{\,n-k}\varepsilon^{-1} = 2^{\,n-k-1}$.  The sets $D_k \cap A_1$, $k \in \mathcal{K}$, are pairwise disjoint,
+measurable and cover $A_1$, so by countable additivity the integral over $A_1$
+is the sum of the integrals over them.  Summing the displayed bound over
+$k \in \mathcal{K}$ and enlarging to all $k \geq 0$ (the terms are
+nonnegative), $\sum_{k\geq0}2^{-k} = 2$ gives
+\[
+  \int_{A_1}\bigl|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr|\,|f|\,d\lambda
+    \leq C_h\omega_n2^{\,n}\varphi .
+\]
+Adding the two parts gives $(7)$.
+
+\emph{Step 7: selection of a good $z$.}
+Put
+\[
+  \lambda_1 = 8\cdot2^np\,a^{-1}\varphi \geq 0,
+  \qquad
+  \lambda_2 = \bigl(4p\,a^{-1}\psi\bigr)^2 \geq 0 ,
+\]
+and
+\[
+  E_1 = \{z \in B' : |(Th)_j(z)| > \lambda_1\},
+  \qquad
+  E_2 = \{z \in B' : |(Tf)_j(z)| > \lambda_2\} .
+\]
+We claim $\gamma_n(E_i) \leq \gamma_n(B')/4$ for $i = 1,2$.
+
+First record two measure facts.  By the dilation identity,
+$\lambda(B) = \omega_n\varepsilon^n$; and $B' = B(x,\varepsilon/2)$ differs
+from $\overline B(x,\varepsilon/2)$ by the sphere of radius $\varepsilon/2$,
+which is Lebesgue-null in $\mathbb{R}^n$ for $n \geq 1$, so
+$\lambda(B') = \omega_n(\varepsilon/2)^n = 2^{-n}\lambda(B)$.  Also $B'$ is
+measurable and $B' \subseteq \overline B(0,R+2)$, so clause (2) of
+\noderef{GaussLebesgueBallComparison}, applied with $R+2$ in place of its $R$,
+gives
+\begin{equation*}
+  \gamma_n(B') \geq a\,\lambda(B') = a\,2^{-n}\lambda(B) > 0 . \tag{8}
+\end{equation*}
+
+\emph{The set $E_1$.}  Suppose first $\varphi > 0$, so $\lambda_1 > 0$.  By
+\noderef{CoordinateEndpointBound}, applied to $T$ with its two properties, to
+the element $h$, to the coordinate $j$ and to $t = \lambda_1$,
+\[
+  \gamma_n(E_1) \leq \gamma_n\bigl(\{z : |(Th)_j(z)| > \lambda_1\}\bigr)
+    \leq \frac{2\|h\|_{L^1(\gamma_n)}}{\lambda_1} .
+\]
+Now $\|h\|_{L^1(\gamma_n)} = \int_B|f|\,d\gamma_n$, and $B \subseteq
+\overline B(0,R+2)$ so $f = w$ on $B$; by the upper half of $(4)$ and then
+$(1)$ at radius $\varepsilon \in (0,2]$,
+\[
+  \|h\|_{L^1(\gamma_n)} \leq p\int_B|w|\,d\lambda \leq p\,\varphi\,\lambda(B) .
+\]
+Hence
+\[
+  \gamma_n(E_1) \leq \frac{2p\varphi\lambda(B)}{8\cdot2^np\,a^{-1}\varphi}
+    = \frac{a\,2^{-n}\lambda(B)}{4} \leq \frac{\gamma_n(B')}{4}
+\]
+by $(8)$.  Suppose instead $\varphi = 0$.  Then by $(1)$ at radius
+$\varepsilon$, $\int_B|w|\,d\lambda = 0$, so $w = 0$ and hence $f = 0$
+$\lambda$-almost everywhere on $B$; therefore $f\mathbf 1_B = 0$
+$\lambda$-almost everywhere, hence $\gamma_n$-almost everywhere by clause (4)
+of \noderef{GaussLebesgueBallComparison}, so $h = 0$ in $L^1(\gamma_n)$.  By
+linearity $Th = T0 = 0$, so $(Th)_j = 0$ $\gamma_n$-almost everywhere and
+$E_1 = \{z \in B' : |(Th)_j(z)| > 0\}$ is $\gamma_n$-null.  In both cases
+$\gamma_n(E_1) \leq \gamma_n(B')/4$.
+
+\emph{The set $E_2$.}  Since $B' \subseteq \overline B(0,R+2)$, on $B'$ we have
+$u = |(Tf)_j|^{1/2}$.  Note that $u$ is measurable, the canonical
+representative of an almost-everywhere class being measurable, so $E_1$ and
+$E_2$ are measurable sets.  Suppose first $\psi > 0$, so $\lambda_2 > 0$ and
+$\lambda_2^{1/2} = 4p\,a^{-1}\psi$.  For $z \in B'$,
+$|(Tf)_j(z)| > \lambda_2$ holds exactly when $u(z) > \lambda_2^{1/2}$, the
+square root being increasing on $[0,\infty)$.  By Chebyshev's inequality for
+$\lambda$ applied to the nonnegative function $u$ on $B'$ --- that is,
+$\lambda_2^{1/2}\lambda(\{z \in B' : u(z) > \lambda_2^{1/2}\})
+ \leq \int_{B'}u\,d\lambda$, which is immediate from
+$\lambda_2^{1/2}\mathbf 1_{\{u>\lambda_2^{1/2}\}} \leq u$ on $B'$ --- together
+with $B' \subseteq \overline B(x,\varepsilon/2)$ and $(1)$ at radius
+$\varepsilon/2 \in (0,2]$,
+\[
+  \lambda(E_2) \leq \frac{1}{\lambda_2^{1/2}}\int_{\overline B(x,\varepsilon/2)}u\,d\lambda
+    \leq \frac{\psi\,\lambda(\overline B(x,\varepsilon/2))}{\lambda_2^{1/2}}
+    = \frac{\psi\,2^{-n}\lambda(B)}{4p\,a^{-1}\psi}
+    = \frac{a\,2^{-n}\lambda(B)}{4p} .
+\]
+By clause (1) of \noderef{GaussLebesgueBallComparison}, which holds for every
+set, $\gamma_n(E_2) \leq p\,\lambda(E_2) \leq a2^{-n}\lambda(B)/4 \leq
+\gamma_n(B')/4$ by $(8)$.  Suppose instead $\psi = 0$.  Then by $(1)$ at
+radius $\varepsilon/2$, $\int_{\overline B(x,\varepsilon/2)}u\,d\lambda = 0$,
+so $u = 0$ $\lambda$-almost everywhere on $B'$, i.e.\ $(Tf)_j = 0$
+$\lambda$-almost everywhere on $B'$, hence $\gamma_n$-almost everywhere there
+by clause (4) of \noderef{GaussLebesgueBallComparison}; so
+$E_2 = \{z \in B' : |(Tf)_j(z)| > 0\}$ is $\gamma_n$-null.  In both cases
+$\gamma_n(E_2) \leq \gamma_n(B')/4$.
+
+\emph{Two further null sets, both free.}  $N_1$ is the $\gamma_n$-null set of
+$(5)$.  And since $T$ is linear, $Tg = Tf - Th$ as almost-everywhere classes,
+so the canonical representative of $Tg$ agrees $\gamma_n$-almost everywhere
+with the difference of those of $Tf$ and $Th$; let $N_2$ be the
+$\gamma_n$-null set off which
+\begin{equation*}
+  (Tg)_j(z) = (Tf)_j(z) - (Th)_j(z) . \tag{9}
+\end{equation*}
+
+\emph{The good set is nonempty.}  Let
+$G = B' \setminus (E_1 \cup E_2 \cup N_1 \cup N_2)$.  By subadditivity
+(shared context),
+\[
+  \gamma_n(G) \geq \gamma_n(B') - \gamma_n(E_1) - \gamma_n(E_2)
+    - \gamma_n(N_1) - \gamma_n(N_2)
+    \geq \gamma_n(B') - \tfrac14\gamma_n(B') - \tfrac14\gamma_n(B')
+    = \tfrac12\gamma_n(B') > 0
+\]
+by $(8)$, the subtraction being legitimate because
+$\gamma_n(B') \leq p\,\lambda(B') < \infty$ by clause (1) of
+\noderef{GaussLebesgueBallComparison}.
+Hence $G \neq \emptyset$; fix $z \in G$.
+
+\emph{Step 8: conclusion.}
+By $(6)$, the triangle inequality, $(7)$ and then $(5)$ (legitimate since
+$z \in B'$ and $z \notin N_1$),
+\[
+  |T_{j,\varepsilon}f(x)|
+    \leq \Bigl|\int K_{\gamma,j}(x,y)g\,dy - \int K_{\gamma,j}(z,y)g\,dy\Bigr|
+      + \Bigl|\int K_{\gamma,j}(z,y)g\,dy\Bigr|
+    \leq C_h\omega_n2^n\varphi + (C_a+C_b)\pi^{n/2}N + \bigl|(Tg)_j(z)\bigr| .
+\]
+By $(9)$ (as $z \notin N_2$) and then $z \notin E_1 \cup E_2$,
+\[
+  |(Tg)_j(z)| \leq |(Tf)_j(z)| + |(Th)_j(z)| \leq \lambda_2 + \lambda_1
+    = 16p^2a^{-2}\psi^2 + 8\cdot2^np\,a^{-1}\varphi .
+\]
+Combining, and using the definition of $c$,
+\[
+  |T_{j,\varepsilon}f(x)|
+    \leq \bigl(C_h\omega_n2^n + 8\cdot2^np\,a^{-1}\bigr)\varphi
+      + 16p^2a^{-2}\psi^2 + (C_a+C_b)\pi^{n/2}N
+    \leq c\,(\varphi + \psi^2 + N) .
+\]
+This is $(\star)$ for $0 < \varepsilon \leq 1$; with Step 3 it holds for every
+$\varepsilon > 0$.  Taking the supremum over $\varepsilon > 0$ in
+$[0,+\infty]$ gives
+$T_{j,*}f(x) \leq c(\psi^2 + \varphi + N) = C\,[\Psi^2 + \Phi + N]$, which is
+the assertion.
+%
+% FORMALIZATION NOTE (cut points for ProofFormalization, recorded while the
+% argument is fresh; see the reviewer's standing instruction that decomposition
+% is free once the children's Lean closes, and must not be done in the stating
+% phase).  Three natural children, in dependency order:
+%   (C1) Steps 1-2 as a single arithmetic/measure lemma: for |x| <= R and
+%        rho in (0,2], lambda(closedBall x rho) = omega_n rho^n,
+%        closedBall x rho subset closedBall 0 (R+2), the averaged bound (1),
+%        and the two-sided conversion (4).  Pure measure theory, no kernel.
+%   (C2) Step 6 as "GaussRieszCotlarDifference": for |x| <= R, 0 < eps <= 1 and
+%        z in B(x,eps/2), the bound (7).  This is the dyadic/Hoermander half and
+%        is the longest single piece; it needs only the two kernel-estimate
+%        nodes and (C1).  Do NOT make it a tablet node in the stating phase:
+%        it would be exposed to Substantiveness Clause 2 against
+%        GaussRieszKernelNearBounds.
+%   (C3) Step 7 as "a point of B(x,eps/2) off three bad sets exists", i.e. the
+%        selection, parameterized by the two thresholds.  Its content is
+%        Chebyshev plus the measure bookkeeping (8); it is independent of the
+%        kernel entirely.
+% Step 8 then assembles (C2) and (C3) in five lines.
+\end{proof}

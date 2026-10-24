@@ -1,0 +1,294 @@
+\begin{lemma}[Off-diagonal kernel representation of the $L^1$ extension]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$, let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}, and let $K_{\gamma,j}$ be the kernel of
+\noderef{GaussRieszKernel}.  Let
+\[
+  T : L^1(\gamma_n) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions such that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, where
+$\iota : L^2(\gamma_n) \to L^1(\gamma_n)$ is the inclusion of
+\noderef{ToL1} and $R_\gamma$ is the Riesz transform of
+\noderef{RieszTransform}; and
+\item[(T2)] $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+\leq 2\,\|f\|_{L^1(\gamma_n)}$ for every $f \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$, the distribution function being that of the Euclidean norm
+of the vector $Tf(x)$.
+\end{enumerate}
+Let $g \in L^1(\gamma_n)$, write $g$ also for its canonical representative, let
+$x_0 \in \mathbb{R}^n$ and $\rho > 0$, and assume that
+\[
+  g = 0 \quad \gamma_n\text{-almost everywhere on } B(x_0,\rho) .
+\]
+Then:
+\begin{enumerate}
+\item for \emph{every} $z \in B(x_0,\rho/2)$ the function
+$y \mapsto K_{\gamma,j}(z,y)\,g(y)$ is Lebesgue integrable on $\mathbb{R}^n$;
+and
+\item for $\gamma_n$-almost every $z$, if $z \in B(x_0,\rho/2)$ then
+\[
+  (Tg)_j(z) = \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)\,g(y)\,dy .
+\]
+\end{enumerate}
+
+\emph{The hypothetical style, and why it is not a citation of hypotheses.}
+(T1) and (T2) are written out in full above; they are not imported by reference
+from any other node, and the lemma is a statement about every $T$ satisfying
+them.  This is the same style as \noderef{CoordinateEndpointBound}, with which
+the lemma composes directly: an actual such $T$ exists by
+\noderef{L1Extension}, and every consumer that has one in hand can feed it to
+both nodes at once.
+
+\emph{What this adds, and what it is not.}  The reference paper's own
+interchange of the time and space integrals is licensed only ``for compactly
+supported smooth inputs and $x$ off their support''.  Clause (2) upgrades that
+to an arbitrary $L^1(\gamma_n)$ input, at the price of holding $z$ in a ball on
+which the input vanishes and of weakening ``every $z$'' to ``almost every
+$z$'' --- the latter being unavoidable, since $Tg$ is only an almost-everywhere
+equivalence class.  It is emphatically \emph{not} a principal-value
+identification: no limit in the truncation radius occurs, because on the range
+considered the truncated integrals are eventually independent of the radius.
+
+\emph{Clause (1) is stated and is not an afterthought.}  The integral in clause
+(2) is a Bochner integral, whose value is $0$ by convention on a
+non-integrable integrand; without clause (1) the identity could be read as
+holding at points where the right-hand side is that conventional value.  Clause
+(1) also holds at \emph{every} point of the ball, not merely almost every one,
+which is what lets a consumer evaluate the right-hand side pointwise.
+\end{lemma}
+\begin{proof}
+Throughout, $B(a,s)$ and $\overline B(a,s)$ are the open and closed Euclidean
+balls, $\lambda$ is Lebesgue measure, and we write $\|h\|_1 = \int|h|\,d\gamma_n$
+for a $\gamma_n$-integrable function $h$ and also for the norm of the
+corresponding element of $L^1(\gamma_n)$; the two agree, because the canonical
+representative of an element of $L^1(\gamma_n)$ realises its norm as that
+integral.  Set
+\[
+  R = \|x_0\| + \rho + 1 > 0 ,
+\]
+so that every $z \in B(x_0,\rho/2)$ has $|z| \leq \|x_0\| + \rho/2 \leq R$, and
+let $C > 0$ be the constant supplied by clause (1) of
+\noderef{GaussRieszKernelFarMajorant} for the pair $(R,\rho/4)$, both of which
+are positive.  For $z \in \mathbb{R}^n$ write
+$\Omega_z = \{y : |z-y| > \rho/4\}$.
+
+\emph{Step 0: the vanishing holds $\lambda$-almost everywhere as well.}
+The hypothesis says that the set $N = \{y \in B(x_0,\rho) : g(y) \neq 0\}$ is
+contained in a $\gamma_n$-null set.  By clause (4) of
+\noderef{GaussLebesgueBallComparison}, $\gamma_n$ and $\lambda$ have the same
+null sets, so $N$ is contained in a $\lambda$-null set too; that is, $g = 0$
+$\lambda$-almost everywhere on $B(x_0,\rho)$.
+
+\emph{Step 1: two separation estimates.}
+Let $z \in B(x_0,\rho/2)$.
+\begin{itemize}
+\item[(a)] If $y \notin B(x_0,\rho)$ then
+$|z-y| \geq |x_0-y| - |x_0-z| \geq \rho - \rho/2 = \rho/2 > \rho/4$, so
+$y \in \Omega_z$.  Equivalently, $y \notin \Omega_z$ implies
+$y \in B(x_0,\rho)$.
+\item[(b)] If $|z-y| \leq \rho/4$ then
+$|y-x_0| \leq |y-z| + |z-x_0| < \rho/4 + \rho/2 = 3\rho/4$, so
+$y \in B(x_0,3\rho/4) \subseteq B(x_0,7\rho/8)$.
+\end{itemize}
+
+\emph{Step 2: clause (1), and the truncated form of the integral.}
+We prove the following statement, which we will use both for $g$ and for the
+approximants of Step 4.  \emph{Let $h : \mathbb{R}^n \to \mathbb{R}$ be
+$\gamma_n$-integrable and suppose $h = 0$ $\lambda$-almost everywhere on
+$B(x_0,3\rho/4)$.  Then for every $z \in B(x_0,\rho/2)$ the function
+$y \mapsto K_{\gamma,j}(z,y)h(y)$ is Lebesgue integrable on $\mathbb{R}^n$ and}
+\begin{equation*}
+  \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)h(y)\,dy
+    = \int_{\Omega_z}K_{\gamma,j}(z,y)h(y)\,dy . \tag{1}
+\end{equation*}
+Indeed, fix such an $h$ and such a $z$.  Being $\gamma_n$-integrable, $h$
+satisfies the hypothesis of clause (1)(b) of
+\noderef{GaussRieszKernelFarMajorant}, and $|z| \leq R$, so that clause gives
+that $y \mapsto K_{\gamma,j}(z,y)h(y)$ is Lebesgue integrable on $\Omega_z$.
+By Step 1(b), every $y \notin \Omega_z$ --- that is, every $y$ with
+$|z-y| \leq \rho/4$ --- lies in $B(x_0,3\rho/4)$, where $h$ vanishes
+$\lambda$-almost everywhere.  Hence
+$K_{\gamma,j}(z,\cdot)h$ vanishes $\lambda$-almost everywhere on the complement
+of $\Omega_z$.  A function integrable on a measurable set and vanishing almost
+everywhere off it is integrable on the whole space, with the same integral;
+this gives both the integrability on $\mathbb{R}^n$ and $(1)$.
+
+Applying this with $h = g$, which is $\gamma_n$-integrable and vanishes
+$\lambda$-almost everywhere on $B(x_0,\rho) \supseteq B(x_0,3\rho/4)$ by
+Step 0, proves clause (1) of the lemma.
+
+\emph{Step 3: the smooth off-diagonal identification, derived inline.}
+Let $\varphi : \mathbb{R}^n \to \mathbb{R}$ be smooth with compact support, let
+$z \in \mathbb{R}^n$, and suppose $\varphi(y) = 0$ whenever $|z-y| \leq \sigma$,
+for some $\sigma > 0$.  Write
+\[
+  \Phi_j^\varphi(z) = \frac{1}{\sqrt\pi}\int_0^\infty
+      e^{-s}\,\frac{1}{\sqrt2}\bigl(A_s(\partial_j\varphi)\bigr)(z)\,
+      \frac{ds}{\sqrt s},
+  \qquad
+  (A_s w)(z) = \int w\bigl(e^{-s}z + \sqrt{1-e^{-2s}}\,\zeta\bigr)d\gamma_n(\zeta) ,
+\]
+for the subordination integral appearing on the right-hand side of
+\noderef{PVCoreSmooth} and of \noderef{RieszSemigroupPointwise}.  We claim
+\begin{equation*}
+  y \mapsto K_{\gamma,j}(z,y)\varphi(y) \text{ is Lebesgue integrable on }
+  \mathbb{R}^n, \quad\text{and}\quad
+  \Phi_j^\varphi(z) = \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)\varphi(y)\,dy .
+  \tag{2}
+\end{equation*}
+Indeed, let $0 < \varepsilon \leq \sigma$.  Clause (1) of
+\noderef{PVCoreSmooth}, applied to $\varphi$, $j$, $z$ and this $\varepsilon$,
+says that $y \mapsto K_{\gamma,j}(z,y)\varphi(y)$ is Lebesgue integrable on
+$\{y : |z-y| > \varepsilon\}$.  Its complement is contained in
+$\{y : |z-y| \leq \sigma\}$, where $\varphi$ vanishes identically, so --- by the
+same elementary fact used in Step 2 --- the function is integrable on
+$\mathbb{R}^n$ and
+\[
+  \int_{\{|z-y|>\varepsilon\}}K_{\gamma,j}(z,y)\varphi(y)\,dy
+    = \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)\varphi(y)\,dy
+  \qquad (0 < \varepsilon \leq \sigma) .
+\]
+Thus the function $\varepsilon \mapsto
+\int_{\{|z-y|>\varepsilon\}}K_{\gamma,j}(z,y)\varphi(y)\,dy$ is constant on
+$(0,\sigma]$, so its limit as $\varepsilon \downarrow 0$ exists and equals that
+constant.  Clause (2) of \noderef{PVCoreSmooth} identifies that limit as
+$\Phi_j^\varphi(z)$.  This is $(2)$.
+
+\emph{Step 4: the approximating sequence.}
+First fix a cut-off.  Since $0 < 7\rho/8 < 15\rho/16$, there is a smooth bump
+function $b : \mathbb{R}^n \to [0,1]$ with
+$b = 1$ on $\overline B(x_0,7\rho/8)$ and
+$\operatorname{supp} b \subseteq B(x_0,15\rho/16)$: this is the standard radial
+bump at centre $x_0$ with inner radius $7\rho/8$ and outer radius $15\rho/16$,
+which exists for any pair of radii $0 < r_{\mathrm{in}} < r_{\mathrm{out}}$.
+Set $\chi = 1 - b$, so that
+\[
+  \chi \text{ is smooth},\quad 0 \leq \chi \leq 1,\quad
+  \chi = 0 \text{ on } \overline B(x_0,\tfrac{7\rho}{8}),\quad
+  \chi = 1 \text{ off } B(x_0,\tfrac{15\rho}{16}) ,
+\]
+the last because $b$ vanishes off its support.
+Let $k \in \mathbb{N}$.  By \noderef{SmoothCompactDenseL1Gauss} applied to $g$
+and $\delta = 1/(k+1) > 0$ there is a smooth, compactly supported,
+$\gamma_n$-integrable $\varphi_k$ with $\|g-\varphi_k\|_1 < 1/(k+1)$; that node
+states the bound for the $L^1(\gamma_n)$ seminorm read in $[0,+\infty]$, and the
+bound in particular makes it finite, so $g - \varphi_k$ is $\gamma_n$-integrable
+and the seminorm is the ordinary integral $\int|g-\varphi_k|\,d\gamma_n$.  Put
+$\psi_k = \chi\,\varphi_k$.  Then:
+\begin{itemize}
+\item $\psi_k$ is smooth, being a product of smooth functions, and
+$\{\psi_k \neq 0\} \subseteq \{\varphi_k \neq 0\}$, so
+$\operatorname{supp}\psi_k \subseteq \operatorname{supp}\varphi_k$ is compact;
+\item $\psi_k = 0$ on $\overline B(x_0,7\rho/8)$, hence in particular
+$\lambda$-almost everywhere on $B(x_0,3\rho/4)$;
+\item $\psi_k$ is bounded (continuous with compact support) and $\gamma_n$ is a
+probability measure, hence finite (\noderef{GaussIsProb}), so $\psi_k$ is
+$\gamma_n$-integrable and also square $\gamma_n$-integrable.
+\end{itemize}
+Moreover
+\[
+  \|g - \psi_k\|_1
+    \leq \int|g - \chi g|\,d\gamma_n + \int|\chi|\,|g - \varphi_k|\,d\gamma_n
+    \leq \int\bigl|(1-\chi)g\bigr|\,d\gamma_n + \|g-\varphi_k\|_1 ,
+\]
+using $0 \leq \chi \leq 1$.  The first term vanishes: $1-\chi$ is $0$ off
+$B(x_0,15\rho/16)$, so $(1-\chi)g$ vanishes off $B(x_0,15\rho/16) \subseteq
+B(x_0,\rho)$, and on $B(x_0,\rho)$ we have $g = 0$ $\gamma_n$-almost everywhere
+by hypothesis; so $(1-\chi)g = 0$ $\gamma_n$-almost everywhere.  Therefore
+\begin{equation*}
+  \|g-\psi_k\|_1 < \frac{1}{k+1} . \tag{3}
+\end{equation*}
+Write $u_k \in L^2(\gamma_n)$ for the class of $\psi_k$ and
+$\iota\psi_k = \iota u_k \in L^1(\gamma_n)$ for its image under the inclusion of
+\noderef{ToL1}; by the definition of that inclusion the canonical
+representative of $\iota\psi_k$ equals $\psi_k$ $\gamma_n$-almost everywhere,
+so $\|g - \iota\psi_k\|_{L^1(\gamma_n)} = \|g-\psi_k\|_1 < 1/(k+1)$.
+
+\emph{Step 5: the right-hand side converges, uniformly on the ball.}
+Let $z \in B(x_0,\rho/2)$.  By Step 4 the function $\psi_k$ satisfies the
+hypotheses of Step 2, so $(1)$ holds for it; and $(1)$ holds for $g$ by Step 2.
+Both $K_{\gamma,j}(z,\cdot)\psi_k$ and $K_{\gamma,j}(z,\cdot)g$ are integrable
+on $\Omega_z$, so by linearity of the integral there and by clause (1)(b) of
+\noderef{GaussRieszKernelFarMajorant} applied to the $\gamma_n$-integrable
+function $\psi_k - g$ at the point $z$ (recall $|z| \leq R$),
+\begin{equation*}
+  \Bigl|\int_{\mathbb{R}^n}K_{\gamma,j}(z,y)\psi_k(y)\,dy
+        - \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)g(y)\,dy\Bigr|
+  = \Bigl|\int_{\Omega_z}K_{\gamma,j}(z,y)\bigl(\psi_k-g\bigr)(y)\,dy\Bigr|
+  \leq C\,\|\psi_k - g\|_1 < \frac{C}{k+1} , \tag{4}
+\end{equation*}
+the bound being independent of $z \in B(x_0,\rho/2)$.
+
+\emph{Step 6: the left-hand side converges in measure.}
+Let $t > 0$ and $k \in \mathbb{N}$.  Applying
+\noderef{CoordinateEndpointBound} --- to this $T$, with the two properties it
+requires, which are (T1) and (T2) and hold by assumption --- to the element
+$g - \iota\psi_k$ of $L^1(\gamma_n)$, to the coordinate $j$ and to $t$,
+\[
+  t\,\gamma_n\bigl(\{z : |\,(T(g - \iota\psi_k))_j(z)\,| > t\}\bigr)
+    \leq 2\,\|g-\iota\psi_k\|_{L^1(\gamma_n)} < \frac{2}{k+1} .
+\]
+Since $T$ is linear, $T(g-\iota\psi_k) = Tg - T(\iota\psi_k)$ as
+almost-everywhere classes, and the canonical representative of a difference of
+such classes is $\gamma_n$-almost everywhere the difference of the
+representatives.  The two sets
+$\{z : |(T(g-\iota\psi_k))_j(z)| > t\}$ and
+$\{z : |(Tg)_j(z) - (T(\iota\psi_k))_j(z)| > t\}$ therefore differ inside a
+$\gamma_n$-null set and have the same $\gamma_n$-measure, so
+\[
+  t\,\gamma_n\bigl(\{z : |\,(Tg)_j(z) - (T(\iota\psi_k))_j(z)\,| > t\}\bigr)
+    < \frac{2}{k+1} .
+\]
+Hence for each fixed $t>0$ the measures
+$\gamma_n(\{|(Tg)_j - (T(\iota\psi_k))_j| > t\})$ tend to $0$ as
+$k \to \infty$; that is, $(T(\iota\psi_k))_j \to (Tg)_j$ in
+$\gamma_n$-measure.  Since $\gamma_n$ is a finite measure
+(\noderef{GaussIsProb}), a sequence converging in measure has a subsequence
+converging almost everywhere; fix $k_1 < k_2 < \cdots$ with
+\begin{equation*}
+  (T(\iota\psi_{k_m}))_j(z) \longrightarrow (Tg)_j(z)
+  \qquad\text{for } \gamma_n\text{-almost every } z . \tag{5}
+\end{equation*}
+
+\emph{Step 7: identification of each approximant, and the conclusion.}
+Fix $m$.  The function $\psi_{k_m}$ is smooth with compact support, and for
+every $z \in B(x_0,\rho/2)$ it vanishes on $\{y : |z-y| \leq \rho/4\}$, because
+by Step 1(b) such a $y$ lies in $B(x_0,7\rho/8)$ where $\psi_{k_m}$ is zero.  So
+Step 3 applies with $\sigma = \rho/4$ and gives
+\begin{equation*}
+  \Phi_j^{\psi_{k_m}}(z)
+    = \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)\psi_{k_m}(y)\,dy
+  \qquad\text{for every } z \in B(x_0,\rho/2) . \tag{6}
+\end{equation*}
+On the other hand, clause (3) of \noderef{RieszSemigroupPointwise}, applied to
+the smooth compactly supported $\psi_{k_m}$ (which is square
+$\gamma_n$-integrable by Step 4) and to $j$, states that
+$\Phi_j^{\psi_{k_m}}$ agrees $\gamma_n$-almost everywhere with the $j$th
+coordinate of $R_\gamma u_{k_m}$, $u_{k_m}$ being the $L^2(\gamma_n)$ class of
+$\psi_{k_m}$.  By (T1), $T(\iota u_{k_m}) = R_\gamma u_{k_m}$ as
+almost-everywhere classes, so their representatives agree $\gamma_n$-almost
+everywhere.  Combining,
+\begin{equation*}
+  (T(\iota\psi_{k_m}))_j(z) = \Phi_j^{\psi_{k_m}}(z)
+  \qquad\text{for } \gamma_n\text{-almost every } z . \tag{7}
+\end{equation*}
+
+Now intersect countably many sets of full $\gamma_n$-measure: the one from
+$(5)$, and for each $m$ the one from $(7)$.  A countable intersection of
+conull sets is conull.  Let $z$ belong to it and suppose
+$z \in B(x_0,\rho/2)$.  By $(7)$ and $(6)$,
+$(T(\iota\psi_{k_m}))_j(z) = \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)\psi_{k_m}(y)\,dy$
+for every $m$.  Letting $m \to \infty$, the left-hand side tends to $(Tg)_j(z)$
+by $(5)$, and the right-hand side tends to
+$\int_{\mathbb{R}^n}K_{\gamma,j}(z,y)g(y)\,dy$ by $(4)$, since
+$C/(k_m+1) \to 0$.  A convergent sequence of reals has a unique limit, so
+\[
+  (Tg)_j(z) = \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)\,g(y)\,dy .
+\]
+As this holds for every $z$ in a set of full $\gamma_n$-measure, clause (2)
+follows.
+\end{proof}

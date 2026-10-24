@@ -1,0 +1,60 @@
+\begin{lemma}[Instantaneous form-domain regularity and strong continuity of $P_s$]
+Let $v \in L^2(\gamma_n)$.  Then
+\begin{enumerate}
+\item for every $s > 0$ one has $\mathcal{E}(P_s v) < \infty$, i.e.
+$P_s v$ lies in the form domain $\mathcal{V}$ of \noderef{Energy}; and
+\item $P_s v \to v$ in $L^2(\gamma_n)$ as $s \downarrow 0$.
+\end{enumerate}
+Here $P_s$ is the semigroup of \noderef{OUSemigroup}.
+\end{lemma}
+\begin{proof}
+Write $v_\alpha$ for the Hermite coefficients of $v$ relative to
+\noderef{HermiteBasis}, so $\sum_\alpha |v_\alpha|^2 = \|v\|_2^2 < \infty$ by
+Parseval.  By \noderef{OUSemigroupSpectral}, for every $s \geq 0$,
+\begin{equation*}
+  (P_s v)_\alpha = e^{-s|\alpha|}\, v_\alpha , \tag{1}
+\end{equation*}
+with $|\alpha|$ as in \noderef{MultiIndexSum}.
+
+\emph{Part (1).}
+Fix $s > 0$.  By \noderef{Energy} and (1),
+\[
+  \mathcal{E}(P_s v)
+    = \sum_{\alpha \neq 0} |\alpha|^{1/2}\, e^{-2s|\alpha|}\, |v_\alpha|^2 .
+\]
+For $\alpha \neq 0$ the number $\ell = |\alpha|$ is an integer with
+$\ell \geq 1$, by \noderef{MultiIndexSum}.  Consider
+$F_s(\ell) = \ell^{1/2}e^{-2s\ell}$ for real $\ell \geq 1$.  It is continuous on
+$[1,\infty)$ and tends to $0$ as $\ell \to \infty$ (exponential decay beats the
+square root), so it is bounded there; set
+$C_s = \sup_{\ell \geq 1} \ell^{1/2}e^{-2s\ell} < \infty$.  (Concretely
+$C_s \leq \sup_{\ell\geq1}\ell^{1/2}e^{-2s\ell}$ is attained either at
+$\ell = 1$ or at the critical point $\ell = 1/(4s)$, and is finite in either
+case.)  Then, termwise,
+\[
+  |\alpha|^{1/2}e^{-2s|\alpha|}|v_\alpha|^2 \leq C_s\, |v_\alpha|^2
+  \qquad (\alpha \neq 0),
+\]
+and summing the nonnegative terms,
+\[
+  \mathcal{E}(P_s v) \leq C_s \sum_{\alpha \neq 0}|v_\alpha|^2
+    \leq C_s\, \|v\|_2^2 < \infty .
+\]
+Hence $P_s v \in \mathcal{V}$.
+
+\emph{Part (2).}
+By Parseval (\noderef{HermiteBasis}) and (1),
+\[
+  \|P_s v - v\|_2^2
+    = \sum_{\alpha} \bigl|e^{-s|\alpha|} - 1\bigr|^2\, |v_\alpha|^2
+    = \sum_{\alpha} \bigl(1 - e^{-s|\alpha|}\bigr)^2 |v_\alpha|^2 .
+\]
+For every $s > 0$ and every $\alpha$ we have
+$0 \leq 1 - e^{-s|\alpha|} \leq 1$, so each summand is bounded by
+$|v_\alpha|^2$, uniformly in $s$; and the dominating family
+$(|v_\alpha|^2)_\alpha$ is summable with sum $\|v\|_2^2$.  Moreover, for each
+fixed $\alpha$, $e^{-s|\alpha|} \to 1$ as $s \downarrow 0$, so each summand tends
+to $0$.  The dominated convergence theorem for sums (counting measure on
+$\mathbb{N}_0^n$) therefore gives $\|P_sv - v\|_2^2 \to 0$ as $s \downarrow 0$,
+i.e.\ $P_s v \to v$ in $L^2(\gamma_n)$.
+\end{proof}

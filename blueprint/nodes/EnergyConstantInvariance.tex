@@ -1,0 +1,52 @@
+\begin{lemma}[Constants are null directions of the energy]
+Let $h_0 \in L^2(\gamma_n)$ be the Hermite element of index $0$ from
+\noderef{HermiteL2}, which is the constant function $\mathbf{1}$ by
+\noderef{Hermite1Zero}.  Then for every $v \in L^2(\gamma_n)$ and every
+$c \in \mathbb{R}$,
+\[
+  \mathcal{E}(v, \mathbf{1}) = 0
+  \qquad\text{and}\qquad
+  \mathcal{E}(v + c\mathbf{1}) = \mathcal{E}(v),
+\]
+where $\mathcal{E}(\cdot,\cdot)$ is the form of \noderef{EnergyBil} and
+$\mathcal{E}(\cdot)$ the energy of \noderef{Energy}, the second identity holding
+as an equality in $[0,+\infty]$.  In particular adding a constant to $v$ changes
+neither its membership in the form domain $\mathcal{V}$ nor its energy.
+\end{lemma}
+\begin{proof}
+\emph{Step 0: the coefficients of $h_0$.}
+By \noderef{HermiteL2Orthonormal} the family $\{h_\beta\}$ is orthonormal, so the
+Hermite coefficients of $h_0$ itself are
+$(h_0)_0 = \langle h_0,h_0\rangle = 1$ and
+$(h_0)_\beta = \langle h_0,h_\beta\rangle = 0$ for every $\beta \neq 0$.
+
+\emph{Step 1: $\mathcal{E}(v,\mathbf{1}) = 0$.}
+By \noderef{EnergyBil} the form is the sum
+$\mathcal{E}(v,w) = \sum_{\alpha \neq 0} |\alpha|^{1/2} v_\alpha w_\alpha$,
+taken over indices $\alpha \neq 0$ only, whenever the family is summable.  Taking
+$w = h_0 = \mathbf{1}$, every term carries the factor $(h_0)_\alpha$ with
+$\alpha \neq 0$, which is $0$ by Step 0.  Hence every term of the family is $0$;
+the family is therefore (absolutely) summable with sum $0$, so the summability
+hypothesis in \noderef{EnergyBil} is met and
+$\mathcal{E}(v, \mathbf{1}) = 0$.
+
+\emph{Step 2: $\mathcal{E}(v + c\mathbf{1}) = \mathcal{E}(v)$.}
+The Hermite coefficient map is linear (\noderef{HermiteBasis}), so by Step 0 the
+element $v + c h_0$ has coefficients
+\[
+  (v + c h_0)_0 = v_0 + c,
+  \qquad
+  (v + c h_0)_\alpha = v_\alpha \quad\text{for every } \alpha \neq 0 .
+\]
+By \noderef{Energy} the defining series
+$\mathcal{E}(w) = \sum_{\alpha\neq0}|\alpha|^{1/2}|w_\alpha|^2$ omits the index
+$\alpha = 0$ entirely, so it depends only on the coefficients at indices
+$\alpha \neq 0$.  Those are unchanged in passing from $v$ to $v + ch_0$, so the
+two series are termwise identical.  As both are sums of nonnegative terms, they
+have the same value in $[0,+\infty]$:
+$\mathcal{E}(v + c\mathbf{1}) = \mathcal{E}(v)$.
+
+In particular $\mathcal{E}(v+c\mathbf{1}) < \infty$ if and only if
+$\mathcal{E}(v) < \infty$, i.e.\ $v + c\mathbf{1} \in \mathcal{V}$ if and only if
+$v \in \mathcal{V}$.
+\end{proof}

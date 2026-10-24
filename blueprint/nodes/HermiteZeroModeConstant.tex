@@ -1,0 +1,79 @@
+\begin{lemma}[The zeroth Hermite mode is the constant function $1$]
+Fix $n \in \mathbb{N}$ and write $h_0$ for the Hermite function of index
+$\alpha = 0$, regarded through \noderef{HermiteL2} as an element of
+$L^2(\gamma_n)$, with $\gamma_n$ the Gaussian measure of \noderef{GaussMeasure}.
+Then all of the following hold.
+\begin{enumerate}
+  \item For every function $f : \mathbb{R}^n \to \mathbb{R}$,
+    \[
+      \int_{\mathbb{R}^n} f(x)\, h_0(x) \, d\gamma_n(x)
+        = \int_{\mathbb{R}^n} f(x) \, d\gamma_n(x) .
+    \]
+  \item For every $v \in L^2(\gamma_n)$,
+    $\displaystyle \langle v, h_0\rangle
+       = \int_{\mathbb{R}^n} v \, d\gamma_n$.
+  \item For every $v \in L^2(\gamma_n)$,
+    $\displaystyle \langle h_0, v\rangle
+       = \int_{\mathbb{R}^n} v \, d\gamma_n$.
+  \item $\langle h_0, h_0\rangle = 1$.
+  \item $\|h_0\|_{L^2(\gamma_n)} = 1$.
+\end{enumerate}
+Here $\langle\cdot,\cdot\rangle$ is the real inner product of $L^2(\gamma_n)$.
+In short: $h_0$ is the constant function $1$, so integrating against it is
+integrating against $\gamma_n$, and it is a unit vector.
+
+Two points about the form of the statement.  First, $h_0$ is an element of
+$L^2(\gamma_n)$, that is, an equivalence class, so the identity $h_0 = 1$ holds
+only $\gamma_n$-almost everywhere; every clause above is therefore obtained from
+a congruence of integrands almost everywhere, and never from a pointwise
+substitution.  Clause (1) carries no integrability hypothesis on $f$ for exactly
+this reason: it is the equality of the integrals of two functions that agree
+$\gamma_n$-almost everywhere, which holds whatever the integrability status of
+$f$.  Second, (2) and (3) differ only by the symmetry of the real inner product
+and are both recorded because consumers meet the pairing in both argument orders.
+\end{lemma}
+\begin{proof}
+By \noderef{HermiteL2ZeroAEOne},
+\begin{equation*}
+  h_0(x) = 1 \qquad \text{for } \gamma_n\text{-almost every } x \in \mathbb{R}^n .
+  \tag{$\ast$}
+\end{equation*}
+This is the only input about $h_0$ used below; everything else is formal.
+
+\emph{Clause (1).}  Let $f : \mathbb{R}^n \to \mathbb{R}$.  By $(\ast)$ the two
+integrands agree almost everywhere: for $\gamma_n$-almost every $x$ we have
+$f(x)\,h_0(x) = f(x)\cdot 1 = f(x)$.  Integrals of functions that agree
+$\gamma_n$-almost everywhere are equal, so
+$\int f\,h_0 \, d\gamma_n = \int f \, d\gamma_n$.  Note that this is a congruence
+of integrands and not a rewriting of $h_0$ by $1$ at a point, which $(\ast)$ does
+not license.
+
+\emph{Clause (2).}  Let $v \in L^2(\gamma_n)$.  By \noderef{L2InnerGaussIntegral}
+the inner product of two elements of $L^2(\gamma_n)$ is the $\gamma_n$-integral of
+their product, so
+\[
+  \langle v, h_0\rangle
+    = \int_{\mathbb{R}^n} v(x)\, h_0(x) \, d\gamma_n(x)
+    = \int_{\mathbb{R}^n} v \, d\gamma_n ,
+\]
+the second equality being clause (1) applied to $f = v$.
+
+\emph{Clause (3).}  The inner product of the real Hilbert space $L^2(\gamma_n)$ is
+symmetric, so $\langle h_0, v\rangle = \langle v, h_0\rangle$, and clause (2)
+finishes.
+
+\emph{Clause (4).}  Apply clause (2) with $v = h_0$, which is legitimate since
+$h_0 \in L^2(\gamma_n)$:
+\[
+  \langle h_0, h_0\rangle = \int_{\mathbb{R}^n} h_0 \, d\gamma_n .
+\]
+By $(\ast)$ again the integrand agrees $\gamma_n$-almost everywhere with the
+constant function $1$, so this integral equals
+$\int_{\mathbb{R}^n} 1 \, d\gamma_n = \gamma_n(\mathbb{R}^n)$, which is $1$
+because $\gamma_n$ is a probability measure by \noderef{GaussIsProb}.  Hence
+$\langle h_0, h_0\rangle = 1$.
+
+\emph{Clause (5).}  In a real inner product space $\langle w, w\rangle = \|w\|^2$,
+so clause (4) gives $\|h_0\|^2 = 1$.  Since $\|h_0\| \geq 0$ and the only
+nonnegative real whose square is $1$ is $1$ itself, $\|h_0\| = 1$.
+\end{proof}

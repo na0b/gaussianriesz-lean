@@ -1,0 +1,106 @@
+\begin{lemma}[Hermite functions are eigenfunctions of the Ornstein--Uhlenbeck operator]
+Let $L = -\tfrac12\Delta + x\cdot\nabla$ be the Ornstein--Uhlenbeck differential
+operator, i.e.
+\[
+  (Lv)(x) = -\tfrac12 \sum_{j=1}^n \partial_j^2 v(x)
+              + \sum_{j=1}^n x_j\, \partial_j v(x).
+\]
+For every multi-index $\alpha \in \mathbb{N}_0^n$, the Hermite function
+$h_\alpha$ of \noderef{HermiteFun} is twice continuously differentiable on
+$\mathbb{R}^n$, i.e. $h_\alpha \in C^2(\mathbb{R}^n)$; and for every
+$x \in \mathbb{R}^n$ it satisfies
+\[
+  -\tfrac12 \Delta h_\alpha(x) + x\cdot\nabla h_\alpha(x) = |\alpha|\, h_\alpha(x),
+\]
+with $|\alpha|$ as in \noderef{MultiIndexSum}.  Thus $h_\alpha$ is an eigenfunction
+of $L$ with eigenvalue $|\alpha|$; this is the identity that ties the Hermite index
+$|\alpha|$ to the differential operator $L$ of the reference paper.
+\end{lemma}
+\begin{proof}
+\emph{Step 0: the regularity assertion.}
+By \noderef{HermiteFunContDiff}, $h_\alpha \in C^\infty(\mathbb{R}^n)$, and a
+$C^\infty$ function is in particular $C^2$; this is the first assertion.  It also
+makes every expression below meaningful: $h_\alpha$ is differentiable at every
+point, each first partial derivative $\partial_j h_\alpha$ is again $C^\infty$
+hence differentiable at every point, so the second partial derivatives
+$\partial_j^2 h_\alpha$ exist and $\Delta h_\alpha$ is defined pointwise.
+
+\emph{Step 1: the three-term recurrence for the normalized $h_k$.}
+By the defining recurrence recorded in \noderef{Hermite1},
+$\mathrm{He}_{m+1} = X\,\mathrm{He}_m - \mathrm{He}_m'$, and by \noderef{HermiteDerivative},
+$\mathrm{He}_m' = m\,\mathrm{He}_{m-1}$ for $m \geq 1$ while $\mathrm{He}_0' = 0$.  Hence for
+every $m \geq 0$, evaluating at $y$,
+\[
+  \mathrm{He}_{m+1}(y) = y\,\mathrm{He}_m(y) - m\,\mathrm{He}_{m-1}(y),
+\]
+the last term being absent when $m = 0$.  Put $y = \sqrt2\,s$ and divide by
+$\sqrt{m!}$.  Using \noderef{Hermite1} in the form
+$\mathrm{He}_m(\sqrt2 s) = \sqrt{m!}\, h_m(s)$, together with
+$\sqrt{(m+1)!} = \sqrt{m+1}\sqrt{m!}$ and
+$m/\sqrt{m}\,\sqrt{(m-1)!}/\sqrt{m!}\cdot\sqrt{m} = \sqrt m$ (concretely,
+$m\sqrt{(m-1)!}/\sqrt{m!} = m/\sqrt{m} = \sqrt{m}$), this becomes
+\begin{equation*}
+  \sqrt{2}\, s\; h_m(s) = \sqrt{m+1}\; h_{m+1}(s) + \sqrt{m}\; h_{m-1}(s),
+  \qquad m \geq 0, \tag{1}
+\end{equation*}
+with the convention that a term carrying the factor $\sqrt{0}$ is zero.
+
+\emph{Step 2: the one-dimensional eigenvalue relation.}
+We prove
+\begin{equation*}
+  -\tfrac12 h_k''(s) + s\, h_k'(s) = k\, h_k(s),
+  \qquad k \in \mathbb{N}_0,\ s \in \mathbb{R}. \tag{2}
+\end{equation*}
+By \noderef{HermiteFunDeriv} in dimension one (the case $n = 1$, $j = 1$, where
+the multi-index is the single integer $k$),
+$h_k' = \sqrt2\sqrt{k}\, h_{k-1}$.  Applying the same identity once more to
+$h_{k-1}$,
+\[
+  h_k'' = \sqrt2\sqrt{k}\; h_{k-1}'
+        = \sqrt2\sqrt{k}\cdot\sqrt2\sqrt{k-1}\; h_{k-2}
+        = 2\sqrt{k(k-1)}\; h_{k-2},
+\]
+with the usual convention that a term with a vanishing square-root factor is
+zero.  Therefore
+\[
+  -\tfrac12 h_k''(s) + s\,h_k'(s)
+    = -\sqrt{k(k-1)}\; h_{k-2}(s) + \sqrt{k}\cdot\sqrt2\, s\; h_{k-1}(s) .
+\]
+Apply (1) with $m = k-1$ (legitimate for $k \geq 1$; for $k = 0$ both sides of
+(2) are $0$ because $h_0' = h_0'' = 0$ by \noderef{Hermite1Zero}):
+$\sqrt2\,s\,h_{k-1}(s) = \sqrt{k}\,h_k(s) + \sqrt{k-1}\,h_{k-2}(s)$.  Substituting,
+\[
+  -\tfrac12 h_k'' + s\,h_k'
+    = -\sqrt{k(k-1)}\, h_{k-2}
+      + \sqrt{k}\bigl(\sqrt{k}\, h_k + \sqrt{k-1}\, h_{k-2}\bigr)
+    = k\, h_k ,
+\]
+since $\sqrt{k}\sqrt{k-1} = \sqrt{k(k-1)}$ and the two $h_{k-2}$ terms cancel.
+This is (2).
+
+\emph{Step 3: assembling the $n$-dimensional identity.}
+By \noderef{HermiteFun}, $h_\alpha(x) = \prod_{i} h_{\alpha_i}(x_i)$.  Only the
+$i = j$ factor depends on $x_j$, so
+\[
+  \partial_j h_\alpha(x) = h_{\alpha_j}'(x_j)\prod_{i\neq j} h_{\alpha_i}(x_i),
+  \qquad
+  \partial_j^2 h_\alpha(x) = h_{\alpha_j}''(x_j)\prod_{i\neq j} h_{\alpha_i}(x_i).
+\]
+Hence, summing over $j$,
+\[
+  -\tfrac12\Delta h_\alpha(x) + x\cdot\nabla h_\alpha(x)
+    = \sum_{j=1}^n
+      \Bigl(-\tfrac12 h_{\alpha_j}''(x_j) + x_j\, h_{\alpha_j}'(x_j)\Bigr)
+      \prod_{i\neq j} h_{\alpha_i}(x_i).
+\]
+By (2) with $k = \alpha_j$ and $s = x_j$, the $j$th bracket equals
+$\alpha_j\, h_{\alpha_j}(x_j)$, so the $j$th summand equals
+$\alpha_j \prod_{i} h_{\alpha_i}(x_i) = \alpha_j\, h_\alpha(x)$.  Therefore
+\[
+  -\tfrac12\Delta h_\alpha(x) + x\cdot\nabla h_\alpha(x)
+    = \Bigl(\sum_{j=1}^n \alpha_j\Bigr) h_\alpha(x)
+    = |\alpha|\, h_\alpha(x),
+\]
+the last equality being the definition of $|\alpha|$ in
+\noderef{MultiIndexSum}.
+\end{proof}

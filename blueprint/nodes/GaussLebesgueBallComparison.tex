@@ -1,0 +1,142 @@
+\begin{lemma}[Comparison of $\gamma_n$ with Lebesgue measure on a ball, and the null-set equivalence]
+Fix $n \in \mathbb{N}_0$, let $\lambda$ denote Lebesgue measure on
+$\mathbb{R}^n$ and let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}.  For $R \in \mathbb{R}$ write
+$a_R = \pi^{-n/2}e^{-R^2}$.  Then:
+\begin{enumerate}
+\item for \emph{every} set $S \subseteq \mathbb{R}^n$, measurable or not,
+\[
+  \gamma_n(S) \leq \pi^{-n/2}\,\lambda(S) ;
+\]
+\item for every $R \in \mathbb{R}$ and every measurable
+$E \subseteq \overline B(0,R)$,
+\[
+  a_R\,\lambda(E) \leq \gamma_n(E) ;
+\]
+\item for every $R, \rho \in \mathbb{R}$ and every $x \in \mathbb{R}^n$ with
+$|x| \leq R$ and $0 < \rho \leq 2$,
+\[
+  a_{R+2}\,\lambda\bigl(\overline B(x,\rho)\bigr)
+    \leq \gamma_n\bigl(\overline B(x,\rho)\bigr) ;
+\]
+\item for every set $A \subseteq \mathbb{R}^n$, measurable or not,
+\[
+  \gamma_n(A) = 0 \iff \lambda(A) = 0 .
+\]
+\end{enumerate}
+Here $\overline B(x,\rho)$ is the closed ball, and both $\gamma_n$ and $\lambda$
+are applied to arbitrary sets as outer measures, i.e.\ through
+$\mu(S) = \inf\{\mu(F) : S \subseteq F,\ F \text{ measurable}\}$.  All products
+and comparisons are read in $[0,+\infty]$.
+
+\emph{What this adds to \noderef{GaussMeasure}, which only says what
+$\gamma_n$ is.}  Clause (1) is a global one-sided comparison, valid for all
+sets, and it is the only direction that is globally true.  Clause (2) is the
+reverse comparison, which is \emph{false} globally --- the ratio
+$\gamma_n(E)/\lambda(E)$ tends to $0$ as $E$ escapes to infinity --- and
+becomes true, with a quantitative constant, exactly because $E$ is confined to
+a ball; it is this localization that removes any need for covering theory
+adapted to the non-doubling measure $\gamma_n$, by reducing a local Gaussian
+averaging argument to a Lebesgue one.  Clause (3) is the form in which a
+covering argument uses clause (2): the ball $\overline B(x,\rho)$ is not
+centred at the origin, and the enlargement from $R$ to $R+2$ is exactly what a
+cap of $2$ on the radius of the balls costs.  Clause
+(4) is a statement about \emph{all} sets and is not a comparison of sizes at
+all: it says the two measures have the same null sets, so that
+``$\lambda$-almost everywhere'' and ``$\gamma_n$-almost everywhere'' are
+interchangeable, and so that an almost-everywhere identity between continuous
+functions for one measure is one for the other.  None of the four is the
+density formula, and none follows from it without the argument below.
+
+\emph{The constants are explicit and dimension-dependent.}  Both $\pi^{-n/2}$
+and $a_R = \pi^{-n/2}e^{-R^2}$ depend on $n$, and $a_R$ degrades as $R$ grows;
+no uniformity in $n$ or in $R$ is claimed.
+\end{lemma}
+\begin{proof}
+By \noderef{GaussMeasure}, $\gamma_n$ is Lebesgue measure weighted by the
+density
+\[
+  \varrho(y) = \pi^{-n/2}e^{-|y|^2} ,
+\]
+that is, $\gamma_n(E) = \int_E\varrho\,d\lambda$ for every measurable
+$E \subseteq \mathbb{R}^n$, the integral being the lower Lebesgue integral of a
+nonnegative function.  Note $0 < \varrho(y) \leq \pi^{-n/2}$ for every $y$,
+since $0 < e^{-|y|^2} \leq 1$, and $\varrho(y) \geq \pi^{-n/2}e^{-R^2} = a_R$
+whenever $|y| \leq R$, since $t \mapsto e^{-t}$ is decreasing and
+$|y|^2 \leq R^2$ in that case.
+
+\emph{Step 1: clause (1) for measurable sets.}
+Let $E$ be measurable.  By monotonicity of the integral in the integrand,
+\[
+  \gamma_n(E) = \int_E\varrho\,d\lambda
+    \leq \int_E\pi^{-n/2}\,d\lambda
+    = \pi^{-n/2}\lambda(E) .
+\]
+
+\emph{Step 2: clause (1) for arbitrary sets.}
+Let $S \subseteq \mathbb{R}^n$ be arbitrary and let $F$ be any measurable set
+with $S \subseteq F$.  By monotonicity of $\gamma_n$ and Step 1,
+\[
+  \gamma_n(S) \leq \gamma_n(F) \leq \pi^{-n/2}\lambda(F) .
+\]
+Taking the infimum over all such $F$ --- the family is nonempty, since
+$F = \mathbb{R}^n$ qualifies --- and using that multiplication by the finite
+constant $\pi^{-n/2}$ commutes with infima of nonempty families in
+$[0,+\infty]$, we get
+\[
+  \gamma_n(S) \leq \pi^{-n/2}\inf\{\lambda(F) : S \subseteq F,\ F \text{
+  measurable}\} = \pi^{-n/2}\lambda(S) ,
+\]
+the last equality being the displayed description of $\lambda$ on arbitrary
+sets.  This is clause (1).
+
+\emph{Step 3: clause (2).}
+Let $R \in \mathbb{R}$ and let $E$ be measurable with
+$E \subseteq \overline B(0,R)$.  If $R < 0$ then $\overline B(0,R) = \emptyset$,
+so $E = \emptyset$ and both sides vanish.  Assume $R \geq 0$.  Every $y \in E$
+satisfies $|y| \leq R$, hence $\varrho(y) \geq a_R$ there, and therefore
+\[
+  \gamma_n(E) = \int_E\varrho\,d\lambda
+    \geq \int_E a_R\,d\lambda
+    = a_R\,\lambda(E) ,
+\]
+again by monotonicity of the integral in the integrand.  This is clause (2).
+
+\emph{Step 4: clause (3).}
+Let $x$ with $|x| \leq R$ and $0 < \rho \leq 2$.  For every
+$y \in \overline B(x,\rho)$ the triangle inequality gives
+\[
+  |y| \leq |x| + |y - x| \leq R + \rho \leq R + 2 ,
+\]
+so $\overline B(x,\rho) \subseteq \overline B(0,R+2)$.  The closed ball is a
+closed, hence measurable, set.  Clause (2) applied with $R+2$ in place of $R$
+and $E = \overline B(x,\rho)$ gives
+$a_{R+2}\lambda(\overline B(x,\rho)) \leq \gamma_n(\overline B(x,\rho))$,
+which is clause (3).
+
+\emph{Step 5: clause (4), the direction $\lambda(A) = 0 \Rightarrow
+\gamma_n(A) = 0$.}
+Immediate from clause (1): $\gamma_n(A) \leq \pi^{-n/2}\cdot 0 = 0$.
+
+\emph{Step 6: clause (4), the direction $\gamma_n(A) = 0 \Rightarrow
+\lambda(A) = 0$.}
+Suppose $\gamma_n(A) = 0$.  Since $\gamma_n(A)$ is the infimum of $\gamma_n(F)$
+over measurable $F \supseteq A$, there is a measurable $F$ with $A \subseteq F$
+and $\gamma_n(F) = 0$.  (Choose measurable $F_k \supseteq A$ with
+$\gamma_n(F_k) \leq 1/k$ and set $F = \bigcap_kF_k$, which is measurable,
+contains $A$, and has $\gamma_n(F) \leq \gamma_n(F_k) \leq 1/k$ for every $k$,
+hence $\gamma_n(F) = 0$.)
+
+Fix $m \in \mathbb{N}$ and put $F_m' = F \cap \overline B(0,m)$, a measurable
+subset of $\overline B(0,m)$.  By clause (2) with $R = m$, and by monotonicity
+of $\gamma_n$,
+\[
+  a_m\,\lambda(F_m') \leq \gamma_n(F_m') \leq \gamma_n(F) = 0 .
+\]
+Since $a_m = \pi^{-n/2}e^{-m^2} > 0$, this forces $\lambda(F_m') = 0$.  Now
+$\mathbb{R}^n = \bigcup_{m\in\mathbb{N}}\overline B(0,m)$, so
+$F = \bigcup_{m\in\mathbb{N}}F_m'$, and countable subadditivity of $\lambda$
+(shared context) gives $\lambda(F) \leq \sum_m\lambda(F_m') = 0$.  Finally
+$\lambda(A) \leq \lambda(F) = 0$ by monotonicity.  This completes clause (4),
+and the proof.
+\end{proof}

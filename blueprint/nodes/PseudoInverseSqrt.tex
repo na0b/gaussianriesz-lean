@@ -1,0 +1,62 @@
+\begin{lemma}[The pseudoinverse lands in the operator domain and inverts $L^{1/2}$]
+For every $f \in L^2(\gamma_n)$ put $v = L^{-1/2}\Pi_0 f$, the element supplied by
+\noderef{FracPow} with $s = -1/2$.  Then
+\[
+  v \in \operatorname{Dom}(L^{1/2})
+  \qquad\text{and}\qquad
+  L^{1/2} v = \Pi_0 f \quad\text{in } L^2(\gamma_n),
+\]
+with $\operatorname{Dom}(L^{1/2})$ as in \noderef{FracPowDomain} and
+$\Pi_0 = L^0$ as in \noderef{FracPow}.
+\end{lemma}
+\begin{proof}
+Write $f_\alpha = \langle f, h_\alpha\rangle$ for the Hermite coefficients of $f$
+relative to \noderef{HermiteBasis}; by Parseval,
+$\sum_\alpha |f_\alpha|^2 = \|f\|_2^2 < \infty$.
+
+\emph{Step 1: $f \in \operatorname{Dom}(L^{-1/2})$, so $v$ is given by the series.}
+For $\alpha \neq 0$ we have $|\alpha| \geq 1$ by \noderef{MultiIndexSum}, hence
+$|\alpha|^{-1} \leq 1$.  By \noderef{FracPowCoeff} with $s = -1/2$ the multiplied
+family is $0$ at $\alpha = 0$ and $|\alpha|^{-1/2}f_\alpha$ at $\alpha \neq 0$, so
+\[
+  \sum_{\alpha \neq 0}\bigl||\alpha|^{-1/2}f_\alpha\bigr|^2
+    = \sum_{\alpha \neq 0}|\alpha|^{-1}|f_\alpha|^2
+    \leq \sum_{\alpha \neq 0}|f_\alpha|^2 \leq \|f\|_2^2 < \infty .
+\]
+Thus the family is square summable, which is exactly the criterion of
+\noderef{FracPowDomain} for $s = -1/2$; so $f \in \operatorname{Dom}(L^{-1/2})$ and
+the defining formula of \noderef{FracPow} gives $v = L^{-1/2}\Pi_0 f$ the
+coefficients
+\[
+  v_0 = 0,
+  \qquad
+  v_\alpha = |\alpha|^{-1/2} f_\alpha \quad (\alpha \neq 0).
+\]
+
+\emph{Step 2: $v \in \operatorname{Dom}(L^{1/2})$.}
+Using Step 1 and $|\alpha|\cdot|\alpha|^{-1} = 1$ for $\alpha \neq 0$,
+\[
+  \sum_{\alpha \neq 0} |\alpha|\, |v_\alpha|^2
+    = \sum_{\alpha \neq 0} |\alpha|\cdot|\alpha|^{-1}|f_\alpha|^2
+    = \sum_{\alpha \neq 0} |f_\alpha|^2 ,
+\]
+which is finite, being at most $\|f\|_2^2$.  By \noderef{FracPowDomain} with
+$s = 1/2$, whose criterion is precisely
+$\sum_{\alpha\neq0}|\alpha||v_\alpha|^2 < \infty$, this gives
+$v \in \operatorname{Dom}(L^{1/2})$.  The weight $|\alpha|$ has exactly cancelled
+the squared multiplier $|\alpha|^{-1}$.
+
+\emph{Step 3: $L^{1/2}v = \Pi_0 f$.}
+By Step 2 the formula of \noderef{FracPow} with $s = 1/2$ applies to $v$ and gives
+$L^{1/2}v$ the coefficients $0$ at $\alpha = 0$ and, for $\alpha \neq 0$,
+\[
+  |\alpha|^{1/2} v_\alpha
+    = |\alpha|^{1/2}\,|\alpha|^{-1/2} f_\alpha = f_\alpha .
+\]
+On the other hand, by \noderef{FracPowCoeff} and \noderef{FracPow} with $s = 0$,
+the element $\Pi_0 f$ has exactly those coefficients: $0$ at $\alpha = 0$ and
+$f_\alpha$ at $\alpha \neq 0$ (its domain condition holds since the multiplied
+family is dominated by $(|f_\alpha|^2)_\alpha$).  The coefficient map of
+\noderef{HermiteBasis} is injective, so $L^{1/2}v = \Pi_0 f$.
+
+\end{proof}

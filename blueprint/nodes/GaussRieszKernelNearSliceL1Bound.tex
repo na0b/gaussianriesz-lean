@@ -1,0 +1,97 @@
+\begin{lemma}[Near-diagonal $L^1$ bound in $r$ for the Mehler slice]
+Fix $n \geq 1$, a coordinate $j$, and $M \geq 3$.  For $w,y \in \mathbb{R}^n$ and
+$r \in (0,1)$ write
+\[
+  \Phi_{w,y}(r) = \frac{y_j - rw_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+    \exp\Bigl(-\frac{|rw-y|^2}{1-r^2}\Bigr) .
+\]
+Then there is a constant $A > 0$, depending only on $n$ and $M$, such that for all
+$x,y \in \mathbb{R}^n$ with $|x| \leq M$, $|y| \leq M$ and $0 < |x-y| \leq 2$, the
+function $r \mapsto \Phi_{x,y}(r)$ is Lebesgue integrable on $(0,1)$ and
+\[
+  \int_0^1 \bigl|\Phi_{x,y}(r)\bigr|\,dr \leq A\,|x-y|^{-n} .
+\]
+\end{lemma}
+\begin{proof}
+Throughout $\tau = 1-r$, so $r \in (0,1)$ corresponds to $\tau \in (0,1)$, and the
+substitution $r \mapsto 1-r$ preserves Lebesgue measure on $\mathbb{R}$, being a
+reflection followed by a translation.  Fix $x,y$ as in the statement and put
+$d = |x-y| \in (0,2]$.
+
+\emph{The pointwise majorant.}
+By \noderef{GaussRieszKernelNearSliceBounds}, applied at the base point $w = x$
+(legitimate since $|x| \leq M$ and $|y| \leq M$), for every $r \in (0,1)$
+\begin{equation*}
+  \bigl|\Phi_{x,y}(r)\bigr|
+    \leq e^{M^2}\,\bigl(d + \tau M\bigr)\,\tau^{-n/2-3/2}
+      \exp\Bigl(-\frac{|x-ry|^2}{2\tau}\Bigr) . \tag{1}
+\end{equation*}
+That same node also supplies the continuity of $r \mapsto \Phi_{x,y}(r)$ on
+$(0,1)$, so $\Phi_{x,y}$ is Borel measurable there and it suffices to bound
+$\int_0^1|\Phi_{x,y}|$ to obtain integrability as well as the stated estimate.
+Since $x - ry = (x-y) + \tau y$ and $|y| \leq M$,
+\begin{equation*}
+  |x-ry| \geq |x-y| - \tau|y| \geq d - \tau M . \tag{2}
+\end{equation*}
+
+\emph{The two $\tau$-integral facts.}
+Both are supplied by \noderef{TauPowerIntegralBounds}.  For $a > 1$ there is
+$K_a > 0$, depending only on $a$, with
+\begin{equation*}
+  \int_0^\infty \tau^{-a}e^{-b/\tau}\,d\tau \leq K_a\,b^{1-a} < \infty
+  \qquad (b > 0) , \tag{3}
+\end{equation*}
+and for $0 < c \leq 1$ and real $p \leq q$ with $q > 1$,
+\begin{equation*}
+  \int_c^1\tau^{-p}\,d\tau \leq \int_c^1\tau^{-q}\,d\tau
+    = \frac{c^{1-q}-1}{q-1} \leq \frac{c^{1-q}}{q-1} , \tag{4}
+\end{equation*}
+the first inequality because $\tau^{-p} \leq \tau^{-q}$ on $(0,1]$.
+
+\emph{The split.}
+Put $\tau' = d/(2M)$.  Since $d \leq 2$ and $M \geq 3$ we have
+$\tau' \leq \tfrac13 < 1$, so $\tau'$ splits $(0,1)$ into $(0,\tau']$ and
+$(\tau',1)$.
+
+By \noderef{GaussRieszKernelNearReflectedSliceMajorants}, which derives both
+reflected pointwise majorants from $(1)$ and $(2)$, for $0 < \tau \leq \tau'$
+\[
+  \bigl|\Phi_{x,y}\bigr| \leq e^{M^2}\,\tfrac32 d\,\tau^{-n/2-3/2}
+    e^{-d^2/(8\tau)} ,
+\]
+and $(3)$ with $a = \tfrac{n+3}{2} > 1$ and $b = d^2/8$ bounds the contribution of
+this part by
+\[
+  e^{M^2}\,\tfrac32 d\,K_{(n+3)/2}\,(d^2/8)^{-(n+1)/2}
+    = e^{M^2}\,\tfrac32\,K_{(n+3)/2}\,8^{(n+1)/2}\,d^{-n} ,
+\]
+using $d\,(d^2)^{-(n+1)/2} = d\cdot d^{-(n+1)} = d^{-n}$.
+
+For $\tau' < \tau < 1$ the same node's second majorant gives
+$|\Phi_{x,y}| \leq e^{M^2}d\,\tau^{-n/2-3/2} + e^{M^2}M\,\tau^{-(n+2)/2}$.
+By $(4)$ with $p = q = \tfrac{n+3}{2} > 1$ for the first term, and with
+$p = q = \tfrac{n+2}{2} > 1$ for the second,
+\[
+  \int_{\tau'}^1 d\,\tau^{-n/2-3/2}\,d\tau
+    \leq \frac{2d}{n+1}(\tau')^{-(n+1)/2}
+    = \frac{2(2M)^{(n+1)/2}}{n+1}\,d^{(1-n)/2} ,
+\]
+\[
+  \int_{\tau'}^1 M\,\tau^{-n/2-1/2}\,d\tau
+    \leq \frac{2M}{n}(\tau')^{-n/2}
+    = \frac{2M(2M)^{n/2}}{n}\,d^{-n/2} ,
+\]
+where in each case $(\tau')^{-s} = (2M)^{s}d^{-s}$.  Since $0 < d \leq 2$ we have
+$d^{(1-n)/2} = d^{-n}d^{(n+1)/2} \leq 2^{(n+1)/2}d^{-n}$ and
+$d^{-n/2} = d^{-n}d^{n/2} \leq 2^{n/2}d^{-n}$, both displayed powers of $d$ being
+positive.
+
+Adding the three contributions, each of which is a constant depending only on $n$
+and $M$ times $d^{-n}$, there is $A = A(n,M) > 0$ with
+\[
+  \int_0^1\bigl|\Phi_{x,y}(r)\bigr|\,dr \leq A\,d^{-n} < \infty .
+\]
+Finiteness of this integral, together with the measurability recorded above, is
+exactly Lebesgue integrability of $\Phi_{x,y}$ on $(0,1)$, and the displayed
+inequality is the stated bound.
+\end{proof}

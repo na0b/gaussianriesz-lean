@@ -1,0 +1,99 @@
+\begin{lemma}[Exact localization of the transformed bad part]
+Let $f, g \in L^2(\gamma_n)$ and $u \in \operatorname{Dom}(L^{1/2})$ satisfy
+$f = g + Bu$ in $L^2(\gamma_n)$ with $B = L^{1/2}$, let $t \in \mathbb{R}$, and let
+$\Omega \subseteq \mathbb{R}^n$ be an arbitrary subset with $Du = 0$
+$\gamma_n$-a.e.\ on $\Omega^c$; no measurability of $\Omega$ is required, and
+$\gamma_n(\Omega)$ below means the outer measure of $\Omega$, which agrees with
+the measure of $\Omega$ whenever $\Omega$ is measurable.  Then, with $R_\gamma$
+as in \noderef{RieszTransform} and $D$ as in \noderef{GaussD},
+\[
+  R_\gamma f = R_\gamma g + Du \quad \gamma_n\text{-a.e.},
+\]
+and consequently
+\[
+  \gamma_n\bigl(\{|R_\gamma f| > t\}\bigr)
+    \;\leq\; \gamma_n(\Omega) + \gamma_n\bigl(\{|R_\gamma g| > t\}\bigr) .
+\]
+There is no splitting of the level into $t/2 + t/2$: off $\Omega$ the two outputs
+$R_\gamma f$ and $R_\gamma g$ are exactly equal.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: applying $L^{-1/2}\Pi_0$ to the decomposition.}
+By \noderef{RieszTransform}, $R_\gamma w = D\bigl(L^{-1/2}\Pi_0 w\bigr)$ for every
+$w \in L^2(\gamma_n)$, where $L^{-1/2}\Pi_0$ is the spectral power $L^s$ of
+\noderef{FracPow} at $s = -1/2$.  Since $-1/2 \leq 0$, clause (1) of
+\noderef{FracPowLinear} applies with $s = -1/2$ and shows that every element of
+$L^2(\gamma_n)$ lies in $\operatorname{Dom}(L^{-1/2})$; in particular $g$ and
+$Bu = L^{1/2}u$ do, both being elements of $L^2(\gamma_n)$.  Clause (2) of
+\noderef{FracPowLinear}, applied with $s = -1/2$ to the pair $(g, Bu)$ whose two
+domain hypotheses have just been verified, gives
+\[
+  L^{-1/2}\Pi_0 (g + Bu) = L^{-1/2}\Pi_0 g + L^{-1/2}\Pi_0 (Bu) ,
+\]
+and the hypothesis $f = g + Bu$ turns the left-hand side into
+$L^{-1/2}\Pi_0 f$.  So
+\[
+  L^{-1/2}\Pi_0 f = L^{-1/2}\Pi_0 g + L^{-1/2}\Pi_0(Bu) .
+  \tag{1}
+\]
+
+\emph{Step 2: applying $D$ to that sum.}
+\noderef{PseudoInverseSqrt} says that $L^{-1/2}\Pi_0 w \in \operatorname{Dom}(L^{1/2})$
+for every $w \in L^2(\gamma_n)$; applying it once with $w = g$ and once with
+$w = Bu$ gives
+\[
+  L^{-1/2}\Pi_0 g \in \operatorname{Dom}(L^{1/2}),
+  \qquad
+  L^{-1/2}\Pi_0 (Bu) \in \operatorname{Dom}(L^{1/2}) .
+\]
+Membership in $\operatorname{Dom}(L^{1/2})$ is exactly the hypothesis
+\noderef{SqrtDomainSobolev} requires, so both elements lie in
+$W^{1,2}(\gamma_n)$.  That pair of memberships is exactly what clause (1) of
+\noderef{GaussDLinear} requires of its two inputs, so applying it to
+$L^{-1/2}\Pi_0 g$ and $L^{-1/2}\Pi_0 (Bu)$ and combining with $(1)$ gives
+\[
+  R_\gamma f
+    = D\bigl(L^{-1/2}\Pi_0 f\bigr)
+    = D\bigl(L^{-1/2}\Pi_0 g\bigr) + D\bigl(L^{-1/2}\Pi_0 (Bu)\bigr)
+    = R_\gamma g + R_\gamma (Bu) ,
+  \tag{2}
+\]
+the first and last equalities again by \noderef{RieszTransform}.  (This is the
+only place linearity of $R_\gamma$ is used, and it has now been reduced to the
+linearity of its two factors; no linearity of $R_\gamma$ itself is assumed.)
+
+\emph{Step 3: identifying $R_\gamma(Bu)$.}
+By hypothesis $u \in \operatorname{Dom}(L^{1/2})$, which is precisely the
+hypothesis of \noderef{RieszSqrtIdentity}; that node therefore applies to this
+$u$ and gives $R_\gamma\bigl(L^{1/2}u\bigr) = Du$, i.e.\ $R_\gamma(Bu) = Du$.
+Substituting into $(2)$,
+\[
+  R_\gamma f = R_\gamma g + Du
+\]
+as elements of $L^2(\gamma_n;\mathbb{R}^n)$.  Two elements of
+$L^2(\gamma_n;\mathbb{R}^n)$ that are equal are in particular equal
+$\gamma_n$-almost everywhere as functions, which is the first assertion.
+
+\emph{Step 4: the measure estimate.}
+Let
+\[
+  N = \{x \in \Omega^c : Du(x) \neq 0\} \cup
+      \{x : R_\gamma f(x) \neq R_\gamma g(x) + Du(x)\} .
+\]
+The first set is $\gamma_n$-null by the hypothesis that $Du = 0$ a.e.\ on
+$\Omega^c$, and the second is $\gamma_n$-null by Step 3; so $\gamma_n(N) = 0$.
+Let $x \notin \Omega \cup N$.  Then $Du(x) = 0$ and
+$R_\gamma f(x) = R_\gamma g(x) + Du(x) = R_\gamma g(x)$.  Consequently, if
+moreover $|R_\gamma f(x)| > t$, then $|R_\gamma g(x)| > t$.  This shows
+\[
+  \{|R_\gamma f|>t\} \;\subseteq\; \Omega \cup N \cup \{|R_\gamma g|>t\} ,
+\]
+hence $\{|R_\gamma f|>t\} \subseteq \Omega \cup \{|R_\gamma g|>t\}$ up to the
+$\gamma_n$-null set $N$.  Monotonicity of $\gamma_n$ up to null sets followed by
+its subadditivity therefore give
+\[
+  \gamma_n(\{|R_\gamma f|>t\})
+    \leq \gamma_n\bigl(\Omega \cup \{|R_\gamma g|>t\}\bigr)
+    \leq \gamma_n(\Omega) + \gamma_n(\{|R_\gamma g|>t\}) .
+\]
+\end{proof}

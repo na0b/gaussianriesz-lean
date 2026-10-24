@@ -1,0 +1,38 @@
+\begin{lemma}[The Hermite functions are smooth]
+For every $n \geq 1$ and every multi-index $\alpha \in \mathbb{N}_0^n$, the Hermite
+function $h_\alpha$ of \noderef{HermiteFun} is infinitely differentiable on
+$\mathbb{R}^n$: $h_\alpha \in C^\infty(\mathbb{R}^n)$.  In particular $h_\alpha$ is
+differentiable at every point, and so is each of its partial derivatives of every
+order.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: each one-dimensional factor is smooth.}
+Fix $k \in \mathbb{N}_0$.  By \noderef{Hermite1},
+\[
+  h_k(s) = \frac{\mathrm{He}_k(\sqrt2\, s)}{\sqrt{k!}} ,
+\]
+so $h_k$ is the composition of three maps, each smooth on $\mathbb{R}$:
+the linear map $s \mapsto \sqrt2\,s$; the polynomial function
+$y \mapsto \mathrm{He}_k(y)$, which is smooth because a polynomial function on
+$\mathbb{R}$ is a finite sum of monomials $y \mapsto c\,y^m$ and each monomial is
+smooth; and multiplication by the constant $1/\sqrt{k!}$, which is a nonzero real
+number since $k! \geq 1$.  A composition of smooth maps is smooth and a constant
+multiple of a smooth map is smooth, so $h_k \in C^\infty(\mathbb{R})$.
+
+\emph{Step 2: the product over the coordinates is smooth.}
+By \noderef{HermiteFun},
+\[
+  h_\alpha(x) = \prod_{j=1}^n h_{\alpha_j}(x_j) .
+\]
+For each $j$ the coordinate projection $\pi_j : \mathbb{R}^n \to \mathbb{R}$,
+$\pi_j(x) = x_j$, is linear, hence smooth; composing with Step 1 shows that
+$x \mapsto h_{\alpha_j}(x_j) = (h_{\alpha_j}\circ \pi_j)(x)$ is smooth on
+$\mathbb{R}^n$.  A finite product of real-valued smooth functions is smooth, by
+induction on the number of factors using the fact that a product of two smooth
+real-valued functions is smooth.  Since the product above has exactly $n$ factors,
+$h_\alpha \in C^\infty(\mathbb{R}^n)$.
+
+The two stated consequences are immediate: a $C^\infty$ function is
+differentiable at every point, and each of its partial derivatives of any order is
+again $C^\infty$, hence differentiable everywhere.
+\end{proof}

@@ -1,0 +1,104 @@
+\begin{lemma}[Stability of $\gamma_n$ under an orthogonal mixing of two independent copies]
+Fix $n \in \mathbb{N}$ and let $a, b \in \mathbb{R}$ satisfy
+\[
+  a \geq 0, \qquad b \geq 0, \qquad a^2 + b^2 = 1 .
+\]
+Let $\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure} on
+$\mathbb{R}^n$, and consider the map
+\[
+  \Phi_{a,b} : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}^n,
+  \qquad \Phi_{a,b}(x,y) = a\,x + b\,y .
+\]
+Then the pushforward of the product measure $\gamma_n \otimes \gamma_n$ along
+$\Phi_{a,b}$ is $\gamma_n$ again:
+\[
+  (\Phi_{a,b})_* \bigl( \gamma_n \otimes \gamma_n \bigr) = \gamma_n .
+\]
+
+Every measure here is Gaussian: the source is the product of two copies of
+$\gamma_n$ on $\mathbb{R}^n \times \mathbb{R}^n$ and the target is $\gamma_n$
+itself, with no Lebesgue measure appearing except inside the density that
+\noderef{GaussMeasure} already carries.  In probabilistic language: if $X$ and $Y$
+are independent with law $\gamma_n$ and $a^2 + b^2 = 1$, then $aX + bY$ again has
+law $\gamma_n$.  This is the property that lets a $\gamma_n$-distributed variable
+be split as a contraction of itself plus an independent Gaussian of the
+complementary variance, which is what makes the Ornstein--Uhlenbeck evolution
+expressible as an average against an independent copy; the explicit size of the
+resulting kernel is never needed, only that such a representation exists.
+
+The hypotheses $a \geq 0$ and $b \geq 0$ are what the proof below actually uses,
+at the one point where $\|a\,t\|$ is replaced by $a\,\|t\|$; see the remark at the
+end of the proof.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: it suffices to compare characteristic functions.}
+The map $\Phi_{a,b}$ is measurable, being built from scalar multiplication and
+addition.  By \noderef{GaussIsProb} the measure $\gamma_n$ is a probability
+measure, hence so is the product $\gamma_n \otimes \gamma_n$, and hence so is its
+pushforward along a measurable map.  Two probability measures on $\mathbb{R}^n$
+with the same characteristic function are equal, so it is enough to prove
+\begin{equation*}
+  \widehat{(\Phi_{a,b})_*(\gamma_n \otimes \gamma_n)}(t)
+    = \widehat{\gamma_n}(t)
+  \qquad\text{for every } t \in \mathbb{R}^n . \tag{1}
+\end{equation*}
+
+\emph{Step 2: the left-hand side as an integral over the product.}
+By the change-of-variables formula for a pushforward along a measurable map, the
+characteristic function of the pushforward is the integral of the same exponential
+composed with $\Phi_{a,b}$:
+\[
+  \widehat{(\Phi_{a,b})_*(\gamma_n \otimes \gamma_n)}(t)
+    = \int_{\mathbb{R}^n \times \mathbb{R}^n}
+        e^{\,i \langle a\,x + b\,y,\ t\rangle}
+      \, d(\gamma_n \otimes \gamma_n)(x,y) .
+\]
+
+\emph{Step 3: the integrand factorizes.}
+For all $x, y, t$, bilinearity of the inner product gives
+\[
+  \langle a\,x + b\,y,\ t\rangle
+    = a\,\langle x, t\rangle + b\,\langle y, t\rangle
+    = \langle x,\ a\,t\rangle + \langle y,\ b\,t\rangle ,
+\]
+so, since $e^{z+w} = e^z e^w$,
+\begin{equation*}
+  e^{\,i\langle a x + b y,\ t\rangle}
+    = e^{\,i\langle x,\ a t\rangle} \cdot e^{\,i\langle y,\ b t\rangle} . \tag{2}
+\end{equation*}
+The two factors depend on $x$ alone and on $y$ alone respectively.
+
+\emph{Step 4: Fubini for the product measure.}
+Each factor in $(2)$ has modulus $1$, hence is integrable against the probability
+measure $\gamma_n$ in its own variable.  The integral of a product of two such
+one-variable functions against $\gamma_n \otimes \gamma_n$ is therefore the
+product of the two integrals, and each of those is a characteristic function of
+$\gamma_n$:
+\[
+  \int_{\mathbb{R}^n\times\mathbb{R}^n} e^{\,i\langle x, a t\rangle}
+      e^{\,i\langle y, b t\rangle} \, d(\gamma_n\otimes\gamma_n)(x,y)
+  = \widehat{\gamma_n}(a\,t)\ \widehat{\gamma_n}(b\,t) .
+\]
+
+\emph{Step 5: evaluate, and use $a^2 + b^2 = 1$.}
+By \noderef{GaussCharFun}, $\widehat{\gamma_n}(u) = e^{-|u|^2/4}$ for every
+$u \in \mathbb{R}^n$.  Now $|a\,t| = |a|\,|t| = a\,|t|$, the last equality because
+$a \geq 0$, and likewise $|b\,t| = b\,|t|$ because $b \geq 0$.  Hence
+\[
+  \widehat{\gamma_n}(a t)\ \widehat{\gamma_n}(b t)
+    = e^{-a^2|t|^2/4}\, e^{-b^2|t|^2/4}
+    = e^{-(a^2+b^2)|t|^2/4}
+    = e^{-|t|^2/4}
+    = \widehat{\gamma_n}(t),
+\]
+using $e^{z}e^{w} = e^{z+w}$ for the middle step and $a^2 + b^2 = 1$ for the next.
+This is $(1)$, and Step 1 then gives
+$(\Phi_{a,b})_*(\gamma_n \otimes \gamma_n) = \gamma_n$.
+
+Remark.  The conclusion in fact holds for arbitrary real $a, b$ with
+$a^2 + b^2 = 1$, since Step 5 would then read $|a\,t| = |a|\,|t|$ and
+$|a|^2 = a^2$ leaves the computation unchanged.  The sign hypotheses are stated
+because they are what this proof route consumes --- they are used only to
+rewrite $|a|$ as $a$ and $|b|$ as $b$ --- and not because the statement needs
+them.
+\end{proof}

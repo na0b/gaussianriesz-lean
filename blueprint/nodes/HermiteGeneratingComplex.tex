@@ -1,0 +1,116 @@
+\begin{lemma}[Complex generating function of the probabilists' Hermite polynomials]
+Let $\mathrm{He}_k$ be the probabilists' Hermite polynomials of the shared
+background, and for $\zeta \in \mathbb{C}$ write $\mathrm{He}_k(\zeta)$ for the
+evaluation of $\mathrm{He}_k$ at $\zeta$ under the canonical ring map
+$\mathbb{Z}[X] \to \mathbb{C}$.  Then for all $\zeta, \xi \in \mathbb{C}$ the
+family
+\[
+  k \longmapsto \mathrm{He}_k(\zeta)\,\frac{\xi^k}{k!}
+  \qquad (k \in \mathbb{N}_0)
+\]
+is unconditionally summable in $\mathbb{C}$ with sum
+\[
+  \sum_{k=0}^\infty \mathrm{He}_k(\zeta)\,\frac{\xi^k}{k!}
+    = \exp\bigl(\zeta\xi - \tfrac{1}{2}\xi^2\bigr) .
+\]
+\end{lemma}
+\begin{proof}
+Fix $\zeta, \xi \in \mathbb{C}$ and put
+\[
+  G(v) = \exp\bigl(-\tfrac{1}{2}v^2\bigr), \qquad v \in \mathbb{C} .
+\]
+
+Step 1 ($G$ is entire, with $G'(w) = -w\,G(w)$).  The map
+$v \mapsto -\tfrac{1}{2}v^2$ is a polynomial, hence everywhere complex
+differentiable with derivative $-w$ at $w$ (indeed
+$-\tfrac{1}{2}v^2 = (-\tfrac{1}{2})v^2$ and $\tfrac{d}{dv}v^2 = 2w$ at $w$, so
+the derivative is $(-\tfrac12)(2w) = -w$).  Since $\exp$ is entire with
+$\exp' = \exp$, the chain rule gives that $G$ is complex differentiable at every
+$w \in \mathbb{C}$ with
+\[
+  G'(w) = -w\,\exp\bigl(-\tfrac{1}{2}w^2\bigr) = -w\,G(w) .
+\]
+In particular $G$ is entire, and so are all of its iterated derivatives.
+
+Step 2 (Rodrigues' identity over $\mathbb{C}$).  We claim that for every
+$k \in \mathbb{N}_0$ and every $w \in \mathbb{C}$,
+\[
+  G^{(k)}(w) = (-1)^k\,\mathrm{He}_k(w)\,\exp\bigl(-\tfrac{1}{2}w^2\bigr) .
+  \tag{R$_k$}
+\]
+We argue by induction on $k$.  For $k = 0$ the left side is $G(w)$ and the right
+side is $\mathrm{He}_0(w)\exp(-w^2/2) = \exp(-w^2/2)$, since $\mathrm{He}_0 = 1$;
+so (R$_0$) holds.
+
+Assume (R$_m$) holds for all $w$, i.e.
+$G^{(m)} = \bigl(v \mapsto (-1)^m\,\mathrm{He}_m(v)\,\exp(-v^2/2)\bigr)$ as
+functions on $\mathbb{C}$.  Then $G^{(m+1)}$ is the derivative of that function.
+The polynomial evaluation $v \mapsto \mathrm{He}_m(v)$ is entire with derivative
+$\mathrm{He}_m'(w)$ at $w$, where $\mathrm{He}_m'$ is the formal derivative of
+$\mathrm{He}_m$ (the derivative of a polynomial function agrees with the
+evaluation of the formal derivative).  Hence by the product rule together with
+Step 1,
+\[
+  G^{(m+1)}(w)
+    = (-1)^m\,\mathrm{He}_m'(w)\,\exp\bigl(-\tfrac{1}{2}w^2\bigr)
+      + (-1)^m\,\mathrm{He}_m(w)\cdot\bigl(-w\,\exp(-\tfrac{1}{2}w^2)\bigr)
+    = (-1)^m\bigl(\mathrm{He}_m'(w) - w\,\mathrm{He}_m(w)\bigr)
+        \exp\bigl(-\tfrac{1}{2}w^2\bigr).
+\]
+By the defining recurrence of the Hermite family, which is shared background,
+$\mathrm{He}_{m+1} = X\,\mathrm{He}_m - \mathrm{He}_m'$, so evaluating at $w$ gives
+$\mathrm{He}_m'(w) - w\,\mathrm{He}_m(w) = -\mathrm{He}_{m+1}(w)$.  Therefore
+\[
+  G^{(m+1)}(w) = (-1)^{m}\cdot\bigl(-\mathrm{He}_{m+1}(w)\bigr)
+      \exp\bigl(-\tfrac{1}{2}w^2\bigr)
+    = (-1)^{m+1}\,\mathrm{He}_{m+1}(w)\,\exp\bigl(-\tfrac{1}{2}w^2\bigr),
+\]
+which is (R$_{m+1}$).  This completes the induction.
+
+Step 3 (Taylor expansion of $G$ about $\zeta$).  Since $G$ is entire, so is
+$v \mapsto G(\zeta + v)$, whose $k$-th derivative at $0$ equals $G^{(k)}(\zeta)$.
+Applying the shared background fact that an entire function is represented on all
+of $\mathbb{C}$ by its Taylor series at $0$, with the series converging
+absolutely, to this translate and evaluating at $v = -\xi$ yields: the family
+\[
+  k \longmapsto \frac{1}{k!}\,(-\xi)^k\,G^{(k)}(\zeta)
+\]
+is unconditionally (equivalently, absolutely) summable in $\mathbb{C}$, with
+\[
+  \sum_{k=0}^\infty \frac{1}{k!}\,(-\xi)^k\,G^{(k)}(\zeta) = G(\zeta - \xi).
+  \tag{T}
+\]
+
+Step 4 (identification of the terms).  Fix $k$.  Substituting (R$_k$) at
+$w = \zeta$ into the $k$-th term of (T) and using $(-1)^k(-1)^k = 1$,
+\[
+  \frac{1}{k!}(-\xi)^k G^{(k)}(\zeta)
+    = \frac{1}{k!}\,(-1)^k\xi^k \cdot (-1)^k\,\mathrm{He}_k(\zeta)\,
+        \exp\bigl(-\tfrac{1}{2}\zeta^2\bigr)
+    = \Bigl(\mathrm{He}_k(\zeta)\frac{\xi^k}{k!}\Bigr)
+        \exp\bigl(-\tfrac{1}{2}\zeta^2\bigr).
+\]
+
+Step 5 (identification of the sum).  Expanding the square,
+$-\tfrac12(\zeta-\xi)^2 = \bigl(\zeta\xi - \tfrac12\xi^2\bigr)
+ + \bigl(-\tfrac12\zeta^2\bigr)$, so by the functional equation
+$\exp(a+b) = \exp a \exp b$,
+\[
+  G(\zeta - \xi) = \exp\bigl(-\tfrac12(\zeta-\xi)^2\bigr)
+    = \exp\bigl(\zeta\xi - \tfrac12\xi^2\bigr)\,
+      \exp\bigl(-\tfrac12\zeta^2\bigr).
+\]
+
+Step 6 (conclusion).  Combining Steps 3--5, the family
+$k \mapsto \bigl(\mathrm{He}_k(\zeta)\xi^k/k!\bigr)\exp(-\zeta^2/2)$ is
+unconditionally summable with sum
+$\exp(\zeta\xi - \xi^2/2)\exp(-\zeta^2/2)$.  The constant
+$c = \exp(-\tfrac12\zeta^2)$ is nonzero, because the complex exponential never
+vanishes.  Dividing an unconditionally summable family and its sum by the fixed
+nonzero constant $c$ preserves unconditional summability and divides the sum by
+$c$; since $\bigl(\mathrm{He}_k(\zeta)\xi^k/k!\bigr)c/c
+ = \mathrm{He}_k(\zeta)\xi^k/k!$ for every $k$ and
+$\exp(\zeta\xi-\xi^2/2)\,c/c = \exp(\zeta\xi-\xi^2/2)$, we conclude that
+$k \mapsto \mathrm{He}_k(\zeta)\xi^k/k!$ is unconditionally summable with sum
+$\exp(\zeta\xi - \tfrac12\xi^2)$, as asserted.
+\end{proof}

@@ -1,0 +1,108 @@
+\begin{lemma}[The obstacle multiplier is an energy form minus a fixed inner product, hence linear on the form domain]
+Fix $n \in \mathbb{N}$, let $F \in L^2(\gamma_n)$ with $\gamma_n$ the Gaussian
+measure of \noderef{GaussMeasure}, let $a \in \mathbb{R}$, and let
+$u \in L^2(\gamma_n)$ have finite energy, $\mathcal{E}(u) \neq +\infty$ in the
+sense of \noderef{Energy}.  Write
+\[
+  g = F - a\,h_0 \ \in L^2(\gamma_n),
+\]
+where $h_0$ is the zeroth Hermite mode of \noderef{HermiteL2}; note that $g$ is an
+element of $L^2(\gamma_n)$ and not merely a function.  Write
+$\langle \eta, \cdot\rangle$ for the obstacle multiplier of
+\noderef{ObstacleMultiplier} at this $F$, $a$ and $u$, and $\mathcal{E}(\cdot,\cdot)$
+for the bilinear energy form of \noderef{EnergyBil}.  Then all three of the
+following hold.
+\begin{enumerate}
+  \item For \emph{every} $\varphi \in L^2(\gamma_n)$,
+    \[
+      \langle \eta, \varphi\rangle
+        = \mathcal{E}(u,\varphi) - \langle g, \varphi\rangle_{L^2(\gamma_n)} .
+    \]
+  \item For all $v, w \in L^2(\gamma_n)$ with
+    $\mathcal{E}(v) \neq +\infty$ and $\mathcal{E}(w) \neq +\infty$,
+    \[
+      \langle \eta, v + w\rangle = \langle \eta, v\rangle + \langle \eta, w\rangle .
+    \]
+  \item For every $r \in \mathbb{R}$ and every $v \in L^2(\gamma_n)$ with
+    $\mathcal{E}(v) \neq +\infty$,
+    \[
+      \langle \eta, r\,v\rangle = r\,\langle \eta, v\rangle .
+    \]
+\end{enumerate}
+
+Every measure here is Gaussian: the inner product in (1) is the one of
+$L^2(\gamma_n)$, the load integral it replaces is a $\gamma_n$-integral, and the
+energy form is the Gaussian one of \noderef{EnergyBil}.
+
+Two asymmetries in the hypotheses are deliberate and worth stating, because a
+reader would otherwise expect them to match.  Clause (1) carries \emph{no}
+finite-energy hypothesis on $\varphi$: both sides are defined for every element of
+$L^2(\gamma_n)$, so the identity holds on all of $L^2(\gamma_n)$ and not merely on
+the form domain.  Clauses (2) and (3) do need finite energy on their arguments,
+and they are also the only clauses that use the finite-energy hypothesis on $u$ --
+it enters through the symmetry of $\mathcal{E}$, which \noderef{EnergyFormBilinear}
+supplies only when all the arguments involved have finite energy.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: $g$ agrees with $F - a$ almost everywhere.}
+By \noderef{HermiteL2ZeroAEOne} the zeroth Hermite mode satisfies $h_0 = 1$
+$\gamma_n$-almost everywhere.  Hence, for $\gamma_n$-almost every $x$,
+\[
+  g(x) = F(x) - a\,h_0(x) = F(x) - a ,
+\]
+the first equality because the coercion of a difference of $L^2$ elements is
+almost everywhere the difference of the coercions, and of a scalar multiple
+almost everywhere the scalar multiple.
+
+\emph{Step 2: clause (1).}
+Let $\varphi \in L^2(\gamma_n)$ be arbitrary.  By \noderef{ObstacleMultiplier},
+\[
+  \langle \eta, \varphi\rangle
+    = \mathcal{E}(u,\varphi) - \int_{\mathbb{R}^n} (F - a)\,\varphi \, d\gamma_n .
+\]
+By \noderef{L2InnerGaussIntegral} the inner product of two elements of
+$L^2(\gamma_n)$ is the $\gamma_n$-integral of their product, so
+$\langle g, \varphi\rangle = \int g\,\varphi \, d\gamma_n$.  By Step 1 the two
+integrands $g\,\varphi$ and $(F-a)\,\varphi$ agree $\gamma_n$-almost everywhere,
+so their integrals agree, and subtracting from $\mathcal{E}(u,\varphi)$ gives
+clause (1).  No hypothesis on $\varphi$ was used.
+
+\emph{Step 3: the inputs from \noderef{EnergyFormBilinear}.}
+That lemma supplies two things used below.  First, the form domain is closed under
+the vector space operations: if $\mathcal{E}(v_1), \mathcal{E}(v_2) \neq +\infty$
+then $\mathcal{E}(v_1 + v_2) \neq +\infty$ and $\mathcal{E}(c\,v_1) \neq +\infty$
+for every $c \in \mathbb{R}$.  Second, on the form domain $\mathcal{E}$ is additive
+and homogeneous in its first argument and symmetric:
+$\mathcal{E}(v_1 + v_2, w) = \mathcal{E}(v_1,w) + \mathcal{E}(v_2,w)$,
+$\mathcal{E}(c\,v_1, w) = c\,\mathcal{E}(v_1,w)$ and
+$\mathcal{E}(v_1,w) = \mathcal{E}(w,v_1)$, whenever the arguments involved have
+finite energy.
+
+\emph{Step 4: clause (2).}
+Let $\mathcal{E}(v), \mathcal{E}(w) \neq +\infty$.  Then
+$\mathcal{E}(v+w) \neq +\infty$ by closure, so clause (1) applies at $v$, at $w$
+and at $v+w$.  Using symmetry to move $u$ into the second slot, then additivity in
+the first, then symmetry back:
+\[
+  \mathcal{E}(u, v+w) = \mathcal{E}(v+w, u) = \mathcal{E}(v,u) + \mathcal{E}(w,u)
+    = \mathcal{E}(u,v) + \mathcal{E}(u,w),
+\]
+each application being legitimate because $u$, $v$, $w$ and $v+w$ all have finite
+energy.  The inner product is additive in its second argument,
+$\langle g, v+w\rangle = \langle g,v\rangle + \langle g,w\rangle$.  Substituting
+both into clause (1) at $v+w$ and regrouping gives
+$\langle \eta, v+w\rangle = \langle \eta, v\rangle + \langle \eta, w\rangle$.
+
+\emph{Step 5: clause (3).}
+Let $r \in \mathbb{R}$ and $\mathcal{E}(v) \neq +\infty$.  Then
+$\mathcal{E}(r\,v) \neq +\infty$ by closure, so clause (1) applies at $v$ and at
+$r\,v$.  As in Step 4,
+\[
+  \mathcal{E}(u, r\,v) = \mathcal{E}(r\,v, u) = r\,\mathcal{E}(v,u)
+    = r\,\mathcal{E}(u,v),
+\]
+and the inner product is homogeneous in its second argument over the reals,
+$\langle g, r\,v\rangle = r\,\langle g, v\rangle$.  Substituting both into clause
+(1) at $r\,v$ and factoring out $r$ gives
+$\langle \eta, r\,v\rangle = r\,\langle \eta, v\rangle$.
+\end{proof}

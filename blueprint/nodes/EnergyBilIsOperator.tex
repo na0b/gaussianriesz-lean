@@ -1,0 +1,57 @@
+\begin{lemma}[The energy form represents the operator $B = L^{1/2}$ on its domain]
+Let $v \in \operatorname{Dom}(L^{1/2})$ in the sense of \noderef{FracPowDomain}
+and let $w \in L^2(\gamma_n)$ be arbitrary.  Then
+\[
+  \mathcal{E}(v, w) = \langle L^{1/2}v, w\rangle = \int (L^{1/2}v)\, w \, d\gamma_n ,
+\]
+with $\mathcal{E}(\cdot,\cdot)$ as in \noderef{EnergyBil} and $L^{1/2}$ as in
+\noderef{FracPow}.  This is the identity $\mathcal{E}(v,w) = \langle Bv, w\rangle$
+of the reference paper.  It requires only that $v$ lie in the operator domain
+$\operatorname{Dom}(B)$; no condition whatever is imposed on $w$, so in
+particular the identity holds for every $w$ in the form domain $\mathcal{V}$,
+which is the case the reference paper uses.  It is not asserted for general
+$v \in \mathcal{V}$.
+\end{lemma}
+\begin{proof}
+Write $v_\alpha, w_\alpha$ for the Hermite coefficients of $v, w$ relative to
+\noderef{HermiteBasis}.
+
+\emph{Step 1: the coefficients of $L^{1/2}v$.}
+Since $v \in \operatorname{Dom}(L^{1/2})$, the defining formula of
+\noderef{FracPow} with $s = 1/2$ applies (its domain hypothesis being exactly the
+criterion of \noderef{FracPowDomain}) and gives $L^{1/2}v$ the coefficients
+\[
+  (L^{1/2}v)_0 = 0,
+  \qquad
+  (L^{1/2}v)_\alpha = |\alpha|^{1/2}\, v_\alpha \quad (\alpha \neq 0),
+\]
+with $|\alpha|$ as in \noderef{MultiIndexSum}; moreover
+$\sum_{\alpha\neq0}|\alpha|\,|v_\alpha|^2 < \infty$ by
+\noderef{FracPowDomain}, i.e.\ the family
+$\bigl(|\alpha|^{1/2}v_\alpha\bigr)_{\alpha\neq0}$ is square summable.
+
+\emph{Step 2: Parseval.}
+Both $L^{1/2}v$ and $w$ lie in $L^2(\gamma_n)$, so Parseval's identity for the
+orthonormal basis of \noderef{HermiteBasis} expresses their inner product as the
+absolutely convergent sum of coefficient products:
+\[
+  \langle L^{1/2}v, w\rangle
+    = \sum_{\alpha} (L^{1/2}v)_\alpha\, w_\alpha
+    = \sum_{\alpha \neq 0} |\alpha|^{1/2}\, v_\alpha\, w_\alpha ,
+\]
+the index $\alpha = 0$ dropping out by Step 1.  Absolute convergence holds by
+Cauchy--Schwarz in $\ell^2$, since $\bigl(|\alpha|^{1/2}v_\alpha\bigr)_{\alpha\neq0}$
+is square summable by Step 1 and $(w_\alpha)_\alpha$ is square summable with sum
+$\|w\|_2^2$.
+
+\emph{Step 3: identification with the form.}
+The last series in Step 2 is literally the defining series of
+$\mathcal{E}(v,w)$ in \noderef{EnergyBil}, and the summability hypothesis in that
+definition is met by the absolute convergence just established.  Hence
+$\mathcal{E}(v,w) = \langle L^{1/2}v,w\rangle$, which is the assertion.  Note
+that no finiteness assumption on $\mathcal{E}(w)$ was used: the absolute
+convergence in Step 2 came from square summability of
+$\bigl(|\alpha|^{1/2}v_\alpha\bigr)_{\alpha\neq0}$, which is the hypothesis on
+$v$, paired with square summability of $(w_\alpha)_\alpha$, which holds for
+every $w \in L^2(\gamma_n)$ by Parseval.
+\end{proof}

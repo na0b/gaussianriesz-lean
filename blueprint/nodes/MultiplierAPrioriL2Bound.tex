@@ -1,0 +1,142 @@
+\begin{lemma}[A-priori $L^2(\gamma_n)$ bound on the obstacle multiplier]
+Fix $n \in \mathbb{N}$.  Let $F \in L^2(\gamma_n)$ with $F \geq 0$
+$\gamma_n$-almost everywhere, let $a \in \mathbb{R}$ with $a > 0$, and let
+$u \in L^2(\gamma_n)$ satisfy
+\begin{itemize}
+  \item $u \in \mathcal{K}$, the obstacle cone of \noderef{ObstacleCone}, and
+  \item $J(u) \leq J(w)$ for every $w \in \mathcal{K}$, with
+    $J = $ the functional of \noderef{ObstacleFunctional} for this $F$ and $a$.
+\end{itemize}
+Then for every $\psi \in L^2(\gamma_n)$ of finite energy, i.e. with
+$\mathcal{E}(\psi) \neq +\infty$ in the sense of \noderef{Energy},
+\[
+  \bigl| T(\psi) \bigr| \leq a\, \|\psi\|_{L^2(\gamma_n)} ,
+  \qquad
+  T(\psi) = \text{the multiplier } \noderef{ObstacleMultiplier} \text{ at } \psi .
+\]
+
+The bound is uniform in $\psi$: the same constant serves every $\psi$ in the form
+domain $\{\mathcal{E} \neq +\infty\}$, with no dependence on $\psi$ beyond its
+$L^2(\gamma_n)$ norm.  And the constant is $a$ itself, not a multiple of it --
+there is no implicit $C$, and no factor depending on $n$, on $F$ or on $u$.  Every
+measure here is the Gaussian measure $\gamma_n$ of \noderef{GaussMeasure}: the
+norm is the $L^2(\gamma_n)$ norm, the almost-everywhere nonnegativity of $F$ is
+$\gamma_n$-almost everywhere, and the integrals appearing in the proof are
+$\gamma_n$-integrals.  All four hypotheses are used: $F \geq 0$ and $a > 0$ in
+Step 5, and the cone membership and minimality of $u$ in Steps 3 and 4, through
+\noderef{MultiplierPositive} and \noderef{LewyStampacchia} respectively.
+
+This is the a priori estimate that lets the multiplier extend from the form domain
+to a bounded linear functional on $L^2(\gamma_n)$, which is what makes a
+representing function available at all.
+\end{lemma}
+\begin{proof}
+\emph{Step 0: the multiplier as a difference of a form and an inner product.}
+By \noderef{HermiteL2ZeroAEOne} the zeroth Hermite mode $h_0$ of
+\noderef{HermiteL2} equals the constant $1$ $\gamma_n$-almost everywhere, so the
+element $g = F - a\,h_0$ of $L^2(\gamma_n)$ satisfies $g = F - a$
+$\gamma_n$-almost everywhere.  Hence, by \noderef{L2InnerGaussIntegral} rewriting
+the load integral as an inner product,
+\begin{equation*}
+  T(\varphi) = \mathcal{B}(u,\varphi) - \langle g, \varphi\rangle
+  \qquad\text{for every } \varphi \in L^2(\gamma_n), \tag{0}
+\end{equation*}
+with $\mathcal{B}$ the bilinear form of \noderef{EnergyBil}.
+
+\emph{Step 1: $T$ is additive and homogeneous on the form domain.}
+By \noderef{EnergyFormBilinear} the set $\{\mathcal{E} \neq +\infty\}$ is closed
+under sums and scalar multiples, and on it $\mathcal{B}$ is symmetric and linear in
+each argument.  Combining this with $(0)$ and the linearity of the inner product in
+its second argument: if $\mathcal{E}(v), \mathcal{E}(w) \neq +\infty$ and
+$r \in \mathbb{R}$ then
+\begin{equation*}
+  T(v+w) = T(v) + T(w), \qquad T(r\,v) = r\,T(v). \tag{1}
+\end{equation*}
+
+\emph{Step 2: the positive and negative parts of $\psi$ lie in the cone.}
+Let $\psi^+ = \max(\psi,0)$ and $\psi^- = \max(-\psi,0)$.  Both are almost
+everywhere strongly measurable and satisfy $|\psi^\pm| \leq |\psi|$ pointwise, so
+both lie in $L^2(\gamma_n)$ by domination.  Both are nonnegative by construction.
+For the energy, the maps $t \mapsto \max(t,0)$ and $t \mapsto \max(-t,0)$ are
+$1$-Lipschitz on $\mathbb{R}$ and send $0$ to $0$, so \noderef{LatticeContraction}
+applies and gives $\mathcal{E}(\psi^+) \neq +\infty$ and
+$\mathcal{E}(\psi^-) \neq +\infty$ from $\mathcal{E}(\psi) \neq +\infty$.  By
+\noderef{ObstacleCone} -- finite energy together with almost everywhere
+nonnegativity -- we conclude $\psi^+, \psi^- \in \mathcal{K}$.
+
+\emph{Step 3: $|T(\psi)| \leq T(|\psi|)$.}
+Pointwise $\psi = \psi^+ - \psi^-$, hence $\psi = \psi^+ + (-1)\psi^-$ in
+$L^2(\gamma_n)$, and $(1)$ gives
+\[
+  T(\psi) = T(\psi^+) - T(\psi^-).
+\]
+Since $u$ lies in the cone and minimises $J$ there, \noderef{MultiplierPositive}
+applies to each of $\psi^+, \psi^- \in \mathcal{K}$ and gives
+$T(\psi^+) \geq 0$ and $T(\psi^-) \geq 0$.  A difference of two nonnegative reals
+has absolute value at most their sum, so
+\[
+  |T(\psi)| = |T(\psi^+) - T(\psi^-)| \leq T(\psi^+) + T(\psi^-)
+    = T(\psi^+ + \psi^-),
+\]
+the last equality by $(1)$ again.  Pointwise $\psi^+ + \psi^- = |\psi|$, so this
+is the claim.
+
+\emph{Step 4: the Lewy--Stampacchia bound at $|\psi|$.}
+The element $\psi^+ + \psi^-$ is nonnegative almost everywhere, being a sum of two
+such, and has finite energy because the form domain is closed under sums
+(\noderef{EnergyFormBilinear}); so $\psi^+ + \psi^- \in \mathcal{K}$ by
+\noderef{ObstacleCone}.  The hypotheses on $F$, $a$ and $u$ are exactly those of
+\noderef{LewyStampacchia}, which applied at this test element gives
+\begin{equation*}
+  T(\psi^+ + \psi^-)
+    \leq \int_{\mathbb{R}^n} (a - F)^+ \,\bigl(\psi^+ + \psi^-\bigr) \, d\gamma_n
+    = \int_{\mathbb{R}^n} (a - F)^+ \,|\psi| \, d\gamma_n , \tag{2}
+\end{equation*}
+writing $(a-F)^+ = \max(a-F, 0)$ and using $\psi^+ + \psi^- = |\psi|$ almost
+everywhere.
+
+\emph{Step 5: $0 \leq (a-F)^+ \leq a$ almost everywhere.}
+Fix $x$ with $F(x) \geq 0$, which is almost every $x$.  If $a - F(x) \leq 0$ then
+$(a - F(x))^+ = 0 \leq a$, using $a > 0$ for the second inequality.  If
+$a - F(x) \geq 0$ then $(a-F(x))^+ = a - F(x) \leq a$, using $F(x) \geq 0$.  In
+both cases $0 \leq (a - F(x))^+ \leq a$.  Multiplying by $|\psi(x)| \geq 0$,
+\[
+  (a-F(x))^+\,|\psi(x)| \leq a\,|\psi(x)|
+  \qquad \text{for } \gamma_n\text{-almost every } x ,
+\]
+and both sides are $\gamma_n$-integrable: the left because $(a-F)^+$ lies in
+$L^2(\gamma_n)$ by \noderef{PosPartConstSubMemLp} and the product of two
+$L^2(\gamma_n)$ functions is integrable, and the right because $\psi \in
+L^2(\gamma_n)$ is integrable against the probability measure $\gamma_n$
+(\noderef{GaussIsProb}).  Monotonicity of the integral therefore gives
+\begin{equation*}
+  \int_{\mathbb{R}^n} (a-F)^+\,|\psi| \, d\gamma_n
+    \leq \int_{\mathbb{R}^n} a\,|\psi| \, d\gamma_n
+    = a \int_{\mathbb{R}^n} |\psi| \, d\gamma_n . \tag{3}
+\end{equation*}
+
+\emph{Step 6: from the $L^1$ integral to the $L^2$ norm.}
+The $L^1(\gamma_n)$ norm of the image of $\psi$ under the inclusion of
+\noderef{ToL1} is $\int |\psi| \, d\gamma_n$, since that inclusion does not change
+the underlying function.  By \noderef{L2IntoL1},
+$\|\psi\|_{L^1(\gamma_n)} \leq \|\psi\|_{L^2(\gamma_n)}$, so
+\begin{equation*}
+  \int_{\mathbb{R}^n} |\psi| \, d\gamma_n \leq \|\psi\|_{L^2(\gamma_n)} ,
+  \qquad\text{hence}\qquad
+  a \int_{\mathbb{R}^n} |\psi| \, d\gamma_n \leq a\,\|\psi\|_{L^2(\gamma_n)} ,
+  \tag{4}
+\end{equation*}
+the last step multiplying by $a \geq 0$.
+
+\emph{Conclusion.}
+Chaining Step 3, $(2)$, $(3)$ and $(4)$,
+\[
+  |T(\psi)|
+    \leq T(\psi^+ + \psi^-)
+    \leq \int_{\mathbb{R}^n} (a-F)^+ |\psi| \, d\gamma_n
+    \leq a \int_{\mathbb{R}^n} |\psi| \, d\gamma_n
+    \leq a\,\|\psi\|_{L^2(\gamma_n)} .
+\]
+Since $\psi$ was an arbitrary element of the form domain, the bound holds uniformly
+there with the stated constant $a$.
+\end{proof}

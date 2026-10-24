@@ -1,0 +1,98 @@
+\begin{lemma}[Integration by parts for a $C^1$ composition against a test function]
+Fix $n \in \mathbb{N}_0$ and write $\lambda$ for Lebesgue measure on
+$\mathbb{R}^n$.  Let $q, q' : \mathbb{R} \to \mathbb{R}$ be such that $q$ is
+differentiable at every $t \in \mathbb{R}$ with derivative $q'(t)$, and such
+that $q'$ is continuous, so $q \in C^1(\mathbb{R})$.  Fix a coordinate index
+$j \in \{1,\ldots,n\}$, and let $w : \mathbb{R}^n \to \mathbb{R}$ be
+differentiable at every point of $\mathbb{R}^n$ and such that its $j$th partial
+derivative $x \mapsto \partial_j w(x)$ is continuous on $\mathbb{R}^n$.  Let
+$\varphi : \mathbb{R}^n \to \mathbb{R}$ be smooth with compact support.  Then
+\[
+  \int_{\mathbb{R}^n} q(w(x))\, \partial_j \varphi(x)\, d\lambda(x)
+    = -\int_{\mathbb{R}^n}
+        \bigl(q'(w(x))\, \partial_j w(x)\bigr)\, \varphi(x)\, d\lambda(x),
+\]
+where $\partial_j$ denotes the Fr\'echet derivative evaluated at the $j$-th
+standard basis vector $e_j$.  Both integrals converge, and the identity is one
+of real numbers.
+
+\emph{The hypothesis on $w$ is $C^1$ in the $j$th direction, and no more.}
+Everywhere differentiability plus continuity of the single partial
+$\partial_j w$ is exactly what the argument below consumes; neither higher
+smoothness of $w$ nor continuity of the full Fr\'echet derivative $Dw$ is used,
+and neither is assumed.  That is why the index $j$ is quantified ahead of the
+hypothesis rather than after it: for each separate direction the identity has
+its own, separate, minimal hypothesis.  A smooth $w$ satisfies both conditions
+for every $j$, so the smooth case is contained in this one.
+
+Every integral in this statement is taken against Lebesgue measure.  No Gaussian
+weight appears: although this lemma is used inside the tablet's Gaussian
+development, the statement and its proof are purely classical and involve
+$\gamma_n$ nowhere.  Correspondingly it cites no other tablet node at all: it
+rests only on the shared background calculus, which is what makes it a
+self-contained classical identity worth isolating.
+\end{lemma}
+\begin{proof}
+Abbreviate $f = q \circ w$, so $f(x) = q(w(x))$.
+
+Step 1 (the chain rule for $f$).  By hypothesis $w$ is differentiable at every
+$x$, with Fr\'echet derivative $Dw(x)$, and $q$ is differentiable at every real
+number, so the composite is differentiable at every $x$ with
+\[
+  Df(x) = q'(w(x))\, Dw(x)
+\]
+as continuous linear maps $\mathbb{R}^n \to \mathbb{R}$, the scalar
+$q'(w(x))$ multiplying the linear map $Dw(x)$.  Evaluating at $e_j$ gives the
+pointwise identity
+\[
+  \partial_j f(x) = q'(w(x))\, \partial_j w(x)
+  \qquad \text{for every } x \in \mathbb{R}^n . \tag{C}
+\]
+
+Step 2 (continuity of the four integrands' factors).  $q$ is continuous, being
+differentiable everywhere, and $w$ is continuous, being differentiable
+everywhere, so $f = q \circ w$ is continuous as a composite of continuous maps.
+The map $x \mapsto \partial_j w(x)$ is continuous by hypothesis, and
+$x \mapsto \partial_j \varphi(x)$ is continuous because $\varphi$ is smooth, so
+its derivative is continuous and evaluation at $e_j$ is continuous.  By (C),
+$x \mapsto \partial_j f(x)$ is then continuous as well, being the product of the
+continuous $q' \circ w$ with the continuous $\partial_j w$.  Finally
+$\partial_j \varphi$ has compact support, the support of a derivative being
+contained in the support of the function.
+
+Step 3 (integrability of the three products).  Integration by parts requires the
+three products
+\[
+  \partial_j f \cdot \varphi, \qquad f \cdot \partial_j \varphi, \qquad
+  f \cdot \varphi
+\]
+to be $\lambda$-integrable.  Each is a continuous function with compact support:
+in the first and third the factor $\varphi$ has compact support, and in the
+second the factor $\partial_j \varphi$ does, while the other factor is
+continuous by Step 2.  A continuous function with compact support is
+$\lambda$-integrable, so all three integrals converge.
+
+Step 4 (integration by parts).  Both $f$ and $\varphi$ are differentiable at
+every point, in particular at every point of the closed support of the other, so
+the classical integration-by-parts identity in the direction $e_j$ applies to
+the pair $(f, \varphi)$ with the integrability of Step 3 as its hypothesis, and
+yields
+\[
+  \int_{\mathbb{R}^n} f(x)\, \partial_j \varphi(x)\, d\lambda(x)
+    = -\int_{\mathbb{R}^n} \partial_j f(x)\, \varphi(x)\, d\lambda(x) .
+\]
+There is no boundary term because $\varphi$ is compactly supported.
+
+Step 5 (substituting the chain rule).  By (C) the integrands on the right agree
+at every point:
+$\partial_j f(x)\, \varphi(x)
+   = \bigl(q'(w(x))\, \partial_j w(x)\bigr)\varphi(x)$ for every $x$, hence in
+particular $\lambda$-almost everywhere, so the two integrals are equal.
+Substituting into Step 4 and recalling $f = q \circ w$ gives
+\[
+  \int_{\mathbb{R}^n} q(w(x))\, \partial_j \varphi(x)\, d\lambda(x)
+    = -\int_{\mathbb{R}^n}
+        \bigl(q'(w(x))\, \partial_j w(x)\bigr) \varphi(x)\, d\lambda(x),
+\]
+which is the assertion.
+\end{proof}

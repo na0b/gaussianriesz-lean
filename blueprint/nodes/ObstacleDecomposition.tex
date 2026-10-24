@@ -1,0 +1,79 @@
+\begin{theorem}[Gaussian obstacle decomposition]
+Let $F \in L^2(\gamma_n)$ be nonnegative $\gamma_n$-a.e., put
+$m = \int F \, d\gamma_n$, and let $a > m$.  Then there exist
+$u \in \operatorname{Dom}(B) = \operatorname{Dom}(L^{1/2})$ and
+$g \in L^2(\gamma_n) \cap L^\infty(\gamma_n)$ such that, with $B = L^{1/2}$ as in
+\noderef{FracPow} and $D$ as in \noderef{GaussD},
+\begin{align*}
+  &u \geq 0 \ \text{a.e.}, \qquad F = g + Bu \ \text{ in } L^2(\gamma_n),\\
+  &\min\{F, a\} \leq g \leq a \quad \text{a.e.},\\
+  &\int g \, d\gamma_n = m .
+\end{align*}
+Moreover, with $\Omega = \{u > 0\}$,
+\begin{align*}
+  &g = a \quad\text{a.e. on } \Omega,\\
+  &a\,\gamma_n(\Omega) \leq m,\\
+  &Du = 0 \quad\text{a.e. on } \Omega^c .
+\end{align*}
+Finally $u$ lies in the cone $\mathcal{K}$ of \noderef{ObstacleCone} and is the
+unique minimizer over $\mathcal{K}$ of the functional $J$ of
+\noderef{ObstacleFunctional}.
+\end{theorem}
+\begin{proof}
+First note $m \geq 0$, since $F \geq 0$ a.e.; hence $a > m \geq 0$ gives $a > 0$.
+
+Step 1 (the potential).  By \noderef{ObstacleMinimizerExists} there is
+$u \in \mathcal{K}$ minimizing $J$ over $\mathcal{K}$.  By
+\noderef{ObstacleCone} this gives $u \geq 0$ $\gamma_n$-a.e.\ and
+$\mathcal{E}(u) < \infty$.  By \noderef{ObstacleMinimizerUnique}, any
+$u' \in \mathcal{K}$ that also minimizes $J$ over $\mathcal{K}$ equals $u$; this
+is the uniqueness assertion.
+
+Step 2 (the multiplier as a function).  By
+\noderef{MultiplierL2Representation}, applicable since $F \geq 0$ a.e., $a > 0$
+and $u$ minimizes $J$, there is $\eta_2 \in L^2(\gamma_n)$ with
+$\langle \eta, \varphi\rangle = \int \eta_2\varphi\, d\gamma_n$ for every
+$\varphi \in \mathcal{V}$, where $\eta$ is the multiplier functional of
+\noderef{ObstacleMultiplier}.  Define
+\[
+  g = a\mathbf{1} - \eta_2 \in L^2(\gamma_n).
+\]
+
+Step 3 (pointwise bounds on $g$).  \noderef{MultiplierPointwiseBound} applies to
+the same data, all of it already in hand: $F \geq 0$ $\gamma_n$-a.e.\ by
+hypothesis and $a > 0$ as noted at the outset, $u \in \mathcal{K}$ minimizing $J$
+over $\mathcal{K}$ by Step 1, and $\eta_2$ representing $\eta$ on $\mathcal{V}$ by
+Step 2.  It gives
+$0 \leq \eta_2 \leq (a-F)^+$ $\gamma_n$-a.e.  Hence a.e.
+\[
+  g = a - \eta_2 \leq a,
+  \qquad
+  g = a - \eta_2 \geq a - (a-F)^+ = \min\{F, a\} ,
+\]
+the last identity because $a - (a-F)^+ = \min\{a, F\}$ for all real values.
+Together with $(a-F)^+ \leq a$ (valid since $F \geq 0$ a.e.\ and $a>0$) this also
+gives $0 \leq g \leq a$ a.e., so $g \in L^\infty(\gamma_n)$.
+
+Step 4 (the decomposition identity and the operator domain).  By
+\noderef{DomainUpgrade}, applied with this $u$ and $\eta_2$, we have
+$u \in \operatorname{Dom}(L^{1/2})$ and $L^{1/2}u = F - g$ in $L^2(\gamma_n)$,
+i.e. $F = g + Bu$.
+
+Step 5 (mass).  By \noderef{MassConservation},
+$\int g \, d\gamma_n = \int (a - \eta_2)\, d\gamma_n = m$.
+
+Step 6 (contact set).  By \noderef{Complementarity}, $\eta_2 = 0$
+$\gamma_n$-a.e.\ on $\Omega = \{u>0\}$, hence $g = a$ a.e.\ on $\Omega$.
+
+Step 7 (measure of the contact set).  The three hypotheses of
+\noderef{ExceptionalSetBound} hold: its item (1) is Step 5, its item (2) is Step 3
+(the bound $0 \leq \eta_2 \leq (a-F)^+$), and its item (3) is Step 6.  It
+therefore gives $a\,\gamma_n(\Omega) \leq m$.
+
+Step 8 (locality of the gradient).  By Step 4 and
+\noderef{SqrtDomainSobolev}, $u \in W^{1,2}(\gamma_n)$.  Since $u \geq 0$ a.e.\ by
+Step 1, \noderef{GradientLocality} gives $Du = 0$ $\gamma_n$-a.e.\ on
+$\{u \leq 0\} = \Omega^c$.
+
+Collecting Steps 1--8 gives all the assertions.
+\end{proof}

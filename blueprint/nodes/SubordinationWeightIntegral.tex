@@ -1,0 +1,75 @@
+\begin{lemma}[The total mass of the subordination weight]
+The function
+\[
+  s \longmapsto \frac{e^{-s}}{\sqrt s}
+\]
+is Lebesgue integrable on $(0,\infty)$, and
+\[
+  \int_0^\infty \frac{e^{-s}}{\sqrt s}\,ds = \sqrt\pi .
+\]
+
+This is the scalar normalization constant of the subordination formula
+$L^{-1/2}\Pi_0 = \pi^{-1/2}\int_0^\infty s^{-1/2}P_s\Pi_0\,ds$ used throughout
+the tablet's kernel layer: it is the total mass of the weight $s^{-1/2}e^{-s}$
+against which every time integral in that layer is dominated, and it is the
+reason the prefactor in the subordination formula is $\pi^{-1/2}$ and not some
+other constant.  Equivalently it is the classical evaluation
+$\Gamma(1/2) = \sqrt\pi$.  No Gaussian measure on $\mathbb{R}^n$ occurs here:
+the statement is a one-dimensional Lebesgue integral of an explicit scalar
+function, and it is recorded as its own node because several nodes of the kernel
+layer need it as a majorant and as a normalization.
+\end{lemma}
+\begin{proof}
+Write $g(s) = s^{-1/2}e^{-s}$ for $s > 0$.  The function $g$ is continuous on
+$(0,\infty)$, hence Borel measurable there, and it is nonnegative.
+
+\emph{Step 1: the substitution $s = v^2$.}
+Let $\psi : (0,\infty) \to (0,\infty)$, $\psi(v) = v^2$.  It is a bijection of
+$(0,\infty)$ onto $(0,\infty)$ with inverse $s \mapsto \sqrt s$, it is
+continuously differentiable, and $\psi'(v) = 2v > 0$ on $(0,\infty)$.  By the
+one-dimensional change-of-variables formula for a continuously differentiable
+bijection with nonvanishing derivative, applied to the nonnegative Borel
+function $g$,
+\begin{equation*}
+  \int_{(0,\infty)} g(s)\,ds
+    = \int_{(0,\infty)} g(\psi(v))\,\psi'(v)\,dv , \tag{1}
+\end{equation*}
+both sides being elements of $[0,+\infty]$.
+
+For $v > 0$ we have $\sqrt{\psi(v)} = \sqrt{v^2} = v$ because $v > 0$, so
+\[
+  g(\psi(v))\,\psi'(v)
+    = \frac{e^{-v^2}}{v}\cdot 2v
+    = 2\,e^{-v^2} .
+\]
+Hence $(1)$ reads
+\begin{equation*}
+  \int_{(0,\infty)} \frac{e^{-s}}{\sqrt s}\,ds
+    = 2\int_{(0,\infty)} e^{-v^2}\,dv . \tag{2}
+\end{equation*}
+
+\emph{Step 2: evaluating the half-line Gaussian integral.}
+The set $\{0\}$ is Lebesgue-null, so
+\[
+  \int_{\mathbb{R}} e^{-v^2}\,dv
+    = \int_{(-\infty,0)} e^{-v^2}\,dv + \int_{(0,\infty)} e^{-v^2}\,dv ,
+\]
+the integrand being nonnegative and measurable, so that the additivity of the
+integral over a partition into measurable pieces applies in $[0,+\infty]$.  By
+the invariance of Lebesgue measure under the reflection $v \mapsto -v$ (shared
+context), and since $e^{-(-v)^2} = e^{-v^2}$, the two half-line integrals are
+equal.  By the scalar Gaussian integral (shared context),
+$\int_{\mathbb{R}} e^{-v^2}\,dv = \sqrt\pi$.  Therefore
+\[
+  \int_{(0,\infty)} e^{-v^2}\,dv = \frac{\sqrt\pi}{2} .
+\]
+
+\emph{Step 3: conclusion.}
+Substituting into $(2)$,
+\[
+  \int_{(0,\infty)} \frac{e^{-s}}{\sqrt s}\,ds = 2\cdot\frac{\sqrt\pi}{2} = \sqrt\pi .
+\]
+In particular this integral of the nonnegative measurable function $g$ is
+finite, so $g$ is Lebesgue integrable on $(0,\infty)$, and its integral has the
+stated value.
+\end{proof}

@@ -1,0 +1,93 @@
+\begin{lemma}[$\nu_s$ is a symmetric coupling of $\gamma_n$ with itself representing $P_s$]
+Let $s > 0$ and let $\nu_s$ be the measure of \noderef{OUCoupling}.  Then
+\begin{enumerate}
+\item $\nu_s$ is a probability measure on $\mathbb{R}^n \times \mathbb{R}^n$;
+\item $\nu_s$ is symmetric, i.e. invariant under the coordinate swap
+$(x,y)\mapsto(y,x)$;
+\item both marginals of $\nu_s$ equal $\gamma_n$; and
+\item for all $v, w \in L^2(\gamma_n)$,
+\[
+  \langle P_s v, w\rangle_{L^2(\gamma_n)}
+    = \iint v(y)\, w(x)\, d\nu_s(x,y),
+\]
+the integral being absolutely convergent, with $P_s$ as in \noderef{OUSemigroup}.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Write $r = e^{-s} \in (0,1)$ and $\tau = \sqrt{1-r^2} \in (0,1]$, and let
+$T(x,y) = (x,\, rx+\tau y)$, so that $\nu_s = T_*(\gamma_n\otimes\gamma_n)$ by
+\noderef{OUCoupling}.  By \noderef{GaussMeasure} and \noderef{GaussIsProb},
+$\gamma_n$ is the $n$-fold product of the centred Gaussian law of variance $1/2$
+on $\mathbb{R}$; in particular $\gamma_n$ is a centred Gaussian measure on
+$\mathbb{R}^n$ with covariance $\tfrac12 I$.
+
+\emph{(1).}
+$\gamma_n$ is a probability measure by \noderef{GaussIsProb}, hence so is the
+product $\gamma_n \otimes \gamma_n$ on $\mathbb{R}^n\times\mathbb{R}^n$.  The map
+$T$ is continuous, hence Borel measurable, and the push-forward of a probability
+measure under a measurable map is a probability measure.  So $\nu_s$ is a
+probability measure.
+
+\emph{(3).}
+The first marginal of $\nu_s$ is the push-forward of $\gamma_n\otimes\gamma_n$
+under $(x,y)\mapsto x$, which is $\gamma_n$ by definition of the product measure.
+The second marginal is the law of $rX + \tau Y$ for independent $X, Y$ of law
+$\gamma_n$, which is $\gamma_n$: coordinatewise, $rX_j + \tau Y_j$ is a sum of
+independent centred Gaussians of variances $r^2/2$ and $\tau^2/2$, hence centred
+Gaussian of variance $(r^2+\tau^2)/2 = 1/2$, and distinct coordinates remain
+independent.
+
+\emph{(2).}
+$\nu_s$ is the push-forward of the centred Gaussian measure
+$\gamma_n\otimes\gamma_n$ on $\mathbb{R}^{2n}$ under the linear map $T$, hence is
+itself a centred Gaussian measure on $\mathbb{R}^{2n}$, and is therefore
+determined by its covariance.  With $(\xi,\eta)$ denoting the two blocks of
+coordinates, that covariance has blocks
+\[
+  \operatorname{Cov}(X, X) = \tfrac12 I,
+  \qquad
+  \operatorname{Cov}(rX+\tau Y,\, rX + \tau Y) = \tfrac12 I,
+  \qquad
+  \operatorname{Cov}(X,\, rX+\tau Y) = r\cdot\tfrac12 I,
+\]
+the last because $X$ and $Y$ are independent and centred, so the $Y$-term
+contributes $0$.  Thus the covariance matrix is
+$\tfrac12\begin{pmatrix} I & rI\\ rI & I\end{pmatrix}$, which is invariant under
+interchanging the two blocks.  Two centred Gaussian measures on
+$\mathbb{R}^{2n}$ with the same covariance coincide; applying this to $\nu_s$ and
+its push-forward under the swap (whose covariance is the block-swapped matrix,
+i.e.\ the same matrix) gives the asserted symmetry.
+
+\emph{(4).}
+Let $v, w \in L^2(\gamma_n)$.  By \noderef{MehlerFormula}, for $\gamma_n$-a.e.\
+$x$,
+\[
+  P_s v(x) = \int_{\mathbb{R}^n} v(rx+\tau y)\, d\gamma_n(y) .
+\]
+First, absolute convergence of the double integral.  By Tonelli and part (3)
+(second marginal), and then Cauchy--Schwarz on $L^2(\gamma_n)$,
+\[
+  \iint |v(rx+\tau y)\, w(x)|\, d\gamma_n(y)d\gamma_n(x)
+    \leq \Bigl(\iint |v(rx+\tau y)|^2\Bigr)^{1/2}
+         \Bigl(\iint |w(x)|^2\Bigr)^{1/2}
+    = \|v\|_2\,\|w\|_2 < \infty ,
+\]
+where $\iint |v(rx+\tau y)|^2 d\gamma_n(y)d\gamma_n(x) = \int|v|^2 d\gamma_n$
+because $(x,y)\mapsto rx+\tau y$ pushes $\gamma_n\otimes\gamma_n$ to $\gamma_n$
+(the computation in (3)), and
+$\iint|w(x)|^2 d\gamma_n(y)d\gamma_n(x) = \|w\|_2^2$ since $\gamma_n$ is a
+probability measure.
+
+Fubini's theorem therefore applies and gives
+\[
+  \langle P_s v, w\rangle
+    = \int w(x)\Bigl(\int v(rx+\tau y)\, d\gamma_n(y)\Bigr) d\gamma_n(x)
+    = \iint v(rx+\tau y)\,w(x)\, d(\gamma_n\otimes\gamma_n)(x,y) .
+\]
+By the definition of the push-forward and of $T$, for any
+$(\gamma_n\otimes\gamma_n)$-integrable $\Psi$ one has
+$\int \Psi \circ T \, d(\gamma_n\otimes\gamma_n) = \int \Psi \, d\nu_s$.  Apply
+this with $\Psi(x', y') = v(y')\, w(x')$: then
+$\Psi(T(x,y)) = v(rx+\tau y)\, w(x)$, so the last double integral equals
+$\iint v(y')w(x')\, d\nu_s(x',y')$, as asserted.
+\end{proof}

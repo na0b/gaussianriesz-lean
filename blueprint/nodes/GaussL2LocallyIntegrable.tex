@@ -1,0 +1,130 @@
+\begin{lemma}[$L^2(\gamma_n)$ lies in $L^1_{\mathrm{loc}}$ and in $L^2_{\mathrm{loc}}$ for Lebesgue measure]
+Let $\gamma_n$ be as in \noderef{GaussMeasure}, write $\lambda$ for Lebesgue
+measure on $\mathbb{R}^n$, and let $v : \mathbb{R}^n \to \mathbb{R}$ be
+$\gamma_n$-measurable with $\int_{\mathbb{R}^n} |v|^2 \, d\gamma_n < \infty$,
+i.e.\ $v \in L^2(\gamma_n)$ as a function.  Then:
+\begin{enumerate}
+\item $v$ is locally $\lambda$-integrable, i.e.\ every point of $\mathbb{R}^n$ has
+a neighbourhood $U$ with $\int_U |v| \, d\lambda < \infty$;
+\item for every compact $K \subseteq \mathbb{R}^n$ the restriction of $v$ to $K$
+lies in $L^2(K,\lambda)$, i.e.\ $\int_K |v|^2 \, d\lambda < \infty$;
+\item (quantitative form, uniform in the function) for every compact
+$K \subseteq \mathbb{R}^n$ there is a constant $C_K \geq 0$, depending only on
+$K$ and on $n$, such that \emph{every} $\gamma_n$-measurable
+$g : \mathbb{R}^n \to \mathbb{R}$ with
+$\int_{\mathbb{R}^n} |g|^2 \, d\gamma_n < \infty$ is $\lambda$-integrable on $K$
+and satisfies
+\[
+  \int_K |g| \, d\lambda \;\leq\; C_K\, \|g\|_{L^2(\gamma_n)} .
+\]
+\end{enumerate}
+All three conclusions are statements about Lebesgue measure, not about
+$\gamma_n$; they are the comparison that lets a function of the Gaussian space
+be fed to test identities written against Lebesgue measure.  Conclusion (3)
+differs from (1) in that its constant does not depend on the function, which is
+what permits passing to a limit along an $L^2(\gamma_n)$-convergent sequence
+inside an integral taken against $\lambda$.
+\end{lemma}
+\begin{proof}
+\emph{Step 0: measurability transfers between the two measures.}
+By \noderef{GaussMeasure}, $\gamma_n$ is absolutely continuous with respect to
+$\lambda$ with Radon--Nikodym density $\varrho(x) = \pi^{-n/2}e^{-|x|^2}$, which
+is continuous and strictly positive at every point; in particular
+$\int h \, d\gamma_n = \int h\,\varrho \, d\lambda$ for every measurable
+$h : \mathbb{R}^n \to [0,+\infty]$, the case $h = \mathbf{1}_A$ being the
+set-level formula displayed there.  Consequently a set is $\lambda$-null if and
+only if it is $\gamma_n$-null: if $\lambda(A) = 0$ then
+$\gamma_n(A) = \int_A \varrho \, d\lambda = 0$; and if $\gamma_n(A) = 0$ then,
+since $\varrho > 0$ everywhere, $\int_A \varrho\,d\lambda = 0$ forces
+$\lambda(A) = 0$.  Hence $v$, which is $\gamma_n$-almost everywhere equal to a
+measurable function, is also $\lambda$-almost everywhere equal to that same
+function, so $v$ is $\lambda$-measurable.  All integrals below are therefore
+meaningful.
+
+\emph{Step 1: the density comparison on a compact set.}
+Let $K \subseteq \mathbb{R}^n$ be compact and nonempty (for $K = \emptyset$ both
+conclusions are trivial).  Since $\varrho$ is continuous and $K$ is compact and
+nonempty, $\varrho$ attains a minimum on $K$ by the extreme value theorem, which
+is shared context; call it $c_K = \min_{x \in K} \varrho(x) = \varrho(x_-)$ for a
+minimizing $x_- \in K$.  As $\varrho > 0$ everywhere, $c_K > 0$.  Also
+$\lambda(K) < \infty$, again shared context for compact sets.  Now
+let $h : \mathbb{R}^n \to [0,+\infty]$ be measurable.  On $K$ we have
+$h \leq c_K^{-1}\, h\, \varrho$ pointwise, because $\varrho \geq c_K$ there and
+$h \geq 0$.  Integrating this pointwise inequality over $K$ and then using the
+density formula of \noderef{GaussMeasure},
+\begin{equation*}
+  \int_K h \, d\lambda
+    \;\leq\; \frac{1}{c_K} \int_K h\, \varrho \, d\lambda
+    \;=\; \frac{1}{c_K} \int_K h \, d\gamma_n .
+  \tag{1}
+\end{equation*}
+
+\emph{Step 2: conclusion (2).}
+Apply $(1)$ with $h = |v|^2$:
+\[
+  \int_K |v|^2 \, d\lambda
+    \;\leq\; \frac{1}{c_K} \int_K |v|^2 \, d\gamma_n
+    \;\leq\; \frac{1}{c_K} \int_{\mathbb{R}^n} |v|^2 \, d\gamma_n
+    \;=\; \frac{1}{c_K}\, \|v\|_{L^2(\gamma_n)}^2
+    \;<\; \infty ,
+\]
+the middle inequality because $|v|^2 \geq 0$, and finiteness by the hypothesis
+$\int |v|^2 d\gamma_n < \infty$.  So $v \in L^2(K,\lambda)$, which is conclusion (2).
+
+\emph{Step 3: conclusion (1).}
+Fix $x_0 \in \mathbb{R}^n$ and put $K = \overline{B}(x_0,1)$, a compact
+neighbourhood of $x_0$; $\lambda(K) < \infty$ by the shared-context item on
+compact sets.  By Cauchy--Schwarz, which is shared context, applied on the
+measure space $(K,\lambda)$ to the pair of functions $|v|$ and the constant
+function $1$ --- both in $L^2(K,\lambda)$, the first by Step 2 and the second
+because $\lambda(K) < \infty$ ---
+\[
+  \int_K |v| \, d\lambda
+    \;\leq\; \Bigl(\int_K |v|^2 \, d\lambda\Bigr)^{1/2}
+             \Bigl(\int_K 1 \, d\lambda\Bigr)^{1/2}
+    \;=\; \Bigl(\int_K |v|^2 \, d\lambda\Bigr)^{1/2} \lambda(K)^{1/2} ,
+\]
+which is finite by Step 2 and $\lambda(K) < \infty$.  So $v$ is
+$\lambda$-integrable on the neighbourhood $K$ of $x_0$.  As $x_0$ was arbitrary,
+$v$ is locally $\lambda$-integrable, which is conclusion (1).
+
+\emph{Step 4: conclusion (3), with an explicit constant.}
+Let $K$ be compact.  If $K$ is empty put $C_K = 0$; the asserted inequality then
+reads $0 \leq 0$.  Otherwise set
+\[
+  C_K := \Bigl(\frac{\lambda(K)}{c_K}\Bigr)^{1/2},
+\]
+with $c_K = \min_{x\in K}\varrho(x) > 0$ as in Step 1; this is a finite
+nonnegative number depending only on $K$ and on $n$, because $K$ compact gives
+$\lambda(K) < \infty$ and Step 1 gives $c_K > 0$.  Let $g$ be any
+$\gamma_n$-measurable function with $\int |g|^2 \, d\gamma_n < \infty$.  Steps 0
+and 1 apply verbatim with $g$ in place of $v$ --- Step 0 used only
+$\gamma_n$-measurability of $v$, and Step 1 is a statement about an arbitrary
+nonnegative measurable $h$ and does not mention $v$ at all --- so $g$ is
+$\lambda$-measurable and, by $(1)$ with $h = |g|^2$ together with
+$|g|^2 \geq 0$,
+\[
+  \int_K |g|^2 \, d\lambda
+    \;\leq\; \frac{1}{c_K}\int_K |g|^2\, d\gamma_n
+    \;\leq\; \frac{1}{c_K}\int_{\mathbb{R}^n} |g|^2\, d\gamma_n
+    \;=\; \frac{1}{c_K}\,\|g\|_{L^2(\gamma_n)}^2 .
+\]
+Taking square roots, which preserves the inequality because $t \mapsto t^{1/2}$
+is nondecreasing on $[0,+\infty)$ and both sides are nonnegative and finite,
+gives $\bigl(\int_K|g|^2 d\lambda\bigr)^{1/2} \leq c_K^{-1/2}
+\|g\|_{L^2(\gamma_n)}$.  By Cauchy--Schwarz, which is shared context, on the
+measure space $(K,\lambda)$ applied to $|g|$ and the constant function $1$ ---
+both in $L^2(K,\lambda)$, the first by the display just proved and the second
+because $\lambda(K) < \infty$ ---
+\[
+  \int_K |g| \, d\lambda
+    \;\leq\; \Bigl(\int_K |g|^2 \, d\lambda\Bigr)^{1/2} \lambda(K)^{1/2}
+    \;\leq\; \frac{\lambda(K)^{1/2}}{c_K^{1/2}}\,\|g\|_{L^2(\gamma_n)}
+    \;=\; C_K\, \|g\|_{L^2(\gamma_n)} ,
+\]
+the second step multiplying the previous bound by $\lambda(K)^{1/2} \geq 0$.
+Finally, $g$ is $\lambda$-integrable on $K$: it is $\lambda$-measurable by Step 0,
+and the Cauchy--Schwarz bound just displayed is precisely the finiteness of
+$\int_K |g|\, d\lambda$, so $g$ restricted to $K$ lies in $L^1(K,\lambda)$.
+Since $g$ was arbitrary, this is conclusion (3).
+\end{proof}

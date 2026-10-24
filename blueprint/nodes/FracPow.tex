@@ -1,0 +1,36 @@
+\begin{definition}[The spectral powers $L^s$, the projection $\Pi_0$, and $L^{-1/2}\Pi_0$]
+Let $v \in L^2(\gamma_n)$ with Hermite coefficients $v_\alpha$ relative to the
+basis of \noderef{HermiteBasis}.  For $s \in \mathbb{R}$ define
+\[
+  L^s v = \sum_{\alpha \neq 0} |\alpha|^{s}\, v_\alpha\, h_\alpha
+  \qquad\text{whenever } v \in \operatorname{Dom}(L^s),
+\]
+the series converging in $L^2(\gamma_n)$ precisely because the coefficient family
+$m_s\bigl((v_\alpha)_\alpha\bigr)$ of \noderef{FracPowCoeff} is then square
+summable, by \noderef{FracPowDomain}; and set $L^s v = 0$ when
+$v \notin \operatorname{Dom}(L^s)$, a convention that makes $L^s$ a total map and is
+never invoked in any statement below.  Thus $L^s v$ is the unique element of
+$L^2(\gamma_n)$ whose Hermite coefficients are $0$ at $\alpha = 0$ and
+$|\alpha|^s v_\alpha$ at $\alpha \neq 0$.
+
+Three instances carry names.  For $s = 0$ the operator is the projection onto the
+mean-zero subspace,
+\[
+  \Pi_0 v = L^0 v = \sum_{\alpha \neq 0} v_\alpha h_\alpha ,
+\]
+defined on all of $L^2(\gamma_n)$.  For $s = 1/2$ it is the operator
+$B = L^{1/2}$ with domain $\operatorname{Dom}(L^{1/2})$.  For $s = -1/2$ it is the
+pseudoinverse
+\[
+  L^{-1/2}\Pi_0 v = \sum_{\alpha \neq 0} |\alpha|^{-1/2} v_\alpha h_\alpha ,
+\]
+defined on all of $L^2(\gamma_n)$; the projection $\Pi_0$ is already incorporated,
+because the multiplier of \noderef{FracPowCoeff} sends the constant mode to zero.
+This reflects that $L$ annihilates constants, so an inverse square root cannot be
+defined on the constant mode by taking the reciprocal of its eigenvalue; instead
+the constant mode is removed and the reciprocal square root $|\alpha|^{-1/2}$ of
+the eigenvalue $|\alpha|$ is applied on each remaining mode.  That the index
+$|\alpha|$ is indeed the eigenvalue of the Ornstein--Uhlenbeck differential
+operator $-\tfrac12\Delta + x\cdot\nabla$ on $h_\alpha$ is the content of
+\noderef{HermiteFunOU}.
+\end{definition}

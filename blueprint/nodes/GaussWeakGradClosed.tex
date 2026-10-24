@@ -1,0 +1,64 @@
+\begin{lemma}[Closedness of the weak gradient under $L^2(\gamma_n)$ limits]
+Let $v_k \to v$ in $L^2(\gamma_n)$ and $G_k \to G$ in
+$L^2(\gamma_n;\mathbb{R}^n)$, and suppose that for every $k$ the field $G_k$ is a
+weak Euclidean gradient of $v_k$ in the sense of \noderef{HasGaussWeakGrad}.
+Then $G$ is a weak Euclidean gradient of $v$.
+\end{lemma}
+\begin{proof}
+Fix $j \in \{1,\ldots,n\}$ and $\varphi \in C_c^\infty(\mathbb{R}^n)$, and let
+$K = \operatorname{supp}\varphi$, a compact set.  By hypothesis and
+\noderef{HasGaussWeakGrad}, for every $k$,
+\begin{equation*}
+  \int_{\mathbb{R}^n} v_k\, \partial_j\varphi \, dx
+    = -\int_{\mathbb{R}^n} (G_k)_j\, \varphi\, dx . \tag{1}
+\end{equation*}
+It suffices to pass to the limit on both sides, since the limiting identity is
+exactly the required one for the pair $(v,G)$.
+
+\emph{Step 1: a uniform local estimate.}
+By \noderef{GaussMeasure} the density $\rho(x) = \pi^{-n/2}e^{-|x|^2}$ is
+continuous and strictly positive, so $c_K := \min_K \rho > 0$.  Let $\psi$ be any
+bounded measurable function supported in $K$, and let $w \in L^2(\gamma_n)$.
+Then
+\[
+  \Bigl|\int w\,\psi\, dx\Bigr|
+    \leq \|\psi\|_\infty \int_K |w| \, dx
+    \leq \frac{\|\psi\|_\infty}{c_K}\int_K |w|\, \rho \, dx
+    = \frac{\|\psi\|_\infty}{c_K}\int_K |w|\, d\gamma_n
+    \leq \frac{\|\psi\|_\infty}{c_K}\,\|w\|_{L^2(\gamma_n)} ,
+\]
+where the last step is \noderef{L2IntoL1} together with
+$\int_K|w|\,d\gamma_n \leq \int |w|\, d\gamma_n = \|w\|_{L^1(\gamma_n)}$, valid
+because $\gamma_n$ is a probability measure (\noderef{GaussIsProb}).
+
+\emph{Step 2: the left-hand sides converge.}
+Apply Step 1 with $\psi = \partial_j\varphi$, which is bounded and supported in
+$K$, and $w = v_k - v \in L^2(\gamma_n)$:
+\[
+  \Bigl|\int v_k\,\partial_j\varphi\, dx - \int v\,\partial_j\varphi\, dx\Bigr|
+    \leq \frac{\|\partial_j\varphi\|_\infty}{c_K}\,\|v_k - v\|_{L^2(\gamma_n)}
+    \xrightarrow[k\to\infty]{} 0 ,
+\]
+since $v_k \to v$ in $L^2(\gamma_n)$.
+
+\emph{Step 3: the right-hand sides converge.}
+Apply Step 1 with $\psi = \varphi$ and $w = (G_k)_j - G_j$.  The $j$th coordinate
+of a field is dominated by its Euclidean norm, so
+$\|(G_k)_j - G_j\|_{L^2(\gamma_n)} \leq \|G_k - G\|_{L^2(\gamma_n;\mathbb{R}^n)}$,
+whence
+\[
+  \Bigl|\int (G_k)_j\,\varphi\, dx - \int G_j\,\varphi\, dx\Bigr|
+    \leq \frac{\|\varphi\|_\infty}{c_K}\,\|G_k - G\|_{L^2(\gamma_n;\mathbb{R}^n)}
+    \xrightarrow[k\to\infty]{} 0 .
+\]
+
+\emph{Step 4: conclusion.}
+Letting $k \to \infty$ in (1) and using Steps 2--3,
+\[
+  \int_{\mathbb{R}^n} v\,\partial_j\varphi\, dx
+    = -\int_{\mathbb{R}^n} G_j\,\varphi\, dx .
+\]
+As $j \in \{1,\ldots,n\}$ and $\varphi \in C_c^\infty(\mathbb{R}^n)$ were
+arbitrary, this is precisely the assertion that $G$ is a weak Euclidean gradient
+of $v$ in the sense of \noderef{HasGaussWeakGrad}.
+\end{proof}

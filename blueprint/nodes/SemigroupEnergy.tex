@@ -1,0 +1,55 @@
+\begin{lemma}[The energy as a semigroup integral]
+For every $v \in L^2(\gamma_n)$,
+\[
+  \mathcal{E}(v)
+    = \frac{1}{2\sqrt\pi}\int_0^\infty
+        \bigl\langle (I - P_s)v,\, v\bigr\rangle\, \frac{ds}{s^{3/2}},
+\]
+an identity in $[0,+\infty]$: the integrand is nonnegative, and the right-hand
+side is $+\infty$ exactly when $v$ lies outside the form domain $\mathcal{V}$,
+in which case $\mathcal{E}(v) = +\infty$ by the convention of \noderef{Energy}.
+Here $P_s$ is the semigroup of \noderef{OUSemigroup}.
+\end{lemma}
+\begin{proof}
+Step 1 (spectral expansion of the integrand).  Fix $s > 0$.  By
+\noderef{OUSemigroupSpectral} the Hermite coefficients of $P_s v$ are
+$e^{-s|\alpha|}v_\alpha$, so by Parseval (\noderef{HermiteBasis})
+\[
+  \bigl\langle (I-P_s)v, v\bigr\rangle
+    = \sum_{\alpha} \bigl(1 - e^{-s|\alpha|}\bigr)|v_\alpha|^2
+    = \sum_{\alpha \neq 0} \bigl(1 - e^{-s|\alpha|}\bigr)|v_\alpha|^2 ,
+\]
+the index $\alpha = 0$ contributing $0$ because $|0| = 0$ by
+\noderef{MultiIndexSum} and hence $1 - e^{0} = 0$.  Every summand is nonnegative,
+since $0 \leq 1 - e^{-s|\alpha|}\leq 1$, and the sum lies between $0$ and
+$\|v\|_2^2$.
+
+Step 2 (Tonelli).  For each fixed $\alpha$ the map
+$s \mapsto (1-e^{-s|\alpha|})s^{-3/2}|v_\alpha|^2$ is continuous and nonnegative
+on $(0,\infty)$, hence measurable.  Tonelli's theorem, applied to counting
+measure on $\mathbb{N}_0^n \setminus \{0\}$ and the measure
+$s^{-3/2}\,ds$ on $(0,\infty)$, allows exchanging the sum and the integral
+without any finiteness assumption, both sides being values in $[0,+\infty]$:
+\[
+  \frac{1}{2\sqrt\pi}\int_0^\infty
+      \langle(I-P_s)v,v\rangle\,\frac{ds}{s^{3/2}}
+    = \sum_{\alpha \neq 0}|v_\alpha|^2 \cdot
+      \frac{1}{2\sqrt\pi}\int_0^\infty\bigl(1-e^{-s|\alpha|}\bigr)\frac{ds}{s^{3/2}} .
+\]
+
+Step 3 (evaluating each factor).  For $\alpha \neq 0$ we have
+$|\alpha| \geq 1 > 0$ by \noderef{MultiIndexSum}, so
+\noderef{ScalarFractional} applies with $\lambda = |\alpha| \geq 0$ and gives
+\[
+  \frac{1}{2\sqrt\pi}\int_0^\infty\bigl(1-e^{-s|\alpha|}\bigr)\frac{ds}{s^{3/2}}
+    = |\alpha|^{1/2}.
+\]
+Substituting into Step 2,
+\[
+  \frac{1}{2\sqrt\pi}\int_0^\infty\langle(I-P_s)v,v\rangle\frac{ds}{s^{3/2}}
+    = \sum_{\alpha\neq0}|\alpha|^{1/2}|v_\alpha|^2 ,
+\]
+and by \noderef{Energy} the right-hand side is exactly $\mathcal{E}(v)$, as an
+identity in $[0,+\infty]$.  In particular the integral is finite precisely when
+$\mathcal{E}(v) < \infty$, i.e. when $v \in \mathcal{V}$.
+\end{proof}

@@ -1,0 +1,140 @@
+\begin{lemma}[A Chebyshev level set of a locally averaged function occupies at most a quarter of a small ball]
+Fix $n \geq 1$, let $\lambda$ be Lebesgue measure on $\mathbb{R}^n$ and let
+$\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure}.  Let $R \geq 1$.
+Then there is a constant $K \in (0,\infty)$, depending only on $n$ and $R$,
+such that the following holds.
+
+Let $u : \mathbb{R}^n \to \mathbb{R}$, let $x \in \mathbb{R}^n$ and let
+$\varepsilon$ and $\Psi$ be real, and suppose
+\[
+  |x| \leq R, \qquad 0 < \varepsilon \leq 1, \qquad 0 \leq \Psi ,
+\]
+and that
+\begin{enumerate}
+\item[(a)] $u \geq 0$ everywhere;
+\item[(b)] $u$ is Lebesgue-measurable up to a null set; and
+\item[(c)] $\displaystyle\int_{\overline B(x,\varepsilon/2)}^{*}u\,d\lambda
+  \;\leq\; \Psi\cdot\lambda\bigl(\overline B(x,\varepsilon/2)\bigr)$, the left
+  side being the lower Lebesgue integral in $[0,+\infty]$ and the right side
+  read there too.
+\end{enumerate}
+Then
+\[
+  \gamma_n\Bigl(\bigl\{z \in B(x,\tfrac12\varepsilon) : u(z) > K\Psi\bigr\}\Bigr)
+    \;\leq\; \tfrac14\,\gamma_n\bigl(B(x,\tfrac12\varepsilon)\bigr) .
+\]
+
+\emph{Why the statement is about $u$ and not about $u^2$.}  The intended
+consumer applies this with $u = |v|^{1/2}$ for a function $v$ whose level sets
+at height $(K\Psi)^2$ it wants to control, since $|v(z)| > (K\Psi)^2$ holds
+exactly when $|v(z)|^{1/2} > K\Psi$, the square root being increasing on
+$[0,\infty)$.  That equivalence is one line in the consumer, and the square
+root is an artefact of how the consumer reaches its threshold rather than
+anything this lemma needs; so the statement is given for $u$ directly.
+
+\emph{Why (c) is a lower Lebesgue integral and (b) is nonetheless required.}
+Hypothesis (c) is stated with $\int^{*}$ because that is the shape a consumer
+has available: it is what the definition of the local maximal function of
+\noderef{LocalMaximalFunction} as a supremum over radii in $(0,2]$ supplies,
+after multiplying by the finite positive number
+$\lambda(\overline B(x,\varepsilon/2))$.  Unlike (c), the Chebyshev step in the
+proof does need (b): it compares the integral of $u$ over the level set with
+the constant $K\Psi$ there, and that comparison is made on the measure
+restricted to the level set, which requires the level set to be measurable up
+to a null set.  Hypothesis (b) is what supplies that, and a consumer has it,
+the canonical representative of an almost-everywhere equivalence class being
+measurable up to a null set.
+
+\emph{The degenerate case $\Psi = 0$ is included.}  When $\Psi = 0$ the
+hypothesis forces the lower integral of $u$ over
+$\overline B(x,\varepsilon/2)$ to vanish, hence $u = 0$ $\lambda$-almost
+everywhere there by (a), so the level set
+$\{z \in B(x,\tfrac12\varepsilon) : u(z) > 0\}$ is $\lambda$-null and therefore
+$\gamma_n$-null, the two measures having the same null sets by clause (4) of
+\noderef{GaussLebesgueBallComparison}.  That case is not reachable by
+Chebyshev, which needs a positive threshold.
+
+\emph{The constant depends on $R$, necessarily.}  One may take
+$K = 4e^{(R+2)^2}$, which is $4p/a$ for $p = \pi^{-n/2}$ the upper bound for
+the Gaussian density and $a = \pi^{-n/2}e^{-(R+2)^2}$ its lower bound on
+$\overline B(0,R+2)$; the dimensional factors cancel, so $K$ happens not to
+depend on $n$, but no uniformity in $R$ is claimed.
+\end{lemma}
+\begin{proof}
+Put $p = \pi^{-n/2} > 0$ and $a = \pi^{-n/2}e^{-(R+2)^2} > 0$, so that
+$p/a = e^{(R+2)^2}$, and set $K = 4e^{(R+2)^2} = 4p/a \in (0,\infty)$.  Fix
+$u$, $x$, $\varepsilon$, $\Psi$ and the hypotheses, and write
+$B' = B(x,\tfrac12\varepsilon)$ and $S = \overline B(x,\tfrac12\varepsilon)$,
+so $B' \subseteq S$.
+
+\emph{Step 1: the two balls have the same volume, and $\gamma_n(B')$ is bounded
+below.}  Lebesgue measure on $\mathbb{R}^n$ is an additive Haar measure and
+$\mathbb{R}^n$ has real dimension $n$, so both
+$\lambda(\overline B(x,r))$ and $\lambda(B(x,r))$ equal
+$r^n\lambda(B(0,1))$ for every $r \geq 0$ (shared context; $n \geq 1$ is what
+makes $\mathbb{R}^n$ nontrivial, as those statements require).  Hence
+\begin{equation*}
+  \lambda(S) = \lambda(B') . \tag{1}
+\end{equation*}
+Also $B'$ is measurable and $B' \subseteq \overline B(0,R+2)$: for $y \in B'$,
+$|y| - |x| \leq |y-x| < \tfrac12\varepsilon \leq \tfrac12$, so
+$|y| \leq R+\tfrac12 \leq R+2$.  So clause (2) of
+\noderef{GaussLebesgueBallComparison}, applied with $R+2$ in place of its $R$
+and with $E = B'$, gives
+\begin{equation*}
+  a\,\lambda(B') \leq \gamma_n(B') . \tag{2}
+\end{equation*}
+Finally, since $u \geq 0$ by (a), the extended-real norm of $u(y)$ is $u(y)$
+itself for every $y$; we use this silently below when passing between
+$\int^{*}u$ and $\int^{*}\|u\|$.
+
+\emph{Step 2: the case $\Psi = 0$.}  Then the right-hand side of (c) is $0$, so
+$\int_S^{*}u\,d\lambda = 0$.  A nonnegative function with vanishing lower
+Lebesgue integral vanishes almost everywhere, so $u = 0$ $\lambda$-almost
+everywhere on $S$; that is, for $\lambda$-almost every $y$, $y \in S$ implies
+$u(y) = 0$.  The threshold is $K\Psi = 0$, so the level set is
+$E_2 = \{z \in B' : u(z) > 0\}$.  Every $z \in E_2$ lies in $B' \subseteq S$
+and has $u(z) \neq 0$, so $E_2$ is contained in the $\lambda$-null set of
+points where that implication fails; hence $\lambda(E_2) = 0$, and by clause
+(4) of \noderef{GaussLebesgueBallComparison} --- which says $\gamma_n$ and
+$\lambda$ have the same null sets --- also $\gamma_n(E_2) = 0$, which is at
+most $\tfrac14\gamma_n(B')$.
+
+\emph{Step 3: the case $\Psi > 0$.}  Then $t := K\Psi > 0$.  Put
+$E_2 = \{z \in B' : u(z) > t\}$.  By (b), $E_2$ is the intersection of the
+measurable set $B'$ with a preimage under $u$ of an open half-line, so it is
+measurable up to a $\lambda$-null set.
+
+Chebyshev's inequality for $\lambda$ on $E_2$: the constant function $t$ is at
+most $u$ at every point of $E_2$, so integrating that pointwise bound over
+$E_2$ and evaluating the left integral,
+\[
+  t\,\lambda(E_2) = \int_{E_2}^{*}t\,d\lambda
+    \leq \int_{E_2}^{*}u\,d\lambda
+    \leq \int_{S}^{*}u\,d\lambda ,
+\]
+the last step by $E_2 \subseteq B' \subseteq S$ and monotonicity of the lower
+Lebesgue integral in the domain.  By (c) and then $(1)$,
+\[
+  t\,\lambda(E_2) \leq \Psi\,\lambda(S) = \Psi\,\lambda(B') .
+\]
+Since $t > 0$ is finite and nonzero, multiplying through by $t^{-1}$,
+\begin{equation*}
+  \lambda(E_2) \leq \frac{\Psi}{t}\,\lambda(B') . \tag{3}
+\end{equation*}
+Now pass to $\gamma_n$.  Clause (1) of \noderef{GaussLebesgueBallComparison},
+which holds for every set, gives $\gamma_n(E_2) \leq p\,\lambda(E_2)$.  With
+$(3)$ and the definition of $K$,
+\[
+  \gamma_n(E_2) \leq p\,\frac{\Psi}{K\Psi}\,\lambda(B')
+    = \frac{p}{K}\,\lambda(B')
+    = \frac{p\,a}{4p}\,\lambda(B')
+    = \frac{a}{4}\,\lambda(B') ,
+\]
+the cancellation of $\Psi$ being legitimate because $\Psi > 0$.  Finally $(2)$
+gives $a\,\lambda(B') \leq \gamma_n(B')$, so dividing by $4$,
+\[
+  \gamma_n(E_2) \leq \tfrac14\,a\,\lambda(B') \leq \tfrac14\gamma_n(B') ,
+\]
+which is the assertion.
+\end{proof}

@@ -1,0 +1,76 @@
+\begin{lemma}[Complex $L^1$ approximation by $L^2$ radial truncations, with geometric decay]
+Let $f \in L^1(\gamma_n;\mathbb{C})$ and write $\iota_{\mathbb{C}}$ for the
+inclusion of \noderef{ComplexToL1}.  Assume
+\begin{enumerate}
+  \item[(N)] $\|\iota_{\mathbb{C}} u\|_{L^1} = \int |u|\,d\gamma_n$ for every
+    $u \in L^2(\gamma_n;\mathbb{C})$, the $L^1$ norm of an inclusion written as
+    the integral of the modulus of any representative.
+\end{enumerate}
+Then there is a sequence $(v_j)_{j\in\mathbb{N}}$ in $L^2(\gamma_n;\mathbb{C})$
+such that
+\begin{enumerate}
+  \item $\|\iota_{\mathbb{C}} v_k\|_{L^1} \leq \|f\|_{L^1}$ for every $k$;
+  \item $\iota_{\mathbb{C}} v_k \to f$ in $L^1(\gamma_n;\mathbb{C})$; and
+  \item $\|\iota_{\mathbb{C}} v_j - \iota_{\mathbb{C}} v_{j+1}\|_{L^1}
+    \leq 8^{-j}$ for every $j$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Part 1: the radial truncations.}
+Fix a representative $F : \mathbb{R}^n \to \mathbb{C}$ of $f$.  For
+$k \in \mathbb{N}$ define $\varphi_k : \mathbb{C} \to \mathbb{C}$ by
+\[
+  \varphi_k(z) = \begin{cases} z, & |z| \leq k, \\[2pt]
+    k\,z/|z|, & |z| > k, \end{cases}
+\]
+and put $\tau_k = \varphi_k \circ F$.  (This is the complex analogue of the real
+two-sided truncation $\max\{-k,\min\{\cdot,k\}\}$: it cuts the modulus at $k$ and
+leaves the argument alone.)
+
+\emph{(1a) $\varphi_k$ is continuous, so $\tau_k$ is measurable.}  On
+$\{|z| \leq k\}$ and on $\{|z| \geq k\}$ the two formulas are continuous --- the
+second because $z \mapsto |z|$ is continuous and nonzero there, as $k \geq 0$ and
+$|z| \geq k$ with $|z| > 0$ whenever $k > 0$; for $k = 0$ the second branch is
+the constant $0$ --- and on the overlap $\{|z| = k\}$ they agree, since
+$k z/|z| = z$ there.  Hence $\varphi_k$ is continuous on $\mathbb{C}$ by gluing
+on two closed sets, so Borel measurable, and $\tau_k = \varphi_k \circ F$ is
+measurable.
+
+\emph{(1b) the two pointwise bounds.}  For every $z$, $|\varphi_k(z)|
+= \min\{|z|, k\}$: if $|z| \leq k$ this is $|z|$, and otherwise it is
+$|k z/|z|| = k$.  Hence for every $x$
+\begin{equation*}
+  |\tau_k(x)| \leq k \qquad\text{and}\qquad |\tau_k(x)| \leq |F(x)| . \tag{B}
+\end{equation*}
+
+\emph{(1c) $\tau_k$ lies in $L^2$, and clause (1).}  Since $\gamma_n$ is a
+probability measure (\noderef{GaussIsProb}), the bound $|\tau_k| \leq k$ makes
+$\tau_k$ square $\gamma_n$-integrable; let
+$\tilde v_k \in L^2(\gamma_n;\mathbb{C})$ be its class.  By hypothesis (N), the
+second bound in (B) and monotonicity of the integral,
+\[
+  \|\iota_{\mathbb{C}}\tilde v_k\|_{L^1} = \int|\tau_k|\,d\gamma_n
+    \leq \int|F|\,d\gamma_n = \|f\|_{L^1} ,
+\]
+which is clause (1) for this sequence.
+
+\emph{(1d) $L^1$ convergence, i.e.\ clause (2).}  For every $x$, as soon as
+$k \geq |F(x)|$ we have $\varphi_k(F(x)) = F(x)$, so $\tau_k(x) \to F(x)$, the
+sequence being eventually constant at each point.  By (B),
+$|\tau_k(x) - F(x)| \leq |\tau_k(x)| + |F(x)| \leq 2|F(x)|$, and $2|F|$ is
+$\gamma_n$-integrable because $f \in L^1(\gamma_n;\mathbb{C})$.  Dominated
+convergence (shared context) therefore gives
+$\|\iota_{\mathbb{C}}\tilde v_k - f\|_{L^1} = \int|\tau_k - F|\,d\gamma_n \to 0$.
+
+\emph{Part 2: a rapidly converging subsequence.}
+By (1d) we may choose, for each $j \in \mathbb{N}$, an index $\sigma(j)$ with
+$\|\iota_{\mathbb{C}}\tilde v_{\sigma(j)} - f\|_{L^1} \leq \tfrac12 8^{-j}$.  Put
+$v_j = \tilde v_{\sigma(j)}$.  Clause (1) is inherited from (1c), and
+$\|\iota_{\mathbb{C}} v_j - f\|_{L^1} \leq \tfrac12 8^{-j} \to 0$ is clause (2)
+for $(v_j)$.  By the triangle inequality and $8^{-(j+1)} \leq 8^{-j}$,
+\[
+  \|\iota_{\mathbb{C}} v_j - \iota_{\mathbb{C}} v_{j+1}\|_{L^1}
+    \leq \tfrac12 8^{-j} + \tfrac12 8^{-(j+1)} \leq 8^{-j} ,
+\]
+which is clause (3).
+\end{proof}

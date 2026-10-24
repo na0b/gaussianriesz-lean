@@ -1,0 +1,67 @@
+\begin{lemma}[The two reflected pointwise majorants for the Mehler slice]
+Fix $n \geq 1$, a coordinate $j$, and $M \geq 3$.  For $w,y \in \mathbb{R}^n$ and
+$r \in (0,1)$ write
+\[
+  \Phi_{w,y}(r) = \frac{y_j - rw_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+    \exp\Bigl(-\frac{|rw-y|^2}{1-r^2}\Bigr) ,
+\]
+and for $x,y \in \mathbb{R}^n$ put $d = |x-y|$.  Let $|x| \leq M$, $|y| \leq M$
+and $d \leq 2$.  Then both of the following hold, with $\tau = 1-r$.
+\begin{enumerate}
+  \item For every $\tau$ with $0 < \tau \leq d/(2M)$,
+    \[
+      \bigl|\Phi_{x,y}(1-\tau)\bigr|
+        \leq e^{M^2}\,\tfrac32 d\,\tau^{-n/2-3/2}e^{-d^2/(8\tau)} .
+    \]
+  \item For every $\tau \in (0,1)$,
+    \[
+      \bigl|\Phi_{x,y}(1-\tau)\bigr|
+        \leq e^{M^2}d\,\tau^{-n/2-3/2} + e^{M^2}M\,\tau^{-(n+2)/2} .
+    \]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Throughout $\tau = 1-r \in (0,1)$, so $r \in (0,1)$, and $d = |x-y|$.
+
+\emph{Step 0: the two inputs.}
+By \noderef{GaussRieszKernelNearSliceBounds}, applied at the base point $w = x$
+(legitimate since $|x| \leq M$ and $|y| \leq M$), for every $\tau \in (0,1)$
+\begin{equation*}
+  \bigl|\Phi_{x,y}(1-\tau)\bigr|
+    \leq e^{M^2}\,\bigl(d + \tau M\bigr)\,\tau^{-n/2-3/2}
+      \exp\Bigl(-\frac{|x-(1-\tau)y|^2}{2\tau}\Bigr) . \tag{1}
+\end{equation*}
+Second, since $x - (1-\tau)y = (x-y) + \tau y$ and $|y| \leq M$, the triangle
+inequality in the form $|a+b| \geq |a| - |b|$ gives
+\begin{equation*}
+  |x-(1-\tau)y| \geq |x-y| - \tau|y| \geq d - \tau M . \tag{2}
+\end{equation*}
+
+\emph{Step 1: clause (1), the near majorant.}
+Let $0 < \tau \leq d/(2M)$.  Multiplying that inequality by $2M > 0$ gives
+$2M\tau \leq d$, hence $\tau M \leq d/2$ and therefore
+$d + \tau M \leq \tfrac32 d$.  By $(2)$ also
+$|x-(1-\tau)y| \geq d - \tau M \geq d - d/2 = d/2 \geq 0$, so squaring the
+nonnegative sides gives $|x-(1-\tau)y|^2 \geq d^2/4$ and hence, dividing by
+$2\tau > 0$ and using monotonicity of $t \mapsto e^{-t}$,
+\[
+  \exp\Bigl(-\frac{|x-(1-\tau)y|^2}{2\tau}\Bigr)
+    \leq \exp\Bigl(-\frac{d^2}{8\tau}\Bigr) .
+\]
+Substituting both estimates into $(1)$, the prefactor
+$e^{M^2}(d+\tau M)\tau^{-n/2-3/2}$ being nonnegative and the exponential
+positive, yields clause (1).
+
+\emph{Step 2: clause (2), the majorant valid at every time.}
+Let $\tau \in (0,1)$.  Bound the exponential in $(1)$ by $1$, which is legitimate
+because $-|x-(1-\tau)y|^2/(2\tau) \leq 0$, and expand the prefactor:
+\[
+  (d+\tau M)\,\tau^{-n/2-3/2}
+    = d\,\tau^{-n/2-3/2} + M\,\tau^{1-(n/2+3/2)}
+    = d\,\tau^{-n/2-3/2} + M\,\tau^{-(n+1)/2} .
+\]
+Finally $0 < \tau < 1$ and $(n+1)/2 \leq (n+2)/2$ give
+$\tau^{-(n+1)/2} \leq \tau^{-(n+2)/2}$, since $s \mapsto \tau^{-s}$ is
+nondecreasing for $\tau \leq 1$.  Multiplying by $e^{M^2}M \geq 0$ and adding the
+first term gives clause (2).
+\end{proof}

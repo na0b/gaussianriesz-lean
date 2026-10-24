@@ -1,0 +1,198 @@
+\begin{lemma}[Any limit of the truncated Gaussian Riesz integrals is the corresponding coordinate of the operator]
+Fix $n \geq 1$, let $\lambda$ be Lebesgue measure on $\mathbb{R}^n$, let
+$\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure}, and let
+$K_{\gamma,j}$ be the kernel of \noderef{GaussRieszKernel}.  Let
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions such that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item[(T2)] $t\,\gamma_n\bigl(\{x : |Th(x)|_{\mathbb{R}^n} > t\}\bigr)
+\leq 2\,\|h\|_{L^1(\gamma_n)}$ for every $h \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$.
+\end{enumerate}
+For a $\gamma_n$-integrable $h$, a coordinate $j$, a point $x$ and a real
+$\varepsilon > 0$ write
+$T_{j,\varepsilon}h(x) = \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)h(y)\,dy$,
+the $y$-integral against $\lambda$; for an element of $L^1(\gamma_n)$ this is
+read through its canonical representative.
+
+Let $f \in L^1(\gamma_n)$ and let $j \in \{1,\ldots,n\}$.  Then for
+$\gamma_n$-almost every $x \in \mathbb{R}^n$ the following holds: for every
+real number $L$,
+\[
+  \lim_{\varepsilon\downarrow0}T_{j,\varepsilon}f(x) = L
+  \qquad\Longrightarrow\qquad
+  L = (Tf)_j(x) ,
+\]
+the limit taken through $\varepsilon \in (0,\infty)$ as $\varepsilon \to 0$ and
+$(Tf)_j(x)$ the $j$th coordinate of the canonical representative of $Tf$.
+
+\emph{Identification only, and the implication form is the point.}  The
+statement asserts nothing about whether the limit exists: it is vacuously true
+at any $x$ where no $L$ is a limit.  That is deliberate.  Existence of the
+limit is a separate assertion with separate inputs, and a statement combining
+the two would be the conclusion that a covering node draws from this one
+together with that one, so stating it here would leave that node nothing to do.
+Keeping identification and existence apart is what makes each of them
+independently citable.
+
+\emph{Why quantifying over all $L$ loses nothing.}  Limits along
+$\varepsilon \downarrow 0$ in $\mathbb{R}$ are unique, so at a given $x$ there
+is at most one such $L$ and the universally quantified form says exactly "the
+limit, if it exists, is $(Tf)_j(x)$".  The quantified form is used because it
+needs no existence hypothesis and no partial function.
+
+\emph{Why the conclusion is almost-everywhere.}  Two exceptional sets are
+unavoidable, and both are controlled only in measure.  The first is where the
+maximal truncation of the approximation error is large, controlled by
+\noderef{GaussMaximalTruncationLocal}; the second is where $T$ of the error is
+large, controlled by \noderef{CoordinateEndpointBound}.  Neither is empty for a
+general $f \in L^1(\gamma_n)$, and the right-hand side $(Tf)_j$ is in any case
+a coordinate of an almost-everywhere equivalence class, so no pointwise
+statement about it is available.
+
+\emph{Both (T1) and (T2) are assumed, because the inputs carry both.}  It is a
+statement about every $T$ satisfying the two, and it is not vacuous because
+\noderef{L1Extension} exhibits such a $T$.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: the approximants, and the error as a difference of classes.}
+For each $k \in \mathbb{N}$ apply \noderef{GaussRieszTruncationSmoothSplit} to
+$f$ and $k$.  It produces $\varphi_k$ and $g_k \in L^1(\gamma_n)$ with
+$\varphi_k$ smooth, compactly supported and $\gamma_n$-integrable; with
+\begin{equation*}
+  \int_{\mathbb{R}^n}|g_k|\,d\gamma_n < \frac1{k+1} ; \tag{1}
+\end{equation*}
+with $f = \varphi_k + g_k$ $\gamma_n$-almost everywhere; and with, for every
+$x$ and every real $\varepsilon > 0$, each of the three integrands Lebesgue
+integrable on $\{y : |x-y| > \varepsilon\}$ and
+\begin{equation*}
+  T_{j,\varepsilon}f(x)
+    = T_{j,\varepsilon}\varphi_k(x) + T_{j,\varepsilon}g_k(x) . \tag{2}
+\end{equation*}
+Write $\psi_k \in L^1(\gamma_n)$ for the class of $\varphi_k$, which exists
+because $\varphi_k$ is $\gamma_n$-integrable.  The third clause says that the
+canonical representative of $g_k$ agrees $\gamma_n$-almost everywhere with
+$f - \varphi_k$, hence with the canonical representative of $f - \psi_k$; and
+two elements of $L^1(\gamma_n)$ whose representatives agree almost everywhere
+are equal, so
+\begin{equation*}
+  g_k = f - \psi_k \quad\text{in } L^1(\gamma_n) . \tag{3}
+\end{equation*}
+Also $\|g_k\|_{L^1(\gamma_n)} = \int|g_k|\,d\gamma_n < 1/(k+1)$ by $(1)$.
+
+\emph{Step 2: two almost-everywhere facts, for all $k$ at once.}
+For each $k$, \noderef{SmoothCoreTruncationBridge} applied to this $T$ with its
+property (T1), to $\varphi_k$ --- smooth, compactly supported,
+$\gamma_n$-integrable --- and to the coordinate $j$, gives a $\gamma_n$-null
+set off which
+\begin{equation*}
+  \lim_{\varepsilon\downarrow0}T_{j,\varepsilon}\varphi_k(x)
+    = (T\psi_k)_j(x) . \tag{4}
+\end{equation*}
+And $T$ is linear, so by $(3)$, $Tg_k = Tf - T\psi_k$ in
+$\mathcal{M}(\gamma_n;\mathbb{R}^n)$; the canonical representative of a
+difference of classes agrees $\gamma_n$-almost everywhere with the difference
+of the representatives, so there is a $\gamma_n$-null set off which
+\begin{equation*}
+  (Tg_k)_j(x) = (Tf)_j(x) - (T\psi_k)_j(x) . \tag{5}
+\end{equation*}
+A countable union of $\gamma_n$-null sets is $\gamma_n$-null, so there is a
+single $\gamma_n$-null set $N$ off which $(4)$ and $(5)$ hold \emph{for every}
+$k \in \mathbb{N}$.  It therefore suffices to show that the set
+\[
+  B = \bigl\{x : \text{some real } L \text{ is a limit of }
+     T_{j,\varepsilon}f(x) \text{ and } L \neq (Tf)_j(x)\bigr\}
+\]
+satisfies $\gamma_n(B \setminus N) = 0$, since then
+$\gamma_n(B) \leq \gamma_n(B\setminus N) + \gamma_n(N) = 0$ by subadditivity.
+
+\emph{Step 3: a two-way split in measure.}
+Note first that the split is two-way and not three-way: $(4)$ identifies the
+limit of the smooth part \emph{as} $(T\psi_k)_j(x)$ directly, so no separate
+set on which that identification fails has to be introduced.
+
+Let $x \in B \setminus N$, with witness $L$.  Then
+$|L - (Tf)_j(x)| > 0$, so there is $m \in \mathbb{N}$ with
+\begin{equation*}
+  2\cdot\frac1{m+1} < \bigl|L - (Tf)_j(x)\bigr| , \tag{6}
+\end{equation*}
+and there is $r \in \mathbb{N}$ with $|x| \leq r+1$, for instance
+$r = \lceil|x|\rceil$.  Fix any $k$.  By $(5)$ and the triangle inequality,
+\[
+  \bigl|L - (Tf)_j(x)\bigr|
+    \leq \bigl|L - (T\psi_k)_j(x)\bigr| + \bigl|(Tg_k)_j(x)\bigr| ,
+\]
+so by $(6)$ at least one of the two terms on the right exceeds $1/(m+1)$.
+
+Suppose $|(Tg_k)_j(x)| > 1/(m+1)$.  Then $x$ lies in
+$F_{m,k} = \{x : |(Tg_k)_j(x)| > 1/(m+1)\}$.
+
+Suppose instead $|L - (T\psi_k)_j(x)| > 1/(m+1)$.  By $(2)$ at each
+$\varepsilon > 0$, $T_{j,\varepsilon}g_k(x)
+ = T_{j,\varepsilon}f(x) - T_{j,\varepsilon}\varphi_k(x)$, and both terms on
+the right converge as $\varepsilon \downarrow 0$ --- the first to $L$ by the
+choice of $L$, the second to $(T\psi_k)_j(x)$ by $(4)$, available because
+$x \notin N$.  Hence $T_{j,\varepsilon}g_k(x) \to L - (T\psi_k)_j(x)$ and so
+$|T_{j,\varepsilon}g_k(x)| \to |L - (T\psi_k)_j(x)| > 1/(m+1)$.  A convergent
+family whose limit exceeds $1/(m+1)$ eventually exceeds it, and every
+neighbourhood of $0$ meets $(0,\infty)$, so there is a real $\varepsilon > 0$
+with $|T_{j,\varepsilon}g_k(x)| > 1/(m+1)$.  Since a single term is at most the
+supremum and $\mathrm{ofReal}$ is strictly increasing on $[0,\infty)$,
+\[
+  \mathrm{ofReal}\Bigl(\frac1{m+1}\Bigr)
+    < \sup_{\varepsilon>0}\mathrm{ofReal}
+      \bigl|T_{j,\varepsilon}g_k(x)\bigr| ,
+\]
+the supremum in $[0,+\infty]$; together with $|x| \leq r+1$ this puts $x$ in
+\[
+  E_{r,m,k} = \Bigl\{x : |x| \leq r+1 \text{ and }
+    \mathrm{ofReal}\bigl(\tfrac1{m+1}\bigr)
+      < \sup_{\varepsilon>0}\mathrm{ofReal}\bigl|T_{j,\varepsilon}g_k(x)\bigr|
+  \Bigr\} .
+\]
+As $k$ was arbitrary,
+$x \in \bigcap_{k}\bigl(E_{r,m,k} \cup F_{m,k}\bigr)$, and therefore
+\[
+  B \setminus N \;\subseteq\;
+    \bigcup_{m\in\mathbb{N}}\bigcup_{r\in\mathbb{N}}
+      \bigcap_{k\in\mathbb{N}}\bigl(E_{r,m,k} \cup F_{m,k}\bigr) .
+\]
+By countable subadditivity it suffices to show
+$\gamma_n\bigl(\bigcap_k(E_{r,m,k} \cup F_{m,k})\bigr) = 0$ for each fixed $r$
+and $m$.
+
+Fix $r$ and $m$ and put $t_m = \mathrm{ofReal}(1/(m+1)) \neq 0$.  Apply
+\noderef{GaussMaximalTruncationLocal} to this $T$ with its two properties, to
+the coordinate $j$ and to the radius $R := r+1 \geq 1$; it supplies
+$C_r \in (0,\infty)$, produced before its input is quantified, with
+$\gamma_n(E_{r,m,k}) \leq C_r\cdot\mathrm{ofReal}\bigl(\int|g_k|d\gamma_n\bigr)/t_m$
+for every $k$.  Apply \noderef{CoordinateEndpointBound} to this $T$ with its two
+properties, to the input $g_k$, the coordinate $j$ and the real level
+$1/(m+1) > 0$; it gives
+$t_m\cdot\gamma_n(F_{m,k}) \leq \mathrm{ofReal}(2\|g_k\|_{L^1(\gamma_n)})$,
+hence $\gamma_n(F_{m,k}) \leq
+ \mathrm{ofReal}(2\|g_k\|_{L^1(\gamma_n)})/t_m$ because $t_m$ is neither $0$
+nor $+\infty$.  Let
+$D = C_r/t_m + \mathrm{ofReal}(2)/t_m$, which is not $+\infty$ because $C_r$ is
+not and $t_m$ is not $0$.  Using $ab/c = (a/c)b$ in $[0,+\infty]$, then $(1)$
+and Step 1's norm identity, both bounds become at most
+$D\cdot\mathrm{ofReal}(1/(k+1))$.  So for every $k$, by monotonicity and
+subadditivity,
+\[
+  \gamma_n\Bigl(\bigcap_{i}(E_{r,m,i} \cup F_{m,i})\Bigr)
+    \leq \gamma_n(E_{r,m,k}) + \gamma_n(F_{m,k})
+    \leq (D + D)\cdot\mathrm{ofReal}\Bigl(\frac1{k+1}\Bigr) .
+\]
+Now $1/(k+1) \to 0$, so $\mathrm{ofReal}(1/(k+1)) \to 0$ in $[0,+\infty]$, and
+since $D + D \neq +\infty$ also $(D+D)\cdot\mathrm{ofReal}(1/(k+1)) \to 0$.  A
+quantity in $[0,+\infty]$ bounded above by every term of a sequence converging
+to $0$ is at most $0$, so the intersection is $\gamma_n$-null, completing the
+proof.
+\end{proof}

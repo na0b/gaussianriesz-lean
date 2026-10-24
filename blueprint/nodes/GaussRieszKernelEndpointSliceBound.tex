@@ -1,0 +1,55 @@
+\begin{lemma}[A constant bound for the reflected kernel integrand near $r = 1$]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$.  For $x,y \in \mathbb{R}^n$ and $r \in (0,1)$ put
+\[
+  \Psi_{x,y}(r)
+    = \frac{y_j - r x_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \exp\Bigl(-\frac{|x-ry|^2}{1-r^2}\Bigr) ,
+\]
+the \emph{reflected} integrand of the raw Gaussian Riesz kernel: it is obtained from the
+kernel's own $r$-integrand by interchanging the roles of $x$ and $y$ inside the Gaussian
+exponent, and it is the quantity the splitting identity
+$|rx-y|^2/(1-r^2) = (|y|^2-|x|^2) + |x-ry|^2/(1-r^2)$ produces.  Then for all $R > 0$ and
+$\rho > 0$ there is a constant $C > 0$, depending only on $n$, $j$, $R$ and $\rho$, such
+that
+\[
+  \bigl|\Psi_{x,y}(r)\bigr| \leq C
+  \qquad\text{whenever } |x| \leq R,\quad |x-y| \geq \rho,\quad \tfrac12 \leq r < 1 .
+\]
+
+The range $\tfrac12 \leq r < 1$ is the one that matters: as $r \uparrow 1$ both
+$(1-r^2)^{-n/2-1}$ and $(-\log r)^{-1/2}$ blow up, and the assertion is that the Gaussian
+factor more than compensates, uniformly in $x$ and $y$ in the stated range.  That is where
+the hypothesis $|x-y| \geq \rho$ is used, and it is the only place it is needed: at $r = 1$
+the exponent is $-|x-y|^2/0^+$, so the Gaussian decay is available exactly because $x$ and
+$y$ are separated.  The hypothesis $|x| \leq R$ enters through the numerator and through
+the competition between $|x|$ and $|y|$.
+
+The bound is a \emph{pointwise} constant bound, not a bound on
+$\int_{1/2}^1|\Psi_{x,y}|$, and it is deliberately so: the route below produces the
+pointwise statement with no extra work, and the consumer needs a pointwise majorant in
+order to get integrability on $(0,1)$ at the same time as the size bound.  Integrating the
+constant over a set of measure $\tfrac12$ recovers the integral form at once.  No
+uniformity in $n$, $R$ or $\rho$ is claimed, and nothing here feeds an endpoint constant.
+\end{lemma}
+\begin{proof}
+Fix $n \geq 1$ and $j$.  Let $R,\rho > 0$ be given and put
+\[
+  R' = \max(R,1) , \qquad \rho' = \min(\rho,1) , \qquad
+  \tau_0 = \min\Bigl(\tfrac12,\ \frac{\rho'}{8R'}\Bigr) .
+\]
+Then $1 \leq R'$ and $R \leq R'$; and $0 < \rho' \leq 1$ with $\rho' \leq \rho$.  In
+particular $0 < R'$, so $\rho'/(8R') > 0$, whence $\tau_0 > 0$ as the minimum of two
+positive numbers, while $\tau_0 \leq \tfrac12$ and $\tau_0 \leq \rho'/(8R')$ hold by the
+definition of the minimum.  So $R'$, $\rho'$ and $\tau_0$ satisfy the hypotheses of
+\noderef{GaussRieszKernelSingularRangeSliceBound}, which therefore supplies a constant
+$C_2 > 0$ such that
+\[
+  \bigl|\Psi_{x,y}(r)\bigr| \leq C_2
+  \qquad\text{whenever } |x| \leq R',\quad \rho' \leq |x-y|,\quad \tfrac12 \leq r < 1 .
+\]
+It remains to see that this constant works for $(R,\rho)$.  Any pair $(x,y)$ with
+$|x| \leq R$ satisfies $|x| \leq R'$ because $R \leq R'$, and any pair with
+$|x-y| \geq \rho$ satisfies $|x-y| \geq \rho'$ because $\rho' \leq \rho$.  Hence
+$C = C_2$ has the required property, and it depends only on $n$, $j$, $R'$ and $\rho'$,
+hence only on $n$, $j$, $R$ and $\rho$.
+\end{proof}

@@ -1,0 +1,38 @@
+\begin{lemma}[Weak lower semicontinuity of the fractional energy on $L^2(\gamma_n)$]
+Let $(v_k)_{k\geq1} \subseteq L^2(\gamma_n)$ and $v \in L^2(\gamma_n)$ with
+$v_k \rightharpoonup v$ weakly in $L^2(\gamma_n)$, i.e.
+$\langle v_k, \varphi\rangle \to \langle v, \varphi\rangle$ for every
+$\varphi \in L^2(\gamma_n)$.  Then, as an inequality in $[0,+\infty]$,
+\[
+  \mathcal{E}(v) \leq \liminf_{k \to \infty} \mathcal{E}(v_k),
+\]
+with $\mathcal{E}$ as in \noderef{Energy}.
+\end{lemma}
+\begin{proof}
+For a finite set $S \subseteq \mathbb{N}_0^n \setminus \{0\}$ put
+\[
+  \mathcal{E}_S(w) = \sum_{\alpha \in S} |\alpha|^{1/2}\,|w_\alpha|^2 ,
+  \qquad w \in L^2(\gamma_n),
+\]
+where $w_\alpha = \langle w, h_\alpha\rangle$ are the Hermite coefficients
+relative to \noderef{HermiteBasis} and $|\alpha|$ is as in
+\noderef{MultiIndexSum}.  Each $\mathcal{E}_S$ is a finite sum of squares of the
+weakly continuous linear functionals $w \mapsto \langle w, h_\alpha\rangle$, so
+weak convergence gives, for each fixed finite $S$,
+\[
+  \mathcal{E}_S(v_k) \longrightarrow \mathcal{E}_S(v)
+  \qquad (k \to \infty).
+\]
+On the other hand $\mathcal{E}_S(w) \leq \mathcal{E}(w)$ for every $w$ and every
+finite $S$, because the defining series of $\mathcal{E}$ in \noderef{Energy} has
+nonnegative terms and contains those of $\mathcal{E}_S$.  Hence
+\[
+  \mathcal{E}_S(v) = \lim_{k} \mathcal{E}_S(v_k)
+    \leq \liminf_{k} \mathcal{E}(v_k) .
+\]
+The right-hand side does not depend on $S$.  Taking the supremum over all finite
+subsets $S \subseteq \mathbb{N}_0^n\setminus\{0\}$ and using that a sum of
+nonnegative terms is the supremum of its finite partial sums, i.e.
+$\mathcal{E}(v) = \sup_S \mathcal{E}_S(v)$ in $[0,+\infty]$, we obtain
+$\mathcal{E}(v) \leq \liminf_k \mathcal{E}(v_k)$.
+\end{proof}

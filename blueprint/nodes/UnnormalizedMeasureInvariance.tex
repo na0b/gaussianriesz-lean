@@ -1,0 +1,115 @@
+\begin{corollary}[Both endpoint conventions are unchanged by rescaling the measure]
+Let $\mathcal{M}(\gamma_n;\mathbb{R}^n)$ be the space of $\gamma_n$-a.e.\
+equivalence classes of measurable $\mathbb{R}^n$-valued functions on
+$\mathbb{R}^n$, and let
+$T : L^1(\gamma_n;\mathbb{R}) \to \mathcal{M}(\gamma_n;\mathbb{R}^n)$ be any
+linear map with the two properties
+\begin{enumerate}
+\item $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with $\iota$ the
+inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+       \leq 2\,\|f\|_{L^1(\gamma_n)}$
+for every $f \in L^1(\gamma_n;\mathbb{R})$ and every real $t > 0$.
+\end{enumerate}
+Let $c > 0$ be real and let $\mu = c\,\gamma_n$ be the rescaled measure, so
+$\mu(A) = c\,\gamma_n(A)$ for every Borel $A$.  Then for every
+$f \in L^1(\gamma_n;\mathbb{R})$ and every real $t > 0$, with the \emph{same}
+operator $T$:
+\begin{enumerate}
+\item[(a)] for every $j \in \{1,\ldots,n\}$,
+\[
+  t\,\mu\bigl(\{x : |(Tf(x))_j| > t\}\bigr) \leq 2 \int |f| \, d\mu ;
+\]
+\item[(b)]
+\[
+  t\,\mu\bigl(\{x : |((-\sqrt2)\,T)f(x)|_{\mathbb{R}^n} > t\}\bigr)
+    \leq 2\sqrt2 \int |f| \, d\mu .
+\]
+\end{enumerate}
+
+This is the last sentence of the reference paper's corollary on coordinate and
+historical conventions: ``Both statements remain unchanged if $\gamma$ is
+replaced by the unnormalized measure $e^{-|x|^2}\,dx$, with the same operator.''
+The two statements meant are exactly the two the paper displays --- the
+coordinate bound with constant $2$ and the historical bound for
+$\mathcal{R} = -\sqrt2\,R_\gamma$ with constant $2\sqrt2$ --- and they reappear
+here as (a) and (b).  Since $\gamma_n$ has density $\pi^{-n/2}e^{-|x|^2}$ with
+respect to Lebesgue measure (\noderef{GaussMeasure}), the paper's unnormalized
+measure $e^{-|x|^2}\,dx$ is the case $c = \pi^{n/2}$; the statement is given for
+a general real $c > 0$ because the paper's own justification --- that both the
+distribution measure and the input $L^1$ norm acquire the same factor --- is the
+general scaling argument and uses nothing about the particular value
+$\pi^{n/2}$.
+
+Two points of formulation.  First, the right-hand sides are written as integrals
+$\int|f|\,d\mu$ rather than as $\|f\|_{L^1(\mu)}$: this keeps $f$ an element of
+$L^1(\gamma_n)$ and $T$ the same operator on the same space, which is what the
+paper's ``with the same operator'' asks for, and avoids re-erecting the Lebesgue
+space over $\mu$.  This is harmless, since $c > 0$ makes $\mu$ and $\gamma_n$
+mutually absolutely continuous, so they have the same null sets, the same
+a.e.\ equivalence classes, and the same integrable functions, and
+$\int|f|\,d\mu = c\int|f|\,d\gamma_n = c\,\|f\|_{L^1(\gamma_n)}$ is finite.
+Second, the content here is neither of the two bounds being rescaled: those hold
+over $\gamma_n$, while (a) and (b) are assertions about the measure $\mu$, and
+what they record is precisely that the weak-type constants $2$ and $2\sqrt2$ are
+invariant under the rescaling, i.e.\ that they are properties of the operator and
+not artifacts of the normalization of the underlying measure.
+
+Properties (1) and (2) are written out here rather than imported by citation.
+They are exactly the two properties for which \noderef{EndpointTheorem} asserts
+existence and uniqueness of a map $T$, so the universally quantified statement
+above is not vacuous and its instance at that unique $T$ is the paper's
+assertion.
+\end{corollary}
+\begin{proof}
+Fix $c > 0$, $f \in L^1(\gamma_n;\mathbb{R})$ and a real $t > 0$, and put
+$\mu = c\,\gamma_n$.
+
+\emph{Step 1: both sides carry the same factor $c$.}
+By definition of the rescaled measure, $\mu(A) = c\,\gamma_n(A)$ for every Borel
+set $A$, as an identity in $[0,+\infty]$.  Likewise, integration against
+$c\,\gamma_n$ is $c$ times integration against $\gamma_n$, so
+\begin{equation*}
+  \int |f| \, d\mu = c \int |f| \, d\gamma_n = c\,\|f\|_{L^1(\gamma_n)} ,
+  \tag{1}
+\end{equation*}
+the second equality being the definition of the $L^1(\gamma_n)$ norm of $f$ as
+the integral of $|f|$ against $\gamma_n$; both quantities are finite because
+$f \in L^1(\gamma_n)$.
+
+\emph{Step 2: part (a).}
+Let $j \in \{1,\ldots,n\}$.  By \noderef{CoordinateEndpointBound}, applied to
+this $T$ with its hypotheses (1) and (2) --- which are the hypotheses of the
+present statement verbatim --- and to this $f$, this $j$ and this $t > 0$,
+\[
+  t\,\gamma_n\bigl(\{|(Tf)_j| > t\}\bigr) \leq 2\,\|f\|_{L^1(\gamma_n)} .
+\]
+Multiplying this inequality in $[0,+\infty]$ by the nonnegative constant $c$,
+which preserves the order, and using Step 1 on both sides,
+\[
+  t\,\mu\bigl(\{|(Tf)_j| > t\}\bigr)
+    = c\;t\,\gamma_n\bigl(\{|(Tf)_j| > t\}\bigr)
+    \leq c \cdot 2\,\|f\|_{L^1(\gamma_n)}
+    = 2 \int |f| \, d\mu ,
+\]
+which is (a).
+
+\emph{Step 3: part (b).}
+By \noderef{SpectralNormalizationBound}, applied to the same $T$ with the same
+two hypotheses and to this $f$ and this $t > 0$,
+\[
+  t\,\gamma_n\bigl(\{|((-\sqrt2)T)f|_{\mathbb{R}^n} > t\}\bigr)
+    \leq 2\sqrt2\,\|f\|_{L^1(\gamma_n)} .
+\]
+Multiplying by $c \geq 0$ and using Step 1 on both sides exactly as in Step 2,
+\[
+  t\,\mu\bigl(\{|((-\sqrt2)T)f|_{\mathbb{R}^n} > t\}\bigr)
+    = c\;t\,\gamma_n\bigl(\{|((-\sqrt2)T)f|_{\mathbb{R}^n} > t\}\bigr)
+    \leq c \cdot 2\sqrt2\,\|f\|_{L^1(\gamma_n)}
+    = 2\sqrt2 \int |f| \, d\mu ,
+\]
+which is (b).  In both parts the factor $c$ appears once on each side and
+cancels, which is the reference paper's ``scaling the measure scales both sides
+by the same factor''.
+\end{proof}

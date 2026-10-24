@@ -1,0 +1,200 @@
+\begin{lemma}[The truncated kernel integral varies little over a small ball]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$, let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure} and let $K_{\gamma,j}$ be the kernel of
+\noderef{GaussRieszKernel}.  Let $R \geq 1$.  Then there is a constant
+$C \in (0,\infty)$, depending only on $n$, $j$ and $R$, such that the following
+holds.
+
+Let $g : \mathbb{R}^n \to \mathbb{R}$, let $\Phi$ and $N$ be real, let
+$x,z \in \mathbb{R}^n$ and let $\varepsilon$ be real, and suppose
+\[
+  |x| \leq R, \qquad 0 < \varepsilon \leq 1, \qquad |x-z| < \tfrac12\varepsilon ,
+  \qquad 0 \leq \Phi ,
+\]
+and that
+\begin{enumerate}
+\item[(a)] $g$ is $\gamma_n$-integrable;
+\item[(b)] $g = 0$ $\lambda$-almost everywhere on $\{y : |x-y| \leq \varepsilon\}$;
+\item[(c)] $\displaystyle\int_{\overline B(x,\rho)}^{*}|g|\,d\lambda
+  \leq \Phi\cdot\lambda\bigl(\overline B(x,\rho)\bigr)$ for every real
+  $\rho \in (0,2]$, the left side being the lower Lebesgue integral in
+  $[0,+\infty]$ and the right side read there too; and
+\item[(d)] $y \mapsto e^{-|y|^2}|g(y)|$ is Lebesgue integrable on
+  $\mathbb{R}^n$, with
+  $\displaystyle\int_{\mathbb{R}^n}e^{-|y|^2}|g(y)|\,d\lambda(y) \leq N$.
+\end{enumerate}
+Then
+\[
+  \Bigl|\int_{\mathbb{R}^n}K_{\gamma,j}(x,y)g(y)\,dy
+      - \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)g(y)\,dy\Bigr|
+    \;\leq\; C\,(\Phi + N) ,
+\]
+both integrals being absolutely convergent Bochner integrals.
+
+\emph{No hypothetical operator is needed here, and that is not an oversight.}
+A reader coming from a Cotlar-type argument will expect the two whole-space
+integrals to be identified with coordinates of a transform, and hence expect an
+abstract $T$ with its two properties to be carried along.  They are not needed:
+the only thing required of the two integrals is that they converge absolutely,
+and that comes from clause (1)(b) of \noderef{GaussRieszKernelFarMajorant} at
+the pairs $(R,\varepsilon)$ and $(R+1,\varepsilon/2)$, whose constants are
+irrelevant here because only the integrability half of that clause is used.  A
+consumer that also wants to identify these integrals with $(Tg)_j$ must invoke
+\noderef{GaussRieszOffDiagonalL1} separately; that identification is not part of
+this lemma.
+
+\emph{Why (c) is a lower Lebesgue integral, and why (d) is a hypothesis.}
+Hypothesis (c) is stated with $\int^{*}$ because that is the shape a consumer
+has available: it is what the definition of the local maximal function of
+\noderef{LocalMaximalFunction} as a supremum over $\rho \in (0,2]$ supplies,
+after multiplying by the finite positive number
+$\lambda(\overline B(x,\rho))$.  Hypothesis (d) is assumed rather than derived
+from (a) because the Gaussian-to-Lebesgue density conversion that supplies it
+--- $\int e^{-|y|^2}|g|\,d\lambda = \pi^{n/2}\int|g|\,d\gamma_n$ --- is used by
+the intended consumer in a second, independent place as well, so it belongs in
+the consumer once rather than being re-derived here.
+
+\emph{The constant depends on $R$, necessarily.}  $C$ may be taken to be
+$\max(C_d,\,C_a+C_b)$ with $C_d$ the constant of
+\noderef{GaussRieszKernelHormanderDyadicBound} at $R$ and $C_a$, $C_b$ the
+constants of clause (1) of \noderef{GaussRieszKernelFarMajorant} at the pairs
+$(R,1)$ and $(R+1,\tfrac12)$; all three degrade in $R$, and no uniformity in
+$n$, $j$ or $R$ is claimed.  Note that $C$ does not depend on $\varepsilon$:
+that is the point of the lemma, and it is why the two far-field constants are
+taken at the fixed radii $1$ and $\tfrac12$ rather than at $\varepsilon$ and
+$\varepsilon/2$.
+\end{lemma}
+\begin{proof}
+Let $C_d > 0$ be the constant supplied by
+\noderef{GaussRieszKernelHormanderDyadicBound} at $R$, and let $C_a, C_b > 0$ be
+the constants supplied by clause (1) of \noderef{GaussRieszKernelFarMajorant} at
+the pairs $(R,1)$ and $(R+1,\tfrac12)$ respectively; the hypotheses $R > 0$,
+$1 > 0$, $R+1 > 0$ and $\tfrac12 > 0$ all hold because $R \geq 1$.  Set
+$C = \max(C_d,\,C_a+C_b) \in (0,\infty)$, which depends only on $n$, $j$ and
+$R$.  Fix $g$, $\Phi$, $N$, $x$, $z$, $\varepsilon$ and the hypotheses.
+
+\emph{Step 0: two preliminaries.}  Since $e^{-|y|^2}|g(y)| \geq 0$ for every
+$y$, its integral is nonnegative, so (d) gives $N \geq 0$.  And
+$|z| - |x| \leq |z-x| = |x-z| < \varepsilon/2 \leq \tfrac12$, so
+\begin{equation*}
+  |z| \leq R + 1 . \tag{1}
+\end{equation*}
+
+\emph{Step 1: three regions.}  Put
+\[
+  S = \{y : |x-y| > \varepsilon\}, \qquad
+  A_1 = \{y : \varepsilon < |x-y| \leq 1\}, \qquad
+  A_2 = \{y : |x-y| > 1\} .
+\]
+All three are Borel, being preimages of an interval under the continuous map
+$y \mapsto |x-y|$.  They satisfy $S = A_1 \cup A_2$ with $A_1 \cap A_2 =
+\emptyset$: the union is contained in $S$ because $\varepsilon \leq 1$, the
+reverse inclusion holds by splitting on whether $|x-y| \leq 1$, and the
+intersection is empty because $y \in A_1$ gives $|x-y| \leq 1$ while $y \in A_2$
+gives $|x-y| > 1$.
+
+\emph{Step 2: both kernel products are integrable on $S$.}  By (a), $g$
+satisfies the hypothesis of clause (1)(b) of
+\noderef{GaussRieszKernelFarMajorant}.  Applying that clause at the pair
+$(R,\varepsilon)$ --- legitimate since $\varepsilon > 0$ --- to $g$ and to the
+point $x$, which has $|x| \leq R$, gives that
+$y \mapsto K_{\gamma,j}(x,y)g(y)$ is Lebesgue integrable on
+$\{y : |x-y| > \varepsilon\} = S$.  Applying the same clause at the pair
+$(R+1,\varepsilon/2)$ to $g$ and to the point $z$, which has $|z| \leq R+1$ by
+$(1)$, gives that $y \mapsto K_{\gamma,j}(z,y)g(y)$ is Lebesgue integrable on
+$\{y : |z-y| > \varepsilon/2\}$.  Now
+\begin{equation*}
+  S \subseteq \{y : |z-y| > \varepsilon/2\} , \tag{2}
+\end{equation*}
+because for $y \in S$, writing $x-y = (x-z)+(z-y)$ and using the triangle
+inequality, $|z-y| \geq |x-y| - |x-z| > \varepsilon - \varepsilon/2 =
+\varepsilon/2$.  A function integrable on a set is integrable on every
+measurable subset of it, so $y \mapsto K_{\gamma,j}(z,y)g(y)$ is Lebesgue
+integrable on $S$ as well, and both products are integrable on each of
+$A_1 \subseteq S$ and $A_2 \subseteq S$.
+
+\emph{Step 3: the whole-space integrals collapse onto $S$.}  Let $w$ be either
+$x$ or $z$.  The complement of $S$ is exactly $\{y : |x-y| \leq \varepsilon\}$,
+on which $g$ vanishes $\lambda$-almost everywhere by (b); hence
+$K_{\gamma,j}(w,y)g(y) = 0$ for $\lambda$-almost every $y \notin S$.  A
+function integrable on a measurable set and vanishing almost everywhere off it
+is integrable on the whole space with the same integral, so by Step 2
+\begin{equation*}
+  \int_{\mathbb{R}^n}K_{\gamma,j}(w,y)g(y)\,dy
+    = \int_S K_{\gamma,j}(w,y)g(y)\,dy . \tag{3}
+\end{equation*}
+In particular both whole-space integrals in the conclusion are absolutely
+convergent.
+
+\emph{Step 4: the splitting.}  By Step 1, Step 2 and additivity of the integral
+over a disjoint union of measurable sets,
+$\int_S = \int_{A_1} + \int_{A_2}$ for each of the two products.  Subtracting
+and using linearity of the integral on $A_1$ --- legitimate because both
+products are integrable there --- we get from $(3)$
+\begin{equation*}
+  \int K_{\gamma,j}(x,y)g\,dy - \int K_{\gamma,j}(z,y)g\,dy
+    = \int_{A_1}\bigl(K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr)g(y)\,dy
+      + \Bigl(\int_{A_2}K_{\gamma,j}(x,y)g\,dy - \int_{A_2}K_{\gamma,j}(z,y)g\,dy\Bigr) .
+  \tag{4}
+\end{equation*}
+
+\emph{Step 5: the near annulus.}  The hypotheses of
+\noderef{GaussRieszKernelHormanderDyadicBound} at $R$ are met with this $g$,
+with $\Phi$ read in $[0,+\infty]$, and with these $x$, $z$, $\varepsilon$: that
+node requires $|x| \leq R$, $0 < \varepsilon \leq 1$,
+$|x-z| < \varepsilon/2$ and exactly hypothesis (c).  It therefore gives
+\[
+  \int_{A_1}^{*}\bigl|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr|\,|g(y)|\,d\lambda(y)
+    \leq C_d\,\Phi
+\]
+in $[0,+\infty]$.  For any function $h$ and any measurable set $E$ one has
+$\bigl|\int_E h\,d\lambda\bigr| \leq \int_E^{*}|h|\,d\lambda$, the right side
+read in $[0,+\infty]$ and the inequality understood after passing the right side
+to $[0,\infty)$ when it is finite; here it is finite, being at most $C_d\Phi$
+with $C_d, \Phi$ real and $\Phi \geq 0$.  Applying this with $E = A_1$ and
+$h(y) = (K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y))g(y)$, whose absolute value is
+$|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)|\,|g(y)|$,
+\begin{equation*}
+  \Bigl|\int_{A_1}\bigl(K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr)g(y)\,dy\Bigr|
+    \leq C_d\,\Phi . \tag{5}
+\end{equation*}
+
+\emph{Step 6: the far annulus.}  Let $y \in A_2$, so $|x-y| > 1$ and in
+particular $1 \leq |x-y|$.  Since $|x| \leq R$, clause (1)(a) of
+\noderef{GaussRieszKernelFarMajorant} at the pair $(R,1)$ gives
+$|K_{\gamma,j}(x,y)| \leq C_ae^{-|y|^2}$, hence
+$|K_{\gamma,j}(x,y)g(y)| \leq C_a\,e^{-|y|^2}|g(y)|$.  Both of these are
+integrable on $A_2$ --- the left by Step 2 and the right by (d) --- so,
+integrating the pointwise bound and then using that $e^{-|y|^2}|g(y)| \geq 0$
+is integrable on $\mathbb{R}^n$, so that its integral over the subset $A_2$ is
+at most its integral over $\mathbb{R}^n$,
+\begin{equation*}
+  \Bigl|\int_{A_2}K_{\gamma,j}(x,y)g(y)\,dy\Bigr|
+    \leq \int_{A_2}\bigl|K_{\gamma,j}(x,y)g(y)\bigr|\,d\lambda
+    \leq C_a\int_{\mathbb{R}^n}e^{-|y|^2}|g|\,d\lambda
+    \leq C_a\,N , \tag{6}
+\end{equation*}
+the last step by (d).  Symmetrically, for $y \in A_2$ we have $|z| \leq R+1$ by
+$(1)$ and
+\[
+  |z-y| \geq |x-y| - |x-z| > 1 - \tfrac12\varepsilon \geq 1 - \tfrac12
+    = \tfrac12 ,
+\]
+using $\varepsilon \leq 1$; so clause (1)(a) at the pair $(R+1,\tfrac12)$ gives
+$|K_{\gamma,j}(z,y)| \leq C_be^{-|y|^2}$, and the same three steps give
+\begin{equation*}
+  \Bigl|\int_{A_2}K_{\gamma,j}(z,y)g(y)\,dy\Bigr| \leq C_b\,N . \tag{7}
+\end{equation*}
+
+\emph{Step 7: conclusion.}  Taking absolute values in $(4)$ and using the
+triangle inequality twice, then $(5)$, $(6)$ and $(7)$,
+\[
+  \Bigl|\int K_{\gamma,j}(x,y)g\,dy - \int K_{\gamma,j}(z,y)g\,dy\Bigr|
+    \leq C_d\Phi + \bigl(C_aN + C_bN\bigr) .
+\]
+Finally $C_d \leq C$ and $C_a + C_b \leq C$ by definition of $C$, and
+$\Phi \geq 0$ and $N \geq 0$, so
+$C_d\Phi \leq C\Phi$ and $(C_a+C_b)N \leq CN$, whence the right-hand side is at
+most $C(\Phi+N)$.
+\end{proof}

@@ -1,0 +1,48 @@
+\begin{lemma}[A linear factor against a Gaussian integral over the unit interval]
+For all real $t \geq 0$ and $R' \geq 0$,
+\[
+  (t + R')\int_0^1 e^{-(t^2/4)r^2}\,dr \leq 5R' + \tfrac52\sqrt\pi ,
+\]
+the integral being taken with respect to Lebesgue measure on $(0,1)$.
+\end{lemma}
+\begin{proof}
+Fix $t \geq 0$ and $R' \geq 0$, so $t + R' \geq 0$, and recall $\sqrt\pi \geq 0$.
+The integrand is positive, so the integral is nonnegative.  Split on the size of
+$t$ relative to $4R'$.
+
+\emph{Case $t \leq 4R'$.}
+On $(0,1)$ we have $(t^2/4)r^2 \geq 0$, so $e^{-(t^2/4)r^2} \leq 1$; since the
+constant $1$ is integrable on $(0,1)$, which has Lebesgue measure $1$,
+monotonicity of the integral gives $\int_0^1 e^{-(t^2/4)r^2}\,dr \leq 1$.
+Multiplying by $t + R' \geq 0$,
+\[
+  (t+R')\int_0^1 e^{-(t^2/4)r^2}\,dr \leq t + R' \leq 5R'
+    \leq 5R' + \tfrac52\sqrt\pi ,
+\]
+the middle inequality because $t \leq 4R'$ and the last because
+$\sqrt\pi \geq 0$.
+
+\emph{Case $t > 4R'$.}
+Then $t > 4R' \geq 0$, so $t > 0$ and $b := t^2/4 > 0$.  Extending the integral
+from $(0,1)$ to $\mathbb{R}$ is legitimate because the integrand is nonnegative
+and $r \mapsto e^{-br^2}$ is integrable on $\mathbb{R}$, and the Gaussian
+integral evaluates to
+\[
+  \int_{\mathbb{R}} e^{-br^2}\,dr = \sqrt{\pi/b} = \sqrt{(2/t)^2\pi}
+    = (2/t)\sqrt\pi ,
+\]
+using $\pi/(t^2/4) = (2/t)^2\pi$ and $2/t > 0$.  Hence
+$\int_0^1 e^{-(t^2/4)r^2}\,dr \leq (2/t)\sqrt\pi$.  Next,
+\[
+  (t+R')\,(2/t) = 2 + 2R'/t \leq \tfrac52 ,
+\]
+because $2R'/t \leq \tfrac12$ is equivalent, after multiplying by $t > 0$, to
+$4R' \leq t$, which is the case hypothesis.  Therefore, multiplying the integral
+bound by $t + R' \geq 0$ and then using $\sqrt\pi \geq 0$,
+\[
+  (t+R')\int_0^1 e^{-(t^2/4)r^2}\,dr
+    \leq \bigl((t+R')(2/t)\bigr)\sqrt\pi \leq \tfrac52\sqrt\pi
+    \leq 5R' + \tfrac52\sqrt\pi ,
+\]
+the last step because $5R' \geq 0$.  This is the claim in both cases.
+\end{proof}

@@ -1,0 +1,170 @@
+\begin{lemma}[Chain rule for the weak Euclidean gradient]
+Fix $n \in \mathbb{N}_0$ and let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}.  Let $q, q' : \mathbb{R} \to \mathbb{R}$ and let
+$L_q \in \mathbb{R}$ satisfy $L_q \geq 0$, and assume
+\begin{enumerate}
+  \item for every $t \in \mathbb{R}$ the function $q$ is differentiable at $t$
+    with derivative $q'(t)$;
+  \item $q'$ is continuous (so $q \in C^1(\mathbb{R})$);
+  \item $|q'(t)| \leq 1$ for every $t \in \mathbb{R}$;
+  \item $q$ is $1$-Lipschitz: $|q(s) - q(t)| \leq |s - t|$ for all $s,t$;
+  \item $q'$ is $L_q$-Lipschitz: $|q'(s) - q'(t)| \leq L_q\,|s - t|$ for all $s,t$;
+  \item $q(0) = 0$.
+\end{enumerate}
+Let further $U : \mathbb{R}^n \to \mathbb{R}$ and
+$G = (G_1,\ldots,G_n) : \mathbb{R}^n \to \mathbb{R}^n$ satisfy
+\begin{enumerate}
+  \setcounter{enumi}{6}
+  \item $U \in L^2(\gamma_n)$;
+  \item each coordinate function $x \mapsto G_j(x)$ lies in $L^2(\gamma_n)$,
+    for every $j \in \{1,\ldots,n\}$;
+  \item $G$ is a weak Euclidean gradient of $U$ in the sense of
+    \noderef{HasGaussWeakGrad}.
+\end{enumerate}
+Then the composition $x \mapsto q(U(x))$ has weak Euclidean gradient
+$x \mapsto q'(U(x))\,G(x)$, again in the sense of \noderef{HasGaussWeakGrad};
+here $q'(U(x))\,G(x)$ is the scalar multiple of the vector $G(x) \in \mathbb{R}^n$
+by the real number $q'(U(x))$, so its $j$-th coordinate is
+$q'(U(x))\,G_j(x)$.  Explicitly: for every $j \in \{1,\ldots,n\}$ and every test
+function $\varphi \in C_c^\infty(\mathbb{R}^n)$,
+\[
+  \int_{\mathbb{R}^n} q(U(x))\, \partial_j \varphi(x)\, dx
+    = -\int_{\mathbb{R}^n} q'(U(x))\,G_j(x)\, \varphi(x)\, dx ,
+\]
+both integrals being taken with respect to Lebesgue measure.
+\end{lemma}
+\begin{proof}
+Fix $j \in \{1,\ldots,n\}$ and $\varphi \in C_c^\infty(\mathbb{R}^n)$; we must
+prove the displayed identity.
+
+Step 0 (consequences of the hypotheses on $q$).  Differentiability at every
+point gives continuity of $q$.  Taking $t = 0$ in the $1$-Lipschitz hypothesis
+and using $q(0) = 0$ gives
+\[
+  |q(t)| = |q(t) - q(0)| \leq |t| \qquad (t \in \mathbb{R}), \tag{Q}
+\]
+so $q$ grows at most linearly; this is what makes $q \circ U$ as integrable as
+$U$ itself.
+
+Step 1 (passing to Lebesgue measure on a compact set).  By
+\noderef{GaussL2LocallyIntegrable}, a function in $L^2(\gamma_n)$ is locally
+Lebesgue-integrable and lies in $L^2(K,\lambda)$ for every compact
+$K \subseteq \mathbb{R}^n$, $\lambda$ denoting Lebesgue measure; the reason is
+that the Gaussian density of \noderef{GaussMeasure} is continuous and strictly
+positive, hence bounded below on $K$.  Applying this to $U$ and to $G_j$ gives
+$U, G_j \in L^2(K,\lambda)$ for every compact $K$.  Put
+\[
+  K = \operatorname{supp}\varphi \cup \operatorname{supp}(\partial_j\varphi),
+\]
+a compact set, and note that $\varphi$ and $\partial_j\varphi$ both vanish off
+$K$ and are bounded, say $|\varphi| \leq M_\varphi$.  Consequently every integral
+appearing below may be restricted to $K$, and each is finite: by (Q) and
+Cauchy--Schwarz on $(K,\lambda)$, $q(U)\,\partial_j\varphi$ is integrable
+because $|q(U)| \leq |U|$ with $U, \partial_j\varphi \in L^2(K,\lambda)$, and
+$q'(U)\,G_j\,\varphi$ is integrable because $|q'(U)| \leq 1$, $\varphi$ is
+bounded and $G_j \in L^1(K,\lambda)$.
+
+Step 2 (mollification).  Fix a mollifier family $(\rho_\varepsilon)_{\varepsilon>0}$
+as in \noderef{MollifierL2Local}: each $\rho_\varepsilon$ is smooth, nonnegative,
+supported in the closed ball of radius $\varepsilon$, with
+$\int \rho_\varepsilon \, d\lambda = 1$.  Set
+\[
+  U_\varepsilon = \rho_\varepsilon * U, \qquad
+  G_{j,\varepsilon} = \rho_\varepsilon * G_j .
+\]
+Since $U$ is locally integrable and $\rho_\varepsilon$ is smooth with compact
+support, $U_\varepsilon$ is smooth and $G_{j,\varepsilon}$ is continuous.
+
+Step 3 (mollification commutes with the weak gradient).  For every $x$,
+\[
+  \partial_j U_\varepsilon(x) = G_{j,\varepsilon}(x) .
+\]
+Indeed, differentiating under the convolution integral is legitimate here
+($\rho_\varepsilon$ is smooth and compactly supported, $U$ locally integrable),
+and it turns $\partial_j(\rho_\varepsilon * U)(x)$ into the pairing of $U$
+against $\partial_j$ of the translated and reflected bump
+$t \mapsto \rho_\varepsilon(x-t)$, which is itself a $C_c^\infty$ test function.
+Hypothesis (9) applied to that test function replaces the pairing with $U$ by the
+pairing with $G_j$, which is exactly $(\rho_\varepsilon * G_j)(x)$.
+
+Step 4 (the identity for the mollified function).  $U_\varepsilon$ is smooth and
+$q \in C^1$, so the classical chain rule gives
+$\partial_j (q \circ U_\varepsilon) = q'(U_\varepsilon)\,\partial_j U_\varepsilon$
+pointwise, and all the functions involved are continuous.  Integration by parts
+against the compactly supported $\varphi$, with no boundary term, then yields
+\[
+  \int_{\mathbb{R}^n} q(U_\varepsilon(x))\, \partial_j \varphi(x)\, dx
+    = -\int_{\mathbb{R}^n} q'(U_\varepsilon(x))\, \partial_j U_\varepsilon(x)\,
+        \varphi(x)\, dx
+    = -\int_{\mathbb{R}^n} q'(U_\varepsilon(x))\, G_{j,\varepsilon}(x)\,
+        \varphi(x)\, dx ,
+\]
+the last step by Step 3.  This is the asserted identity with
+$(U, G_j)$ replaced by $(U_\varepsilon, G_{j,\varepsilon})$.
+
+Step 5 (the two $L^2(K)$ convergences).  By \noderef{MollifierL2Local} applied
+to $U$ and to $G_j$, both of which lie in $L^2(K',\lambda)$ for every compact
+$K'$ by Step 1,
+\[
+  \|U_\varepsilon - U\|_{L^2(K,\lambda)} \to 0,
+  \qquad
+  \|G_{j,\varepsilon} - G_j\|_{L^2(K,\lambda)} \to 0
+  \qquad (\varepsilon \downarrow 0). \tag{C}
+\]
+In particular $\|G_{j,\varepsilon}\|_{L^2(K,\lambda)}$ is bounded for small
+$\varepsilon$, being convergent.
+
+Step 6 (passing to the limit on the left).  Using the $1$-Lipschitz hypothesis
+pointwise and then Cauchy--Schwarz on $(K,\lambda)$,
+\[
+  \Bigl| \int_K \bigl(q(U_\varepsilon) - q(U)\bigr) \partial_j\varphi \, d\lambda \Bigr|
+    \leq \int_K |U_\varepsilon - U|\, |\partial_j\varphi| \, d\lambda
+    \leq \|U_\varepsilon - U\|_{L^2(K,\lambda)}\,
+         \|\partial_j\varphi\|_{L^2(K,\lambda)} ,
+\]
+which tends to $0$ by (C), the second factor being finite since
+$\partial_j\varphi$ is bounded with support in $K$ and $\lambda(K) < \infty$.
+Hence the left-hand side of Step 4 converges to
+$\int q(U)\,\partial_j\varphi \, d\lambda$.
+
+Step 7 (passing to the limit on the right).  Split the difference of the
+integrands as
+\[
+  q'(U_\varepsilon) G_{j,\varepsilon} \varphi - q'(U) G_j \varphi
+    = \bigl(q'(U_\varepsilon) - q'(U)\bigr) G_{j,\varepsilon} \varphi
+      + q'(U) \bigl(G_{j,\varepsilon} - G_j\bigr) \varphi .
+\]
+For the first term, the $L_q$-Lipschitz hypothesis on $q'$ gives
+$|q'(U_\varepsilon) - q'(U)| \leq L_q |U_\varepsilon - U|$ pointwise, so with
+$|\varphi| \leq M_\varphi$ and Cauchy--Schwarz on $(K,\lambda)$,
+\[
+  \Bigl| \int_K \bigl(q'(U_\varepsilon) - q'(U)\bigr) G_{j,\varepsilon} \varphi
+    \, d\lambda \Bigr|
+    \leq L_q M_\varphi \, \|U_\varepsilon - U\|_{L^2(K,\lambda)}\,
+          \|G_{j,\varepsilon}\|_{L^2(K,\lambda)} ,
+\]
+which tends to $0$ by (C) together with the boundedness of
+$\|G_{j,\varepsilon}\|_{L^2(K,\lambda)}$ noted in Step 5.  For the second term,
+$|q'(U)| \leq 1$ by hypothesis (3), so again by Cauchy--Schwarz
+\[
+  \Bigl| \int_K q'(U) \bigl(G_{j,\varepsilon} - G_j\bigr) \varphi \, d\lambda
+  \Bigr|
+    \leq M_\varphi \, \|G_{j,\varepsilon} - G_j\|_{L^2(K,\lambda)}\,
+          \lambda(K)^{1/2} ,
+\]
+which tends to $0$ by (C).  Hence the right-hand side of Step 4 converges to
+$-\int q'(U)\,G_j\,\varphi \, d\lambda$.
+
+Step 8 (conclusion).  For each $\varepsilon > 0$ the two sides of Step 4 are
+equal, and by Steps 6 and 7 they converge respectively to
+$\int q(U)\,\partial_j\varphi \, d\lambda$ and
+$-\int q'(U)\,G_j\,\varphi\, d\lambda$ as $\varepsilon \downarrow 0$.  A
+convergent net of reals has a unique limit, so the two limits agree:
+\[
+  \int_{\mathbb{R}^n} q(U(x))\, \partial_j \varphi(x)\, dx
+    = -\int_{\mathbb{R}^n} q'(U(x))\,G_j(x)\, \varphi(x)\, dx .
+\]
+Since $j$ and $\varphi$ were arbitrary, and the $j$-th coordinate of
+$q'(U(x))\,G(x)$ is $q'(U(x))\,G_j(x)$, the function $x \mapsto q(U(x))$ has
+weak Euclidean gradient $x \mapsto q'(U(x))\,G(x)$, as asserted.
+\end{proof}

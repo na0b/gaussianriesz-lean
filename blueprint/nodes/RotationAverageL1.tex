@@ -1,0 +1,158 @@
+\begin{lemma}[The rotation average of the two real $L^1$ norms]
+Let $v \in L^2(\gamma_n;\mathbb{C})$.  For $\theta \in \mathbb{R}$ put
+$c_\theta = e^{i\theta}$ and let
+\[
+  f_1(\theta) = \operatorname{Re}(c_\theta v), \qquad
+  f_2(\theta) = \operatorname{Im}(c_\theta v)
+\]
+be the real and imaginary parts of the rotated function, that is, the
+$\gamma_n$-a.e.\ classes obtained by composing $c_\theta v$ pointwise with the
+bounded $\mathbb{R}$-linear maps $\operatorname{Re},\operatorname{Im} :
+\mathbb{C} \to \mathbb{R}$; they are elements of $L^2(\gamma_n;\mathbb{R})$,
+since composition with a bounded linear map preserves membership in a Lebesgue
+space.  Set
+\[
+  S_\theta = \|f_1(\theta)\|_{L^1(\gamma_n)} + \|f_2(\theta)\|_{L^1(\gamma_n)} ,
+\]
+the two $L^1$ norms being taken through the inclusion of \noderef{ToL1}.  Then:
+\begin{enumerate}
+\item the function $\theta \mapsto S_\theta$ is integrable on $[0,2\pi]$; and
+\item
+\[
+  \frac{1}{2\pi}\int_0^{2\pi} S_\theta \, d\theta
+    = \frac{4}{\pi}\int_{\mathbb{R}^n} |v(x)| \, d\gamma_n(x) .
+\]
+\end{enumerate}
+
+This is the reference paper's displayed rotation average
+$\frac{1}{2\pi}\int_0^{2\pi}S_\theta\,d\theta = \frac{4}{\pi}\|f\|_1$, with
+$S_\theta = \|\operatorname{Re}(e^{i\theta}f)\|_1 + \|\operatorname{Im}(e^{i\theta}f)\|_1$,
+and it is the single place the constant $8/\pi$ of the complex estimate comes
+from: the $4/\pi$ here is $2 \cdot \frac{2}{\pi}$, one $\frac{2}{\pi}$ for the
+cosine and one for the sine.  The right-hand side is written as the integral
+$\int|v|\,d\gamma_n$ rather than as a norm in a complex $L^1$ space; this is the
+same real number as the paper's $\|f\|_{L^1(\gamma;\mathbb{C})}$, and writing it
+this way avoids introducing a complex $L^1$ inclusion that the tablet does not
+yet have.  Clause (1) is not decoration: it is what Tonelli's theorem supplies
+alongside the identity, and it is what licenses integrating an inequality in
+$\theta$ against the constant function, which is how the average is used.
+\end{lemma}
+\begin{proof}
+Write $M = \int_{\mathbb{R}^n}|v(x)|\,d\gamma_n(x)$ and fix a representative of
+$v$, so that $v : \mathbb{R}^n \to \mathbb{C}$ is measurable and square
+$\gamma_n$-integrable.
+
+\emph{Step 0: $M$ is finite.}
+By \noderef{GaussIsProb} the measure $\gamma_n$ is a probability measure, so the
+constant function $1$ lies in $L^2(\gamma_n)$; by the integral form of
+Cauchy--Schwarz (shared context) applied to $|v|$ and $1$,
+$M \leq \bigl(\int |v|^2 d\gamma_n\bigr)^{1/2}\cdot 1 = \|v\|_{L^2} < \infty$.
+
+\emph{Step 1: the one-variable integral of $|\cos|$ over a period.}
+We claim $\int_0^{2\pi}|\cos\theta|\,d\theta = 4$.  Split the interval at
+$\pi/2$ and $3\pi/2$, and use throughout that $\sin' = \cos$, so that the
+fundamental theorem of calculus gives $\int_a^b \cos = \sin b - \sin a$ for all
+$a \leq b$.  On $[0,\pi/2]$ we have $\cos \geq 0$, so
+$\int_0^{\pi/2}|\cos| = \int_0^{\pi/2}\cos = \sin(\pi/2) - \sin 0 = 1$.  On
+$[\pi/2, 3\pi/2]$ we have $\cos \leq 0$, so
+$\int_{\pi/2}^{3\pi/2}|\cos| = -\int_{\pi/2}^{3\pi/2}\cos
+ = -(\sin(3\pi/2) - \sin(\pi/2)) = -(-1-1) = 2$.  On $[3\pi/2, 2\pi]$ we have
+$\cos \geq 0$ again, so
+$\int_{3\pi/2}^{2\pi}|\cos| = \sin(2\pi) - \sin(3\pi/2) = 0 - (-1) = 1$.  The
+integrand is continuous, hence integrable on each piece, and adding the three
+pieces gives $1 + 2 + 1 = 4$.
+
+\emph{Step 2: the same integral after a phase shift.}
+For every $p \in \mathbb{R}$,
+\[
+  \int_0^{2\pi}\bigl|\cos(\theta + p)\bigr|\,d\theta = 4,
+  \qquad
+  \int_0^{2\pi}\bigl|\sin(\theta + p)\bigr|\,d\theta = 4 .
+\]
+For the first: substituting $\theta \mapsto \theta - p$ turns the integral into
+$\int_p^{p+2\pi}|\cos u|\,du$, and $|\cos|$ is $2\pi$-periodic (because
+$\cos(u + 2\pi) = \cos u$), so the integral of $|\cos|$ over any interval of
+length $2\pi$ is the same as over $[0,2\pi]$, which is $4$ by Step 1.  For the
+second: $\sin s = \cos(s - \pi/2)$, so
+$|\sin(\theta+p)| = |\cos(\theta + (p - \pi/2))|$ for every $\theta$, and the
+first identity applies with the phase $p - \pi/2$.
+
+\emph{Step 3: the pointwise rotation identity.}
+Fix $x \in \mathbb{R}^n$ and put $\rho = |v(x)| \geq 0$.  If $\rho = 0$ then
+$v(x) = 0$ and both sides of the identity below are $0$.  Otherwise write
+$v(x) = \rho e^{i\varphi}$ with $\varphi = \arg v(x)$, so that
+$c_\theta v(x) = \rho e^{i(\theta + \varphi)}$ and therefore
+\[
+  \operatorname{Re}\bigl(c_\theta v(x)\bigr) = \rho\cos(\theta + \varphi),
+  \qquad
+  \operatorname{Im}\bigl(c_\theta v(x)\bigr) = \rho\sin(\theta + \varphi) .
+\]
+Taking absolute values, using $\rho \geq 0$, and integrating in $\theta$ with
+Step 2 at the phase $p = \varphi$,
+\begin{equation*}
+  \int_0^{2\pi}\Bigl(\bigl|\operatorname{Re}(c_\theta v(x))\bigr|
+      + \bigl|\operatorname{Im}(c_\theta v(x))\bigr|\Bigr)d\theta
+    = \rho \cdot 4 + \rho \cdot 4 = 8\,|v(x)| . \tag{1}
+\end{equation*}
+In the degenerate case $\rho = 0$ the two sides of $(1)$ are $0$ as well, so
+$(1)$ holds for every $x$.
+
+\emph{Step 4: joint measurability.}
+Let
+$H(\theta, x) = \bigl|\operatorname{Re}(c_\theta v(x))\bigr|
+  + \bigl|\operatorname{Im}(c_\theta v(x))\bigr| \geq 0$
+on $[0,2\pi] \times \mathbb{R}^n$.  The map $(\theta,x)\mapsto c_\theta = e^{i\theta}$
+is continuous, hence measurable; the map $(\theta,x)\mapsto v(x)$ is measurable,
+being the composition of the measurable $v$ with the projection; their product is
+measurable; and $\operatorname{Re}$, $\operatorname{Im}$ and $|\cdot|$ are
+continuous.  So $H$ is measurable for the product $\sigma$-algebra, and it is
+nonnegative.
+
+\emph{Step 5: Tonelli.}
+Lebesgue measure restricted to $[0,2\pi]$ is finite and $\gamma_n$ is a
+probability measure by \noderef{GaussIsProb}, so both are $\sigma$-finite and
+Tonelli's theorem (shared context) applies to $H$: the two iterated integrals
+agree in $[0,+\infty]$.  Computing in the order $d\theta$ first and using $(1)$,
+\[
+  \int_{\mathbb{R}^n}\Bigl(\int_0^{2\pi} H(\theta,x)\,d\theta\Bigr) d\gamma_n(x)
+    = \int_{\mathbb{R}^n} 8\,|v(x)| \, d\gamma_n(x) = 8M ,
+\]
+which is finite by Step 0.  Hence also
+\begin{equation*}
+  \int_0^{2\pi}\Bigl(\int_{\mathbb{R}^n} H(\theta,x)\, d\gamma_n(x)\Bigr) d\theta
+    = 8M < \infty , \tag{2}
+\end{equation*}
+and Tonelli further gives that the inner integral
+$\theta \mapsto \int H(\theta,x)\,d\gamma_n(x)$ is a measurable function of
+$\theta$ on $[0,2\pi]$.
+
+\emph{Step 6: the inner integral is $S_\theta$.}
+Fix $\theta$.  By the description in the statement, $f_1(\theta)$ and
+$f_2(\theta)$ are the $\gamma_n$-a.e.\ classes of the functions
+$x \mapsto \operatorname{Re}(c_\theta v(x))$ and
+$x \mapsto \operatorname{Im}(c_\theta v(x))$.  By
+\noderef{ToL1} the $L^1(\gamma_n)$ class of a real $L^2(\gamma_n)$ function has
+the same representative, so its $L^1$ norm is the integral of its absolute
+value.  Therefore
+\[
+  \int_{\mathbb{R}^n} H(\theta,x)\,d\gamma_n(x)
+    = \int\bigl|\operatorname{Re}(c_\theta v)\bigr| d\gamma_n
+      + \int\bigl|\operatorname{Im}(c_\theta v)\bigr| d\gamma_n
+    = \|f_1(\theta)\|_{L^1(\gamma_n)} + \|f_2(\theta)\|_{L^1(\gamma_n)}
+    = S_\theta ,
+\]
+the first equality by linearity of the integral for the two nonnegative
+measurable summands of $H$.
+
+\emph{Step 7: conclusion.}
+By Step 6 and Step 5, $\theta \mapsto S_\theta$ is measurable on $[0,2\pi]$ and
+nonnegative with $\int_0^{2\pi} S_\theta\, d\theta = 8M < \infty$ by $(2)$; a
+nonnegative measurable function with finite integral is integrable, which is
+clause (1).  Dividing the identity $\int_0^{2\pi}S_\theta\,d\theta = 8M$ by
+$2\pi > 0$,
+\[
+  \frac{1}{2\pi}\int_0^{2\pi} S_\theta\, d\theta = \frac{8M}{2\pi}
+    = \frac{4}{\pi}M = \frac{4}{\pi}\int |v| \, d\gamma_n ,
+\]
+which is clause (2).
+\end{proof}

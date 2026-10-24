@@ -1,0 +1,114 @@
+\begin{lemma}[On a smooth compactly supported datum the truncated Riesz integrals converge to the operator]
+Fix $n \geq 1$, let $\lambda$ be Lebesgue measure on $\mathbb{R}^n$, let
+$\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure}, and let
+$K_{\gamma,j}$ be the kernel of \noderef{GaussRieszKernel}.  Let
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions such that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}.
+\end{enumerate}
+Let $\varphi : \mathbb{R}^n \to \mathbb{R}$ be smooth with compact support and
+$\gamma_n$-integrable, let $[\varphi] \in L^1(\gamma_n)$ be its class, and let
+$j \in \{1,\ldots,n\}$.  Then for $\gamma_n$-almost every $x \in \mathbb{R}^n$,
+\[
+  \lim_{\varepsilon\downarrow0}
+    \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)\,\varphi(y)\,dy
+  \;=\; \bigl(T[\varphi]\bigr)_j(x) ,
+\]
+the limit taken through $\varepsilon \in (0,\infty)$ as $\varepsilon \to 0$,
+the $y$-integral against $\lambda$, and the right-hand side the $j$th
+coordinate of the canonical representative of $T[\varphi]$.
+
+\emph{Only (T1) is assumed, deliberately.}  The companion hypothesis
+$t\,\gamma_n(\{|Tf| > t\}) \leq 2\|f\|_{L^1(\gamma_n)}$ that accompanies (T1)
+elsewhere in the tablet is not used here and is therefore not assumed: on the
+class of a smooth compactly supported function, (T1) alone already determines
+$T$, because such a function lies in $L^2(\gamma_n)$ and so its $L^1$ class is
+in the range of $\iota$.  The statement is correspondingly a statement about
+every $T$ satisfying (T1), and it is not vacuous because \noderef{L1Extension}
+exhibits such a $T$.
+
+\emph{Why the conclusion is almost-everywhere and the limit itself is not.}
+The limit on the left exists at \emph{every} $x$, with no exceptional set, and
+equals the explicit Mehler--subordination integral $\Phi_j(\varphi)(x)$ of
+\noderef{PVCoreSmooth}.  The almost-everywhere qualifier attaches only to the
+identification of that integral with $(T[\varphi])_j$: the right-hand side is
+the coordinate of an almost-everywhere equivalence class, so no pointwise
+assertion about it is available or meaningful.  A consumer therefore gets
+convergence everywhere and the value almost everywhere.
+
+\emph{What is combined here, and why none of the pieces says it.}
+\noderef{PVCoreSmooth} identifies the limit with $\Phi_j(\varphi)$ and mentions
+no operator; \noderef{RieszSemigroupPointwise} identifies $\Phi_j(\varphi)$
+with $(R_\gamma u)_j$ for $u$ the $L^2(\gamma_n)$ class of $\varphi$ and
+mentions no truncation; and (T1) carries $R_\gamma u$ to $T[\varphi]$.  The
+conclusion relates the truncated integrals to $T$, which none of the three does
+on its own.
+\end{lemma}
+\begin{proof}
+\emph{(a) $\varphi$ lies in $L^2(\gamma_n)$.}  Being smooth, $\varphi$ is
+continuous; having compact support, it is bounded (Preamble: a continuous
+function with compact support attains a maximum of its absolute value on the
+compact support and vanishes off it), so there is a real $C$ with
+$|\varphi(y)| \leq C$ for every $y$.  Since $\gamma_n$ is a probability
+measure, hence finite, a bounded measurable function lies in $L^p(\gamma_n)$
+for every $p$; in particular
+\[
+  \int_{\mathbb{R}^n}|\varphi|^2\,d\gamma_n \leq C^2 < \infty ,
+\]
+so $\varphi \in L^2(\gamma_n)$.  Let $u \in L^2(\gamma_n)$ be its class.
+
+\emph{(b) The spectral identification of the core.}  Apply
+\noderef{RieszSemigroupPointwise} to $\varphi$ --- smooth, compactly supported,
+and square $\gamma_n$-integrable by (a) --- at the coordinate $j$, with its
+$L^2(\gamma_n)$ membership hypothesis discharged by (a) and its class taken to
+be $u$.  Its clause (3) states
+\begin{equation*}
+  \Phi_j(\varphi) = \bigl(R_\gamma u\bigr)_j
+  \qquad \gamma_n\text{-almost everywhere} , \tag{1}
+\end{equation*}
+where $\Phi_j(\varphi)$ denotes the function
+\[
+  x \;\longmapsto\; \frac1{\sqrt\pi}\int_0^\infty
+     \frac{1}{\sqrt s}\cdot e^{-s}\cdot\frac1{\sqrt2}
+     \int_{\mathbb{R}^n}
+       \partial_j\varphi\bigl(e^{-s}x + \sqrt{1-e^{-2s}}\,z\bigr)
+     \,d\gamma_n(z)\,ds
+\]
+appearing in that node's statement, and $(R_\gamma u)_j$ is the $j$th
+coordinate of the canonical representative of $R_\gamma u$.
+
+\emph{(c) (T1) carries $R_\gamma u$ to $T[\varphi]$.}  First,
+$\iota u = [\varphi]$ as elements of $L^1(\gamma_n)$.  Indeed $\iota u$ is by
+the definition in \noderef{ToL1} the $L^1(\gamma_n)$ class of the canonical
+representative of $u$; that representative agrees $\gamma_n$-almost everywhere
+with $\varphi$, because $u$ is the class of $\varphi$; and two elements of
+$L^1(\gamma_n)$ whose representatives agree $\gamma_n$-almost everywhere are
+equal.  Hence, by (T1) applied to $v := u$,
+\begin{equation*}
+  T[\varphi] \;=\; T(\iota u) \;=\; R_\gamma u \tag{2}
+\end{equation*}
+as elements of $\mathcal{M}(\gamma_n;\mathbb{R}^n)$.  Being equal elements,
+they have the same canonical representative, so
+$(T[\varphi])_j(x) = (R_\gamma u)_j(x)$ for \emph{every} $x$.
+
+\emph{(d) Conclusion.}  Let $N$ be the $\gamma_n$-null set off which $(1)$
+holds, and let $x \notin N$.  Since $\varphi$ is smooth with compact support,
+\noderef{PVCoreSmooth} applies to it at the coordinate $j$ and the point $x$,
+and its clause (2) gives
+\[
+  \lim_{\varepsilon\downarrow0}
+    \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)\,\varphi(y)\,dy
+  \;=\; \Phi_j(\varphi)(x) ,
+\]
+a limit of real numbers.  By $(1)$, which holds at $x$ because $x \notin N$,
+the right-hand side equals $(R_\gamma u)_j(x)$, and by $(2)$ that equals
+$(T[\varphi])_j(x)$.  So the displayed limit equals $(T[\varphi])_j(x)$ for
+every $x \notin N$, which is the assertion.
+\end{proof}

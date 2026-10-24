@@ -1,0 +1,163 @@
+\begin{lemma}[A common in-measure limit for the Riesz images of $L^1$ approximating sequences]
+Let $f \in L^1(\gamma_n;\mathbb{R})$.  Then there exist an element $g$ of
+$\mathcal{M}(\gamma_n;\mathbb{R}^n)$, the space of $\gamma_n$-almost-everywhere
+equivalence classes of measurable $\mathbb{R}^n$-valued functions, and a sequence
+$(v_k)_{k \in \mathbb{N}}$ in $L^2(\gamma_n)$, such that
+\begin{enumerate}
+\item $\|\iota v_k\|_{L^1(\gamma_n)} \leq \|f\|_{L^1(\gamma_n)}$ for every $k$, where
+$\iota$ is the inclusion of \noderef{ToL1};
+\item $\iota v_k \to f$ in $L^1(\gamma_n)$;
+\item $R_\gamma v_k \to g$ pointwise $\gamma_n$-a.e., with $R_\gamma$ as in
+\noderef{RieszTransform}; and
+\item for \emph{every} sequence $(w_k)$ in $L^2(\gamma_n)$ with $\iota w_k \to f$ in
+$L^1(\gamma_n)$, the sequence $R_\gamma w_k$ converges to $g$ in measure, i.e.
+$\gamma_n\bigl(\{x : \varepsilon \leq |R_\gamma w_k(x) - g(x)|\}\bigr) \to 0$ as
+$k \to \infty$, for every $\varepsilon > 0$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Part A: $R_\gamma$ is linear on $L^2(\gamma_n)$.}
+By \noderef{RieszTransform}, $R_\gamma v = D L^{-1/2} v$.  Part (1) of
+\noderef{FracPowLinear} with $s = -1/2 \leq 0$ says that
+$\operatorname{Dom}(L^{-1/2})$ is all of $L^2(\gamma_n)$, so parts (2) and (3) of
+\noderef{FracPowLinear} apply to every pair of elements and give
+$L^{-1/2}(v+w) = L^{-1/2}v + L^{-1/2}w$ and
+$L^{-1/2}(cv) = c\,L^{-1/2}v$ for all $v,w \in L^2(\gamma_n)$ and $c \in \mathbb{R}$.
+By \noderef{PseudoInverseSqrt}, $L^{-1/2}v \in \operatorname{Dom}(L^{1/2})$ for every
+$v$, and hence $L^{-1/2}v \in W^{1,2}(\gamma_n)$ by \noderef{SqrtDomainSobolev}.
+Parts (1) and (2) of \noderef{GaussDLinear} then give
+$D(L^{-1/2}v + L^{-1/2}w) = D L^{-1/2}v + D L^{-1/2}w$ and
+$D(c\,L^{-1/2}v) = c\,D L^{-1/2}v$.  Composing,
+\begin{equation*}
+  R_\gamma(v+w) = R_\gamma v + R_\gamma w, \qquad R_\gamma(cv) = c\,R_\gamma v ,
+  \tag{A}
+\end{equation*}
+and in particular, taking $c = -1$, $R_\gamma(v-w) = R_\gamma v - R_\gamma w$.
+Also $\iota(v-w) = \iota v - \iota w$, since by \noderef{ToL1} both sides have the
+$\gamma_n$-a.e.\ representative $v - w$.
+
+\emph{Part B: the Cauchy-in-measure estimate.}
+Let $v,w \in L^2(\gamma_n)$ and $\varepsilon > 0$.  Apply \noderef{MainBound} to the
+$L^2$ function $v-w$ at the level $\varepsilon/2 > 0$:
+\[
+  \tfrac{\varepsilon}{2}\,
+    \gamma_n\bigl(\{x : \tfrac{\varepsilon}{2} < |R_\gamma(v-w)(x)|\}\bigr)
+    \leq 2\,\|\iota(v-w)\|_{L^1(\gamma_n)} .
+\]
+By Part A, $R_\gamma(v-w) = R_\gamma v - R_\gamma w$ and
+$\iota(v-w) = \iota v - \iota w$, so $\gamma_n$-a.e.\ the function
+$R_\gamma(v-w)$ agrees with $R_\gamma v - R_\gamma w$.  Since
+$\varepsilon/2 < \varepsilon$, the set $\{x : \varepsilon \leq |R_\gamma v(x) -
+R_\gamma w(x)|\}$ is therefore contained, up to a $\gamma_n$-null set, in
+$\{x : \varepsilon/2 < |R_\gamma(v-w)(x)|\}$, and monotonicity of $\gamma_n$ gives
+\[
+  \tfrac{\varepsilon}{2}\,
+  \gamma_n\bigl(\{x : \varepsilon \leq |R_\gamma v(x) - R_\gamma w(x)|\}\bigr)
+    \leq 2\,\|\iota v - \iota w\|_{L^1(\gamma_n)} .
+\]
+Dividing by $\varepsilon/2 > 0$,
+\begin{equation*}
+  \gamma_n\bigl(\{x : \varepsilon \leq |R_\gamma v(x) - R_\gamma w(x)|\}\bigr)
+    \leq \frac{4\,\|\iota v - \iota w\|_{L^1(\gamma_n)}}{\varepsilon} .
+  \tag{B}
+\end{equation*}
+
+\emph{Part C: the truncations.}
+Write $F$ for a fixed representative of $f$ and put
+$\tau_k(x) = \max\{-k, \min\{F(x), k\}\}$ for $k \in \mathbb{N}$.  Each $\tau_k$ is
+measurable, being built from $F$ by two lattice operations with constants.  For every
+$x$ and $k$ we have, since $k \geq 0$,
+\begin{equation*}
+  |\tau_k(x)| \leq k \qquad\text{and}\qquad |\tau_k(x)| \leq |F(x)| .
+  \tag{C1}
+\end{equation*}
+For the first: $-k \leq \max\{-k,\min\{F(x),k\}\} \leq \max\{-k,k\} = k$.  For the
+second: $-|F(x)| \leq \min\{F(x),k\}$ because $-|F(x)| \leq F(x)$ and
+$-|F(x)| \leq 0 \leq k$, whence $-|F(x)| \leq \tau_k(x)$; and
+$\tau_k(x) \leq |F(x)|$ because $-k \leq 0 \leq |F(x)|$ and
+$\min\{F(x),k\} \leq F(x) \leq |F(x)|$.
+Since $\gamma_n$ is a probability measure (\noderef{GaussIsProb}), the bound
+$|\tau_k| \leq k$ makes $\tau_k$ an element of $L^2(\gamma_n)$; call it $\tilde v_k$.
+Moreover, for every $x$, as soon as $k \geq |F(x)|$ we have
+$-k \leq F(x) \leq k$, hence $\tau_k(x) = F(x)$; so
+$\tau_k(x) \to F(x)$ for every $x$, the sequence being eventually constant.
+The second bound in (C1) gives, by monotonicity of the integral,
+$\|\iota \tilde v_k\|_{L^1(\gamma_n)} = \int|\tau_k|\,d\gamma_n
+  \leq \int |F|\,d\gamma_n = \|f\|_{L^1(\gamma_n)}$,
+which is conclusion (1) for this sequence.  Finally
+$|\tau_k(x) - F(x)| \leq |\tau_k(x)| + |F(x)| \leq 2|F(x)|$ by (C1), the dominating
+function $2|F|$ is integrable because $f \in L^1(\gamma_n)$, and
+$|\tau_k(x) - F(x)| \to 0$ for every $x$; so dominated convergence gives
+$\|\iota\tilde v_k - f\|_{L^1(\gamma_n)} = \int|\tau_k - F|\,d\gamma_n \to 0$, i.e.
+$\iota\tilde v_k \to f$ in $L^1(\gamma_n)$, which is conclusion (2).
+
+\emph{Part D: a rapidly converging subsequence.}
+Since $\|\iota\tilde v_k - f\|_{L^1(\gamma_n)} \to 0$, for each $j \in \mathbb{N}$ we
+may choose an index $\sigma(j)$ with
+$\|\iota\tilde v_{\sigma(j)} - f\|_{L^1(\gamma_n)} \leq \tfrac12 8^{-j}$.  Put
+$v_j = \tilde v_{\sigma(j)}$.  Conclusion (1) is inherited, and
+$\|\iota v_j - f\|_{L^1(\gamma_n)} \leq \tfrac12 8^{-j} \to 0$ gives conclusion (2)
+for $(v_j)$.  By the triangle inequality and $8^{-(j+1)} \leq 8^{-j}$,
+\begin{equation*}
+  \|\iota v_j - \iota v_{j+1}\|_{L^1(\gamma_n)}
+    \leq \|\iota v_j - f\|_{L^1(\gamma_n)} + \|\iota v_{j+1} - f\|_{L^1(\gamma_n)}
+    \leq \tfrac12 8^{-j} + \tfrac12 8^{-(j+1)} \leq 8^{-j} .
+  \tag{D}
+\end{equation*}
+
+\emph{Part E: the almost-everywhere limit.}
+Put $E_j = \{x : 2^{-j} \leq |R_\gamma v_j(x) - R_\gamma v_{j+1}(x)|\}$.  By (B) with
+$\varepsilon = 2^{-j}$ and then (D),
+\[
+  \gamma_n(E_j) \leq \frac{4\,\|\iota v_j - \iota v_{j+1}\|_{L^1(\gamma_n)}}{2^{-j}}
+    \leq 4\cdot 2^{j}\cdot 8^{-j} = 4\cdot 4^{-j} .
+\]
+The series $\sum_j 4\cdot4^{-j}$ converges, so $\sum_j \gamma_n(E_j) < \infty$.  By the
+Borel--Cantelli lemma, for $\gamma_n$-a.e.\ $x$ the index set $\{j : x \in E_j\}$ is
+finite.  Fix such an $x$ and let $B$ be an upper bound for that finite set.  For every
+$j \geq B+1$ we then have $x \notin E_j$, i.e.
+$|R_\gamma v_j(x) - R_\gamma v_{j+1}(x)| < 2^{-j}$.  Hence the series
+$\sum_j |R_\gamma v_j(x) - R_\gamma v_{j+1}(x)|$ has all but finitely many terms
+dominated by the convergent geometric series $\sum_j 2^{-j}$, so it converges; a
+sequence in the complete space $\mathbb{R}^n$ whose consecutive distances form a
+convergent series is Cauchy, hence converges.  Define $g(x)$ to be this limit at every
+$x$ for which $(R_\gamma v_j(x))_j$ converges, and $g(x) = 0$ elsewhere.  By
+construction $R_\gamma v_j \to g$ pointwise $\gamma_n$-a.e., which is conclusion (3);
+and $g$, being a $\gamma_n$-a.e.\ pointwise limit of the measurable functions
+$R_\gamma v_j$, is measurable, so it determines an element of
+$\mathcal{M}(\gamma_n;\mathbb{R}^n)$.
+
+\emph{Part F: every approximating sequence has the same limit in measure.}
+Since $\gamma_n$ is a finite measure (\noderef{GaussIsProb}), the a.e.\ convergence of
+conclusion (3) implies $R_\gamma v_k \to g$ in measure; that is, for every
+$\delta > 0$,
+\begin{equation*}
+  \gamma_n\bigl(\{x : \delta \leq |R_\gamma v_k(x) - g(x)|\}\bigr) \longrightarrow 0 .
+  \tag{F}
+\end{equation*}
+Now let $(w_k)$ be any sequence in $L^2(\gamma_n)$ with $\iota w_k \to f$ in
+$L^1(\gamma_n)$, and fix $\varepsilon > 0$.  By the triangle inequality in
+$\mathbb{R}^n$, if $\varepsilon \leq |R_\gamma w_k(x) - g(x)|$ then at least one of
+$|R_\gamma w_k(x) - R_\gamma v_k(x)|$ and $|R_\gamma v_k(x) - g(x)|$ is at least
+$\varepsilon/2$; hence
+\[
+  \{x : \varepsilon \leq |R_\gamma w_k(x) - g(x)|\}
+    \subseteq \{x : \tfrac{\varepsilon}{2} \leq |R_\gamma w_k(x) - R_\gamma v_k(x)|\}
+      \cup \{x : \tfrac{\varepsilon}{2} \leq |R_\gamma v_k(x) - g(x)|\} ,
+\]
+and by monotonicity and subadditivity of $\gamma_n$,
+\[
+  \gamma_n\bigl(\{x : \varepsilon \leq |R_\gamma w_k(x) - g(x)|\}\bigr)
+    \leq \gamma_n\bigl(\{x : \tfrac{\varepsilon}{2}
+          \leq |R_\gamma w_k(x) - R_\gamma v_k(x)|\}\bigr)
+      + \gamma_n\bigl(\{x : \tfrac{\varepsilon}{2}
+          \leq |R_\gamma v_k(x) - g(x)|\}\bigr) .
+\]
+The second summand tends to $0$ by (F) with $\delta = \varepsilon/2$.  For the first,
+$\|\iota w_k - \iota v_k\|_{L^1(\gamma_n)} \to 0$, because both $\iota w_k$ and
+$\iota v_k$ converge to $f$ in $L^1(\gamma_n)$; so (B) with $\varepsilon/2$ bounds the
+first summand by
+$8\,\|\iota w_k - \iota v_k\|_{L^1(\gamma_n)}/\varepsilon \to 0$.  Both summands are
+nonnegative, so their sum tends to $0$ and the left-hand side, squeezed between $0$ and
+that sum, tends to $0$ as well.  This is conclusion (4).
+\end{proof}

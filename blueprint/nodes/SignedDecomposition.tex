@@ -1,0 +1,111 @@
+\begin{lemma}[The signed decomposition of a real $L^2$ input at a high level]
+Let $f \in L^2(\gamma_n)$ be real valued, put $M = \|f\|_{L^1(\gamma_n)}$ in the
+sense of \noderef{ToL1}, and let $t > M$.  Then there exist
+$u \in \operatorname{Dom}(L^{1/2})$, a function $g \in L^2(\gamma_n)$ and a
+measurable set $\Omega \subseteq \mathbb{R}^n$ such that
+\begin{align*}
+  &f = g + Bu \quad\text{in } L^2(\gamma_n), \qquad B = L^{1/2},\\
+  &t\,\gamma_n(\Omega) \leq M,\\
+  &|g| \leq t \quad\text{a.e.},\\
+  &\|g\|_{L^1(\gamma_n)} \leq M,\\
+  &\|g\|_{L^2(\gamma_n)}^2 \leq t\,M,\\
+  &Du = 0 \quad\text{a.e. on } \Omega^c ,
+\end{align*}
+with $D$ as in \noderef{GaussD}.  Note the sup bound is $t$, not $2t$.
+\end{lemma}
+\begin{proof}
+\emph{Step 0: the two nonnegative parts and the height choice.}
+Put $f^+ = \max\{f, 0\}$ and $f^- = \max\{-f,0\}$, so $f = f^+ - f^-$ and
+$|f| = f^+ + f^-$ pointwise.  Both are measurable with
+$0 \leq f^\pm \leq |f|$, hence lie in $L^2(\gamma_n)$ and are nonnegative
+$\gamma_n$-a.e.  Set
+\[
+  m_+ = \int f^+\, d\gamma_n , \qquad m_- = \int f^-\, d\gamma_n ,
+\]
+both finite by \noderef{L2IntoL1}, and $m_+ + m_- = \int |f|\, d\gamma_n = M$ by
+\noderef{ToL1}.  As $m_\pm \geq 0$, this gives $m_\pm \leq M < t$.  Therefore the
+common obstacle height $a = t$ satisfies the strict hypothesis
+$a > \int F\, d\gamma_n$ of \noderef{ObstacleDecomposition} for each of the two
+inputs $F = f^+$ and $F = f^-$.  This is a condition on the integral of the input,
+not on its pointwise size, which may well exceed $t$.
+
+\emph{Step 1: two applications of the obstacle decomposition.}
+Apply \noderef{ObstacleDecomposition} with $F = f^+$, $m = m_+$ and $a = t$, and
+then with $F = f^-$, $m = m_-$ and $a = t$.  For each sign $\pm$ this produces
+$u_\pm \in \operatorname{Dom}(L^{1/2})$ and $g_\pm \in L^2(\gamma_n)$ with
+\begin{align*}
+  &u_\pm \geq 0 \ \text{a.e.}, \qquad f^\pm = g_\pm + L^{1/2}u_\pm ,\\
+  &\min\{f^\pm, t\} \leq g_\pm \leq t \ \text{a.e.}, \qquad
+   \int g_\pm \, d\gamma_n = m_\pm ,\\
+  &t\,\gamma_n(\{u_\pm > 0\}) \leq m_\pm , \qquad
+   Du_\pm = 0 \ \text{a.e. on } \{u_\pm > 0\}^c .
+\end{align*}
+Since $f^\pm \geq 0$ a.e.\ and $t > 0$, the lower bound gives
+$g_\pm \geq \min\{f^\pm, t\} \geq 0$ a.e.  The notation does not assert that
+$u_+$ and $u_-$ are the positive and negative parts of one function; they are
+independently constructed, and likewise for $g_+$ and $g_-$.
+
+\emph{Step 2: the signed objects.}
+Define
+\[
+  g = g_+ - g_-, \qquad u = u_+ - u_-,
+  \qquad \Omega = \{u_+>0\} \cup \{u_->0\} .
+\]
+$\Omega$ is measurable, being the union of two measurable sets (the sets
+$\{u_\pm>0\}$ are measurable because $u_\pm$ are measurable).  Clearly
+$g \in L^2(\gamma_n)$.  Also $u \in \operatorname{Dom}(L^{1/2})$: by
+\noderef{FracPowDomain} the condition is
+$\sum_{\alpha\neq0}|\alpha|\,|u_\alpha|^2 < \infty$, the coefficient map of
+\noderef{HermiteBasis} is linear, and the set of families with that weighted
+square-sum finite is a linear subspace (triangle inequality in the weighted
+$\ell^2$ space).  Moreover $L^{1/2}$ is linear on its domain: by
+\noderef{FracPow} and \noderef{FracPowCoeff}, $L^{1/2}w$ has coefficients
+$|\alpha|^{1/2}w_\alpha$ off $\alpha = 0$ and $0$ at $\alpha = 0$, which depend
+linearly on $(w_\alpha)$.  Subtracting the two identities of Step 1 therefore
+gives
+\[
+  f = f^+ - f^- = (g_+ - g_-) + L^{1/2}(u_+ - u_-) = g + Bu
+  \quad\text{in } L^2(\gamma_n).
+\]
+
+\emph{Step 3: the measure of $\Omega$.}
+By subadditivity of $\gamma_n$ and Step 1,
+\[
+  t\,\gamma_n(\Omega)
+    \leq t\,\gamma_n(\{u_+>0\}) + t\,\gamma_n(\{u_->0\})
+    \leq m_+ + m_- = M .
+\]
+
+\emph{Step 4: the sup bound.}
+From $0 \leq g_\pm \leq t$ a.e.\ (Step 1) we get, a.e.,
+$g = g_+ - g_- \leq g_+ \leq t$ and $g \geq -g_- \geq -t$, i.e.
+$|g| \leq t$.  The bound is $t$, not $2t$, precisely because each good part is
+individually squeezed between $0$ and $t$.
+
+\emph{Step 5: the $L^1$ bound.}
+Since $g_\pm \geq 0$ a.e., $|g| = |g_+ - g_-| \leq g_+ + g_-$ a.e.  Hence, using
+the mass identities of Step 1 and $m_++m_-=M$,
+\[
+  \|g\|_{L^1(\gamma_n)} = \int |g| \, d\gamma_n
+    \leq \int (g_+ + g_-)\, d\gamma_n = m_+ + m_- = M .
+\]
+The first step is an inequality, not an equality, because $g_+$ and $g_-$ need not
+have disjoint supports.
+
+\emph{Step 6: the $L^2$ bound.}
+Combining Steps 4 and 5,
+\[
+  \|g\|_{L^2(\gamma_n)}^2 = \int |g|^2\, d\gamma_n
+    = \int |g|\cdot|g|\, d\gamma_n
+    \leq t \int |g|\, d\gamma_n \leq t\,M .
+\]
+
+\emph{Step 7: locality of the signed gradient.}
+By Step 1 and \noderef{SqrtDomainSobolev}, both $u_\pm$ lie in
+$W^{1,2}(\gamma_n)$.  By parts (1) and (2) of \noderef{GaussDLinear},
+$u = u_+ - u_- \in W^{1,2}(\gamma_n)$ and $Du = Du_+ - Du_-$.  Now let
+$x \notin \Omega$.  Then $u_+(x) \leq 0$ and $u_-(x) \leq 0$, so $x$ lies in both
+$\{u_+>0\}^c$ and $\{u_->0\}^c$, where by Step 1 we have $Du_+ = 0$ and
+$Du_- = 0$ $\gamma_n$-a.e.  Hence $Du = Du_+ - Du_- = 0$ $\gamma_n$-a.e.\ on
+$\Omega^c$.
+\end{proof}

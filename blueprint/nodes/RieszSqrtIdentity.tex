@@ -1,0 +1,61 @@
+\begin{lemma}[The structural identity $R_\gamma L^{1/2} u = Du$]
+For every $u \in \operatorname{Dom}(L^{1/2})$ in the sense of
+\noderef{FracPowDomain},
+\[
+  R_\gamma\bigl(L^{1/2}u\bigr) = Du
+  \qquad\text{in } L^2(\gamma_n;\mathbb{R}^n),
+\]
+with $R_\gamma$ as in \noderef{RieszTransform}, $L^{1/2}$ as in \noderef{FracPow}
+and $D$ as in \noderef{GaussD}.  This is the identity that the endpoint argument
+exploits: applying $R_\gamma$ to the bad part $L^{1/2}u$ of a decomposition
+produces the ordinary gradient of the potential $u$.
+\end{lemma}
+\begin{proof}
+Write $u_\alpha$ for the Hermite coefficients of $u$ relative to
+\noderef{HermiteBasis}, and put $w = L^{1/2}u$.
+
+\emph{Step 1: the coefficients of $w$.}
+Since $u \in \operatorname{Dom}(L^{1/2})$, the formula of \noderef{FracPow} with
+$s = 1/2$ applies and gives
+\[
+  w_0 = 0, \qquad w_\alpha = |\alpha|^{1/2}\,u_\alpha \quad (\alpha \neq 0).
+\]
+
+\emph{Step 2: applying the pseudoinverse to $w$.}
+By \noderef{FracPowCoeff} with $s = -1/2$ the multiplied family for $w$ is $0$ at
+$\alpha = 0$ and, for $\alpha \neq 0$,
+\[
+  |\alpha|^{-1/2}\, w_\alpha = |\alpha|^{-1/2}|\alpha|^{1/2}u_\alpha = u_\alpha ,
+\]
+using $|\alpha| \geq 1 > 0$ from \noderef{MultiIndexSum}.  This family is square
+summable, being dominated by $(|u_\alpha|^2)_\alpha$ which sums to $\|u\|_2^2$ by
+Parseval (\noderef{HermiteBasis}); so $w \in \operatorname{Dom}(L^{-1/2})$ by
+\noderef{FracPowDomain} and, by \noderef{FracPow},
+$L^{-1/2}\Pi_0 w$ has coefficients $0$ at $\alpha = 0$ and $u_\alpha$ at
+$\alpha \neq 0$.
+
+By \noderef{FracPowCoeff} and \noderef{FracPow} with $s = 0$, those are exactly
+the coefficients of $\Pi_0 u$, and the coefficient map of \noderef{HermiteBasis}
+is injective, so
+\[
+  L^{-1/2}\Pi_0\bigl(L^{1/2}u\bigr) = \Pi_0 u .
+\]
+By \noderef{ProjZeroCentering}, $\Pi_0 u = u - \mathfrak{m}(u)\mathbf{1}$ where
+$\mathfrak{m}(u) = \int u \, d\gamma_n$.
+
+\emph{Step 3: applying $D$.}
+By \noderef{RieszTransform}, $R_\gamma w = D\bigl(L^{-1/2}\Pi_0 w\bigr)$, which by
+Step 2 equals $D\bigl(u - \mathfrak{m}(u)\mathbf{1}\bigr)$.
+
+Now $u \in W^{1,2}(\gamma_n)$ by \noderef{SqrtDomainSobolev}, and
+$-\mathfrak{m}(u)\mathbf{1} \in W^{1,2}(\gamma_n)$ with
+$D(-\mathfrak{m}(u)\mathbf{1}) = 0$ by part (3) of \noderef{GaussDLinear}.  Part
+(1) of \noderef{GaussDLinear}, applied to the pair
+$u$ and $-\mathfrak{m}(u)\mathbf{1}$, therefore gives
+$u - \mathfrak{m}(u)\mathbf{1} \in W^{1,2}(\gamma_n)$ and
+\[
+  D\bigl(u - \mathfrak{m}(u)\mathbf{1}\bigr)
+    = Du + D\bigl(-\mathfrak{m}(u)\mathbf{1}\bigr) = Du + 0 = Du .
+\]
+Combining with Step 3, $R_\gamma(L^{1/2}u) = Du$.
+\end{proof}

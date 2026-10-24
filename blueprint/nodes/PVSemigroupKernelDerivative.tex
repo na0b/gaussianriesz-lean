@@ -1,0 +1,183 @@
+\begin{lemma}[The kernel form of the Mehler gradient: $\int D_j^xp_s(x,y)f(y)\,dy = e^{-s}(A_s(D_jf))(x)$]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$.  Let $f : \mathbb{R}^n \to \mathbb{R}$ be smooth
+with compact support, let $x \in \mathbb{R}^n$, and let $s > 0$.  Write
+\[
+  r = e^{-s} \in (0,1), \qquad \sigma = 1-e^{-2s} \in (0,1],
+  \qquad \tau = \sqrt\sigma ,
+\]
+\[
+  p_s(x,y) = \frac{1}{\pi^{n/2}\sigma^{n/2}}
+      \exp\Bigl(-\frac{|rx-y|^2}{\sigma}\Bigr),
+  \qquad
+  D_j^xp_s(x,y) = \sqrt2\,r\,\frac{y_j-rx_j}{\sigma}\,p_s(x,y) ,
+\]
+the latter being the energy-normalized $x$-derivative of the Lebesgue kernel in the closed
+form the surrounding nodes of this layer all use: the displayed right-hand side is that
+explicit expression, and it is that expression, not a derivative, that occurs below.  Let
+$\lambda$ be Lebesgue measure, let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}, let $\partial_j$ denote the Fr\'echet derivative evaluated at the
+$j$th standard basis vector, and let
+\[
+  (A_sg)(x) = \int_{\mathbb{R}^n} g(rx+\tau z)\,d\gamma_n(z)
+\]
+be the Mehler average.  Then:
+\begin{enumerate}
+\item the function $y \mapsto D_j^xp_s(x,y)\,f(y)$ is Lebesgue integrable on
+$\mathbb{R}^n$; and
+\item
+\[
+  \int_{\mathbb{R}^n} D_j^xp_s(x,y)\,f(y)\,dy
+    = e^{-s}\,\frac{1}{\sqrt2}\bigl(A_s(\partial_jf)\bigr)(x) .
+\]
+\end{enumerate}
+
+This is the pointwise, kernel-level form of the reference paper's identity
+$DP_sf = e^{-s}P_sDf$ for $f \in C_c^\infty$, which the paper obtains by
+``differentiation of Mehler's formula'' and then uses, together with the substitution
+$r = e^{-s}$, to read off the off-diagonal Lebesgue kernel of the Gaussian Riesz
+transform.  Clause (1) is the absolute convergence that makes clause (2) an identity of
+real numbers rather than of conventional values: it is asserted here, and not left to the
+Bochner convention, precisely because clause (2)'s consumer splits the integral
+$\int D_j^xp_s(x,y)(f(y)-f(x))\,dy$ into two pieces and needs each to converge.
+
+Both sides are honest pointwise quantities at the given $x$ and $s$; nothing here is
+almost-everywhere, and no $L^2$ class or representative of $f$ occurs.  The constant
+$2^{-1/2}$ is the energy normalization $D_j = 2^{-1/2}\partial_j$ carried by both sides,
+and $\sigma$, $\tau$ are positive, so every divisor below is nonzero.
+\end{lemma}
+\begin{proof}
+Fix $n$, $j$, $f$, $x$ and $s > 0$, and keep $r$, $\sigma$, $\tau$ as in the statement.
+Since $-s < 0$ and $-2s < 0$ we have $0 < r < 1$ and $0 < e^{-2s} < 1$, so
+$0 < \sigma \leq 1$, and hence $\tau > 0$ with $\tau^2 = \sigma$ and
+\begin{equation*}
+  \tau^n = \sigma^{n/2} , \tag{1}
+\end{equation*}
+the latter because $\tau = \sigma^{1/2}$ and $(\sigma^{1/2})^n = \sigma^{n/2}$ for
+$\sigma > 0$.  Write
+\[
+  A = \pi^{-n/2}\sigma^{-n/2} > 0 ,
+  \qquad
+  w(y) = -\sigma^{-1}|rx-y|^2 ,
+  \qquad
+  g(y) = \partial_jf(y) ,
+\]
+so that $p_s(x,y) = A\,e^{w(y)}$ and
+\begin{equation*}
+  \sigma^{n/2}A = \pi^{-n/2} . \tag{2}
+\end{equation*}
+
+\emph{Step 1: clause (1).}
+By clause (1) of \noderef{PVKernelConstantCancellation}, applied at this $s$, the function
+$y \mapsto D_j^xp_s(x,y)$ is Lebesgue integrable on $\mathbb{R}^n$.  Also $f$ is
+continuous with compact support, so it is bounded: there is $M$ with $|f(y)| \leq M$ for
+every $y$ (the shared-context bound for a continuous function with compact support).  The
+product $y \mapsto D_j^xp_s(x,y)f(y)$ is therefore measurable --- a product of a
+measurable and a continuous function --- and dominated in absolute value by the
+integrable function $M\,|D_j^xp_s(x,\cdot)|$, since
+$|D_j^xp_s(x,y)f(y)| = |D_j^xp_s(x,y)|\,|f(y)| \leq |D_j^xp_s(x,y)|\,M$.  Hence it is
+Lebesgue integrable.  This is clause (1).
+
+\emph{Step 2: the $j$th partial of the kernel exponent.}
+The map $y \mapsto rx-y$ is differentiable at every $y$ with derivative $-\mathrm{id}$,
+so $y \mapsto |rx-y|^2$ is differentiable at every $y$ with derivative
+$v \mapsto 2\langle rx-y,-v\rangle$, by the chain rule applied to the squared norm (whose
+derivative at a point $u$ is $v \mapsto 2\langle u,v\rangle$).  Multiplying by the
+constant $-\sigma^{-1}$, the function $w$ is differentiable at every $y$ and
+\begin{equation*}
+  \partial_jw(y) = -\sigma^{-1}\cdot2\langle rx-y,-e_j\rangle
+    = \frac{2\langle rx-y,e_j\rangle}{\sigma}
+    = \frac{2\,(rx_j-y_j)}{\sigma} . \tag{3}
+\end{equation*}
+In particular $y \mapsto \partial_jw(y)$ is continuous, being an affine function of the
+single coordinate $y_j$ divided by the nonzero constant $\sigma$.
+
+\emph{Step 3: integration by parts in $y$.}
+Apply \noderef{CompIntegrationByParts} with $q = q' = \exp$ (the exponential is
+differentiable at every real number with derivative itself, and that derivative is
+continuous), with the coordinate index $j$, with the function $w$ of Step 2 --- which is
+differentiable everywhere and has continuous $j$th partial, exactly the hypothesis that
+node requires --- and with the test function $\varphi = f$, which is smooth with compact
+support.  That node's identity reads
+\[
+  \int_{\mathbb{R}^n} e^{w(y)}\,\partial_jf(y)\,dy
+    = -\int_{\mathbb{R}^n}\bigl(e^{w(y)}\,\partial_jw(y)\bigr)f(y)\,dy ,
+\]
+both integrals converging.  Substituting $(3)$ into the right-hand side and then using
+$y_j - rx_j = -(rx_j-y_j)$, so that the integrands differ by a sign,
+\begin{equation*}
+  \int_{\mathbb{R}^n}
+      \Bigl(e^{w(y)}\,\frac{2\,(y_j-rx_j)}{\sigma}\Bigr)f(y)\,dy
+    = -\int_{\mathbb{R}^n}
+        \Bigl(e^{w(y)}\,\frac{2\,(rx_j-y_j)}{\sigma}\Bigr)f(y)\,dy
+    = \int_{\mathbb{R}^n} e^{w(y)}\,g(y)\,dy . \tag{4}
+\end{equation*}
+
+\emph{Step 4: the Mehler average is the Lebesgue-kernel average.}
+We claim
+\begin{equation*}
+  \bigl(A_sg\bigr)(x) = \int_{\mathbb{R}^n} g(rx+\tau z)\,d\gamma_n(z)
+    = A\int_{\mathbb{R}^n} e^{w(y)}\,g(y)\,dy . \tag{5}
+\end{equation*}
+Put $\Psi(y) = A\,e^{w(y)}g(y)$, so that the right-hand side of $(5)$ is $\int\Psi$.
+
+By \noderef{GaussMeasure}, $\gamma_n$ is $\lambda$ weighted by the density
+$\rho(z) = \pi^{-n/2}e^{-|z|^2}$, which is finite and nonnegative at every point; so for
+every $h$,
+$\int h\,d\gamma_n = \int \rho(z)h(z)\,d\lambda(z)$, the weighted-integral identity of the
+shared context.  Hence
+\[
+  \int_{\mathbb{R}^n} g(rx+\tau z)\,d\gamma_n(z)
+    = \int_{\mathbb{R}^n} \pi^{-n/2}e^{-|z|^2}\,g(rx+\tau z)\,dz .
+\]
+Next, for every $z$,
+\[
+  |rx-(rx+\tau z)|^2 = |{-\tau z}|^2 = \tau^2|z|^2 = \sigma|z|^2 ,
+  \qquad\text{so}\qquad
+  w(rx+\tau z) = -\sigma^{-1}\sigma|z|^2 = -|z|^2 ,
+\]
+whence $\Psi(rx+\tau z) = A\,e^{-|z|^2}g(rx+\tau z)$ and therefore, by $(2)$,
+\begin{equation*}
+  \pi^{-n/2}e^{-|z|^2}g(rx+\tau z)
+    = \sigma^{n/2}A\,e^{-|z|^2}g(rx+\tau z)
+    = \sigma^{n/2}\,\Psi(rx+\tau z) \qquad (z \in \mathbb{R}^n) . \tag{6}
+\end{equation*}
+Finally, the dilation $z \mapsto \tau z$ scales Lebesgue measure by $\tau^n$ and
+translation by $rx$ preserves it, so, in the integral form of those two shared-context
+facts --- both of which are identities valid without any integrability hypothesis, the
+two sides being simultaneously genuine or simultaneously $0$ by the convention ---
+\begin{equation*}
+  \int_{\mathbb{R}^n}\Psi(rx+\tau z)\,dz
+    = |\tau^n|^{-1}\int_{\mathbb{R}^n}\Psi(rx+v)\,dv
+    = \bigl(\sigma^{n/2}\bigr)^{-1}\int_{\mathbb{R}^n}\Psi(y)\,dy , \tag{7}
+\end{equation*}
+using $(1)$ and $\tau^n > 0$ in the last step.  Combining the three displays, $(6)$ and
+$(7)$ give
+\[
+  \int g(rx+\tau z)\,d\gamma_n(z)
+    = \sigma^{n/2}\int\Psi(rx+\tau z)\,dz
+    = \sigma^{n/2}\bigl(\sigma^{n/2}\bigr)^{-1}\int\Psi
+    = \int\Psi ,
+\]
+which is $(5)$ after cancelling $\sigma^{n/2} \neq 0$ and pulling the constant $A$ out of
+$\int\Psi$.
+
+\emph{Step 5: assembly.}
+For every $y$, since $p_s(x,y) = A\,e^{w(y)}$ and $\sqrt2/2 = 2^{-1/2}$,
+\[
+  D_j^xp_s(x,y)f(y)
+    = \sqrt2\,r\,\frac{y_j-rx_j}{\sigma}\,A\,e^{w(y)}f(y)
+    = \frac{\sqrt2\,r}{2}\,A\cdot
+        \Bigl(e^{w(y)}\,\frac{2\,(y_j-rx_j)}{\sigma}\Bigr)f(y) ,
+\]
+the two sides differing only by the regrouping of the nonzero constants
+$\sqrt2$, $r$, $2$, $A$ and $\sigma$.  Integrating in $y$ and pulling the constant
+$\tfrac{\sqrt2\,r}{2}A$ out of the integral, then using $(4)$ and then $(5)$,
+\[
+  \int_{\mathbb{R}^n} D_j^xp_s(x,y)f(y)\,dy
+    = \frac{\sqrt2\,r}{2}A\int e^{w(y)}\Bigl(\frac{2(y_j-rx_j)}{\sigma}\Bigr)f(y)\,dy
+    = \frac{\sqrt2\,r}{2}\,A\int e^{w(y)}g(y)\,dy
+    = \frac{\sqrt2\,r}{2}\bigl(A_sg\bigr)(x) .
+\]
+Since $\sqrt2\cdot\sqrt2 = 2$ gives $\sqrt2/2 = 1/\sqrt2$, and $r = e^{-s}$, the
+right-hand side is $e^{-s}\,2^{-1/2}\bigl(A_s(\partial_jf)\bigr)(x)$.  This is clause (2).
+\end{proof}

@@ -1,0 +1,40 @@
+\begin{lemma}[Measure bound for the exceptional set]
+Let $F \in L^2(\gamma_n)$ be nonnegative $\gamma_n$-a.e., let $a > 0$ and
+$m \in \mathbb{R}$, and let $u, \eta_2 \in L^2(\gamma_n)$ satisfy
+\begin{enumerate}
+\item $\int (a - \eta_2)\, d\gamma_n = m$;
+\item $0 \leq \eta_2 \leq (a-F)^+$ $\gamma_n$-a.e.; and
+\item $\eta_2 = 0$ $\gamma_n$-a.e.\ on $\{u > 0\}$.
+\end{enumerate}
+Put $g = a\mathbf{1} - \eta_2$ and $\Omega = \{u > 0\}$.  Then
+\[
+  a\,\gamma_n(\Omega) \leq m .
+\]
+\end{lemma}
+\begin{proof}
+From (2), $0 \leq \eta_2 \leq (a-F)^+ \leq a$ $\gamma_n$-a.e., the last inequality
+because $F \geq 0$ a.e.\ and $a > 0$.  Hence
+\[
+  0 \leq g = a - \eta_2 \leq a \qquad \gamma_n\text{-a.e.}
+\]
+In particular $g$ is bounded, hence in $L^1(\gamma_n)$ since $\gamma_n$ is a
+probability measure (\noderef{GaussIsProb}), and $g \geq 0$ a.e.
+
+By (3), $g = a$ $\gamma_n$-a.e.\ on $\Omega$.  Therefore
+\[
+  a\,\gamma_n(\Omega)
+    = \int_{\Omega} a \, d\gamma_n
+    = \int_{\Omega} g \, d\gamma_n .
+\]
+Since $g \geq 0$ a.e.\ on the complement $\Omega^c$ as well, discarding that
+contribution only increases the integral:
+\[
+  \int_\Omega g \, d\gamma_n
+    \leq \int_\Omega g\, d\gamma_n + \int_{\Omega^c} g \, d\gamma_n
+    = \int g \, d\gamma_n .
+\]
+Finally $\int g \, d\gamma_n = \int (a - \eta_2) \, d\gamma_n = m$ by (1).
+Combining the three displays gives $a\gamma_n(\Omega) \leq m$.  This is exactly
+the step where nonnegativity of $g$ off the contact set is consumed; it in turn
+came from $F \geq 0$.
+\end{proof}

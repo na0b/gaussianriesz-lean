@@ -1,0 +1,52 @@
+\begin{lemma}[Derivative recurrence for the probabilists' Hermite polynomials]
+Let $\mathrm{He}_k \in \mathbb{Z}[X]$ denote the probabilists' Hermite polynomials,
+defined by $\mathrm{He}_0 = 1$ and the recurrence
+\[
+  \mathrm{He}_{k+1} = X\,\mathrm{He}_k - \mathrm{He}_k' ,
+  \qquad k \geq 0 .
+\]
+Then for every $k \geq 0$,
+\[
+  \mathrm{He}_{k+1}' = (k+1)\,\mathrm{He}_k .
+\]
+\end{lemma}
+\begin{proof}
+We argue by induction on $k$.  Throughout, $'$ is the formal derivative on
+$\mathbb{Z}[X]$, which is additive and satisfies the Leibniz rule
+$(Xp)' = p + X p'$.
+
+Base case $k = 0$.  Since $\mathrm{He}_0 = 1$ is constant, $\mathrm{He}_0' = 0$, so the
+defining recurrence gives
+$\mathrm{He}_1 = X\,\mathrm{He}_0 - \mathrm{He}_0' = X$.  Hence
+$\mathrm{He}_1' = 1 = 1\cdot \mathrm{He}_0 = (0+1)\,\mathrm{He}_0$, as required.
+
+Inductive step.  Let $k \geq 0$ and assume
+\[
+  \mathrm{He}_{k+1}' = (k+1)\,\mathrm{He}_k . \tag{IH}
+\]
+We must show $\mathrm{He}_{k+2}' = (k+2)\,\mathrm{He}_{k+1}$.  Apply the defining
+recurrence at index $k+1$ and then substitute (IH):
+\[
+  \mathrm{He}_{k+2} = X\,\mathrm{He}_{k+1} - \mathrm{He}_{k+1}'
+            = X\,\mathrm{He}_{k+1} - (k+1)\,\mathrm{He}_k .
+\]
+Differentiating this identity and using the Leibniz rule on the first term,
+\[
+  \mathrm{He}_{k+2}'
+    = \mathrm{He}_{k+1} + X\,\mathrm{He}_{k+1}' - (k+1)\,\mathrm{He}_k' .
+\]
+Substitute (IH) for $\mathrm{He}_{k+1}'$ in the middle term:
+\[
+  \mathrm{He}_{k+2}'
+    = \mathrm{He}_{k+1} + (k+1)\,X\,\mathrm{He}_k - (k+1)\,\mathrm{He}_k'
+    = \mathrm{He}_{k+1} + (k+1)\bigl(X\,\mathrm{He}_k - \mathrm{He}_k'\bigr) .
+\]
+By the defining recurrence at index $k$, the bracket is exactly
+$\mathrm{He}_{k+1}$.  Therefore
+\[
+  \mathrm{He}_{k+2}' = \mathrm{He}_{k+1} + (k+1)\,\mathrm{He}_{k+1} = (k+2)\,\mathrm{He}_{k+1},
+\]
+which completes the induction.  Note the step used only (IH) and the defining
+recurrence at indices $k$ and $k+1$; no separate information about
+$\mathrm{He}_k'$ was needed.
+\end{proof}

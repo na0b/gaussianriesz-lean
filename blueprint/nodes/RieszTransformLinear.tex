@@ -1,0 +1,69 @@
+\begin{lemma}[The Riesz transform is linear on $L^2(\gamma_n)$]
+Fix $n \in \mathbb{N}_0$ and let $R_\gamma : L^2(\gamma_n) \to
+L^2(\gamma_n;\mathbb{R}^n)$ be the energy-normalized vector Riesz transform of
+\noderef{RieszTransform}.  Then $R_\gamma$ is linear over the real scalars, in
+the two clauses:
+\begin{enumerate}
+  \item (additivity) for all $v, w \in L^2(\gamma_n)$,
+    $R_\gamma(v + w) = R_\gamma v + R_\gamma w$;
+  \item (homogeneity) for every $c \in \mathbb{R}$ and every
+    $v \in L^2(\gamma_n)$, $R_\gamma(c\,v) = c\,R_\gamma v$.
+\end{enumerate}
+Both clauses are unconditional: they hold for every pair of elements and every
+real scalar, with no domain restriction and no differentiability assumption on
+the arguments.  The scalars are real throughout, $L^2(\gamma_n)$ being a real
+Hilbert space, so clause (2) is homogeneity over $\mathbb{R}$ and not merely
+over the nonnegative reals.
+\end{lemma}
+\begin{proof}
+By \noderef{RieszTransform}, $R_\gamma$ is the composite
+$R_\gamma f = D\,L^{-1/2}\Pi_0 f$: one first forms the potential
+$v = L^{-1/2}\Pi_0 f$ and then takes its energy-normalized weak gradient $D$.
+So it suffices to see that each of the two factors is linear and that the
+intermediate domain conditions are satisfied automatically, after which the
+composite of two linear maps is linear.
+
+Step 1 (the first factor is everywhere defined).  The exponent here is
+$s = -1/2 \leq 0$, so by the first clause of \noderef{FracPowLinear} every
+$v \in L^2(\gamma_n)$ lies in $\operatorname{Dom}(L^{-1/2})$.  Hence no domain
+hypothesis has to be carried: $L^{-1/2}\Pi_0$ is defined on all of
+$L^2(\gamma_n)$, which is what makes the two clauses above unconditional.
+
+Step 2 (the first factor is linear).  By the remaining two clauses of
+\noderef{FracPowLinear}, applied at $s = -1/2$ and using Step 1 to discharge
+their domain hypotheses,
+\[
+  L^{-1/2}\Pi_0 (v + w) = L^{-1/2}\Pi_0 v + L^{-1/2}\Pi_0 w,
+  \qquad
+  L^{-1/2}\Pi_0 (c\,v) = c\, L^{-1/2}\Pi_0 v
+\]
+for all $v, w \in L^2(\gamma_n)$ and all $c \in \mathbb{R}$.
+
+Step 3 (the potentials are differentiable).  For every $v \in L^2(\gamma_n)$ the
+potential $L^{-1/2}\Pi_0 v$ lies in $\operatorname{Dom}(L^{1/2})$ by
+\noderef{PseudoInverseSqrt}, hence in $W^{1,2}(\gamma_n)$ by
+\noderef{SqrtDomainSobolev}.  So the second factor $D$ may be applied to every
+potential that arises, and again no side condition survives into the statement.
+
+Step 4 (the second factor is linear).  By \noderef{GaussDLinear}, $D$ is
+additive and real-homogeneous on $W^{1,2}(\gamma_n)$: for $u, u'$ in that space
+and $c \in \mathbb{R}$ one has $D(u + u') = Du + Du'$ and $D(c\,u) = c\,Du$,
+the domain hypotheses being supplied by Step 3.
+
+Step 5 (composing).  Fix $v, w \in L^2(\gamma_n)$.  Unfolding the definition of
+$R_\gamma$ three times and applying Step 2 and then Step 4,
+\[
+  R_\gamma(v+w) = D\,L^{-1/2}\Pi_0(v+w)
+    = D\bigl(L^{-1/2}\Pi_0 v + L^{-1/2}\Pi_0 w\bigr)
+    = D\,L^{-1/2}\Pi_0 v + D\,L^{-1/2}\Pi_0 w
+    = R_\gamma v + R_\gamma w ,
+\]
+which is clause (1).  Likewise, for $c \in \mathbb{R}$ and $v \in L^2(\gamma_n)$,
+\[
+  R_\gamma(c\,v) = D\,L^{-1/2}\Pi_0(c\,v)
+    = D\bigl(c\,L^{-1/2}\Pi_0 v\bigr)
+    = c\,D\,L^{-1/2}\Pi_0 v
+    = c\,R_\gamma v ,
+\]
+which is clause (2).  As $v$, $w$ and $c$ were arbitrary, both clauses hold.
+\end{proof}

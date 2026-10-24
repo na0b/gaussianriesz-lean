@@ -1,0 +1,222 @@
+\begin{lemma}[The fixed-time testing identity for the centered Ornstein--Uhlenbeck evolution]
+For $s > 0$ write $r_s = e^{-s}$ and $\tau_s = \sqrt{1-e^{-2s}}$, and for
+$g : \mathbb{R}^n \to \mathbb{R}$ write
+$(A_s g)(x) = \int g(r_sx+\tau_sz)\,d\gamma_n(z)$ for the Mehler average of
+\noderef{MehlerFormula}.  Let $\lambda$ denote Lebesgue measure on
+$\mathbb{R}^n$.  Let $f : \mathbb{R}^n \to \mathbb{R}$ be smooth with compact
+support and square $\gamma_n$-integrable, and write $u \in L^2(\gamma_n)$ for the
+class it determines.  Let $\Pi_0 = L^0$ be the mean-zero projection of
+\noderef{FracPow} and let $P_s$ be the Ornstein--Uhlenbeck semigroup of
+\noderef{OUSemigroup}.  Let $\varphi : \mathbb{R}^n \to \mathbb{R}$ be smooth
+with compact support, let $i \in \{1,\ldots,n\}$ and let $s > 0$.  Then:
+\begin{enumerate}
+\item the function
+$x \mapsto (P_s\Pi_0u)(x)\,\partial_i\varphi(x)$ is $\lambda$-integrable;
+\item the function
+$x \mapsto \bigl(A_s(\partial_if)\bigr)(x)\,\varphi(x)$ is $\lambda$-integrable;
+and
+\item
+\[
+  \int_{\mathbb{R}^n}(P_s\Pi_0u)(x)\,\partial_i\varphi(x)\,d\lambda(x)
+    = -e^{-s}\int_{\mathbb{R}^n}
+        \bigl(A_s(\partial_if)\bigr)(x)\,\varphi(x)\,d\lambda(x) .
+\]
+\end{enumerate}
+
+Here $(P_s\Pi_0u)(x)$ means the value at $x$ of the function to which the
+$L^2(\gamma_n)$ class $P_s\Pi_0u$ is coerced.  Such a coercion is determined only
+up to a $\gamma_n$-null set, but $\gamma_n$ and $\lambda$ have the same null sets
+on $\mathbb{R}^n$ --- this is recorded as a separate fact below and used in the
+proof --- so neither the integrability in clause (1) nor the value of the
+integral in clause (3) depends on which coercion is taken.
+
+This is the reference paper's fixed-time half of the derivation of the semigroup
+formula for $R_\gamma$: the paper differentiates Mehler's formula to get
+$DP_sf = e^{-s}P_sDf$ at each fixed $s$, and only afterwards passes to the time
+integral.  The identity above is that fixed-time statement in tested form, with
+the derivative moved onto the test function $\varphi$ by integration by parts and
+with the mean-zero projection already accounted for; the factor $e^{-s}$ is
+exactly the one the paper's fixed-time identity carries.  No time integral, no
+subordination weight and no Riesz transform occurs here, and nothing is asserted
+about the $s$-dependence of either side.
+\end{lemma}
+\begin{proof}
+Throughout, $\lambda$ is Lebesgue measure and all integrals written
+$\int_{\mathbb{R}^n}\cdots d\lambda$ are against $\lambda$; the Mehler averages
+are against $\gamma_n$ in the inner variable.  Since $s > 0$ we have
+$e^{-2s} < 1$, so $1-e^{-2s} > 0$ and therefore
+\begin{equation*}
+  \tau_s = \sqrt{1-e^{-2s}} > 0, \qquad\text{in particular } \tau_s \neq 0 .
+  \tag{0}
+\end{equation*}
+
+\emph{Step 1: $\gamma_n$ and $\lambda$ have the same null sets.}
+By clause (4) of \noderef{GaussLebesgueBallComparison}, for every
+$A \subseteq \mathbb{R}^n$ one has $\gamma_n(A) = 0$ if and only if
+$\lambda(A) = 0$.  Consequently a property holding $\gamma_n$-almost everywhere
+holds $\lambda$-almost everywhere and conversely: the exceptional set is the same
+set in both cases, and it is null for one measure exactly when it is null for the
+other.  We use this in both directions below without further comment.
+
+\emph{Step 2: regularity of the two Mehler averages.}
+Apply \noderef{SemigroupGradientCommute} at this $s$, to this $f$ --- smooth with
+compact support --- and at the index $i$.  Its clause (3) says that
+$A_s(\partial_if)$ is continuous on $\mathbb{R}^n$.  Its clause (4) says that
+$A_sf$ is differentiable at every point $x$ and that
+\begin{equation*}
+  \partial_i(A_sf)(x) = e^{-s}\bigl(A_s(\partial_if)\bigr)(x)
+  \qquad\text{for every } x . \tag{1}
+\end{equation*}
+Being differentiable at every point, $A_sf$ is in particular continuous.  By
+$(1)$ the function $x \mapsto \partial_i(A_sf)(x)$ is the constant $e^{-s}$ times
+the continuous function $A_s(\partial_if)$, hence is itself continuous.
+
+Also, $\varphi$ being smooth, $\partial_i\varphi$ is continuous; and
+$\partial_i\varphi$ vanishes off the compact set $\operatorname{supp}\varphi$,
+because a point outside that set has an open neighbourhood on which $\varphi$
+vanishes identically and hence on which all derivatives of $\varphi$ vanish.  So
+$\partial_i\varphi$ is continuous with compact support.
+
+\emph{Step 3: the three integrability statements.}
+A continuous function with compact support on $\mathbb{R}^n$ is
+$\lambda$-integrable (shared context).  The products
+\[
+  (A_sf)\cdot\partial_i\varphi,
+  \qquad
+  c\cdot\partial_i\varphi \quad (c \in \mathbb{R} \text{ constant}),
+  \qquad
+  \bigl(A_s(\partial_if)\bigr)\cdot\varphi
+\]
+are each continuous, by Step 2, and each has compact support --- the first two
+because $\partial_i\varphi$ does, the third because $\varphi$ does --- so all
+three are $\lambda$-integrable.  The third is clause (2).  Being integrable, the
+difference $\bigl((A_sf) - c\bigr)\cdot\partial_i\varphi$ is integrable as well,
+for any constant $c$.
+
+\emph{Step 4: the Mehler average of the class is the Mehler average of $f$.}
+Let $N = \{\,y \in \mathbb{R}^n : u(y) \neq f(y)\,\}$, where $u$ is read through
+its coercion.  By construction of the class of $f$ we have $u = f$
+$\gamma_n$-almost everywhere, i.e.\ $\gamma_n(N) = 0$, so $\lambda(N) = 0$ by
+Step 1.  Fix $x \in \mathbb{R}^n$ and put $\Psi(z) = r_sx+\tau_sz$.  Then
+\[
+  \Psi^{-1}(N)
+    = \{\,z : r_sx+\tau_sz \in N\,\}
+    = \bigl(z \mapsto \tau_sz\bigr)^{-1}
+        \bigl(\{\,y : r_sx+y \in N\,\}\bigr) ,
+\]
+the two descriptions being the same set by definition of preimage.  Lebesgue
+measure is invariant under translation (shared context), so
+$\lambda(\{y : r_sx+y \in N\}) = \lambda(N) = 0$.  By $(0)$ we have
+$\tau_s \neq 0$, so clause (2) of \noderef{LebesgueDilation}, applied with the
+scalar $c = \tau_s$ and the $\lambda$-null set $\{y : r_sx+y \in N\}$, gives
+$\lambda(\Psi^{-1}(N)) = 0$, hence $\gamma_n(\Psi^{-1}(N)) = 0$ by Step 1.
+Outside $\Psi^{-1}(N)$ the two integrands $z \mapsto u(\Psi(z))$ and
+$z \mapsto f(\Psi(z))$ agree, so they agree $\gamma_n$-almost everywhere and
+their $\gamma_n$-integrals coincide:
+\begin{equation*}
+  \int u(r_sx+\tau_sz)\,d\gamma_n(z) = (A_sf)(x)
+  \qquad\text{for every } x . \tag{2}
+\end{equation*}
+By clause (2) of \noderef{MehlerFormula}, applied at this $s$ to $v = u$, we have
+$(P_su)(x) = \int u(r_sx+\tau_sz)\,d\gamma_n(z)$ for $\gamma_n$-almost every $x$.
+Combining with $(2)$,
+\begin{equation*}
+  (P_su)(x) = (A_sf)(x)
+  \qquad\text{for } \gamma_n\text{-a.e. } x,\text{ hence for }
+  \lambda\text{-a.e. } x. \tag{3}
+\end{equation*}
+
+\emph{Step 5: the projection costs only a constant.}
+Let $c = u_0$ be the Hermite coefficient of $u$ at the multi-index $\alpha = 0$,
+relative to the basis of \noderef{HermiteBasis}; recall from that node that the
+coefficient map $v \mapsto (v_\alpha)_\alpha$ is an isometric isomorphism onto
+$\ell^2(\mathbb{N}_0^n)$, in particular injective.  By clause (1) of
+\noderef{FracPowLinear} at exponent $0$, every element of $L^2(\gamma_n)$ lies in
+$\operatorname{Dom}(L^0)$, so $\Pi_0u$ is defined; and by \noderef{FracPow} at
+exponent $0$ its coefficients are
+\[
+  (\Pi_0u)_\alpha = \begin{cases} 0, & \alpha = 0,\\ u_\alpha, & \alpha \neq 0,\end{cases}
+\]
+the nonzero case using $|\alpha|^0 = 1$.  Write $h_0$ for the basis vector at
+$\alpha = 0$; by clause (2) of \noderef{HermiteBasisVectorFacts} its coefficients
+are $(h_0)_\alpha = 1$ at $\alpha = 0$ and $0$ at $\alpha \neq 0$, after
+identifying $h_0$ with the corresponding Hermite element by clause (1) of that
+node.  Now apply \noderef{OUSemigroupSpectral}, valid for every $s \geq 0$, to
+$\Pi_0u$ and to $u$: the coefficients of $P_s\Pi_0u$ are
+$e^{-s|\alpha|}(\Pi_0u)_\alpha$, and those of $P_su - c\,h_0$ are
+$e^{-s|\alpha|}u_\alpha - c\,(h_0)_\alpha$.  At $\alpha = 0$ we have $|0| = 0$,
+so the first is $e^{0}\cdot 0 = 0$ and the second is $e^{0}u_0 - c = 0$; at
+$\alpha \neq 0$ the first is $e^{-s|\alpha|}u_\alpha$ and the second is
+$e^{-s|\alpha|}u_\alpha - 0$.  The two coefficient families agree, so by
+injectivity of the coefficient map
+\begin{equation*}
+  P_s\Pi_0u = P_su - c\,h_0 . \tag{4}
+\end{equation*}
+By \noderef{HermiteL2ZeroAEOne} the coercion of $h_0$ agrees $\gamma_n$-almost
+everywhere with the constant function $1$ --- again using clause (1) of
+\noderef{HermiteBasisVectorFacts} to identify $h_0$ with that Hermite element ---
+so taking coercions in $(4)$ and using $(3)$,
+\begin{equation*}
+  (P_s\Pi_0u)(x) = (A_sf)(x) - c
+  \qquad\text{for } \lambda\text{-a.e. } x. \tag{5}
+\end{equation*}
+By Step 3 the right-hand side of $(5)$, multiplied by $\partial_i\varphi$, is
+$\lambda$-integrable; since two functions agreeing $\lambda$-almost everywhere
+are integrable together, clause (1) follows from $(5)$.
+
+\emph{Step 6: the constant term integrates to zero.}
+We claim $\int_{\mathbb{R}^n}\partial_i\varphi\,d\lambda = 0$.  Apply
+\noderef{CompIntegrationByParts} at the index $j := i$ with the following data.
+Take $q = \mathrm{id}_{\mathbb{R}}$ and $q' \equiv 1$: then $q$ is differentiable
+at every $t$ with derivative $q'(t) = 1$, and $q'$, being constant, is
+continuous.  Take $w \equiv 1$, the constant function on $\mathbb{R}^n$: a
+constant function is differentiable at every point with vanishing derivative, so
+$\partial_i w(x) = 0$ for every $x$ and $x \mapsto \partial_i w(x)$ is the zero
+function, which is continuous.  Take the test function to be $\varphi$, which is
+smooth with compact support.  Both hypotheses on $w$ hold, and the conclusion of
+that node reads
+\[
+  \int_{\mathbb{R}^n}q(w(x))\,\partial_i\varphi(x)\,d\lambda(x)
+    = -\int_{\mathbb{R}^n}
+        \bigl(q'(w(x))\,\partial_iw(x)\bigr)\varphi(x)\,d\lambda(x) .
+\]
+Here $q(w(x)) = 1$ and $q'(w(x))\,\partial_iw(x) = 1\cdot 0 = 0$ for every $x$,
+so the left side is $\int\partial_i\varphi\,d\lambda$ and the right side is
+$-\int 0\,d\lambda = 0$.  Hence
+\begin{equation*}
+  \int_{\mathbb{R}^n}c\,\partial_i\varphi\,d\lambda
+    = c\int_{\mathbb{R}^n}\partial_i\varphi\,d\lambda = 0 . \tag{6}
+\end{equation*}
+
+\emph{Step 7: integration by parts at fixed time.}
+Apply \noderef{CompIntegrationByParts} again at the index $j := i$, now with
+$w = A_sf$, with $q = \mathrm{id}_{\mathbb{R}}$ and $q' \equiv 1$ as in Step 6,
+and with the test function $\varphi$.  The two hypotheses that node places on $w$
+are differentiability at every point and continuity of the single partial
+derivative $\partial_iw$; both were verified in Step 2.  Since
+$q(w(x)) = (A_sf)(x)$ and
+$q'(w(x))\,\partial_iw(x) = \partial_i(A_sf)(x)$ for every $x$, its conclusion
+reads
+\[
+  \int_{\mathbb{R}^n}(A_sf)\,\partial_i\varphi\,d\lambda
+    = -\int_{\mathbb{R}^n}\partial_i(A_sf)\,\varphi\,d\lambda
+    = -e^{-s}\int_{\mathbb{R}^n}\bigl(A_s(\partial_if)\bigr)\varphi\,d\lambda ,
+\]
+the last equality by $(1)$ together with linearity of the integral, legitimate
+because $\bigl(A_s(\partial_if)\bigr)\varphi$ is integrable by Step 3.  There is
+no boundary term because $\varphi$ is compactly supported.
+
+\emph{Step 8: conclusion.}
+By $(5)$ the integrands $(P_s\Pi_0u)\,\partial_i\varphi$ and
+$\bigl((A_sf) - c\bigr)\partial_i\varphi$ agree $\lambda$-almost everywhere, so
+their integrals coincide.  Both $(A_sf)\,\partial_i\varphi$ and
+$c\,\partial_i\varphi$ are integrable by Step 3, so the integral of their
+difference splits, and
+\[
+  \int_{\mathbb{R}^n}(P_s\Pi_0u)\,\partial_i\varphi\,d\lambda
+    = \int_{\mathbb{R}^n}(A_sf)\,\partial_i\varphi\,d\lambda
+      - \int_{\mathbb{R}^n}c\,\partial_i\varphi\,d\lambda
+    = -e^{-s}\int_{\mathbb{R}^n}\bigl(A_s(\partial_if)\bigr)\varphi\,d\lambda ,
+\]
+using Step 7 for the first term and $(6)$ for the second.  This is clause (3).
+\end{proof}

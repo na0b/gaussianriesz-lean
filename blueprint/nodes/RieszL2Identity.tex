@@ -1,0 +1,31 @@
+\begin{lemma}[The exact $L^2$ identity for $R_\gamma$]
+For every $f \in L^2(\gamma_n)$,
+\[
+  \|R_\gamma f\|_{L^2(\gamma_n;\mathbb{R}^n)}^2 = \|\Pi_0 f\|_{L^2(\gamma_n)}^2
+  \leq \|f\|_{L^2(\gamma_n)}^2 ,
+\]
+with $R_\gamma$ as in \noderef{RieszTransform} and $\Pi_0$ as in
+\noderef{FracPow}.
+\end{lemma}
+\begin{proof}
+Put $v = L^{-1/2}\Pi_0 f$.  By \noderef{PseudoInverseSqrt},
+$v \in \operatorname{Dom}(L^{1/2})$ and $L^{1/2}v = \Pi_0 f$.  By
+\noderef{SqrtDomainSobolev} applied to $v$, we have $v \in W^{1,2}(\gamma_n)$ and
+\[
+  \|Dv\|_{L^2(\gamma_n;\mathbb{R}^n)} = \|L^{1/2}v\|_{L^2(\gamma_n)} .
+\]
+By \noderef{RieszTransform}, $R_\gamma f = Dv$.  Combining the two displayed
+facts,
+\[
+  \|R_\gamma f\| = \|Dv\| = \|L^{1/2}v\| = \|\Pi_0 f\| ,
+\]
+which is the first assertion.  For the second, by \noderef{FracPow} with $s = 0$
+the element $\Pi_0 f$ has Hermite coefficients $0$ at $\alpha = 0$ and $f_\alpha$
+at $\alpha \neq 0$, so Parseval's identity from \noderef{HermiteBasis} gives
+\[
+  \|\Pi_0 f\|_2^2 = \sum_{\alpha \neq 0}|f_\alpha|^2
+    \leq \sum_{\alpha}|f_\alpha|^2 = \|f\|_2^2 .
+\]
+Taking square roots and combining with the first assertion gives
+$\|R_\gamma f\| \leq \|f\|$.
+\end{proof}

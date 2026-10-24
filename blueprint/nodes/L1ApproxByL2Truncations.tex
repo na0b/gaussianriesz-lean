@@ -1,0 +1,101 @@
+\begin{lemma}[$L^1(\gamma_n)$ is approximated by truncations lying in $L^2(\gamma_n)$]
+Fix $n \in \mathbb{N}$ and let $f \in L^1(\gamma_n)$, with $\gamma_n$ the Gaussian
+measure of \noderef{GaussMeasure}.  Then there is a sequence
+$(v_k)_{k \in \mathbb{N}}$ in $L^2(\gamma_n)$ such that
+\[
+  \|\iota\, v_k\|_{L^1(\gamma_n)} \leq \|f\|_{L^1(\gamma_n)}
+  \quad\text{for every } k,
+  \qquad\text{and}\qquad
+  \iota\, v_k \longrightarrow f \ \text{ in } L^1(\gamma_n)
+  \ \text{ as } k \to \infty,
+\]
+where $\iota : L^2(\gamma_n) \to L^1(\gamma_n)$ is the inclusion of
+\noderef{ToL1}.
+
+Both spaces are taken with respect to the \emph{Gaussian} measure $\gamma_n$:
+$\|\cdot\|_{L^1(\gamma_n)}$ is the $\gamma_n$-integral of the absolute value and
+$\|\cdot\|_{L^2(\gamma_n)}$ the square root of the $\gamma_n$-integral of the
+square, and no Lebesgue measure appears.  The uniform bound is by
+$\|f\|_{L^1(\gamma_n)}$ itself, not by a constant multiple of it; this is what
+makes the sequence usable where a norm budget has to be respected exactly.
+\end{lemma}
+\begin{proof}
+Let $F : \mathbb{R}^n \to \mathbb{R}$ be a representative of $f$, and define the
+level-$k$ truncation
+\[
+  T_k(x) = \max\bigl(-k,\ \min(F(x),\ k)\bigr),
+  \qquad k \in \mathbb{N},\ x \in \mathbb{R}^n .
+\]
+
+\emph{Step 1: $|T_k| \leq k$ everywhere.}
+By construction $T_k(x) \geq -k$, since $T_k(x)$ is a maximum one of whose
+arguments is $-k$.  For the upper bound, $T_k(x) \leq k$ holds because both
+arguments of the maximum are at most $k$: the first is $-k \leq k$ as $k \geq 0$,
+and the second is $\min(F(x),k) \leq k$.  Hence $|T_k(x)| \leq k$.
+
+\emph{Step 2: $|T_k| \leq |F|$ everywhere.}
+Again bound $T_k(x)$ from both sides.  From below,
+$-|F(x)| \leq \min(F(x), k)$, because $-|F(x)| \leq F(x)$ and
+$-|F(x)| \leq 0 \leq k$; and $\min(F(x),k) \leq T_k(x)$ since $T_k(x)$ is a
+maximum one of whose arguments is that minimum.  From above, both arguments of the
+maximum are at most $|F(x)|$: the first because $-k \leq 0 \leq |F(x)|$ requires
+only $k \geq 0$, and the second because
+$\min(F(x),k) \leq F(x) \leq |F(x)|$.  Hence $|T_k(x)| \leq |F(x)|$.
+
+\emph{Step 3: $T_k(x) \to F(x)$ for every $x$.}
+Fix $x$ and let $k \geq \lceil |F(x)| \rceil$, so that $|F(x)| \leq k$.  Then
+$F(x) \leq k$, whence $\min(F(x),k) = F(x)$; and $-k \leq F(x)$, whence
+$\max(-k, F(x)) = F(x)$.  So $T_k(x) = F(x)$ for all such $k$: the sequence is
+eventually constant equal to $F(x)$, and in particular converges to it.
+
+\emph{Step 4: $T_k$ defines an element $v_k$ of $L^2(\gamma_n)$.}
+$F$ is almost everywhere strongly measurable, being a representative of an
+$L^1(\gamma_n)$ class, and $T_k$ is obtained from it by taking a maximum and a
+minimum against constants, so $T_k$ is almost everywhere strongly measurable.  By
+Step 1 it is bounded by the constant $k$, and $\gamma_n$ is a finite measure --
+indeed a probability measure, by \noderef{GaussIsProb} -- so a bounded almost
+everywhere strongly measurable function is square integrable:
+$\int |T_k|^2 \, d\gamma_n \leq k^2\,\gamma_n(\mathbb{R}^n) < \infty$.  Let
+$v_k \in L^2(\gamma_n)$ be the class of $T_k$.  By \noderef{ToL1} the inclusion
+$\iota$ does not change the underlying function, so $T_k$ is also a representative
+of $\iota\, v_k \in L^1(\gamma_n)$.
+
+\emph{Step 5: the uniform norm bound.}
+The $L^1(\gamma_n)$ norm of a class is the $\gamma_n$-integral of the absolute
+value of any representative, so by Step 4 and then Step 2,
+\[
+  \|\iota\, v_k\|_{L^1(\gamma_n)}
+    = \int_{\mathbb{R}^n} |T_k| \, d\gamma_n
+    \leq \int_{\mathbb{R}^n} |F| \, d\gamma_n
+    = \|f\|_{L^1(\gamma_n)} ,
+\]
+the inequality by monotonicity of the integral, both integrands being integrable:
+$|F|$ because $f \in L^1(\gamma_n)$, and $|T_k|$ because it is dominated by $|F|$.
+
+\emph{Step 6: convergence in $L^1(\gamma_n)$.}
+Since $T_k$ represents $\iota\, v_k$ and $F$ represents $f$, the difference
+$\iota\, v_k - f$ is represented by $T_k - F$, so
+\[
+  \|\iota\, v_k - f\|_{L^1(\gamma_n)}
+    = \int_{\mathbb{R}^n} |T_k - F| \, d\gamma_n .
+\]
+Apply dominated convergence to the integrands $g_k = |T_k - F|$.  They are
+almost everywhere strongly measurable, being absolute values of differences of
+such functions.  They are dominated uniformly in $k$: by the triangle inequality
+and Step 2,
+\[
+  |T_k(x) - F(x)| \leq |T_k(x)| + |F(x)| \leq 2\,|F(x)|
+  \qquad\text{for every } x ,
+\]
+and $2|F|$ is $\gamma_n$-integrable because $f \in L^1(\gamma_n)$.  And they tend
+to $0$ pointwise: by Step 3, $T_k(x) - F(x) \to 0$ for every $x$, hence so does
+its absolute value.  Dominated convergence therefore gives
+\[
+  \int_{\mathbb{R}^n} |T_k - F| \, d\gamma_n \longrightarrow 0
+  \qquad (k \to \infty),
+\]
+that is, $\|\iota\, v_k - f\|_{L^1(\gamma_n)} \to 0$.  Convergence of the norms of
+the differences to $0$ is convergence in the normed space, so
+$\iota\, v_k \to f$ in $L^1(\gamma_n)$.  Together with Step 5 this exhibits the
+required sequence.
+\end{proof}

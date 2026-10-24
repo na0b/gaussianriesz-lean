@@ -1,0 +1,32 @@
+\begin{lemma}[The semigroup acts by the exponential multiplier]
+For every $s \geq 0$, every $v \in L^2(\gamma_n)$ and every
+$\alpha \in \mathbb{N}_0^n$, the element $P_s v$ of \noderef{OUSemigroup} has
+Hermite coefficients
+\[
+  (P_s v)_\alpha = e^{-s|\alpha|}\, v_\alpha ,
+\]
+relative to the basis of \noderef{HermiteBasis}.  In particular the degenerate
+convention in \noderef{OUSemigroup} is never in force for $s \geq 0$, and
+$P_s h_\alpha = e^{-s|\alpha|}h_\alpha$, $P_s\mathbf{1} = \mathbf{1}$.
+\end{lemma}
+\begin{proof}
+Let $s \geq 0$ and let $(v_\alpha)_\alpha$ be the coefficient family of $v$,
+which is square summable with $\sum_\alpha |v_\alpha|^2 = \|v\|_2^2$ by Parseval
+(\noderef{HermiteBasis}).  Since $|\alpha| \geq 0$ and $s \geq 0$, we have
+$-s|\alpha| \leq 0$, hence $0 < e^{-s|\alpha|} \leq 1$ for every $\alpha$.
+Therefore
+\[
+  \sum_{\alpha} \bigl| e^{-s|\alpha|} v_\alpha\bigr|^2
+    \leq \sum_\alpha |v_\alpha|^2 = \|v\|_2^2 < \infty ,
+\]
+so the multiplied family is square summable.  By \noderef{HermiteBasis} the
+coefficient map is an isometric isomorphism onto $\ell^2(\mathbb{N}_0^n)$, so this
+family is the coefficient family of a unique element of $L^2(\gamma_n)$, and by
+the definition in \noderef{OUSemigroup} that element is $P_s v$.  Hence
+$(P_s v)_\alpha = e^{-s|\alpha|}v_\alpha$ for every $\alpha$.
+
+Taking $v = h_\beta$, whose coefficients are $1$ at $\alpha = \beta$ and $0$
+elsewhere, gives $P_s h_\beta = e^{-s|\beta|}h_\beta$.  For $\beta = 0$ we get
+$P_s h_0 = h_0$ since $|0| = 0$, and $h_0 = \mathbf{1}$ by
+\noderef{Hermite1Zero}.
+\end{proof}

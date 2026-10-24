@@ -1,0 +1,160 @@
+\begin{lemma}[The subordination representation of the pseudoinverse $L^{-1/2}\Pi_0$]
+Let $f \in L^2(\gamma_n)$, let $\Pi_0 = L^0$ be the mean-zero projection and
+$L^{-1/2}\Pi_0$ the pseudoinverse, both as in \noderef{FracPow}, and let $P_s$ be
+the Ornstein--Uhlenbeck semigroup of \noderef{OUSemigroup}.  Then:
+\begin{enumerate}
+\item the $L^2(\gamma_n)$-valued function
+$s \mapsto s^{-1/2}\,P_s\Pi_0 f$ is Bochner integrable on $(0,\infty)$; and
+\item
+\[
+  L^{-1/2}\Pi_0 f
+    = \frac{1}{\sqrt\pi}\int_0^\infty P_s\Pi_0 f \,\frac{ds}{\sqrt s},
+\]
+the right-hand side being the Bochner integral of clause (1), taken in
+$L^2(\gamma_n)$.
+\end{enumerate}
+
+This is the reference paper's displayed convergent Bochner integral for the
+pseudoinverse.  The paper writes the integrand as $P_sf - \mathbb{E}(f)\mathbf1$
+and remarks that this equals $P_s\Pi_0 f$; the form used here is the latter,
+which is the one the spectral description of $\Pi_0$ in \noderef{FracPow} makes
+available directly, and the identification of the two forms is neither asserted
+nor used below.  The projection is what makes clause (1) true at all: without
+removing the constant mode the integrand has $L^2$ norm bounded below by
+$|\mathbb{E}(f)|$ for every $s$, and $\int_1^\infty s^{-1/2}ds = \infty$, so the
+integral would diverge at infinity whenever $\mathbb{E}(f) \neq 0$ --- exactly
+the point the paper makes.
+
+The statement is for every $f \in L^2(\gamma_n)$ with no domain hypothesis, which
+is legitimate because $L^{-1/2}\Pi_0$ is everywhere defined: the exponent
+$-1/2$ is $\leq 0$, so every element of $L^2(\gamma_n)$ lies in
+$\operatorname{Dom}(L^{-1/2})$.
+\end{lemma}
+\begin{proof}
+Write $c_\alpha = \langle f, h_\alpha\rangle$ for the Hermite coefficients of $f$
+relative to the basis of \noderef{HermiteBasis}, and recall from that node that
+the coefficient map $v \mapsto (v_\alpha)_\alpha$ is an isometric isomorphism of
+$L^2(\gamma_n)$ onto $\ell^2(\mathbb{N}_0^n)$; in particular it is injective, and
+Parseval's identity $\|v\|_2^2 = \sum_\alpha |v_\alpha|^2$ holds.
+
+\emph{Step 0: the coefficients of $\Pi_0 f$ and of $P_s\Pi_0 f$.}
+By \noderef{FracPow} at $s = 0$, the element $\Pi_0 f$ is the element of
+$L^2(\gamma_n)$ whose Hermite coefficients are $0$ at $\alpha = 0$ and
+$|\alpha|^0 c_\alpha = c_\alpha$ at $\alpha \neq 0$.  By
+\noderef{OUSemigroupSpectral}, valid for every $s \geq 0$, the coefficients of
+$P_s\Pi_0 f$ are therefore
+\begin{equation*}
+  (P_s\Pi_0f)_\alpha =
+  \begin{cases}
+    0, & \alpha = 0, \\
+    e^{-s|\alpha|}c_\alpha, & \alpha \neq 0 .
+  \end{cases}
+  \tag{1}
+\end{equation*}
+
+\emph{Step 1: the exponential norm bound.}
+Let $s \geq 0$.  By \noderef{OneLeMultiIndexSum} we have $|\alpha| \geq 1$ for
+every $\alpha \neq 0$, so $-s|\alpha| \leq -s$ and hence
+$e^{-s|\alpha|} \leq e^{-s}$, the exponential being increasing.  By $(1)$ and
+Parseval,
+\begin{equation*}
+  \|P_s\Pi_0f\|_2^2 = \sum_{\alpha\neq0} e^{-2s|\alpha|}c_\alpha^2
+    \leq e^{-2s}\sum_{\alpha\neq0}c_\alpha^2
+    \leq e^{-2s}\sum_{\alpha}c_\alpha^2 = e^{-2s}\|f\|_2^2 ,
+\end{equation*}
+all terms being nonnegative.  Taking square roots,
+\begin{equation*}
+  \|P_s\Pi_0f\|_2 \leq e^{-s}\,\|f\|_2 \qquad (s \geq 0). \tag{2}
+\end{equation*}
+
+\emph{Step 2: the scalar integral.}
+For every $\lambda > 0$,
+\begin{equation*}
+  \int_0^\infty s^{-1/2}e^{-\lambda s}\,ds = \sqrt{\pi/\lambda} . \tag{3}
+\end{equation*}
+Indeed, substitute $s = u^2$, a $C^1$ increasing bijection of $(0,\infty)$ onto
+itself with $ds = 2u\,du$ and $s^{-1/2} = u^{-1}$ for $u > 0$; the integrand is
+nonnegative and measurable, so the change of variables is valid in $[0,+\infty]$
+and gives
+\[
+  \int_0^\infty s^{-1/2}e^{-\lambda s}\,ds
+    = \int_0^\infty u^{-1}e^{-\lambda u^2}\,2u\,du
+    = 2\int_0^\infty e^{-\lambda u^2}\,du
+    = \int_{\mathbb{R}} e^{-\lambda u^2}\,du
+    = \sqrt{\pi/\lambda} ,
+\]
+the third equality because $u \mapsto e^{-\lambda u^2}$ is even, and the fourth
+by the scalar Gaussian integral of the shared context.  In particular $(3)$ with
+$\lambda = 1$ gives $\int_0^\infty s^{-1/2}e^{-s}ds = \sqrt\pi < \infty$.
+
+\emph{Step 3: continuity in $s$, hence strong measurability.}
+We check that $s \mapsto P_s\Pi_0f$ is continuous from $[0,\infty)$ to
+$L^2(\gamma_n)$.  Let $s \geq 0$ and $\varepsilon > 0$.  Since
+$\sum_\alpha c_\alpha^2 = \|f\|_2^2 < \infty$, choose a finite set
+$S \subseteq \mathbb{N}_0^n$ with $\sum_{\alpha\notin S}c_\alpha^2 < \varepsilon^2/8$.
+By $(1)$ and Parseval, for $t \geq 0$,
+\[
+  \|P_s\Pi_0f - P_t\Pi_0f\|_2^2
+    = \sum_{\alpha\neq0}\bigl(e^{-s|\alpha|}-e^{-t|\alpha|}\bigr)^2 c_\alpha^2 .
+\]
+Split the sum at $S$.  For $\alpha \notin S$ use
+$|e^{-s|\alpha|}-e^{-t|\alpha|}| \leq 2$, since both exponentials lie in $[0,1]$;
+that part is at most $4\sum_{\alpha\notin S}c_\alpha^2 < \varepsilon^2/2$.  The
+remaining sum is finite, and each of its finitely many terms is a continuous
+function of $t$ vanishing at $t = s$, so there is $\delta > 0$ with that part
+$< \varepsilon^2/2$ whenever $|t-s| < \delta$.  Hence
+$\|P_s\Pi_0f - P_t\Pi_0f\|_2 < \varepsilon$ for $|t-s| < \delta$, which is the
+claimed continuity.  Consequently $s \mapsto s^{-1/2}P_s\Pi_0f$ is continuous on
+$(0,\infty)$, $s \mapsto s^{-1/2}$ being continuous and nonvanishing there; a
+continuous function into the separable Banach space $L^2(\gamma_n)$ --- separable
+because \noderef{HermiteBasis} exhibits a countable orthonormal basis --- is
+strongly measurable.
+
+\emph{Step 4: clause (1).}
+By Step 3 the integrand is strongly measurable on $(0,\infty)$, and by $(2)$ its
+norm satisfies
+$\|s^{-1/2}P_s\Pi_0f\|_2 \leq s^{-1/2}e^{-s}\|f\|_2$, whose integral over
+$(0,\infty)$ is $\sqrt\pi\,\|f\|_2 < \infty$ by Step 2.  Bochner integrability
+of a function into a Banach space \emph{means} strong measurability together
+with an integrable norm --- this is the definition of the notion, not a
+criterion imported from elsewhere --- so the function is Bochner integrable on
+$(0,\infty)$.  This is clause (1), and
+it makes the integral in clause (2) a well-defined element of $L^2(\gamma_n)$.
+
+\emph{Step 5: the coefficients of the integral.}
+Fix $\alpha \in \mathbb{N}_0^n$ and let $\Lambda_\alpha(v) = \langle v,h_\alpha\rangle$.
+By Cauchy--Schwarz (shared context) $\Lambda_\alpha$ is a continuous linear
+functional on $L^2(\gamma_n)$: it is linear in $v$, and
+$|\Lambda_\alpha(v)| \leq \|v\|_2\|h_\alpha\|_2 = \|v\|_2$ by orthonormality of
+the basis (\noderef{HermiteBasis}).  Writing
+$I = \int_0^\infty s^{-1/2}P_s\Pi_0f\,ds$, apply mathlib's
+\texttt{ContinuousLinearMap.integral\_comp\_commSL}, which commutes a continuous
+linear map with a Bochner integral, with $X = (0,\infty)$ carrying Lebesgue
+measure, with $E = L^2(\gamma_n)$ --- a real Banach space, being a Hilbert
+space --- with the integrand $F(s) = s^{-1/2}P_s\Pi_0f$, Bochner integrable on
+$(0,\infty)$ by Step 4, and with the functional $\Lambda_\alpha$.  Hence
+\[
+  \Lambda_\alpha(I) = \int_0^\infty s^{-1/2}\,(P_s\Pi_0f)_\alpha \, ds .
+\]
+If $\alpha = 0$ the integrand vanishes identically by $(1)$, so
+$\Lambda_0(I) = 0$.  If $\alpha \neq 0$ then $|\alpha| \geq 1 > 0$ by
+\noderef{OneLeMultiIndexSum}, and $(1)$ together with $(3)$ at
+$\lambda = |\alpha|$ gives
+\[
+  \Lambda_\alpha(I) = c_\alpha\int_0^\infty s^{-1/2}e^{-s|\alpha|}\,ds
+    = c_\alpha\sqrt{\pi/|\alpha|} = \sqrt\pi\,|\alpha|^{-1/2}c_\alpha ,
+\]
+the scalar integral being absolutely convergent by Step 2, which is what lets it
+be pulled out of the pairing.  Multiplying by $(\sqrt\pi)^{-1}$, the element
+$(\sqrt\pi)^{-1}I$ has Hermite coefficients $0$ at $\alpha = 0$ and
+$|\alpha|^{-1/2}c_\alpha$ at $\alpha \neq 0$.
+
+\emph{Step 6: conclusion.}
+Since $-1/2 \leq 0$, clause (1) of \noderef{FracPowLinear} at $s = -1/2$ gives
+$f \in \operatorname{Dom}(L^{-1/2})$, so by \noderef{FracPow} the element
+$L^{-1/2}\Pi_0 f$ is the element of $L^2(\gamma_n)$ whose Hermite coefficients
+are $0$ at $\alpha = 0$ and $|\alpha|^{-1/2}c_\alpha$ at $\alpha \neq 0$.  By
+Step 5 the element $(\sqrt\pi)^{-1}I$ has the same coefficients, and the
+coefficient map is injective by \noderef{HermiteBasis}.  Therefore
+$L^{-1/2}\Pi_0 f = (\sqrt\pi)^{-1}I$, which is clause (2).
+\end{proof}

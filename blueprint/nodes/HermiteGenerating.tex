@@ -1,0 +1,61 @@
+\begin{lemma}[Generating function of the probabilists' Hermite polynomials]
+Let $\mathrm{He}_k$ be the probabilists' Hermite polynomials of
+\noderef{HermiteDerivative}.  For all real $y$ and $z$ the series below converges
+absolutely and
+\[
+  \sum_{k=0}^\infty \mathrm{He}_k(y)\,\frac{z^k}{k!}
+    = e^{\,yz - z^2/2} .
+\]
+\end{lemma}
+\begin{proof}
+Fix $y \in \mathbb{R}$ and set $G(z) = e^{yz - z^2/2}$, an entire function of
+$z \in \mathbb{C}$ restricted here to real $z$.  Let
+$c_k = G^{(k)}(0)$ be its Taylor coefficients at $z = 0$, so that
+\[
+  G(z) = \sum_{k=0}^\infty c_k \frac{z^k}{k!}
+\]
+with absolute convergence for every $z$, because $G$ is entire (the exponential
+of a polynomial) and hence equal to its everywhere-absolutely-convergent Taylor
+series.  It therefore suffices to prove $c_k = \mathrm{He}_k(y)$ for every $k$.
+
+Step 1 (a recurrence for the $c_k$).  Differentiating $G$ gives
+$G'(z) = (y - z)\,G(z)$.  Writing both sides as power series,
+\[
+  G'(z) = \sum_{k=0}^\infty c_{k+1}\frac{z^k}{k!},
+  \qquad
+  (y-z)G(z)
+    = \sum_{k=0}^\infty y\,c_k \frac{z^k}{k!}
+      - \sum_{k=0}^\infty c_k \frac{z^{k+1}}{k!}
+    = \sum_{k=0}^\infty \bigl(y\,c_k - k\,c_{k-1}\bigr)\frac{z^k}{k!},
+\]
+where in the last step the second sum was reindexed by $k \mapsto k+1$ and
+$\frac{1}{k!}\cdot k = \frac{1}{(k-1)!}$ was used, with the convention that the
+term with $k = 0$ is absent (equivalently $c_{-1}$ is multiplied by $0$).  Two
+everywhere-convergent power series are equal only if their coefficients agree,
+so
+\[
+  c_{k+1} = y\,c_k - k\,c_{k-1}, \qquad k \geq 0,
+\]
+with the $k=0$ instance reading $c_1 = y\,c_0$.
+
+Step 2 (the same recurrence for $\mathrm{He}_k(y)$).  By the defining recurrence
+of the probabilists' Hermite polynomials, which is shared context,
+$\mathrm{He}_{k+1} = X\,\mathrm{He}_k - \mathrm{He}_k'$; and by
+\noderef{HermiteDerivative}, applied at index $k-1$,
+$\mathrm{He}_k' = k\,\mathrm{He}_{k-1}$ for $k \geq 1$, while
+$\mathrm{He}_0' = 0$ because $\mathrm{He}_0$ is the constant polynomial $1$.  Hence,
+evaluating at $y$,
+\[
+  \mathrm{He}_{k+1}(y) = y\,\mathrm{He}_k(y) - k\,\mathrm{He}_{k-1}(y), \qquad k \geq 0,
+\]
+with the same convention at $k = 0$, where it reads
+$\mathrm{He}_1(y) = y\,\mathrm{He}_0(y)$.
+
+Step 3 (matching initial data and concluding).  We have $c_0 = G(0) = 1$ and
+$\mathrm{He}_0(y) = 1$.  Both families therefore satisfy the identical two-term
+recurrence of Steps 1--2 with the identical value at $k = 0$; note the recurrence
+determines $c_{k+1}$ from $c_k$ and $c_{k-1}$ alone, and at $k=0$ determines
+$c_1$ from $c_0$ alone.  By induction on $k$, $c_k = \mathrm{He}_k(y)$ for every
+$k \geq 0$.  Substituting into the Taylor expansion of $G$ gives the asserted
+identity, with the absolute convergence inherited from that expansion.
+\end{proof}

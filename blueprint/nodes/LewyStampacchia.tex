@@ -1,0 +1,113 @@
+\begin{lemma}[Lewy--Stampacchia order estimate on the full form domain]
+Let $F \in L^2(\gamma_n)$ be nonnegative $\gamma_n$-a.e., let $a \in \mathbb{R}$,
+and let $u \in \mathcal{K}$ minimize the functional $J$ of
+\noderef{ObstacleFunctional} over the cone $\mathcal{K}$ of
+\noderef{ObstacleCone}.  Let $\eta$ be the multiplier of
+\noderef{ObstacleMultiplier} associated with $u$, $F$, $a$, and put
+$k = (a-F)^+ = \max\{a-F, 0\}$.  Then
+\[
+  \langle \eta, \varphi\rangle \;\leq\; \int k\,\varphi \, d\gamma_n
+  \qquad\text{for every } \varphi \in \mathcal{K} .
+\]
+Thus the multiplier is dominated, in the order of the dual of the form domain, by
+the functional induced by the bounded function $(a-F)^+$.  The estimate holds for
+every nonnegative form-domain test function, not merely for smooth compactly
+supported ones.
+\end{lemma}
+\begin{proof}
+Fix $\varphi \in \mathcal{K}$ and $\varepsilon > 0$.  Put
+\[
+  z = u - \varepsilon\varphi,
+  \qquad z^- = \max\{-z, 0\},
+  \qquad v = z^+ = \max\{z,0\} .
+\]
+Since $u, \varphi \in \mathcal{V}$ and $\mathcal{V}$ is a linear subspace of
+$L^2(\gamma_n)$ (its defining condition in \noderef{Energy} is the finiteness of a
+weighted $\ell^2$ sum, and the coefficient map of \noderef{HermiteBasis} is
+linear, so finiteness is preserved by linear combinations via the triangle
+inequality in the weighted $\ell^2$ space), we have $z \in \mathcal{V}$.  The maps
+$t \mapsto t^+$ and $t\mapsto t^-$ are $1$-Lipschitz and vanish at $0$, so
+\noderef{LatticeContraction} applied to each (with $v = z$ and $w$ the class of
+the composite) gives $z^+, z^- \in \mathcal{V}$.  As $z^+ \geq 0$, we get
+$v = z^+ \in \mathcal{K}$ by \noderef{ObstacleCone}, so $v$ is an admissible
+competitor.
+
+\emph{Step 1: substituting the competitor into the variational inequality.}
+Pointwise $z = z^+ - z^-$, and $u = z + \varepsilon\varphi$, so
+\[
+  v - u = z^+ - (z + \varepsilon\varphi) = z^- - \varepsilon\varphi .
+\]
+\noderef{VariationalInequality}, applied to the minimizer $u$ and the competitor
+$v$, states
+$\int (F-a)(v-u)\,d\gamma_n \leq \mathcal{E}(u, v-u)$.  Substituting the display
+and using bilinearity of $\mathcal{E}(\cdot,\cdot)$ (\noderef{EnergyBil}) and
+linearity of the integral,
+\[
+  \int (F-a)z^-\,d\gamma_n - \varepsilon\int(F-a)\varphi\, d\gamma_n
+    \;\leq\; \mathcal{E}(u, z^-) - \varepsilon\,\mathcal{E}(u,\varphi) .
+\]
+Rearranging so that the $\varepsilon$-terms stand alone on the left, and using
+the definition $\langle\eta,\varphi\rangle = \mathcal{E}(u,\varphi) - \int(F-a)\varphi\,d\gamma_n$
+of \noderef{ObstacleMultiplier},
+\begin{equation*}
+  \varepsilon\,\langle \eta,\varphi\rangle
+    \;\leq\; \mathcal{E}(u, z^-) + \int (a-F)\,z^-\, d\gamma_n . \tag{1}
+\end{equation*}
+
+\emph{Step 2: the energy term.}
+Since $u = z + \varepsilon\varphi$, bilinearity gives
+$\mathcal{E}(u, z^-) = \mathcal{E}(z, z^-) + \varepsilon\,\mathcal{E}(\varphi, z^-)$.
+Part (2) of \noderef{DisjointCrossTermSign}, applied to $z \in \mathcal{V}$ and
+its negative part $z^-$, bounds the first summand by $-\mathcal{E}(z^-)$; and the
+Cauchy--Schwarz bound recorded in \noderef{EnergyBil} bounds the second by
+$\varepsilon\,\mathcal{E}(\varphi)^{1/2}\mathcal{E}(z^-)^{1/2}$.  Putting
+$p = \mathcal{E}(\varphi)^{1/2}$ and $q = \mathcal{E}(z^-)^{1/2}$, both finite
+nonnegative reals,
+\begin{equation*}
+  \mathcal{E}(u,z^-) \;\leq\; -q^2 + \varepsilon p q
+    = -\Bigl(q - \frac{\varepsilon p}{2}\Bigr)^2 + \frac{\varepsilon^2 p^2}{4}
+    \;\leq\; \frac{\varepsilon^2}{4}\,\mathcal{E}(\varphi) . \tag{2}
+\end{equation*}
+
+\emph{Step 3: the load term.}
+Because $u \geq 0$ and $\varphi \geq 0$ $\gamma_n$-a.e.\ (both lie in
+$\mathcal{K}$, see \noderef{ObstacleCone}), we have pointwise a.e.
+\[
+  z^- = \max\{\varepsilon\varphi - u,\, 0\} \leq \varepsilon\varphi,
+  \qquad z^- \geq 0 .
+\]
+Now $k = (a-F)^+$ satisfies $a - F \leq k$ and $k \geq 0$ pointwise, so
+multiplying the first inequality by the nonnegative number $z^-$ and then using
+$z^- \leq \varepsilon\varphi$ and $k \geq 0$,
+\[
+  (a-F)\,z^- \;\leq\; k\,z^- \;\leq\; \varepsilon\, k\,\varphi
+  \qquad\gamma_n\text{-a.e.}
+\]
+Integrating,
+\begin{equation*}
+  \int (a-F)\,z^-\, d\gamma_n \;\leq\; \varepsilon \int k\,\varphi\, d\gamma_n .
+  \tag{3}
+\end{equation*}
+The right-hand integral is finite: since $F \geq 0$ a.e.\ we have
+$0 \leq k = (a-F)^+ \leq \max\{a,0\}$, so $k$ is bounded, and
+$\varphi \in L^2(\gamma_n) \subseteq L^1(\gamma_n)$ by \noderef{L2IntoL1}.  The
+left-hand integral is finite for the same reason, $z^-$ being in
+$L^2(\gamma_n)$.
+
+\emph{Step 4: conclusion.}
+Combining (1), (2) and (3),
+\[
+  \varepsilon\,\langle\eta,\varphi\rangle
+    \;\leq\; \frac{\varepsilon^2}{4}\mathcal{E}(\varphi)
+             + \varepsilon\int k\varphi\, d\gamma_n .
+\]
+Dividing by $\varepsilon > 0$,
+\[
+  \langle\eta,\varphi\rangle
+    \;\leq\; \frac{\varepsilon}{4}\mathcal{E}(\varphi) + \int k\varphi\, d\gamma_n .
+\]
+The test function $\varphi$ is fixed with $\mathcal{E}(\varphi) < \infty$, and
+$\varepsilon > 0$ was arbitrary, so letting $\varepsilon \downarrow 0$ removes the
+first term and gives
+$\langle\eta,\varphi\rangle \leq \int k\varphi\, d\gamma_n$.
+\end{proof}

@@ -1,0 +1,35 @@
+\begin{lemma}[Pointwise complementarity on the contact set]
+Let $F \in L^2(\gamma_n)$ be nonnegative $\gamma_n$-a.e., let $a > 0$, let
+$u \in \mathcal{K}$ minimize the functional $J$ of \noderef{ObstacleFunctional}
+over the cone $\mathcal{K}$ of \noderef{ObstacleCone}, and let
+$\eta_2 \in L^2(\gamma_n)$ satisfy
+$\langle\eta,\varphi\rangle = \int \eta_2\varphi\,d\gamma_n$ for every
+$\varphi \in \mathcal{V}$, where $\eta$ is the multiplier of
+\noderef{ObstacleMultiplier}.  Then
+\[
+  \int \eta_2\, u \, d\gamma_n = 0
+  \qquad\text{and}\qquad
+  \eta_2 = 0 \quad \gamma_n\text{-a.e. on } \Omega = \{u > 0\} .
+\]
+Equivalently, with $g = a\mathbf{1} - \eta_2$, one has $g = a$ a.e.\ on $\Omega$.
+\end{lemma}
+\begin{proof}
+Since $u \in \mathcal{K} \subseteq \mathcal{V}$, we may take $\varphi = u$ in the
+representation hypothesis, which gives
+\[
+  \langle \eta, u\rangle = \int \eta_2\, u \, d\gamma_n ,
+\]
+the integral being finite by Cauchy--Schwarz since
+$\eta_2, u \in L^2(\gamma_n)$.  By \noderef{MultiplierVanishesOnPotential},
+$\langle\eta,u\rangle = 0$.  Hence $\int \eta_2 u \, d\gamma_n = 0$.
+
+By \noderef{MultiplierPointwiseBound} we have $\eta_2 \geq 0$ $\gamma_n$-a.e.,
+and $u \geq 0$ $\gamma_n$-a.e.\ by \noderef{ObstacleCone}.  Therefore the product
+$\eta_2 u$ is nonnegative a.e.\ and integrable with integral zero, so
+$\eta_2 u = 0$ $\gamma_n$-almost everywhere.
+
+Consequently, at $\gamma_n$-almost every point where $u > 0$ we must have
+$\eta_2 = 0$; that is, $\eta_2 = 0$ a.e.\ on $\Omega = \{u>0\}$.  With
+$g = a\mathbf{1} - \eta_2$ this reads $g = a$ a.e.\ on $\Omega$.  No regularity or
+openness of $\Omega$ is used.
+\end{proof}

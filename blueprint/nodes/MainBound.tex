@@ -1,0 +1,56 @@
+\begin{lemma}[The weak-type bound for real $L^2$ inputs]
+For every real $f \in L^2(\gamma_n)$ and every $t > 0$,
+\[
+  t\,\gamma_n\bigl(\{x : |R_\gamma f(x)| > t\}\bigr)
+    \;\leq\; 2\,\|f\|_{L^1(\gamma_n)} ,
+\]
+with $R_\gamma$ as in \noderef{RieszTransform}, $\|\cdot\|_{L^1(\gamma_n)}$ as in
+\noderef{ToL1}, and the Euclidean norm on the vector output.  The constant $2$
+does not depend on $n$.
+\end{lemma}
+\begin{proof}
+Put $M = \|f\|_{L^1(\gamma_n)}$, which is finite by \noderef{L2IntoL1}.
+
+Case 1: $0 < t \leq M$.  By \noderef{SmallLevelBound}, applied to the measurable
+vector-valued function $G = R_\gamma f$, we get
+$t\,\gamma_n(\{|R_\gamma f| > t\}) \leq M \leq 2M$, the last step because
+$M \geq 0$.  (This includes the borderline level $t = M$, so no decomposition at a
+borderline height is needed.)
+
+Case 2: $t > M$.  By \noderef{SignedDecomposition} there are
+$u \in \operatorname{Dom}(L^{1/2})$, $g \in L^2(\gamma_n)$ and a measurable set
+$\Omega$ with
+\[
+  f = g + L^{1/2}u, \qquad
+  t\,\gamma_n(\Omega) \leq M, \qquad
+  \|g\|_{L^2(\gamma_n)}^2 \leq tM, \qquad
+  Du = 0 \ \text{a.e. on } \Omega^c .
+\]
+By \noderef{TransformedLocalization}, applied with these data and this $t$,
+\[
+  \gamma_n\bigl(\{|R_\gamma f|>t\}\bigr)
+    \leq \gamma_n(\Omega) + \gamma_n\bigl(\{|R_\gamma g|>t\}\bigr) .
+\]
+For the second term, Chebyshev's inequality for the nonnegative function
+$|R_\gamma g|^2 \in L^1(\gamma_n)$ gives
+\[
+  \gamma_n\bigl(\{|R_\gamma g|>t\}\bigr)
+    \leq t^{-2}\,\|R_\gamma g\|_{L^2(\gamma_n;\mathbb{R}^n)}^2 .
+\]
+By \noderef{RieszL2Identity}, $\|R_\gamma g\|_2 \leq \|g\|_2$, so by the
+$L^2$ bound above
+\[
+  \gamma_n\bigl(\{|R_\gamma g|>t\}\bigr)
+    \leq t^{-2}\|g\|_2^2 \leq t^{-2}\,tM = \frac{M}{t} .
+\]
+Also $\gamma_n(\Omega) \leq M/t$ from the displayed bound, since $t > 0$.
+Adding,
+\[
+  \gamma_n\bigl(\{|R_\gamma f|>t\}\bigr) \leq \frac{M}{t} + \frac{M}{t}
+    = \frac{2M}{t},
+\]
+and multiplying by $t > 0$ gives
+$t\,\gamma_n(\{|R_\gamma f|>t\}) \leq 2M$.
+
+In both cases the asserted bound holds.
+\end{proof}

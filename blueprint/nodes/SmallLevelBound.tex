@@ -1,0 +1,24 @@
+\begin{lemma}[The small-level estimate, with constant one]
+Let $G : \mathbb{R}^n \to \mathbb{R}^n$ be any measurable vector-valued function
+and let $0 < t \leq M$.  Then
+\[
+  t\,\gamma_n\bigl(\{x : |G(x)| > t\}\bigr) \;\leq\; M ,
+\]
+where $|\cdot|$ is the Euclidean norm on $\mathbb{R}^n$.  The constant is $1$,
+better than the target constant $2$, and the estimate requires no property of $G$
+beyond measurability.  The borderline level $t = M$ is included, so no
+decomposition at a borderline height is needed there.
+\end{lemma}
+\begin{proof}
+The measure $\gamma_n$ is a probability measure by \noderef{GaussIsProb}, so every
+measurable set has $\gamma_n$-measure at most $\gamma_n(\mathbb{R}^n) = 1$.  In
+particular
+\[
+  \gamma_n\bigl(\{x : |G(x)| > t\}\bigr) \;\leq\; 1 .
+\]
+Multiplying by $t > 0$ preserves the inequality, giving
+\[
+  t\,\gamma_n\bigl(\{|G|>t\}\bigr) \;\leq\; t .
+\]
+Finally $t \leq M$ by hypothesis, so the left-hand side is at most $M$.
+\end{proof}

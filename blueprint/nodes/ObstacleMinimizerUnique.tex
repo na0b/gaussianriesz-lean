@@ -1,0 +1,76 @@
+\begin{lemma}[Uniqueness of the minimizer, including its constant mode]
+Let $F \in L^2(\gamma_n)$, put $m = \int F \, d\gamma_n$ and let $a > m$.  If
+$u_1, u_2 \in \mathcal{K}$ both minimize the functional $J$ of
+\noderef{ObstacleFunctional} over the cone $\mathcal{K}$ of
+\noderef{ObstacleCone}, then $u_1 = u_2$ in $L^2(\gamma_n)$.
+\end{lemma}
+\begin{proof}
+Let $I = J(u_1) = J(u_2)$, a real number (both values are finite because
+$u_1,u_2 \in \mathcal{K}$ have finite energy, and the linear term is finite by
+Cauchy--Schwarz with $a\mathbf{1} - F \in L^2(\gamma_n)$, using
+\noderef{GaussIsProb}).  Each is the minimum because each $u_i$ minimizes and the
+other is admissible.
+
+\emph{Step 0: the midpoint is admissible.}
+By \noderef{ObstacleCone}, $\mathcal{K}$ is convex, so
+$\tfrac12(u_1+u_2) \in \mathcal{K}$.
+
+\emph{Step 1: the parallelogram identity for $J$.}
+For $v, w \in \mathcal{V}$ the energy is the quadratic form of the symmetric
+bilinear form $\mathcal{E}(\cdot,\cdot)$ of \noderef{EnergyBil}, i.e.
+$\mathcal{E}(v) = \mathcal{E}(v,v)$ (immediate from comparing the defining series
+in \noderef{Energy} and \noderef{EnergyBil} at $w = v$, both being absolutely
+convergent when $\mathcal{E}(v) < \infty$).  Expanding bilinearly,
+\[
+  \mathcal{E}\Bigl(\frac{u_1+u_2}{2}\Bigr)
+    = \tfrac14\bigl(\mathcal{E}(u_1) + 2\mathcal{E}(u_1,u_2) + \mathcal{E}(u_2)\bigr),
+  \qquad
+  \mathcal{E}(u_1 - u_2)
+    = \mathcal{E}(u_1) - 2\mathcal{E}(u_1,u_2) + \mathcal{E}(u_2),
+\]
+and adding $\tfrac14$ of the second to the first gives
+\[
+  \mathcal{E}\Bigl(\frac{u_1+u_2}{2}\Bigr)
+    = \frac{\mathcal{E}(u_1)+\mathcal{E}(u_2)}{2}
+      - \frac{1}{4}\,\mathcal{E}(u_1-u_2).
+\]
+The remaining term of $J$ is linear in its argument, so by
+\noderef{ObstacleFunctional}
+\begin{equation*}
+  J\Bigl(\frac{u_1+u_2}{2}\Bigr)
+    = \frac{J(u_1)+J(u_2)}{2} - \frac18\,\mathcal{E}(u_1-u_2). \tag{1}
+\end{equation*}
+
+\emph{Step 2: the difference has zero energy, hence is constant.}
+By Step 0 and minimality, $I \leq J(\tfrac12(u_1+u_2))$, so (1) with
+$J(u_1)=J(u_2)=I$ gives $I \leq I - \tfrac18\mathcal{E}(u_1-u_2)$, i.e.
+$\mathcal{E}(u_1-u_2) \leq 0$.  By \noderef{Energy} the energy is a sum of
+nonnegative terms, so $\mathcal{E}(u_1-u_2) = 0$ and in fact each term vanishes:
+$|\alpha|^{1/2}\,|(u_1-u_2)_\alpha|^2 = 0$ for every $\alpha \neq 0$.  Since
+$|\alpha| \geq 1$ for $\alpha \neq 0$ by \noderef{MultiIndexSum}, the factor
+$|\alpha|^{1/2}$ is nonzero, so $(u_1-u_2)_\alpha = 0$ for every $\alpha \neq 0$.
+By Parseval and injectivity of the coefficient map (\noderef{HermiteBasis}), and
+since $h_0 = \mathbf{1}$ by \noderef{Hermite1Zero}, this forces
+\[
+  u_1 - u_2 = d\,\mathbf{1}, \qquad d = (u_1-u_2)_0 \in \mathbb{R}.
+\]
+
+\emph{Step 3: the strict height inequality pins $d$.}
+By \noderef{EnergyConstantInvariance} applied with the constant $d$,
+$\mathcal{E}(u_1) = \mathcal{E}(u_2 + d\mathbf{1}) = \mathcal{E}(u_2)$.  Hence,
+subtracting the two expressions for $J$ in \noderef{ObstacleFunctional}, the
+energy terms cancel and
+\[
+  0 = J(u_1) - J(u_2)
+    = \int (a-F)\,(u_1-u_2)\, d\gamma_n
+    = d \int (a-F)\, d\gamma_n
+    = d\,(a-m),
+\]
+using $u_1 - u_2 = d\mathbf{1}$, $\gamma_n(\mathbb{R}^n) = 1$
+(\noderef{GaussIsProb}) and $m = \int F\, d\gamma_n$; the integrals are finite by
+\noderef{L2IntoL1} and Cauchy--Schwarz.  Since $a - m > 0$ by hypothesis, $d = 0$,
+so $u_1 = u_2$.
+
+Thus the energy determines the mean-zero part of the minimizer and the strict
+height inequality determines its constant part.
+\end{proof}

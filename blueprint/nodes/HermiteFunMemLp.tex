@@ -1,0 +1,43 @@
+\begin{lemma}[Hermite functions are square integrable for $\gamma_n$]
+For every $n \geq 1$ and every multi-index $\alpha \in \mathbb{N}_0^n$, the function
+$h_\alpha$ of \noderef{HermiteFun} is Borel measurable and satisfies
+\[
+  \int_{\mathbb{R}^n} |h_\alpha|^2 \, d\gamma_n < \infty ,
+\]
+so $h_\alpha$ determines an element of $L^2(\gamma_n)$.
+\end{lemma}
+\begin{proof}
+By \noderef{Hermite1}, each $h_{\alpha_j}$ is a polynomial in one variable (a
+rescaled Hermite polynomial divided by a positive constant), and by
+\noderef{HermiteFun}, $h_\alpha(x) = \prod_{j=1}^n h_{\alpha_j}(x_j)$.  A finite
+product of polynomials in the separate coordinates is a polynomial in
+$x_1,\ldots,x_n$, hence continuous and therefore Borel measurable.  The same is
+true of $h_\alpha^2$.
+
+It remains to show that polynomials are square integrable against $\gamma_n$.
+Expand $h_\alpha^2$ as a finite linear combination of monomials
+$x^\beta = \prod_{j} x_j^{\beta_j}$, say
+$h_\alpha^2 = \sum_{\beta \in S} c_\beta\, x^\beta$ with $S$ finite.  Then
+\[
+  \int |h_\alpha|^2 \, d\gamma_n
+    \leq \sum_{\beta \in S} |c_\beta| \int \prod_{j=1}^n |x_j|^{\beta_j}\, d\gamma_n ,
+\]
+so it suffices that each of the finitely many integrals on the right is finite.
+By \noderef{GaussMeasure} the density of $\gamma_n$ factorizes as
+$\pi^{-n/2}e^{-|x|^2} = \prod_{j=1}^n \pi^{-1/2}e^{-x_j^2}$, the integrand is
+nonnegative, and Lebesgue measure on $\mathbb{R}^n$ is the $n$-fold product of
+Lebesgue measure on $\mathbb{R}$; so Tonelli's theorem gives
+\[
+  \int_{\mathbb{R}^n} \prod_{j=1}^n |x_j|^{\beta_j}\, d\gamma_n
+    = \prod_{j=1}^n \int_{\mathbb{R}} |s|^{\beta_j}\, \pi^{-1/2} e^{-s^2}\, ds .
+\]
+Each one-dimensional factor is finite: the integrand is continuous on
+$\mathbb{R}$, and for $|s| \geq 1$ it is bounded by
+$\pi^{-1/2}|s|^{\beta_j}e^{-s^2} \leq \pi^{-1/2} e^{\beta_j |s|} e^{-s^2}$, which
+is integrable because $\beta_j|s| - s^2 \to -\infty$ at least quadratically.
+Hence every factor, and so the whole finite sum, is finite.
+
+Finally $\gamma_n$ is a probability measure by \noderef{GaussIsProb}, so the
+underlying measure space is finite and the class of $h_\alpha$ in $L^2(\gamma_n)$
+is well defined.
+\end{proof}

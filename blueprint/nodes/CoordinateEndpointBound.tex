@@ -1,0 +1,76 @@
+\begin{corollary}[Endpoint weak-type bound for a single coordinate $R_{\gamma,j}$]
+Let $\mathcal{M}(\gamma_n;\mathbb{R}^n)$ be the space of $\gamma_n$-a.e.\
+equivalence classes of measurable $\mathbb{R}^n$-valued functions on
+$\mathbb{R}^n$, and let
+$T : L^1(\gamma_n;\mathbb{R}) \to \mathcal{M}(\gamma_n;\mathbb{R}^n)$ be any
+linear map with the two properties
+\begin{enumerate}
+\item $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with $\iota$ the
+inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+       \leq 2\,\|f\|_{L^1(\gamma_n)}$
+for every $f \in L^1(\gamma_n;\mathbb{R})$ and every real $t > 0$.
+\end{enumerate}
+Then for every $j \in \{1,\ldots,n\}$, every $f \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$, the $j$th coordinate function $x \mapsto (Tf(x))_j$ satisfies
+\[
+  t\,\gamma_n\bigl(\{x : |(Tf(x))_j| > t\}\bigr) \leq 2\,\|f\|_{L^1(\gamma_n)} .
+\]
+
+This is the first assertion of the reference paper's corollary on coordinate and
+historical conventions,
+$\sup_{t>0} t\,\gamma_n(\{|R_{\gamma,j}f|>t\}) \leq 2\|f\|_1$, stated per level
+$t$ rather than as a supremum; the two forms are the same assertion, since a
+family of real numbers is bounded by a constant exactly when its supremum is.
+It differs from property (2) above, and hence from the endpoint theorem it is
+drawn from, in that the distribution function is taken for the \emph{scalar}
+function $(Tf)_j$ rather than for the Euclidean norm $|Tf|_{\mathbb{R}^n}$ of the
+whole vector; this is a strictly weaker conclusion for each fixed $j$ and is the
+form in which the coordinate transforms $R_{\gamma,j}$ are usually quoted.
+
+Properties (1) and (2) are written out here rather than imported by citation.
+They are exactly the two properties for which \noderef{EndpointTheorem} asserts
+existence and uniqueness of a map $T$, so the universally quantified statement
+above is not vacuous: there is such a $T$, there is only one, and the statement
+about that unique extension of $R_\gamma$ --- the one the reference paper writes
+$R_{\gamma,j}$ for in its $j$th coordinate --- is the case of the present
+statement at that $T$.
+\end{corollary}
+\begin{proof}
+Fix $j$, $f$ and $t > 0$, and choose a representative of $Tf$, so that $Tf(x)$ is
+a point of $\mathbb{R}^n$ for every $x$ and $(Tf(x))_j$ is its $j$th coordinate.
+
+\emph{Step 1: the pointwise bound.}
+For every $x \in \mathbb{R}^n$ the $j$th coordinate of a vector is bounded in
+absolute value by its Euclidean norm:
+\[
+  |(Tf(x))_j| \;=\; \bigl((Tf(x))_j^2\bigr)^{1/2}
+    \;\leq\; \Bigl(\sum_{i=1}^n (Tf(x))_i^2\Bigr)^{1/2}
+    \;=\; |Tf(x)|_{\mathbb{R}^n},
+\]
+the inequality because the omitted summands $(Tf(x))_i^2$, $i \neq j$, are
+nonnegative and $s \mapsto s^{1/2}$ is nondecreasing on $[0,\infty)$.  This is the
+pointwise inequality $|R_{\gamma,j}f| \leq |R_\gamma f|_{\mathbb{R}^n}$ with which
+the reference paper begins its proof.
+
+\emph{Step 2: inclusion of the level sets.}
+If $t < |(Tf(x))_j|$ then $t < |Tf(x)|_{\mathbb{R}^n}$ by Step 1, so
+\[
+  \{x : |(Tf(x))_j| > t\} \subseteq \{x : |Tf(x)|_{\mathbb{R}^n} > t\} .
+\]
+By monotonicity of a measure (shared context),
+$\gamma_n(\{|(Tf)_j| > t\}) \leq \gamma_n(\{|Tf|_{\mathbb{R}^n} > t\})$.
+
+\emph{Step 3: conclusion.}
+Multiplying the inequality of Step 2 by $t > 0$ and then applying hypothesis (2)
+at this $f$ and this $t$,
+\[
+  t\,\gamma_n\bigl(\{|(Tf)_j| > t\}\bigr)
+    \;\leq\; t\,\gamma_n\bigl(\{|Tf|_{\mathbb{R}^n} > t\}\bigr)
+    \;\leq\; 2\,\|f\|_{L^1(\gamma_n)} ,
+\]
+which is the assertion.  Both quantities are elements of $[0,+\infty]$ and the
+first inequality is multiplication of an inequality in $[0,+\infty]$ by the
+nonnegative constant $t$, which preserves the order.
+\end{proof}

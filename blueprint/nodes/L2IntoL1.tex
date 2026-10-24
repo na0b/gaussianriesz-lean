@@ -1,0 +1,25 @@
+\begin{lemma}[$L^2$ controls $L^1$ for a probability measure]
+For every $v \in L^2(\gamma_n)$ one has, with $\iota$ the inclusion of
+\noderef{ToL1},
+\[
+  \|\iota v\|_{L^1(\gamma_n)} \leq \|v\|_{L^2(\gamma_n)},
+  \qquad\text{that is,}\qquad
+  \int |v| \, d\gamma_n \leq \Bigl(\int |v|^2 \, d\gamma_n\Bigr)^{1/2}.
+\]
+\end{lemma}
+\begin{proof}
+Since $\gamma_n$ is a probability measure by \noderef{GaussIsProb}, we have
+$\gamma_n(\mathbb{R}^n) = 1$.  By \noderef{ToL1}, $\iota v$ has the same
+representative function as $v$, so
+$\|\iota v\|_{L^1(\gamma_n)} = \int |v| \, d\gamma_n$.  The Cauchy--Schwarz
+inequality applied to the pair of functions $|v|$ and the constant function $1$
+gives
+\[
+  \int |v| \cdot 1 \, d\gamma_n
+    \leq \Bigl(\int |v|^2 \, d\gamma_n\Bigr)^{1/2}
+         \Bigl(\int 1^2 \, d\gamma_n\Bigr)^{1/2}
+    = \|v\|_{L^2(\gamma_n)} \cdot \gamma_n(\mathbb{R}^n)^{1/2}
+    = \|v\|_{L^2(\gamma_n)} .
+\]
+This is the asserted inequality.
+\end{proof}

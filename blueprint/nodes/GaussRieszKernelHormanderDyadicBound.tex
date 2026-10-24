@@ -1,0 +1,169 @@
+\begin{lemma}[Dyadic summation of the H\"ormander estimate against a local maximal bound]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$ and let $K_{\gamma,j}$ be the kernel of
+\noderef{GaussRieszKernel}.  Let $R \geq 1$.  Then there is a constant
+$C \in (0,\infty)$, read in $[0,+\infty]$, depending only on $n$, $j$ and $R$,
+such that the following holds.
+
+Let $f : \mathbb{R}^n \to \mathbb{R}$ be any function, let
+$\Phi \in [0,+\infty]$, let $x,z \in \mathbb{R}^n$ and let $\varepsilon$ be
+real, and suppose
+\[
+  |x| \leq R, \qquad 0 < \varepsilon \leq 1, \qquad |x-z| < \tfrac12\varepsilon ,
+\]
+and that
+\begin{equation*}
+  \int_{\overline B(x,\rho)}^{*}|f|\,d\lambda
+    \;\leq\; \Phi\cdot\lambda\bigl(\overline B(x,\rho)\bigr)
+  \qquad\text{for every real } \rho \in (0,2] . \tag{H}
+\end{equation*}
+Then
+\[
+  \int_{\{y\,:\,\varepsilon < |x-y| \leq 1\}}^{*}
+      \bigl|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr|\,|f(y)|\,d\lambda(y)
+    \;\leq\; C\cdot\Phi .
+\]
+Here $\int^{*}$ denotes the lower Lebesgue integral of a $[0,+\infty]$-valued
+function, and all three displayed quantities are read in $[0,+\infty]$.
+
+\emph{No measurability or integrability hypothesis is imposed, and none is
+needed.}  Both the hypothesis $(H)$ and the conclusion are lower Lebesgue
+integrals of nonnegative extended-real integrands, which are defined for every
+function; the monotonicity, constant-pulling, domain-enlargement and countable
+subadditivity properties used in the proof hold for lower Lebesgue integrals
+without measurability. This is the same discipline that makes
+\noderef{LocalMaximalFunction} extended-real valued and defined for every $f$,
+and it is what makes $(H)$ exactly the shape a consumer has available: $(H)$ with
+$\Phi$ the value of that maximal function at $x$ is precisely what the
+definition of the maximal function as a supremum over $\rho \in (0,2]$ supplies,
+after multiplying by the finite positive number
+$\lambda(\overline B(x,\rho))$.
+
+\emph{The radius cap $2$ in $(H)$ and the radius cap $1$ in the region are
+matched, with no margin.}  The dyadic annuli used below have outer radii
+$2^{k+1}\varepsilon$, and the largest one meeting the region
+$\{\varepsilon < |x-y| \leq 1\}$ has $2^k\varepsilon < 1$, hence outer radius
+$2^{k+1}\varepsilon < 2$.  So $(H)$ is invoked only at radii in $(0,2]$, and it
+would not suffice if the region were enlarged beyond $|x-y| \leq 1$.  The cap
+$|x-y| \leq 1$ is in turn exactly the range on which the H\"ormander estimate of
+\noderef{GaussRieszKernelNearBounds} is available.
+
+\emph{The constant depends on $R$, necessarily.}  $C$ may be taken to be
+$C_h\,2^n\,\omega_n$ with $C_h$ the constant of
+\noderef{GaussRieszKernelNearBounds} at $R$ and
+$\omega_n = \lambda(B(0,1))$; $C_h$ degrades in $R$ and no uniformity in $n$,
+$j$ or $R$ is claimed.
+\end{lemma}
+\begin{proof}
+Let $C_h > 0$ be the constant supplied by \noderef{GaussRieszKernelNearBounds}
+at $R$; its hypothesis $R > 0$ holds because $R \geq 1$.  Put
+$\omega_n = \lambda(B(0,1))$, which lies in $(0,\infty)$: the open unit ball is
+nonempty and open, so of positive measure, and is bounded, so of finite measure
+(shared context).  Set $C = C_h2^n\omega_n$, which lies in $(0,\infty)$ and
+depends only on $n$, $j$ and $R$.  We show the asserted inequality with this
+$C$.
+
+Fix $f$, $\Phi$, $x$, $z$, $\varepsilon$ and the hypotheses, and abbreviate
+\[
+  A = \{y : \varepsilon < |x-y| \leq 1\},
+  \qquad
+  D_k = \{y : 2^k\varepsilon < |x-y| \leq 2^{k+1}\varepsilon\}
+  \quad (k \in \mathbb{N}_0),
+  \qquad
+  F(y) = \bigl|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr|\,|f(y)| .
+\]
+
+\emph{Step 1: the dyadic annuli cover $A$.}  We claim
+$A = \bigcup_{k \geq 0}(D_k \cap A)$.  The inclusion $\supseteq$ is immediate.
+For $\subseteq$, let $y \in A$.  The set of $k \in \mathbb{N}_0$ with
+$|x-y| \leq 2^{k+1}\varepsilon$ is nonempty: choose a natural number
+$m > 1/\varepsilon$; then $m \leq 2^m$, so $1/\varepsilon < 2^m$, so
+$1 < 2^m\varepsilon \leq 2^{m+1}\varepsilon$, and $|x-y| \leq 1$ gives
+$|x-y| \leq 2^{m+1}\varepsilon$.  Let $k$ be the least such natural number; we
+check $2^k\varepsilon < |x-y|$, which with $|x-y| \leq 2^{k+1}\varepsilon$ puts
+$y \in D_k$ and hence $y \in D_k \cap A$.  If $k = 0$ then
+$2^0\varepsilon = \varepsilon < |x-y|$ because $y \in A$.  If $k = m+1$ for some
+$m \in \mathbb{N}_0$ then minimality of $k$ gives
+$\lnot\,(|x-y| \leq 2^{m+1}\varepsilon)$, that is
+$2^{k}\varepsilon = 2^{m+1}\varepsilon < |x-y|$.
+
+\emph{Step 2: countable subadditivity.}  By Step 1 and countable subadditivity
+of the lower Lebesgue integral over a countable union,
+\begin{equation*}
+  \int_A^{*}F\,d\lambda \;\leq\; \sum_{k\geq0}\int_{D_k\cap A}^{*}F\,d\lambda .
+  \tag{1}
+\end{equation*}
+
+\emph{Step 3: the empty annuli.}  Suppose $2^{k+1}\varepsilon > 2$.  Since
+$2^{k+1} = 2\cdot2^k$ this gives $2^k\varepsilon > 1$, so every $y \in D_k$ has
+$|x-y| > 2^k\varepsilon > 1$ and therefore $y \notin A$.  Hence
+$D_k \cap A = \emptyset$ and $\int_{D_k\cap A}^{*}F\,d\lambda = 0$, which is at
+most $(C\Phi)\cdot2^{-(k+1)}$.
+
+\emph{Step 4: the live annuli.}  Suppose now $2^{k+1}\varepsilon \leq 2$, and
+let $y \in D_k \cap A$.  Then $|x| \leq R$; $0 < |x-y|$, because
+$|x-y| > \varepsilon > 0$; $|x-y| \leq 1$, because $y \in A$; and
+$|x-z| < \varepsilon/2 < |x-y|/2$, because $\varepsilon < |x-y|$.  These are
+exactly the hypotheses of clause (2) of \noderef{GaussRieszKernelNearBounds} at
+$R$, which therefore gives
+\[
+  \bigl|K_{\gamma,j}(x,y)-K_{\gamma,j}(z,y)\bigr|
+    \leq \frac{C_h|x-z|}{|x-y|^{\,n+1}}
+    \leq \frac{C_h\,\varepsilon/2}{(2^k\varepsilon)^{\,n+1}} ,
+\]
+the second inequality because $|x-z| < \varepsilon/2$ in the numerator and,
+in the denominator, $0 < 2^k\varepsilon < |x-y|$ together with monotonicity of
+$t \mapsto t^{\,n+1}$ on $[0,\infty)$.  Multiplying by $|f(y)| \geq 0$,
+\[
+  F(y) \leq \frac{C_h\,\varepsilon/2}{(2^k\varepsilon)^{\,n+1}}\,|f(y)|
+  \qquad (y \in D_k \cap A) .
+\]
+Integrating this pointwise bound over $D_k \cap A$, pulling the finite constant
+out of the lower Lebesgue integral, and then enlarging the domain of
+integration using $D_k \cap A \subseteq \overline B(x,2^{k+1}\varepsilon)$ ---
+which holds because $y \in D_k$ gives $|x-y| \leq 2^{k+1}\varepsilon$ and
+$|x-y| = |y-x|$ --- we get
+\[
+  \int_{D_k\cap A}^{*}F\,d\lambda
+    \leq \frac{C_h\,\varepsilon/2}{(2^k\varepsilon)^{\,n+1}}
+      \int_{\overline B(x,2^{k+1}\varepsilon)}^{*}|f|\,d\lambda .
+\]
+Since $0 < 2^{k+1}\varepsilon \leq 2$, hypothesis $(H)$ applies at
+$\rho = 2^{k+1}\varepsilon$ and bounds the last integral by
+$\Phi\,\lambda(\overline B(x,2^{k+1}\varepsilon))$.  Lebesgue measure on
+$\mathbb{R}^n$ is an additive Haar measure and $\mathbb{R}^n$ has real dimension
+$n$, so $\lambda(\overline B(x,r)) = r^n\,\omega_n$ for every $r \geq 0$ (shared
+context).  Therefore
+\[
+  \int_{D_k\cap A}^{*}F\,d\lambda
+    \leq \frac{C_h\,\varepsilon/2}{(2^k\varepsilon)^{\,n+1}}
+      \,(2^{k+1}\varepsilon)^n\,\omega_n\,\Phi .
+\]
+The numerical factor simplifies: writing $2^{k+1} = 2\cdot2^k$,
+\[
+  \frac{\varepsilon/2}{(2^k\varepsilon)^{\,n+1}}(2^{k+1}\varepsilon)^n
+    = \frac{\varepsilon}{2}\,2^{-k(n+1)}\varepsilon^{-(n+1)}
+      \,2^{(k+1)n}\varepsilon^{\,n}
+    = \frac{1}{2}\,2^{\,n-k}
+    = 2^{\,n}\,2^{-(k+1)} ,
+\]
+since the powers of $\varepsilon$ cancel ($1 - (n+1) + n = 0$) and
+$-k(n+1)+(k+1)n = n-k$.  Hence
+\begin{equation*}
+  \int_{D_k\cap A}^{*}F\,d\lambda
+    \leq C_h2^{\,n}\omega_n\,\Phi\cdot2^{-(k+1)}
+    = (C\Phi)\cdot2^{-(k+1)} . \tag{2}
+\end{equation*}
+
+\emph{Step 5: summation.}  By Step 3 and Step 4, $(2)$ holds for every
+$k \in \mathbb{N}_0$.  Substituting into $(1)$ and summing the geometric series
+$\sum_{k\geq0}2^{-(k+1)} = \tfrac12\bigl(1-\tfrac12\bigr)^{-1} = 1$ in
+$[0,+\infty]$,
+\[
+  \int_A^{*}F\,d\lambda
+    \leq \sum_{k\geq0}(C\Phi)\cdot2^{-(k+1)}
+    = (C\Phi)\sum_{k\geq0}2^{-(k+1)}
+    = C\Phi ,
+\]
+which is the assertion.
+\end{proof}

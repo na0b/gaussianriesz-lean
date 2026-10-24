@@ -1,0 +1,57 @@
+\begin{lemma}[The zeroth Hermite element of $L^2(\gamma_n)$ is almost everywhere the constant one]
+Fix $n \in \mathbb{N}_0$ and let $\alpha = 0$ be the zero multi-index in
+$\mathbb{N}_0^n$.  Let $h_0 \in L^2(\gamma_n)$ be the element of
+\noderef{HermiteL2} determined by the Hermite function $h_0$ of
+\noderef{HermiteFun}.  Then the representative function of that $L^2$ class
+agrees $\gamma_n$-almost everywhere with the constant function $1$:
+\[
+  h_0 = 1 \qquad \gamma_n\text{-almost everywhere on } \mathbb{R}^n .
+\]
+The two sides of this identity are of different kinds, and the statement is
+exactly that they agree off a $\gamma_n$-null set: on the left is the function
+$\mathbb{R}^n \to \mathbb{R}$ obtained by coercing the $L^2(\gamma_n)$
+equivalence class $h_0$ to a representative, and on the right is the genuine
+function $x \mapsto 1$.  The conclusion is an almost-everywhere identity rather
+than a pointwise one precisely because the left-hand side is only determined up
+to a $\gamma_n$-null set.
+\end{lemma}
+\begin{proof}
+Step 1 (the zeroth Hermite function is identically one).  By
+\noderef{HermiteFun}, the Hermite function attached to a multi-index $\alpha$ is
+the product of one-dimensional normalized Hermite functions over the
+coordinates, $h_\alpha(x) = \prod_{j=1}^n h_{\alpha_j}(x_j)$.  For the zero
+multi-index every entry is $\alpha_j = 0$, so
+\[
+  h_0(x) = \prod_{j=1}^n h_0(x_j) \qquad (x \in \mathbb{R}^n),
+\]
+where the factors on the right are the one-dimensional zeroth Hermite
+functions.  By \noderef{Hermite1Zero} each of those factors equals $1$ at every
+real argument, so the product is a product of $n$ copies of $1$, namely $1$.
+Hence
+\[
+  h_0(x) = 1 \qquad \text{for every } x \in \mathbb{R}^n , \tag{P}
+\]
+a genuinely pointwise identity, holding everywhere and not merely almost
+everywhere.
+
+Step 2 (passing from the function to its $L^2$ class).  By
+\noderef{HermiteFunMemLp} the function $h_0$ is square integrable for
+$\gamma_n$, so it determines an element of $L^2(\gamma_n)$, and this is the
+element named in \noderef{HermiteL2}.  Coercing that class back to a function
+returns a representative, which by construction of the Lebesgue space agrees
+$\gamma_n$-almost everywhere with the function $h_0$ one started from.  Writing
+$\widetilde{h_0}$ for the representative, this says
+\[
+  \widetilde{h_0} = h_0 \qquad \gamma_n\text{-almost everywhere}. \tag{R}
+\]
+
+Step 3 (conclusion).  An identity that holds at every point holds in particular
+$\gamma_n$-almost everywhere, so (P) gives
+$h_0 = 1$ $\gamma_n$-almost everywhere.  Chaining this with (R) and using that
+$\gamma_n$-almost-everywhere equality is transitive --- the union of two
+$\gamma_n$-null sets being $\gamma_n$-null --- yields
+\[
+  \widetilde{h_0} = 1 \qquad \gamma_n\text{-almost everywhere},
+\]
+which is the assertion.
+\end{proof}

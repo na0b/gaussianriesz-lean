@@ -1,0 +1,46 @@
+\begin{lemma}[Uniqueness of the weak gradient in $L^2(\gamma_n)$]
+Let $v : \mathbb{R}^n \to \mathbb{R}$ be measurable and let
+$G, H \in L^2(\gamma_n;\mathbb{R}^n)$ both be weak Euclidean gradients of $v$ in
+the sense of \noderef{HasGaussWeakGrad}.  Then $G = H$ as elements of
+$L^2(\gamma_n;\mathbb{R}^n)$, i.e. $G = H$ $\gamma_n$-almost everywhere.
+\end{lemma}
+\begin{proof}
+Fix $j \in \{1,\ldots,n\}$ and put $w = G_j - H_j$.
+
+\emph{Step 1: $w$ annihilates every test function.}
+By \noderef{HasGaussWeakGrad} applied to the pair $(v,G)$ and then to the pair
+$(v,H)$, for every $\varphi \in C_c^\infty(\mathbb{R}^n)$,
+\[
+  \int v\,\partial_j\varphi\, dx = -\int G_j\,\varphi\, dx,
+  \qquad
+  \int v\,\partial_j\varphi\, dx = -\int H_j\,\varphi\, dx ,
+\]
+the integrals being with respect to Lebesgue measure.  Subtracting,
+\begin{equation*}
+  \int_{\mathbb{R}^n} w\,\varphi\, dx = 0
+  \qquad\text{for every } \varphi \in C_c^\infty(\mathbb{R}^n). \tag{1}
+\end{equation*}
+
+\emph{Step 2: $w$ is locally Lebesgue integrable.}
+Both $G_j$ and $H_j$ lie in $L^2(\gamma_n)$, since $G$ and $H$ lie in
+$L^2(\gamma_n;\mathbb{R}^n)$.  By \noderef{GaussL2LocallyIntegrable}, applied to
+each of them, each is locally integrable for Lebesgue measure.  A difference of
+two locally Lebesgue-integrable functions is locally Lebesgue integrable, so
+$w = G_j - H_j \in L^1_{\mathrm{loc}}(\mathbb{R}^n)$ for Lebesgue measure.
+
+\emph{Step 3: $w = 0$ Lebesgue-a.e.}
+The du Bois-Reymond item of shared context says exactly that a function which is
+locally integrable for Lebesgue measure and integrates to zero against every
+$\varphi \in C_c^\infty(\mathbb{R}^n)$ vanishes Lebesgue-almost everywhere.  Its
+two hypotheses are in hand: local Lebesgue integrability of $w$ is Step 2, and
+the vanishing of $\int w \varphi \, dx$ for every such $\varphi$ is $(1)$ from
+Step 1.  Hence $w = 0$ Lebesgue-almost everywhere.
+
+\emph{Step 4: transfer to $\gamma_n$.}
+Again by \noderef{GaussMeasure}, $\gamma_n$ has a strictly positive density with
+respect to Lebesgue measure, so a Lebesgue-null set is $\gamma_n$-null and
+conversely.  Therefore $G_j = H_j$ $\gamma_n$-almost everywhere.
+
+As $j$ was arbitrary, $G = H$ $\gamma_n$-almost everywhere, i.e.\ $G = H$ in
+$L^2(\gamma_n;\mathbb{R}^n)$.
+\end{proof}

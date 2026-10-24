@@ -1,0 +1,126 @@
+\begin{lemma}[The complex $L^2$ identity for $R_\gamma^{\mathbb{C}}$]
+Let $v \in L^2(\gamma_n;\mathbb{C})$, let $\operatorname{Re} v, \operatorname{Im} v
+\in L^2(\gamma_n;\mathbb{R})$ be its real and imaginary parts and let
+$R_\gamma^{\mathbb{C}}$ be the complex Riesz transform of
+\noderef{ComplexRieszTransform}.  Then:
+\begin{enumerate}
+\item (the $L^2$ identity)
+\[
+  \bigl\|R_\gamma^{\mathbb{C}} v\bigr\|_{L^2(\gamma_n;\mathbb{C}^n)}^2
+    = \bigl\|R_\gamma(\operatorname{Re} v)\bigr\|_{L^2(\gamma_n;\mathbb{R}^n)}^2
+      + \bigl\|R_\gamma(\operatorname{Im} v)\bigr\|_{L^2(\gamma_n;\mathbb{R}^n)}^2 ;
+\]
+\item (the contraction bound)
+$\bigl\|R_\gamma^{\mathbb{C}} v\bigr\|_{L^2(\gamma_n;\mathbb{C}^n)}
+  \leq \|v\|_{L^2(\gamma_n;\mathbb{C})}$;
+\item (the pointwise form) for $\gamma_n$-almost every $x \in \mathbb{R}^n$,
+\[
+  \bigl|R_\gamma^{\mathbb{C}} v(x)\bigr|_{\mathbb{C}^n}^2
+    = \bigl|R_\gamma(\operatorname{Re} v)(x)\bigr|_{\mathbb{R}^n}^2
+      + \bigl|R_\gamma(\operatorname{Im} v)(x)\bigr|_{\mathbb{R}^n}^2 .
+\]
+\end{enumerate}
+This is the reference paper's complex $L^2$ identity, the one its proof of the
+complex-valued estimate obtains ``by applying (2.10) of the paper to real and
+imaginary parts''; \noderef{RieszL2Identity} is the node supplying that real
+$L^2$ bound.  Clause (3) is the pointwise statement, kept because the Chebyshev
+step of the complex weak-type argument is applied to the level sets of
+$|R_\gamma^{\mathbb{C}} v|_{\mathbb{C}^n}$ and therefore needs the identity at
+almost every point, not only after integration.  Clause (2) is not a formal
+consequence of clause (1) together with the real bound alone: it also uses the
+identity $\|v\|^2 = \|\operatorname{Re} v\|^2 + \|\operatorname{Im} v\|^2$ in
+$L^2(\gamma_n;\mathbb{C})$, which is what converts the sum of the two real
+bounds back into the single complex norm.
+\end{lemma}
+\begin{proof}
+Write $u_1 = R_\gamma(\operatorname{Re} v)$ and $u_2 = R_\gamma(\operatorname{Im} v)$,
+both in $L^2(\gamma_n;\mathbb{R}^n)$; they are defined for these inputs with no
+side condition by \noderef{RieszTransform}.  Throughout we use that the norm of a
+Lebesgue space of order $2$ over $\gamma_n$ with values in a normed space $E$ is
+given by $\|w\|^2 = \int |w(x)|_E^2 \, d\gamma_n(x)$, which is the definition of
+that norm, and that the operations on such a space --- composition with a bounded
+linear map, addition, and multiplication by a scalar --- are defined on
+representatives, so each induces an identity valid at $\gamma_n$-almost every
+point.
+
+\emph{Step 1: the scalar identity.}
+For real numbers $a, b$ we have $|a + ib|^2 = a^2 + b^2$, since
+$|a+ib|^2 = (a+ib)\overline{(a+ib)} = (a+ib)(a-ib) = a^2 + b^2$.
+
+\emph{Step 2: clause (3).}
+By \noderef{ComplexRieszTransform},
+$R_\gamma^{\mathbb{C}} v = \iota(u_1) + i\,\iota(u_2)$ with $\iota$ the
+coordinatewise inclusion $\mathbb{R}^n \to \mathbb{C}^n$ of that node.  Each of
+the three operations involved --- applying $\iota$ pointwise, adding, and
+multiplying by $i$ --- holds at almost every point for the chosen
+representatives, and the intersection of the three resulting full-measure sets
+is again of full measure.  So for $\gamma_n$-almost every $x$ and every
+$j \in \{1,\ldots,n\}$,
+\[
+  \bigl(R_\gamma^{\mathbb{C}} v\bigr)(x)_j
+    = u_1(x)_j + i\,u_2(x)_j ,
+\]
+$u_1(x)_j$ and $u_2(x)_j$ being real.  For such an $x$, by Step 1 applied in
+each coordinate,
+\[
+  \bigl|R_\gamma^{\mathbb{C}} v(x)\bigr|_{\mathbb{C}^n}^2
+    = \sum_{j=1}^n \bigl|u_1(x)_j + i\,u_2(x)_j\bigr|^2
+    = \sum_{j=1}^n \Bigl(u_1(x)_j^2 + u_2(x)_j^2\Bigr)
+    = |u_1(x)|_{\mathbb{R}^n}^2 + |u_2(x)|_{\mathbb{R}^n}^2 ,
+\]
+the last equality by splitting the finite sum.  This is clause (3).
+
+\emph{Step 3: clause (1).}
+The three functions $x \mapsto |R_\gamma^{\mathbb{C}} v(x)|^2$,
+$x \mapsto |u_1(x)|^2$ and $x \mapsto |u_2(x)|^2$ are nonnegative and
+$\gamma_n$-integrable, their integrals being the squared $L^2$ norms of
+$R_\gamma^{\mathbb{C}} v$, $u_1$ and $u_2$, which are finite.  Integrating the
+identity of Step 2 --- legitimate because it holds almost everywhere and
+because the integral of a sum of two integrable functions is the sum of the
+integrals ---
+\[
+  \bigl\|R_\gamma^{\mathbb{C}} v\bigr\|^2
+    = \int |u_1(x)|^2 \, d\gamma_n(x) + \int |u_2(x)|^2 \, d\gamma_n(x)
+    = \|u_1\|^2 + \|u_2\|^2 ,
+\]
+which is clause (1).
+
+\emph{Step 4: the real and imaginary parts of $v$.}
+By \noderef{ComplexRieszTransform} the parts $\operatorname{Re} v$ and
+$\operatorname{Im} v$ are obtained by composing $v$ pointwise with
+$\operatorname{Re}$ and $\operatorname{Im}$, so for $\gamma_n$-almost every $x$,
+$(\operatorname{Re} v)(x) = \operatorname{Re}(v(x))$ and
+$(\operatorname{Im} v)(x) = \operatorname{Im}(v(x))$.  Writing
+$v(x) = \operatorname{Re}(v(x)) + i \operatorname{Im}(v(x))$ and applying Step 1,
+\[
+  |v(x)|^2 = \bigl(\operatorname{Re} v\bigr)(x)^2
+    + \bigl(\operatorname{Im} v\bigr)(x)^2
+  \qquad\text{for } \gamma_n\text{-a.e. } x .
+\]
+Integrating, exactly as in Step 3 and with the same justification (all three
+integrands are nonnegative with finite integral, those integrals being the
+squared $L^2$ norms of $v$, $\operatorname{Re} v$ and $\operatorname{Im} v$),
+\begin{equation*}
+  \|v\|_{L^2(\gamma_n;\mathbb{C})}^2
+    = \|\operatorname{Re} v\|_{L^2(\gamma_n;\mathbb{R})}^2
+      + \|\operatorname{Im} v\|_{L^2(\gamma_n;\mathbb{R})}^2 . \tag{$*$}
+\end{equation*}
+
+\emph{Step 5: clause (2).}
+Apply \noderef{RieszL2Identity} twice, once to the input $\operatorname{Re} v$
+and once to $\operatorname{Im} v$; its second assertion gives
+$\|u_1\| \leq \|\operatorname{Re} v\|$ and $\|u_2\| \leq \|\operatorname{Im} v\|$.
+All four quantities are nonnegative, so squaring preserves the inequalities:
+$\|u_1\|^2 \leq \|\operatorname{Re} v\|^2$ and
+$\|u_2\|^2 \leq \|\operatorname{Im} v\|^2$.  Adding these and then using clause
+(1) on the left and $(*)$ on the right,
+\[
+  \bigl\|R_\gamma^{\mathbb{C}} v\bigr\|^2
+    = \|u_1\|^2 + \|u_2\|^2
+    \leq \|\operatorname{Re} v\|^2 + \|\operatorname{Im} v\|^2
+    = \|v\|^2 .
+\]
+Both $\|R_\gamma^{\mathbb{C}} v\|$ and $\|v\|$ are nonnegative and the square
+root is nondecreasing on $[0,\infty)$, so
+$\|R_\gamma^{\mathbb{C}} v\| \leq \|v\|$, which is clause (2).
+\end{proof}

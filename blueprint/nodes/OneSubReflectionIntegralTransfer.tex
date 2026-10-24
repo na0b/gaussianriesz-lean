@@ -1,0 +1,75 @@
+\begin{lemma}[Reflection $r \leftrightarrow 1-r$ transfers set integrals and integrability between $(0,c)$ and $(1-c,1)$]
+Both of the following hold, for every function $g : \mathbb{R} \to \mathbb{R}$
+and every real number $c$.
+\begin{enumerate}
+  \item (Integral identity)
+    \[
+      \int_{(1-c,\,1)} g(1-r)\, dr = \int_{(0,\,c)} g(\tau)\, d\tau ,
+    \]
+    both integrals being taken with respect to Lebesgue measure on
+    $\mathbb{R}$ over the indicated open interval.
+  \item (Integrability transfer) If $g$ is integrable on $(0,c)$ for Lebesgue
+    measure, then $r \mapsto g(1-r)$ is integrable on $(1-c,1)$ for Lebesgue
+    measure.
+\end{enumerate}
+No measurability or integrability hypothesis on $g$ is assumed in clause (1),
+and no sign condition on $c$ is assumed in either clause.
+\end{lemma}
+\begin{proof}
+Write $T : \mathbb{R} \to \mathbb{R}$, $T(t) = 1 - t$, and let $\lambda$ denote
+Lebesgue measure on $\mathbb{R}$.  The proof rests on three properties of $T$,
+each established before either clause is addressed; both clauses then follow in
+one step each.
+
+\emph{$T$ preserves $\lambda$.}  Lebesgue measure on $\mathbb{R}$ is invariant
+under translation and under the reflection $x \mapsto -x$, hence under
+$t \mapsto 1 - t$, which is the composition of the two.  So $T$ is a
+measure-preserving map of $(\mathbb{R},\lambda)$ to itself:
+$\lambda(T^{-1}(A)) = \lambda(A)$ for every Lebesgue measurable
+$A \subseteq \mathbb{R}$.
+
+\emph{$T$ is a measurable embedding.}  $T$ is an involution, $T(T(t)) = t$, and
+it is continuous with continuous inverse $T$ itself, so it is a homeomorphism of
+$\mathbb{R}$.  In particular $T$ is injective, Borel measurable, and carries
+measurable sets to measurable sets; that is, $T$ is a measurable embedding.
+
+\emph{The preimage computation.}  Fix $c \in \mathbb{R}$.  Then
+\[
+  T^{-1}\bigl((0,c)\bigr) = (1-c,\,1) .
+\]
+Indeed, for $t \in \mathbb{R}$ the condition $T(t) \in (0,c)$ reads $0 < 1 - t$
+together with $1 - t < c$.  The first inequality is equivalent to $t < 1$ and
+the second to $1 - c < t$, so $T(t) \in (0,c)$ holds if and only if
+$1 - c < t < 1$, i.e.\ $t \in (1-c,1)$.  Each of the four implications is a
+rearrangement of a linear inequality, so both inclusions hold and the sets are
+equal.  No sign condition on $c$ enters: if $c \leq 0$ then $(0,c)$ is empty and
+so is $(1-c,1)$, because then $1 - c \geq 1$, and the displayed identity reads
+$\emptyset = \emptyset$.
+
+\emph{Clause (1).}  For a measure-preserving measurable embedding $T$ of
+$(\mathbb{R},\lambda)$, every $h : \mathbb{R} \to \mathbb{R}$ and every
+measurable $A$,
+\[
+  \int_{T^{-1}(A)} h(T(t))\, d\lambda(t) = \int_{A} h(\tau)\, d\lambda(\tau) ,
+\]
+because the image under $T$ of $\lambda$ restricted to $T^{-1}(A)$ is $\lambda$
+restricted to $A$, and a set integral depends only on that restricted measure.
+Apply this with $h = g$ and $A = (0,c)$ and substitute the preimage
+computation: since $T(t) = 1-t$, the left-hand side is
+$\int_{(1-c,1)} g(1-r)\, dr$ and the right-hand side is
+$\int_{(0,c)} g(\tau)\, d\tau$, which is clause (1).  The identity needs no
+hypothesis on $g$: with the convention that the integral of a non-integrable
+function is $0$, the two sides are simultaneously given by a genuine integral or
+simultaneously $0$, because $g \circ T$ fails to be integrable on $T^{-1}(A)$
+exactly when $g$ fails to be integrable on $A$ --- which is clause (2) read in
+both directions.
+
+\emph{Clause (2).}  The same two properties of $T$ give, for every
+$h : \mathbb{R} \to \mathbb{R}$ and every measurable $A$, that $h \circ T$ is
+integrable on $T^{-1}(A)$ if and only if $h$ is integrable on $A$: the
+transported measures agree, so the integrals of $|h \circ T|$ over $T^{-1}(A)$
+and of $|h|$ over $A$ coincide in $[0,+\infty]$ and are finite together.  Taking
+$h = g$ and $A = (0,c)$, and using the forward direction only, integrability of
+$g$ on $(0,c)$ gives integrability of $t \mapsto g(1-t)$ on $T^{-1}((0,c))$,
+which by the preimage computation is $(1-c,1)$.  That is clause (2).
+\end{proof}

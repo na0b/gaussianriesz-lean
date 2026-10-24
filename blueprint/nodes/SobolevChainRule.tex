@@ -1,0 +1,156 @@
+\begin{lemma}[Sobolev chain rule for the smooth regularized absolute value]
+For $\delta > 0$ let $q_\delta(t) = \sqrt{t^2+\delta^2} - \delta$.  Let
+$u \in W^{1,2}(\gamma_n)$ in the sense of \noderef{SobolevW12} and let
+$w \in L^2(\gamma_n)$ satisfy $w = q_\delta \circ u$ $\gamma_n$-almost
+everywhere.  Then $w \in W^{1,2}(\gamma_n)$ and
+\[
+  Dw = \frac{u}{\sqrt{u^2+\delta^2}}\; Du
+  \qquad \gamma_n\text{-a.e.},
+\]
+with $D$ the energy-normalized weak gradient of \noderef{GaussD}.  No regularity
+of the set $\{u>0\}$ or of its boundary is used; the statement concerns the local
+weak gradient only, not any locality of the nonlocal operator $B$.
+\end{lemma}
+\begin{proof}
+\emph{Step 0: properties of $q_\delta$ and notation.}
+$q_\delta$ is smooth on $\mathbb{R}$ with
+$q_\delta'(t) = t/\sqrt{t^2+\delta^2}$ and
+$q_\delta''(t) = \delta^2 (t^2+\delta^2)^{-3/2}$.  Hence
+$|q_\delta'| \leq 1$ everywhere, $q_\delta$ is $1$-Lipschitz, $q_\delta(0) = 0$,
+and $q_\delta'$ is Lipschitz with constant
+$\sup|q_\delta''| = \delta^2\cdot\delta^{-3} = 1/\delta$.  Set
+\[
+  G = \sqrt2\, Du \in L^2(\gamma_n;\mathbb{R}^n),
+  \qquad
+  \Theta(x) = q_\delta'\bigl(u(x)\bigr) = \frac{u(x)}{\sqrt{u(x)^2+\delta^2}} ,
+\]
+so $G$ is a weak Euclidean gradient of $u$ by \noderef{SobolevW12} and
+\noderef{GaussD}, and $|\Theta| \leq 1$ pointwise.  Then
+$\Theta\, G \in L^2(\gamma_n;\mathbb{R}^n)$, since $|\Theta G| \leq |G|$
+pointwise.  Our goal is to show that $\Theta\,G$ is a weak Euclidean gradient of
+$w$; the conclusion then follows, because $\Theta G = \sqrt2\,(\Theta\, Du)$ with
+$\Theta\,Du \in L^2(\gamma_n;\mathbb{R}^n)$ gives $w \in W^{1,2}(\gamma_n)$ by
+\noderef{SobolevW12}, and \noderef{GaussD} together with
+\noderef{GaussWeakGradUnique} identifies $Dw = \Theta\,Du$, which is the asserted
+formula.
+
+Since $w = q_\delta\circ u$ $\gamma_n$-a.e., and $\gamma_n$ and Lebesgue measure
+have the same null sets (the density of \noderef{GaussMeasure} is continuous and
+strictly positive), we may and do replace $w$ by $q_\delta\circ u$ throughout:
+changing a function on a null set changes neither side of the defining identity
+of \noderef{HasGaussWeakGrad}.
+
+\emph{Step 1: reduction to a fixed test function and local mollification.}
+Fix $j \in \{1,\ldots,n\}$ and $\varphi \in C_c^\infty(\mathbb{R}^n)$; we must show
+\begin{equation*}
+  \int_{\mathbb{R}^n} q_\delta(u)\, \partial_j \varphi\, dx
+    = -\int_{\mathbb{R}^n} \Theta\, G_j\, \varphi \, dx . \tag{1}
+\end{equation*}
+Let $K = \operatorname{supp}\varphi$, a compact subset of $\mathbb{R}^n$, let
+$\lambda$ denote Lebesgue measure, and put
+$K_1 = \{x : \operatorname{dist}(x,K) \leq 1\}$, which is compact.
+
+By \noderef{GaussL2LocallyIntegrable}, applied in turn to $u$ and to each
+component $G_j$ of $G$ -- all of these lie in $L^2(\gamma_n)$, $u$ by hypothesis
+and $G_j$ because $G \in L^2(\gamma_n;\mathbb{R}^n)$ -- each of
+$u, G_1, \ldots, G_n$ is locally $\lambda$-integrable and lies in
+$L^2(K',\lambda)$ for every compact $K' \subseteq \mathbb{R}^n$.
+
+Fix a mollifier family $(\rho_\varepsilon)_{\varepsilon>0}$: each
+$\rho_\varepsilon$ smooth, nonnegative, supported in $\{|t| \leq \varepsilon\}$,
+with $\int\rho_\varepsilon\,d\lambda = 1$; for instance
+$\rho_\varepsilon(t) = \varepsilon^{-n}\rho(t/\varepsilon)$ for a fixed smooth
+nonnegative $\rho$ supported in the unit ball with $\int\rho\,d\lambda = 1$.  Put
+$u_\varepsilon = \rho_\varepsilon * u$, that is
+$u_\varepsilon(x) = \int \rho_\varepsilon(t)\,u(x-t)\,d\lambda(t)$.  Since $u$ is
+locally $\lambda$-integrable and $\rho_\varepsilon \in C_c^\infty(\mathbb{R}^n)$,
+the mollification item of shared context gives that $u_\varepsilon$ is defined at
+every point and is $C^\infty$ on $\mathbb{R}^n$.
+
+\emph{The gradient identity.}  For every $x \in \mathbb{R}^n$, every $j$ and every
+$\varepsilon > 0$,
+\begin{equation*}
+  \partial_j u_\varepsilon(x) = (\rho_\varepsilon * G_j)(x) . \tag{1a}
+\end{equation*}
+Indeed, fix $x$ and put $\psi(y) = \rho_\varepsilon(x-y)$, so that
+$\psi \in C_c^\infty(\mathbb{R}^n)$ and
+$\partial_{y_j}\psi(y) = -(\partial_j\rho_\varepsilon)(x-y)$.  Differentiating the
+convolution in $x$ moves the derivative onto the smooth factor,
+$\partial_j u_\varepsilon = (\partial_j\rho_\varepsilon) * u$, and rewriting that
+integral by the change of variable $y = x - t$, which preserves $\lambda$ by
+translation and reflection invariance of Lebesgue measure (shared context), gives
+\[
+  \partial_j u_\varepsilon(x)
+    = \int u(y)\,(\partial_j\rho_\varepsilon)(x-y)\,d\lambda(y)
+    = -\int u\,\partial_j\psi\, d\lambda
+    = \int G_j\,\psi\, d\lambda
+    = (\rho_\varepsilon * G_j)(x) ,
+\]
+the third equality being the defining identity of \noderef{HasGaussWeakGrad} for
+the pair $(u,G)$ with test function $\psi$, and the fourth the same change of
+variable read backwards.
+
+\emph{The convergences.}  Apply \noderef{MollifierL2Local} twice with the compact
+set $K_1$ and the fixed mollifier family: once to $f = u$ and once to $f = G_j$.
+Its hypothesis, that $f$ lie in $L^2(K',\lambda)$ for every compact $K'$, is
+exactly what \noderef{GaussL2LocallyIntegrable} supplied above for both
+functions.  Hence, as $\varepsilon \downarrow 0$ through positive values,
+\[
+  u_\varepsilon \to u \quad\text{in } L^2(K_1,\lambda),
+  \qquad
+  \partial_j u_\varepsilon \to G_j \quad\text{in } L^2(K_1,\lambda),
+\]
+the second statement using $(1a)$ to identify $\partial_j u_\varepsilon$ with
+$\rho_\varepsilon * G_j$.  Since $K \subseteq K_1$, the same convergences hold in
+$L^2(K,\lambda)$, because $\|w\|_{L^2(K,\lambda)} \leq \|w\|_{L^2(K_1,\lambda)}$
+for every $w$.
+
+\emph{Step 2: the classical chain rule for the mollifications.}
+Each $u_\varepsilon$ is smooth on a neighbourhood of $K$ and $q_\delta$ is smooth
+on $\mathbb{R}$, so the classical chain rule gives, pointwise on $K$,
+\[
+  \partial_j\bigl(q_\delta(u_\varepsilon)\bigr) = q_\delta'(u_\varepsilon)\,\partial_j u_\varepsilon .
+\]
+Both sides are continuous on a neighbourhood of $K$, and $\varphi$ is smooth with
+support in $K$, so ordinary integration by parts gives
+\begin{equation*}
+  \int q_\delta(u_\varepsilon)\,\partial_j\varphi \, dx
+    = -\int q_\delta'(u_\varepsilon)\,\partial_j u_\varepsilon\; \varphi\, dx . \tag{2}
+\end{equation*}
+
+\emph{Step 3: passing to the limit in (2).}
+Left-hand side: $|q_\delta(u_\varepsilon) - q_\delta(u)| \leq |u_\varepsilon - u|$
+pointwise, because $q_\delta$ is $1$-Lipschitz; hence
+$q_\delta(u_\varepsilon) \to q_\delta(u)$ in $L^1(K)$ by Step 1, and since
+$\partial_j\varphi$ is bounded and supported in $K$,
+$\int q_\delta(u_\varepsilon)\partial_j\varphi\,dx \to
+\int q_\delta(u)\,\partial_j\varphi\, dx$.
+
+Right-hand side: write
+\[
+  q_\delta'(u_\varepsilon)\,\partial_j u_\varepsilon - \Theta\, G_j
+    = q_\delta'(u_\varepsilon)\bigl(\partial_j u_\varepsilon - G_j\bigr)
+      + \bigl(q_\delta'(u_\varepsilon) - q_\delta'(u)\bigr) G_j .
+\]
+The first term tends to $0$ in $L^1(K)$ because $|q_\delta'| \leq 1$ and
+$\partial_j u_\varepsilon \to G_j$ in $L^2(K,\lambda)$ and hence in
+$L^1(K,\lambda)$ (Step 1, with Cauchy--Schwarz on the finite-measure set $K$).  For the second term,
+$q_\delta'$ is $1/\delta$-Lipschitz by Step 0, so
+$|q_\delta'(u_\varepsilon) - q_\delta'(u)| \leq |u_\varepsilon - u|/\delta$, and
+by Cauchy--Schwarz on $K$,
+\[
+  \int_K \bigl|q_\delta'(u_\varepsilon) - q_\delta'(u)\bigr|\,|G_j|\, dx
+    \leq \frac{1}{\delta}\,\|u_\varepsilon - u\|_{L^2(K)}\,\|G_j\|_{L^2(K)}
+    \longrightarrow 0 .
+\]
+Hence $\int q_\delta'(u_\varepsilon)\partial_ju_\varepsilon\,\varphi\,dx \to
+\int \Theta\, G_j\,\varphi\, dx$, $\varphi$ being bounded with support in $K$.
+
+Letting $\varepsilon \downarrow 0$ in (2) therefore yields (1).
+
+\emph{Step 4: conclusion.}
+Since $j$ and $\varphi$ were arbitrary, (1) says exactly that $\Theta\,G$ is a
+weak Euclidean gradient of $q_\delta\circ u = w$ in the sense of
+\noderef{HasGaussWeakGrad}.  By Step 0 this gives $w \in W^{1,2}(\gamma_n)$ and
+$Dw = \Theta\, Du = \dfrac{u}{\sqrt{u^2+\delta^2}}\,Du$ $\gamma_n$-a.e.
+\end{proof}

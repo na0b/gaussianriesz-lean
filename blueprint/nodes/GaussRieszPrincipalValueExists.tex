@@ -1,0 +1,206 @@
+\begin{lemma}[The principal value of a truncated Gaussian Riesz integral exists almost everywhere]
+Fix $n \geq 1$, let $\lambda$ be Lebesgue measure on $\mathbb{R}^n$, let
+$\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure}, and let
+$K_{\gamma,j}$ be the kernel of \noderef{GaussRieszKernel}.  Let
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions such that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item[(T2)] $t\,\gamma_n\bigl(\{x : |Th(x)|_{\mathbb{R}^n} > t\}\bigr)
+\leq 2\,\|h\|_{L^1(\gamma_n)}$ for every $h \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$.
+\end{enumerate}
+For a $\gamma_n$-integrable $h$, a coordinate $j$, a point $x$ and a real
+$\varepsilon > 0$ write
+$T_{j,\varepsilon}h(x) = \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)h(y)\,dy$,
+the $y$-integral against $\lambda$; for an element of $L^1(\gamma_n)$ this is
+read through its canonical representative.
+
+Let $f \in L^1(\gamma_n)$ and let $j \in \{1,\ldots,n\}$.  Then for
+$\gamma_n$-almost every $x \in \mathbb{R}^n$ there is a real number $L$ with
+\[
+  \lim_{\varepsilon\downarrow0}T_{j,\varepsilon}f(x) \;=\; L ,
+\]
+the limit taken through $\varepsilon \in (0,\infty)$ as $\varepsilon \to 0$.
+
+\emph{Existence only, and deliberately so.}  The statement asserts that the
+limit exists; it says nothing about its value, and in particular does not
+identify it with any coordinate of $Tf$.  That identification is a separate
+assertion requiring separate inputs, and keeping it out of this statement is
+what makes the two independently usable: a consumer that wants the value
+obtains $L$ here and identifies it elsewhere.  Correspondingly no function
+$x \mapsto L(x)$ is produced: the conclusion is an existential at each good
+point, so no choice is made and no total function enters the interface.
+
+\emph{Why the conclusion is almost-everywhere.}  The exceptional set is
+genuine and not an artefact.  It is the set where the oscillation of
+$\varepsilon \mapsto T_{j,\varepsilon}f(x)$ at $0$ fails to vanish, and it is
+controlled only in measure, through the weak-type bound of
+\noderef{GaussMaximalTruncationLocal} applied to the errors of a sequence of
+smooth approximants.  By contrast each individual $T_{j,\varepsilon}f(x)$ is a
+finite real number at \emph{every} $x$, by \noderef{GaussRieszTruncationSmoothSplit};
+it is only the limit that needs an exceptional set.
+
+\emph{Both (T1) and (T2) are assumed, because the input carries both.}  The
+weak-type bound of \noderef{GaussMaximalTruncationLocal} is a statement about
+every $T$ satisfying the two, so this lemma is too.  It is not vacuous because
+\noderef{L1Extension} exhibits such a $T$.
+\end{lemma}
+\begin{proof}
+\emph{Step 1: the approximants, their errors, and the splitting.}
+For each $k \in \mathbb{N}$ apply \noderef{GaussRieszTruncationSmoothSplit} to
+$f$ and $k$.  It produces a function $\varphi_k$ and an element
+$g_k \in L^1(\gamma_n)$ such that $\varphi_k$ is smooth with compact support
+and $\gamma_n$-integrable, such that
+\begin{equation*}
+  \int_{\mathbb{R}^n}|g_k|\,d\gamma_n < \frac1{k+1} , \tag{1}
+\end{equation*}
+and such that for every $j$, every $x$ and every real $\varepsilon > 0$ the
+three integrands are Lebesgue integrable on $\{y : |x-y| > \varepsilon\}$ and
+\begin{equation*}
+  T_{j,\varepsilon}f(x)
+    = T_{j,\varepsilon}\varphi_k(x) + T_{j,\varepsilon}g_k(x) . \tag{2}
+\end{equation*}
+All quantities appearing in $(2)$ are finite real numbers, at every $x$ and
+every $\varepsilon > 0$.
+
+\emph{Step 2: off a $\gamma_n$-null set, the errors' maximal truncations can be
+made arbitrarily small.}  We claim that for $\gamma_n$-almost every
+$x \in \mathbb{R}^n$,
+\begin{equation*}
+  \text{for every } m \in \mathbb{N} \text{ there is } k \in \mathbb{N}
+  \text{ with } \bigl|T_{j,\varepsilon}g_k(x)\bigr| \leq \frac1{m+1}
+  \text{ for every real } \varepsilon > 0 . \tag{3}
+\end{equation*}
+
+Let $B$ be the set of $x$ at which $(3)$ fails.  If $x \in B$ there is
+$m \in \mathbb{N}$ such that for every $k$ the bound fails, i.e.\ for every $k$
+there is a real $\varepsilon > 0$ with
+$|T_{j,\varepsilon}g_k(x)| > 1/(m+1)$; and since
+$\mathrm{ofReal}$ is strictly increasing on $[0,\infty)$ and a single term is
+at most the supremum,
+\[
+  \mathrm{ofReal}\Bigl(\frac1{m+1}\Bigr)
+    \;<\; \sup_{\varepsilon>0}\mathrm{ofReal}\bigl|T_{j,\varepsilon}g_k(x)\bigr|
+  \qquad\text{for every } k ,
+\]
+the supremum taken in $[0,+\infty]$.  Also $|x| \leq r+1$ for some
+$r \in \mathbb{N}$, for instance $r = \lceil|x|\rceil$.  Hence
+\[
+  B \;\subseteq\; \bigcup_{m\in\mathbb{N}}\bigcup_{r\in\mathbb{N}}A_{r,m},
+  \qquad
+  A_{r,m} = \Bigl\{x : |x| \leq r+1 \text{ and }
+    \mathrm{ofReal}\bigl(\tfrac1{m+1}\bigr)
+      < \sup_{\varepsilon>0}\mathrm{ofReal}\bigl|T_{j,\varepsilon}g_i(x)\bigr|
+    \text{ for every } i\Bigr\} .
+\]
+By countable subadditivity of the outer measure $\gamma_n$ it therefore
+suffices to show $\gamma_n(A_{r,m}) = 0$ for each fixed $r$ and $m$.
+
+Fix $r$ and $m$.  Apply \noderef{GaussMaximalTruncationLocal} to this $T$ with
+its two properties, which are (T1) and (T2) and hold by assumption, to the
+coordinate $j$, and to the radius $R := r+1$, whose hypothesis $R \geq 1$ holds
+because $r \geq 0$.  It supplies a constant
+$C_r \in (0,\infty)$ --- in particular $C_r \neq 0$ and $C_r \neq +\infty$, and
+produced before its input is quantified, hence the same for every input ---
+such that for every $h \in L^1(\gamma_n)$ and every $t \in (0,+\infty]$,
+\begin{equation*}
+  \gamma_n\Bigl(\Bigl\{x : |x| \leq r+1 \text{ and }
+    t < \sup_{\varepsilon>0}\mathrm{ofReal}\bigl|T_{j,\varepsilon}h(x)\bigr|
+  \Bigr\}\Bigr)
+  \;\leq\; \frac{C_r\cdot\mathrm{ofReal}\bigl(\int|h|\,d\gamma_n\bigr)}{t} .
+  \tag{4}
+\end{equation*}
+Put $t_m = \mathrm{ofReal}(1/(m+1))$, which is nonzero because
+$1/(m+1) > 0$, and $D = C_r/t_m$, which is not $+\infty$ because $C_r$ is not
+and $t_m$ is not $0$.  For each $k$ we have
+$A_{r,m} \subseteq \{x : |x| \leq r+1 \text{ and } t_m <
+ \sup_{\varepsilon>0}\mathrm{ofReal}|T_{j,\varepsilon}g_k(x)|\}$, by taking
+$i = k$ in the defining condition.  So by monotonicity, then $(4)$ with
+$h = g_k$ and $t = t_m$, then $(1)$ and the monotonicity of $\mathrm{ofReal}$
+and of multiplication in $[0,+\infty]$,
+\[
+  \gamma_n(A_{r,m})
+    \;\leq\; \frac{C_r\cdot\mathrm{ofReal}\bigl(\int|g_k|\,d\gamma_n\bigr)}{t_m}
+    \;=\; D\cdot\mathrm{ofReal}\Bigl(\int|g_k|\,d\gamma_n\Bigr)
+    \;\leq\; D\cdot\mathrm{ofReal}\Bigl(\frac1{k+1}\Bigr) ,
+\]
+the middle equality being $ab/c = (a/c)b$ in $[0,+\infty]$.  This holds for
+every $k$.  Now $1/(k+1) \to 0$ as $k \to \infty$, so
+$\mathrm{ofReal}(1/(k+1)) \to 0$ in $[0,+\infty]$, and since $D \neq +\infty$
+also $D\cdot\mathrm{ofReal}(1/(k+1)) \to D\cdot 0 = 0$.  A quantity in
+$[0,+\infty]$ bounded above by every term of a sequence converging to $0$ is
+at most $0$, so $\gamma_n(A_{r,m}) = 0$, proving $(3)$.
+
+\emph{Step 3: at a point where $(3)$ holds the truncations are Cauchy.}
+Let $x$ be such a point.  We claim that for every real $\eta > 0$ there is a
+real $\rho > 0$ with
+\begin{equation*}
+  \bigl|T_{j,\varepsilon}f(x) - T_{j,\delta}f(x)\bigr| \leq \eta
+  \qquad\text{for all }\varepsilon,\delta \in (0,\rho) . \tag{5}
+\end{equation*}
+
+Fix $\eta > 0$.  Choose $m \in \mathbb{N}$ with $1/(m+1) < \eta/8$, which is
+possible since $\eta/8 > 0$, and let $k$ be as in $(3)$ for this $m$, so
+\begin{equation*}
+  \bigl|T_{j,\varepsilon}g_k(x)\bigr| \leq \frac1{m+1}
+  \qquad\text{for every real }\varepsilon > 0 . \tag{6}
+\end{equation*}
+Since $\varphi_k$ is smooth with compact support, \noderef{PVCoreSmooth}
+applies to it at the coordinate $j$ and the point $x$, and its clause (2) gives
+a real number $\Phi$ with
+$T_{j,\varepsilon}\varphi_k(x) \to \Phi$ as $\varepsilon \downarrow 0$.  By the
+definition of that limit there is a real $\rho > 0$ such that
+\begin{equation*}
+  \bigl|T_{j,\varepsilon}\varphi_k(x) - \Phi\bigr| < \frac\eta8
+  \qquad\text{for every }\varepsilon \in (0,\rho) . \tag{7}
+\end{equation*}
+Let $\varepsilon,\delta \in (0,\rho)$.  Writing
+$a = T_{j,\varepsilon}\varphi_k(x)$, $b = T_{j,\varepsilon}g_k(x)$,
+$c = T_{j,\delta}\varphi_k(x)$, $d = T_{j,\delta}g_k(x)$, all finite reals by
+Step 1, the identity
+$a + b - (c+d) = \bigl((a-\Phi) + (\Phi-c)\bigr) + \bigl(b + (-d)\bigr)$ and
+the triangle inequality for the absolute value give
+\[
+  |a + b - (c+d)| \;\leq\; |a-\Phi| + |c-\Phi| + |b| + |d| ,
+\]
+using $|\Phi - c| = |c - \Phi|$ and $|-d| = |d|$.  By $(2)$ at $\varepsilon$
+and at $\delta$ the left-hand side is
+$|T_{j,\varepsilon}f(x) - T_{j,\delta}f(x)|$, and by $(7)$ and $(6)$ the
+right-hand side is at most
+\[
+  \frac\eta8 + \frac\eta8 + \frac1{m+1} + \frac1{m+1}
+  \;<\; \frac\eta8 + \frac\eta8 + \frac\eta8 + \frac\eta8
+  \;=\; \frac\eta2 \;\leq\; \eta .
+\]
+This is $(5)$.
+
+\emph{Step 4: a Cauchy family in a complete space converges.}
+Still with $x$ as in Step 3, let $\mathcal{F}$ be the filter of
+neighbourhoods of $0$ relative to $(0,\infty)$, i.e.\ the filter generated by
+the sets $(0,\rho)$ for $\rho > 0$; it is not the trivial filter, because every
+such set is nonempty.  Let $\mathcal{G}$ be the image of $\mathcal{F}$ under
+$\varepsilon \mapsto T_{j,\varepsilon}f(x)$, a filter on $\mathbb{R}$, which is
+again nontrivial.  We check that $\mathcal{G}$ is Cauchy, i.e.\ that for every
+real $\eta > 0$ there is a set $S \in \mathcal{G}$ all of whose pairs of points
+are at distance less than $\eta$.  Given $\eta > 0$, apply $(5)$ with $\eta/2$
+to get $\rho > 0$, and take
+$S = \{T_{j,\varepsilon}f(x) : \varepsilon \in (0,\rho)\}$.  Then
+$S \in \mathcal{G}$, because $(0,\rho)$ belongs to $\mathcal{F}$ and is
+contained in the preimage of $S$; and any two points of $S$ are
+$T_{j,\varepsilon}f(x)$ and $T_{j,\delta}f(x)$ for some
+$\varepsilon,\delta \in (0,\rho)$, hence at distance at most $\eta/2 < \eta$ by
+$(5)$.  Since $\mathbb{R}$ is complete (Preamble), the Cauchy filter
+$\mathcal{G}$ converges: there is a real $L$ with $\mathcal{G}$ finer than the
+neighbourhood filter of $L$, which is exactly the assertion that
+$T_{j,\varepsilon}f(x) \to L$ as $\varepsilon \downarrow 0$.
+
+As the set of $x$ for which $(3)$ holds is of full $\gamma_n$-measure by Step 2,
+this completes the proof.
+\end{proof}

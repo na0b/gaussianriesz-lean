@@ -1,0 +1,304 @@
+\begin{lemma}[Near-diagonal size, gradient and H\"ormander bounds for $K_{\gamma,j}$]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$, and let $K_{\gamma,j}$ be the normalized Gaussian Riesz kernel
+of \noderef{GaussRieszKernel}, so that
+$K_{\gamma,j}(x,y) = \sqrt2\,\pi^{-(n+1)/2}\int_0^1\Phi_{x,y}(r)\,dr$ with
+\[
+  \Phi_{x,y}(r)
+    = \frac{y_j - r x_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \exp\Bigl(-\frac{|rx-y|^2}{1-r^2}\Bigr),
+  \qquad r \in (0,1) .
+\]
+Let $R > 0$.  Then there is a constant $C > 0$, depending only on $n$, $j$ and
+$R$, such that:
+\begin{enumerate}
+\item for all $x,y \in \mathbb{R}^n$ with $|x| \leq R+1$ and
+$0 < |x-y| \leq 2$,
+  \begin{enumerate}
+  \item $\Phi_{x,y}$ is Lebesgue integrable on $(0,1)$;
+  \item $\displaystyle |K_{\gamma,j}(x,y)| \leq \frac{C}{|x-y|^{\,n}}$; and
+  \item the function $w \mapsto K_{\gamma,j}(w,y)$ is (Fr\'echet)
+    differentiable at $x$, and its derivative $g$ there --- a continuous linear
+    functional on $\mathbb{R}^n$ --- satisfies
+    $\displaystyle \|g\| \leq \frac{C}{|x-y|^{\,n+1}}$;
+  \end{enumerate}
+\item (H\"ormander estimate) for all $x,y,z \in \mathbb{R}^n$ with
+$|x| \leq R$, $0 < |x-y| \leq 1$ and $|x-z| \leq \tfrac12|x-y|$,
+\[
+  \bigl|K_{\gamma,j}(x,y) - K_{\gamma,j}(z,y)\bigr|
+    \leq \frac{C\,|x-z|}{|x-y|^{\,n+1}} .
+\]
+\end{enumerate}
+Since $|x-y| > 0$ throughout, the quotients $C/|x-y|^n$ and $C/|x-y|^{n+1}$ are
+the usual negative powers $C|x-y|^{-n}$ and $C|x-y|^{-n-1}$.
+
+\emph{Why (1)(a) and the differentiability in (1)(c) are part of the statement,
+and not merely of the proof.}  $K_{\gamma,j}(x,y)$ is a Bochner integral over
+$(0,1)$ whose value is $0$ by convention when the integrand is not integrable,
+and $0$ satisfies every upper bound; so a bare size bound $|K_{\gamma,j}| \leq
+C|x-y|^{-n}$ would be provable with no information about the kernel.  Clause
+(1)(a) removes that, and the reference paper's own display of
+$k_j^{\mathrm{raw}}$ carries the qualifier $x \neq y$, so the integrability
+assertion records what the paper intends rather than strengthening it.
+Symmetrically, a gradient bound phrased as a bound on a \emph{derivative
+operator} chosen by convention where the function is not differentiable would
+be vacuous wherever differentiability fails, and would not support a mean value
+argument.  Clause (1)(c) therefore asserts genuine differentiability and bounds
+the actual derivative.
+
+\emph{Why the H\"ormander clause carries its own hypotheses.}  It is not a
+formal consequence of (1)(c): the mean value inequality needs a \emph{uniform}
+bound on the derivative along the whole segment from $x$ to $z$, whereas (1)(c)
+gives a bound varying with the base point.  The hypothesis
+$|x-z| \leq \tfrac12|x-y|$ is exactly what keeps that segment at distance at
+least $\tfrac12|x-y|$ from $y$, so that the varying bound is uniformly
+comparable to $|x-y|^{-n-1}$ there; the hypotheses $|x| \leq R$ and
+$|x-y| \leq 1$ keep the whole segment inside the range of clause (1).
+
+\emph{The constant depends on $R$, necessarily.}  After the splitting of the
+exponent used below, the kernel carries a factor $e^{|x|^2-|y|^2}$, which is
+bounded only on bounded sets of $x$; on the range considered it is at most
+$e^{(R+3)^2}$.  Neither bound is stated with a dimension-only constant, and no
+uniformity in $R$ is claimed.
+\end{lemma}
+\begin{proof}
+Write $c_n = \sqrt2\,\pi^{-(n+1)/2}$ and $M = R+3 \geq 3$.  Throughout
+$\tau = 1 - r$, so that $r \in (0,1)$ corresponds to $\tau \in (0,1)$, and the
+substitution $r \mapsto 1-r$ preserves Lebesgue measure on $\mathbb{R}$ (it is
+a reflection followed by a translation; shared context).
+
+\emph{Step 0: the splitting identity and the elementary $\tau$-bounds.}
+For all $w,y \in \mathbb{R}^n$ and $r \in (0,1)$,
+\begin{equation*}
+  \frac{|rw-y|^2}{1-r^2} = \bigl(|y|^2-|w|^2\bigr) + \frac{|w-ry|^2}{1-r^2} ,
+  \tag{1}
+\end{equation*}
+since after multiplying by $1-r^2 > 0$ both
+$|rw-y|^2 - (1-r^2)(|y|^2-|w|^2)$ and $|w-ry|^2$ expand to
+$|w|^2 - 2r\langle w,y\rangle + r^2|y|^2$.  Hence, whenever $|w| \leq M$,
+\begin{equation*}
+  \exp\Bigl(-\frac{|rw-y|^2}{1-r^2}\Bigr)
+    = e^{|w|^2}e^{-|y|^2}\exp\Bigl(-\frac{|w-ry|^2}{1-r^2}\Bigr)
+    \leq e^{M^2}\exp\Bigl(-\frac{|w-ry|^2}{1-r^2}\Bigr) , \tag{2}
+\end{equation*}
+using $e^{-|y|^2} \leq 1$.  Also $1-r^2 = \tau(1+r) \in [\tau,2\tau]$ and
+$\log r = \log(1-\tau) \leq -\tau$, so $-\log r \geq \tau$ and
+\begin{equation*}
+  \frac{1}{(1-r^2)^{n/2+1}\sqrt{-\log r}} \leq \tau^{-n/2-3/2} ,
+  \qquad
+  \exp\Bigl(-\frac{|w-ry|^2}{1-r^2}\Bigr)
+    \leq \exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr) . \tag{3}
+\end{equation*}
+We record two integral facts.  For $a > 1$ and $b > 0$, the substitution
+$\tau = b/u$ (so $d\tau = (b/u^2)du$) gives
+\begin{equation*}
+  \int_0^\infty \tau^{-a}e^{-b/\tau}\,d\tau
+    = b^{1-a}\int_0^\infty u^{a-2}e^{-u}\,du
+    = b^{1-a}\,\Gamma(a-1) < \infty , \tag{4}
+\end{equation*}
+the last integral converging because $a-2 > -1$ and $e^{-u}$ decays.  And for
+$0 < a \leq 1$ and real $p \leq q$ with $q > 1$, using $\tau^{-p} \leq
+\tau^{-q}$ on $(0,1]$,
+\begin{equation*}
+  \int_a^1\tau^{-p}\,d\tau \leq \int_a^1\tau^{-q}\,d\tau
+    = \frac{a^{1-q}-1}{q-1} \leq \frac{a^{1-q}}{q-1} . \tag{5}
+\end{equation*}
+
+\emph{Step 1: pointwise bounds on $\Phi$ and on its $w$-gradient.}
+Fix $y$ and let $w$ satisfy $|w| \leq M$ and $|y| \leq M$; write
+$d = |w-y|$.  Since $y_j - rw_j = (y_j-w_j) + \tau w_j$ and
+$y - rw = (y-w) + \tau w$,
+\begin{equation*}
+  |y_j - rw_j| \leq d + \tau M, \qquad |rw - y| \leq d + \tau M . \tag{6}
+\end{equation*}
+Combining $(2)$, $(3)$ and $(6)$,
+\begin{equation*}
+  |\Phi_{w,y}(r)|
+    \leq e^{M^2}\,(d+\tau M)\,\tau^{-n/2-3/2}
+      \exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr) . \tag{7}
+\end{equation*}
+For each fixed $r \in (0,1)$ the map $w \mapsto \Phi_{w,y}(r)$ is smooth on
+$\mathbb{R}^n$: it is a product of a polynomial in $w$ with the exponential of a
+polynomial in $w$, divided by the positive constants $(1-r^2)^{n/2+1}$ and
+$\sqrt{-\log r}$.  Differentiating, with $e_j$ the $j$th standard basis vector,
+\[
+  \nabla_w\Phi_{w,y}(r)
+    = \frac{\exp\bigl(-|rw-y|^2/(1-r^2)\bigr)}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+      \Bigl[\,-r\,e_j - (y_j - rw_j)\,\frac{2r(rw-y)}{1-r^2}\,\Bigr] ,
+\]
+because $\nabla_w(y_j-rw_j) = -re_j$ and
+$\nabla_w\bigl(-|rw-y|^2/(1-r^2)\bigr) = -2r(rw-y)/(1-r^2)$.  Using
+$r \leq 1$, $1-r^2 \geq \tau$, $(2)$, $(3)$ and $(6)$,
+\begin{equation*}
+  |\nabla_w\Phi_{w,y}(r)|
+    \leq e^{M^2}\,\tau^{-n/2-3/2}\Bigl(1 + \frac{2(d+\tau M)^2}{\tau}\Bigr)
+      \exp\Bigl(-\frac{|w-ry|^2}{2\tau}\Bigr) . \tag{8}
+\end{equation*}
+
+\emph{Step 2: the size bound and clause (1)(a)--(1)(b).}
+Let $|x| \leq R+1$ and $0 < d := |x-y| \leq 2$.  Then $|x| \leq M$ and
+$|y| \leq |x| + d \leq R+3 = M$, so $(7)$ applies with $w = x$.  Moreover
+$x - ry = (x-y) + \tau y$ gives $|x-ry| \geq d - \tau M$.  Put
+$\tau' = d/(2M)$; since $d \leq 2$ and $M \geq 3$ we have
+$\tau' \leq \tfrac13 < 1$.
+
+For $0 < \tau \leq \tau'$ we have $\tau M \leq d/2$, hence $d + \tau M \leq
+\tfrac32 d$ and $|x-ry| \geq d/2$, so $(7)$ gives
+$|\Phi_{x,y}| \leq e^{M^2}\tfrac32 d\,\tau^{-n/2-3/2}e^{-d^2/(8\tau)}$, and by
+$(4)$ with $a = \tfrac{n+3}{2}$ and $b = d^2/8$,
+\[
+  \int_{\{0<\tau\leq\tau'\}}|\Phi_{x,y}|\,d\tau
+    \leq e^{M^2}\tfrac32 d\,(d^2/8)^{-(n+1)/2}\Gamma\bigl(\tfrac{n+1}{2}\bigr)
+    = e^{M^2}\tfrac32\,8^{(n+1)/2}\Gamma\bigl(\tfrac{n+1}{2}\bigr)\,d^{-n} .
+\]
+For $\tau' < \tau < 1$ we discard the exponential in $(7)$, bounding it by $1$,
+and expand the prefactor:
+$(d+\tau M)\tau^{-n/2-3/2} = d\,\tau^{-n/2-3/2} + M\,\tau^{-n/2-1/2}$, so that
+$|\Phi_{x,y}| \leq e^{M^2}\bigl(d\,\tau^{-n/2-3/2} + M\,\tau^{-n/2-1/2}\bigr)$.
+By $(5)$ with $p = q = \tfrac{n+3}{2} > 1$ and with
+$p = \tfrac{n+1}{2} \leq q = \tfrac{n+2}{2} > 1$ respectively,
+\[
+  \int_{\tau'}^1 d\,\tau^{-n/2-3/2}\,d\tau \leq \frac{2d}{n+1}(\tau')^{-(n+1)/2}
+    = \frac{2(2M)^{(n+1)/2}}{n+1}\,d^{(1-n)/2} ,
+  \qquad
+  \int_{\tau'}^1 M\,\tau^{-n/2-1/2}\,d\tau \leq \frac{2M(2M)^{n/2}}{n}\,d^{-n/2} .
+\]
+Since $0 < d \leq 2$ we have $d^{(1-n)/2} = d^{-n}d^{(n+1)/2} \leq
+2^{(n+1)/2}d^{-n}$ and $d^{-n/2} = d^{-n}d^{n/2} \leq 2^{n/2}d^{-n}$.  Adding
+the three contributions,
+\begin{equation*}
+  \int_0^1|\Phi_{x,y}(r)|\,dr \leq \kappa_1(n,M)\,d^{-n} < \infty , \tag{9}
+\end{equation*}
+with $\kappa_1$ depending only on $n$ and $M$.  The function $\Phi_{x,y}$ is
+continuous on $(0,1)$, hence Borel there, so $(9)$ says it is Lebesgue
+integrable on $(0,1)$: that is clause (1)(a).  And then
+\[
+  |K_{\gamma,j}(x,y)| = c_n\Bigl|\int_0^1\Phi_{x,y}\Bigr|
+    \leq c_n\int_0^1|\Phi_{x,y}| \leq c_n\kappa_1\,d^{-n} ,
+\]
+which is clause (1)(b) with the constant $C_1 := c_n\kappa_1$.
+The estimate $(9)$ on the slice integral, which is what carries clause (1)(a) and
+the size bound behind (1)(b), is \noderef{GaussRieszKernelNearSliceL1Bound}; it
+states exactly this bound for every $x,y$ with $|x|,|y| \leq M$ and
+$0 < |x-y| \leq 2$, and is what the formalization invokes at this point.
+
+\emph{Step 3: a uniform majorant near $x$, and clause (1)(c).}
+Keep $x,y,d$ as in Step 2 and set $U = B(x,d/4)$, an open convex set.  For
+$w \in U$: $|w| \leq |x| + \tfrac12 \leq R + \tfrac32 \leq M$; and
+$|w-y| \geq d - d/4 = \tfrac34 d > 0$ while $|w-y| \leq \tfrac54 d \leq
+\tfrac52$.  Also $w - ry = (w-y) + \tau y$ gives
+$|w-ry| \geq |w-y| - \tau|y| \geq \tfrac34 d - \tau M$.  Now apply $(8)$ at the
+point $w$, where its ``$d$'' is $|w-y| \leq \tfrac54 d$: the right-hand side of
+$(8)$ is increasing in that quantity and decreasing in $|w-ry|$, so for all
+$w \in U$ and all $\tau \in (0,1)$
+\[
+  |\nabla_w\Phi_{w,y}(r)| \leq H(\tau)
+    := e^{M^2}\tau^{-n/2-3/2}
+       \Bigl(1 + \frac{2(\tfrac54 d+\tau M)^2}{\tau}\Bigr)
+       \exp\Bigl(-\frac{\bigl((\tfrac34 d - \tau M)^+\bigr)^2}{2\tau}\Bigr) ,
+\]
+where $s^+ = \max(s,0)$; note the right-hand side no longer depends on $w$.
+Put $\tau'' = 3d/(8M)$, which satisfies $\tau'' \leq \tfrac14 < 1$ because
+$d \leq 2$ and $M \geq 3$.
+
+For $0 < \tau \leq \tau''$ we have $\tau M \leq \tfrac38 d$, hence
+$\tfrac34 d - \tau M \geq \tfrac38 d$ and $\tfrac54 d + \tau M \leq 2d$, so
+\[
+  H(\tau) \leq e^{M^2}\Bigl(\tau^{-n/2-3/2} + 8d^2\tau^{-n/2-5/2}\Bigr)
+    e^{-9d^2/(128\tau)} ,
+\]
+and $(4)$ with $b = 9d^2/128$, applied with $a = \tfrac{n+3}{2}$ and with
+$a = \tfrac{n+5}{2}$, bounds $\int_{\{0<\tau\leq\tau''\}}H$ by
+\[
+  e^{M^2}\Bigl[(9/128)^{-(n+1)/2}\Gamma\bigl(\tfrac{n+1}{2}\bigr)
+    + 8\,(9/128)^{-(n+3)/2}\Gamma\bigl(\tfrac{n+3}{2}\bigr)\Bigr]\,d^{-n-1} ,
+\]
+because $b^{1-a} = (9/128)^{-(n+1)/2}(d^2)^{-(n+1)/2}
+ = (9/128)^{-(n+1)/2}d^{-n-1}$ when $a = \tfrac{n+3}{2}$, and
+$8d^2\,b^{1-a} = 8\,(9/128)^{-(n+3)/2}d^2\,d^{-(n+3)} = 8\,(9/128)^{-(n+3)/2}
+ d^{-n-1}$ when $a = \tfrac{n+5}{2}$.
+
+For $\tau'' < \tau < 1$ we discard the exponential and use
+$(\tfrac54 d+\tau M)^2 \leq 4d^2 + 2\tau^2M^2$, so
+$H(\tau) \leq e^{M^2}\bigl(\tau^{-n/2-3/2} + 8d^2\tau^{-n/2-5/2}
+ + 4M^2\tau^{-n/2-1/2}\bigr)$.  By $(5)$, with $q = \tfrac{n+3}{2}$,
+$q = \tfrac{n+5}{2}$ and $q = \tfrac{n+2}{2}$ respectively (each $>1$, and in
+the third case $p = \tfrac{n+1}{2} \leq q$),
+\[
+  \int_{\tau''}^1 H
+    \leq e^{M^2}\Bigl[\tfrac{2}{n+1}(\tau'')^{-(n+1)/2}
+      + \tfrac{16d^2}{n+3}(\tau'')^{-(n+3)/2}
+      + \tfrac{8M^2}{n}(\tau'')^{-n/2}\Bigr] .
+\]
+Substituting $\tau'' = 3d/(8M)$ and using $0 < d \leq 2$ once more, the three
+terms are at most constant multiples (depending only on $n$ and $M$) of
+$d^{-(n+1)/2}$, $d^{2-(n+3)/2} = d^{(1-n)/2}$ and $d^{-n/2}$, and each of these
+is at most $2^{(3n+2)/2}d^{-n-1}$, because
+$d^{-(n+1)/2} = d^{-n-1}d^{(n+1)/2}$,
+$d^{(1-n)/2} = d^{-n-1}d^{(n+3)/2}$ and
+$d^{-n/2} = d^{-n-1}d^{(3n+2)/2}$, with all the displayed positive powers of
+$d$ bounded by $2^{(3n+2)/2}$.  Altogether
+\begin{equation*}
+  \int_0^1 H(\tau)\,d\tau \leq \kappa_2(n,M)\,d^{-n-1} < \infty . \tag{10}
+\end{equation*}
+
+We now differentiate under the integral sign.  Consider
+$F(w,r) = \Phi_{w,y}(r)$ on $U\times(0,1)$.  Then: (i) for each
+$r \in (0,1)$, $F(\cdot,r)$ is differentiable on $U$ (Step 1); (ii) for each
+$w \in U$, both $F(w,\cdot)$ and $\nabla_wF(w,\cdot)$ are measurable on
+$(0,1)$, being continuous there, and $F(x,\cdot)$ is integrable by $(9)$; (iii) $|\nabla_wF(w,r)| \leq H(\tau)$ for
+all $w \in U$ and $r \in (0,1)$, with $H$ integrable on $(0,1)$ by $(10)$.  By
+the classical theorem on differentiation under the integral sign --- for a
+convex open parameter set $U$, hypotheses (i)--(iii) imply that
+$w \mapsto \int_0^1F(w,r)\,dr$ is differentiable on $U$ with derivative
+$h \mapsto \int_0^1\nabla_wF(w,r)\cdot h\,dr$ --- the function
+$w \mapsto \int_0^1\Phi_{w,y}(r)\,dr$ is differentiable at $x$, hence so is
+$w \mapsto K_{\gamma,j}(w,y) = c_n\int_0^1\Phi_{w,y}(r)\,dr$, and its
+derivative $g$ at $x$ is the linear functional
+$h \mapsto c_n\int_0^1\nabla_x\Phi_{x,y}(r)\cdot h\,dr$.  Its operator norm is
+$c_n\bigl|\int_0^1\nabla_x\Phi_{x,y}(r)\,dr\bigr|$, which by $(10)$ is at most
+\[
+  c_n\int_0^1|\nabla_x\Phi_{x,y}(r)|\,dr \leq c_n\,\kappa_2\,d^{-n-1} .
+\]
+This is clause (1)(c) with the constant $C_2 := c_n\kappa_2$.
+The content of this step --- the uniform majorant $H$ together with the
+differentiation under the integral sign that it licenses, and the resulting bound
+on $\|g\|$ --- is exactly \noderef{GaussRieszKernelNearFDerivBound}, which states
+this conclusion for every $x,y$ in the stated range and is what the formalization
+invokes at this point.
+
+\emph{Step 4: clause (2).}
+Let $|x| \leq R$, $0 < d := |x-y| \leq 1$ and $|x-z| \leq d/2$, and let
+$S = \{x + t(z-x) : t \in [0,1]\}$ be the segment from $x$ to $z$, a convex
+set.  For $w \in S$ we have $|w - x| \leq |z-x| \leq d/2 \leq \tfrac12$, hence
+\[
+  |w| \leq |x| + \tfrac12 \leq R + 1 ,
+  \qquad
+  |w-y| \geq d - \tfrac{d}{2} = \tfrac{d}{2} > 0 ,
+  \qquad
+  |w-y| \leq d + \tfrac12 \leq \tfrac32 \leq 2 .
+\]
+So every $w \in S$ satisfies the hypotheses of clause (1), and clause (1)(c)
+gives, for each such $w$, that $v \mapsto K_{\gamma,j}(v,y)$ is differentiable
+at $w$ with derivative $g_w$ satisfying
+\[
+  \|g_w\| \leq \frac{C_2}{|w-y|^{\,n+1}}
+    \leq \frac{C_2}{(d/2)^{\,n+1}}
+    = \frac{2^{\,n+1}C_2}{d^{\,n+1}} .
+\]
+Differentiability at $w$ implies differentiability within $S$ at $w$ with the
+same derivative.  By the mean value inequality for a function differentiable on
+a convex set with derivative bounded in operator norm by a constant there
+--- applied to $v \mapsto K_{\gamma,j}(v,y)$ on $S$, with the uniform bound
+$2^{n+1}C_2d^{-n-1}$, and to the two points $x,z \in S$ ---
+\[
+  \bigl|K_{\gamma,j}(x,y) - K_{\gamma,j}(z,y)\bigr|
+    \leq \frac{2^{\,n+1}C_2}{d^{\,n+1}}\,|x-z| ,
+\]
+which is clause (2) with the constant $2^{n+1}C_2$.
+
+\emph{Conclusion.}  Take
+$C = \max\bigl(C_1,\ C_2,\ 2^{n+1}C_2\bigr) > 0$, which depends only on $n$,
+$j$ and $R$.  All the bounds proved above hold a fortiori with $C$ in place of
+their individual constants, so clauses (1) and (2) hold with this single $C$.
+\end{proof}

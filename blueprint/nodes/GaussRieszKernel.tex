@@ -1,0 +1,49 @@
+\begin{definition}[The normalized Gaussian Riesz kernel $K_{\gamma,j}$]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$.  Define, for $x, y \in \mathbb{R}^n$,
+\[
+  K_{\gamma,j}(x,y) = \frac{\sqrt2}{\pi^{(n+1)/2}}\,k_j^{\mathrm{raw}}(x,y),
+  \qquad
+  k_j^{\mathrm{raw}}(x,y)
+    = \int_0^1 \frac{y_j - r x_j}{(1-r^2)^{n/2+1}\sqrt{-\log r}}
+        \exp\Bigl(-\frac{|rx-y|^2}{1-r^2}\Bigr) dr ,
+\]
+the $r$-integral being taken over the open interval $(0,1)$ with respect to
+Lebesgue measure.  This is the off-diagonal Lebesgue kernel of the $j$th
+coordinate $R_{\gamma,j}$ of the tablet's energy-normalized Gaussian Riesz
+transform, as displayed in the reference paper.  The displayed formula is the
+whole of the definition: it is an explicit function of $(x,y)$ and depends on no
+other tablet node, which is why this node imports only the shared preamble root.
+
+\emph{Where the formula comes from.}  It is the time integral of the
+$x$-derivative of the Lebesgue kernel, reparametrized by $r = e^{-s}$.  Writing
+the Riesz transform as $(1/\sqrt\pi)\int_0^\infty D^x_j P_s\,ds/\sqrt s$ and
+inserting the derivative identity
+$D_j^x p_s(x,y) = \sqrt2\,r(y_j-rx_j)(1-r^2)^{-1}p_s(x,y)$ for the Lebesgue
+kernel $p_s$ of the Ornstein--Uhlenbeck semigroup, the substitution $r = e^{-s}$, under
+which $s = -\log r$, $ds = -dr/r$ and $s \in (0,\infty)$ corresponds to
+$r \in (0,1)$, produces exactly the displayed integrand: the factor $r$ from the
+derivative cancels the $1/r$ of $ds$, the $\pi^{-n/2}$ of $p_s$ combines with the
+$1/\sqrt\pi$ into $\pi^{-(n+1)/2}$, the two powers of $1-r^2$ combine into
+$(1-r^2)^{-n/2-1}$, and $s^{-1/2}$ becomes $(-\log r)^{-1/2}$.  This paragraph
+records provenance only; the object defined here is the displayed formula, and
+the identification of $K_{\gamma,j}$ with the operator is a separate assertion
+proved elsewhere.
+
+\emph{Scope of the definition.}  The reference paper displays the formula for
+$x \neq y$, which is the only range in which it is used.  For $x = y$ the
+$r$-integral need not converge, and the definition then takes the value the
+Bochner integral convention assigns to a non-integrable integrand, namely $0$.
+No statement built on this definition refers to the value on the diagonal.  The
+integrand is also left unconstrained at the two endpoints $r = 0$ and $r = 1$,
+which the open interval excludes; they form a Lebesgue-null set and do not affect
+the integral.
+
+\emph{The normalization is part of the definition, not a convention that can be
+dropped.}  The function $k_j^{\mathrm{raw}}$ alone is the kernel of the
+historical reference, and the prefactor $\sqrt2\,\pi^{-(n+1)/2}$ is what makes
+$K_{\gamma,j}$ the kernel of the energy-normalized $R_{\gamma,j}$ rather than of
+a constant multiple of it; in the same letters, the kernel of the historical
+spectral operator $\mathcal{R}_j$ is $-2\pi^{-(n+1)/2}k_j^{\mathrm{raw}}$.  As
+the paper states, a claim about dimension-free constants must specify these
+factors, since an unnormalized kernel is a different family of operators.
+\end{definition}

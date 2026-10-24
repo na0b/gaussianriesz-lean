@@ -1,0 +1,99 @@
+\begin{lemma}[The untruncated kernel integral of a smooth input off its support]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$, let $\gamma_n$ be the Gaussian measure of \noderef{GaussMeasure}, and let
+$K_{\gamma,j}$ be the normalized Gaussian Riesz kernel of \noderef{GaussRieszKernel}.  Let
+$\varphi : \mathbb{R}^n \to \mathbb{R}$ be smooth with compact support, let
+$z \in \mathbb{R}^n$, let $\sigma > 0$, and suppose that
+\[
+  \varphi(y) = 0 \qquad\text{whenever } |z-y| \leq \sigma .
+\]
+Write, for $s > 0$,
+\[
+  (A_sw)(z) = \int_{\mathbb{R}^n} w\bigl(e^{-s}z + \sqrt{1-e^{-2s}}\,\zeta\bigr)\,d\gamma_n(\zeta)
+\]
+for the Mehler average, and
+\[
+  \Phi_j^\varphi(z) = \frac{1}{\sqrt\pi}\int_0^\infty
+      \frac{1}{\sqrt s}\,e^{-s}\,\frac{1}{\sqrt2}
+      \bigl(A_s(\partial_j\varphi)\bigr)(z)\,ds ,
+\]
+which is the quantity appearing as the limit in clause (2) of \noderef{PVCoreSmooth} at the
+point $z$.  Then the function $y \mapsto K_{\gamma,j}(z,y)\varphi(y)$ is Lebesgue integrable on
+$\mathbb{R}^n$, and
+\[
+  \Phi_j^\varphi(z) = \int_{\mathbb{R}^n}K_{\gamma,j}(z,y)\,\varphi(y)\,dy .
+\]
+
+\emph{This is an off-diagonal identification and not a principal value.}  No limit in a
+truncation radius is taken in the conclusion: the point of the hypothesis on $\varphi$ is that
+on the range $0 < \varepsilon \leq \sigma$ the truncated integrals do not depend on
+$\varepsilon$ at all, so the limit that \noderef{PVCoreSmooth} exhibits is attained, and is
+attained by the integral over all of $\mathbb{R}^n$.  The reference paper licenses exactly this
+much when it says that for compactly supported smooth inputs and a point off their support the
+integrals may be interchanged directly, and immediately adds that this is an off-diagonal kernel
+identification rather than a principal-value identification; the present statement stays on the
+first side of that line.
+
+\emph{The integrability assertion is content.}  The right-hand side is a Bochner integral, equal
+to $0$ by convention on a non-integrable integrand; without the integrability assertion the
+displayed identity could hold with the right-hand side conventional.  It is asserted for the
+given $z$ with no exceptional set, because $\varphi$ is an honest function and the hypothesis is
+pointwise.
+\end{lemma}
+\begin{proof}
+Write $F(y) = K_{\gamma,j}(z,y)\varphi(y)$ and, for $\varepsilon > 0$,
+$\Omega_\varepsilon = \{y : |z-y| > \varepsilon\}$, a measurable set (the preimage of an open
+half-line under the continuous map $y \mapsto |z-y|$).
+
+\emph{Step 1: for every $\varepsilon \in (0,\sigma]$, $F$ is integrable on $\mathbb{R}^n$ and
+its integral is the truncated one.}
+Fix such an $\varepsilon$.  Clause (1) of \noderef{PVCoreSmooth}, applied to $\varphi$ (smooth
+with compact support), to $j$, to the point $z$ and to this $\varepsilon > 0$, states that $F$
+is Lebesgue integrable on $\Omega_\varepsilon$.
+
+Next, $F$ vanishes off $\Omega_\varepsilon$: if $y \notin \Omega_\varepsilon$ then
+$|z-y| \leq \varepsilon \leq \sigma$, so $\varphi(y) = 0$ by hypothesis and hence $F(y) = 0$.
+This holds at every such $y$, not merely almost every one.
+
+Let $\mathbf 1_{\Omega_\varepsilon}F$ be the function equal to $F$ on $\Omega_\varepsilon$ and
+to $0$ elsewhere.  Since $\Omega_\varepsilon$ is measurable,
+$\mathbf 1_{\Omega_\varepsilon}F$ is Lebesgue integrable on $\mathbb{R}^n$ if and only if $F$ is
+Lebesgue integrable on $\Omega_\varepsilon$ (shared context: the indicator criterion for
+integrability on a measurable set), so it is.  And
+$F = \mathbf 1_{\Omega_\varepsilon}F$ everywhere: the two agree on $\Omega_\varepsilon$ by
+definition and both vanish off it by the previous paragraph.  Two functions that agree are
+integrable together, so $F$ is Lebesgue integrable on $\mathbb{R}^n$.  Finally, a function
+vanishing (almost) everywhere off a set has the same integral over that set as over the whole
+space (shared context), so
+\begin{equation*}
+  \int_{\Omega_\varepsilon}F\,d\lambda = \int_{\mathbb{R}^n}F\,d\lambda
+  \qquad (0 < \varepsilon \leq \sigma) . \tag{1}
+\end{equation*}
+Taking $\varepsilon = \sigma$, which is admissible since $\sigma > 0$, gives the first
+conclusion.
+
+\emph{Step 2: the truncated integral is eventually constant, so the limit is that constant.}
+Consider the function
+$G(\varepsilon) = \int_{\Omega_\varepsilon}F\,d\lambda$ on $(0,\infty)$, and the filter of
+neighbourhoods of $0$ within $(0,\infty)$.  Every $\varepsilon$ in the intersection of
+$(0,\infty)$ with the neighbourhood $(-\infty,\sigma)$ of $0$ satisfies $0 < \varepsilon < \sigma$,
+and that intersection is a member of the filter; so by $(1)$,
+\[
+  G(\varepsilon) = \int_{\mathbb{R}^n}F\,d\lambda
+  \qquad\text{for all } \varepsilon \text{ in a member of the filter,}
+\]
+i.e.\ $G$ agrees with the constant function $\int_{\mathbb{R}^n}F\,d\lambda$ along that filter.
+
+Clause (2) of \noderef{PVCoreSmooth}, applied to the same data, states that $G(\varepsilon)$
+tends to $\Phi_j^\varphi(z)$ as $\varepsilon \downarrow 0$, i.e.\ along that same filter.  Two
+functions agreeing along a filter have the same limits, so the constant function
+$\int_{\mathbb{R}^n}F\,d\lambda$ also tends to $\Phi_j^\varphi(z)$ along it.  But a constant
+function tends to its own value along every filter, and the filter of neighbourhoods of $0$
+within $(0,\infty)$ is not the trivial filter (every such neighbourhood contains points of
+$(0,\infty)$, since $0$ is a limit point of $(0,\infty)$), so limits along it are unique.
+Therefore
+\[
+  \Phi_j^\varphi(z) = \int_{\mathbb{R}^n}F\,d\lambda ,
+\]
+which is the second conclusion.
+\end{proof}

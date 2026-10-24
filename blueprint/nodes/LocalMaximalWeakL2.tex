@@ -1,0 +1,181 @@
+\begin{lemma}[Weak-type $(2,2)$ bound for the local maximal function]
+Fix $n \in \mathbb{N}_0$ and let $\lambda$ denote Lebesgue measure on
+$\mathbb{R}^n$.  For $w : \mathbb{R}^n \to \mathbb{R}$ write
+\[
+  \mathcal A(w)
+    = \sup_{0 < \sigma \leq +\infty}
+        \sigma^2\,\lambda\bigl(\{\,y \in \mathbb{R}^n : |w(y)| > \sigma\,\}\bigr)
+  \;\in\; [0,+\infty] ,
+\]
+the square of the weak-$L^2$ quasinorm of $w$, the supremum being over
+$\sigma$ in the extended half-line and each comparison $|w(y)| > \sigma$ read in
+$[0,+\infty]$.  Let $w$ be almost everywhere equal, for $\lambda$, to a Borel
+measurable function, and let $s \in (0,+\infty]$.  Then
+\[
+  \lambda\bigl(\{\,x \in \mathbb{R}^n : M_2w(x) > s\,\}\bigr)
+    \;\leq\; \frac{16\cdot4^n\,\mathcal A(w)}{s^2} ,
+\]
+with $M_2$ the local maximal function of \noderef{LocalMaximalFunction}, and
+with both sides and the quotient read in $[0,+\infty]$ under the conventions
+$a/(+\infty) = 0$ and, for $a > 0$, $a/0 = +\infty$.
+
+Three remarks on the shape.  First, only the exponent $p = 2$ is stated, which
+is the only exponent used downstream, and it is stated in \emph{weak-type}
+form: the hypothesis on $w$ is a bound on its distribution function, not an
+$L^2$ bound, and the conclusion is a bound on a distribution function, not an
+$L^2$ bound on $M_2w$.  This matters, because it is the resulting $s^{-2}$ --
+not an $s^{-1}$ or an $L^2$ norm -- that preserves the weak-$(1,1)$ exponent
+when this lemma is combined with an endpoint estimate downstream.  Second,
+$\sigma = +\infty$ is included in the supremum only for notational uniformity:
+$w$ is real valued, so $\{|w| > +\infty\}$ is empty and that term of the
+supremum is $0$.  Third, as in \noderef{LocalMaximalWeakType}, $\lambda$ is
+applied to the level set $\{M_2w > s\}$ as an outer measure, so no measurability
+of that set is asserted or needed; and no finiteness hypothesis is placed on
+$\mathcal A(w)$, the case $\mathcal A(w) = +\infty$ being vacuous.
+
+\emph{No Gaussian measure occurs here.}  Every measure in the statement is
+Lebesgue measure on $\mathbb{R}^n$, with no Gaussian weight in any integrand and
+no Gaussian measure in any level set, exactly as in
+\noderef{LocalMaximalFunction} and \noderef{LocalMaximalWeakType}.  The
+constant $16\cdot4^n$ is explicit and is not claimed to be optimal.
+\end{lemma}
+\begin{proof}
+Write $A = \mathcal A(w)$ and
+$\mu(\sigma) = \lambda(\{y : |w(y)| > \sigma\})$ for $\sigma \in (0,+\infty]$,
+so that by the definition of the supremum
+\begin{equation*}
+  \sigma^2\,\mu(\sigma) \leq A \qquad\text{for every } \sigma \in (0,+\infty] .
+  \tag{1}
+\end{equation*}
+
+\emph{Step 0: two reductions, and the ball volumes.}
+By hypothesis there is a Borel measurable $\widetilde w$ with
+$w = \widetilde w$ $\lambda$-almost everywhere.  Two nonnegative functions
+agreeing $\lambda$-almost everywhere have the same lower Lebesgue integral
+against $\lambda$ and against the restriction of $\lambda$ to any measurable
+set, a $\lambda$-null set being null for each such restriction; so by the
+defining formula of \noderef{LocalMaximalFunction} we get
+$M_2w = M_2\widetilde w$ pointwise on $\mathbb{R}^n$.  Also, for each $\sigma$
+the sets $\{|w| > \sigma\}$ and $\{|\widetilde w| > \sigma\}$ differ only
+inside the $\lambda$-null set $\{w \neq \widetilde w\}$, and the outer
+measure $\lambda$ is unchanged by modifying a set inside a null set (by
+monotonicity and subadditivity, shared context), so $\mu(\sigma)$ and hence
+$A$ are unchanged as well.  Neither side of the asserted inequality is therefore
+affected, and we may assume $w$ Borel measurable.
+
+We record once, for use in Step 1, that
+\begin{equation*}
+  0 < \lambda\bigl(\overline B(x,\rho)\bigr) < \infty
+  \qquad\text{for every } x \in \mathbb{R}^n \text{ and } \rho > 0 . \tag{$*$}
+\end{equation*}
+The closed ball is compact, hence of finite Lebesgue measure (shared context),
+and it contains the nonempty open ball $B(x,\rho)$, to which Lebesgue measure
+assigns strictly positive mass.  Both arguments are valid for every
+$n \in \mathbb{N}_0$: when $n = 0$ the space $\mathbb{R}^0$ is a single point
+and every ball of nonnegative radius is the whole space, which is nonempty,
+open and compact.
+
+If $s = +\infty$ then $M_2w(x) > s$ is impossible, since $M_2w$ takes values in
+$[0,+\infty]$, so the left-hand side is $0$ and the inequality holds.  Assume
+from now on $0 < s < \infty$, and set
+\[
+  \lambda_0 = \frac s2 \in (0,\infty),
+  \qquad
+  w_1 = w\,\mathbf 1_{\{|w| > \lambda_0\}} .
+\]
+The set $\{|w| > \lambda_0\}$ is Borel, so $w_1$ is Borel measurable.
+
+\emph{Step 1: $M_2w \leq M_2w_1 + \lambda_0$ pointwise.}
+For every $y$ we have $|w(y)| \leq |w_1(y)| + \lambda_0$: if
+$|w(y)| > \lambda_0$ then $w_1(y) = w(y)$ and the inequality is clear, and
+otherwise $|w(y)| \leq \lambda_0$ while $|w_1(y)| \geq 0$.  Fix $x$ and
+$\rho \in (0,2]$ and write $B = \overline B(x,\rho)$.  Integrating the pointwise
+inequality over $B$ and using additivity and monotonicity of the lower Lebesgue
+integral of nonnegative functions,
+\[
+  \int_B|w|\,d\lambda \leq \int_B|w_1|\,d\lambda + \lambda_0\,\lambda(B) .
+\]
+By $(*)$ we have $0 < \lambda(B) < \infty$, so we may multiply by
+$\lambda(B)^{-1} \in (0,\infty)$ and use
+$\lambda(B)^{-1}\lambda(B) = 1$ to get
+\[
+  \frac{1}{\lambda(B)}\int_B|w|\,d\lambda
+    \leq \frac{1}{\lambda(B)}\int_B|w_1|\,d\lambda + \lambda_0
+    \leq M_2w_1(x) + \lambda_0 ,
+\]
+the last step by the definition of $M_2w_1(x)$ as a supremum over
+$\rho \in (0,2]$ (\noderef{LocalMaximalFunction}).  Taking the supremum over
+$\rho \in (0,2]$ on the left gives $M_2w(x) \leq M_2w_1(x) + \lambda_0$.
+
+Consequently, if $M_2w(x) > s = \lambda_0 + \lambda_0$, then
+$M_2w_1(x) > \lambda_0$: otherwise $M_2w_1(x) \leq \lambda_0$ would give
+$M_2w(x) \leq \lambda_0 + \lambda_0 = s$.  Therefore
+\begin{equation*}
+  \{\,x : M_2w(x) > s\,\} \subseteq \{\,x : M_2w_1(x) > \lambda_0\,\} . \tag{2}
+\end{equation*}
+
+\emph{Step 2: the $L^1$ norm of $w_1$ by dyadic decomposition.}
+We claim
+\begin{equation*}
+  \int_{\mathbb{R}^n}|w_1|\,d\lambda \leq \frac{4A}{\lambda_0} . \tag{3}
+\end{equation*}
+For $k \in \mathbb{N}_0$ put $\sigma_k = 2^k\lambda_0 \in (0,\infty)$ and
+\[
+  E_k = \{\,y : \sigma_k < |w(y)| \leq \sigma_{k+1}\,\} ,
+\]
+a Borel set.  The $E_k$ are pairwise disjoint, and their union is
+$\{|w| > \lambda_0\}$.  Indeed, each $E_k$ is contained in that set because
+$\sigma_k \geq \sigma_0 = \lambda_0$; conversely, if $|w(y)| > \lambda_0$ then,
+$w$ being real valued, $|w(y)| < \infty$, while $\sigma_k \to \infty$, so there
+is a least $k \in \mathbb{N}_0$ with $|w(y)| \leq \sigma_{k+1}$, and for that
+$k$ one has $|w(y)| > \sigma_k$ --- for $k = 0$ by hypothesis, and for
+$k \geq 1$ by minimality of $k$.  Disjointness is clear since the intervals
+$(\sigma_k,\sigma_{k+1}]$ are pairwise disjoint.
+
+Since $w_1$ vanishes off $\{|w| > \lambda_0\}$ and equals $w$ on it, countable
+additivity of the integral of the nonnegative Borel function $|w|$ over the
+pairwise disjoint Borel sets $E_k$ gives
+\[
+  \int_{\mathbb{R}^n}|w_1|\,d\lambda
+    = \int_{\{|w|>\lambda_0\}}|w|\,d\lambda
+    = \sum_{k\geq0}\int_{E_k}|w|\,d\lambda
+    \leq \sum_{k\geq0}\sigma_{k+1}\,\lambda(E_k) ,
+\]
+using $|w| \leq \sigma_{k+1}$ on $E_k$.  Now $E_k \subseteq \{|w| > \sigma_k\}$,
+so $\lambda(E_k) \leq \mu(\sigma_k)$, and by $(1)$ together with
+$\sigma_k \in (0,\infty)$ we may divide and obtain
+$\mu(\sigma_k) \leq A/\sigma_k^2$.  Hence, using
+$\sigma_{k+1} = 2\sigma_k$,
+\[
+  \sigma_{k+1}\,\lambda(E_k)
+    \leq \frac{2\sigma_k A}{\sigma_k^2}
+    = \frac{2A}{\sigma_k}
+    = \frac{2A}{\lambda_0}\,2^{-k} ,
+\]
+and summing the geometric series $\sum_{k\geq0}2^{-k} = 2$ in $[0,+\infty]$,
+\[
+  \int_{\mathbb{R}^n}|w_1|\,d\lambda
+    \leq \frac{2A}{\lambda_0}\sum_{k\geq0}2^{-k}
+    = \frac{4A}{\lambda_0} ,
+\]
+which is $(3)$.  (If $A = +\infty$ the bound is trivially true, and the
+computation above is still valid in $[0,+\infty]$.)
+
+\emph{Step 3: conclusion.}
+Apply \noderef{LocalMaximalWeakType} to the Borel measurable function $w_1$ --
+which is in particular almost everywhere equal to a Borel measurable function --
+and to the level $t = \lambda_0 \in (0,\infty)$, which is nonzero as required:
+\[
+  \lambda\bigl(\{x : M_2w_1(x) > \lambda_0\}\bigr)
+    \leq \frac{4^n}{\lambda_0}\int_{\mathbb{R}^n}|w_1|\,d\lambda .
+\]
+Combining with $(2)$, monotonicity of the outer measure $\lambda$, and $(3)$,
+\[
+  \lambda\bigl(\{x : M_2w(x) > s\}\bigr)
+    \leq \lambda\bigl(\{x : M_2w_1(x) > \lambda_0\}\bigr)
+    \leq \frac{4^n}{\lambda_0}\cdot\frac{4A}{\lambda_0}
+    = \frac{4\cdot4^n\,A}{\lambda_0^2} .
+\]
+Finally $\lambda_0^2 = s^2/4$, so $4/\lambda_0^2 = 16/s^2$ and the right-hand
+side is $16\cdot4^nA/s^2$, as asserted.
+\end{proof}

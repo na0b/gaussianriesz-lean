@@ -1,0 +1,95 @@
+\begin{lemma}[The almost-everywhere limit of the complex Riesz images, and its uniqueness in measure]
+Let $f \in L^1(\gamma_n;\mathbb{C})$ and let $(v_k)_{k\in\mathbb{N}}$ be a
+sequence in $L^2(\gamma_n;\mathbb{C})$.  Write $\iota_{\mathbb{C}}$ for the
+inclusion of \noderef{ComplexToL1} and $R_\gamma^{\mathbb{C}}$ for the transform
+of \noderef{ComplexRieszTransform}.  Assume the three hypotheses
+\begin{enumerate}
+  \item[(A)] for all $u,w \in L^2(\gamma_n;\mathbb{C})$ and every
+    $\varepsilon > 0$,
+    \[
+      \gamma_n\bigl(\{x : \varepsilon \leq |R_\gamma^{\mathbb{C}} u(x)
+        - R_\gamma^{\mathbb{C}} w(x)|_{\mathbb{C}^n}\}\bigr)
+        \leq \frac{16}{\pi}\cdot
+          \frac{\|\iota_{\mathbb{C}} u - \iota_{\mathbb{C}} w\|_{L^1}}{\varepsilon} ;
+    \]
+  \item[(L)] $\iota_{\mathbb{C}} v_k \to f$ in $L^1(\gamma_n;\mathbb{C})$;
+  \item[(C)] $\|\iota_{\mathbb{C}} v_j - \iota_{\mathbb{C}} v_{j+1}\|_{L^1}
+    \leq 8^{-j}$ for every $j$.
+\end{enumerate}
+Then there is an element $g$ of $\mathcal{M}(\gamma_n;\mathbb{C}^n)$, the space
+of $\gamma_n$-almost-everywhere equivalence classes of measurable
+$\mathbb{C}^n$-valued functions on $\mathbb{R}^n$, such that
+\begin{enumerate}
+  \item $R_\gamma^{\mathbb{C}} v_k \to g$ pointwise $\gamma_n$-a.e.; and
+  \item for \emph{every} sequence $(w_k)$ in $L^2(\gamma_n;\mathbb{C})$ with
+    $\iota_{\mathbb{C}} w_k \to f$ in $L^1(\gamma_n;\mathbb{C})$, the sequence
+    $R_\gamma^{\mathbb{C}} w_k$ converges to $g$ in measure.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Part 1: the almost-everywhere limit.}
+Put $E_j = \{x : 2^{-j} \leq |R_\gamma^{\mathbb{C}} v_j(x)
+ - R_\gamma^{\mathbb{C}} v_{j+1}(x)|_{\mathbb{C}^n}\}$.  By (A) with
+$\varepsilon = 2^{-j}$ and then (C),
+\[
+  \gamma_n(E_j) \leq \frac{16}{\pi}\cdot
+    \frac{\|\iota_{\mathbb{C}} v_j - \iota_{\mathbb{C}} v_{j+1}\|_{L^1}}{2^{-j}}
+    \leq \frac{16}{\pi}\cdot 2^{j}\cdot 8^{-j}
+    = \frac{16}{\pi}\cdot 4^{-j} .
+\]
+The geometric series $\sum_j \tfrac{16}{\pi}4^{-j}$ converges, so
+$\sum_j \gamma_n(E_j) < \infty$ and the Borel--Cantelli lemma (shared context)
+gives: for $\gamma_n$-a.e.\ $x$ the set $\{j : x \in E_j\}$ is finite.  Fix such
+an $x$ and let $B$ bound that finite set.  For $j \geq B+1$ we have
+$|R_\gamma^{\mathbb{C}} v_j(x) - R_\gamma^{\mathbb{C}} v_{j+1}(x)| < 2^{-j}$, so
+all but finitely many terms of
+$\sum_j |R_\gamma^{\mathbb{C}} v_j(x) - R_\gamma^{\mathbb{C}} v_{j+1}(x)|$ are
+dominated by the convergent series $\sum_j 2^{-j}$; hence that series converges,
+and a sequence in the complete space $\mathbb{C}^n$ whose consecutive distances
+form a convergent series is Cauchy, hence convergent.  Define $g(x)$ to be this
+limit at every $x$ where $(R_\gamma^{\mathbb{C}} v_j(x))_j$ converges, and
+$g(x) = 0$ elsewhere.  Then $R_\gamma^{\mathbb{C}} v_j \to g$ pointwise
+$\gamma_n$-a.e., which is clause (1); and $g$ is measurable, being a
+$\gamma_n$-a.e.\ pointwise limit of the measurable functions
+$R_\gamma^{\mathbb{C}} v_j$, so it determines an element of
+$\mathcal{M}(\gamma_n;\mathbb{C}^n)$.
+
+\emph{Part 2: every approximating sequence has the same limit in measure.}
+Since $\gamma_n$ is a finite measure (\noderef{GaussIsProb}), the almost
+everywhere convergence of Part 1 implies convergence in measure: for every
+$\delta > 0$,
+\begin{equation*}
+  \gamma_n\bigl(\{x : \delta \leq |R_\gamma^{\mathbb{C}} v_k(x)
+    - g(x)|_{\mathbb{C}^n}\}\bigr) \longrightarrow 0 . \tag{E}
+\end{equation*}
+Let now $(w_k)$ be any sequence in $L^2(\gamma_n;\mathbb{C})$ with
+$\iota_{\mathbb{C}} w_k \to f$ in $L^1$, and fix $\varepsilon > 0$.  By the
+triangle inequality in $\mathbb{C}^n$, if
+$\varepsilon \leq |R_\gamma^{\mathbb{C}} w_k(x) - g(x)|$ then at least one of
+$|R_\gamma^{\mathbb{C}} w_k(x) - R_\gamma^{\mathbb{C}} v_k(x)|$ and
+$|R_\gamma^{\mathbb{C}} v_k(x) - g(x)|$ is at least $\varepsilon/2$; so
+\[
+  \{\varepsilon \leq |R_\gamma^{\mathbb{C}} w_k - g|\}
+    \subseteq \{\tfrac{\varepsilon}{2}
+        \leq |R_\gamma^{\mathbb{C}} w_k - R_\gamma^{\mathbb{C}} v_k|\}
+      \cup \{\tfrac{\varepsilon}{2} \leq |R_\gamma^{\mathbb{C}} v_k - g|\} ,
+\]
+and monotonicity and subadditivity of $\gamma_n$ (shared context) give
+\[
+  \gamma_n\bigl(\{\varepsilon \leq |R_\gamma^{\mathbb{C}} w_k - g|\}\bigr)
+    \leq \gamma_n\bigl(\{\tfrac{\varepsilon}{2}
+          \leq |R_\gamma^{\mathbb{C}} w_k - R_\gamma^{\mathbb{C}} v_k|\}\bigr)
+      + \gamma_n\bigl(\{\tfrac{\varepsilon}{2}
+          \leq |R_\gamma^{\mathbb{C}} v_k - g|\}\bigr) .
+\]
+The second summand tends to $0$ by (E) with $\delta = \varepsilon/2$.  For the
+first, $\|\iota_{\mathbb{C}} w_k - \iota_{\mathbb{C}} v_k\|_{L^1} \to 0$, because
+both $\iota_{\mathbb{C}} w_k$ and $\iota_{\mathbb{C}} v_k$ converge to $f$ in
+$L^1$ by hypothesis and by (L) respectively, so (A) at the level
+$\varepsilon/2$ bounds the first summand by
+$32\,\|\iota_{\mathbb{C}} w_k - \iota_{\mathbb{C}} v_k\|_{L^1}/(\pi\varepsilon)
+ \to 0$.  Both summands are nonnegative and tend to $0$, so their sum does, and
+the left-hand side, squeezed between $0$ and that sum, tends to $0$.  That is
+convergence in measure of $R_\gamma^{\mathbb{C}} w_k$ to $g$, which is
+clause (2).
+\end{proof}

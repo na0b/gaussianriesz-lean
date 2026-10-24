@@ -1,0 +1,124 @@
+\begin{lemma}[$L^s$ is linear on its domain, and the domain is everything for $s \leq 0$]
+Let $s \in \mathbb{R}$, let $\operatorname{Dom}(L^s)$ be as in
+\noderef{FracPowDomain} and let $L^s$ be as in \noderef{FracPow}.  Then:
+\begin{enumerate}
+\item if $s \leq 0$, then every $v \in L^2(\gamma_n)$ lies in
+$\operatorname{Dom}(L^s)$;
+\item for all $v, w \in \operatorname{Dom}(L^s)$, also
+$v + w \in \operatorname{Dom}(L^s)$ and $L^s(v+w) = L^s v + L^s w$;
+\item for every $c \in \mathbb{R}$ and $v \in \operatorname{Dom}(L^s)$, also
+$c\,v \in \operatorname{Dom}(L^s)$ and $L^s(c\,v) = c\,L^s v$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+Throughout we use the following three facts, in the form in which they are
+stated.
+
+\emph{(a) The coefficient map.}  By \noderef{HermiteBasis} the map
+$v \mapsto (v_\alpha)_{\alpha}$, $v_\alpha = \langle v, h_\alpha\rangle$, is an
+isometric isomorphism of $L^2(\gamma_n)$ onto $\ell^2(\mathbb{N}_0^n)$.  Being an
+isomorphism of real Hilbert spaces it is in particular linear and injective, so
+for all $v, w \in L^2(\gamma_n)$ and $c \in \mathbb{R}$
+\[
+  (v+w)_\alpha = v_\alpha + w_\alpha,
+  \qquad (c\,v)_\alpha = c\,v_\alpha
+  \qquad (\alpha \in \mathbb{N}_0^n),
+\]
+every $v \in L^2(\gamma_n)$ has $\sum_\alpha |v_\alpha|^2 = \|v\|_2^2 < \infty$,
+and two elements of $L^2(\gamma_n)$ with the same coefficient family are equal.
+
+\emph{(b) The domain criterion.}  By \noderef{FracPowDomain},
+$v \in \operatorname{Dom}(L^s)$ holds precisely when the multiplied family
+$m_s\bigl((v_\alpha)_\alpha\bigr)$ of \noderef{FracPowCoeff} is square summable,
+where by \noderef{FracPowCoeff}
+\[
+  m_s(c)_\alpha =
+  \begin{cases} 0, & \alpha = 0, \\ |\alpha|^s c_\alpha, & \alpha \neq 0 .\end{cases}
+\]
+
+\emph{(c) The value.}  By \noderef{FracPow}, for $v \in \operatorname{Dom}(L^s)$
+the element $L^s v$ is the unique element of $L^2(\gamma_n)$ whose coefficient
+family is $m_s\bigl((v_\alpha)_\alpha\bigr)$.
+
+\medskip
+\emph{Proof of (1).}  Let $s \leq 0$ and $v \in L^2(\gamma_n)$.  Fix
+$\alpha \neq 0$.  By \noderef{MultiIndexSum} we have $|\alpha| \geq 1$, so
+$\log|\alpha| \geq 0$ and hence, since $s \leq 0$,
+\[
+  |\alpha|^s = e^{s\log|\alpha|} \leq e^0 = 1 ,
+  \qquad\text{and also } |\alpha|^s > 0 .
+\]
+Therefore, by (b),
+\[
+  \bigl|m_s\bigl((v_\alpha)_\alpha\bigr)_\alpha\bigr|
+    = |\alpha|^{s}\,|v_\alpha| \leq |v_\alpha|
+  \qquad (\alpha \neq 0),
+\]
+while for $\alpha = 0$ the left-hand side is $0 \leq |v_0|$.  Thus the family
+$m_s((v_\alpha)_\alpha)$ is dominated in absolute value, term by term, by the
+family $(v_\alpha)_\alpha$, whence
+\[
+  \sum_\alpha \bigl|m_s\bigl((v_\alpha)_\alpha\bigr)_\alpha\bigr|^2
+    \leq \sum_\alpha |v_\alpha|^2 < \infty
+\]
+by (a) and the comparison test for series of nonnegative terms.  So
+$m_s((v_\alpha)_\alpha)$ is square summable, and $v \in \operatorname{Dom}(L^s)$
+by (b).
+
+\emph{Proof of (2).}  Let $v, w \in \operatorname{Dom}(L^s)$.  We first check that
+$m_s$ is additive on coefficient families.  Indeed, using
+$(v+w)_\alpha = v_\alpha + w_\alpha$ from (a), at $\alpha = 0$ both
+$m_s((v+w)_\alpha)_0 = 0$ and
+$m_s((v_\alpha))_0 + m_s((w_\alpha))_0 = 0 + 0 = 0$, while for $\alpha \neq 0$
+\[
+  m_s\bigl(((v+w)_\alpha)_\alpha\bigr)_\alpha
+    = |\alpha|^s (v_\alpha + w_\alpha)
+    = |\alpha|^s v_\alpha + |\alpha|^s w_\alpha
+    = m_s\bigl((v_\alpha)_\alpha\bigr)_\alpha
+      + m_s\bigl((w_\alpha)_\alpha\bigr)_\alpha .
+\]
+Hence
+\[
+  m_s\bigl(((v+w)_\alpha)_\alpha\bigr)
+    = m_s\bigl((v_\alpha)_\alpha\bigr) + m_s\bigl((w_\alpha)_\alpha\bigr)
+  \tag{$*$}
+\]
+as families indexed by $\mathbb{N}_0^n$.  Both summands on the right are square
+summable by (b), because $v, w \in \operatorname{Dom}(L^s)$; and a sum of two
+square-summable families is square summable, since
+$|a+b|^2 \leq 2|a|^2 + 2|b|^2$ termwise.  So the left-hand side of $(*)$ is
+square summable, i.e.\ $v + w \in \operatorname{Dom}(L^s)$ by (b).
+
+It remains to identify $L^s(v+w)$.  By (c) the coefficient family of
+$L^s(v+w)$ is the left-hand side of $(*)$, and the coefficient families of
+$L^s v$ and $L^s w$ are the two summands on the right.  By linearity of the
+coefficient map (a), the coefficient family of $L^s v + L^s w$ is the sum of
+those two, i.e.\ the right-hand side of $(*)$.  So $L^s(v+w)$ and
+$L^s v + L^s w$ are two elements of $L^2(\gamma_n)$ with the same coefficient
+family; by the injectivity in (a) they are equal.
+
+\emph{Proof of (3).}  Let $c \in \mathbb{R}$ and $v \in \operatorname{Dom}(L^s)$.
+Using $(c\,v)_\alpha = c\,v_\alpha$ from (a), at $\alpha = 0$ both
+$m_s(((c v)_\alpha))_0 = 0$ and $c\,m_s((v_\alpha))_0 = c\cdot 0 = 0$, while for
+$\alpha \neq 0$
+\[
+  m_s\bigl(((c\,v)_\alpha)_\alpha\bigr)_\alpha
+    = |\alpha|^s (c\,v_\alpha)
+    = c\,\bigl(|\alpha|^s v_\alpha\bigr)
+    = c\, m_s\bigl((v_\alpha)_\alpha\bigr)_\alpha .
+\]
+Hence
+\[
+  m_s\bigl(((c\,v)_\alpha)_\alpha\bigr)
+    = c\, m_s\bigl((v_\alpha)_\alpha\bigr)
+  \tag{$**$}
+\]
+as families.  The right-hand side is square summable, because
+$\sum_\alpha |c\,x_\alpha|^2 = c^2 \sum_\alpha |x_\alpha|^2$ and
+$m_s((v_\alpha)_\alpha)$ is square summable by (b).  So
+$c\,v \in \operatorname{Dom}(L^s)$ by (b).  Finally, by (c) the coefficient
+family of $L^s(c\,v)$ is the left-hand side of $(**)$, and by (c) together with
+the linearity in (a) the coefficient family of $c\,L^s v$ is the right-hand side
+of $(**)$; the two agree, so the injectivity in (a) gives
+$L^s(c\,v) = c\,L^s v$.
+\end{proof}

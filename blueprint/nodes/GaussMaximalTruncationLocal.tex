@@ -1,0 +1,277 @@
+\begin{lemma}[Localized weak-type $(1,1)$ bound for the maximal truncation]
+Fix $n \geq 1$ and $j \in \{1,\ldots,n\}$, let $\lambda$ be Lebesgue measure on
+$\mathbb{R}^n$, let $\gamma_n$ be the Gaussian measure of
+\noderef{GaussMeasure}, let $K_{\gamma,j}$ be the kernel of
+\noderef{GaussRieszKernel}, and let
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}\bigl(\gamma_n;\mathbb{R}^n\bigr)
+\]
+be \emph{any} linear map into the $\gamma_n$-almost-everywhere equivalence
+classes of measurable $\mathbb{R}^n$-valued functions such that
+\begin{enumerate}
+\item[(T1)] $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item[(T2)] $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+\leq 2\,\|f\|_{L^1(\gamma_n)}$ for every $f \in L^1(\gamma_n;\mathbb{R})$ and
+every real $t > 0$.
+\end{enumerate}
+For $f \in L^1(\gamma_n)$, written also for its canonical representative, put
+\[
+  T_{j,\varepsilon}f(x) = \int_{|x-y|>\varepsilon}K_{\gamma,j}(x,y)f(y)\,dy ,
+  \qquad
+  T_{j,*}f(x) = \sup_{\varepsilon>0}\bigl|T_{j,\varepsilon}f(x)\bigr|
+  \;\in\;[0,+\infty] ,
+\]
+the $y$-integral against Lebesgue measure and the supremum taken in the
+extended nonnegative reals.  Let $R \geq 1$.  Then there is a constant
+$C \in (0,\infty)$, depending only on $n$, $j$ and $R$, such that for every
+$f \in L^1(\gamma_n)$ and every $t \in (0,+\infty]$,
+\[
+  \gamma_n\Bigl(\bigl\{\,x \in \mathbb{R}^n :\ |x| \leq R
+     \ \text{ and }\ T_{j,*}f(x) > t\,\bigr\}\Bigr)
+  \;\leq\; \frac{C}{t}\,\|f\|_{L^1(\gamma_n)} ,
+\]
+the right-hand side read in $[0,+\infty]$.
+
+\emph{This is the reference paper's displayed maximal estimate, localized.}  The
+paper states it with no restriction on $x$ and with a constant $C_{n,j}$
+depending only on the dimension and the coordinate; the present node restricts
+$x$ to the closed ball of radius $R$ and allows the constant to depend on $R$ as
+well.  That is the whole of the departure, and it is recorded, with its
+return-to-faithful argument, in the deviation file
+\texttt{reference/maximal-truncation-localization.tex}, which this node claims.
+Nothing else about the statement differs: the operator, the truncations, the
+exponent and the shape $C\|f\|_1/t$ are the paper's.
+
+\emph{The supremum and the threshold are extended-real, and this is
+load-bearing.}  $T_{j,*}f(x)$ is a supremum over $\varepsilon > 0$ of real
+numbers which is not known in advance to be finite --- the far-majorant bound
+$|T_{j,\varepsilon}f(x)| \leq C(\varepsilon)\|f\|_{L^1(\gamma_n)}$ degrades as
+$\varepsilon \downarrow 0$ --- so it is taken in $[0,+\infty]$, exactly as in
+\noderef{GaussRieszCotlarLocal}, whose left-hand side this is verbatim.  A real
+supremum would take a conventional value where the family is unbounded, which
+is precisely where the estimate carries content.  Correspondingly the threshold
+$t$ ranges over $(0,+\infty]$: at $t = +\infty$ the level set is empty and the
+assertion is the triviality $0 \leq 0$, and the content is at finite $t$.
+
+\emph{No measurability of the level set is asserted or needed.}  $\gamma_n$ is
+applied to the level set as an outer measure, which is defined on every subset
+and is monotone and countably subadditive there.  That is enough for the proof
+below, because every inequality it chains together --- the weak-type bounds for
+$M_2$ and the comparison $\gamma_n \leq \pi^{-n/2}\lambda$ --- is itself stated
+for arbitrary sets.  Bounding the outer measure is the stronger assertion, so a
+consumer that does know the set to be measurable loses nothing.
+
+\emph{The constant depends on $R$, and the object is coordinatewise.}  $C$
+degrades in $R$ through the Cotlar constant and through
+$a_{R+2} = \pi^{-n/2}e^{-(R+2)^2}$, the lower bound for the Gaussian density on
+$\overline B(0,R+2)$; no uniformity in $n$, $j$ or $R$ is claimed, and the paper
+explicitly licenses the dimension dependence at this step.  The quantity
+bounded is the coordinatewise maximal truncation
+$\sup_\varepsilon|T_{j,\varepsilon}f|$, not the paper's vector maximal
+truncation $\sup_\varepsilon|T_\varepsilon f|_{\mathbb{R}^n}$; nothing here
+asserts anything about the latter.
+
+\emph{The hypothetical style.}  (T1) and (T2) are written out in full and not
+imported by reference; the lemma is a statement about every $T$ satisfying
+them, as \noderef{CoordinateEndpointBound} and \noderef{GaussRieszCotlarLocal}
+are, and it is not vacuous because \noderef{L1Extension} exhibits such a $T$.
+\end{lemma}
+\begin{proof}
+Write $p = \pi^{-n/2}$, $a = \pi^{-n/2}e^{-(R+2)^2} \in (0,\infty)$ --- so that
+$a^{-1} = \pi^{n/2}e^{(R+2)^2}$ --- and $E = e^{(R+2)^2}$.  Throughout,
+$\overline B = \overline B(0,R+2)$.
+
+\emph{Step 0: the Cotlar constant.}
+Apply \noderef{GaussRieszCotlarLocal} to this $T$ (with the two properties it
+requires, which are (T1) and (T2) and hold by assumption), to $j$, and to this
+$R$, whose hypothesis $R \geq 1$ holds.  It supplies a constant
+$C_0 \in (0,\infty)$ --- in particular $C_0 \neq 0$ and $C_0 \neq +\infty$ ---
+such that for every $f \in L^1(\gamma_n)$ and every $x$ with $|x| \leq R$,
+\begin{equation*}
+  T_{j,*}f(x) \;\leq\; C_0\bigl[\,\Psi_f(x)^2 + \Phi_f(x) + N_f\,\bigr] ,
+  \tag{1}
+\end{equation*}
+where, with $M_2$ the local maximal function of \noderef{LocalMaximalFunction},
+\[
+  \Phi_f = M_2\bigl(w_f\bigr),\quad w_f = f\mathbf 1_{\overline B};
+  \qquad
+  \Psi_f = M_2\bigl(u_f\bigr),\quad u_f = |(Tf)_j|^{1/2}\mathbf 1_{\overline B};
+  \qquad
+  N_f = \|f\|_{L^1(\gamma_n)} .
+\]
+Crucially $C_0$ does not depend on $f$: it is produced before $f$ is quantified.
+Define
+\[
+  C = 3\,C_0\bigl(1 + 33\cdot4^n E\bigr) .
+\]
+Then $C \in (0,\infty)$ and $C$ depends only on $n$, $j$ and $R$.  We show the
+lemma with this $C$.
+
+Fix $f \in L^1(\gamma_n)$ and $t \in (0,+\infty]$, and abbreviate
+$\Phi = \Phi_f$, $\Psi = \Psi_f$, $N = N_f$, $w = w_f$, $u = u_f$.  Note
+$N < \infty$.  Put
+\[
+  s = \frac{t}{3C_0} ,
+\]
+which is nonzero because $t \neq 0$ and $3C_0 < \infty$.
+
+\emph{Step 1: measurability of the two inputs.}
+The canonical representative of an almost-everywhere class is measurable, so
+$(Tf)_j$ is measurable; hence $u = |(Tf)_j|^{1/2}\mathbf 1_{\overline B}$ is
+measurable, the square root being continuous on $[0,\infty)$ and
+$\overline B$ closed.  For $w$: the canonical representative $f$ is
+$\gamma_n$-almost everywhere equal to a measurable function, and by clause (4)
+of \noderef{GaussLebesgueBallComparison} the measures $\gamma_n$ and $\lambda$
+have the same null sets, so $f$ is $\lambda$-almost everywhere equal to a
+measurable function; multiplying by the indicator of the measurable set
+$\overline B$ preserves this.  Thus $w$ and $u$ are Lebesgue-almost-everywhere
+measurable, which is the hypothesis both weak-type nodes require.
+
+\emph{Step 2: the level set is covered by three sets.}
+Let
+\[
+  \mathcal{E} = \bigl\{x : |x| \leq R \text{ and } T_{j,*}f(x) > t\bigr\},
+  \qquad
+  S_1 = \{x : \Phi(x) > s\},\quad
+  S_2 = \{x : \Psi(x)^2 > s\},\quad
+  S_3 = \{x : N > s\} .
+\]
+We claim $\mathcal{E} \subseteq S_1 \cup S_2 \cup S_3$.  Indeed, let
+$x \in \mathcal{E}$ and suppose $x$ lay in none of the three.  Then
+$\Psi(x)^2 \leq s$, $\Phi(x) \leq s$ and $N \leq s$, so
+$\Psi(x)^2 + \Phi(x) + N \leq 3s = 3\,t/(3C_0) = t/C_0$, the cancellation of
+the factor $3$ being legitimate in $[0,+\infty]$ because $3 \in (0,\infty)$.
+Multiplying by $C_0 \in (0,\infty)$ and using $(1)$,
+$T_{j,*}f(x) \leq C_0\,(t/C_0) = t$, contradicting $T_{j,*}f(x) > t$.  Hence
+by monotonicity and subadditivity of the outer measure $\gamma_n$ (shared
+context),
+\begin{equation*}
+  \gamma_n(\mathcal{E}) \leq \gamma_n(S_1) + \gamma_n(S_2) + \gamma_n(S_3) .
+  \tag{2}
+\end{equation*}
+Note that $S_3$ does not depend on $x$: it is $\mathbb{R}^n$ if $N > s$ and
+$\emptyset$ otherwise.
+
+\emph{Step 3: the term $S_1$.}
+By \noderef{LocalMaximalWeakType}, applied to $w$ (measurable up to a null set
+by Step 1) at the level $s \neq 0$,
+\[
+  \lambda(S_1) \leq \frac{4^n}{s}\int_{\mathbb{R}^n}|w|\,d\lambda .
+\]
+By \noderef{GaussMeasure}, $\gamma_n$ is $\lambda$ weighted by the density
+$\varrho(y) = \pi^{-n/2}e^{-|y|^2}$, and $\varrho \geq a$ on $\overline B$
+because $|y| \leq R+2$ there; since $w$ vanishes off $\overline B$,
+\[
+  a\int_{\mathbb{R}^n}|w|\,d\lambda
+    = a\int_{\overline B}|f|\,d\lambda
+    \leq \int_{\overline B}|f|\,\varrho\,d\lambda
+    = \int_{\overline B}|f|\,d\gamma_n \leq N ,
+\]
+so $\int|w|\,d\lambda \leq a^{-1}N = \pi^{n/2}E\,N$.  Finally, by clause (1) of
+\noderef{GaussLebesgueBallComparison}, which holds for \emph{every} set,
+$\gamma_n(S_1) \leq p\,\lambda(S_1)$.  Combining, and using
+$p\,\pi^{n/2} = 1$,
+\begin{equation*}
+  \gamma_n(S_1) \leq \frac{p\,4^n\pi^{n/2}E\,N}{s}
+    = \frac{4^nE\,N}{s} = \frac{3C_0\,4^nE\,N}{t} . \tag{3}
+\end{equation*}
+
+\emph{Step 4: the term $S_2$.}
+Let $\sqrt s \in (0,+\infty]$ be the square root of $s$, i.e.\ the unique
+element of $[0,+\infty]$ whose square is $s$; it is nonzero because $s$ is.
+Squaring is strictly monotone on $[0,+\infty]$, so $\Psi(x)^2 > s = (\sqrt s)^2$
+forces $\Psi(x) > \sqrt s$, whence
+$S_2 \subseteq \{x : \Psi(x) > \sqrt s\}$.  By
+\noderef{LocalMaximalWeakL2}, applied to $u$ (measurable by Step 1) at the
+level $\sqrt s \neq 0$, and using $(\sqrt s)^2 = s$,
+\begin{equation*}
+  \lambda(S_2) \leq \frac{16\cdot4^n}{s}\,\mathcal{A},
+  \qquad
+  \mathcal{A} = \sup_{0<\sigma\leq+\infty}
+      \sigma^2\,\lambda\bigl(\{y : |u(y)| > \sigma\}\bigr) . \tag{4}
+\end{equation*}
+
+We claim the \emph{uniform} bound
+\begin{equation*}
+  \mathcal{A} \leq 2\,a^{-1}N = 2\,\pi^{n/2}E\,N . \tag{5}
+\end{equation*}
+It suffices to bound each term of the supremum by the right-hand side.  If
+$\sigma = +\infty$ the set $\{|u| > \sigma\}$ is empty, $u$ being real valued,
+and the term is $(+\infty)\cdot0 = 0$.  So let $\sigma$ be a real number with
+$\sigma > 0$ and put
+\[
+  E_\sigma = \{y : |u(y)| > \sigma\}
+    = \{y \in \overline B : |(Tf)_j(y)| > \sigma^2\} ,
+\]
+the second description because $u = |(Tf)_j|^{1/2}$ on $\overline B$ and $0$
+off it, and because $r \mapsto r^{1/2}$ is strictly increasing on $[0,\infty)$.
+The set $E_\sigma$ is measurable (Step 1) and contained in
+$\overline B = \overline B(0,R+2)$, so clause (2) of
+\noderef{GaussLebesgueBallComparison}, \emph{instantiated at $R+2$ in place of
+its $R$}, gives $a\,\lambda(E_\sigma) \leq \gamma_n(E_\sigma)$, hence
+$\lambda(E_\sigma) \leq a^{-1}\gamma_n(E_\sigma)$ since $a \in (0,\infty)$.
+Next, $E_\sigma \subseteq \{y : |(Tf)_j(y)| > \sigma^2\}$, and
+\noderef{CoordinateEndpointBound} --- applied to this $T$ with its two
+properties, to $f$, to the coordinate $j$ and to the real level
+$\sigma^2 > 0$ --- gives
+\[
+  \sigma^2\,\gamma_n\bigl(\{y : |(Tf)_j(y)| > \sigma^2\}\bigr) \leq 2N .
+\]
+Therefore
+\[
+  \sigma^2\lambda(E_\sigma)
+    \leq a^{-1}\,\sigma^2\gamma_n(E_\sigma)
+    \leq a^{-1}\,\sigma^2\gamma_n\bigl(\{|(Tf)_j| > \sigma^2\}\bigr)
+    \leq 2\,a^{-1}N ,
+\]
+a bound independent of $\sigma$, which is $(5)$.  (The uniformity is the point:
+a bound still depending on $\sigma$ would not bound the supremum.)
+
+Feeding $(5)$ into $(4)$ and applying clause (1) of
+\noderef{GaussLebesgueBallComparison} again,
+\begin{equation*}
+  \gamma_n(S_2) \leq p\,\lambda(S_2)
+    \leq \frac{p\cdot16\cdot4^n\cdot2\pi^{n/2}E\,N}{s}
+    = \frac{32\cdot4^nE\,N}{s}
+    = \frac{96\,C_0\,4^nE\,N}{t} . \tag{6}
+\end{equation*}
+
+\emph{Step 5: the term $S_3$, and the conclusion.}
+If $N \leq s$ then $S_3 = \emptyset$ and $\gamma_n(S_3) = 0$.  Otherwise
+$N > s$; then $s \neq +\infty$ (nothing exceeds $+\infty$), so
+$s \in (0,\infty)$ and $N/s > 1$, while $\gamma_n(S_3) = \gamma_n(\mathbb{R}^n)
+ = 1$ because $\gamma_n$ is a probability measure (\noderef{GaussIsProb}).
+In both cases
+\begin{equation*}
+  \gamma_n(S_3) \leq \frac{N}{s} = \frac{3C_0\,N}{t} . \tag{7}
+\end{equation*}
+
+Adding $(3)$, $(6)$ and $(7)$ into $(2)$,
+\[
+  \gamma_n(\mathcal{E})
+    \leq \bigl(3C_0\,4^nE + 96\,C_0\,4^nE + 3C_0\bigr)\frac{N}{t}
+    = 3C_0\bigl(1 + 33\cdot4^nE\bigr)\frac{N}{t}
+    = \frac{C\,N}{t} ,
+\]
+which is the assertion.
+%
+% FORMALIZATION NOTE (cut points for ProofFormalization, recorded while the
+% argument is fresh; decomposition is free once a child's Lean closes, and is
+% not to be done in the stating phase).  Two natural children:
+%   (D1) Step 4's uniform bound (5): for every sigma in (0, +infinity],
+%        sigma^2 lambda({|u| > sigma}) <= 2 a^{-1} ||f||_1, where
+%        u = |(Tf)_j|^{1/2} 1_{closedBall 0 (R+2)}.  This is the only place
+%        CoordinateEndpointBound and GaussLebesgueBallComparison clause (2)
+%        appear, and it is the step the reviewer flagged as delicate.  Do NOT
+%        make it a tablet node in a stating phase: as a standalone statement it
+%        is close to a repackaging of CoordinateEndpointBound composed with the
+%        ball comparison, so it is exposed to Substantiveness Clause 2.
+%   (D2) Step 2's three-way split: from u <= C(A + B + c) and t < u conclude
+%        A > t/(3C) or B > t/(3C) or c > t/(3C), in ENNReal with C in (0,inf).
+%        Pure ENNReal arithmetic, reusable, and the place an informal proof is
+%        most likely to slip.
+% Steps 3 and 5 are each four lines and need no cut.
+\end{proof}

@@ -1,0 +1,97 @@
+\begin{corollary}[Endpoint bound for the historical spectral normalization $\mathcal{R} = -\sqrt2\,R_\gamma$]
+Let $\mathcal{M}(\gamma_n;\mathbb{R}^n)$ be the space of $\gamma_n$-a.e.\
+equivalence classes of measurable $\mathbb{R}^n$-valued functions on
+$\mathbb{R}^n$, and let
+$T : L^1(\gamma_n;\mathbb{R}) \to \mathcal{M}(\gamma_n;\mathbb{R}^n)$ be any
+linear map with the two properties
+\begin{enumerate}
+\item $T(\iota v) = R_\gamma v$ for every $v \in L^2(\gamma_n)$, with $\iota$ the
+inclusion of \noderef{ToL1} and $R_\gamma$ the transform of
+\noderef{RieszTransform}; and
+\item $t\,\gamma_n\bigl(\{x : |Tf(x)|_{\mathbb{R}^n} > t\}\bigr)
+       \leq 2\,\|f\|_{L^1(\gamma_n)}$
+for every $f \in L^1(\gamma_n;\mathbb{R})$ and every real $t > 0$.
+\end{enumerate}
+Then the scalar multiple $(-\sqrt2)\,T$, which is again a linear map
+$L^1(\gamma_n;\mathbb{R}) \to \mathcal{M}(\gamma_n;\mathbb{R}^n)$, satisfies
+\[
+  t\,\gamma_n\bigl(\{x : |((-\sqrt2)\,T)f(x)|_{\mathbb{R}^n} > t\}\bigr)
+    \;\leq\; 2\sqrt2\,\|f\|_{L^1(\gamma_n)}
+\]
+for every $f \in L^1(\gamma_n;\mathbb{R})$ and every real $t > 0$.
+
+This is the second assertion of the reference paper's corollary on coordinate and
+historical conventions, its displayed bound
+$\sup_{t>0} t\,\gamma_n(\{|\mathcal{R}f|>t\}) \leq 2\sqrt2\|f\|_1$ for the
+operator $\mathcal{R} = -\nabla L^{-1/2}\Pi_0$ of the historical
+Fabes--Guti\'errez--Scotto normalization, stated per level $t$ rather than as a
+supremum.  No new operator has to be introduced for it: the paper's own spectral
+computation identifies $\mathcal{R} = -\sqrt2\,R_\gamma$ coordinatewise, the
+factor $\sqrt2$ coming from $\partial_j = \sqrt2\,D_j$, so $\mathcal{R}$ is
+literally the scalar multiple $(-\sqrt2)\,T$ of the extension $T$.  The content
+is therefore a bound for a \emph{different operator} --- one whose weak-type
+constant is $2\sqrt2$, not $2$ --- and not a restatement of property (2): the two
+inequalities have different left-hand sides and different constants, and neither
+constant can be replaced by the other.
+
+Properties (1) and (2) are written out here rather than imported by citation.
+They are exactly the two properties for which \noderef{EndpointTheorem} asserts
+existence and uniqueness of a map $T$, so the universally quantified statement
+above is not vacuous and its instance at that unique $T$ is the paper's
+assertion about $\mathcal{R}$.
+\end{corollary}
+\begin{proof}
+Fix $f \in L^1(\gamma_n;\mathbb{R})$ and a real $t > 0$, and write
+$\lambda = \sqrt2 > 0$.
+
+\emph{Step 1: the pointwise norm identity.}
+Scalar multiplication in $\mathcal{M}(\gamma_n;\mathbb{R}^n)$ is defined
+representativewise, and $T$ is linear in the sense that
+$((-\lambda)T)f = (-\lambda)\,(Tf)$ as elements of
+$\mathcal{M}(\gamma_n;\mathbb{R}^n)$; so for $\gamma_n$-almost every $x$,
+\[
+  |((-\lambda)T)f(x)|_{\mathbb{R}^n} = |(-\lambda)\,Tf(x)|_{\mathbb{R}^n}
+    = |-\lambda|\;|Tf(x)|_{\mathbb{R}^n} = \lambda\,|Tf(x)|_{\mathbb{R}^n},
+\]
+using absolute homogeneity of the Euclidean norm and $\lambda > 0$.  (The
+identity holds almost everywhere rather than at every point because the
+displayed objects are a.e.\ equivalence classes; that is all that is used below,
+since the sets occurring are measured by $\gamma_n$.)
+
+\emph{Step 2: the level set at $t$ is a level set of $T f$ at $t/\lambda$.}
+Let $x$ be a point where the identity of Step 1 holds.  Since $\lambda > 0$,
+\[
+  t < |((-\lambda)T)f(x)|_{\mathbb{R}^n}
+  \iff t < \lambda\,|Tf(x)|_{\mathbb{R}^n}
+  \iff \frac{t}{\lambda} < |Tf(x)|_{\mathbb{R}^n},
+\]
+the last step being division of a strict inequality by the positive number
+$\lambda$.  The two sets
+$\{x : |((-\lambda)T)f(x)|_{\mathbb{R}^n} > t\}$ and
+$\{x : |Tf(x)|_{\mathbb{R}^n} > t/\lambda\}$ therefore differ only inside a
+$\gamma_n$-null set, so they have the same $\gamma_n$-measure (monotonicity up to
+null sets, shared context, applied in both directions):
+\[
+  \gamma_n\bigl(\{|((-\lambda)T)f|_{\mathbb{R}^n} > t\}\bigr)
+    = \gamma_n\bigl(\{|Tf|_{\mathbb{R}^n} > t/\lambda\}\bigr).
+\]
+
+\emph{Step 3: homogeneity of the weak quasi-norm.}
+Apply hypothesis (2) to this $f$ at the level $t/\lambda > 0$:
+\[
+  \frac{t}{\lambda}\,\gamma_n\bigl(\{|Tf|_{\mathbb{R}^n} > t/\lambda\}\bigr)
+    \leq 2\,\|f\|_{L^1(\gamma_n)} .
+\]
+Multiplying by $\lambda > 0$ and using Step 2,
+\[
+  t\,\gamma_n\bigl(\{|((-\lambda)T)f|_{\mathbb{R}^n} > t\}\bigr)
+    = \lambda \cdot \frac{t}{\lambda}\,
+      \gamma_n\bigl(\{|Tf|_{\mathbb{R}^n} > t/\lambda\}\bigr)
+    \leq \lambda \cdot 2\,\|f\|_{L^1(\gamma_n)}
+    = 2\sqrt2\,\|f\|_{L^1(\gamma_n)} ,
+\]
+which is the assertion.  This is exactly the step the reference paper calls the
+homogeneity of the weak-$L^1$ quasi-norm: rescaling the operator by $\lambda$
+rescales the level at which the endpoint bound is applied by $1/\lambda$ and the
+resulting constant by $\lambda$.
+\end{proof}

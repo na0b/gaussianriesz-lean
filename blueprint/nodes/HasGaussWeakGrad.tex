@@ -1,0 +1,17 @@
+\begin{definition}[Weak Euclidean gradient]
+Let $v : \mathbb{R}^n \to \mathbb{R}$ and
+$G = (G_1,\ldots,G_n) : \mathbb{R}^n \to \mathbb{R}^n$ be measurable.  We say that
+$G$ is a \emph{weak Euclidean gradient} of $v$, written $G = \nabla v$ weakly, if
+for every index $j \in \{1,\ldots,n\}$ and every test function
+$\varphi \in C_c^\infty(\mathbb{R}^n)$,
+\[
+  \int_{\mathbb{R}^n} v(x)\, \partial_j \varphi(x)\, dx
+    = -\int_{\mathbb{R}^n} G_j(x)\, \varphi(x)\, dx .
+\]
+Both integrals are taken with respect to \emph{Lebesgue} measure, not against the
+Gaussian weight; this is the ordinary distributional derivative.  The integrals are
+finite in every situation in which the notion is used below, because the Gaussian
+density of \noderef{GaussMeasure} is smooth and strictly positive, so every
+function in $L^2(\gamma_n)$ is Lebesgue-integrable on compact sets and
+$\varphi, \partial_j\varphi$ are bounded with compact support.
+\end{definition}

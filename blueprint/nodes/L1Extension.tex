@@ -1,0 +1,125 @@
+\begin{lemma}[Existence of the $L^1$ extension satisfying the weak bound]
+There is a linear map
+\[
+  T : L^1(\gamma_n;\mathbb{R}) \longrightarrow
+      \mathcal{M}(\gamma_n;\mathbb{R}^n),
+\]
+where $\mathcal{M}(\gamma_n;\mathbb{R}^n)$ denotes the space of
+$\gamma_n$-almost-everywhere equivalence classes of measurable
+$\mathbb{R}^n$-valued functions, such that
+\begin{enumerate}
+\item $T$ agrees with $R_\gamma$ on $L^2(\gamma_n)$: for every
+$v \in L^2(\gamma_n)$ one has $T(\iota v) = R_\gamma v$ almost everywhere, with
+$\iota$ the inclusion of \noderef{ToL1} and $R_\gamma$ as in
+\noderef{RieszTransform}; and
+\item $T$ satisfies the weak bound
+\[
+  t\,\gamma_n\bigl(\{x : |Tf(x)| > t\}\bigr) \leq 2\,\|f\|_{L^1(\gamma_n)}
+  \qquad\text{for every } f \in L^1(\gamma_n) \text{ and } t > 0 .
+\]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\emph{Step 0: a Cauchy-in-measure estimate.}
+Let $v, w \in L^2(\gamma_n)$ and $\varepsilon > 0$.  By \noderef{RieszTransform}
+the map $R_\gamma$ is linear on $L^2(\gamma_n)$, so
+$R_\gamma v - R_\gamma w = R_\gamma(v-w)$, and \noderef{MainBound} applied to the
+real $L^2$ function $v - w$ at the level $\varepsilon$ gives
+\begin{equation*}
+  \gamma_n\bigl(\{|R_\gamma v - R_\gamma w| > \varepsilon\}\bigr)
+    \leq \frac{2}{\varepsilon}\,\|\iota(v-w)\|_{L^1(\gamma_n)} . \tag{1}
+\end{equation*}
+
+\emph{Step 1: truncations approximate in $L^1$.}
+Let $f \in L^1(\gamma_n)$ and put $f_k = \max\{-k, \min\{f,k\}\}$ for
+$k \in \mathbb{N}$.  Each $f_k$ is measurable with $|f_k| \leq k$, hence bounded,
+hence in $L^2(\gamma_n)$ because $\gamma_n$ is a probability measure
+(\noderef{GaussIsProb}).  Moreover $|f_k| \leq |f|$ and $f_k \to f$ pointwise, so
+$|f - f_k| \leq 2|f| \in L^1(\gamma_n)$ and $|f-f_k| \to 0$ pointwise; dominated
+convergence gives $\|f - f_k\|_{L^1(\gamma_n)} \to 0$.  In particular
+$(\iota f_k)_k$ is Cauchy in $L^1(\gamma_n)$.
+
+\emph{Step 2: an almost-everywhere convergent subsequence.}
+Using Step 1, choose indices $k_1 < k_2 < \cdots$ with
+$\|f_{k_{j+1}} - f_{k_j}\|_{L^1(\gamma_n)} \leq 2^{-3j}$ for every $j \geq 1$
+(possible since the sequence is Cauchy in $L^1$).  Applying (1) with
+$v = f_{k_{j+1}}$, $w = f_{k_j}$ and $\varepsilon = 2^{-j}$,
+\[
+  \gamma_n\bigl(\{|R_\gamma f_{k_{j+1}} - R_\gamma f_{k_j}| > 2^{-j}\}\bigr)
+    \leq 2\cdot 2^{j}\cdot 2^{-3j} = 2^{1-2j} .
+\]
+The right-hand side is summable in $j$, so by the Borel--Cantelli lemma the set of
+$x$ lying in infinitely many of the sets
+$E_j = \{|R_\gamma f_{k_{j+1}} - R_\gamma f_{k_j}| > 2^{-j}\}$ is
+$\gamma_n$-null.  Hence for $\gamma_n$-a.e.\ $x$ there is $J(x)$ with
+$|R_\gamma f_{k_{j+1}}(x) - R_\gamma f_{k_j}(x)| \leq 2^{-j}$ for all
+$j \geq J(x)$; the tail sums $\sum_{j \geq J} 2^{-j}$ are finite, so
+$(R_\gamma f_{k_j}(x))_j$ is a Cauchy sequence in $\mathbb{R}^n$ and converges to
+a finite limit.  Define $Tf$ to be the $\gamma_n$-a.e.\ pointwise limit of
+$R_\gamma f_{k_j}$ (set to $0$ on the null set where convergence fails); it is a
+measurable $\mathbb{R}^n$-valued function, hence an element of
+$\mathcal{M}(\gamma_n;\mathbb{R}^n)$.
+
+\emph{Step 3: convergence in measure of the full sequence, and well-definedness.}
+By Step 2 and Egorov-free elementary reasoning, $R_\gamma f_{k_j} \to Tf$
+$\gamma_n$-a.e., hence in measure (on the finite measure space $\gamma_n$,
+a.e.\ convergence implies convergence in measure).  Combined with (1) and Step 1,
+which make $(R_\gamma f_k)_k$ Cauchy in measure, the full sequence
+$R_\gamma f_k$ converges to $Tf$ in measure: given $\varepsilon > 0$,
+\[
+  \gamma_n(\{|R_\gamma f_k - Tf| > 2\varepsilon\})
+    \leq \gamma_n(\{|R_\gamma f_k - R_\gamma f_{k_j}| > \varepsilon\})
+       + \gamma_n(\{|R_\gamma f_{k_j} - Tf| > \varepsilon\}),
+\]
+and both terms can be made small, the first by (1) and Step 1, the second by
+a.e.\ convergence.
+
+If $(\tilde f_k) \subseteq L^2(\gamma_n)$ is any other sequence with
+$\iota\tilde f_k \to f$ in $L^1(\gamma_n)$, then (1) applied to the pair
+$f_k, \tilde f_k$ gives
+$\gamma_n(\{|R_\gamma f_k - R_\gamma\tilde f_k| > \varepsilon\}) \leq
+\tfrac{2}{\varepsilon}\|\iota f_k - \iota \tilde f_k\|_{L^1} \to 0$, so
+$R_\gamma \tilde f_k \to Tf$ in measure as well, and a limit in measure is unique
+up to a null set.  Hence $Tf$ does not depend on the approximating sequence.
+
+\emph{Step 4: linearity.}
+Let $f, h \in L^1(\gamma_n)$ and $\lambda \in \mathbb{R}$, and let
+$(f_k), (h_k)$ be the truncation sequences of Step 1.  Then
+$(f_k + h_k)$ and $(\lambda f_k)$ are sequences in $L^2(\gamma_n)$ whose
+inclusions converge in $L^1(\gamma_n)$ to $f + h$ and $\lambda f$ respectively.
+By linearity of $R_\gamma$ (\noderef{RieszTransform}),
+$R_\gamma(f_k+h_k) = R_\gamma f_k + R_\gamma h_k$ and
+$R_\gamma(\lambda f_k) = \lambda R_\gamma f_k$.  Convergence in measure is
+compatible with addition and scalar multiplication, so the left sides converge in
+measure to $T(f+h)$ and $T(\lambda f)$ by Step 3, while the right sides converge
+in measure to $Tf + Th$ and $\lambda\,Tf$.  Uniqueness of limits in measure gives
+$T(f+h) = Tf + Th$ and $T(\lambda f) = \lambda Tf$.
+
+\emph{Step 5: agreement with $R_\gamma$ on $L^2$.}
+Let $v \in L^2(\gamma_n)$.  The constant sequence $\tilde f_k = v$ lies in
+$L^2(\gamma_n)$ and satisfies $\iota \tilde f_k \to \iota v$ in $L^1(\gamma_n)$
+trivially.  By the independence established in Step 3,
+$T(\iota v) = \lim_k R_\gamma \tilde f_k = R_\gamma v$ $\gamma_n$-a.e.
+
+\emph{Step 6: the weak bound.}
+Fix $f \in L^1(\gamma_n)$ and $t > 0$, and let $(f_{k_j})$ be the subsequence of
+Step 2, so $R_\gamma f_{k_j} \to Tf$ $\gamma_n$-a.e.  At a point $x$ with
+$|Tf(x)| > t$ there is a strict margin $|Tf(x)| - t > 0$, and
+$|R_\gamma f_{k_j}(x)| \to |Tf(x)|$, so $|R_\gamma f_{k_j}(x)| > t$ for all large
+$j$.  Hence $\gamma_n$-a.e.
+\[
+  \mathbf{1}_{\{|Tf|>t\}} \leq \liminf_{j\to\infty}\mathbf{1}_{\{|R_\gamma f_{k_j}|>t\}} .
+\]
+Fatou's lemma, applied to these nonnegative measurable functions, gives
+\[
+  \gamma_n(\{|Tf|>t\})
+    \leq \liminf_{j} \gamma_n\bigl(\{|R_\gamma f_{k_j}| > t\}\bigr) .
+\]
+By \noderef{MainBound} applied to $f_{k_j}$ at level $t$, each term is at most
+$\tfrac{2}{t}\|\iota f_{k_j}\|_{L^1(\gamma_n)}$.  By Step 1,
+$\|\iota f_{k_j}\|_{L^1(\gamma_n)} \to \|f\|_{L^1(\gamma_n)}$, so
+\[
+  \gamma_n(\{|Tf|>t\}) \leq \frac{2}{t}\,\|f\|_{L^1(\gamma_n)} .
+\]
+Multiplying by $t > 0$ gives the asserted bound.
+\end{proof}
