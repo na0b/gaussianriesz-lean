@@ -1,0 +1,25 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "GaussianRiesz.obstacle_decomposition",
+    "GaussianRiesz.obstacle_decomposition_unique",
+    "GaussianRiesz.sqrt_domain_sobolev",
+    "GaussianRiesz.endpoint_theorem",
+    "GaussianRiesz.pv_identification",
+    "GaussianRiesz.coordinate_endpoint_bound",
+    "GaussianRiesz.spectral_normalization_bound",
+    "GaussianRiesz.unnormalized_measure_invariance",
+    "GaussianRiesz.complex_endpoint_theorem",
+    "GaussianRiesz.GaussIsProb",
+    "GaussianRiesz.HermiteFunMemLp",
+    "GaussianRiesz.HermiteL2Orthonormal",
+    "GaussianRiesz.HermiteL2Complete"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

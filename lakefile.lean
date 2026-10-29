@@ -11,3 +11,9 @@ lean_lib «GaussianRiesz» where
 
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "v4.35.0-rc2"
+
+lean_lib «Challenge» where
+  roots := #[`Challenge]
+
+lean_lib «Solution» where
+  roots := #[`Solution]

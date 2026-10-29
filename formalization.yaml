@@ -1,0 +1,183 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "A dimension-free weak-type (1,1) bound for the Gaussian Riesz transforms"
+  description: >-
+    A complete Lean 4 / Mathlib formalization of the main results of Gutiérrez and Manfredi,
+    "A direct obstacle proof of a dimension-free weak-type (1,1) bound for the Gaussian Riesz
+    transforms" (arXiv:2610.26478). For the Gaussian measure dγₙ = π^{-n/2} e^{-|x|²} dx on ℝⁿ,
+    the Ornstein–Uhlenbeck operator L = -½Δ + x·∇ and the normalized gradient D = 2^{-1/2}∇, the
+    vector Riesz transform R_γ = D L^{-1/2} Π₀ has exactly one linear extension to L¹(γₙ)
+    satisfying t·γₙ{|R_γ f| > t} ≤ 2‖f‖₁ for all t > 0, in every dimension n (Theorem 5.1). The
+    proof goes through a Gaussian obstacle decomposition F = g + L^{1/2}u, with existence,
+    uniqueness and the variational characterization of u, and the identification
+    Dom(L^{1/2}) ⊆ W^{1,2}(γₙ) (Theorem 3.1). Also formalized: the principal-value realization of
+    the extension by the Gaussian Riesz kernels (Proposition 5.3), the coordinatewise,
+    historically normalized and unnormalized-measure bounds (Corollary 5.4), and the
+    complex-valued bound with constant 8/π (Corollary 5.5). The Hermite basis of L²(γₙ) and the
+    spectral calculus of L are built from Mathlib; there is no sorry and no axiom beyond
+    propext, Classical.choice and Quot.sound.
+  authors:
+    - "Cristian E. Gutiérrez"
+    - "Juan J. Manfredi"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Juan J. Manfredi"
+
+classification:
+  arxiv: [math.CA, math.FA]
+  msc2020: [42B20, 42C10, 35J86, 47A60, 68V20]
+
+sources:
+  - title: "A direct obstacle proof of a dimension-free weak-type (1,1) bound for the Gaussian Riesz transforms"
+    authors:
+      - "Cristian E. Gutiérrez"
+      - "Juan J. Manfredi"
+    id: "arXiv:2610.26478"
+    type: paper
+    location: "https://arxiv.org/abs/2610.26478"
+    relationship: formalizes
+    note: >-
+      Theorems 3.1 and 5.1, Proposition 5.3 and Corollaries 5.4 and 5.5 are formalized. The paper's
+      authors are the authors of this formalization.
+    author_endorsement: participated
+  - title: "Fabes, Gutiérrez and Scotto, Weak-type estimates for the Riesz transforms associated with the Gaussian measure (Rev. Mat. Iberoam. 10 (1994))"
+    authors:
+      - "Eugene B. Fabes"
+      - "Cristian E. Gutiérrez"
+      - "Roberto Scotto"
+    type: paper
+    relationship: background
+    note: >-
+      The fixed-dimension maximal estimate (5.15) of this paper is quoted in the source's proof of
+      Proposition 5.3. The formalization does not assume it; it proves a localized form instead
+      (see fidelity).
+
+related_formalizations: []
+
+status:
+  scope: >-
+    Formalized in full, with everything their proofs use: Theorem 3.1 (split into existence with
+    the variational characterization, uniqueness of the pair, and Dom(B) ⊆ W^{1,2}(γₙ) with
+    ‖Bv‖ = ‖Dv‖), Theorem 5.1, Proposition 5.3, Corollary 5.4 (split into its three assertions)
+    and Corollary 5.5. Only the inclusion Dom(B) ⊆ W^{1,2}(γₙ) of the paper's equality
+    Dom(B) = W^{1,2}(γₙ) is formalized; the theorems use only this inclusion. Not formalized:
+    remarks, examples and expository material.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: agent
+      models: ["Claude Opus 5 (Anthropic)"]
+      framework: "Trellis (https://github.com/wpegden/trellis)"
+      tool_setup: >-
+        Trellis multi-agent formalization pipeline: planner, reviewer and worker agents write a
+        dependency graph of natural-language nodes (a blueprint) and their Lean proofs; separate
+        verifier agents check each node's natural-language proof for soundness, its faithfulness
+        to the paper, and agreement between its Lean and natural-language statements; the Lean
+        kernel checks every proof. A human approves the phase gates and answers escalations.
+      cost:
+        wall_time: "about 5 days of running in two stages (2026-10-04 to 10-07: Theorem 5.1; 2026-10-21 to 10-23: the remaining targets on the revised paper), 227 cycles"
+        spend_usd: "subscription-based"
+        hardware: "local machine (Linux workstation) plus subscription model access"
+      prompting_notes: "Standard Trellis prompts; the input was the paper's LaTeX source and the choice of target theorems."
+    - method: agent
+      models: ["Claude Opus 5 (Anthropic)"]
+      framework: "Claude Code"
+      tool_setup: >-
+        Export from the Trellis workspace to this repository, the port to Lean v4.35.0-rc2 and
+        the module system (adapting 22 files to Mathlib's new MemLp/eLpNorm API), and the
+        Challenge/Solution/Comparator packaging for Palomar, done by Claude Code under the
+        maintainer's direction.
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based"
+  notes: >-
+    The Lean proofs and the blueprint were written by AI agents under the Trellis protocol.
+    Juan J. Manfredi chose the targets, supervised the runs, approved the phase gates and decided
+    the scope questions raised during the run; he is responsible for the repository.
+
+fidelity:
+  divergences: >-
+    (1) Proposition 5.3: the paper's proof quotes the fixed-dimension maximal estimate (5.15) of
+    Fabes–Gutiérrez–Scotto, which is not in Mathlib. The formalization proves instead a localized
+    maximal-truncation estimate (level sets intersected with a ball B(0,R), constant depending on
+    n, j, R) via Cotlar's inequality and Theorem 5.1. Since (5.15) is used only for almost-everywhere
+    and limit statements, this suffices, and the statement of Proposition 5.3 is the paper's, with
+    bound 2. (2) Theorem 3.1: only Dom(B) ⊆ W^{1,2}(γₙ) is formalized, not equality. (3) Corollary
+    5.4's unnormalized measure e^{-|x|²}dx is generalized to c·γₙ for every c > 0 (the paper's case
+    is c = π^{n/2}). (4) Corollary 5.5 is stated as existence and uniqueness of the extension
+    with the bound. (5) Representation choices: the L¹ extension takes values in a.e.-classes of
+    measurable functions (`→ₘ[γₙ]`); L^s, Dom(L^s), the energy and the Hermite basis are defined
+    through Hermite coefficients, with h_α = ∏ He_{αⱼ}(√2 xⱼ)/√(αⱼ!) (Mathlib's probabilists'
+    Hermite polynomials), equal to the paper's normalized physicists' Hermite polynomials;
+    weak gradients are defined against smooth compactly supported test functions with Lebesgue
+    integrals; W^{1,2}(γₙ) is defined via the normalized gradient D = 2^{-1/2}∇.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Trellis verifier agents (soundness, paper-faithfulness and statement-correspondence checks on every node)"
+  notes: >-
+    Every node passed Trellis's automated soundness, paper-faithfulness and Lean/natural-language
+    correspondence reviews, and Cleanup ran six audit rounds; the Proposition 5.3 deviation was
+    reviewed separately during the run. No human review of the Lean statements against the paper
+    has been recorded yet.
+
+alignment:
+  namespace: "GaussianRiesz"
+  statements:
+    - source: "Theorem 3.1 (existence, properties, unique minimizer)"
+      lean: "GaussianRiesz.obstacle_decomposition"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from ObstacleDecomposition (GaussianRiesz/ObstacleDecomposition.lean)."
+    - source: "Theorem 3.1 (uniqueness of the pair)"
+      lean: "GaussianRiesz.obstacle_decomposition_unique"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from ObstacleDecompositionUnique."
+    - source: "Theorem 3.1 (Dom(B) ⊆ W^{1,2}, ‖Bv‖ = ‖Dv‖)"
+      lean: "GaussianRiesz.sqrt_domain_sobolev"
+      module: "Challenge"
+      status: "proved"
+      note: "Inclusion only; proved from SqrtDomainSobolev."
+    - source: "Theorem 5.1"
+      lean: "GaussianRiesz.endpoint_theorem"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from EndpointTheorem."
+    - source: "Proposition 5.3"
+      lean: "GaussianRiesz.pv_identification"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from PVIdentification; see fidelity (1) for the proof's deviation."
+    - source: "Corollary 5.4 (coordinates)"
+      lean: "GaussianRiesz.coordinate_endpoint_bound"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from CoordinateEndpointBound."
+    - source: "Corollary 5.4 (historical normalization)"
+      lean: "GaussianRiesz.spectral_normalization_bound"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from SpectralNormalizationBound."
+    - source: "Corollary 5.4 (unnormalized measure)"
+      lean: "GaussianRiesz.unnormalized_measure_invariance"
+      module: "Challenge"
+      status: "proved"
+      note: "Generalized to c·γₙ, c > 0; proved from UnnormalizedMeasureInvariance."
+    - source: "Corollary 5.5"
+      lean: "GaussianRiesz.complex_endpoint_theorem"
+      module: "Challenge"
+      status: "proved"
+      note: "Proved from ComplexEndpointTheorem."
+
+acknowledgements: >-
+  Built on Mathlib. Produced with Trellis (github.com/wpegden/trellis) and Claude (Anthropic).
