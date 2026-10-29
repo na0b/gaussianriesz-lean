@@ -1,8 +1,12 @@
-import GaussianRiesz.RieszTransform
-import GaussianRiesz.SqrtDomainSobolev
-import GaussianRiesz.ProjZeroCentering
-import GaussianRiesz.GaussDLinear
-import GaussianRiesz.OneLeMultiIndexSum
+module
+
+public import GaussianRiesz.RieszTransform
+public import GaussianRiesz.SqrtDomainSobolev
+public import GaussianRiesz.ProjZeroCentering
+public import GaussianRiesz.GaussDLinear
+public import GaussianRiesz.OneLeMultiIndexSum
+
+@[expose] public section
 open MeasureTheory
 theorem RieszSqrtIdentity {n : ℕ} (u : Lp ℝ 2 (GaussMeasure n))
     (hu : u ∈ FracPowDomain ((1 : ℝ) / 2)) :

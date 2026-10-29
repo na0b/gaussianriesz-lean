@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 theorem HermiteGeneratingComplex (ζ ξ : ℂ) :
     HasSum (fun k : ℕ =>
         Polynomial.aeval ζ (Polynomial.hermite k) * ξ ^ k / (Nat.factorial k : ℂ))

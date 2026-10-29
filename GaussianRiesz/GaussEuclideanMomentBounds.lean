@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
-import GaussianRiesz.Preamble
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory
 theorem GaussEuclideanMomentBounds {n : ℕ} :
     (∀ b : ℝ, 0 < b →

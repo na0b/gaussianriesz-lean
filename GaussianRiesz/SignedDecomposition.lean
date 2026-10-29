@@ -1,7 +1,11 @@
-import GaussianRiesz.ObstacleDecomposition
-import GaussianRiesz.ToL1
-import GaussianRiesz.GaussDLinear
-import GaussianRiesz.FracPowLinear
+module
+
+public import GaussianRiesz.ObstacleDecomposition
+public import GaussianRiesz.ToL1
+public import GaussianRiesz.GaussDLinear
+public import GaussianRiesz.FracPowLinear
+
+@[expose] public section
 open MeasureTheory
 theorem SignedDecomposition {n : ℕ} (f : Lp ℝ 2 (GaussMeasure n)) (t : ℝ)
     (ht : ‖ToL1 f‖ < t) :

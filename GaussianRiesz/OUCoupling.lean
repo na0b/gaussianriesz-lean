@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 noncomputable def OUCoupling (n : ℕ) (s : ℝ) :
     Measure (EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n)) :=

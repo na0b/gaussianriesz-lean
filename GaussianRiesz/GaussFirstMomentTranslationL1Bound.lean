@@ -1,5 +1,9 @@
-import GaussianRiesz.GaussEuclideanMomentBounds
-import GaussianRiesz.GaussSecondMomentIntegralBound
+module
+
+public import GaussianRiesz.GaussEuclideanMomentBounds
+public import GaussianRiesz.GaussSecondMomentIntegralBound
+
+@[expose] public section
 open MeasureTheory
 theorem GaussFirstMomentTranslationL1Bound {n : ℕ} (j : Fin n) :
     ∀ b c : ℝ, 0 < b → 0 ≤ c → ∀ d : EuclideanSpace ℝ (Fin n),

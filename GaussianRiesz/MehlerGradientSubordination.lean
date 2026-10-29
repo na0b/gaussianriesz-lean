@@ -1,6 +1,10 @@
-import GaussianRiesz.SemigroupGradientCommute
-import GaussianRiesz.GaussIsProb
-import GaussianRiesz.SubordinationWeightIntegral
+module
+
+public import GaussianRiesz.SemigroupGradientCommute
+public import GaussianRiesz.GaussIsProb
+public import GaussianRiesz.SubordinationWeightIntegral
+
+@[expose] public section
 open MeasureTheory
 theorem MehlerGradientSubordination {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
     (hf : ContDiff ℝ (⊤ : ℕ∞) f) (hfc : HasCompactSupport f) (j : Fin n) :

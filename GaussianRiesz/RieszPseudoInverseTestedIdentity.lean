@@ -1,10 +1,14 @@
-import GaussianRiesz.MehlerFixedTimeTesting
-import Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap
-import GaussianRiesz.CompIntegrationByParts
-import GaussianRiesz.SemigroupGradientCommute
-import GaussianRiesz.SubordinationPseudoInverse
-import GaussianRiesz.GaussL2LocallyIntegrable
-import GaussianRiesz.HermiteL2ZeroAEOne
+module
+
+public import GaussianRiesz.MehlerFixedTimeTesting
+public import Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap
+public import GaussianRiesz.CompIntegrationByParts
+public import GaussianRiesz.SemigroupGradientCommute
+public import GaussianRiesz.SubordinationPseudoInverse
+public import GaussianRiesz.GaussL2LocallyIntegrable
+public import GaussianRiesz.HermiteL2ZeroAEOne
+
+@[expose] public section
 open MeasureTheory
 theorem RieszPseudoInverseTestedIdentity {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
     (hf : ContDiff ℝ (⊤ : ℕ∞) f) (hfc : HasCompactSupport f)

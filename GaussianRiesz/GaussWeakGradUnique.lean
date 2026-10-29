@@ -1,7 +1,11 @@
-import GaussianRiesz.HasGaussWeakGrad
-import GaussianRiesz.GaussIsProb
-import GaussianRiesz.GaussL2LocallyIntegrable
-import GaussianRiesz.GaussCoordMemLp
+module
+
+public import GaussianRiesz.HasGaussWeakGrad
+public import GaussianRiesz.GaussIsProb
+public import GaussianRiesz.GaussL2LocallyIntegrable
+public import GaussianRiesz.GaussCoordMemLp
+
+@[expose] public section
 open MeasureTheory
 theorem GaussWeakGradUnique {n : ℕ} (v : EuclideanSpace ℝ (Fin n) → ℝ)
     (G H : Lp (EuclideanSpace ℝ (Fin n)) 2 (GaussMeasure n))

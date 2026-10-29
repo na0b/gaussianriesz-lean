@@ -1,5 +1,9 @@
-import GaussianRiesz.SobolevW12
-import GaussianRiesz.GaussWeakGradUnique
+module
+
+public import GaussianRiesz.SobolevW12
+public import GaussianRiesz.GaussWeakGradUnique
+
+@[expose] public section
 open MeasureTheory
 open scoped Classical in
 noncomputable def GaussD {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) :

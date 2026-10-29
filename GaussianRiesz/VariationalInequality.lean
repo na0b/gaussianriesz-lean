@@ -1,7 +1,11 @@
-import GaussianRiesz.ObstacleFunctional
-import GaussianRiesz.ObstacleCone
-import GaussianRiesz.EnergyBil
-import GaussianRiesz.EnergyFormBilinear
+module
+
+public import GaussianRiesz.ObstacleFunctional
+public import GaussianRiesz.ObstacleCone
+public import GaussianRiesz.EnergyBil
+public import GaussianRiesz.EnergyFormBilinear
+
+@[expose] public section
 open MeasureTheory
 theorem VariationalInequality {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (a : ℝ)
     (u : Lp ℝ 2 (GaussMeasure n)) (hu : u ∈ ObstacleCone n)

@@ -1,10 +1,14 @@
-import GaussianRiesz.ObstacleFunctional
-import GaussianRiesz.ObstacleCone
-import GaussianRiesz.FractionalGap
-import GaussianRiesz.EnergyConstantInvariance
-import GaussianRiesz.L2IntoL1
-import GaussianRiesz.L2InnerGaussIntegral
-import GaussianRiesz.HermiteZeroModeConstant
+module
+
+public import GaussianRiesz.ObstacleFunctional
+public import GaussianRiesz.ObstacleCone
+public import GaussianRiesz.FractionalGap
+public import GaussianRiesz.EnergyConstantInvariance
+public import GaussianRiesz.L2IntoL1
+public import GaussianRiesz.L2InnerGaussIntegral
+public import GaussianRiesz.HermiteZeroModeConstant
+
+@[expose] public section
 open MeasureTheory
 theorem ObstacleCoercivity {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (m a : ℝ)
     (hm : m = ∫ x, (F : EuclideanSpace ℝ (Fin n) → ℝ) x ∂(GaussMeasure n)) (ha : m < a) :

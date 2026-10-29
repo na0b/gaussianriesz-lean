@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem GaussL2LocallyIntegrable {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
@@ -82,11 +86,11 @@ theorem GaussL2LocallyIntegrable {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → �
     have e1 : eLpNorm g 1 (volume.restrict K)
         ≤ eLpNorm g 2 (volume.restrict K) * (volume.restrict K) Set.univ ^
             (1/(1:ℝ≥0∞).toReal - 1/(2:ℝ≥0∞).toReal) :=
-      eLpNorm_le_eLpNorm_mul_rpow_measure_univ (by norm_num) hmem.1
+      eLpNorm_le_eLpNorm_mul_rpow_measure_univ (by norm_num) hmem.aestronglyMeasurable
     have e2 : eLpNorm g 2 (volume.restrict K)
         ≤ c ^ ((2:ℝ)⁻¹) * eLpNorm g 2 (GaussMeasure n) := by
       refine (eLpNorm_mono_measure g hle).trans ?_
-      rw [eLpNorm_smul_measure_of_ne_top (by norm_num) g c]
+      rw [eLpNorm_smul_measure_of_ne_top (by norm_num) g c hg.aestronglyMeasurable]
       norm_num
     have hQ : eLpNorm g 1 (volume.restrict K)
         ≤ (c ^ ((2:ℝ)⁻¹) * volume K ^ ((2:ℝ)⁻¹)) * eLpNorm g 2 (GaussMeasure n) := by
@@ -105,7 +109,7 @@ theorem GaussL2LocallyIntegrable {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → �
       · exact ENNReal.rpow_ne_top_of_nonneg (by norm_num) hct
       · exact ENNReal.rpow_ne_top_of_nonneg (by norm_num) hKt
     have h2 : ENNReal.ofReal (∫ x in K, |g x|) = eLpNorm g 1 (volume.restrict K) := by
-      rw [eLpNorm_one_eq_lintegral_enorm]
+      rw [eLpNorm_one_eq_lintegral_enorm hmem.aestronglyMeasurable]
       simpa only [Real.norm_eq_abs] using ofReal_integral_norm_eq_lintegral_enorm hint
     have h3 : ∫ x in K, |g x| = (eLpNorm g 1 (volume.restrict K)).toReal := by
       rw [← h2, ENNReal.toReal_ofReal (integral_nonneg (fun x => abs_nonneg _))]

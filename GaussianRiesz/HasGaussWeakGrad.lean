@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussMeasure
+module
+
+public import GaussianRiesz.GaussMeasure
+
+@[expose] public section
 open MeasureTheory
 def HasGaussWeakGrad {n : ℕ} (v : EuclideanSpace ℝ (Fin n) → ℝ)
     (G : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)) : Prop :=

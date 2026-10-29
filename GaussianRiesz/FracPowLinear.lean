@@ -1,5 +1,9 @@
-import GaussianRiesz.FracPow
-import GaussianRiesz.OneLeMultiIndexSum
+module
+
+public import GaussianRiesz.FracPow
+public import GaussianRiesz.OneLeMultiIndexSum
+
+@[expose] public section
 open MeasureTheory
 theorem FracPowLinear {n : ℕ} (s : ℝ) :
     (s ≤ 0 → ∀ v : Lp ℝ 2 (GaussMeasure n), v ∈ FracPowDomain s)

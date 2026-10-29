@@ -1,4 +1,8 @@
-import GaussianRiesz.MultiIndexSum
+module
+
+public import GaussianRiesz.MultiIndexSum
+
+@[expose] public section
 theorem OneLeMultiIndexSum {n : ℕ} (α : Fin n → ℕ) (hα : α ≠ 0) :
     (1 : ℝ) ≤ (MultiIndexSum α : ℝ) := by
   -- a finite sum of naturals vanishes only if every term does, so `|α| ≠ 0`

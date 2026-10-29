@@ -1,8 +1,12 @@
-import GaussianRiesz.RieszSqrtIdentity
-import GaussianRiesz.FracPowLinear
-import GaussianRiesz.PseudoInverseSqrt
-import GaussianRiesz.SqrtDomainSobolev
-import GaussianRiesz.GaussDLinear
+module
+
+public import GaussianRiesz.RieszSqrtIdentity
+public import GaussianRiesz.FracPowLinear
+public import GaussianRiesz.PseudoInverseSqrt
+public import GaussianRiesz.SqrtDomainSobolev
+public import GaussianRiesz.GaussDLinear
+
+@[expose] public section
 open MeasureTheory
 theorem TransformedLocalization {n : ℕ} (f g u : Lp ℝ 2 (GaussMeasure n))
     (hu : u ∈ FracPowDomain ((1 : ℝ) / 2))

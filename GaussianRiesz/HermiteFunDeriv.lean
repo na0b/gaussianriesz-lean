@@ -1,7 +1,11 @@
-import GaussianRiesz.HermiteFun
-import GaussianRiesz.HermiteDerivative
-import GaussianRiesz.Hermite1Zero
-import GaussianRiesz.HermiteFunContDiff
+module
+
+public import GaussianRiesz.HermiteFun
+public import GaussianRiesz.HermiteDerivative
+public import GaussianRiesz.Hermite1Zero
+public import GaussianRiesz.HermiteFunContDiff
+
+@[expose] public section
 theorem HermiteFunDeriv {n : ℕ} (α : Fin n → ℕ) (j : Fin n) (x : EuclideanSpace ℝ (Fin n)) :
     DifferentiableAt ℝ (HermiteFun α) x
       ∧ fderiv ℝ (HermiteFun α) x (EuclideanSpace.single j 1)

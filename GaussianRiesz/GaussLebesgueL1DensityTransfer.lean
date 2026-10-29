@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussLebesgueBallComparison
+module
+
+public import GaussianRiesz.GaussLebesgueBallComparison
+
+@[expose] public section
 open MeasureTheory
 theorem GaussLebesgueL1DensityTransfer {n : ℕ} (v : Lp ℝ 1 (GaussMeasure n)) :
     Integrable (fun y => Real.exp (-‖y‖ ^ 2) * |(v : EuclideanSpace ℝ (Fin n) → ℝ) y|)
@@ -43,8 +47,8 @@ theorem GaussLebesgueL1DensityTransfer {n : ℕ} (v : Lp ℝ 1 (GaussMeasure n))
   have hfin : ∫⁻ y, ‖Real.exp (-‖y‖ ^ 2) * F y‖ₑ
       ∂(volume : Measure (EuclideanSpace ℝ (Fin n))) ≠ ⊤ := by
     rw [hlin, show ∫⁻ y, ‖F y‖ₑ ∂(GaussMeasure n) = eLpNorm F 1 (GaussMeasure n) from by
-      rw [eLpNorm_one_eq_lintegral_enorm]]
-    exact ENNReal.mul_ne_top ENNReal.ofReal_ne_top hFmem.2.ne
+      rw [eLpNorm_one_eq_lintegral_enorm hFm]]
+    exact ENNReal.mul_ne_top ENNReal.ofReal_ne_top hFmem.ne
   have hint0 : Integrable (fun y => Real.exp (-‖y‖ ^ 2) * F y)
       (volume : Measure (EuclideanSpace ℝ (Fin n))) :=
     ⟨(Real.continuous_exp.comp ((continuous_id.norm.pow 2).neg)).aestronglyMeasurable.mul hFmv,

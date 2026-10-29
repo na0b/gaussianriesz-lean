@@ -1,4 +1,8 @@
-import GaussianRiesz.Energy
+module
+
+public import GaussianRiesz.Energy
+
+@[expose] public section
 open MeasureTheory
 noncomputable def EnergyBil {n : ℕ} (v w : Lp ℝ 2 (GaussMeasure n)) : ℝ :=
   ∑' α : {α : Fin n → ℕ // α ≠ 0},

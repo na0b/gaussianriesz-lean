@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem YoungL2Contraction {n : ℕ} (κ : EuclideanSpace ℝ (Fin n) → ℝ)
@@ -65,7 +69,7 @@ theorem YoungL2Contraction {n : ℕ} (κ : EuclideanSpace ℝ (Fin n) → ℝ)
   -- the degenerate case where `h` is not square integrable
   by_cases hfin : ∫⁻ y, ‖h y‖ₑ ^ (2:ℝ) ∂(volume : Measure (EuclideanSpace ℝ (Fin n))) = ⊤
   · have htop : eLpNorm h 2 (volume : Measure (EuclideanSpace ℝ (Fin n))) = ⊤ := by
-      rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num)]
+      rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num) hh]
       simp only [ENNReal.toReal_ofNat, hfin]
       rw [ENNReal.top_rpow_of_pos (by norm_num)]
     rw [htop]
@@ -99,7 +103,11 @@ theorem YoungL2Contraction {n : ℕ} (κ : EuclideanSpace ℝ (Fin n) → ℝ)
       _ = (∫⁻ t, ENNReal.ofReal (κ t) ∂volume) * ∫⁻ y, ‖h y‖ₑ ^ (2:ℝ) ∂volume :=
           lintegral_mul_const' _ _ hfin
       _ = ∫⁻ y, ‖h y‖ₑ ^ (2:ℝ) ∂volume := by rw [hL1, one_mul]
-  rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num),
-    eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num)]
+  have hconv : AEStronglyMeasurable
+      (fun x => convolution κ h (ContinuousLinearMap.lsmul ℝ ℝ) volume x) volume :=
+    (hκm.aestronglyMeasurable.convolution_integrand (ContinuousLinearMap.lsmul ℝ ℝ)
+      hh).integral_prod_right'
+  rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num) hconv,
+    eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num) hh]
   simp only [ENNReal.toReal_ofNat]
   exact ENNReal.rpow_le_rpow hmain (by norm_num)

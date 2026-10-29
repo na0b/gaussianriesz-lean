@@ -1,7 +1,11 @@
-import GaussianRiesz.OUCoupling
-import GaussianRiesz.MehlerFormula
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
-import GaussianRiesz.GaussCharFun
+module
+
+public import GaussianRiesz.OUCoupling
+public import GaussianRiesz.MehlerFormula
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+public import GaussianRiesz.GaussCharFun
+
+@[expose] public section
 open MeasureTheory
 theorem OUCouplingKernel {n : ℕ} (s : ℝ) (hs : 0 < s) :
     IsProbabilityMeasure (OUCoupling n s)
@@ -28,7 +32,7 @@ theorem OUCouplingKernel {n : ℕ} (s : ℝ) (hs : 0 < s) :
     have : IsProbabilityMeasure (((GaussMeasure n).prod (GaussMeasure n)).map
         (fun p : EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n) =>
           (a • p.1 + b • p.2, b • p.1 - a • p.2))) :=
-      Measure.isProbabilityMeasure_map hmeas.aemeasurable
+      (Measure.isProbabilityMeasure_map_iff hmeas.aemeasurable).mpr inferInstance
     rw [← charFun_eq_prod_iff]
     intro t
     rw [Measure.map_map (by fun_prop) hmeas, charFun_apply,
@@ -104,7 +108,7 @@ theorem OUCouplingKernel {n : ℕ} (s : ℝ) (hs : 0 < s) :
   -- (1) a probability measure
   have hprob : IsProbabilityMeasure (OUCoupling n s) := by
     rw [OUCoupling]
-    exact Measure.isProbabilityMeasure_map hTmeas.aemeasurable
+    exact (Measure.isProbabilityMeasure_map_iff hTmeas.aemeasurable).mpr inferInstance
   -- (3) the first marginal
   have hfst : (OUCoupling n s).map Prod.fst = GaussMeasure n := by
     rw [OUCoupling, Measure.map_map measurable_fst hTmeas]
@@ -185,7 +189,7 @@ theorem OUCouplingKernel {n : ℕ} (s : ℝ) (hs : 0 < s) :
           (fun p : EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n) =>
             (p.1, Real.exp (-s) • p.1 + Real.sqrt (1 - Real.exp (-2 * s)) • p.2))) := by
       rw [← OUCoupling]
-      exact (hvν.1.mul hwν.1).congr (Filter.Eventually.of_forall fun p => rfl)
+      exact (hvν.aestronglyMeasurable.mul hwν.aestronglyMeasurable).congr (Filter.Eventually.of_forall fun p => rfl)
     rw [OUCoupling, integral_map hTmeas.aemeasurable hm]
   -- the integrand is integrable on the product
   have hmp2 : MeasurePreserving

@@ -1,4 +1,8 @@
-import GaussianRiesz.Energy
+module
+
+public import GaussianRiesz.Energy
+
+@[expose] public section
 open MeasureTheory
 theorem EnergyWeaklyLSC {n : ℕ} (vk : ℕ → Lp ℝ 2 (GaussMeasure n))
     (v : Lp ℝ 2 (GaussMeasure n))

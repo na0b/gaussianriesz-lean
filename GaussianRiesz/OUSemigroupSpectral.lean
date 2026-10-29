@@ -1,5 +1,9 @@
-import GaussianRiesz.OUSemigroup
-import GaussianRiesz.Hermite1Zero
+module
+
+public import GaussianRiesz.OUSemigroup
+public import GaussianRiesz.Hermite1Zero
+
+@[expose] public section
 open MeasureTheory
 theorem OUSemigroupSpectral {n : ℕ} (s : ℝ) (hs : 0 ≤ s) (v : Lp ℝ 2 (GaussMeasure n))
     (α : Fin n → ℕ) :

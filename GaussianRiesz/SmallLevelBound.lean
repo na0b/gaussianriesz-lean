@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 -- binder retained for statement fidelity to the paper; intentionally unused in the proof
 set_option linter.unusedVariables false

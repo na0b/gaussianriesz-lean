@@ -1,7 +1,11 @@
-import GaussianRiesz.L1Extension
-import GaussianRiesz.L2IntoL1
-import GaussianRiesz.HermiteL2Complete
-import GaussianRiesz.RieszL1Limit
+module
+
+public import GaussianRiesz.L1Extension
+public import GaussianRiesz.L2IntoL1
+public import GaussianRiesz.HermiteL2Complete
+public import GaussianRiesz.RieszL1Limit
+
+@[expose] public section
 open MeasureTheory
 theorem EndpointTheorem {n : ℕ} :
     ∃! T : Lp ℝ 1 (GaussMeasure n) →ₗ[ℝ]

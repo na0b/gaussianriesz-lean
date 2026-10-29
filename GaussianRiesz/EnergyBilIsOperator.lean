@@ -1,5 +1,9 @@
-import GaussianRiesz.EnergyBil
-import GaussianRiesz.FracPow
+module
+
+public import GaussianRiesz.EnergyBil
+public import GaussianRiesz.FracPow
+
+@[expose] public section
 open MeasureTheory
 theorem EnergyBilIsOperator {n : ℕ} (v w : Lp ℝ 2 (GaussMeasure n))
     (hv : v ∈ FracPowDomain ((1 : ℝ) / 2)) :

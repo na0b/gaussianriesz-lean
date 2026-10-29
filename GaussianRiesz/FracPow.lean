@@ -1,5 +1,9 @@
-import GaussianRiesz.FracPowDomain
-import GaussianRiesz.HermiteFunOU
+module
+
+public import GaussianRiesz.FracPowDomain
+public import GaussianRiesz.HermiteFunOU
+
+@[expose] public section
 open MeasureTheory
 open scoped Classical in
 noncomputable def FracPow {n : ℕ} (s : ℝ) (v : Lp ℝ 2 (GaussMeasure n)) :

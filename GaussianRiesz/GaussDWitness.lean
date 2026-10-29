@@ -1,6 +1,10 @@
-import GaussianRiesz.GaussD
-import GaussianRiesz.GaussWeakGradUnique
-import GaussianRiesz.GaussWeakGradAECongr
+module
+
+public import GaussianRiesz.GaussD
+public import GaussianRiesz.GaussWeakGradUnique
+public import GaussianRiesz.GaussWeakGradAECongr
+
+@[expose] public section
 open MeasureTheory
 theorem GaussDWitness {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n))
     (Γ : Lp (EuclideanSpace ℝ (Fin n)) 2 (GaussMeasure n))

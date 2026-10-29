@@ -1,5 +1,9 @@
-import GaussianRiesz.MehlerKernelXDerivative
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.MehlerKernelXDerivative
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem MehlerKernelSliceVanishing {n : ℕ} (j : Fin n) (x : EuclideanSpace ℝ (Fin n)) :
     ∀ s : ℝ, 0 < s →

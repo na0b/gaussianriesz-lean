@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory
 noncomputable def GaussRieszKernel {n : ℕ} (j : Fin n)
     (x y : EuclideanSpace ℝ (Fin n)) : ℝ :=

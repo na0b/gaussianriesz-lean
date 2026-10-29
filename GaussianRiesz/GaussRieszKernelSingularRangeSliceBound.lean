@@ -1,6 +1,10 @@
-import GaussianRiesz.Preamble
-import GaussianRiesz.ExpDecayPowerBoundAndRpowAbsorption
-import GaussianRiesz.MehlerNumeratorCoordinateBallBound
+module
+
+public import GaussianRiesz.Preamble
+public import GaussianRiesz.ExpDecayPowerBoundAndRpowAbsorption
+public import GaussianRiesz.MehlerNumeratorCoordinateBallBound
+
+@[expose] public section
 open MeasureTheory
 theorem GaussRieszKernelSingularRangeSliceBound {n : ℕ} (j : Fin n)
     (R' ρ' τ₀ : ℝ) (hR1 : 1 ≤ R') (hρ'0 : 0 < ρ')

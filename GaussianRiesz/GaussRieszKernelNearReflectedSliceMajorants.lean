@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussRieszKernelNearSliceBounds
+module
+
+public import GaussianRiesz.GaussRieszKernelNearSliceBounds
+
+@[expose] public section
 open MeasureTheory Filter Topology
 theorem GaussRieszKernelNearReflectedSliceMajorants {n : ℕ} (j : Fin n) (M : ℝ)
     (hM : 3 ≤ M) :

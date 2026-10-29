@@ -1,7 +1,11 @@
-import GaussianRiesz.GaussRieszKernelNearSliceBounds
-import GaussianRiesz.GaussRieszKernelNearReflectedSliceMajorants
-import GaussianRiesz.TauPowerIntegralBounds
-import GaussianRiesz.OneSubReflectionIntegralTransfer
+module
+
+public import GaussianRiesz.GaussRieszKernelNearSliceBounds
+public import GaussianRiesz.GaussRieszKernelNearReflectedSliceMajorants
+public import GaussianRiesz.TauPowerIntegralBounds
+public import GaussianRiesz.OneSubReflectionIntegralTransfer
+
+@[expose] public section
 open MeasureTheory Filter Topology
 theorem GaussRieszKernelNearSliceL1Bound {n : ℕ} (j : Fin n) (M : ℝ) (hM : 3 ≤ M) :
       ∃ A : ℝ, 0 < A ∧ ∀ x y : EuclideanSpace ℝ (Fin n), ‖x‖ ≤ M → ‖y‖ ≤ M →

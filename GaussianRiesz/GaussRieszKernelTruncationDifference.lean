@@ -1,5 +1,9 @@
-import GaussianRiesz.GaussRieszKernelHormanderDyadicBound
-import GaussianRiesz.GaussRieszKernelFarMajorant
+module
+
+public import GaussianRiesz.GaussRieszKernelHormanderDyadicBound
+public import GaussianRiesz.GaussRieszKernelFarMajorant
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem GaussRieszKernelTruncationDifference {n : ℕ} (j : Fin n) (R : ℝ) (hR : 1 ≤ R) :

@@ -1,7 +1,11 @@
-import GaussianRiesz.Hermite1
-import GaussianRiesz.HermiteGenerating
-import GaussianRiesz.HermiteAbsMajorant
-import GaussianRiesz.HermiteDerivative
+module
+
+public import GaussianRiesz.Hermite1
+public import GaussianRiesz.HermiteGenerating
+public import GaussianRiesz.HermiteAbsMajorant
+public import GaussianRiesz.HermiteDerivative
+
+@[expose] public section
 open MeasureTheory
 theorem Hermite1Orthonormal (k l : ℕ) :
     ∫ x : ℝ, Real.pi ^ (-(1 : ℝ) / 2) * Real.exp (-x ^ 2) * (Hermite1 k x * Hermite1 l x)

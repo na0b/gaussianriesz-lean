@@ -1,8 +1,12 @@
-import GaussianRiesz.HasGaussWeakGrad
-import GaussianRiesz.GaussIsProb
-import GaussianRiesz.L2IntoL1
-import GaussianRiesz.GaussL2LocallyIntegrable
-import GaussianRiesz.GaussCoordMemLp
+module
+
+public import GaussianRiesz.HasGaussWeakGrad
+public import GaussianRiesz.GaussIsProb
+public import GaussianRiesz.L2IntoL1
+public import GaussianRiesz.GaussL2LocallyIntegrable
+public import GaussianRiesz.GaussCoordMemLp
+
+@[expose] public section
 open MeasureTheory
 theorem GaussWeakGradClosed {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n))
     (G : Lp (EuclideanSpace ℝ (Fin n)) 2 (GaussMeasure n))
@@ -122,7 +126,11 @@ theorem GaussWeakGradClosed {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n))
         (GaussMeasure n)).toReal ≤ ‖Gk k - G‖ := by
     intro k
     rw [Lp.norm_def]
-    refine ENNReal.toReal_mono (Lp.eLpNorm_ne_top _) (eLpNorm_mono_ae ?_)
+    refine ENNReal.toReal_mono (Lp.eLpNorm_ne_top _) (eLpNorm_mono_ae
+      (((show Continuous fun v : EuclideanSpace ℝ (Fin n) => v.ofLp j by fun_prop).comp_aestronglyMeasurable
+        (Lp.aestronglyMeasurable (Gk k))).sub
+        ((show Continuous fun v : EuclideanSpace ℝ (Fin n) => v.ofLp j by fun_prop).comp_aestronglyMeasurable
+        (Lp.aestronglyMeasurable G))) ?_)
     filter_upwards [Lp.coeFn_sub (Gk k) G] with x hx
     have hx' : ((Gk k - G : Lp (EuclideanSpace ℝ (Fin n)) 2 (GaussMeasure n)) :
         EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)) x

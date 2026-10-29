@@ -1,7 +1,11 @@
-import GaussianRiesz.ComplexMainBound
-import GaussianRiesz.ComplexToL1
-import GaussianRiesz.ComplexRieszTransformLinear
-import Mathlib.Topology.Algebra.InfiniteSum.Real
+module
+
+public import GaussianRiesz.ComplexMainBound
+public import GaussianRiesz.ComplexToL1
+public import GaussianRiesz.ComplexRieszTransformLinear
+public import Mathlib.Topology.Algebra.InfiniteSum.Real
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexRieszTransformAELimitUnique {n : ℕ}
     (f : Lp ℂ 1 (GaussMeasure n)) (v : ℕ → Lp ℂ 2 (GaussMeasure n))

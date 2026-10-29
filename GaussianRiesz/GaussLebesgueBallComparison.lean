@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussMeasure
+module
+
+public import GaussianRiesz.GaussMeasure
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem GaussLebesgueBallComparison {n : ℕ} :

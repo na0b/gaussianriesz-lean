@@ -1,10 +1,14 @@
-import GaussianRiesz.GaussD
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.Hermite1Zero
-import GaussianRiesz.GaussL2LocallyIntegrable
-import GaussianRiesz.GaussCoordMemLp
-import GaussianRiesz.GaussWeakGradAECongr
-import GaussianRiesz.GaussDWitness
+module
+
+public import GaussianRiesz.GaussD
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.Hermite1Zero
+public import GaussianRiesz.GaussL2LocallyIntegrable
+public import GaussianRiesz.GaussCoordMemLp
+public import GaussianRiesz.GaussWeakGradAECongr
+public import GaussianRiesz.GaussDWitness
+
+@[expose] public section
 open MeasureTheory
 theorem GaussDLinear {n : ℕ} :
     (∀ u v : Lp ℝ 2 (GaussMeasure n), u ∈ SobolevW12 n → v ∈ SobolevW12 n →

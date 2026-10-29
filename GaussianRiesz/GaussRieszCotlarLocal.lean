@@ -1,10 +1,14 @@
-import GaussianRiesz.GaussRieszOffDiagonalL1
-import GaussianRiesz.GaussRieszKernelNearBounds
-import GaussianRiesz.LocalMaximalFunction
-import GaussianRiesz.GaussRieszKernelTruncationDifference
-import GaussianRiesz.CoordinateEndpointLevelSetSmall
-import GaussianRiesz.LocalMaximalLevelSetSmall
-import GaussianRiesz.GaussLebesgueL1DensityTransfer
+module
+
+public import GaussianRiesz.GaussRieszOffDiagonalL1
+public import GaussianRiesz.GaussRieszKernelNearBounds
+public import GaussianRiesz.LocalMaximalFunction
+public import GaussianRiesz.GaussRieszKernelTruncationDifference
+public import GaussianRiesz.CoordinateEndpointLevelSetSmall
+public import GaussianRiesz.LocalMaximalLevelSetSmall
+public import GaussianRiesz.GaussLebesgueL1DensityTransfer
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem GaussRieszCotlarLocal {n : ℕ}

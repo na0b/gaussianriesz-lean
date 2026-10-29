@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory
 theorem OneSubReflectionIntegralTransfer :
     (∀ (g : ℝ → ℝ) (c : ℝ),

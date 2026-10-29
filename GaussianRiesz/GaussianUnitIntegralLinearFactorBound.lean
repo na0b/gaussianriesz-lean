@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory
 theorem GaussianUnitIntegralLinearFactorBound :
     ∀ t R' : ℝ, 0 ≤ t → 0 ≤ R' →

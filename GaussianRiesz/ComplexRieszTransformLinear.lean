@@ -1,5 +1,9 @@
-import GaussianRiesz.ComplexRieszTransform
-import GaussianRiesz.RieszTransformLinear
+module
+
+public import GaussianRiesz.ComplexRieszTransform
+public import GaussianRiesz.RieszTransformLinear
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexRieszTransformLinear {n : ℕ} :
     (∀ v w : Lp ℂ 2 (GaussMeasure n),

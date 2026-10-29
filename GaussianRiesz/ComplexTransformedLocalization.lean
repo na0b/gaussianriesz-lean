@@ -1,5 +1,9 @@
-import GaussianRiesz.ComplexRieszTransform
-import GaussianRiesz.TransformedLocalization
+module
+
+public import GaussianRiesz.ComplexRieszTransform
+public import GaussianRiesz.TransformedLocalization
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexTransformedLocalization {n : ℕ} (v w : Lp ℂ 2 (GaussMeasure n))
     (g₁ g₂ u₁ u₂ : Lp ℝ 2 (GaussMeasure n))

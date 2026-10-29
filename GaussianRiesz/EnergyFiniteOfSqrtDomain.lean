@@ -1,6 +1,10 @@
-import GaussianRiesz.Energy
-import GaussianRiesz.MultiIndexSum
-import GaussianRiesz.OneLeMultiIndexSum
+module
+
+public import GaussianRiesz.Energy
+public import GaussianRiesz.MultiIndexSum
+public import GaussianRiesz.OneLeMultiIndexSum
+
+@[expose] public section
 open MeasureTheory
 theorem EnergyFiniteOfSqrtDomain {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n))
     (hv : v ∈ FracPowDomain ((1 : ℝ) / 2)) :

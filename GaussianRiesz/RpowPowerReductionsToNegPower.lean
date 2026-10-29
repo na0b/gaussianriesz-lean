@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 theorem RpowPowerReductionsToNegPower {n : ℕ} :
     (1:ℝ) ≤ (n:ℝ) → ∀ M : ℝ, 3 ≤ M → ∀ d : ℝ, 0 < d → d ≤ 2 →
       ((9/128 * d ^ 2) ^ (1 - ((n:ℝ)/2 + 3/2))

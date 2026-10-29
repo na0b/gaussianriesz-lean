@@ -1,7 +1,11 @@
-import GaussianRiesz.GaussRieszTruncationSmoothSplit
-import GaussianRiesz.SmoothCoreTruncationBridge
-import GaussianRiesz.GaussMaximalTruncationLocal
-import GaussianRiesz.CoordinateEndpointBound
+module
+
+public import GaussianRiesz.GaussRieszTruncationSmoothSplit
+public import GaussianRiesz.SmoothCoreTruncationBridge
+public import GaussianRiesz.GaussMaximalTruncationLocal
+public import GaussianRiesz.CoordinateEndpointBound
+
+@[expose] public section
 open MeasureTheory Metric Filter
 open scoped ENNReal
 theorem GaussRieszPrincipalValueIsOperator {n : ℕ}

@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 theorem MehlerNumeratorCoordinateBallBound {n : ℕ} (j : Fin n) (R : ℝ) :
     ∀ (x y : EuclideanSpace ℝ (Fin n)), ‖x‖ ≤ R → ∀ r : ℝ, 0 ≤ r → r ≤ 1 →
       |y j - r * x j| ≤ ‖y‖ + R := by

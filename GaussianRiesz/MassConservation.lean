@@ -1,8 +1,12 @@
-import GaussianRiesz.ObstacleMultiplier
-import GaussianRiesz.EnergyConstantInvariance
-import GaussianRiesz.Hermite1Zero
-import GaussianRiesz.L2IntoL1
-import GaussianRiesz.HermiteZeroModeConstant
+module
+
+public import GaussianRiesz.ObstacleMultiplier
+public import GaussianRiesz.EnergyConstantInvariance
+public import GaussianRiesz.Hermite1Zero
+public import GaussianRiesz.L2IntoL1
+public import GaussianRiesz.HermiteZeroModeConstant
+
+@[expose] public section
 open MeasureTheory
 theorem MassConservation {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (m a : ℝ)
     (hm : m = ∫ x, (F : EuclideanSpace ℝ (Fin n) → ℝ) x ∂(GaussMeasure n))

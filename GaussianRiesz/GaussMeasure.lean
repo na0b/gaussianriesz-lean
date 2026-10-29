@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory
 noncomputable def GaussMeasure (n : ℕ) : Measure (EuclideanSpace ℝ (Fin n)) :=
   volume.withDensity

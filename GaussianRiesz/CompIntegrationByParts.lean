@@ -1,5 +1,9 @@
-import GaussianRiesz.Preamble
-import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+module
+
+public import GaussianRiesz.Preamble
+public import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+
+@[expose] public section
 open MeasureTheory
 theorem CompIntegrationByParts {n : ℕ} (q q' : ℝ → ℝ)
     (hq : ∀ t, HasDerivAt q (q' t) t) (hq'c : Continuous q')

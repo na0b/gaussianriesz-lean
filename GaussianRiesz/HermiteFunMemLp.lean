@@ -1,5 +1,9 @@
-import GaussianRiesz.HermiteFun
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.HermiteFun
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem HermiteFunMemLp {n : ℕ} (α : Fin n → ℕ) :
     MemLp (HermiteFun α) 2 (GaussMeasure n) := by

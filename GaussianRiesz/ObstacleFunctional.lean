@@ -1,4 +1,8 @@
-import GaussianRiesz.Energy
+module
+
+public import GaussianRiesz.Energy
+
+@[expose] public section
 open MeasureTheory
 noncomputable def ObstacleFunctional {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (a : ℝ)
     (v : Lp ℝ 2 (GaussMeasure n)) : ℝ :=

@@ -1,9 +1,13 @@
-import GaussianRiesz.ComplexMainBound
-import GaussianRiesz.ComplexToL1
-import GaussianRiesz.ComplexRieszTransformLinear
-import Mathlib.Topology.Algebra.InfiniteSum.Real
-import GaussianRiesz.ComplexRieszTransformAELimitUnique
-import GaussianRiesz.ComplexL1ApproxByL2Truncations
+module
+
+public import GaussianRiesz.ComplexMainBound
+public import GaussianRiesz.ComplexToL1
+public import GaussianRiesz.ComplexRieszTransformLinear
+public import Mathlib.Topology.Algebra.InfiniteSum.Real
+public import GaussianRiesz.ComplexRieszTransformAELimitUnique
+public import GaussianRiesz.ComplexL1ApproxByL2Truncations
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexRieszL1Limit {n : ℕ} (f : Lp ℂ 1 (GaussMeasure n)) :
     ∃ (g : EuclideanSpace ℝ (Fin n) →ₘ[GaussMeasure n] EuclideanSpace ℂ (Fin n))

@@ -1,13 +1,17 @@
-import GaussianRiesz.LewyStampacchia
-import GaussianRiesz.ObstacleMultiplierLinearOnFormDomain
-import GaussianRiesz.LatticeContraction
-import GaussianRiesz.L2IntoL1
-import GaussianRiesz.MultiplierPositive
-import GaussianRiesz.PosPartConstSubMemLp
-import GaussianRiesz.EnergyFormBilinear
-import GaussianRiesz.L2InnerGaussIntegral
-import GaussianRiesz.HermiteL2ZeroAEOne
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.LewyStampacchia
+public import GaussianRiesz.ObstacleMultiplierLinearOnFormDomain
+public import GaussianRiesz.LatticeContraction
+public import GaussianRiesz.L2IntoL1
+public import GaussianRiesz.MultiplierPositive
+public import GaussianRiesz.PosPartConstSubMemLp
+public import GaussianRiesz.EnergyFormBilinear
+public import GaussianRiesz.L2InnerGaussIntegral
+public import GaussianRiesz.HermiteL2ZeroAEOne
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem MultiplierAPrioriL2Bound {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n))
     (hF : 0 ≤ᵐ[GaussMeasure n] (F : EuclideanSpace ℝ (Fin n) → ℝ)) (a : ℝ) (ha : 0 < a)

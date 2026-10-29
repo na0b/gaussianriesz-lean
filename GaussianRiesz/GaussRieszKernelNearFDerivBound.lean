@@ -1,9 +1,13 @@
-import GaussianRiesz.GaussRieszKernel
-import GaussianRiesz.GaussRieszKernelNearSliceBounds
-import GaussianRiesz.TauPowerIntegralBounds
-import GaussianRiesz.RpowPowerReductionsToNegPower
-import GaussianRiesz.GaussRieszKernelNearBallUniformTauMajorant
-import GaussianRiesz.OneSubReflectionIntegralTransfer
+module
+
+public import GaussianRiesz.GaussRieszKernel
+public import GaussianRiesz.GaussRieszKernelNearSliceBounds
+public import GaussianRiesz.TauPowerIntegralBounds
+public import GaussianRiesz.RpowPowerReductionsToNegPower
+public import GaussianRiesz.GaussRieszKernelNearBallUniformTauMajorant
+public import GaussianRiesz.OneSubReflectionIntegralTransfer
+
+@[expose] public section
 open MeasureTheory Filter Topology
 theorem GaussRieszKernelNearFDerivBound {n : ℕ} (j : Fin n) (R M : ℝ)
     (hR : 0 < R) (hMR : M = R + 3) :

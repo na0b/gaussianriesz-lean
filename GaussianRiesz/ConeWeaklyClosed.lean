@@ -1,6 +1,10 @@
-import GaussianRiesz.NonnegTestCharacterization
-import GaussianRiesz.ObstacleCone
-import GaussianRiesz.L2InnerGaussIntegral
+module
+
+public import GaussianRiesz.NonnegTestCharacterization
+public import GaussianRiesz.ObstacleCone
+public import GaussianRiesz.L2InnerGaussIntegral
+
+@[expose] public section
 open MeasureTheory
 theorem ConeWeaklyClosed {n : ℕ} (vk : ℕ → Lp ℝ 2 (GaussMeasure n))
     (v : Lp ℝ 2 (GaussMeasure n))

@@ -1,7 +1,11 @@
-import GaussianRiesz.GaussRieszKernel
-import GaussianRiesz.GaussRieszKernelEndpointSliceBound
-import GaussianRiesz.GaussianUnitIntegralLinearFactorBound
-import GaussianRiesz.MehlerNumeratorCoordinateBallBound
+module
+
+public import GaussianRiesz.GaussRieszKernel
+public import GaussianRiesz.GaussRieszKernelEndpointSliceBound
+public import GaussianRiesz.GaussianUnitIntegralLinearFactorBound
+public import GaussianRiesz.MehlerNumeratorCoordinateBallBound
+
+@[expose] public section
 open MeasureTheory
 theorem GaussRieszKernelFarSliceMajorant {n : ℕ} (j : Fin n) :
     ∀ R ρ : ℝ, 0 < R → 0 < ρ → ∃ C : ℝ, 0 < C ∧

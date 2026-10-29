@@ -1,5 +1,9 @@
-import GaussianRiesz.ComplexRieszTransform
-import GaussianRiesz.RieszL2Identity
+module
+
+public import GaussianRiesz.ComplexRieszTransform
+public import GaussianRiesz.RieszL2Identity
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexRieszL2Identity {n : ℕ} (v : Lp ℂ 2 (GaussMeasure n)) :
     ‖ComplexRieszTransform v‖ ^ 2

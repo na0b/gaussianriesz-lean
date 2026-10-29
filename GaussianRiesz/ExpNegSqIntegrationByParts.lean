@@ -1,5 +1,9 @@
-import GaussianRiesz.Preamble
-import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+module
+
+public import GaussianRiesz.Preamble
+public import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+
+@[expose] public section
 open MeasureTheory
 theorem ExpNegSqIntegrationByParts (g g' : ℝ → ℝ)
     (hg : ∀ σ : ℝ, HasDerivAt g (g' σ) σ)

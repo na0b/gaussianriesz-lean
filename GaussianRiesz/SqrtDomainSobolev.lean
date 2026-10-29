@@ -1,15 +1,19 @@
-import GaussianRiesz.GaussD
-import GaussianRiesz.OneLeMultiIndexSum
-import GaussianRiesz.HermiteGradGram
-import GaussianRiesz.GaussDLinear
-import GaussianRiesz.FracPow
-import GaussianRiesz.HermiteFunDeriv
-import GaussianRiesz.GaussWeakGradClosed
-import GaussianRiesz.HermiteL2Orthonormal
-import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
-import Mathlib.Analysis.InnerProductSpace.l2Space
-import GaussianRiesz.GaussWeakGradAECongr
-import GaussianRiesz.GaussDWitness
+module
+
+public import GaussianRiesz.GaussD
+public import GaussianRiesz.OneLeMultiIndexSum
+public import GaussianRiesz.HermiteGradGram
+public import GaussianRiesz.GaussDLinear
+public import GaussianRiesz.FracPow
+public import GaussianRiesz.HermiteFunDeriv
+public import GaussianRiesz.GaussWeakGradClosed
+public import GaussianRiesz.HermiteL2Orthonormal
+public import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+public import Mathlib.Analysis.InnerProductSpace.l2Space
+public import GaussianRiesz.GaussWeakGradAECongr
+public import GaussianRiesz.GaussDWitness
+
+@[expose] public section
 open MeasureTheory
 theorem SqrtDomainSobolev {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n))
     (hv : v ∈ FracPowDomain ((1 : ℝ) / 2)) :

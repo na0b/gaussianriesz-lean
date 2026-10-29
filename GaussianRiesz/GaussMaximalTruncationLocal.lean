@@ -1,8 +1,12 @@
-import GaussianRiesz.GaussRieszCotlarLocal
-import GaussianRiesz.LocalMaximalWeakL2
-import GaussianRiesz.LocalMaximalWeakType
-import GaussianRiesz.CoordinateEndpointMaximalSquareBound
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.GaussRieszCotlarLocal
+public import GaussianRiesz.LocalMaximalWeakL2
+public import GaussianRiesz.LocalMaximalWeakType
+public import GaussianRiesz.CoordinateEndpointMaximalSquareBound
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem GaussMaximalTruncationLocal {n : ℕ}

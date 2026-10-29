@@ -1,7 +1,11 @@
-import GaussianRiesz.GaussRieszKernel
-import GaussianRiesz.TauPowerIntegralBounds
-import GaussianRiesz.GaussRieszKernelNearFDerivBound
-import GaussianRiesz.GaussRieszKernelNearSliceL1Bound
+module
+
+public import GaussianRiesz.GaussRieszKernel
+public import GaussianRiesz.TauPowerIntegralBounds
+public import GaussianRiesz.GaussRieszKernelNearFDerivBound
+public import GaussianRiesz.GaussRieszKernelNearSliceL1Bound
+
+@[expose] public section
 open MeasureTheory Filter Topology
 theorem GaussRieszKernelNearBounds {n : ℕ} (j : Fin n) (R : ℝ) (hR : 0 < R) :
     ∃ C : ℝ, 0 < C ∧

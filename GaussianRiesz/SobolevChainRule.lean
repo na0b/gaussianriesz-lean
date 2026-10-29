@@ -1,12 +1,16 @@
-import GaussianRiesz.GaussD
-import GaussianRiesz.GaussL2LocallyIntegrable
-import GaussianRiesz.MollifierL2Local
-import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
-import Mathlib.Analysis.Calculus.BumpFunction.Normed
-import GaussianRiesz.GaussWeakGradChainRule
-import GaussianRiesz.GaussWeakGradAECongr
-import GaussianRiesz.GaussDWitness
-import GaussianRiesz.GaussCoordMemLp
+module
+
+public import GaussianRiesz.GaussD
+public import GaussianRiesz.GaussL2LocallyIntegrable
+public import GaussianRiesz.MollifierL2Local
+public import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+public import Mathlib.Analysis.Calculus.BumpFunction.Normed
+public import GaussianRiesz.GaussWeakGradChainRule
+public import GaussianRiesz.GaussWeakGradAECongr
+public import GaussianRiesz.GaussDWitness
+public import GaussianRiesz.GaussCoordMemLp
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem SobolevChainRule {n : ℕ} (δ : ℝ) (hδ : 0 < δ) (u : Lp ℝ 2 (GaussMeasure n))

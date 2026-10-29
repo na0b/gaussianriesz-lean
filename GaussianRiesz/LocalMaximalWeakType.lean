@@ -1,6 +1,10 @@
-import GaussianRiesz.LebesgueDilation
-import GaussianRiesz.LocalMaximalFunction
-import Mathlib.MeasureTheory.Covering.Vitali
+module
+
+public import GaussianRiesz.LebesgueDilation
+public import GaussianRiesz.LocalMaximalFunction
+public import Mathlib.MeasureTheory.Covering.Vitali
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem LocalMaximalWeakType {n : ℕ} (w : EuclideanSpace ℝ (Fin n) → ℝ)

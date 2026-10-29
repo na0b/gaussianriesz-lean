@@ -1,6 +1,10 @@
-import GaussianRiesz.HasGaussWeakGrad
-import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
-import Mathlib.Analysis.Calculus.BumpFunction.Normed
+module
+
+public import GaussianRiesz.HasGaussWeakGrad
+public import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+public import Mathlib.Analysis.Calculus.BumpFunction.Normed
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem ConvolutionFDerivOfWeakGrad {n : ℕ} (ρ : EuclideanSpace ℝ (Fin n) → ℝ)

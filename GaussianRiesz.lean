@@ -1,10 +1,14 @@
+module
+
 -- Root module: the paper's main results.
-import GaussianRiesz.ObstacleDecomposition
-import GaussianRiesz.ObstacleDecompositionUnique
-import GaussianRiesz.SqrtDomainSobolev
-import GaussianRiesz.EndpointTheorem
-import GaussianRiesz.PVIdentification
-import GaussianRiesz.CoordinateEndpointBound
-import GaussianRiesz.SpectralNormalizationBound
-import GaussianRiesz.UnnormalizedMeasureInvariance
-import GaussianRiesz.ComplexEndpointTheorem
+public import GaussianRiesz.ObstacleDecomposition
+public import GaussianRiesz.ObstacleDecompositionUnique
+public import GaussianRiesz.SqrtDomainSobolev
+public import GaussianRiesz.EndpointTheorem
+public import GaussianRiesz.PVIdentification
+public import GaussianRiesz.CoordinateEndpointBound
+public import GaussianRiesz.SpectralNormalizationBound
+public import GaussianRiesz.UnnormalizedMeasureInvariance
+public import GaussianRiesz.ComplexEndpointTheorem
+
+@[expose] public section

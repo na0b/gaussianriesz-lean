@@ -1,6 +1,10 @@
-import GaussianRiesz.HermiteBasis
-import GaussianRiesz.MultiIndexSum
-import GaussianRiesz.FracPowDomain
+module
+
+public import GaussianRiesz.HermiteBasis
+public import GaussianRiesz.MultiIndexSum
+public import GaussianRiesz.FracPowDomain
+
+@[expose] public section
 open MeasureTheory
 noncomputable def Energy {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) : ENNReal :=
   ∑' α : {α : Fin n → ℕ // α ≠ 0},

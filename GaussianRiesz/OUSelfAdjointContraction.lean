@@ -1,4 +1,8 @@
-import GaussianRiesz.OUSemigroupSpectral
+module
+
+public import GaussianRiesz.OUSemigroupSpectral
+
+@[expose] public section
 open MeasureTheory
 theorem OUSelfAdjointContraction {n : ℕ} (s : ℝ) (hs : 0 ≤ s)
     (v w : Lp ℝ 2 (GaussMeasure n)) :

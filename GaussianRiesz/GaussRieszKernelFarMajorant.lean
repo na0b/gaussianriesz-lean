@@ -1,6 +1,10 @@
-import GaussianRiesz.GaussRieszKernel
-import GaussianRiesz.GaussLebesgueBallComparison
-import GaussianRiesz.GaussRieszKernelFarSliceMajorant
+module
+
+public import GaussianRiesz.GaussRieszKernel
+public import GaussianRiesz.GaussLebesgueBallComparison
+public import GaussianRiesz.GaussRieszKernelFarSliceMajorant
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem GaussRieszKernelFarMajorant {n : ℕ} (j : Fin n) :
@@ -60,7 +64,7 @@ theorem GaussRieszKernelFarMajorant {n : ℕ} (j : Fin n) :
   have hac : (volume : Measure (EuclideanSpace ℝ (Fin n))) ≪ GaussMeasure n :=
     Measure.AbsolutelyContinuous.mk (fun s _ hs0 => (h4 s).1 hs0)
   have hfmeas : ∀ f : EuclideanSpace ℝ (Fin n) → ℝ, MemLp f 1 (GaussMeasure n) →
-      AEStronglyMeasurable f volume := fun f hf => (hf.1).mono_ac hac
+      AEStronglyMeasurable f volume := fun f hf => hf.aestronglyMeasurable.mono_ac hac
   -- the density pairing
   have hpi3 : (0:ℝ) < Real.pi ^ ((n : ℝ) / 2) := Real.rpow_pos_of_pos Real.pi_pos _
   have hpiinv : Real.pi ^ ((n : ℝ) / 2) * Real.pi ^ (-(n : ℝ) / 2) = 1 := by

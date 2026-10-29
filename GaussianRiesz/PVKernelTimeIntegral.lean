@@ -1,5 +1,9 @@
-import GaussianRiesz.GaussRieszKernel
-import GaussianRiesz.MehlerKernelXDerivative
+module
+
+public import GaussianRiesz.GaussRieszKernel
+public import GaussianRiesz.MehlerKernelXDerivative
+
+@[expose] public section
 open MeasureTheory
 theorem PVKernelTimeIntegral {n : ℕ} (j : Fin n) (x y : EuclideanSpace ℝ (Fin n)) :
     (IntegrableOn (fun s : ℝ => (Real.sqrt s)⁻¹ *

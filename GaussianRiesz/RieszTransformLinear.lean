@@ -1,8 +1,12 @@
-import GaussianRiesz.RieszTransform
-import GaussianRiesz.FracPowLinear
-import GaussianRiesz.GaussDLinear
-import GaussianRiesz.SqrtDomainSobolev
-import GaussianRiesz.PseudoInverseSqrt
+module
+
+public import GaussianRiesz.RieszTransform
+public import GaussianRiesz.FracPowLinear
+public import GaussianRiesz.GaussDLinear
+public import GaussianRiesz.SqrtDomainSobolev
+public import GaussianRiesz.PseudoInverseSqrt
+
+@[expose] public section
 open MeasureTheory
 theorem RieszTransformLinear {n : ℕ} :
     (∀ v w : Lp ℝ 2 (GaussMeasure n),

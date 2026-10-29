@@ -1,4 +1,8 @@
-import GaussianRiesz.PVCoreSmooth
+module
+
+public import GaussianRiesz.PVCoreSmooth
+
+@[expose] public section
 open MeasureTheory
 theorem GaussRieszKernelSmoothOffDiagonal {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
     (hf : ContDiff ℝ (⊤ : ℕ∞) f) (hfc : HasCompactSupport f) (j : Fin n)

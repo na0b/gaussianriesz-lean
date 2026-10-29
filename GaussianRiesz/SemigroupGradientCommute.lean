@@ -1,4 +1,8 @@
-import GaussianRiesz.MehlerFormula
+module
+
+public import GaussianRiesz.MehlerFormula
+
+@[expose] public section
 open MeasureTheory
 theorem SemigroupGradientCommute {n : ℕ} (s : ℝ) (hs : 0 < s)
     (f : EuclideanSpace ℝ (Fin n) → ℝ)

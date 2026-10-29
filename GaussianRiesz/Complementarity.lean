@@ -1,5 +1,9 @@
-import GaussianRiesz.MultiplierVanishesOnPotential
-import GaussianRiesz.MultiplierPointwiseBound
+module
+
+public import GaussianRiesz.MultiplierVanishesOnPotential
+public import GaussianRiesz.MultiplierPointwiseBound
+
+@[expose] public section
 open MeasureTheory
 theorem Complementarity {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n))
     (hF : 0 ≤ᵐ[GaussMeasure n] (F : EuclideanSpace ℝ (Fin n) → ℝ)) (a : ℝ) (ha : 0 < a)

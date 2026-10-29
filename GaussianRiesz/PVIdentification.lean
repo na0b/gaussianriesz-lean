@@ -1,13 +1,17 @@
-import GaussianRiesz.GaussMaximalTruncationLocal
-import GaussianRiesz.CoordinateEndpointBound
-import GaussianRiesz.SmoothCompactDenseL1Gauss
-import GaussianRiesz.PVCoreSmooth
-import GaussianRiesz.GaussRieszKernelFarMajorant
-import GaussianRiesz.L1Extension
-import GaussianRiesz.GaussRieszTruncationSmoothSplit
-import GaussianRiesz.SmoothCoreTruncationBridge
-import GaussianRiesz.GaussRieszPrincipalValueExists
-import GaussianRiesz.GaussRieszPrincipalValueIsOperator
+module
+
+public import GaussianRiesz.GaussMaximalTruncationLocal
+public import GaussianRiesz.CoordinateEndpointBound
+public import GaussianRiesz.SmoothCompactDenseL1Gauss
+public import GaussianRiesz.PVCoreSmooth
+public import GaussianRiesz.GaussRieszKernelFarMajorant
+public import GaussianRiesz.L1Extension
+public import GaussianRiesz.GaussRieszTruncationSmoothSplit
+public import GaussianRiesz.SmoothCoreTruncationBridge
+public import GaussianRiesz.GaussRieszPrincipalValueExists
+public import GaussianRiesz.GaussRieszPrincipalValueIsOperator
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 set_option linter.unusedVariables false

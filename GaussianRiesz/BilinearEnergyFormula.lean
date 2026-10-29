@@ -1,7 +1,11 @@
-import GaussianRiesz.OUSelfAdjointContraction
-import GaussianRiesz.EnergyBil
-import GaussianRiesz.EnergyFormBilinear
-import GaussianRiesz.ScalarFractional
+module
+
+public import GaussianRiesz.OUSelfAdjointContraction
+public import GaussianRiesz.EnergyBil
+public import GaussianRiesz.EnergyFormBilinear
+public import GaussianRiesz.ScalarFractional
+
+@[expose] public section
 open MeasureTheory Set
 theorem BilinearEnergyFormula {n : ℕ} (v w : Lp ℝ 2 (GaussMeasure n))
     (hv : Energy v ≠ ⊤) (hw : Energy w ≠ ⊤) :

@@ -1,5 +1,9 @@
-import GaussianRiesz.GaussCharFun
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.GaussCharFun
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem GaussMixPushforward {n : ℕ} (a b : ℝ) (ha0 : (0:ℝ) ≤ a) (hb0 : (0:ℝ) ≤ b)
     (hab : a ^ 2 + b ^ 2 = 1) :
@@ -11,7 +15,7 @@ theorem GaussMixPushforward {n : ℕ} (a b : ℝ) (ha0 : (0:ℝ) ≤ a) (hb0 : (
         a • p.1 + b • p.2) := by fun_prop
   have : IsProbabilityMeasure (((GaussMeasure n).prod (GaussMeasure n)).map
       (fun p : EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n) => a • p.1 + b • p.2)) :=
-    Measure.isProbabilityMeasure_map hmeas.aemeasurable
+    (Measure.isProbabilityMeasure_map_iff hmeas.aemeasurable).mpr inferInstance
   refine Measure.ext_of_charFun (funext fun t => ?_)
   rw [charFun_apply, integral_map hmeas.aemeasurable (by fun_prop)]
   have hsplit : ∀ p : EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n),

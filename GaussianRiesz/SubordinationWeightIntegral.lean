@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory
 theorem SubordinationWeightIntegral :
     IntegrableOn (fun s : ℝ => (Real.sqrt s)⁻¹ * Real.exp (-s)) (Set.Ioi (0 : ℝ))

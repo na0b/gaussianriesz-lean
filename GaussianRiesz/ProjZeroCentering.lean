@@ -1,8 +1,12 @@
-import GaussianRiesz.FracPow
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.Hermite1Zero
-import GaussianRiesz.HermiteZeroModeConstant
-import GaussianRiesz.FracPowLinear
+module
+
+public import GaussianRiesz.FracPow
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.Hermite1Zero
+public import GaussianRiesz.HermiteZeroModeConstant
+public import GaussianRiesz.FracPowLinear
+
+@[expose] public section
 open MeasureTheory
 theorem ProjZeroCentering {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) :
     FracPow (0 : ℝ) v

@@ -1,11 +1,15 @@
-import GaussianRiesz.GaussRieszKernel
-import GaussianRiesz.MehlerKernelXDerivative
-import GaussianRiesz.MehlerKernelSliceVanishing
-import GaussianRiesz.PVTruncatedSliceMajorant
-import GaussianRiesz.PVKernelTimeIntegral
-import GaussianRiesz.PVTruncatedTimeSliceFinite
-import GaussianRiesz.SubordinationWeightIntegral
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.GaussRieszKernel
+public import GaussianRiesz.MehlerKernelXDerivative
+public import GaussianRiesz.MehlerKernelSliceVanishing
+public import GaussianRiesz.PVTruncatedSliceMajorant
+public import GaussianRiesz.PVKernelTimeIntegral
+public import GaussianRiesz.PVTruncatedTimeSliceFinite
+public import GaussianRiesz.SubordinationWeightIntegral
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem PVKernelConstantCancellation {n : ℕ} (j : Fin n) (x : EuclideanSpace ℝ (Fin n)) :
     (∀ s : ℝ, 0 < s →

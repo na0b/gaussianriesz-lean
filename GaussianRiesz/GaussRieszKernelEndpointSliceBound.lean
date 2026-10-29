@@ -1,5 +1,9 @@
-import GaussianRiesz.Preamble
-import GaussianRiesz.GaussRieszKernelSingularRangeSliceBound
+module
+
+public import GaussianRiesz.Preamble
+public import GaussianRiesz.GaussRieszKernelSingularRangeSliceBound
+
+@[expose] public section
 open MeasureTheory
 theorem GaussRieszKernelEndpointSliceBound {n : ℕ} (j : Fin n) :
     ∀ R ρ : ℝ, 0 < R → 0 < ρ → ∃ C : ℝ, 0 < C ∧

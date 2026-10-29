@@ -1,5 +1,9 @@
-import GaussianRiesz.HermiteFunDeriv
-import GaussianRiesz.MultiIndexSum
+module
+
+public import GaussianRiesz.HermiteFunDeriv
+public import GaussianRiesz.MultiIndexSum
+
+@[expose] public section
 theorem HermiteFunOU {n : ℕ} (α : Fin n → ℕ) (x : EuclideanSpace ℝ (Fin n)) :
     ContDiff ℝ (2 : ℕ) (HermiteFun α)
       ∧ -(1 / 2 : ℝ) *

@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussRieszKernel
+module
+
+public import GaussianRiesz.GaussRieszKernel
+
+@[expose] public section
 open MeasureTheory
 theorem GaussRieszKernelNearSliceBounds {n : ℕ} (j : Fin n) (M : ℝ) (hM : 3 ≤ M)
     (y : EuclideanSpace ℝ (Fin n)) (hy : ‖y‖ ≤ M) :

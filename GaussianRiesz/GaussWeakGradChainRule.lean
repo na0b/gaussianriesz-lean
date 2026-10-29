@@ -1,11 +1,15 @@
-import GaussianRiesz.HasGaussWeakGrad
-import GaussianRiesz.GaussL2LocallyIntegrable
-import GaussianRiesz.MollifierL2Local
-import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
-import Mathlib.Analysis.Calculus.BumpFunction.Normed
-import GaussianRiesz.ConvolutionFDerivOfWeakGrad
-import GaussianRiesz.CompIntegrationByParts
-import GaussianRiesz.NormIntegralLeOfProductDomination
+module
+
+public import GaussianRiesz.HasGaussWeakGrad
+public import GaussianRiesz.GaussL2LocallyIntegrable
+public import GaussianRiesz.MollifierL2Local
+public import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+public import Mathlib.Analysis.Calculus.BumpFunction.Normed
+public import GaussianRiesz.ConvolutionFDerivOfWeakGrad
+public import GaussianRiesz.CompIntegrationByParts
+public import GaussianRiesz.NormIntegralLeOfProductDomination
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem GaussWeakGradChainRule {n : ℕ} (q q' : ℝ → ℝ) (Lq : ℝ) (hLq : 0 ≤ Lq)
@@ -106,7 +110,7 @@ theorem GaussWeakGradChainRule {n : ℕ} (q q' : ℝ → ℝ) (Lq : ℝ) (hLq : 
       (∀ x, |h x| ≤ C * (|a x| * |b x|)) → Integrable h (volume.restrict K) := by
     intro a b h C hC ha hb hhm hbd
     have hab : MemLp (fun x => C * (a x * b x)) 1 (volume.restrict K) :=
-      (hb.mul' ha).const_mul C
+      (ha.fun_mul hb).const_mul C
     refine memLp_one_iff_integrable.1
       (MemLp.of_le hab hhm (Filter.Eventually.of_forall fun x => ?_))
     show ‖h x‖ ≤ ‖C * (a x * b x)‖
@@ -174,7 +178,7 @@ theorem GaussWeakGradChainRule {n : ℕ} (q q' : ℝ → ℝ) (Lq : ℝ) (hLq : 
     exact mul_le_mul_of_nonneg_right (hqb _) (abs_nonneg _)
   have iAi : Integrable (fun x => q (U x) * fderiv ℝ φ x (EuclideanSpace.single j (1:ℝ))) (volume.restrict K) := by
     refine hInt U (fun x => fderiv ℝ φ x (EuclideanSpace.single j (1:ℝ))) _ 1 zero_le_one mU mψ
-      ((hqc.comp_aestronglyMeasurable mU.1).mul hψc.aestronglyMeasurable) (fun x => ?_)
+      ((hqc.comp_aestronglyMeasurable mU.aestronglyMeasurable).mul hψc.aestronglyMeasurable) (fun x => ?_)
     rw [abs_mul, one_mul]
     exact mul_le_mul_of_nonneg_right (hqb _) (abs_nonneg _)
   have iBe : ∀ ε : ℝ, 0 < ε → Integrable
@@ -189,7 +193,7 @@ theorem GaussWeakGradChainRule {n : ℕ} (q q' : ℝ → ℝ) (Lq : ℝ) (hLq : 
       (abs_nonneg _)
   have iBi : Integrable (fun x => (q' (U x) * G x j) * φ x) (volume.restrict K) := by
     refine hInt (fun x => G x j) φ _ 1 zero_le_one mGj mφ
-      (((hq'c.comp_aestronglyMeasurable mU.1).mul mGj.1).mul
+      (((hq'c.comp_aestronglyMeasurable mU.aestronglyMeasurable).mul mGj.aestronglyMeasurable).mul
         hφ.continuous.aestronglyMeasurable) (fun x => ?_)
     rw [abs_mul, abs_mul, one_mul]
     exact mul_le_mul_of_nonneg_right
@@ -201,7 +205,7 @@ theorem GaussWeakGradChainRule {n : ℕ} (q q' : ℝ → ℝ) (Lq : ℝ) (hLq : 
     refine hInt (fun x => convolution (ρ ε) (fun y => G y j) (ContinuousLinearMap.lsmul ℝ ℝ) volume x - G x j) φ _ 1 zero_le_one
       ((mGE ε hε).sub mGj) mφ
       (((hq'c.comp (hcU ε hε).continuous).aestronglyMeasurable.mul
-        ((hcG ε hε).aestronglyMeasurable.sub mGj.1)).mul
+        ((hcG ε hε).aestronglyMeasurable.sub mGj.aestronglyMeasurable)).mul
         hφ.continuous.aestronglyMeasurable) (fun x => ?_)
     rw [abs_mul, abs_mul, one_mul]
     exact mul_le_mul_of_nonneg_right
@@ -212,7 +216,7 @@ theorem GaussWeakGradChainRule {n : ℕ} (q q' : ℝ → ℝ) (Lq : ℝ) (hLq : 
     intro ε hε
     refine hInt (fun x => G x j) φ _ 2 (by norm_num) mGj mφ
       ((((hq'c.comp (hcU ε hε).continuous).aestronglyMeasurable.sub
-        (hq'c.comp_aestronglyMeasurable mU.1)).mul mGj.1).mul
+        (hq'c.comp_aestronglyMeasurable mU.aestronglyMeasurable)).mul mGj.aestronglyMeasurable).mul
         hφ.continuous.aestronglyMeasurable) (fun x => ?_)
     have hb2 : |q' (convolution (ρ ε) U (ContinuousLinearMap.lsmul ℝ ℝ) volume x) - q' (U x)| ≤ 2 := by
       have h1 := hq'b (convolution (ρ ε) U (ContinuousLinearMap.lsmul ℝ ℝ) volume x)

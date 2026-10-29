@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory
 theorem TauPowerIntegralBounds :
     (∀ a : ℝ, 1 < a → ∃ K : ℝ, 0 < K ∧ ∀ b : ℝ, 0 < b →

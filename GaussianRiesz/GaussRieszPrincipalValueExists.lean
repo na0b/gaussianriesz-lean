@@ -1,6 +1,10 @@
-import GaussianRiesz.GaussRieszTruncationSmoothSplit
-import GaussianRiesz.GaussMaximalTruncationLocal
-import GaussianRiesz.PVCoreSmooth
+module
+
+public import GaussianRiesz.GaussRieszTruncationSmoothSplit
+public import GaussianRiesz.GaussMaximalTruncationLocal
+public import GaussianRiesz.PVCoreSmooth
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem GaussRieszPrincipalValueExists {n : ℕ}

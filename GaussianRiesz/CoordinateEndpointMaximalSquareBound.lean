@@ -1,6 +1,10 @@
-import GaussianRiesz.LocalMaximalWeakL2
-import GaussianRiesz.CoordinateEndpointBound
-import GaussianRiesz.GaussLebesgueBallComparison
+module
+
+public import GaussianRiesz.LocalMaximalWeakL2
+public import GaussianRiesz.CoordinateEndpointBound
+public import GaussianRiesz.GaussLebesgueBallComparison
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem CoordinateEndpointMaximalSquareBound {n : ℕ}

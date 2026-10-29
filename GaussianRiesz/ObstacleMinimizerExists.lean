@@ -1,9 +1,13 @@
-import GaussianRiesz.ObstacleSublevelBounded
-import GaussianRiesz.ConeWeaklyClosed
-import GaussianRiesz.EnergyWeaklyLSC
-import GaussianRiesz.GaussL2WeakSeqCompact
-import GaussianRiesz.L2InnerGaussIntegral
-import GaussianRiesz.HermiteL2ZeroAEOne
+module
+
+public import GaussianRiesz.ObstacleSublevelBounded
+public import GaussianRiesz.ConeWeaklyClosed
+public import GaussianRiesz.EnergyWeaklyLSC
+public import GaussianRiesz.GaussL2WeakSeqCompact
+public import GaussianRiesz.L2InnerGaussIntegral
+public import GaussianRiesz.HermiteL2ZeroAEOne
+
+@[expose] public section
 open MeasureTheory
 -- binder retained for statement fidelity to the paper; intentionally unused in the proof
 set_option linter.unusedVariables false

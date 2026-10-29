@@ -1,12 +1,16 @@
-import GaussianRiesz.ObstacleMultiplier
-import GaussianRiesz.ObstacleCone
-import GaussianRiesz.EnergyBilIsOperator
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.Hermite1Zero
-import GaussianRiesz.HermiteL2Orthonormal
-import GaussianRiesz.L2InnerGaussIntegral
-import GaussianRiesz.HermiteL2ZeroAEOne
-import GaussianRiesz.HermiteBasisVectorFacts
+module
+
+public import GaussianRiesz.ObstacleMultiplier
+public import GaussianRiesz.ObstacleCone
+public import GaussianRiesz.EnergyBilIsOperator
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.Hermite1Zero
+public import GaussianRiesz.HermiteL2Orthonormal
+public import GaussianRiesz.L2InnerGaussIntegral
+public import GaussianRiesz.HermiteL2ZeroAEOne
+public import GaussianRiesz.HermiteBasisVectorFacts
+
+@[expose] public section
 open MeasureTheory
 -- binder retained for statement fidelity to the paper; intentionally unused in the proof
 set_option linter.unusedVariables false

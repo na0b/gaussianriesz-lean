@@ -1,11 +1,15 @@
-import GaussianRiesz.MehlerFormula
-import GaussianRiesz.LebesgueDilation
-import GaussianRiesz.GaussLebesgueBallComparison
-import GaussianRiesz.SemigroupGradientCommute
-import GaussianRiesz.CompIntegrationByParts
-import GaussianRiesz.FracPowLinear
-import GaussianRiesz.HermiteBasisVectorFacts
-import GaussianRiesz.HermiteL2ZeroAEOne
+module
+
+public import GaussianRiesz.MehlerFormula
+public import GaussianRiesz.LebesgueDilation
+public import GaussianRiesz.GaussLebesgueBallComparison
+public import GaussianRiesz.SemigroupGradientCommute
+public import GaussianRiesz.CompIntegrationByParts
+public import GaussianRiesz.FracPowLinear
+public import GaussianRiesz.HermiteBasisVectorFacts
+public import GaussianRiesz.HermiteL2ZeroAEOne
+
+@[expose] public section
 open MeasureTheory
 theorem MehlerFixedTimeTesting {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
     (hf : ContDiff ℝ (⊤ : ℕ∞) f) (hfc : HasCompactSupport f)

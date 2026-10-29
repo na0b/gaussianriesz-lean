@@ -1,10 +1,14 @@
-import GaussianRiesz.OUSemigroupSpectral
-import GaussianRiesz.GaussMixPushforward
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.OUSelfAdjointContraction
-import GaussianRiesz.HermiteFunReproduction
-import GaussianRiesz.HermiteL2Complete
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+module
+
+public import GaussianRiesz.OUSemigroupSpectral
+public import GaussianRiesz.GaussMixPushforward
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.OUSelfAdjointContraction
+public import GaussianRiesz.HermiteFunReproduction
+public import GaussianRiesz.HermiteL2Complete
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+
+@[expose] public section
 open MeasureTheory
 theorem MehlerFormula {n : ℕ} (s : ℝ) (hs : 0 < s) (v : Lp ℝ 2 (GaussMeasure n)) :
     (∀ᵐ x ∂(GaussMeasure n), Integrable (fun y : EuclideanSpace ℝ (Fin n) =>
@@ -19,9 +23,9 @@ theorem MehlerFormula {n : ℕ} (s : ℝ) (hs : 0 < s) (v : Lp ℝ 2 (GaussMeasu
   classical
   -- (0) the exponent-two seminorm as a plain lintegral of squares
   have hES : ∀ {α : Type} [MeasurableSpace α] (μ : Measure α) (f : α → ℝ),
-      eLpNorm f 2 μ = (∫⁻ x, ‖f x‖ₑ ^ 2 ∂μ) ^ ((2:ℝ)⁻¹) := by
-    intro α _ μ f
-    rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num)]
+      AEStronglyMeasurable f μ → eLpNorm f 2 μ = (∫⁻ x, ‖f x‖ₑ ^ 2 ∂μ) ^ ((2:ℝ)⁻¹) := by
+    intro α _ μ f hf
+    rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num) hf]
     norm_num
   -- the contraction factor `r = e^{-s}` and the spreading factor `τ = √(1 - r²)`
   set a := Real.exp (-s) with ha_def
@@ -48,10 +52,10 @@ theorem MehlerFormula {n : ℕ} (s : ℝ) (hs : 0 < s) (v : Lp ℝ 2 (GaussMeasu
         ≤ (∫⁻ y, ‖g y‖ₑ ^ 2 ∂(GaussMeasure n)) ^ ((2:ℝ)⁻¹) := by
       calc ‖∫ y, g y ∂(GaussMeasure n)‖ₑ
           ≤ ∫⁻ y, ‖g y‖ₑ ∂(GaussMeasure n) := enorm_integral_le_lintegral_enorm g
-        _ = eLpNorm g 1 (GaussMeasure n) := eLpNorm_one_eq_lintegral_enorm.symm
+        _ = eLpNorm g 1 (GaussMeasure n) := (eLpNorm_one_eq_lintegral_enorm hg).symm
         _ ≤ eLpNorm g 2 (GaussMeasure n) :=
-            eLpNorm_le_eLpNorm_of_exponent_le (by norm_num) hg
-        _ = (∫⁻ y, ‖g y‖ₑ ^ 2 ∂(GaussMeasure n)) ^ ((2:ℝ)⁻¹) := hES (GaussMeasure n) g
+            eLpNorm_le_eLpNorm_of_exponent_le (by norm_num)
+        _ = (∫⁻ y, ‖g y‖ₑ ^ 2 ∂(GaussMeasure n)) ^ ((2:ℝ)⁻¹) := hES (GaussMeasure n) g hg
     calc ‖∫ y, g y ∂(GaussMeasure n)‖ₑ ^ 2
         ≤ ((∫⁻ y, ‖g y‖ₑ ^ 2 ∂(GaussMeasure n)) ^ ((2:ℝ)⁻¹)) ^ 2 := by gcongr
       _ = ∫⁻ y, ‖g y‖ₑ ^ 2 ∂(GaussMeasure n) := by
@@ -78,7 +82,7 @@ theorem MehlerFormula {n : ℕ} (s : ℝ) (hs : 0 < s) (v : Lp ℝ 2 (GaussMeasu
   have hslice : ∀ w : Lp ℝ 2 (GaussMeasure n), ∀ᵐ x ∂(GaussMeasure n), AEStronglyMeasurable
       (fun y : EuclideanSpace ℝ (Fin n) =>
         (w : EuclideanSpace ℝ (Fin n) → ℝ) (a • x + b • y)) (GaussMeasure n) :=
-    fun w => (hpull w).1.prodMk_left
+    fun w => (hpull w).aestronglyMeasurable.prodMk_left
   -- (7) the averaging operator is an `L²` contraction
   have hQnorm : ∀ w : Lp ℝ 2 (GaussMeasure n),
       eLpNorm (fun x : EuclideanSpace ℝ (Fin n) =>
@@ -86,7 +90,9 @@ theorem MehlerFormula {n : ℕ} (s : ℝ) (hs : 0 < s) (v : Lp ℝ 2 (GaussMeasu
           (GaussMeasure n)
         ≤ eLpNorm (w : EuclideanSpace ℝ (Fin n) → ℝ) 2 (GaussMeasure n) := by
     intro w
-    rw [hES, ← eLpNorm_comp_measurePreserving (Lp.aestronglyMeasurable w) hmp, hES]
+    rw [hES _ _ (hpull w).aestronglyMeasurable.integral_prod_right',
+      ← eLpNorm_comp_measurePreserving (Lp.aestronglyMeasurable w) hmp,
+      hES _ _ ((Lp.aestronglyMeasurable w).comp_measurePreserving hmp)]
     refine ENNReal.rpow_le_rpow ?_ (by norm_num)
     calc ∫⁻ x, ‖∫ y, (w : EuclideanSpace ℝ (Fin n) → ℝ) (a • x + b • y)
             ∂(GaussMeasure n)‖ₑ ^ 2 ∂(GaussMeasure n)
@@ -95,12 +101,12 @@ theorem MehlerFormula {n : ℕ} (s : ℝ) (hs : 0 < s) (v : Lp ℝ 2 (GaussMeasu
           lintegral_mono_ae ((hslice w).mono fun x hx => l2b _ hx)
       _ = ∫⁻ p, ‖(w : EuclideanSpace ℝ (Fin n) → ℝ) (a • p.1 + b • p.2)‖ₑ ^ 2
             ∂((GaussMeasure n).prod (GaussMeasure n)) :=
-          lintegral_lintegral ((hpull w).1.enorm.pow_const 2)
+          lintegral_lintegral ((hpull w).aestronglyMeasurable.enorm.pow_const 2)
   have hQmem : ∀ w : Lp ℝ 2 (GaussMeasure n),
       MemLp (fun x : EuclideanSpace ℝ (Fin n) =>
         ∫ y, (w : EuclideanSpace ℝ (Fin n) → ℝ) (a • x + b • y) ∂(GaussMeasure n)) 2
         (GaussMeasure n) :=
-    fun w => ⟨(hpull w).1.integral_prod_right', lt_of_le_of_lt (hQnorm w) (Lp.memLp w).2⟩
+    fun w => lt_of_le_of_lt (hQnorm w) (Lp.memLp w)
   obtain ⟨Q, hQcoe, hQop⟩ : ∃ Q : Lp ℝ 2 (GaussMeasure n) → Lp ℝ 2 (GaussMeasure n),
       (∀ w, (Q w : EuclideanSpace ℝ (Fin n) → ℝ) =ᵐ[GaussMeasure n]
           fun x => ∫ y, (w : EuclideanSpace ℝ (Fin n) → ℝ) (a • x + b • y) ∂(GaussMeasure n))

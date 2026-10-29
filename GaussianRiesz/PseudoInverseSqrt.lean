@@ -1,5 +1,9 @@
-import GaussianRiesz.FracPow
-import GaussianRiesz.OneLeMultiIndexSum
+module
+
+public import GaussianRiesz.FracPow
+public import GaussianRiesz.OneLeMultiIndexSum
+
+@[expose] public section
 open MeasureTheory
 theorem PseudoInverseSqrt {n : ℕ} (f : Lp ℝ 2 (GaussMeasure n)) :
     FracPow (-(1 : ℝ) / 2) f ∈ FracPowDomain ((1 : ℝ) / 2)

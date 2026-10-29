@@ -1,8 +1,12 @@
-import GaussianRiesz.MainBound
-import GaussianRiesz.FracPowLinear
-import Mathlib.Topology.Algebra.InfiniteSum.Real
-import GaussianRiesz.RieszTransformLinear
-import GaussianRiesz.L1ApproxByL2Truncations
+module
+
+public import GaussianRiesz.MainBound
+public import GaussianRiesz.FracPowLinear
+public import Mathlib.Topology.Algebra.InfiniteSum.Real
+public import GaussianRiesz.RieszTransformLinear
+public import GaussianRiesz.L1ApproxByL2Truncations
+
+@[expose] public section
 open MeasureTheory
 theorem RieszL1Limit {n : ℕ} (f : Lp ℝ 1 (GaussMeasure n)) :
     ∃ (g : EuclideanSpace ℝ (Fin n) →ₘ[GaussMeasure n] EuclideanSpace ℝ (Fin n))

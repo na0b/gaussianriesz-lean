@@ -1,6 +1,10 @@
-import GaussianRiesz.Hermite1Reproduction
-import GaussianRiesz.HermiteFun
-import GaussianRiesz.GaussMeasure
+module
+
+public import GaussianRiesz.Hermite1Reproduction
+public import GaussianRiesz.HermiteFun
+public import GaussianRiesz.GaussMeasure
+
+@[expose] public section
 open MeasureTheory
 theorem HermiteFunReproduction {n : ℕ} (a : ℝ) (ha0 : (0:ℝ) ≤ a) (ha1 : a ≤ 1)
     (α : Fin n → ℕ) (x : EuclideanSpace ℝ (Fin n)) :

@@ -1,5 +1,9 @@
-import GaussianRiesz.HermiteDerivative
-import GaussianRiesz.HermiteGeneratingComplex
+module
+
+public import GaussianRiesz.HermiteDerivative
+public import GaussianRiesz.HermiteGeneratingComplex
+
+@[expose] public section
 theorem HermiteAbsMajorant (w z : ℝ) :
     Summable (fun k : ℕ =>
         |Polynomial.aeval w (Polynomial.hermite k)| * |z| ^ k / (Nat.factorial k : ℝ))

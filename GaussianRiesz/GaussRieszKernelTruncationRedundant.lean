@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussRieszKernelFarMajorant
+module
+
+public import GaussianRiesz.GaussRieszKernelFarMajorant
+
+@[expose] public section
 open MeasureTheory
 theorem GaussRieszKernelTruncationRedundant {n : ℕ} (j : Fin n)
     (x₀ : EuclideanSpace ℝ (Fin n)) (ρ : ℝ) (hρ : 0 < ρ)

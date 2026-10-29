@@ -1,5 +1,9 @@
-import GaussianRiesz.GaussMeasure
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+module
+
+public import GaussianRiesz.GaussMeasure
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+
+@[expose] public section
 open MeasureTheory
 theorem GaussCharFun {n : ℕ} (t : EuclideanSpace ℝ (Fin n)) :
     charFun (GaussMeasure n) t = Complex.exp (-(‖t‖ ^ 2) / 4) := by

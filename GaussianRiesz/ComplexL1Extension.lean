@@ -1,4 +1,8 @@
-import GaussianRiesz.ComplexRieszL1Limit
+module
+
+public import GaussianRiesz.ComplexRieszL1Limit
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexL1Extension {n : ℕ} :
     ∃ T : Lp ℂ 1 (GaussMeasure n) →ₗ[ℂ]

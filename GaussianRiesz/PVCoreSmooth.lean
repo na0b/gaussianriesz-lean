@@ -1,10 +1,14 @@
-import GaussianRiesz.PVKernelConstantCancellation
-import GaussianRiesz.RieszSemigroupPointwise
-import GaussianRiesz.MehlerLebesgueKernel
-import GaussianRiesz.PVSubtractedSliceBound
-import GaussianRiesz.PVSemigroupKernelDerivative
-import GaussianRiesz.PVKernelTimeIntegral
-import GaussianRiesz.SubordinationWeightIntegral
+module
+
+public import GaussianRiesz.PVKernelConstantCancellation
+public import GaussianRiesz.RieszSemigroupPointwise
+public import GaussianRiesz.MehlerLebesgueKernel
+public import GaussianRiesz.PVSubtractedSliceBound
+public import GaussianRiesz.PVSemigroupKernelDerivative
+public import GaussianRiesz.PVKernelTimeIntegral
+public import GaussianRiesz.SubordinationWeightIntegral
+
+@[expose] public section
 open MeasureTheory
 theorem PVCoreSmooth {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
     (hf : ContDiff ℝ (⊤ : ℕ∞) f) (hfc : HasCompactSupport f) (j : Fin n)

@@ -1,11 +1,15 @@
-import GaussianRiesz.MultiplierAPrioriL2Bound
-import GaussianRiesz.ObstacleMultiplierLinearOnFormDomain
-import GaussianRiesz.HermiteL2Orthonormal
-import GaussianRiesz.HermiteL2Complete
-import Mathlib.Topology.Algebra.InfiniteSum.Real
-import GaussianRiesz.L2InnerGaussIntegral
-import GaussianRiesz.HermiteL2ZeroAEOne
-import GaussianRiesz.HermiteBasisVectorFacts
+module
+
+public import GaussianRiesz.MultiplierAPrioriL2Bound
+public import GaussianRiesz.ObstacleMultiplierLinearOnFormDomain
+public import GaussianRiesz.HermiteL2Orthonormal
+public import GaussianRiesz.HermiteL2Complete
+public import Mathlib.Topology.Algebra.InfiniteSum.Real
+public import GaussianRiesz.L2InnerGaussIntegral
+public import GaussianRiesz.HermiteL2ZeroAEOne
+public import GaussianRiesz.HermiteBasisVectorFacts
+
+@[expose] public section
 open MeasureTheory
 theorem MultiplierL2Representation {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n))
     (hF : 0 ≤ᵐ[GaussMeasure n] (F : EuclideanSpace ℝ (Fin n) → ℝ)) (a : ℝ) (ha : 0 < a)

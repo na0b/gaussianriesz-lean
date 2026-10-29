@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussEuclideanMomentBounds
+module
+
+public import GaussianRiesz.GaussEuclideanMomentBounds
+
+@[expose] public section
 open MeasureTheory
 theorem GaussSecondMomentIntegralBound {n : ℕ} :
     ∀ b : ℝ, 0 < b →

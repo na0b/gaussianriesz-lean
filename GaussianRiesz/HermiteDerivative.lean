@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 theorem HermiteDerivative (k : ℕ) :
     Polynomial.derivative (Polynomial.hermite (k + 1)) = (k + 1 : ℕ) • Polynomial.hermite k := by
   induction k with

@@ -1,9 +1,13 @@
-import GaussianRiesz.Energy
-import GaussianRiesz.HermiteBasis
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.HermiteL2Orthonormal
-import GaussianRiesz.HermiteL2Complete
-import GaussianRiesz.MultiIndexSum
+module
+
+public import GaussianRiesz.Energy
+public import GaussianRiesz.HermiteBasis
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.HermiteL2Orthonormal
+public import GaussianRiesz.HermiteL2Complete
+public import GaussianRiesz.MultiIndexSum
+
+@[expose] public section
 open MeasureTheory
 theorem HermiteBasisVectorFacts (n : ℕ) :
     (∀ β : Fin n → ℕ, (HermiteBasis n) β = HermiteL2 β)

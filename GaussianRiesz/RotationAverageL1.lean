@@ -1,6 +1,10 @@
-import GaussianRiesz.ToL1
-import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.ToL1
+public import Mathlib.Analysis.SpecialFunctions.Integrals.Basic
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem RotationAverageL1 {n : ℕ} (v : Lp ℂ 2 (GaussMeasure n)) :
     IntervalIntegrable

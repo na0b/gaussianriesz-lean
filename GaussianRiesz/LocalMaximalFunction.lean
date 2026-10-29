@@ -1,5 +1,9 @@
-import GaussianRiesz.Preamble
-import Mathlib.MeasureTheory.Integral.Lebesgue.Basic
+module
+
+public import GaussianRiesz.Preamble
+public import Mathlib.MeasureTheory.Integral.Lebesgue.Basic
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 noncomputable def LocalMaximalFunction {n : ℕ} (w : EuclideanSpace ℝ (Fin n) → ℝ)

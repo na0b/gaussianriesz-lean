@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory Filter Topology
 theorem GaussRieszKernelNearBallUniformTauMajorant {n : ℕ} :
     ∀ M : ℝ, 3 ≤ M → ∀ x y : EuclideanSpace ℝ (Fin n), ‖y‖ ≤ M → 0 < ‖x - y‖ →

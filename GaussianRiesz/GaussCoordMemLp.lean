@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussMeasure
+module
+
+public import GaussianRiesz.GaussMeasure
+
+@[expose] public section
 open MeasureTheory
 theorem GaussCoordMemLp {n : ℕ} (W : Lp (EuclideanSpace ℝ (Fin n)) 2 (GaussMeasure n))
     (i : Fin n) :

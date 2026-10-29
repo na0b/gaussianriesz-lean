@@ -1,11 +1,15 @@
-import GaussianRiesz.GaussRieszKernelFarMajorant
-import GaussianRiesz.PVCoreSmooth
-import GaussianRiesz.CoordinateEndpointBound
-import GaussianRiesz.SmoothCompactDenseL1Gauss
-import GaussianRiesz.GaussRieszKernelTruncationRedundant
-import GaussianRiesz.GaussRieszKernelSmoothOffDiagonal
-import GaussianRiesz.RieszSemigroupPointwise
-import GaussianRiesz.GaussLebesgueBallComparison
+module
+
+public import GaussianRiesz.GaussRieszKernelFarMajorant
+public import GaussianRiesz.PVCoreSmooth
+public import GaussianRiesz.CoordinateEndpointBound
+public import GaussianRiesz.SmoothCompactDenseL1Gauss
+public import GaussianRiesz.GaussRieszKernelTruncationRedundant
+public import GaussianRiesz.GaussRieszKernelSmoothOffDiagonal
+public import GaussianRiesz.RieszSemigroupPointwise
+public import GaussianRiesz.GaussLebesgueBallComparison
+
+@[expose] public section
 open MeasureTheory Filter Topology
 open scoped ENNReal
 theorem GaussRieszOffDiagonalL1 {n : ℕ}
@@ -103,7 +107,9 @@ theorem GaussRieszOffDiagonalL1 {n : ℕ}
       · rw [h3 (Metric.ball_subset_ball (by linarith) hb)]; ring
       · rw [hχoff y hb]; ring
     rw [Lp.norm_def, eLpNorm_congr_ae hdiff]
-    refine ENNReal.toReal_lt_of_lt_ofReal (lt_of_le_of_lt (eLpNorm_mono ?_) hφlt)
+    refine ENNReal.toReal_lt_of_lt_ofReal (lt_of_le_of_lt (eLpNorm_mono
+      (hχsm.continuous.aestronglyMeasurable.mul
+        ((Lp.aestronglyMeasurable g).sub hφsm.continuous.aestronglyMeasurable)) ?_) hφlt)
     intro y
     rw [Real.norm_eq_abs, Real.norm_eq_abs, abs_mul]
     refine mul_le_of_le_one_left (abs_nonneg _) ?_

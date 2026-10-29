@@ -1,5 +1,9 @@
-import GaussianRiesz.SemigroupEnergy
-import GaussianRiesz.OUCouplingKernel
+module
+
+public import GaussianRiesz.SemigroupEnergy
+public import GaussianRiesz.OUCouplingKernel
+
+@[expose] public section
 open MeasureTheory Set
 theorem DifferenceEnergy {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) :
     (∀ s : ℝ, 0 < s →
@@ -79,14 +83,14 @@ theorem DifferenceEnergy {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) :
     have hint : Integrable (fun p : EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n) =>
         ((v : EuclideanSpace ℝ (Fin n) → ℝ) p.1
           - (v : EuclideanSpace ℝ (Fin n) → ℝ) p.2) ^ 2) (OUCoupling n s) :=
-      (memLp_two_iff_integrable_sq hdiff.1).mp hdiff
+      (memLp_two_iff_integrable_sq hdiff.aestronglyMeasurable).mp hdiff
     -- the two square integrals
     have hsq1 : Integrable (fun p : EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n) =>
         ((v : EuclideanSpace ℝ (Fin n) → ℝ) p.1) ^ 2) (OUCoupling n s) :=
-      (memLp_two_iff_integrable_sq hL1.1).mp hL1
+      (memLp_two_iff_integrable_sq hL1.aestronglyMeasurable).mp hL1
     have hsq2 : Integrable (fun p : EuclideanSpace ℝ (Fin n) × EuclideanSpace ℝ (Fin n) =>
         ((v : EuclideanSpace ℝ (Fin n) → ℝ) p.2) ^ 2) (OUCoupling n s) :=
-      (memLp_two_iff_integrable_sq hL2.1).mp hL2
+      (memLp_two_iff_integrable_sq hL2.aestronglyMeasurable).mp hL2
     have hv1 : ∫ p, ((v : EuclideanSpace ℝ (Fin n) → ℝ) p.1) ^ 2 ∂(OUCoupling n s)
         = ‖v‖ ^ 2 := by rw [hpullf _ hvsq, hnormsq]
     have hv2 : ∫ p, ((v : EuclideanSpace ℝ (Fin n) → ℝ) p.2) ^ 2 ∂(OUCoupling n s)

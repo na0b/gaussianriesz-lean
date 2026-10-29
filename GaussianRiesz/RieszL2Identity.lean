@@ -1,6 +1,10 @@
-import GaussianRiesz.RieszTransform
-import GaussianRiesz.SqrtDomainSobolev
-import GaussianRiesz.PseudoInverseSqrt
+module
+
+public import GaussianRiesz.RieszTransform
+public import GaussianRiesz.SqrtDomainSobolev
+public import GaussianRiesz.PseudoInverseSqrt
+
+@[expose] public section
 open MeasureTheory
 theorem RieszL2Identity {n : ℕ} (f : Lp ℝ 2 (GaussMeasure n)) :
     ‖RieszTransform f‖ = ‖FracPow (0 : ℝ) f‖ ∧ ‖RieszTransform f‖ ≤ ‖f‖ := by

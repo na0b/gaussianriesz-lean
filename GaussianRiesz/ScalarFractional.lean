@@ -1,5 +1,9 @@
-import GaussianRiesz.Preamble
-import GaussianRiesz.SubordinationIntegrandIntegrable
+module
+
+public import GaussianRiesz.Preamble
+public import GaussianRiesz.SubordinationIntegrandIntegrable
+
+@[expose] public section
 open MeasureTheory Set Filter Topology
 theorem ScalarFractional (lam : ℝ) (hlam : 0 ≤ lam) :
     (1 / (2 * Real.sqrt Real.pi))

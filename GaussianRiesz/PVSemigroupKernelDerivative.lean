@@ -1,5 +1,9 @@
-import GaussianRiesz.CompIntegrationByParts
-import GaussianRiesz.PVKernelConstantCancellation
+module
+
+public import GaussianRiesz.CompIntegrationByParts
+public import GaussianRiesz.PVKernelConstantCancellation
+
+@[expose] public section
 open MeasureTheory
 theorem PVSemigroupKernelDerivative {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
     (hf : ContDiff ℝ (⊤ : ℕ∞) f) (hfc : HasCompactSupport f) (j : Fin n)

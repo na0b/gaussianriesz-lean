@@ -1,9 +1,13 @@
-import GaussianRiesz.ObstacleMinimizerUnique
-import GaussianRiesz.EnergyBilIsOperator
-import GaussianRiesz.EnergyFormBilinear
-import GaussianRiesz.EnergyFiniteOfSqrtDomain
-import GaussianRiesz.L2InnerGaussIntegral
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.ObstacleMinimizerUnique
+public import GaussianRiesz.EnergyBilIsOperator
+public import GaussianRiesz.EnergyFormBilinear
+public import GaussianRiesz.EnergyFiniteOfSqrtDomain
+public import GaussianRiesz.L2InnerGaussIntegral
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem ObstacleDecompositionUnique {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n))
     (hF : 0 ≤ᵐ[GaussMeasure n] (F : EuclideanSpace ℝ (Fin n) → ℝ)) (m a : ℝ)

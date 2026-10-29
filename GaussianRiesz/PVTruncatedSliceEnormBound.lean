@@ -1,5 +1,9 @@
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
-import GaussianRiesz.GaussEuclideanMomentBounds
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+public import GaussianRiesz.GaussEuclideanMomentBounds
+
+@[expose] public section
 open MeasureTheory
 theorem PVTruncatedSliceEnormBound {n : ℕ} :
     ∀ (j : Fin n) (x : EuclideanSpace ℝ (Fin n)) (ε : ℝ), 0 < ε →

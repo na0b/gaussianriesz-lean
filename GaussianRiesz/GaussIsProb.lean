@@ -1,5 +1,9 @@
-import GaussianRiesz.GaussMeasure
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+module
+
+public import GaussianRiesz.GaussMeasure
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+
+@[expose] public section
 open MeasureTheory
 instance GaussIsProb (n : ℕ) : IsProbabilityMeasure (GaussMeasure n) := by
   constructor

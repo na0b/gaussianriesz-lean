@@ -1,5 +1,9 @@
-import GaussianRiesz.VariationalInequality
-import GaussianRiesz.ObstacleMultiplier
+module
+
+public import GaussianRiesz.VariationalInequality
+public import GaussianRiesz.ObstacleMultiplier
+
+@[expose] public section
 open MeasureTheory
 theorem MultiplierVanishesOnPotential {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (a : ℝ)
     (u : Lp ℝ 2 (GaussMeasure n)) (hu : u ∈ ObstacleCone n)

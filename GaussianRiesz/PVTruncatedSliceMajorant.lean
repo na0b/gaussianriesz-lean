@@ -1,5 +1,9 @@
-import GaussianRiesz.MehlerKernelSliceVanishing
-import GaussianRiesz.GaussFirstMomentTranslationL1Bound
+module
+
+public import GaussianRiesz.MehlerKernelSliceVanishing
+public import GaussianRiesz.GaussFirstMomentTranslationL1Bound
+
+@[expose] public section
 open MeasureTheory
 theorem PVTruncatedSliceMajorant {n : ℕ} (j : Fin n) (x : EuclideanSpace ℝ (Fin n)) :
     (∃ C : ℝ, 0 ≤ C ∧ ∀ ε s : ℝ, 0 < ε → 0 < s →

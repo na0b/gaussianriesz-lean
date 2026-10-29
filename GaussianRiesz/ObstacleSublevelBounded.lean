@@ -1,5 +1,9 @@
-import GaussianRiesz.ObstacleCoercivity
-import GaussianRiesz.HermiteZeroModeConstant
+module
+
+public import GaussianRiesz.ObstacleCoercivity
+public import GaussianRiesz.HermiteZeroModeConstant
+
+@[expose] public section
 open MeasureTheory
 theorem ObstacleSublevelBounded {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (m a : ℝ)
     (hm : m = ∫ x, (F : EuclideanSpace ℝ (Fin n) → ℝ) x ∂(GaussMeasure n)) (ha : m < a)

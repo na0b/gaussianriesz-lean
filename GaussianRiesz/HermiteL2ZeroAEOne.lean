@@ -1,6 +1,10 @@
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.HermiteFunMemLp
-import GaussianRiesz.Hermite1Zero
+module
+
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.HermiteFunMemLp
+public import GaussianRiesz.Hermite1Zero
+
+@[expose] public section
 open MeasureTheory
 theorem HermiteL2ZeroAEOne {n : ℕ} :
     ((HermiteL2 (0 : Fin n → ℕ) : Lp ℝ 2 (GaussMeasure n)) :

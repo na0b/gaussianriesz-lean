@@ -1,5 +1,9 @@
-import GaussianRiesz.HermiteDerivative
-import GaussianRiesz.HermiteGeneratingComplex
+module
+
+public import GaussianRiesz.HermiteDerivative
+public import GaussianRiesz.HermiteGeneratingComplex
+
+@[expose] public section
 theorem HermiteGenerating (y z : ℝ) :
     HasSum (fun k : ℕ =>
         Polynomial.aeval y (Polynomial.hermite k) * z ^ k / (Nat.factorial k : ℝ))

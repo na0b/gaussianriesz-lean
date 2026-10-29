@@ -1,4 +1,8 @@
-import GaussianRiesz.ComplexL1Extension
+module
+
+public import GaussianRiesz.ComplexL1Extension
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexEndpointTheorem {n : ℕ} :
     ∃! T : Lp ℂ 1 (GaussMeasure n) →ₗ[ℂ]

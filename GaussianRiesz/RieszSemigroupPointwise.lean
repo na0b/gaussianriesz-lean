@@ -1,11 +1,15 @@
-import GaussianRiesz.LebesgueDilation
-import GaussianRiesz.MehlerGradientSubordination
-import GaussianRiesz.SemigroupGradientCommute
-import GaussianRiesz.RieszTransform
-import GaussianRiesz.GaussDWitness
-import GaussianRiesz.SubordinationWeightIntegral
-import GaussianRiesz.GaussLebesgueBallComparison
-import GaussianRiesz.RieszPseudoInverseTestedIdentity
+module
+
+public import GaussianRiesz.LebesgueDilation
+public import GaussianRiesz.MehlerGradientSubordination
+public import GaussianRiesz.SemigroupGradientCommute
+public import GaussianRiesz.RieszTransform
+public import GaussianRiesz.GaussDWitness
+public import GaussianRiesz.SubordinationWeightIntegral
+public import GaussianRiesz.GaussLebesgueBallComparison
+public import GaussianRiesz.RieszPseudoInverseTestedIdentity
+
+@[expose] public section
 open MeasureTheory
 theorem RieszSemigroupPointwise {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
     (hf : ContDiff ℝ (⊤ : ℕ∞) f) (hfc : HasCompactSupport f)

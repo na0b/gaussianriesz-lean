@@ -1,6 +1,10 @@
-import GaussianRiesz.Preamble
-import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
-import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
+module
+
+public import GaussianRiesz.Preamble
+public import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
+public import Mathlib.MeasureTheory.Measure.Haar.InnerProductSpace
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal Pointwise
 theorem LebesgueDilation {n : ℕ} :

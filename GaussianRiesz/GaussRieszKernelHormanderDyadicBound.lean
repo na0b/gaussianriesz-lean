@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussRieszKernelNearBounds
+module
+
+public import GaussianRiesz.GaussRieszKernelNearBounds
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem GaussRieszKernelHormanderDyadicBound {n : ℕ} (j : Fin n) (R : ℝ) (hR : 1 ≤ R) :

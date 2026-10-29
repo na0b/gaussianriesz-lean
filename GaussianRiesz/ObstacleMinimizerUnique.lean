@@ -1,11 +1,15 @@
-import GaussianRiesz.ObstacleFunctional
-import GaussianRiesz.ObstacleCone
-import GaussianRiesz.EnergyBil
-import GaussianRiesz.EnergyConstantInvariance
-import GaussianRiesz.EnergyFormBilinear
-import GaussianRiesz.FractionalGap
-import GaussianRiesz.ProjZeroCentering
-import GaussianRiesz.L2IntoL1
+module
+
+public import GaussianRiesz.ObstacleFunctional
+public import GaussianRiesz.ObstacleCone
+public import GaussianRiesz.EnergyBil
+public import GaussianRiesz.EnergyConstantInvariance
+public import GaussianRiesz.EnergyFormBilinear
+public import GaussianRiesz.FractionalGap
+public import GaussianRiesz.ProjZeroCentering
+public import GaussianRiesz.L2IntoL1
+
+@[expose] public section
 open MeasureTheory
 theorem ObstacleMinimizerUnique {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (m a : ℝ)
     (hm : m = ∫ x, (F : EuclideanSpace ℝ (Fin n) → ℝ) x ∂(GaussMeasure n)) (ha : m < a)

@@ -1,5 +1,9 @@
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.Hermite1Orthonormal
+module
+
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.Hermite1Orthonormal
+
+@[expose] public section
 open MeasureTheory
 theorem HermiteL2Orthonormal (n : ℕ) : Orthonormal ℝ (HermiteL2 (n := n)) := by
   classical

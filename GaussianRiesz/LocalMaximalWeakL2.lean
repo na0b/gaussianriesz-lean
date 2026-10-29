@@ -1,4 +1,8 @@
-import GaussianRiesz.LocalMaximalWeakType
+module
+
+public import GaussianRiesz.LocalMaximalWeakType
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem LocalMaximalWeakL2 {n : ℕ} (w : EuclideanSpace ℝ (Fin n) → ℝ)

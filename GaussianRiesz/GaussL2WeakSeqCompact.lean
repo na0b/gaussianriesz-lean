@@ -1,5 +1,9 @@
-import GaussianRiesz.HermiteL2Orthonormal
-import GaussianRiesz.HermiteL2Complete
+module
+
+public import GaussianRiesz.HermiteL2Orthonormal
+public import GaussianRiesz.HermiteL2Complete
+
+@[expose] public section
 open MeasureTheory
 theorem GaussL2WeakSeqCompact {n : ℕ} (v : ℕ → Lp ℝ 2 (GaussMeasure n)) (R : ℝ)
     (hbd : ∀ k, ‖v k‖ ≤ R) :

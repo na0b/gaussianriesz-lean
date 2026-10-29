@@ -1,5 +1,9 @@
-import GaussianRiesz.ToL1
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.ToL1
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem L1ApproxByL2Truncations {n : ℕ} (f : Lp ℝ 1 (GaussMeasure n)) :
     ∃ v : ℕ → Lp ℝ 2 (GaussMeasure n),

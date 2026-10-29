@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Calculus.BumpFunction.SmoothApprox
-import GaussianRiesz.GaussIsProb
-import GaussianRiesz.GaussLebesgueBallComparison
+module
+
+public import Mathlib.Analysis.Calculus.BumpFunction.SmoothApprox
+public import GaussianRiesz.GaussIsProb
+public import GaussianRiesz.GaussLebesgueBallComparison
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem SmoothCompactDenseL1Gauss {n : ℕ} (g : Lp ℝ 1 (GaussMeasure n))
@@ -50,7 +54,12 @@ theorem SmoothCompactDenseL1Gauss {n : ℕ} (g : Lp ℝ 1 (GaussMeasure n))
       eLpNorm w 1 (GaussMeasure n)
         = eLpNorm (fun y => (Real.pi ^ (-(n : ℝ) / 2) * Real.exp (-‖y‖ ^ 2)) * w y) 1 volume := by
     intro w hw
-    rw [eLpNorm_one_eq_lintegral_enorm, eLpNorm_one_eq_lintegral_enorm, GaussMeasure,
+    rw [eLpNorm_one_eq_lintegral_enorm (μ := GaussMeasure n)
+        (hw.aestronglyMeasurable.mono_ac (withDensity_absolutelyContinuous _ _)),
+      eLpNorm_one_eq_lintegral_enorm
+        (f := fun y => (Real.pi ^ (-(n : ℝ) / 2) * Real.exp (-‖y‖ ^ 2)) * w y)
+        (hρm.aestronglyMeasurable.mul hw.aestronglyMeasurable),
+      GaussMeasure,
       lintegral_withDensity_eq_lintegral_mul₀ (by fun_prop) hw.enorm]
     refine lintegral_congr fun y => ?_
     show ENNReal.ofReal (Real.pi ^ (-(n : ℝ) / 2) * Real.exp (-‖y‖ ^ 2)) * ‖w y‖ₑ
@@ -59,13 +68,13 @@ theorem SmoothCompactDenseL1Gauss {n : ℕ} (g : Lp ℝ 1 (GaussMeasure n))
   -- STEP 1: transport g to L¹(λ)
   have hgmem := Lp.memLp g
   have hgaem : AEStronglyMeasurable (fun y => (g : EuclideanSpace ℝ (Fin n) → ℝ) y) volume :=
-    hgmem.1.mono_ac hacv
+    hgmem.aestronglyMeasurable.mono_ac hacv
   have hhmem : MemLp (fun y : EuclideanSpace ℝ (Fin n) =>
       (Real.pi ^ (-(n : ℝ) / 2) * Real.exp (-‖y‖ ^ 2))
         * (g : EuclideanSpace ℝ (Fin n) → ℝ) y) 1 volume := by
-    refine ⟨hρm.aestronglyMeasurable.mul hgaem, ?_⟩
+    unfold MemLp
     rw [← htrans _ hgaem.aemeasurable]
-    exact hgmem.2
+    exact hgmem
   -- STEP 2: a continuous compactly supported approximant in L¹(λ)
   obtain ⟨u, hu_cs, hu_le, hu_cont, hu_mem⟩ :=
     hhmem.exists_hasCompactSupport_eLpNorm_sub_le (by norm_num)
@@ -129,7 +138,9 @@ theorem SmoothCompactDenseL1Gauss {n : ℕ} (g : Lp ℝ 1 (GaussMeasure n))
   have hbd : eLpNorm (fun y => u y - (χ : EuclideanSpace ℝ (Fin n) → ℝ) y * w y) 1 volume
       ≤ ENNReal.ofReal η
         * volume (Metric.closedBall (0 : EuclideanSpace ℝ (Fin n)) (Rr + 1)) := by
-    rw [eLpNorm_one_eq_lintegral_enorm]
+    rw [eLpNorm_one_eq_lintegral_enorm
+      (f := fun y => u y - (χ : EuclideanSpace ℝ (Fin n) → ℝ) y * w y)
+      (hu_cont.sub ((ContDiffBump.contDiff χ).mul hw_cd).continuous).aestronglyMeasurable]
     calc ∫⁻ y : EuclideanSpace ℝ (Fin n),
           ‖u y - (χ : EuclideanSpace ℝ (Fin n) → ℝ) y * w y‖ₑ
         ≤ ∫⁻ y : EuclideanSpace ℝ (Fin n),
@@ -190,8 +201,7 @@ theorem SmoothCompactDenseL1Gauss {n : ℕ} (g : Lp ℝ 1 (GaussMeasure n))
                 * (g : EuclideanSpace ℝ (Fin n) → ℝ) y - u y) 1 volume
             + eLpNorm (fun y : EuclideanSpace ℝ (Fin n) =>
               u y - (χ : EuclideanSpace ℝ (Fin n) → ℝ) y * w y) 1 volume :=
-          eLpNorm_add_le (hhmem.1.sub hu_mem.1)
-            (hu_mem.1.sub hv_cd.continuous.aestronglyMeasurable) le_rfl
+          eLpNorm_add_le le_rfl
       _ ≤ ENNReal.ofReal (δ / 3) + ENNReal.ofReal (δ / 3) :=
           add_le_add hu_le (hbd.trans hηbd)
       _ < ENNReal.ofReal δ := by

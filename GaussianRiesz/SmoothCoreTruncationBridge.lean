@@ -1,5 +1,9 @@
-import GaussianRiesz.PVCoreSmooth
-import GaussianRiesz.RieszSemigroupPointwise
+module
+
+public import GaussianRiesz.PVCoreSmooth
+public import GaussianRiesz.RieszSemigroupPointwise
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem SmoothCoreTruncationBridge {n : ℕ}

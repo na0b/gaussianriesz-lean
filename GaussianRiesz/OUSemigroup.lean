@@ -1,5 +1,9 @@
-import GaussianRiesz.Energy
-import GaussianRiesz.Hermite1Zero
+module
+
+public import GaussianRiesz.Energy
+public import GaussianRiesz.Hermite1Zero
+
+@[expose] public section
 open MeasureTheory
 open scoped Classical in
 noncomputable def OUSemigroup {n : ℕ} (s : ℝ) (v : Lp ℝ 2 (GaussMeasure n)) :

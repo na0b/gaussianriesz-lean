@@ -1,10 +1,14 @@
-import GaussianRiesz.ComplexTransformedLocalization
-import GaussianRiesz.ComplexRieszL2Identity
-import GaussianRiesz.ComplexRieszTransformLinear
-import GaussianRiesz.RotationAverageL1
-import GaussianRiesz.SignedDecomposition
-import GaussianRiesz.RieszL2Identity
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.ComplexTransformedLocalization
+public import GaussianRiesz.ComplexRieszL2Identity
+public import GaussianRiesz.ComplexRieszTransformLinear
+public import GaussianRiesz.RotationAverageL1
+public import GaussianRiesz.SignedDecomposition
+public import GaussianRiesz.RieszL2Identity
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexMainBound {n : ℕ} (v : Lp ℂ 2 (GaussMeasure n)) (t : ℝ) (ht : 0 < t) :
     ENNReal.ofReal t * GaussMeasure n

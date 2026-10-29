@@ -1,6 +1,10 @@
-import GaussianRiesz.SmoothCompactDenseL1Gauss
-import GaussianRiesz.GaussRieszKernelFarMajorant
-import GaussianRiesz.GaussLebesgueBallComparison
+module
+
+public import GaussianRiesz.SmoothCompactDenseL1Gauss
+public import GaussianRiesz.GaussRieszKernelFarMajorant
+public import GaussianRiesz.GaussLebesgueBallComparison
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem GaussRieszTruncationSmoothSplit {n : ℕ} (f : Lp ℝ 1 (GaussMeasure n)) (k : ℕ) :
@@ -47,7 +51,7 @@ theorem GaussRieszTruncationSmoothSplit {n : ℕ} (f : Lp ℝ 1 (GaussMeasure n)
           simp [Real.norm_eq_abs]
       _ = eLpNorm ((f - hφmem.toLp φ : Lp ℝ 1 (GaussMeasure n))
             : EuclideanSpace ℝ (Fin n) → ℝ) 1 (GaussMeasure n) := by
-          rw [eLpNorm_one_eq_lintegral_enorm]
+          rw [eLpNorm_one_eq_lintegral_enorm (Lp.aestronglyMeasurable _)]
       _ = eLpNorm (fun y => (f : EuclideanSpace ℝ (Fin n) → ℝ) y - φ y) 1
             (GaussMeasure n) := eLpNorm_congr_ae hgae
       _ < ENNReal.ofReal (1 / ((k : ℝ) + 1)) := hφnorm

@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem NonnegTestCharacterization {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) :
     0 ≤ᵐ[GaussMeasure n] (v : EuclideanSpace ℝ (Fin n) → ℝ)

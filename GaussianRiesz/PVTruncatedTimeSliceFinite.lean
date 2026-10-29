@@ -1,6 +1,10 @@
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
-import GaussianRiesz.SubordinationWeightIntegral
-import GaussianRiesz.PVTruncatedSliceEnormBound
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+public import GaussianRiesz.SubordinationWeightIntegral
+public import GaussianRiesz.PVTruncatedSliceEnormBound
+
+@[expose] public section
 open MeasureTheory
 theorem PVTruncatedTimeSliceFinite {n : ℕ} (j : Fin n) (x : EuclideanSpace ℝ (Fin n))
     (ε : ℝ) (hε : 0 < ε) :

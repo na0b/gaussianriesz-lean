@@ -1,4 +1,8 @@
-import GaussianRiesz.EndpointTheorem
+module
+
+public import GaussianRiesz.EndpointTheorem
+
+@[expose] public section
 open MeasureTheory
 set_option linter.unusedVariables false
 theorem SpectralNormalizationBound {n : ℕ}

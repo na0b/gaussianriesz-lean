@@ -1,6 +1,10 @@
-import GaussianRiesz.OUSemigroupSpectral
-import GaussianRiesz.ScalarFractional
-import GaussianRiesz.SubordinationIntegrandIntegrable
+module
+
+public import GaussianRiesz.OUSemigroupSpectral
+public import GaussianRiesz.ScalarFractional
+public import GaussianRiesz.SubordinationIntegrandIntegrable
+
+@[expose] public section
 open MeasureTheory Set
 theorem SemigroupEnergy {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) :
     Energy v = ENNReal.ofReal (1 / (2 * Real.sqrt Real.pi))

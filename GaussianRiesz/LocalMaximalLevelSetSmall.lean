@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussLebesgueBallComparison
+module
+
+public import GaussianRiesz.GaussLebesgueBallComparison
+
+@[expose] public section
 open MeasureTheory Metric
 open scoped ENNReal
 theorem LocalMaximalLevelSetSmall {n : ℕ} (hn : 0 < n) (R : ℝ) (hR : 1 ≤ R) :

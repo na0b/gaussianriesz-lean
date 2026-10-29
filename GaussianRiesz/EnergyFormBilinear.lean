@@ -1,4 +1,8 @@
-import GaussianRiesz.EnergyBil
+module
+
+public import GaussianRiesz.EnergyBil
+
+@[expose] public section
 open MeasureTheory
 theorem EnergyFormBilinear {n : ℕ} :
     (∀ v w : Lp ℝ 2 (GaussMeasure n), Energy v ≠ ⊤ → Energy w ≠ ⊤ →

@@ -1,6 +1,10 @@
-import Mathlib.Analysis.Normed.Group.Tannery
-import GaussianRiesz.OUSemigroupSpectral
-import GaussianRiesz.OneLeMultiIndexSum
+module
+
+public import Mathlib.Analysis.Normed.Group.Tannery
+public import GaussianRiesz.OUSemigroupSpectral
+public import GaussianRiesz.OneLeMultiIndexSum
+
+@[expose] public section
 open MeasureTheory
 theorem SemigroupRegularity {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) :
     (∀ s : ℝ, 0 < s → Energy (OUSemigroup s v) ≠ ⊤)

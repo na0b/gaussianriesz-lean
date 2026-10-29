@@ -1,6 +1,10 @@
-import GaussianRiesz.HermiteL2ZeroAEOne
-import GaussianRiesz.GaussIsProb
-import GaussianRiesz.L2InnerGaussIntegral
+module
+
+public import GaussianRiesz.HermiteL2ZeroAEOne
+public import GaussianRiesz.GaussIsProb
+public import GaussianRiesz.L2InnerGaussIntegral
+
+@[expose] public section
 open MeasureTheory
 theorem HermiteZeroModeConstant {n : ℕ} :
     (∀ f : EuclideanSpace ℝ (Fin n) → ℝ, (∫ x, f x *

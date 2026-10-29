@@ -1,5 +1,9 @@
-import GaussianRiesz.HermiteFun
-import Mathlib.Analysis.Calculus.ContDiff.Polynomial
+module
+
+public import GaussianRiesz.HermiteFun
+public import Mathlib.Analysis.Calculus.ContDiff.Polynomial
+
+@[expose] public section
 theorem HermiteFunContDiff {n : ℕ} (α : Fin n → ℕ) :
     ContDiff ℝ (⊤ : ℕ∞) (HermiteFun α) := by
   unfold HermiteFun

@@ -1,7 +1,11 @@
-import GaussianRiesz.EnergyFormBilinear
-import GaussianRiesz.L2InnerGaussIntegral
-import GaussianRiesz.HermiteL2ZeroAEOne
-import GaussianRiesz.ObstacleMultiplier
+module
+
+public import GaussianRiesz.EnergyFormBilinear
+public import GaussianRiesz.L2InnerGaussIntegral
+public import GaussianRiesz.HermiteL2ZeroAEOne
+public import GaussianRiesz.ObstacleMultiplier
+
+@[expose] public section
 open MeasureTheory
 theorem ObstacleMultiplierLinearOnFormDomain {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (a : ℝ)
     (u : Lp ℝ 2 (GaussMeasure n)) (huE : Energy u ≠ ⊤) :

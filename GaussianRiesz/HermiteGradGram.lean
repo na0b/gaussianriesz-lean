@@ -1,10 +1,14 @@
-import GaussianRiesz.GaussD
-import GaussianRiesz.GaussDWitness
-import GaussianRiesz.GaussWeakGradAECongr
-import GaussianRiesz.HermiteFunDeriv
-import GaussianRiesz.HermiteL2Orthonormal
-import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
-import Mathlib.Analysis.InnerProductSpace.l2Space
+module
+
+public import GaussianRiesz.GaussD
+public import GaussianRiesz.GaussDWitness
+public import GaussianRiesz.GaussWeakGradAECongr
+public import GaussianRiesz.HermiteFunDeriv
+public import GaussianRiesz.HermiteL2Orthonormal
+public import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+public import Mathlib.Analysis.InnerProductSpace.l2Space
+
+@[expose] public section
 open MeasureTheory
 theorem HermiteGradGram (n : ℕ) :
     (∀ α : Fin n → ℕ, HermiteL2 α ∈ SobolevW12 n ∧

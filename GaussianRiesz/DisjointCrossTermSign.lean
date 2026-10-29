@@ -1,8 +1,12 @@
-import GaussianRiesz.BilinearEnergyFormula
-import GaussianRiesz.EnergyFormBilinear
-import GaussianRiesz.MehlerFormula
-import GaussianRiesz.LatticeContraction
-import GaussianRiesz.L2InnerGaussIntegral
+module
+
+public import GaussianRiesz.BilinearEnergyFormula
+public import GaussianRiesz.EnergyFormBilinear
+public import GaussianRiesz.MehlerFormula
+public import GaussianRiesz.LatticeContraction
+public import GaussianRiesz.L2InnerGaussIntegral
+
+@[expose] public section
 open MeasureTheory
 theorem DisjointCrossTermSign {n : ℕ} :
     (∀ v w : Lp ℝ 2 (GaussMeasure n), Energy v ≠ ⊤ → Energy w ≠ ⊤ →

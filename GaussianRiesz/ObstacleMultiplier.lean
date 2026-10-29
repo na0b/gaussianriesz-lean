@@ -1,5 +1,9 @@
-import GaussianRiesz.EnergyBil
-import GaussianRiesz.ObstacleFunctional
+module
+
+public import GaussianRiesz.EnergyBil
+public import GaussianRiesz.ObstacleFunctional
+
+@[expose] public section
 open MeasureTheory
 noncomputable def ObstacleMultiplier {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n)) (a : ℝ)
     (u φ : Lp ℝ 2 (GaussMeasure n)) : ℝ :=

@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 open MeasureTheory Set
 theorem SubordinationIntegrandIntegrable (lam : ℝ) (hlam : 0 ≤ lam) :
     IntegrableOn (fun s : ℝ => (1 - Real.exp (-s * lam)) / s ^ ((3:ℝ)/2))

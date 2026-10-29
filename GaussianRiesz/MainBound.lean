@@ -1,7 +1,11 @@
-import GaussianRiesz.SignedDecomposition
-import GaussianRiesz.TransformedLocalization
-import GaussianRiesz.RieszL2Identity
-import GaussianRiesz.SmallLevelBound
+module
+
+public import GaussianRiesz.SignedDecomposition
+public import GaussianRiesz.TransformedLocalization
+public import GaussianRiesz.RieszL2Identity
+public import GaussianRiesz.SmallLevelBound
+
+@[expose] public section
 open MeasureTheory
 theorem MainBound {n : ℕ} (f : Lp ℝ 2 (GaussMeasure n)) (t : ℝ) (ht : 0 < t) :
     ENNReal.ofReal t * GaussMeasure n
@@ -27,7 +31,8 @@ theorem MainBound {n : ℕ} (f : Lp ℝ 2 (GaussMeasure n)) (t : ℝ) (ht : 0 < 
         ≤ ENNReal.ofReal ‖ToL1 f‖ := by
       have hch := mul_meas_ge_le_pow_eLpNorm' (GaussMeasure n) (p := 2)
         (by norm_num) (by norm_num)
-        (Lp.aestronglyMeasurable (RieszTransform g)) (ENNReal.ofReal t)
+        (f := (RieszTransform g : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)))
+        (ENNReal.ofReal t)
       rw [show ((2 : ENNReal)).toReal = (2 : ℝ) from by norm_num] at hch
       have heL : eLpNorm ((RieszTransform g : EuclideanSpace ℝ (Fin n)
           → EuclideanSpace ℝ (Fin n))) 2 (GaussMeasure n)

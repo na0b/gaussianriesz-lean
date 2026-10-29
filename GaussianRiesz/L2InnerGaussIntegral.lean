@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussMeasure
+module
+
+public import GaussianRiesz.GaussMeasure
+
+@[expose] public section
 open MeasureTheory
 theorem L2InnerGaussIntegral {n : ℕ} (x y : Lp ℝ 2 (GaussMeasure n)) :
     (inner ℝ x y : ℝ) = ∫ z, (x : EuclideanSpace ℝ (Fin n) → ℝ) z

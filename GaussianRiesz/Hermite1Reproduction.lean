@@ -1,9 +1,13 @@
-import GaussianRiesz.Hermite1
-import GaussianRiesz.HermiteGenerating
-import GaussianRiesz.HermiteAbsMajorant
-import GaussianRiesz.HermiteDerivative
-import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
-import GaussianRiesz.ExpNegSqIntegrationByParts
+module
+
+public import GaussianRiesz.Hermite1
+public import GaussianRiesz.HermiteGenerating
+public import GaussianRiesz.HermiteAbsMajorant
+public import GaussianRiesz.HermiteDerivative
+public import Mathlib.Analysis.Calculus.LineDeriv.IntegrationByParts
+public import GaussianRiesz.ExpNegSqIntegrationByParts
+
+@[expose] public section
 open MeasureTheory
 theorem Hermite1Reproduction (k : ℕ) (r t : ℝ) (hr0 : 0 ≤ r) (hr1 : r ≤ 1) :
     ∫ σ : ℝ, Real.pi ^ (-(1 : ℝ) / 2) * Real.exp (-σ ^ 2)

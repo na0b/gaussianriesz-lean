@@ -1,7 +1,11 @@
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
-import GaussianRiesz.Preamble
-import GaussianRiesz.GaussEuclideanMomentBounds
-import GaussianRiesz.GaussSecondMomentIntegralBound
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+public import GaussianRiesz.Preamble
+public import GaussianRiesz.GaussEuclideanMomentBounds
+public import GaussianRiesz.GaussSecondMomentIntegralBound
+
+@[expose] public section
 open MeasureTheory
 theorem PVSubtractedSliceBound {n : ℕ} (j : Fin n) (x : EuclideanSpace ℝ (Fin n)) :
     ∃ C : ℝ, 0 ≤ C ∧ ∀ (f : EuclideanSpace ℝ (Fin n) → ℝ) (L : ℝ), 0 ≤ L →

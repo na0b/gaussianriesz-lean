@@ -1,4 +1,8 @@
-import GaussianRiesz.GaussIsProb
+module
+
+public import GaussianRiesz.GaussIsProb
+
+@[expose] public section
 open MeasureTheory
 theorem ExceptionalSetBound {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n))
     (hF : 0 ≤ᵐ[GaussMeasure n] (F : EuclideanSpace ℝ (Fin n) → ℝ)) (m a : ℝ) (ha : 0 < a)

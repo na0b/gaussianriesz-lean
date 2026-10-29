@@ -1,5 +1,9 @@
-import GaussianRiesz.CoordinateEndpointBound
-import GaussianRiesz.SpectralNormalizationBound
+module
+
+public import GaussianRiesz.CoordinateEndpointBound
+public import GaussianRiesz.SpectralNormalizationBound
+
+@[expose] public section
 open MeasureTheory
 set_option linter.unusedVariables false
 theorem UnnormalizedMeasureInvariance {n : ℕ}

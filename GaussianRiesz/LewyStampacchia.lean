@@ -1,7 +1,11 @@
-import GaussianRiesz.MultiplierPositive
-import GaussianRiesz.DisjointCrossTermSign
-import GaussianRiesz.L2IntoL1
-import GaussianRiesz.PosPartConstSubMemLp
+module
+
+public import GaussianRiesz.MultiplierPositive
+public import GaussianRiesz.DisjointCrossTermSign
+public import GaussianRiesz.L2IntoL1
+public import GaussianRiesz.PosPartConstSubMemLp
+
+@[expose] public section
 open MeasureTheory
 -- binder retained for statement fidelity to the paper; intentionally unused in the proof
 set_option linter.unusedVariables false

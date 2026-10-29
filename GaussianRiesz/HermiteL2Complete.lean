@@ -1,10 +1,14 @@
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.L2IntoL1
-import GaussianRiesz.Hermite1Zero
-import GaussianRiesz.HermiteDerivative
-import Mathlib.Analysis.InnerProductSpace.l2Space
-import Mathlib.MeasureTheory.Measure.CharacteristicFunction.Basic
-import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+module
+
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.L2IntoL1
+public import GaussianRiesz.Hermite1Zero
+public import GaussianRiesz.HermiteDerivative
+public import Mathlib.Analysis.InnerProductSpace.l2Space
+public import Mathlib.MeasureTheory.Measure.CharacteristicFunction.Basic
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.FourierTransform
+
+@[expose] public section
 open MeasureTheory
 theorem HermiteL2Complete (n : ℕ) :
     ⊤ ≤ (Submodule.span ℝ (Set.range (HermiteL2 (n := n)))).topologicalClosure := by

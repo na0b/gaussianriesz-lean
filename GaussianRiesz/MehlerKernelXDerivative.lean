@@ -1,5 +1,9 @@
-import GaussianRiesz.GaussD
-import GaussianRiesz.MehlerLebesgueKernel
+module
+
+public import GaussianRiesz.GaussD
+public import GaussianRiesz.MehlerLebesgueKernel
+
+@[expose] public section
 open MeasureTheory
 theorem MehlerKernelXDerivative {n : ℕ} (s : ℝ) (hs : 0 < s)
     (x y : EuclideanSpace ℝ (Fin n)) (j : Fin n) :

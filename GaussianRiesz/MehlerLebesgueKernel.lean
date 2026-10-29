@@ -1,4 +1,8 @@
-import GaussianRiesz.MehlerFormula
+module
+
+public import GaussianRiesz.MehlerFormula
+
+@[expose] public section
 open MeasureTheory
 theorem MehlerLebesgueKernel {n : ℕ} (s : ℝ) (hs : 0 < s) (v : Lp ℝ 2 (GaussMeasure n)) :
     (∀ᵐ x ∂(GaussMeasure n), Integrable (fun y : EuclideanSpace ℝ (Fin n) =>

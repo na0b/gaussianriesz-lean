@@ -1,9 +1,13 @@
-import GaussianRiesz.SobolevChainRule
-import GaussianRiesz.GaussWeakGradClosed
-import GaussianRiesz.GaussWeakGradUnique
-import GaussianRiesz.GaussIsProb
-import GaussianRiesz.GaussDWitness
-import GaussianRiesz.GaussWeakGradAECongr
+module
+
+public import GaussianRiesz.SobolevChainRule
+public import GaussianRiesz.GaussWeakGradClosed
+public import GaussianRiesz.GaussWeakGradUnique
+public import GaussianRiesz.GaussIsProb
+public import GaussianRiesz.GaussDWitness
+public import GaussianRiesz.GaussWeakGradAECongr
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem GradientLocality {n : ℕ} (u : Lp ℝ 2 (GaussMeasure n)) (hu : u ∈ SobolevW12 n)
@@ -100,7 +104,7 @@ theorem GradientLocality {n : ℕ} (u : Lp ℝ 2 (GaussMeasure n)) (hu : u ∈ S
   have hfin : ∫⁻ x, ‖(GaussD u : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)) x‖ₑ ^ (2:ℝ≥0∞).toReal ∂(GaussMeasure n) ≠ ⊤ := by
     intro htop
     have h := hGL2.eLpNorm_lt_top
-    rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num), htop,
+    rw [eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num) hGL2.aestronglyMeasurable, htop,
       ENNReal.top_rpow_of_pos (by norm_num)] at h
     exact absurd h (by simp)
   have hreal : ∀ (k : ℕ) (x : EuclideanSpace ℝ (Fin n)),
@@ -191,7 +195,8 @@ theorem GradientLocality {n : ℕ} (u : Lp ℝ 2 (GaussMeasure n)) (hu : u ∈ S
         have hm : AEStronglyMeasurable (fun x => ((u : EuclideanSpace ℝ (Fin n) → ℝ) x
             / Real.sqrt ((u : EuclideanSpace ℝ (Fin n) → ℝ) x ^ 2 + (1 / ((k:ℝ) + 1)) ^ 2)) • (GaussD u : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)) x
               - Set.indicator (Um ⁻¹' Set.Ioi (0:ℝ)) (GaussD u : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)) x) (GaussMeasure n) :=
-          ((hc.comp_aestronglyMeasurable hUm).smul hGL2.1).sub (hGL2.1.indicator hS)
+          ((hc.comp_aestronglyMeasurable hUm).smul hGL2.aestronglyMeasurable).sub
+            (hGL2.aestronglyMeasurable.indicator hS)
         exact (hm.enorm).pow_const _
       · intro k
         refine Filter.Eventually.of_forall fun x => ?_
@@ -243,6 +248,10 @@ theorem GradientLocality {n : ℕ} (u : Lp ℝ 2 (GaussMeasure n)) (hu : u ∈ S
               - Set.indicator (Um ⁻¹' Set.Ioi (0:ℝ)) (GaussD u : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)) x‖ₑ ^ (2:ℝ≥0∞).toReal
               ∂(GaussMeasure n)) ^ (1 / (2:ℝ≥0∞).toReal) :=
         fun k => eLpNorm_eq_lintegral_rpow_enorm_toReal (by norm_num) (by norm_num)
+          ((((show Continuous (fun t : ℝ => t / Real.sqrt (t ^ 2 + (1 / ((k:ℝ) + 1)) ^ 2)) from
+            Continuous.div continuous_id (by fun_prop)
+              (fun t => (Real.sqrt_pos.2 (by positivity)).ne')).comp_aestronglyMeasurable hUm).smul
+            hGL2.aestronglyMeasurable).sub (hGL2.aestronglyMeasurable.indicator hS))
       rw [show (fun k : ℕ => eLpNorm (fun x =>
             ((u : EuclideanSpace ℝ (Fin n) → ℝ) x / Real.sqrt ((u : EuclideanSpace ℝ (Fin n) → ℝ) x ^ 2 + (1 / ((k:ℝ) + 1)) ^ 2)) • (GaussD u : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)) x
               - Set.indicator (Um ⁻¹' Set.Ioi (0:ℝ)) (GaussD u : EuclideanSpace ℝ (Fin n) → EuclideanSpace ℝ (Fin n)) x) 2 (GaussMeasure n)) = _

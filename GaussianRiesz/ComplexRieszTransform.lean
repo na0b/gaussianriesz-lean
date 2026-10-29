@@ -1,4 +1,8 @@
-import GaussianRiesz.RieszTransform
+module
+
+public import GaussianRiesz.RieszTransform
+
+@[expose] public section
 open MeasureTheory
 noncomputable def ComplexRieszTransform {n : ℕ} (v : Lp ℂ 2 (GaussMeasure n)) :
     Lp (EuclideanSpace ℂ (Fin n)) 2 (GaussMeasure n) :=

@@ -1,5 +1,9 @@
-import GaussianRiesz.ComplexToL1
-import Mathlib.Topology.Algebra.InfiniteSum.Real
+module
+
+public import GaussianRiesz.ComplexToL1
+public import Mathlib.Topology.Algebra.InfiniteSum.Real
+
+@[expose] public section
 open MeasureTheory
 theorem ComplexL1ApproxByL2Truncations {n : ℕ} (f : Lp ℂ 1 (GaussMeasure n))
     (hCL1 : ∀ u : Lp ℂ 2 (GaussMeasure n),

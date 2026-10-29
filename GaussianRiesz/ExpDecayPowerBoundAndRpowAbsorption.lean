@@ -1,4 +1,8 @@
-import GaussianRiesz.Preamble
+module
+
+public import GaussianRiesz.Preamble
+
+@[expose] public section
 theorem ExpDecayPowerBoundAndRpowAbsorption {n : ℕ} :
     (∀ t : ℝ, 0 < t →
         Real.exp (-t) ≤ ((n : ℝ) + 2) ^ (n + 2) * (t⁻¹) ^ (n + 2))

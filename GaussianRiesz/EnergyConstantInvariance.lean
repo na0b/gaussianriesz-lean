@@ -1,6 +1,10 @@
-import GaussianRiesz.EnergyBil
-import GaussianRiesz.HermiteL2
-import GaussianRiesz.Hermite1Zero
+module
+
+public import GaussianRiesz.EnergyBil
+public import GaussianRiesz.HermiteL2
+public import GaussianRiesz.Hermite1Zero
+
+@[expose] public section
 open MeasureTheory
 theorem EnergyConstantInvariance {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) (c : ℝ) :
     EnergyBil v (HermiteL2 (0 : Fin n → ℕ)) = 0

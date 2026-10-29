@@ -1,25 +1,29 @@
+module
+
 -- Preamble: shared imports for all files.
 -- Specific Mathlib imports only (never `import Mathlib`).
-import Mathlib.MeasureTheory.Measure.WithDensity
-import Mathlib.MeasureTheory.Function.L2Space
-import Mathlib.MeasureTheory.Function.LpSeminorm.CompareExp
-import Mathlib.MeasureTheory.Function.StronglyMeasurable.Lp
-import Mathlib.Analysis.InnerProductSpace.l2Space
-import Mathlib.MeasureTheory.Constructions.Pi
-import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
-import Mathlib.RingTheory.Polynomial.Hermite.Gaussian
-import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
-import Mathlib.Analysis.SpecialFunctions.Pow.NNReal
-import Mathlib.MeasureTheory.Integral.DominatedConvergence
-import Mathlib.MeasureTheory.Function.ConvergenceInMeasure
-import Mathlib.Analysis.Calculus.ContDiff.Basic
-import Mathlib.Topology.Algebra.Support
-import Mathlib.Analysis.Normed.Lp.lpSpace
-import Mathlib.Analysis.Convex.Integral
-import Mathlib.MeasureTheory.Measure.CharacteristicFunction.Basic
-import Mathlib.Analysis.Complex.TaylorSeries
-import Mathlib.Analysis.Distribution.AEEqOfIntegralContDiff
-import Mathlib.Analysis.Calculus.ContDiff.Convolution
-import Mathlib.Analysis.Calculus.BumpFunction.Convolution
-import Mathlib.MeasureTheory.Function.ContinuousMapDense
-import Mathlib.Analysis.Normed.Module.WeakDual
+public import Mathlib.MeasureTheory.Measure.WithDensity
+public import Mathlib.MeasureTheory.Function.L2Space
+public import Mathlib.MeasureTheory.Function.LpSeminorm.CompareExp
+public import Mathlib.MeasureTheory.Function.StronglyMeasurable.Lp
+public import Mathlib.Analysis.InnerProductSpace.l2Space
+public import Mathlib.MeasureTheory.Constructions.Pi
+public import Mathlib.MeasureTheory.Measure.Lebesgue.EqHaar
+public import Mathlib.RingTheory.Polynomial.Hermite.Gaussian
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
+public import Mathlib.Analysis.SpecialFunctions.Pow.NNReal
+public import Mathlib.MeasureTheory.Integral.DominatedConvergence
+public import Mathlib.MeasureTheory.Function.ConvergenceInMeasure
+public import Mathlib.Analysis.Calculus.ContDiff.Basic
+public import Mathlib.Topology.Algebra.Support
+public import Mathlib.Analysis.Normed.Lp.lpSpace
+public import Mathlib.Analysis.Convex.Integral
+public import Mathlib.MeasureTheory.Measure.CharacteristicFunction.Basic
+public import Mathlib.Analysis.Complex.TaylorSeries
+public import Mathlib.Analysis.Distribution.AEEqOfIntegralContDiff
+public import Mathlib.Analysis.Calculus.ContDiff.Convolution
+public import Mathlib.Analysis.Calculus.BumpFunction.Convolution
+public import Mathlib.MeasureTheory.Function.ContinuousMapDense
+public import Mathlib.Analysis.Normed.Module.WeakDual
+
+@[expose] public section

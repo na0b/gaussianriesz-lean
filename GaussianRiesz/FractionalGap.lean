@@ -1,7 +1,11 @@
-import GaussianRiesz.ProjZeroCentering
-import GaussianRiesz.Energy
-import GaussianRiesz.OneLeMultiIndexSum
-import GaussianRiesz.FracPowLinear
+module
+
+public import GaussianRiesz.ProjZeroCentering
+public import GaussianRiesz.Energy
+public import GaussianRiesz.OneLeMultiIndexSum
+public import GaussianRiesz.FracPowLinear
+
+@[expose] public section
 open MeasureTheory
 theorem FractionalGap {n : ℕ} (v : Lp ℝ 2 (GaussMeasure n)) :
     ENNReal.ofReal (‖FracPow (0 : ℝ) v‖ ^ 2) ≤ Energy v := by

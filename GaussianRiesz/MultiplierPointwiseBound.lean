@@ -1,8 +1,12 @@
-import GaussianRiesz.MultiplierL2Representation
-import GaussianRiesz.SemigroupRegularity
-import GaussianRiesz.MehlerFormula
-import GaussianRiesz.L2InnerGaussIntegral
-import GaussianRiesz.PosPartConstSubMemLp
+module
+
+public import GaussianRiesz.MultiplierL2Representation
+public import GaussianRiesz.SemigroupRegularity
+public import GaussianRiesz.MehlerFormula
+public import GaussianRiesz.L2InnerGaussIntegral
+public import GaussianRiesz.PosPartConstSubMemLp
+
+@[expose] public section
 open MeasureTheory
 -- binder retained for statement fidelity to the paper; intentionally unused in the proof
 set_option linter.unusedVariables false

@@ -1,14 +1,18 @@
-import GaussianRiesz.ObstacleMinimizerExists
-import GaussianRiesz.ObstacleMinimizerUnique
-import GaussianRiesz.MultiplierL2Representation
-import GaussianRiesz.MultiplierPointwiseBound
-import GaussianRiesz.DomainUpgrade
-import GaussianRiesz.MassConservation
-import GaussianRiesz.Complementarity
-import GaussianRiesz.ExceptionalSetBound
-import GaussianRiesz.GradientLocality
-import GaussianRiesz.SqrtDomainSobolev
-import GaussianRiesz.HermiteL2ZeroAEOne
+module
+
+public import GaussianRiesz.ObstacleMinimizerExists
+public import GaussianRiesz.ObstacleMinimizerUnique
+public import GaussianRiesz.MultiplierL2Representation
+public import GaussianRiesz.MultiplierPointwiseBound
+public import GaussianRiesz.DomainUpgrade
+public import GaussianRiesz.MassConservation
+public import GaussianRiesz.Complementarity
+public import GaussianRiesz.ExceptionalSetBound
+public import GaussianRiesz.GradientLocality
+public import GaussianRiesz.SqrtDomainSobolev
+public import GaussianRiesz.HermiteL2ZeroAEOne
+
+@[expose] public section
 open MeasureTheory
 theorem ObstacleDecomposition {n : ℕ} (F : Lp ℝ 2 (GaussMeasure n))
     (hF : 0 ≤ᵐ[GaussMeasure n] (F : EuclideanSpace ℝ (Fin n) → ℝ)) (m a : ℝ)

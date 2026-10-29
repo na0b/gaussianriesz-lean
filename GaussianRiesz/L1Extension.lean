@@ -1,6 +1,10 @@
-import GaussianRiesz.MainBound
-import GaussianRiesz.RieszL1Limit
-import GaussianRiesz.RieszTransformLinear
+module
+
+public import GaussianRiesz.MainBound
+public import GaussianRiesz.RieszL1Limit
+public import GaussianRiesz.RieszTransformLinear
+
+@[expose] public section
 open MeasureTheory
 theorem L1Extension {n : ℕ} :
     ∃ T : Lp ℝ 1 (GaussMeasure n) →ₗ[ℝ]
@@ -176,8 +180,8 @@ theorem L1Extension {n : ℕ} :
       refine le_trans hfatou ?_
       have h := Filter.liminf_le_liminf
         (f := Filter.atTop)
-        (u := fun k => GaussMeasure n (Sk k))
-        (v := fun _ : ℕ => ENNReal.ofReal (2 * ‖f‖) / ENNReal.ofReal t)
+        (v := fun k => GaussMeasure n (Sk k))
+        (u := fun _ : ℕ => ENNReal.ofReal (2 * ‖f‖) / ENNReal.ofReal t)
         (Filter.Eventually.of_forall hbd)
       rwa [Filter.liminf_const] at h
     have hfinal := (ENNReal.le_div_iff_mul_le (Or.inl hne0)

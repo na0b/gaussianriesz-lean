@@ -1,7 +1,11 @@
-import Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap
-import GaussianRiesz.OUSemigroupSpectral
-import GaussianRiesz.FracPowLinear
-import GaussianRiesz.OneLeMultiIndexSum
+module
+
+public import Mathlib.MeasureTheory.Integral.Bochner.ContinuousLinearMap
+public import GaussianRiesz.OUSemigroupSpectral
+public import GaussianRiesz.FracPowLinear
+public import GaussianRiesz.OneLeMultiIndexSum
+
+@[expose] public section
 open MeasureTheory
 theorem SubordinationPseudoInverse {n : ℕ} (f : Lp ℝ 2 (GaussMeasure n)) :
     IntegrableOn (fun s : ℝ => (Real.sqrt s)⁻¹ • OUSemigroup s (FracPow (0 : ℝ) f))

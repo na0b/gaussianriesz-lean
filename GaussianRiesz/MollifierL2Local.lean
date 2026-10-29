@@ -1,5 +1,9 @@
-import GaussianRiesz.Preamble
-import GaussianRiesz.YoungL2Contraction
+module
+
+public import GaussianRiesz.Preamble
+public import GaussianRiesz.YoungL2Contraction
+
+@[expose] public section
 open MeasureTheory
 open scoped ENNReal
 theorem MollifierL2Local {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
@@ -53,7 +57,11 @@ theorem MollifierL2Local {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
     calc eLpNorm (fun x => convolution (ρ ε) g (ContinuousLinearMap.lsmul ℝ ℝ) volume x - g x) 2
           (volume.restrict K)
         ≤ ((volume.restrict K) Set.univ) ^ ((2:ℝ≥0∞).toReal⁻¹) * ENNReal.ofReal c :=
-          eLpNorm_le_of_ae_bound (Filter.Eventually.of_forall hbound)
+          eLpNorm_le_of_ae_bound
+            ((((hsmooth ε hε0).continuous.aestronglyMeasurable.convolution_integrand
+              (ContinuousLinearMap.lsmul ℝ ℝ) hgc.aestronglyMeasurable).integral_prod_right').sub
+              hgc.aestronglyMeasurable).restrict
+            (Filter.Eventually.of_forall hbound)
       _ = ENNReal.ofReal A * ENNReal.ofReal c := by
           rw [Measure.restrict_apply_univ, hAdef, ENNReal.ofReal_toReal hKt]
       _ = ENNReal.ofReal (A * c) := (ENNReal.ofReal_mul hA0).symm
@@ -153,13 +161,13 @@ theorem MollifierL2Local {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
   have hmC : AEStronglyMeasurable C
       ((volume : Measure (EuclideanSpace ℝ (Fin n))).restrict K) := by
     rw [hCdef]
-    exact (hgc.aestronglyMeasurable.sub hf1.1).restrict
+    exact (hgc.aestronglyMeasurable.sub hf1.aestronglyMeasurable).restrict
   -- the three bounds
   have hA : eLpNorm A 2 (volume.restrict K) ≤ ENNReal.ofReal (b/3) := by
     rw [hAdef]
     refine le_trans (eLpNorm_mono_measure _ Measure.restrict_le_self) ?_
     exact le_trans (YoungL2Contraction (ρ ε) (hρc ε hε0).measurable (hnonneg ε hε0)
-      (hρint ε hε0) (hmass ε hε0) _ hfg.1) hgsub
+      (hρint ε hε0) (hmass ε hε0) _ hfg.aestronglyMeasurable) hgsub
   have hB : eLpNorm B 2 (volume.restrict K) ≤ ENNReal.ofReal (b/3) := by
     rw [hBdef]; exact hεB
   have hC : eLpNorm C 2 (volume.restrict K) ≤ ENNReal.ofReal (b/3) := by
@@ -173,10 +181,8 @@ theorem MollifierL2Local {n : ℕ} (f : EuclideanSpace ℝ (Fin n) → ℝ)
   rw [eLpNorm_congr_ae (ae_restrict_of_forall_mem hKm hptid)]
   have hAB : eLpNorm (fun x => A x + B x) 2 (volume.restrict K)
       ≤ ENNReal.ofReal (b/3) + ENNReal.ofReal (b/3) :=
-    le_trans (eLpNorm_add_le hcA.aestronglyMeasurable.restrict
-      hcB.aestronglyMeasurable.restrict (by norm_num)) (add_le_add hA hB)
-  refine le_trans (eLpNorm_add_le ((hcA.add hcB).aestronglyMeasurable.restrict)
-    hmC (by norm_num)) ?_
+    le_trans (eLpNorm_add_le (by norm_num)) (add_le_add hA hB)
+  refine le_trans (eLpNorm_add_le (by norm_num)) ?_
   refine le_trans (add_le_add hAB hC) ?_
   rw [← ENNReal.ofReal_add hb3.le hb3.le, ← ENNReal.ofReal_add (by positivity) hb3.le]
   refine le_trans (ENNReal.ofReal_le_ofReal ?_) hbη
