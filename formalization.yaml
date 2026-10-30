@@ -121,14 +121,18 @@ fidelity:
     integrals; W^{1,2}(γₙ) is defined via the normalized gradient D = 2^{-1/2}∇.
 
 review:
-  status: "agent-reviewed"
+  status: "author-verified"
   reviewers:
+    - "Cristian E. Gutiérrez"
+    - "Juan J. Manfredi"
     - "Trellis verifier agents (soundness, paper-faithfulness and statement-correspondence checks on every node)"
   notes: >-
-    Every node passed Trellis's automated soundness, paper-faithfulness and Lean/natural-language
-    correspondence reviews, and Cleanup ran six audit rounds; the Proposition 5.3 deviation was
-    reviewed separately during the run. No human review of the Lean statements against the paper
-    has been recorded yet.
+    Cristian E. Gutiérrez and Juan J. Manfredi, the authors of the paper, read Challenge.lean (the
+    definitions, the supporting facts and the nine theorem statements) against the paper and found
+    no changes needed (2026-10-30). In addition, every node passed Trellis's automated soundness,
+    paper-faithfulness and Lean/natural-language correspondence reviews, Cleanup ran six audit
+    rounds, and the Proposition 5.3 deviation was reviewed separately during the run. The proofs
+    were not reviewed line by line by a human; they are checked by the Lean kernel and by Comparator.
 
 alignment:
   namespace: "GaussianRiesz"

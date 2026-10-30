@@ -86,7 +86,7 @@ blueprint/blueprint.tex    natural-language companion (inputs blueprint/nodes/*.
 
 The formalization was produced with Trellis, an AI-assisted formalization pipeline that uses Claude (Anthropic). Each node was reviewed automatically for soundness of its natural-language proof, for faithfulness to the paper, and for agreement between its Lean statement and its natural-language statement. The deviation described above was reviewed separately. The Lean kernel checks every proof.
 
-<!-- TODO before release: replace this comment with a sentence confirming that the authors have read the Lean statements of the definitions and the main results. -->
+The authors have read the Lean statements of the definitions and the main results, as collected in [`Challenge.lean`](Challenge.lean), against the paper.
 
 ## Citation
 
