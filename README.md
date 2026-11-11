@@ -69,6 +69,8 @@ The repository is laid out for the [Palomar](https://palomar-registry.org/) regi
 ruby scripts/validate-formalization.rb
 ```
 
+[![Paperlane Lean: builds](https://pragyaangaur.dev/Paperlane/lean/na0b/gaussianriesz-lean.svg)](https://pragyaangaur.dev/Paperlane/lean/na0b/gaussianriesz-lean.html)
+
 ## Layout
 
 ```
